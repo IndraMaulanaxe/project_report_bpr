@@ -1,0 +1,389 @@
+inherited fr_FormKP2000: Tfr_FormKP2000
+  Caption = 'Form 2000 - Formasi Sumber Daya Manusia '
+  ClientHeight = 440
+  ClientWidth = 861
+  ExplicitWidth = 867
+  ExplicitHeight = 469
+  PixelsPerInch = 96
+  TextHeight = 16
+  inherited PanelHeader: TPanel
+    Width = 861
+    ExplicitWidth = 861
+  end
+  inherited PanelContent: TcxGroupBox
+    ExplicitWidth = 861
+    ExplicitHeight = 398
+    Height = 398
+    Width = 861
+    object cxgGrid: TcxGrid
+      Left = 2
+      Top = 2
+      Width = 857
+      Height = 394
+      Align = alClient
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = cxcbsNone
+      TabOrder = 0
+      object cxGridDBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Append.Visible = False
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        FindPanel.DisplayMode = fpdmAlways
+        OnCellDblClick = cxGridDBTableView1CellDblClick
+        DataController.DataModeController.GridMode = True
+        DataController.DataModeController.SmartRefresh = True
+        DataController.DataSource = dsMyQKP2000
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsData.Deleting = False
+        OptionsData.DeletingConfirmation = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.MultiSelect = True
+        OptionsSelection.HideFocusRectOnExit = False
+        OptionsSelection.HideSelection = True
+        OptionsSelection.UnselectFocusedRecordOnExit = False
+        OptionsView.CellAutoHeight = True
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderAutoHeight = True
+        OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
+        OptionsView.Indicator = True
+        OptionsView.ShowColumnFilterButtons = sfbWhenSelected
+        object cxGridDBTableView1id: TcxGridDBColumn
+          DataBinding.FieldName = 'id'
+          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 150
+        end
+        object cxGridDBTableView1flag_detail: TcxGridDBColumn
+          DataBinding.FieldName = 'flag_detail'
+          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 116
+        end
+        object cxGridDBTableView1kode_komponen: TcxGridDBColumn
+          DataBinding.FieldName = 'kode_komponen'
+          HeaderAlignmentHorz = taCenter
+          Width = 105
+        end
+        object cxGridDBTableView1nik: TcxGridDBColumn
+          DataBinding.FieldName = 'nik'
+          HeaderAlignmentHorz = taCenter
+          Width = 112
+        end
+        object cxGridDBTableView1nama: TcxGridDBColumn
+          DataBinding.FieldName = 'nama'
+          HeaderAlignmentHorz = taCenter
+          Width = 190
+        end
+        object cxGridDBTableView1jabatan: TcxGridDBColumn
+          DataBinding.FieldName = 'jabatan'
+          HeaderAlignmentHorz = taCenter
+          Width = 155
+        end
+        object cxGridDBTableView1status_kepegawaian: TcxGridDBColumn
+          DataBinding.FieldName = 'status_kepegawaian'
+          HeaderAlignmentHorz = taCenter
+          Width = 136
+        end
+        object cxGridDBTableView1tingkat_pendidikan: TcxGridDBColumn
+          DataBinding.FieldName = 'tingkat_pendidikan'
+          HeaderAlignmentHorz = taCenter
+          Width = 155
+        end
+        object cxGridDBTableView1lama_masa_jabatan: TcxGridDBColumn
+          DataBinding.FieldName = 'lama_masa_jabatan'
+          HeaderAlignmentHorz = taCenter
+          Width = 153
+        end
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = cxGridDBTableView1
+      end
+    end
+  end
+  inherited PanelFooter: TcxGroupBox
+    Top = 398
+    ExplicitTop = 398
+    ExplicitWidth = 861
+    Width = 861
+    inherited btlb_Refresh: TcxButton
+      OnClick = btlb_RefreshClick
+      ExplicitLeft = 6
+      ExplicitTop = 6
+      ExplicitHeight = 30
+    end
+    inherited btlb_tools1: TcxButton
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 97
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_tools2: TcxButton
+      Left = 102
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 103
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_Save: TcxButton
+      Left = 486
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 485
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_Close: TcxButton
+      Left = 771
+      ExplicitLeft = 770
+      ExplicitTop = 6
+      ExplicitHeight = 30
+    end
+    inherited btlb_Cancel: TcxButton
+      Left = 492
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 491
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_Print: TcxButton
+      Left = 480
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 479
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_tools3: TcxButton
+      Left = 108
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 109
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+    inherited btlb_Delete: TcxButton
+      Left = 680
+      OnClick = btlb_DeleteClick
+      ExplicitLeft = 679
+      ExplicitTop = 6
+      ExplicitHeight = 30
+    end
+    inherited btlb_Edit: TcxButton
+      Left = 589
+      OnClick = btlb_EditClick
+      ExplicitLeft = 588
+      ExplicitTop = 6
+      ExplicitHeight = 30
+    end
+    inherited btlb_Insert: TcxButton
+      Left = 498
+      OnClick = btlb_InsertClick
+      ExplicitLeft = 497
+      ExplicitTop = 6
+      ExplicitHeight = 30
+    end
+    inherited btlb_Pilih: TcxButton
+      Left = 474
+      Width = 0
+      Enabled = False
+      Visible = False
+      ExplicitLeft = 473
+      ExplicitTop = 6
+      ExplicitWidth = 0
+      ExplicitHeight = 30
+    end
+  end
+  inherited PanelTopSystem: TPanel
+    Width = 861
+    ExplicitWidth = 861
+    inherited IconClose: TLabel
+      Left = 827
+      ExplicitLeft = 724
+    end
+  end
+  object MyQuery1: TMyQuery
+    SQL.Strings = (
+      'SELECT COUNT(*) AS jml, '
+      '  SUM(baki_debet) AS bd, '
+      '  SUM(`provisi_belum_amortisasi`) AS provisi,  '
+      '  SUM(`biaya_transaksi_belum_amortisasi`) AS biaya, '
+      '  SUM(`ppap_dibentuk`) AS ppapwd, '
+      '  SUM(IF(kualitas IN ('#39'1'#39','#39'2'#39'), `pyad`, 0)) AS pyad,'
+      
+        '  SUM(baki_debet-`provisi_belum_amortisasi`+`biaya_transaksi_bel' +
+        'um_amortisasi`-`pendapatan_bunga_ditangguhkan`-`cadangan_kerugia' +
+        'n`) AS bd_netto,'
+      '  SUM(IF(kualitas IN ('#39'3'#39','#39'4'#39','#39'5'#39'), pad, 0)) as pbdp'
+      'FROM `apolo_f0600`'
+      '&WHERE')
+    ReadOnly = True
+    Options.FieldOrigins = foNone
+    Left = 88
+    Top = 248
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+    object MyQuery1jml: TLargeintField
+      FieldName = 'jml'
+    end
+    object MyQuery1bd: TFloatField
+      FieldName = 'bd'
+    end
+    object MyQuery1provisi: TFloatField
+      FieldName = 'provisi'
+    end
+    object MyQuery1biaya: TFloatField
+      FieldName = 'biaya'
+    end
+    object MyQuery1ppapwd: TFloatField
+      FieldName = 'ppapwd'
+    end
+    object MyQuery1pyad: TFloatField
+      FieldName = 'pyad'
+    end
+    object MyQuery1bd_netto: TFloatField
+      FieldName = 'bd_netto'
+    end
+    object MyQuery1pbdp: TFloatField
+      FieldName = 'pbdp'
+    end
+  end
+  object dsMyQKP2000: TMyDataSource
+    DataSet = MyQKP2000
+    Left = 384
+    Top = 80
+  end
+  object MyQKP2000: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT'
+      '  aa.`id`,'
+      '  aa.`flag_detail`,'
+      '  aa.`kode_komponen`,'
+      '  aa.`nik`,'
+      '  aa.`nama`,'
+      '  aa.`jabatan` AS sandi_jabatan,'
+      '  CONCAT(aa.`jabatan`, '#39' - '#39', bb.`nama`) AS jabatan,'
+      '  aa.`status_kepegawaian` AS sandi_status_kepegawaian,'
+      
+        '  CONCAT (aa.`status_kepegawaian`, '#39' - '#39', cc.`status`) AS status' +
+        '_kepegawaian,'
+      '  aa.`tingkat_pendidikan` AS sandi_tingkat_pendidikan,'
+      
+        '  CONCAT (aa.`tingkat_pendidikan`, '#39' - '#39', dd.`tingkat`) AS tingk' +
+        'at_pendidikan,'
+      '  aa.`lama_masa_jabatan`'
+      'FROM `kp_2000` aa'
+      '  LEFT JOIN `kp_ref_jabatan` bb ON bb.`sandi`=aa.`jabatan`'
+      
+        '  LEFT JOIN `kp_ref_status_kepegawaian` cc ON cc.`sandi`=aa.`sta' +
+        'tus_kepegawaian`'
+      
+        '  LEFT JOIN `kp_ref_tingkat_pendidikan` dd ON dd.`sandi`=aa.`tin' +
+        'gkat_pendidikan`'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    ReadOnly = True
+    Options.FieldOrigins = foNone
+    Left = 384
+    Top = 136
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQKP2000id: TIntegerField
+      DisplayLabel = 'ID'
+      FieldName = 'id'
+    end
+    object MyQKP2000flag_detail: TStringField
+      FieldName = 'flag_detail'
+      Size = 3
+    end
+    object MyQKP2000kode_komponen: TStringField
+      DisplayLabel = 'Kode Komponen'
+      FieldName = 'kode_komponen'
+      Size = 5
+    end
+    object MyQKP2000nik: TStringField
+      DisplayLabel = 'NIK'
+      FieldName = 'nik'
+    end
+    object MyQKP2000nama: TStringField
+      DisplayLabel = 'Nama'
+      FieldName = 'nama'
+      Size = 100
+    end
+    object MyQKP2000jabatan: TStringField
+      DisplayLabel = 'Jabatan '
+      FieldName = 'jabatan'
+      Size = 100
+    end
+    object MyQKP2000status_kepegawaian: TStringField
+      DisplayLabel = 'Status Kepegawaian'
+      FieldName = 'status_kepegawaian'
+      Size = 50
+    end
+    object MyQKP2000tingkat_pendidikan: TStringField
+      DisplayLabel = 'Tingkat Pendidikan'
+      FieldName = 'tingkat_pendidikan'
+      Size = 50
+    end
+    object MyQKP2000lama_masa_jabatan: TDateField
+      DisplayLabel = 'Lama Masa Jabatan'
+      FieldName = 'lama_masa_jabatan'
+    end
+    object MyQKP2000sandi_jabatan: TStringField
+      FieldName = 'sandi_jabatan'
+      Size = 100
+    end
+    object MyQKP2000sandi_status_kepegawaian: TStringField
+      FieldName = 'sandi_status_kepegawaian'
+      Size = 50
+    end
+    object MyQKP2000sandi_tingkat_pendidikan: TStringField
+      FieldName = 'sandi_tingkat_pendidikan'
+      Size = 50
+    end
+  end
+end
