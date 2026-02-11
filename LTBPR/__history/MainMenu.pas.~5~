@@ -1,0 +1,457 @@
+unit MainMenu;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, Vcl.StdCtrls, cxButtons,
+  Vcl.ExtCtrls, cxClasses,
+//  dxSkinsCore, dxSkinBlack,
+//  dxSkinDarkRoom, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle,
+//  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMetropolisDark,
+ //dxSkinsForm, dxSkinBlue, dxSkinBlueprint,
+//  dxSkinCaramel, dxSkinCoffee, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+//  dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian, dxSkinMcSkin,
+//  dxSkinMetropolis, dxSkinMoneyTwins, dxSkinOffice2007Black,
+//  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+//  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+//  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+//  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+//  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+//  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+//  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
+//  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+//  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+//  dxSkinXmas2008Blue,
+cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
+  cxGroupBox, Data.DB, System.DateUtils, cxMemo, acPathDialog, ipwcore,
+  ipwtypes, ipwhttp, ZipForge, ShellAPI;
+
+type
+  Tfr_MainMenu = class(TForm)
+    CategoryPanelGroup1: TCategoryPanelGroup;
+    CategoryPanel2: TCategoryPanel;
+    bt_formA0301: TcxButton;
+    grp_login: TcxGroupBox;
+    Label1: TcxLabel;
+    user_id: TcxTextEdit;
+    bt_login: TcxButton;
+    SysLog: TcxMemo;
+    PopupMenu1: TPopupMenu;
+    M1: TMenuItem;
+    N3: TMenuItem;
+    S1: TMenuItem;
+    N2: TMenuItem;
+    SkinOn: TMenuItem;
+    SkinOff: TMenuItem;
+    N1: TMenuItem;
+    AndroidOSinternal1: TMenuItem;
+    BlackBoxinternal1: TMenuItem;
+    BluePlasticinternal1: TMenuItem;
+    DarkGlassinternal1: TMenuItem;
+    Steam2internal1: TMenuItem;
+    UnderWaterinternal1: TMenuItem;
+    WLMinternal1: TMenuItem;
+    Woodinternal1: TMenuItem;
+    TrayIcon1: TTrayIcon;
+    TimerUpdater: TTimer;
+    ZipForge1: TZipForge;
+    HTTP1: TipwHTTP;
+    sPathDialog1: TsPathDialog;
+    bt_formA0304: TcxButton;
+    procedure CategoryPanel2Click(Sender: TObject);
+    procedure bt_loginClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure bt_formA0301Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure TimerUpdaterTimer(Sender: TObject);
+    procedure bt_formA0304Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fr_MainMenu: Tfr_MainMenu;
+
+implementation
+
+uses
+  dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301;
+
+{$R *.dfm}
+
+procedure Tfr_MainMenu.CategoryPanel2Click(Sender: TObject);
+begin
+//  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
+end;
+
+procedure Tfr_MainMenu.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  if not Pesan(3, 'Keluar dari aplikasi sekarang ?') then
+    CanClose := False;
+end;
+
+procedure Tfr_MainMenu.FormCreate(Sender: TObject);
+begin
+  Application.CreateForm(Tdm_bpr1, dm_bpr1);
+end;
+
+procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
+ var
+  cnew, apath, apath2, bakName, cFileName, cSectionName, cLinkUpdate, cLastnew, cCekMyIP, cUpdateVia: string;
+  nFiles: Word;
+  cNamaFileTemp: TFileName;
+  dTglWajib: TDate;
+  lLanjutUpdate: Boolean;
+  cFTPName, cFTPUser, cFTPPassword, cFTPFolder: string;
+begin
+  inherited;
+  TimerUpdater.Enabled := False;
+
+  if not _IsConnectedToInternet then
+  begin
+    TrayIcon1.Visible := True;
+    TrayIcon1.BalloonHint := 'Tidak connect ke internet...!';
+    TrayIcon1.ShowBalloonHint;
+    Exit;
+  end;
+
+  //delete chache ie
+  DeleteIECache;
+
+  //apath := GetPathPath;
+  //untuk windows 7
+  apath := ExtractFilePath(Ogie_FileIni);
+  cSectionName := ChangeFileExt(ExtractFileName(Ogie_FileIni), '');  //harus sama dengan nama file exe
+  //Pesan(1,apath);
+  TrayIcon1.Visible := True;
+  TrayIcon1.BalloonHint := 'Checking New Version...';
+  TrayIcon1.ShowBalloonHint;
+
+  TrayIcon1.Visible := True;
+  TrayIcon1.BalloonHint := 'Setting Using : ' + GetMyParameter('SETTING_UPDATE', '');
+  TrayIcon1.ShowBalloonHint;
+
+  cCekMyIP := GetLocalIP;
+  if (GetMyParameter('SETTING_UPDATE', '') = 'DPMKM') then
+  begin
+    if cCekMyIP = GetMyParameter('IP_SERVER_UPDATE', '') then
+      cLinkUpdate := 'http://' + GetMyParameter('IP_SERVER_UPDATE_LOKAL', '') + '/upload/updater/update' + ExtractFileName(Ogie_FileIni)
+    else
+      cLinkUpdate := 'http://' + GetMyParameter('IP_SERVER_UPDATE', '') + '/upload/updater/update' + ExtractFileName(Ogie_FileIni);
+  end;
+
+//  Pesan(2,'1-'+cLinkUpdate);
+
+  TrayIcon1.Visible := True;
+  TrayIcon1.BalloonHint := 'Download file ' + cLinkUpdate + '...';
+  TrayIcon1.ShowBalloonHint;
+
+  try
+    try
+      lTotal := MaxLongint;
+      HTTP1.FollowRedirects := frAlways;
+      HTTP1.LocalFile := apath + '/update.ini';
+      HTTP1.Get(cLinkUpdate);
+    except
+      cLinkUpdate := 'http://' + IniGetStringValue(Ogie_FileIni, 'Configuration', 'WebHost', 'www.ogiesoft.com') + '/upload/updater/update' + ExtractFileName(Ogie_FileIni);
+    end;
+  finally
+    lLanjutUpdate := True;
+  end;
+
+  if not lLanjutUpdate then
+    begin
+      Pesan(2, 'Update Gagal...!');
+      Exit;
+    end;
+
+
+  cUpdateVia := GetMyParameter('UPDATE_VIA', 'HTTP');
+
+  if lLanjutUpdate then
+  begin
+    cnew := GetMyParameter('LAST_VERSION_LTBPR', '1.0.0.1');
+    cLastnew := IniGetStringValue(Ogie_FileIni, 'Configuration', 'LastVersionDownload', '1.0.0.0');
+//    if not FileExists(cFileName) then
+//      cLastnew := '1.0.0.0';
+    if Empty(cLastnew) then
+       cLastnew := '1.0.0.0';
+    cNewVersion := AmbilVersi;
+    if lUpdate and (cNewVersion >= cnew) then
+    begin
+      if not Pesan(3, 'Anda sudah menggunakan Versi Terbaru, tetap lanjutkan update ?') then
+      begin
+        lUpdate := False;
+        Exit;
+      end;
+    end;
+
+    if not lUpdate and (cNewVersion >= cnew) then
+    begin
+      TrayIcon1.BalloonHint := 'Anda sudah menggunakan Versi Terbaru...';
+      TrayIcon1.ShowBalloonHint;
+    end
+    else
+    begin
+      lUpdate := True;
+      dTglWajib := StrToDate(IniGetStringValue(apath + '/update.ini', cSectionName, 'TglExpired', '01/01/2013'));
+
+      if (cnew = cLastnew) then
+      begin
+        TrayIcon1.BalloonHint := 'Versi Terbaru sudah berhasil didownload...';
+        TrayIcon1.ShowBalloonHint;
+      end
+      else if not Pesan(3, 'Versi Terbaru telah tersedia, Download Update sekarang ?') then
+      begin
+        if (DateOf(dTglWajib) <= DateOf(dTglSystem)) then
+        begin
+          Pesan(1, 'Anda diwajibkan update program saat ini juga...!');
+        end
+        else
+          Exit;
+      end;
+    end;
+
+    if lUpdate then
+    begin
+      nFiles := StrToInt(IniGetStringValue(apath + '/update.ini', cSectionName, 'JumlahFiles', '1'));
+      apath2 := '';
+      cFileName := IniGetStringValue(apath + '/update.ini', cSectionName, Trim(IntToStr(nFiles)), '0');
+      TrayIcon1.BalloonHint := 'Proses download file ' + cFileName + ', harap tunggu sampai selesai download...';
+      TrayIcon1.ShowBalloonHint;
+      if at('\', cFileName) > 0 then
+        apath2 := '\' + LeftStr(cFileName, at('\', cFileName));
+      if not DirectoryExists(apath + 'Backup' + apath2) then
+        CreateDir(apath + 'Backup' + apath2);
+      if not DirectoryExists(apath + 'update') then
+        CreateDir(apath + 'update');
+
+      if (cnew <> cLastnew) then
+      begin
+        while IniGetStringValue(apath + '/update.ini', cSectionName, Trim(IntToStr(nFiles)), '0') <> '0' do
+        begin
+          cFileName := IniGetStringValue(apath + '/update.ini', cSectionName, Trim(IntToStr(nFiles)), '0');
+          if at('\', cFileName) > 0 then
+            apath2 := '\' + LeftStr(cFileName, at('\', cFileName))
+          else
+            apath2 := '';
+          if not DirectoryExists(apath + 'Backup' + apath2) then
+            CreateDir(apath + 'Backup' + apath2);
+          if not DirectoryExists(apath + apath2) then
+            CreateDir(apath + apath2);
+          bakName := ChangeFileExt(apath + 'Backup\' + cFileName, '.old');
+          RenameFile(apath + 'update\' + cFileName, bakName);
+          if FileExists(bakName) then
+            DeleteFile(bakName);
+
+          cFileName:= GetMyParameter('FILE_APLIKASI_LTBPR','LTBPRSetup')+ReplaceStr(cnew,'.','')+'.zip';
+
+          if (GetMyParameter('SETTING_UPDATE', '') = 'DPMKM') then
+          begin
+            if cCekMyIP = GetMyParameter('IP_SERVER_UPDATE', '') then
+              cLinkUpdate := 'http://' + GetMyParameter('IP_SERVER_UPDATE_LOKAL', '') + '/upload/updater/' + cFileName
+            else
+              cLinkUpdate := 'http://' + GetMyParameter('IP_SERVER_UPDATE', '') + '/upload/updater/' + cFileName;
+          end;
+
+//          Pesan(2,'2-'+cLinkUpdate);
+
+          if (cUpdateVia = 'HTTP') then
+            begin
+              try
+                TrayIcon1.BalloonHint := 'Proses download file ' + cLinkUpdate + ' to ' + apath + 'update\' + cFileName;
+                TrayIcon1.ShowBalloonHint;
+                try
+
+                  lTotal := MaxLongint;
+                  HTTP1.FollowRedirects := frAlways;
+                  HTTP1.LocalFile := apath + 'update\' + cFileName;
+                 // Pesan(1,apath + 'update\' + cFileName);
+                 // Pesan(1,cLinkUpdate);
+                  HTTP1.Get(cLinkUpdate);
+                except
+                  begin
+                    TrayIcon1.BalloonHint := 'Proses Download file ' + cFileName + ' gagal...!';
+                    TrayIcon1.ShowBalloonHint;
+                  end;
+                end;
+              finally
+                begin
+                  TrayIcon1.BalloonHint := 'Proses Download file ' + cFileName + ' selesai...';
+                  TrayIcon1.ShowBalloonHint;
+                end;
+              end;
+            end;
+
+          Inc(nFiles, 1);
+          Application.ProcessMessages;
+        end;
+      end;
+
+//      Pesan(2,'3-'+apath + 'update\' + cFileName);
+
+     if FileExists(apath + 'update\' + cFileName) then
+      begin
+        IniSetStringValue(Ogie_FileIni, 'Configuration', 'LastVersionDownload', cnew);
+
+        TrayIcon1.BalloonHint := 'Proses Extract file ' + cFileName;
+        TrayIcon1.ShowBalloonHint;
+        ZipForge1.BaseDir := apath + 'update\';
+        ZipForge1.FileName := apath + 'update\' + cFileName;
+        ZipForge1.OpenArchive;
+        ZipForge1.ExtractFiles;
+        ZipForge1.CloseArchive;
+        TrayIcon1.BalloonHint := 'Proses Extract file ' + cFileName + ' selesai...';
+        TrayIcon1.ShowBalloonHint;
+        cNamaFileTemp := apath + 'update\' + GetMyParameter('FILE_APLIKASI_LTBPR','LTBPRSetup')+'.zip' ;
+        cNamaFileTemp := ChangeFileExt(cNamaFileTemp, '.exe');
+//        Pesan(2,'4-'+cNamaFileTemp);
+        if FileExists(cNamaFileTemp) then
+        begin
+          if Pesan(3, 'System akan menutup semua Aplikasi ' + ExtractFileName(Application.ExeName) + ' yang masih aktif' + #13 + #10 + 'dan menjalankan Setup Aplikasi ' + ExtractFileName(Application.ExeName) + ' Versi ' + cnew + #13 + #10 + 'dan pastikan pekerjaan anda telah tersimpan..., Lanjutkan ?') then
+            if Pesan(3, 'Program akan menutup semua aplikasi yang terkait' + #13 + #10 + 'dan menjalankan Setup Program dengan Versi yang baru' + #13 + #10 + 'dan pastikan pekerjaan anda telah tersimpan..., Lanjutkan ?') then
+            begin
+              ReleaseLimitUser('LOGIN_LTBPR' + '_' + Trim(UpperCase(cNamaUser)));
+              if ShellExecute(Application.Handle, PChar('open'), Pchar(cNamaFileTemp), PChar(''), nil, SW_NORMAL) > 32 then
+                Application.Terminate;
+            end;
+        end;
+      end
+      else
+      begin
+        IniSetStringValue(Ogie_FileIni, 'Configuration', 'LastVersionDownload', '1.0.0.0');
+        TrayIcon1.BalloonHint := 'File ' + cFileName + ' tidak ada..., silahkan ulangi kembali';
+        TrayIcon1.ShowBalloonHint;
+      end;
+    end;
+  end
+  else
+  begin
+    TrayIcon1.BalloonHint := 'Update gagal...';
+    TrayIcon1.ShowBalloonHint;
+  end;
+
+end;
+
+procedure Tfr_MainMenu.bt_formA0301Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA0301') = nil then
+    Application.CreateForm(Tfr_FormA0301, fr_FormA0301);
+  fr_FormA0301.Tag := 0;
+  fr_FormA0301.ShowModal;
+  fr_FormA0301.Free;
+  fr_FormA0301 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA0304Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA0304') = nil then
+    Application.CreateForm(Tfr_FormA0304, fr_FormA0304);
+  fr_FormA0304.Tag := 0;
+  fr_FormA0304.ShowModal;
+  fr_FormA0304.Free;
+  fr_FormA0304 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_loginClick(Sender: TObject);
+var
+  IsValidPassword: Boolean;
+  cDbName: string;
+begin
+  cDbName := 'corebpr_dev';
+  cDb1 := cDbName;
+  cDb2 := cDbName;
+  cDb3 := cDbName;   //slik
+  cDb4 := cDbName;   //apolo
+  cDb5 := cDbName;   //obox
+  cDb6 := cDbName;   //mymobile
+
+  try
+    dm_bpr1.MyCon2.Connect;
+  except
+    on E: EDatabaseError do
+      begin
+        Application.MessageBox('Maaf, tidak dapat terhubung ke database !','Perhatian',MB_OK or MB_ICONWARNING);
+        Exit;
+      end;
+  end;
+
+  if not dm_bpr1.MyCon2.Connected then
+    begin
+      Application.MessageBox('Maaf, tidakMessageBox dapat terhubung ke database !','Perhatian',MB_OK or MB_ICONWARNING);
+      Exit;
+    end;
+
+  if dm_bpr1.MyCon2.Connected then
+    begin
+      dm_bpr1.MyCon2.Database := cDbName;
+      cCurrentVersion := AmbilVersi;
+
+      cNamaUser := user_id.Text;
+      cUserID := '3';
+
+      //tandanya berhasil login
+      bt_login.Caption := 'Logout ('+UpperCase('hamsudi')+')';
+      CategoryPanelGroup1.Enabled := True;
+
+      cNamaLengkapUser := 'Hamsudi';
+      cCabangID := '001';
+      cUserEmail := 'hamsudi@gmail.com';
+      cKodeKas := '10102';
+      cKodeKasUtama := '10103';
+
+      cKodeCabang := '001';
+      dTglSystem := Date;  // IncDay(dTglTemp);  //gunakan dtglsystem sesuai database //rev 26 Jan 2016
+
+      lIsUserAdmin := True; //anda sebagai admin
+      lLogDebug := True;
+
+      nDuration := 0;
+      cNamaKas := 'Kas Teller';
+      cMaxRow := GetMyParameter('MAX_LIMIT_ROW','25');
+
+      cNamaPT := 'PT BPR XYZ';
+      cNamaCabangPT := 'Kantor Pusat';
+      cAlamatPT := 'Jl. Raya Bogor No. 21';
+      cKotaPT := 'Bogor';
+      cTelpPT := '021-8888-9999';
+      cKodeBankPT := '600XYZ';
+
+      //tampilkan informasi ini
+      SysLog.Lines.Add('cDbName='+cDbName);
+      SysLog.Lines.Add('cCurrentVersion='+cCurrentVersion);
+      SysLog.Lines.Add('cNamaUser='+cNamaUser);
+      SysLog.Lines.Add('cUserID='+cUserID);
+      SysLog.Lines.Add('cNamaLengkapUser='+cNamaLengkapUser);
+      SysLog.Lines.Add('cCabangID='+cCabangID);
+      SysLog.Lines.Add('cRegIDGCM='+cRegIDGCM);
+      SysLog.Lines.Add('cUserEmail='+cUserEmail);
+      SysLog.Lines.Add('cKodeKas='+cKodeKas);
+      SysLog.Lines.Add('cKodeKasUtama='+cKodeKasUtama);
+
+      SysLog.Lines.Add('lIsUserAdmin='+IfThen(lIsUserAdmin,'1','0'));
+      SysLog.Lines.Add('lLogDebug='+IfThen(lLogDebug,'1','0'));
+
+      SysLog.Lines.Add('cKodeCabang='+cKodeCabang);
+      SysLog.Lines.Add('dTglSystem='+DateIndo(dTglSystem));
+      SysLog.Lines.Add('cUserIDHeadIT='+cUserIDHeadIT);
+      SysLog.Lines.Add('cOtorisasiAndroid='+cOtorisasiAndroid);
+
+      SysLog.Lines.Add('nDuration='+IntToStr(nDuration));
+      SysLog.Lines.Add('cNamaKas='+cWebMailNotif);
+      SysLog.Lines.Add('cMaxRow='+cMaxRow);
+      SysLog.Lines.Add('cNamaPT='+cNamaPT);
+      SysLog.Lines.Add('cNamaCabangPT='+cNamaCabangPT);
+      SysLog.Lines.Add('cAlamatPT='+cAlamatPT);
+      SysLog.Lines.Add('cKotaPT='+cKotaPT);
+      SysLog.Lines.Add('cTelpPT='+cTelpPT);
+      SysLog.Lines.Add('cKodeBankPT='+cKodeBankPT);
+    end;
+end;
+
+end.

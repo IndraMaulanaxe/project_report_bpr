@@ -11,10 +11,9 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     ExplicitWidth = 554
   end
   inherited PanelContent: TcxGroupBox
-    Caption = 'A'
     ExplicitTop = -1
-    ExplicitWidth = 554
-    ExplicitHeight = 437
+    ExplicitWidth = 558
+    ExplicitHeight = 450
     Height = 450
     Width = 558
     object nomor_akta_pendirian: TcxTextEdit
@@ -65,28 +64,28 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     end
     object cxLabel2: TcxLabel
       Left = 17
-      Top = 109
+      Top = 111
       AutoSize = False
-      Caption = 'Nomor Perubahan Anggaran Dasar Terakhir'
+      Caption = 'Nomor Perubahan'
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      Height = 35
+      Height = 31
       Width = 162
       AnchorY = 127
     end
     object cxLabel3: TcxLabel
       Left = 17
-      Top = 141
+      Top = 145
       AutoSize = False
-      Caption = 'Tanggal Perubahan Anggaran Dasar Terakhir'
+      Caption = 'Tanggal Perubahan'
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      Height = 33
-      Width = 162
-      AnchorY = 158
+      Height = 24
+      Width = 140
+      AnchorY = 157
     end
     object tgl_ubah_anggaran: TcxDateEdit
       Left = 185
@@ -115,7 +114,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 17
       Top = 169
       AutoSize = False
-      Caption = 'Nomor Pengesahan Dari Instansi Yang Berwenang'
+      Caption = 'Nomor Pengesahan'
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -150,7 +149,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 17
       Top = 205
       AutoSize = False
-      Caption = 'Tanggal Pengesahan Dari Instansi Yang Berwenang'
+      Caption = 'Tanggal Pengesahan'
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -193,7 +192,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 17
       Top = 264
       AutoSize = False
-      Caption = 'Bidang Usaha Sesuai Anggaran Dasar'
+      Caption = 'Bidang Usaha'
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -211,9 +210,9 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      Height = 30
+      Height = 28
       Width = 135
-      AnchorY = 314
+      AnchorY = 313
     end
     object memtempat_kedudukan: TcxMemo
       Tag = 1
@@ -303,8 +302,8 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
   end
   inherited PanelFooter: TcxGroupBox
     Top = 450
-    ExplicitTop = 341
-    ExplicitWidth = 554
+    ExplicitTop = 441
+    ExplicitWidth = 558
     ExplicitHeight = 44
     Height = 44
     Width = 558

@@ -11,7 +11,6 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
     ExplicitWidth = 554
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 554
     ExplicitHeight = 249
     Height = 249
@@ -197,88 +196,113 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Width = 0
       Enabled = False
       Visible = False
+      ExplicitLeft = 6
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_tools1: TcxButton
       Left = 11
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 11
+      ExplicitLeft = 12
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_tools2: TcxButton
       Left = 17
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 17
+      ExplicitLeft = 18
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Save: TcxButton
       Left = 367
       OnClick = btlb_SaveClick
-      ExplicitLeft = 367
+      ExplicitLeft = 366
+      ExplicitTop = 6
+      ExplicitHeight = 30
     end
     inherited btlb_Close: TcxButton
       Left = 549
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 549
+      ExplicitLeft = 548
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Cancel: TcxButton
       Left = 458
-      ExplicitLeft = 458
+      ExplicitLeft = 457
+      ExplicitTop = 6
+      ExplicitHeight = 30
     end
     inherited btlb_Print: TcxButton
       Left = 361
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 361
+      ExplicitLeft = 360
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_tools3: TcxButton
       Left = 23
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 23
+      ExplicitLeft = 24
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Delete: TcxButton
       Left = 355
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 355
+      ExplicitLeft = 354
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Edit: TcxButton
       Left = 349
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 349
+      ExplicitLeft = 348
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Insert: TcxButton
       Left = 343
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 343
+      ExplicitLeft = 342
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
     inherited btlb_Pilih: TcxButton
       Left = 337
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 337
+      ExplicitLeft = 336
+      ExplicitTop = 6
       ExplicitWidth = 0
+      ExplicitHeight = 30
     end
   end
   inherited PanelTopSystem: TPanel

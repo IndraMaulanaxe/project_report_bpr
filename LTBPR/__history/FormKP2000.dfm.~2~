@@ -1,8 +1,7 @@
-inherited fr_FormA0301: Tfr_FormA0301
-  Caption = 'Form A0301 - Riwayat Pendirian BPR'
+inherited fr_FormKP2000: Tfr_FormKP2000
+  Caption = 'Form 2000 - Formasi Sumber Daya Manusia '
   ClientHeight = 440
   ClientWidth = 861
-  OnShow = FormShow
   ExplicitWidth = 867
   ExplicitHeight = 469
   PixelsPerInch = 96
@@ -26,8 +25,6 @@ inherited fr_FormA0301: Tfr_FormA0301
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -50,11 +47,9 @@ inherited fr_FormA0301: Tfr_FormA0301
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQA0301
+        DataController.DataSource = dsMyQKP2000
         DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <
-          item
-          end>
+        DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
         OptionsData.Deleting = False
         OptionsData.DeletingConfirmation = False
@@ -70,84 +65,52 @@ inherited fr_FormA0301: Tfr_FormA0301
         OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
         OptionsView.Indicator = True
         OptionsView.ShowColumnFilterButtons = sfbWhenSelected
+        object cxGridDBTableView1id: TcxGridDBColumn
+          DataBinding.FieldName = 'id'
+          Visible = False
+          HeaderAlignmentHorz = taCenter
+          Width = 150
+        end
         object cxGridDBTableView1flag_detail: TcxGridDBColumn
           DataBinding.FieldName = 'flag_detail'
           Visible = False
           HeaderAlignmentHorz = taCenter
-          VisibleForCustomization = False
-          VisibleForEditForm = bFalse
+          Width = 116
         end
         object cxGridDBTableView1kode_komponen: TcxGridDBColumn
           DataBinding.FieldName = 'kode_komponen'
-          Visible = False
           HeaderAlignmentHorz = taCenter
+          Width = 105
         end
-        object cxGridDBTableView1nomor_akta_pendirian: TcxGridDBColumn
-          Caption = 'Nomor Akta Pendirian'
-          DataBinding.FieldName = 'nomor_akta_pendirian'
+        object cxGridDBTableView1nik: TcxGridDBColumn
+          DataBinding.FieldName = 'nik'
           HeaderAlignmentHorz = taCenter
-          Width = 158
+          Width = 112
         end
-        object cxGridDBTableView1tanggal_akta_pendirian: TcxGridDBColumn
-          Caption = 'Tanggal Pendirian'
-          DataBinding.FieldName = 'tanggal_akta_pendirian'
+        object cxGridDBTableView1nama: TcxGridDBColumn
+          DataBinding.FieldName = 'nama'
           HeaderAlignmentHorz = taCenter
-          Width = 125
+          Width = 190
         end
-        object cxGridDBTableView1nomor_perubahan_anggaran_dasar: TcxGridDBColumn
-          Caption = 'Nomor Perubahan'
-          DataBinding.FieldName = 'nomor_perubahan_anggaran_dasar'
+        object cxGridDBTableView1jabatan: TcxGridDBColumn
+          DataBinding.FieldName = 'jabatan'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 155
         end
-        object cxGridDBTableView1tanggal_perubahan_anggaran_dasar: TcxGridDBColumn
-          Caption = 'Tanggal Perubahan'
-          DataBinding.FieldName = 'tanggal_perubahan_anggaran_dasar'
+        object cxGridDBTableView1status_kepegawaian: TcxGridDBColumn
+          DataBinding.FieldName = 'status_kepegawaian'
           HeaderAlignmentHorz = taCenter
-          Width = 125
+          Width = 136
         end
-        object cxGridDBTableView1nomor_pengesahan_dari_instansi: TcxGridDBColumn
-          Caption = 'Nomor Pengesahan'
-          DataBinding.FieldName = 'nomor_pengesahan_dari_instansi'
+        object cxGridDBTableView1tingkat_pendidikan: TcxGridDBColumn
+          DataBinding.FieldName = 'tingkat_pendidikan'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 155
         end
-        object cxGridDBTableView1tanggal_pengesahan_dari_instansi: TcxGridDBColumn
-          Caption = 'Tanggal Pengesahan'
-          DataBinding.FieldName = 'tanggal_pengesahan_dari_instansi'
+        object cxGridDBTableView1lama_masa_jabatan: TcxGridDBColumn
+          DataBinding.FieldName = 'lama_masa_jabatan'
           HeaderAlignmentHorz = taCenter
-          Width = 125
-        end
-        object cxGridDBTableView1tanggal_mulai_beroperasi: TcxGridDBColumn
-          Caption = 'Tanggal Beroperasi'
-          DataBinding.FieldName = 'tanggal_mulai_beroperasi'
-          HeaderAlignmentHorz = taCenter
-          Width = 133
-        end
-        object cxGridDBTableView1bidang_usaha_sesuai_anggaran_dasar: TcxGridDBColumn
-          Caption = 'Bidang Usaha'
-          DataBinding.FieldName = 'bidang_usaha_sesuai_anggaran_dasar'
-          HeaderAlignmentHorz = taCenter
-          Width = 176
-        end
-        object cxGridDBTableView1tempat_kedudukan: TcxGridDBColumn
-          Caption = 'Tempat Kedudukan'
-          DataBinding.FieldName = 'tempat_kedudukan'
-          HeaderAlignmentHorz = taCenter
-          Width = 150
-        end
-        object cxGridDBTableView1opini_akuntan_publik: TcxGridDBColumn
-          Caption = 'Opini Akuntan Publik'
-          DataBinding.FieldName = 'opini_akuntan_publik'
-          Visible = False
-          HeaderAlignmentHorz = taCenter
-          Width = 100
-        end
-        object cxGridDBTableView1nama_akuntan_publik: TcxGridDBColumn
-          Caption = 'Nama Akuntan Publik'
-          DataBinding.FieldName = 'nama_akuntan_publik'
-          HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 153
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -228,7 +191,6 @@ inherited fr_FormA0301: Tfr_FormA0301
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
-      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -295,70 +257,108 @@ inherited fr_FormA0301: Tfr_FormA0301
       FieldName = 'pbdp'
     end
   end
-  object dsMyQA0301: TMyDataSource
-    DataSet = MyQA0301
-    Left = 312
-    Top = 224
+  object dsMyQKP2000: TMyDataSource
+    DataSet = MyQKP2000
+    Left = 384
+    Top = 80
   end
-  object MyQA0301: TMyQuery
+  object MyQKP2000: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT * FROM `ltbprk_a0301_riwayat_pendirian_bpr`')
+      'SELECT'
+      '  aa.`id`,'
+      '  aa.`flag_detail`,'
+      '  aa.`kode_komponen`,'
+      '  aa.`nik`,'
+      '  aa.`nama`,'
+      '  aa.`jabatan` AS sandi_jabatan,'
+      '  CONCAT(aa.`jabatan`, '#39' - '#39', bb.`nama`) AS jabatan,'
+      '  aa.`status_kepegawaian` AS sandi_status_kepegawaian,'
+      
+        '  CONCAT (aa.`status_kepegawaian`, '#39' - '#39', cc.`status`) AS status' +
+        '_kepegawaian,'
+      '  aa.`tingkat_pendidikan` AS sandi_tingkat_pendidikan,'
+      
+        '  CONCAT (aa.`tingkat_pendidikan`, '#39' - '#39', dd.`tingkat`) AS tingk' +
+        'at_pendidikan,'
+      '  aa.`lama_masa_jabatan`'
+      'FROM `kp_2000` aa'
+      '  LEFT JOIN `kp_ref_jabatan` bb ON bb.`sandi`=aa.`jabatan`'
+      
+        '  LEFT JOIN `kp_ref_status_kepegawaian` cc ON cc.`sandi`=aa.`sta' +
+        'tus_kepegawaian`'
+      
+        '  LEFT JOIN `kp_ref_tingkat_pendidikan` dd ON dd.`sandi`=aa.`tin' +
+        'gkat_pendidikan`'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 312
-    Top = 280
-    object MyQA0301flag_detail: TStringField
+    Left = 384
+    Top = 136
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQKP2000id: TIntegerField
+      DisplayLabel = 'ID'
+      FieldName = 'id'
+    end
+    object MyQKP2000flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQA0301kode_komponen: TStringField
+    object MyQKP2000kode_komponen: TStringField
+      DisplayLabel = 'Kode Komponen'
       FieldName = 'kode_komponen'
       Size = 5
     end
-    object MyQA0301nomor_akta_pendirian: TStringField
-      FieldName = 'nomor_akta_pendirian'
+    object MyQKP2000nik: TStringField
+      DisplayLabel = 'NIK'
+      FieldName = 'nik'
+    end
+    object MyQKP2000nama: TStringField
+      DisplayLabel = 'Nama'
+      FieldName = 'nama'
+      Size = 100
+    end
+    object MyQKP2000jabatan: TStringField
+      DisplayLabel = 'Jabatan '
+      FieldName = 'jabatan'
+      Size = 100
+    end
+    object MyQKP2000status_kepegawaian: TStringField
+      DisplayLabel = 'Status Kepegawaian'
+      FieldName = 'status_kepegawaian'
       Size = 50
     end
-    object MyQA0301tanggal_akta_pendirian: TDateField
-      FieldName = 'tanggal_akta_pendirian'
-    end
-    object MyQA0301nomor_perubahan_anggaran_dasar: TStringField
-      FieldName = 'nomor_perubahan_anggaran_dasar'
+    object MyQKP2000tingkat_pendidikan: TStringField
+      DisplayLabel = 'Tingkat Pendidikan'
+      FieldName = 'tingkat_pendidikan'
       Size = 50
     end
-    object MyQA0301tanggal_perubahan_anggaran_dasar: TDateField
-      FieldName = 'tanggal_perubahan_anggaran_dasar'
+    object MyQKP2000lama_masa_jabatan: TDateField
+      DisplayLabel = 'Lama Masa Jabatan'
+      FieldName = 'lama_masa_jabatan'
     end
-    object MyQA0301nomor_pengesahan_dari_instansi: TStringField
-      FieldName = 'nomor_pengesahan_dari_instansi'
+    object MyQKP2000sandi_jabatan: TStringField
+      FieldName = 'sandi_jabatan'
+      Size = 100
+    end
+    object MyQKP2000sandi_status_kepegawaian: TStringField
+      FieldName = 'sandi_status_kepegawaian'
       Size = 50
     end
-    object MyQA0301tanggal_pengesahan_dari_instansi: TDateField
-      FieldName = 'tanggal_pengesahan_dari_instansi'
-    end
-    object MyQA0301tanggal_mulai_beroperasi: TDateField
-      FieldName = 'tanggal_mulai_beroperasi'
-    end
-    object MyQA0301bidang_usaha_sesuai_anggaran_dasar: TStringField
-      FieldName = 'bidang_usaha_sesuai_anggaran_dasar'
-      Size = 2000
-    end
-    object MyQA0301tempat_kedudukan: TStringField
-      FieldName = 'tempat_kedudukan'
-      Size = 2000
-    end
-    object MyQA0301opini_akuntan_publik: TStringField
-      FieldName = 'opini_akuntan_publik'
-      Size = 2
-    end
-    object MyQA0301nama_akuntan_publik: TStringField
-      FieldName = 'nama_akuntan_publik'
-      Size = 2000
-    end
-    object MyQA0301keterangan: TStringField
-      FieldName = 'keterangan'
-      Size = 2000
+    object MyQKP2000sandi_tingkat_pendidikan: TStringField
+      FieldName = 'sandi_tingkat_pendidikan'
+      Size = 50
     end
   end
 end
