@@ -33,21 +33,94 @@ object fr_MainMenu: Tfr_MainMenu
     TabOrder = 0
     object CategoryPanel2: TCategoryPanel
       Top = 0
-      Height = 68
+      Height = 345
       Caption = 'Group  Menu 1'
       Color = clGray
       TabOrder = 0
       OnClick = CategoryPanel2Click
-      object bt_form0100: TcxButton
+      object bt_formA0301: TcxButton
         Left = 0
         Top = 0
         Width = 355
         Height = 40
         Align = alTop
-        Caption = 'Menu 1'
+        Caption = 'FormA0301 - Riwayat Pendirian BPR'
         TabOrder = 0
         WordWrap = True
-        OnClick = bt_form0100Click
+        OnClick = bt_formA0301Click
+        ExplicitTop = 12
+      end
+      object bt_formA0304: TcxButton
+        Left = 0
+        Top = 40
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0304 - Penjelasan NPL'
+        TabOrder = 1
+        WordWrap = True
+        OnClick = bt_formA0304Click
+        ExplicitTop = 46
+      end
+      object cxButton1: TcxButton
+        Left = 0
+        Top = 80
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0305 - Pengembangan Usaha'
+        TabOrder = 2
+        WordWrap = True
+        OnClick = bt_formA0304Click
+        ExplicitLeft = 14
+        ExplicitTop = 86
+      end
+      object bt_formA0502: TcxButton
+        Left = 0
+        Top = 160
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0502 - Bidang Usaha'
+        TabOrder = 3
+        WordWrap = True
+        OnClick = bt_formA0502Click
+      end
+      object cxButton3: TcxButton
+        Left = 0
+        Top = 120
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0400 - Strategi dan Kebijakan Manajemen'
+        TabOrder = 4
+        WordWrap = True
+        ExplicitTop = 126
+      end
+      object bt_formA0506: TcxButton
+        Left = 0
+        Top = 200
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0506 - Kerja Sama BPR dengan Bank atau Lembaga Lain'
+        TabOrder = 5
+        WordWrap = True
+        OnClick = bt_formA0506Click
+        ExplicitLeft = -1
+        ExplicitTop = 246
+      end
+      object bt_formA05072: TcxButton
+        Left = 0
+        Top = 240
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormA05072 - Kegiatan Pengembangan'
+        TabOrder = 6
+        WordWrap = True
+        OnClick = bt_formA05072Click
+        ExplicitTop = 246
       end
     end
   end
@@ -92,25 +165,22 @@ object fr_MainMenu: Tfr_MainMenu
     object bt_login: TcxButton
       AlignWithMargins = True
       Left = 5
-      Top = 77
+      Top = 87
       Width = 247
       Height = 25
       Align = alTop
       Caption = 'Login'
       TabOrder = 2
       OnClick = bt_loginClick
-      ExplicitTop = 87
     end
     object SysLog: TcxMemo
       AlignWithMargins = True
       Left = 5
-      Top = 108
+      Top = 118
       Align = alClient
       Properties.ScrollBars = ssBoth
       TabOrder = 3
-      ExplicitTop = 118
-      ExplicitHeight = 357
-      Height = 367
+      Height = 357
       Width = 247
     end
   end
