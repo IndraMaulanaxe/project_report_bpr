@@ -8,12 +8,11 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 569
-    ExplicitWidth = 558
+    ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 569
-    ExplicitHeight = 248
+    ExplicitHeight = 280
     Height = 280
     Width = 569
     object cxLabel8: TcxLabel
@@ -65,6 +64,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
+      Hint = 'Kode Komponen'
       AutoSize = False
       Properties.Buttons = <
         item
@@ -164,8 +164,8 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
   end
   inherited PanelFooter: TcxGroupBox
     Top = 280
-    ExplicitTop = 166
-    ExplicitWidth = 558
+    ExplicitTop = 280
+    ExplicitWidth = 569
     ExplicitHeight = 44
     Height = 44
     Width = 569
@@ -201,7 +201,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 382
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 371
+      ExplicitLeft = 382
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -210,14 +210,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 553
+      ExplicitLeft = 564
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 473
       Height = 34
-      ExplicitLeft = 462
+      ExplicitLeft = 473
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -226,7 +226,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 365
+      ExplicitLeft = 376
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -246,7 +246,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 359
+      ExplicitLeft = 370
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -256,7 +256,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 353
+      ExplicitLeft = 364
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -266,7 +266,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 347
+      ExplicitLeft = 358
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -276,14 +276,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 341
+      ExplicitLeft = 352
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 569
-    ExplicitWidth = 558
+    ExplicitWidth = 569
     inherited IconClose: TLabel
       Left = 535
       ExplicitLeft = 771

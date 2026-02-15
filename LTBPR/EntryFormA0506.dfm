@@ -13,9 +13,8 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 569
-    ExplicitHeight = 435
+    ExplicitHeight = 393
     Height = 393
     Width = 569
     object cxLabel8: TcxLabel
@@ -35,7 +34,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 197
-      Hint = 'Uraian'
+      Hint = 'Jenis Kerja Sama'
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -45,7 +44,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 250
-      Hint = 'Keterangan'
+      Hint = 'Uraian Kerja Sama'
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -67,6 +66,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
+      Hint = 'Kode Komponen'
       AutoSize = False
       Properties.Buttons = <
         item
@@ -108,7 +108,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 84
-      Hint = 'Nama Produk'
+      Hint = 'Nama Bank Atau Lembaga'
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 48
@@ -129,7 +129,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 54
-      Hint = 'Kegiatan Usaha'
+      Hint = 'Referensi Lembaga'
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -154,7 +154,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 137
-      Hint = 'Jenis Produk'
+      Hint = 'Sandi Bank'
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -168,7 +168,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Tag = 1
       Left = 185
       Top = 167
-      Hint = 'Nomor Perubahan'
+      Hint = 'NPWP'
       TabStop = False
       AutoSize = False
       Properties.Alignment.Horz = taLeftJustify
@@ -207,7 +207,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     object tgl_kerjasama: TcxDateEdit
       Left = 185
       Top = 303
-      Hint = 'Tanggal Akta'
+      Hint = 'Tanggal Kerja Sama'
       TabOrder = 15
       Width = 121
     end
@@ -237,7 +237,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
   end
   inherited PanelFooter: TcxGroupBox
     Top = 393
-    ExplicitTop = 280
+    ExplicitTop = 393
     ExplicitWidth = 569
     ExplicitHeight = 44
     Height = 44

@@ -33,11 +33,13 @@ object fr_MainMenu: Tfr_MainMenu
     TabOrder = 0
     object CategoryPanel2: TCategoryPanel
       Top = 0
-      Height = 345
+      Height = 417
       Caption = 'Group  Menu 1'
       Color = clGray
       TabOrder = 0
       OnClick = CategoryPanel2Click
+      ExplicitLeft = 3
+      ExplicitTop = -2
       object bt_formA0301: TcxButton
         Left = 0
         Top = 0
@@ -48,7 +50,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_formA0301Click
-        ExplicitTop = 12
       end
       object bt_formA0304: TcxButton
         Left = 0
@@ -60,7 +61,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 1
         WordWrap = True
         OnClick = bt_formA0304Click
-        ExplicitTop = 46
       end
       object cxButton1: TcxButton
         Left = 0
@@ -72,8 +72,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 2
         WordWrap = True
         OnClick = bt_formA0304Click
-        ExplicitLeft = 14
-        ExplicitTop = 86
       end
       object bt_formA0502: TcxButton
         Left = 0
@@ -95,7 +93,6 @@ object fr_MainMenu: Tfr_MainMenu
         Caption = 'FormA0400 - Strategi dan Kebijakan Manajemen'
         TabOrder = 4
         WordWrap = True
-        ExplicitTop = 126
       end
       object bt_formA0506: TcxButton
         Left = 0
@@ -107,8 +104,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 5
         WordWrap = True
         OnClick = bt_formA0506Click
-        ExplicitLeft = -1
-        ExplicitTop = 246
       end
       object bt_formA05072: TcxButton
         Left = 0
@@ -120,7 +115,33 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 6
         WordWrap = True
         OnClick = bt_formA05072Click
+        ExplicitLeft = -1
         ExplicitTop = 246
+      end
+      object bt_formE0100: TcxButton
+        Left = 0
+        Top = 280
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormE0100 - Penjelasan Umum Penerapan Tata Kelola'
+        TabOrder = 7
+        WordWrap = True
+        OnClick = bt_formE0100Click
+        ExplicitLeft = -1
+      end
+      object bt_formE0201: TcxButton
+        Left = 0
+        Top = 320
+        Width = 355
+        Height = 40
+        Align = alTop
+        Caption = 'FormE0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota Direksi'
+        TabOrder = 8
+        WordWrap = True
+        OnClick = bt_formE0201Click
+        ExplicitLeft = -3
+        ExplicitTop = 352
       end
     end
   end
@@ -282,7 +303,7 @@ object fr_MainMenu: Tfr_MainMenu
     Root = 'C:\'
     Caption = 'Pilih Folder Penyimpanan'
     ShowRootBtns = True
-    Left = 376
+    Left = 416
     Top = 16
   end
 end

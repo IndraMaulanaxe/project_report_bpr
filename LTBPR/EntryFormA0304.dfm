@@ -12,7 +12,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 558
-    ExplicitHeight = 450
+    ExplicitHeight = 166
     Height = 166
     Width = 558
     object cxLabel8: TcxLabel
@@ -64,6 +64,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
+      Hint = 'Kode Komponen'
       AutoSize = False
       Properties.Buttons = <
         item
@@ -91,7 +92,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
   end
   inherited PanelFooter: TcxGroupBox
     Top = 166
-    ExplicitTop = 373
+    ExplicitTop = 166
     ExplicitWidth = 558
     ExplicitHeight = 44
     Height = 44

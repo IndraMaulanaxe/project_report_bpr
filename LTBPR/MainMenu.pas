@@ -66,6 +66,8 @@ type
     cxButton3: TcxButton;
     bt_formA0506: TcxButton;
     bt_formA05072: TcxButton;
+    bt_formE0100: TcxButton;
+    bt_formE0201: TcxButton;
     procedure CategoryPanel2Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -76,6 +78,8 @@ type
     procedure bt_formA0502Click(Sender: TObject);
     procedure bt_formA0506Click(Sender: TObject);
     procedure bt_formA05072Click(Sender: TObject);
+    procedure bt_formE0100Click(Sender: TObject);
+    procedure bt_formE0201Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,7 +93,7 @@ implementation
 
 uses
   dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
-  FormA0506, FormA05072;
+  FormA0506, FormA05072, FormE0100, FormE0201;
 
 {$R *.dfm}
 
@@ -395,6 +399,26 @@ begin
   fr_FormA05072.ShowModal;
   fr_FormA05072.Free;
   fr_FormA05072 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0100Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormE0100') = nil then
+    Application.CreateForm(Tfr_FormE0100, fr_FormE0100);
+  fr_FormE0100.Tag := 0;
+  fr_FormE0100.ShowModal;
+  fr_FormE0100.Free;
+  fr_FormE0100 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0201Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormE0201') = nil then
+    Application.CreateForm(Tfr_FormE0201, fr_FormE0201);
+  fr_FormE0201.Tag := 0;
+  fr_FormE0201.ShowModal;
+  fr_FormE0201.Free;
+  fr_FormE0201 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_loginClick(Sender: TObject);

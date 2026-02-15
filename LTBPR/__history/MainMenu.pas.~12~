@@ -60,12 +60,26 @@ type
     ZipForge1: TZipForge;
     HTTP1: TipwHTTP;
     sPathDialog1: TsPathDialog;
+    bt_formA0304: TcxButton;
+    cxButton1: TcxButton;
+    bt_formA0502: TcxButton;
+    cxButton3: TcxButton;
+    bt_formA0506: TcxButton;
+    bt_formA05072: TcxButton;
+    bt_formE0100: TcxButton;
+    bt_formE0201: TcxButton;
     procedure CategoryPanel2Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure bt_formA0301Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure TimerUpdaterTimer(Sender: TObject);
+    procedure bt_formA0304Click(Sender: TObject);
+    procedure bt_formA0502Click(Sender: TObject);
+    procedure bt_formA0506Click(Sender: TObject);
+    procedure bt_formA05072Click(Sender: TObject);
+    procedure bt_formE0100Click(Sender: TObject);
+    procedure bt_formE0201Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +92,8 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301;
+  dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
+  FormA0506, FormA05072, FormE0100, FormE0201;
 
 {$R *.dfm}
 
@@ -344,6 +359,66 @@ begin
   fr_FormA0301.ShowModal;
   fr_FormA0301.Free;
   fr_FormA0301 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA0304Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA0304') = nil then
+    Application.CreateForm(Tfr_FormA0304, fr_FormA0304);
+  fr_FormA0304.Tag := 0;
+  fr_FormA0304.ShowModal;
+  fr_FormA0304.Free;
+  fr_FormA0304 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA0502Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA0502') = nil then
+    Application.CreateForm(Tfr_FormA0502, fr_FormA0502);
+  fr_FormA0502.Tag := 0;
+  fr_FormA0502.ShowModal;
+  fr_FormA0502.Free;
+  fr_FormA0502 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA0506Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA0506') = nil then
+    Application.CreateForm(Tfr_FormA0506, fr_FormA0506);
+  fr_FormA0506.Tag := 0;
+  fr_FormA0506.ShowModal;
+  fr_FormA0506.Free;
+  fr_FormA0506 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA05072Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormA05072') = nil then
+    Application.CreateForm(Tfr_FormA05072, fr_FormA05072);
+  fr_FormA05072.Tag := 0;
+  fr_FormA05072.ShowModal;
+  fr_FormA05072.Free;
+  fr_FormA05072 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0100Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormE0100') = nil then
+    Application.CreateForm(Tfr_FormE0100, fr_FormE0100);
+  fr_FormE0100.Tag := 0;
+  fr_FormE0100.ShowModal;
+  fr_FormE0100.Free;
+  fr_FormE0100 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0201Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormE0201') = nil then
+    Application.CreateForm(Tfr_FormE0201, fr_FormE0201);
+  fr_FormE0201.Tag := 0;
+  fr_FormE0201.ShowModal;
+  fr_FormE0201.Free;
+  fr_FormE0201 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_loginClick(Sender: TObject);

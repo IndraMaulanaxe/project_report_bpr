@@ -139,10 +139,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="EntryFormKP2000.pas">
-            <Form>fr_EntryForm2000</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="FormKP2000.pas">
             <Form>fr_FormKP2000</Form>
             <FormType>dfm</FormType>
@@ -180,6 +176,66 @@
         <DCCReference Include="Wcrypt2.pas"/>
         <DCCReference Include="LoginBPR.pas">
             <Form>fr_LoginBPR</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0100.pas">
+            <Form>fr_FormE0100</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormA0301.pas">
+            <Form>fr_FormA0301</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormA05072.pas">
+            <Form>fr_FormA05072</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormA0506.pas">
+            <Form>fr_FormA0506</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormA0502.pas">
+            <Form>fr_FormA0502</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormA0304.pas">
+            <Form>fr_FormA0304</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0100.pas">
+            <Form>fr_EntryFormE0100</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormA05072.pas">
+            <Form>fr_EntryFormA05072</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormA0506.pas">
+            <Form>fr_EntryFormA0506</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormA0502.pas">
+            <Form>fr_EntryFormA0502</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormA0304.pas">
+            <Form>fr_EntryFormA0304</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormA0301.pas">
+            <Form>fr_EntryFormA0301</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormKP2000.pas">
+            <Form>fr_EntryForm2000</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0201.pas">
+            <Form>fr_EntryFormE0201</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0201.pas">
+            <Form>fr_FormE0201</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

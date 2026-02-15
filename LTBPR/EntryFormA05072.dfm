@@ -12,7 +12,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 569
-    ExplicitHeight = 393
+    ExplicitHeight = 340
     Height = 340
     Width = 569
     object cxLabel8: TcxLabel
@@ -32,7 +32,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Tag = 1
       Left = 185
       Top = 227
-      Hint = 'Keterangan'
+      Hint = 'Uraian Kegiatan'
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -54,6 +54,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
+      Hint = 'Kode Komponen'
       AutoSize = False
       Properties.Buttons = <
         item
@@ -95,7 +96,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Tag = 1
       Left = 185
       Top = 53
-      Hint = 'Nama Produk'
+      Hint = 'Kegiatan '
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 48
@@ -116,7 +117,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Tag = 1
       Left = 185
       Top = 167
-      Hint = 'Kegiatan Usaha'
+      Hint = 'Peserta'
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -141,7 +142,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Tag = 1
       Left = 185
       Top = 137
-      Hint = 'Jenis Produk'
+      Hint = 'Pelaksana'
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -166,7 +167,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
     object tgl_kegiatan: TcxDateEdit
       Left = 185
       Top = 107
-      Hint = 'Tanggal Akta'
+      Hint = 'Tanggal'
       TabOrder = 12
       Width = 121
     end
@@ -196,7 +197,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
   end
   inherited PanelFooter: TcxGroupBox
     Top = 340
-    ExplicitTop = 393
+    ExplicitTop = 340
     ExplicitWidth = 569
     ExplicitHeight = 44
     Height = 44
@@ -324,6 +325,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
   object jumlah_peserta: TcxCurrencyEdit
     Left = 185
     Top = 197
+    Hint = 'Jumlah Peserta'
     Properties.DisplayFormat = '#,##0'
     TabOrder = 4
     Width = 121
