@@ -14,7 +14,6 @@ uses
   FormKP2000 in 'FormKP2000.pas' {fr_FormKP2000},
   FormRefAPOLO in 'FormRefAPOLO.pas' {fr_FormRefAPOLO},
   GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
-  LoginLTBPR in 'LoginLTBPR.pas' {fr_LoginBPR},
   MainMenu in 'MainMenu.pas' {fr_MainMenu},
   MasterRefLTBPR in 'MasterRefLTBPR.pas' {fr_MasterRefAPOLO},
   MyLib in 'MyLib.pas',
@@ -22,7 +21,8 @@ uses
   ProgramSetting in 'ProgramSetting.pas' {fr_ProgramSetting},
   Progress in 'Progress.pas' {fr_Progress},
   SettingKoneksi in 'SettingKoneksi.pas' {fr_SettingKoneksi},
-  Wcrypt2 in 'Wcrypt2.pas';
+  Wcrypt2 in 'Wcrypt2.pas',
+  LoginBPR in 'LoginBPR.pas' {fr_LoginBPR};
 
 {$R *.res}
 
