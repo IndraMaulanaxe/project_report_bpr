@@ -6,13 +6,13 @@ object fr_template: Tfr_template
   VertScrollBar.Tracking = True
   BorderStyle = bsDialog
   Caption = 'Form Template'
-  ClientHeight = 405
-  ClientWidth = 957
+  ClientHeight = 340
+  ClientWidth = 552
   Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -13
-  Font.Name = 'Times New Roman'
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = True
@@ -24,12 +24,12 @@ object fr_template: Tfr_template
   OnKeyPress = FormKeyPress
   OnMouseDown = judulMouseDown
   PixelsPerInch = 96
-  TextHeight = 15
+  TextHeight = 13
   object lbl_view_only: TLabel
     Left = 0
     Top = 0
-    Width = 54
-    Height = 15
+    Width = 47
+    Height = 13
     Caption = 'View Only'
     Visible = False
   end
@@ -43,7 +43,7 @@ object fr_template: Tfr_template
     SkinData.SkinSection = 'FORM'
     TitleButtons = <>
     OnSkinItem = sSkinProvider1SkinItem
-    Left = 432
-    Top = 144
+    Left = 32
+    Top = 24
   end
 end

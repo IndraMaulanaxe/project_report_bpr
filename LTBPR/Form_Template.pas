@@ -51,17 +51,54 @@ var
   fr_template: Tfr_template;
   cLabelIni, cNewLabelIni: String;
 
+//function LeftStr(cString: String; nlen: integer): string; external 'OgiesoftLIB.dll';
+//function IniGetStringValue(TheIniFile, IniSection, StringName, DefaultString: String): String; external 'OgiesoftLIB.dll';
+//function IniSetStringValue(TheIniFile, IniSection, StringName, StringValue : String): Boolean; external 'OgiesoftLIB.dll';
+//function Empty(cString: String): Boolean; external 'OgiesoftLIB.dll';
+//function DateTimeToStrSQL(dTgl: TDateTime): String; external 'OgiesoftLIB.dll';
+//function DateToStrSQL(dTgl: TDate): String; external 'OgiesoftLIB.dll';
+//function GetLocalIP: string; external 'OgiesoftLIB.dll';
+//function SubStr(cString: String; nStart, nlen: integer): string; external 'OgiesoftLIB.dll';
+//function At(cCari,cText: String): Integer; external 'OgiesoftLIB.dll';
+//function StrZero(nNo, nLen: integer): String; external 'OgiesoftLIB.dll';
+//function GetArgCount(cText, cPembatas: string): Integer; external 'OgiesoftLIB.dll';
+//function GetArg(cText: string; nPos: Integer; cPembatas: string): string; external 'OgiesoftLIB.dll';
+//function Replace(Dest, SubStr, Str: string): string; external 'OgiesoftLIB.dll';
+//function IsStrANumber(const S: String): Boolean; external 'OgiesoftLIB.dll';
+//function Replicate(c: char; nlen: integer): string; external 'OgiesoftLIB.dll';
+//function BulanRomawi(nBulan: Byte): String; external 'OgiesoftLIB.dll';
+//function DateIndo(dTgl: TDateTime): String; external 'OgiesoftLIB.dll';
+//function  _IsConnectedToInternet: Boolean; external 'OgiesoftLIB.dll';
 
 implementation
 
 uses Types, MyVAR, TypInfo, dm_bpr, MyLib, SHFolder, DateUtils;
 
+//Const
+// SECURITY_NT_AUTHORITY: TSIDIdentifierAuthority = (Value: (0, 0, 0, 0, 0, 5));
+// SECURITY_BUILTIN_DOMAIN_RID = $00000020;
+// DOMAIN_ALIAS_RID_ADMINS     = $00000220;
+// DOMAIN_ALIAS_RID_USERS      = $00000221;
+// DOMAIN_ALIAS_RID_GUESTS     = $00000222;
+// DOMAIN_ALIAS_RID_POWER_USERS= $00000223;
 
 {$R *.dfm}
 
 procedure Tfr_template.GetOgieGlobalSetting;
 begin
   Ogie_FileIni := ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini');
+  //solusi windows 7 (level user)
+//  if not UserInGroup(DOMAIN_ALIAS_RID_ADMINS) then
+//    begin
+//      Ogie_FileIni := GetSpecialFolderPath(CSIDL_LOCAL_APPDATA) + '\VirtualStore'+
+//        Copy(ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini'),3,255);
+//      if not FileExists(Ogie_FileIni) then
+//        begin
+//          if FileExists(ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini')) then
+//            CopyFile(PChar(ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini')),
+//              PChar(Ogie_FileIni),True);
+//        end;
+//    end;
   FormatSettings.DateSeparator := '/';
   FormatSettings.TimeSeparator := ':';
   FormatSettings.ShortDateFormat := 'MM/dd/yyyy';

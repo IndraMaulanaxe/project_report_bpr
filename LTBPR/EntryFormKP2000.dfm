@@ -11,7 +11,6 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
     ExplicitWidth = 554
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 554
     ExplicitHeight = 249
     Height = 249
@@ -21,6 +20,13 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Top = 11
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowFrame
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
