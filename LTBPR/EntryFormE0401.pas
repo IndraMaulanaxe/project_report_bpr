@@ -1,4 +1,4 @@
-unit EntryFormA05072;
+unit EntryFormE0401;
 
 interface
 
@@ -36,32 +36,24 @@ uses
   cxCalendar;
 
 type
-  Tfr_EntryFormA05072 = class(Tfr_new_template)
+  Tfr_EntryFormE0401 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
-    cxLabel8: TcxLabel;
-    memuraian_kegiatan: TcxMemo;
-    cxLabel10: TcxLabel;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
+    Label1: TcxLabel;
+    memtindak_lanjut: TcxMemo;
+    cxLabel3: TcxLabel;
+    nik: TcxTextEdit;
+    dsMyQRefSandiBank: TMyDataSource;
+    MyQRefSandiBank: TMyQuery;
+    MyQRefSandiBanksandi: TStringField;
+    MyQRefSandiBanknama: TStringField;
+    memsaham: TcxMemo;
     cxLabel1: TcxLabel;
-    memkegiatan: TcxMemo;
-    cxLabel9: TcxLabel;
-    cb_peserta: TcxLookupComboBox;
-    dsMyQRefPelaksana: TMyDataSource;
-    MyQRefPelaksana: TMyQuery;
-    MyQRefPelaksanasandi: TStringField;
-    MyQRefPelaksananama: TStringField;
-    Label6: TcxLabel;
-    tgl_kegiatan: TcxDateEdit;
-    cxLabel4: TcxLabel;
-    memketerangan: TcxMemo;
-    dsMyQRefPeserta: TMyDataSource;
-    MyQRefPeserta: TMyQuery;
-    StringField1: TStringField;
-    StringField2: TStringField;
-    jumlah_peserta: TcxCurrencyEdit;
+    memkomisaris: TcxMemo;
     cxLabel2: TcxLabel;
-    cb_pelaksana: TcxLookupComboBox;
+    memdireksi: TcxMemo;
+    cxLabel4: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -81,7 +73,7 @@ type
   end;
 
 var
-  fr_EntryFormA05072: Tfr_EntryFormA05072;
+  fr_EntryFormE0401: Tfr_EntryFormE0401;
   cLabelIni, cNewLabelIni: String;
 
 implementation
@@ -89,7 +81,7 @@ uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
 
 {$R *.dfm}
 
-function Tfr_EntryFormA05072.Cek_Validasi(Sender: TObject): Boolean;
+function Tfr_EntryFormE0401.Cek_Validasi(Sender: TObject): Boolean;
 var
   jml: Integer;
   cPesan, cHint: string;
@@ -341,7 +333,7 @@ begin
     Result := True;
 end;
 
-procedure Tfr_EntryFormA05072.btlb_SaveClick(Sender: TObject);
+procedure Tfr_EntryFormE0401.btlb_SaveClick(Sender: TObject);
 begin
   inherited;
   if not Cek_Validasi(Sender) then
@@ -351,7 +343,7 @@ begin
   Close;
 end;
 
-procedure Tfr_EntryFormA05072.FormActivate(Sender: TObject);
+procedure Tfr_EntryFormE0401.FormActivate(Sender: TObject);
 var
   jml: Integer;
 begin
@@ -444,14 +436,14 @@ if not lbl_view_only.Enabled then
   end;
 end;
 
-procedure Tfr_EntryFormA05072.FormClose(Sender: TObject;
+procedure Tfr_EntryFormE0401.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Release;
   Action := caFree;
 end;
 
-procedure Tfr_EntryFormA05072.FormCloseQuery(Sender: TObject;
+procedure Tfr_EntryFormE0401.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if (Tag=1) then
@@ -464,7 +456,7 @@ begin
     end;
 end;
 
-procedure Tfr_EntryFormA05072.FormCreate(Sender: TObject);
+procedure Tfr_EntryFormE0401.FormCreate(Sender: TObject);
 var
   jml, jml2: Integer;
   cCaption, cTag, cHint, cWidth, cScale: String;
@@ -513,7 +505,7 @@ begin
   SetCurrentDir(cLocation);
 end;
 
-procedure Tfr_EntryFormA05072.FormKeyPress(Sender: TObject; var Key: Char);
+procedure Tfr_EntryFormE0401.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     begin
@@ -524,7 +516,7 @@ begin
     Close;
 end;
 
-procedure Tfr_EntryFormA05072.MemKeteranganPropertiesChange(
+procedure Tfr_EntryFormE0401.MemKeteranganPropertiesChange(
   Sender: TObject);
 begin
   inherited;
