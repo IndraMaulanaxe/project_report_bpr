@@ -36,7 +36,27 @@ uses
   EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301},
   EntryFormKP2000 in 'EntryFormKP2000.pas' {fr_EntryForm2000},
   EntryFormE0201 in 'EntryFormE0201.pas' {fr_EntryFormE0201},
-  FormE0201 in 'FormE0201.pas' {fr_FormE0201};
+  FormE0201 in 'FormE0201.pas' {fr_FormE0201},
+  FormE0202 in 'FormE0202.pas' {fr_FormE0202},
+  EntryFormE0202 in 'EntryFormE0202.pas' {fr_EntryFormE0202},
+  FormE0203 in 'FormE0203.pas' {fr_FormE0203},
+  EntryFormE0203 in 'EntryFormE0203.pas' {fr_EntryFormE0203},
+  FormE0302 in 'FormE0302.pas' {fr_FormE0302},
+  EntryFormE0302 in 'EntryFormE0302.pas' {fr_EntryFormE0302},
+  FormE0303 in 'FormE0303.pas' {fr_FormE0303},
+  EntryFormE0303 in 'EntryFormE0303.pas' {fr_EntryFormE0303},
+  EntryFormE0401 in 'EntryFormE0401.pas' {fr_EntryFormE0401},
+  FormE0401 in 'FormE0401.pas' {fr_FormE0401},
+  EntryFormE0402 in 'EntryFormE0402.pas' {fr_EntryFormE0402},
+  FormE0402 in 'FormE0402.pas' {fr_FormE0402},
+  EntryFormE0600 in 'EntryFormE0600.pas' {fr_EntryFormE0600},
+  FormE0600 in 'FormE0600.pas' {fr_FormE0600},
+  EntryFormE0701 in 'EntryFormE0701.pas' {fr_EntryFormE0701},
+  FormE0701 in 'FormE0701.pas' {fr_FormE0701},
+  EntryFormE0702 in 'EntryFormE0702.pas' {fr_EntryFormE0702},
+  FormE0702 in 'FormE0702.pas' {fr_FormE0702},
+  EntryFormE0800 in 'EntryFormE0800.pas' {fr_EntryFormE0800},
+  FormE0800 in 'FormE0800.pas' {fr_FormE0800};
 
 {$R *.res}
 

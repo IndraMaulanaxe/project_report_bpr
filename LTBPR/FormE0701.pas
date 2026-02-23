@@ -1,7 +1,6 @@
-unit FormE0600;
+unit FormE0701;
 
 interface
-
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
@@ -29,13 +28,13 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxGridCustomView, cxGrid, DBAccess, MyAccess, MemDS, MyVAR,
-  MyLib, EntryFormE0600, dxDateRanges,
+  MyLib, EntryFormE0701, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
   DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
 
 type
-  Tfr_FormE0600 = class(Tfr_new_template)
+  Tfr_FormE0701 = class(Tfr_new_template)
     MyQuery1: TMyQuery;
     MyQuery1jml: TLargeintField;
     MyQuery1bd: TFloatField;
@@ -45,18 +44,22 @@ type
     MyQuery1pyad: TFloatField;
     MyQuery1bd_netto: TFloatField;
     MyQuery1pbdp: TFloatField;
-    dsMyQE0600: TMyDataSource;
-    MyQE0600: TMyQuery;
+    dsMyQE0701: TMyDataSource;
+    MyQE0701: TMyQuery;
     cxgGrid: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    MyQE0600flag_detail: TStringField;
-    MyQE0600kode_komponen: TStringField;
-    MyQE0600rasio_gaji_perbandingan: TFloatField;
-    MyQE0600footer_1_penjelasan_lebih_lanjut: TStringField;
+    MyQE0701flag_detail: TStringField;
+    MyQE0701kode_komponen: TStringField;
+    MyQE0701tanggal_rapat: TDateField;
+    MyQE0701jumlah_peserta: TIntegerField;
+    MyQE0701topik_materi_pembahasan: TStringField;
+    MyQE0701footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
-    cxGridDBTableView1rasio_gaji_perbandingan: TcxGridDBColumn;
+    cxGridDBTableView1tanggal_rapat: TcxGridDBColumn;
+    cxGridDBTableView1jumlah_peserta: TcxGridDBColumn;
+    cxGridDBTableView1topik_materi_pembahasan: TcxGridDBColumn;
     cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
@@ -85,14 +88,14 @@ type
   end;
 
 var
-  fr_FormE0600: Tfr_FormE0600;
+  fr_FormE0701: Tfr_FormE0701;
 
 implementation
 uses Types, TypInfo, dm_bpr, SHFolder, DateUtils;
 
 {$R *.dfm}
 
-procedure Tfr_FormE0600.judulMouseDown(Sender: TObject; Button: TMouseButton;
+procedure Tfr_FormE0701.judulMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var
   cNewCaption: String;
@@ -237,7 +240,7 @@ if Button in [mbRight] then
   end;
 end;
 
-procedure Tfr_FormE0600.GetOgieGlobalSetting;
+procedure Tfr_FormE0701.GetOgieGlobalSetting;
 begin
   Ogie_FileIni := ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini');
   FormatSettings.DateSeparator := '/';
@@ -250,10 +253,10 @@ begin
 end;
 
 
-procedure Tfr_FormE0600.btlb_DeleteClick(Sender: TObject);
+procedure Tfr_FormE0701.btlb_DeleteClick(Sender: TObject);
 begin
   inherited;
-  if (MyQE0600.RecordCount=0) or (not MyQE0600.Active) then
+  if (MyQE0701.RecordCount=0) or (not MyQE0701.Active) then
     begin
       Pesan(2,'Maaf, Tidak ada data...!');
       Exit;
@@ -262,141 +265,135 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
+    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
 
-  if MyQE0600.Active then
-    MyQE0600.Refresh
+  if MyQE0701.Active then
+    MyQE0701.Refresh
   else
-    MyQE0600.Open;
+    MyQE0701.Open;
 
 end;
 
-procedure Tfr_FormE0600.btlb_EditClick(Sender: TObject);
+procedure Tfr_FormE0701.btlb_EditClick(Sender: TObject);
 begin
   inherited;
-  if (MyQE0600.RecordCount=0) or (not MyQE0600.Active) then
+  if (MyQE0701.RecordCount=0) or (not MyQE0701.Active) then
     begin
       Pesan(2,'Maaf, Tidak ada data...!');
       Exit;
     end;
 
-  if Application.FindComponent('fr_EntryFormE0600') = nil then
-    Application.CreateForm(Tfr_EntryFormE0600, fr_EntryFormE0600);
+  if Application.FindComponent('fr_EntryFormE0701') = nil then
+    Application.CreateForm(Tfr_EntryFormE0701, fr_EntryFormE0701);
 
-  with fr_EntryFormE0600 do
+  with fr_EntryFormE0701 do
     begin
+
       //open table reff
-      if MyQRefRasio.Active then
-        MyQRefRasio.Refresh
-      else
-        MyQRefRasio.Open;
 
       //size
-      cb_komponen.Properties.MaxLength := MyQE0600kode_komponen.Size;
-      rasio.Properties.MaxLength := MyQE0600rasio_gaji_perbandingan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0600footer_1_penjelasan_lebih_lanjut.Size;
+      kode_komponen.Properties.MaxLength := MyQE0701kode_komponen.Size;
+      memmateri.Properties.MaxLength := MyQE0701topik_materi_pembahasan.Size;
+      mempenjelasan.Properties.MaxLength := MyQE0701footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
-      cb_komponen.EditValue := MyQE0600kode_komponen.Text;
-      rasio.value := MyQE0600rasio_gaji_perbandingan.Value;
-      memtindak_lanjut.Text := MyQE0600footer_1_penjelasan_lebih_lanjut.Text;
+      kode_komponen.Text := MyQE0701kode_komponen.Text;
+      tanggal.Date :=MyQE0701tanggal_rapat.Value;
+      jumlah_peserta.Value := MyQE0701jumlah_peserta.Value;
+      memmateri.Text := MyQE0701topik_materi_pembahasan.Text;
+      mempenjelasan.Text :=MyQE0701footer_1_penjelasan_lebih_lanjut.Value;
 
-      cb_komponen.Enabled := False;
+      kode_komponen.Enabled := False;
+      //tanggal.Date := dTglSystem;
     end;
-  fr_EntryFormE0600.Tag := 0;
-  fr_EntryFormE0600.ShowModal;
-  if fr_EntryFormE0600.Tag=2 then
+  fr_EntryFormE0701.Tag := 0;
+  fr_EntryFormE0701.ShowModal;
+  if fr_EntryFormE0701.Tag=2 then
     begin
-      with fr_EntryFormE0600 do
+      with fr_EntryFormE0701 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-                        ' SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                        ', `rasio_gaji_perbandingan` = '+FloatToStr(rasio.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
+                        ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
+                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.text)+
+                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
+                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
         end;
-      if MyQE0600.Active then
-        MyQE0600.Refresh
+      if MyQE0701.Active then
+        MyQE0701.Refresh
       else
-        MyQE0600.Open;
+        MyQE0701.Open;
     end;
 
-  fr_EntryFormE0600.Free;
-  fr_EntryFormE0600 := nil;
+  fr_EntryFormE0701.Free;
+  fr_EntryFormE0701 := nil;
 end;
 
-procedure Tfr_FormE0600.btlb_InsertClick(Sender: TObject);
+procedure Tfr_FormE0701.btlb_InsertClick(Sender: TObject);
 begin
   inherited;
-  if (not MyQE0600.Active) then
+  if (not MyQE0701.Active) then
     begin
       Pesan(2,'Maaf, table belum aktif...!');
       Exit;
     end;
 
-  if Application.FindComponent('fr_EntryFormE0600') = nil then
-    Application.CreateForm(Tfr_EntryFormE0600, fr_EntryFormE0600);
+  if Application.FindComponent('fr_EntryFormE0701') = nil then
+    Application.CreateForm(Tfr_EntryFormE0701, fr_EntryFormE0701);
 
-  with fr_EntryFormE0600 do
+  with fr_EntryFormE0701 do
     begin
       //open table reff
-      if MyQRefRasio.Active then
-        MyQRefRasio.Refresh
-      else
-        MyQRefRasio.Open;
 
       //size
-      cb_komponen.Properties.MaxLength := MyQE0600kode_komponen.Size;
-      rasio.Properties.MaxLength := MyQE0600rasio_gaji_perbandingan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0600footer_1_penjelasan_lebih_lanjut.Size;
+      kode_komponen.Properties.MaxLength := MyQE0701kode_komponen.Size;
+      memmateri.Properties.MaxLength := MyQE0701topik_materi_pembahasan.Size;
+      mempenjelasan.Properties.MaxLength := MyQE0701footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
-      //kode_komponen.Text := '032010000000';
+      kode_komponen.Text := '081010000000';
+      tanggal.Date := dTglSystem;
 
-      cb_komponen.Enabled := False;
+      kode_komponen.Enabled := False;
     end;
-  fr_EntryFormE0600.Tag := 0;
-  fr_EntryFormE0600.ShowModal;
-  if fr_EntryFormE0600.Tag=2 then
+  fr_EntryFormE0701.Tag := 0;
+  fr_EntryFormE0701.ShowModal;
+  if fr_EntryFormE0701.Tag=2 then
     begin
-      with fr_EntryFormE0600 do
+      with fr_EntryFormE0701 do
         begin
           // Insert
-         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` ('+
-                      ' `kode_komponen`, '+
-                      ' `rasio_gaji_perbandingan`, '+
-                      ' `footer_1_penjelasan_lebih_lanjut` '+
-                      ') VALUES ('+
-                      QuotedStr(cb_komponen.EditValue)+', '+
-                      FloatToStr(rasio.Value)+', '+
-                      QuotedStr(memtindak_lanjut.Text)+
-                      ')'
-                    );
-
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
+                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                       ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
+                       ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
+                       ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
+                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
 
         end;
-      if MyQE0600.Active then
-        MyQE0600.Refresh
+      if MyQE0701.Active then
+        MyQE0701.Refresh
       else
-        MyQE0600.Open;
+        MyQE0701.Open;
     end;
 
-  fr_EntryFormE0600.Free;
-  fr_EntryFormE0600 := nil;
+  fr_EntryFormE0701.Free;
+  fr_EntryFormE0701 := nil;
 end;
 
-procedure Tfr_FormE0600.btlb_RefreshClick(Sender: TObject);
+procedure Tfr_FormE0701.btlb_RefreshClick(Sender: TObject);
 begin
   inherited;
-  if MyQE0600.Active then
-    MyQE0600.Refresh
+  if MyQE0701.Active then
+    MyQE0701.Refresh
   else
-    MyQE0600.Open;
+    MyQE0701.Open;
 end;
 
-procedure Tfr_FormE0600.cxGridDBTableView1CellDblClick(
+procedure Tfr_FormE0701.cxGridDBTableView1CellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -405,13 +402,13 @@ begin
     btlb_EditClick(Sender);
 end;
 
-procedure Tfr_FormE0600.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure Tfr_FormE0701.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Release;
   Action := caFree;
 end;
 
-procedure Tfr_FormE0600.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure Tfr_FormE0701.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if (Tag=1) then
     begin
@@ -423,7 +420,7 @@ begin
     end
 end;
 
-procedure Tfr_FormE0600.AssignJudulEvent;
+procedure Tfr_FormE0701.AssignJudulEvent;
 var
   i: Integer;
   PropInfo: PPropInfo;
@@ -450,7 +447,7 @@ begin
     end;
 end;
 
-procedure Tfr_FormE0600.FormCreate(Sender: TObject);
+procedure Tfr_FormE0701.FormCreate(Sender: TObject);
 var
   jml, jml2: Integer;
   cCaption, cTag, cHint, cWidth: String;
@@ -659,7 +656,7 @@ begin
     DeleteFile(cNewLabelIni);
 end;
 
-procedure Tfr_FormE0600.FormKeyPress(Sender: TObject; var Key: Char);
+procedure Tfr_FormE0701.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -670,7 +667,7 @@ begin
     Close;
 end;
 
-procedure Tfr_FormE0600.FormShow(Sender: TObject);
+procedure Tfr_FormE0701.FormShow(Sender: TObject);
 begin
   inherited;
   btlb_RefreshClick(Sender);
