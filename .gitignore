@@ -1,0 +1,5 @@
+*.dcu
+*.identcache
+__history/
+*.exe
+*.err
