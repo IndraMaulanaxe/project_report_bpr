@@ -1,7 +1,5 @@
-inherited fr_FormE0201: Tfr_FormE0201
-  Caption = 
-    'Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota Direks' +
-    'i'
+inherited fr_FormE0701: Tfr_FormE0701
+  Caption = 'Form E0701 - Pelaksanaan Rapat dalam 1 (satu) Tahun'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +48,7 @@ inherited fr_FormE0201: Tfr_FormE0201
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0201
+        DataController.DataSource = dsMyQE0701
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,29 +79,28 @@ inherited fr_FormE0201: Tfr_FormE0201
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1nik: TcxGridDBColumn
-          Caption = 'NIK'
-          DataBinding.FieldName = 'nik'
+        object cxGridDBTableView1tanggal_rapat: TcxGridDBColumn
+          Caption = 'Tanggal'
+          DataBinding.FieldName = 'tanggal_rapat'
           HeaderAlignmentHorz = taCenter
-          Width = 150
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
+        object cxGridDBTableView1jumlah_peserta: TcxGridDBColumn
+          Caption = 'Jumlah Peserta'
+          DataBinding.FieldName = 'jumlah_peserta'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 100
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
+        object cxGridDBTableView1topik_materi_pembahasan: TcxGridDBColumn
+          Caption = 'Topik Materi'
+          DataBinding.FieldName = 'topik_materi_pembahasan'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 250
         end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 250
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -249,41 +246,39 @@ inherited fr_FormE0201: Tfr_FormE0201
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0201: TMyDataSource
-    DataSet = MyQE0201
-    Left = 336
-    Top = 216
+  object dsMyQE0701: TMyDataSource
+    DataSet = MyQE0701
+    Left = 312
+    Top = 224
   end
-  object MyQE0201: TMyQuery
+  object MyQE0701: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0201_tugas_tanggung_jawab_direksi')
+      'select * from ltbprk_e0701_pelaksanaan_rapat_dalam_setahun')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
     Top = 280
-    object MyQE0201flag_detail: TStringField
+    object MyQE0701flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0201kode_komponen: TStringField
+    object MyQE0701kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0201nik: TStringField
-      FieldName = 'nik'
-      Size = 25
+    object MyQE0701tanggal_rapat: TDateField
+      FieldName = 'tanggal_rapat'
     end
-    object MyQE0201tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
+    object MyQE0701jumlah_peserta: TIntegerField
+      FieldName = 'jumlah_peserta'
+    end
+    object MyQE0701topik_materi_pembahasan: TStringField
+      FieldName = 'topik_materi_pembahasan'
       Size = 2000
     end
-    object MyQE0201footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
-    end
-    object MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
+    object MyQE0701footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

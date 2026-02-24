@@ -1,7 +1,5 @@
-inherited fr_FormE0201: Tfr_FormE0201
-  Caption = 
-    'Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota Direks' +
-    'i'
+inherited fr_FormE0800: Tfr_FormE0800
+  Caption = 'Form E0800 - Jumlah Penyimpangan Internal (Internal Fraud)'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +48,7 @@ inherited fr_FormE0201: Tfr_FormE0201
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0201
+        DataController.DataSource = dsMyQE0800
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,29 +79,59 @@ inherited fr_FormE0201: Tfr_FormE0201
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1nik: TcxGridDBColumn
-          Caption = 'NIK'
-          DataBinding.FieldName = 'nik'
+        object cxGridDBTableView1anggota_direksi_tahun_sebelumnya: TcxGridDBColumn
+          Caption = 'Jumlah Direksi Tahun Lalu'
+          DataBinding.FieldName = 'anggota_direksi_tahun_sebelumnya'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 250
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
+        object cxGridDBTableView1anggota_direksi_tahun_laporan: TcxGridDBColumn
+          Caption = 'Jumlah Direksi Tahun Laporan'
+          DataBinding.FieldName = 'anggota_direksi_tahun_laporan'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 250
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
+        object cxGridDBTableView1anggota_dewan_komisaris_tahun_sebelumnya: TcxGridDBColumn
+          Caption = 'Jumlah Komisaris Tahun Lalu'
+          DataBinding.FieldName = 'anggota_dewan_komisaris_tahun_sebelumnya'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 250
         end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
+        object cxGridDBTableView1anggota_dewan_komisaris_tahun_laporan: TcxGridDBColumn
+          Caption = 'Jumlah Komisaris Tahun Laporan'
+          DataBinding.FieldName = 'anggota_dewan_komisaris_tahun_laporan'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 250
+        end
+        object cxGridDBTableView1pegawai_tetap_tahun_sebelumnya: TcxGridDBColumn
+          Caption = 'Jumlah Pegawai Tetap Tahun Lalu'
+          DataBinding.FieldName = 'pegawai_tetap_tahun_sebelumnya'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1pegawai_tetap_tahun_laporan: TcxGridDBColumn
+          Caption = 'Jumlah Pegawai Tetap Tahun Laporan'
+          DataBinding.FieldName = 'pegawai_tetap_tahun_laporan'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1pegawai_tidak_tetap_tahun_sebelumnya: TcxGridDBColumn
+          Caption = 'Jumlah Pegawai Tidak Tetap Tahun Lalu'
+          DataBinding.FieldName = 'pegawai_tidak_tetap_tahun_sebelumnya'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1pegawai_tidak_tetap_tahun_laporan: TcxGridDBColumn
+          Caption = 'Jumlah Pegawai Tidak Tetap Tahun Laporan'
+          DataBinding.FieldName = 'pegawai_tidak_tetap_tahun_laporan'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
+          HeaderAlignmentHorz = taCenter
+          Width = 300
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -249,41 +277,53 @@ inherited fr_FormE0201: Tfr_FormE0201
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0201: TMyDataSource
-    DataSet = MyQE0201
-    Left = 336
-    Top = 216
+  object dsMyQE0800: TMyDataSource
+    DataSet = MyQE0800
+    Left = 312
+    Top = 224
   end
-  object MyQE0201: TMyQuery
+  object MyQE0800: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0201_tugas_tanggung_jawab_direksi')
+      'select * from ltbprk_e0800_penyimpangan_internal')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
     Top = 280
-    object MyQE0201flag_detail: TStringField
+    object MyQE0800flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0201kode_komponen: TStringField
+    object MyQE0800kode_komponen: TStringField
       FieldName = 'kode_komponen'
-      Size = 12
+      Size = 3
     end
-    object MyQE0201nik: TStringField
-      FieldName = 'nik'
-      Size = 25
+    object MyQE0800anggota_direksi_tahun_sebelumnya: TIntegerField
+      FieldName = 'anggota_direksi_tahun_sebelumnya'
     end
-    object MyQE0201tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
+    object MyQE0800anggota_direksi_tahun_laporan: TIntegerField
+      FieldName = 'anggota_direksi_tahun_laporan'
     end
-    object MyQE0201footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
+    object MyQE0800anggota_dewan_komisaris_tahun_sebelumnya: TIntegerField
+      FieldName = 'anggota_dewan_komisaris_tahun_sebelumnya'
     end
-    object MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
+    object MyQE0800anggota_dewan_komisaris_tahun_laporan: TIntegerField
+      FieldName = 'anggota_dewan_komisaris_tahun_laporan'
+    end
+    object MyQE0800pegawai_tetap_tahun_sebelumnya: TIntegerField
+      FieldName = 'pegawai_tetap_tahun_sebelumnya'
+    end
+    object MyQE0800pegawai_tetap_tahun_laporan: TIntegerField
+      FieldName = 'pegawai_tetap_tahun_laporan'
+    end
+    object MyQE0800pegawai_tidak_tetap_tahun_sebelumnya: TIntegerField
+      FieldName = 'pegawai_tidak_tetap_tahun_sebelumnya'
+    end
+    object MyQE0800pegawai_tidak_tetap_tahun_laporan: TIntegerField
+      FieldName = 'pegawai_tidak_tetap_tahun_laporan'
+    end
+    object MyQE0800footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

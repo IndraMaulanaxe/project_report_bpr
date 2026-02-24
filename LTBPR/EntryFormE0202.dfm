@@ -1,23 +1,22 @@
-inherited fr_EntryFormE0201: Tfr_EntryFormE0201
+inherited fr_EntryFormE0202: Tfr_EntryFormE0202
   Caption = 
-    'Entry Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota ' +
-    'Direksi '
-  ClientHeight = 317
-  ClientWidth = 518
-  ExplicitWidth = 524
-  ExplicitHeight = 346
+    'Entry Form E0202 - Pelaksanaan Tugas dan Tanggung Jawab Anggota ' +
+    'Dewan Komisaris'
+  ClientHeight = 301
+  ClientWidth = 576
+  ExplicitWidth = 582
+  ExplicitHeight = 330
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 518
+    Width = 576
     ExplicitWidth = 518
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 518
     ExplicitHeight = 257
-    Height = 273
-    Width = 518
+    Height = 257
+    Width = 576
     object memlebih_lanjut: TcxMemo
       Tag = 1
       Left = 185
@@ -146,12 +145,12 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 273
+    Top = 257
     ExplicitTop = 257
     ExplicitWidth = 518
     ExplicitHeight = 44
     Height = 44
-    Width = 518
+    Width = 576
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -181,15 +180,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 331
+      Left = 389
       Height = 34
       OnClick = btlb_SaveClick
       ExplicitLeft = 331
-      ExplicitTop = 6
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 513
+      Left = 571
       Width = 0
       Height = 34
       Enabled = False
@@ -199,13 +197,13 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 422
+      Left = 480
       Height = 34
       ExplicitLeft = 422
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 325
+      Left = 383
       Width = 0
       Height = 34
       Enabled = False
@@ -225,7 +223,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 319
+      Left = 377
       Width = 0
       Height = 34
       Enabled = False
@@ -235,7 +233,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 313
+      Left = 371
       Width = 0
       Height = 34
       Enabled = False
@@ -245,7 +243,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 307
+      Left = 365
       Width = 0
       Height = 34
       Enabled = False
@@ -255,7 +253,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 301
+      Left = 359
       Width = 0
       Height = 34
       Enabled = False
@@ -266,10 +264,10 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 518
+    Width = 576
     ExplicitWidth = 518
     inherited IconClose: TLabel
-      Left = 484
+      Left = 542
       ExplicitLeft = 771
     end
   end

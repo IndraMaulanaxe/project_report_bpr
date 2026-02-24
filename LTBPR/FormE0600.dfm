@@ -1,7 +1,5 @@
-inherited fr_FormE0201: Tfr_FormE0201
-  Caption = 
-    'Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota Direks' +
-    'i'
+inherited fr_FormE0600: Tfr_FormE0600
+  Caption = 'Entry Form E0600 - Rasio Gaji Tertinggi dan Gaji Terendah'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +48,7 @@ inherited fr_FormE0201: Tfr_FormE0201
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0201
+        DataController.DataSource = dsMyQE0600
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,27 +79,15 @@ inherited fr_FormE0201: Tfr_FormE0201
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1nik: TcxGridDBColumn
-          Caption = 'NIK'
-          DataBinding.FieldName = 'nik'
+        object cxGridDBTableView1rasio_gaji_perbandingan: TcxGridDBColumn
+          Caption = 'Rasio Gaji'
+          DataBinding.FieldName = 'rasio_gaji_perbandingan'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 100
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
           Width = 350
         end
@@ -249,41 +235,32 @@ inherited fr_FormE0201: Tfr_FormE0201
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0201: TMyDataSource
-    DataSet = MyQE0201
-    Left = 336
-    Top = 216
+  object dsMyQE0600: TMyDataSource
+    DataSet = MyQE0600
+    Left = 312
+    Top = 224
   end
-  object MyQE0201: TMyQuery
+  object MyQE0600: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0201_tugas_tanggung_jawab_direksi')
+      'select * from ltbprk_e0600_rasio_gaji_tinggi_rendah')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
     Top = 280
-    object MyQE0201flag_detail: TStringField
+    object MyQE0600flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0201kode_komponen: TStringField
+    object MyQE0600kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0201nik: TStringField
-      FieldName = 'nik'
-      Size = 25
+    object MyQE0600rasio_gaji_perbandingan: TFloatField
+      FieldName = 'rasio_gaji_perbandingan'
     end
-    object MyQE0201tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
-    end
-    object MyQE0201footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
-    end
-    object MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
+    object MyQE0600footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

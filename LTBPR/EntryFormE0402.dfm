@@ -1,46 +1,20 @@
-inherited fr_EntryFormE0201: Tfr_EntryFormE0201
-  Caption = 
-    'Entry Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota ' +
-    'Direksi '
-  ClientHeight = 317
-  ClientWidth = 518
-  ExplicitWidth = 524
-  ExplicitHeight = 346
+inherited fr_EntryFormE0402: Tfr_EntryFormE0402
+  Caption = 'Entry Form E0402 - Hubungan Keluarga Direksi Pemegang Saham'
+  ClientHeight = 354
+  ClientWidth = 510
+  ExplicitWidth = 516
+  ExplicitHeight = 383
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 518
-    ExplicitWidth = 518
+    Width = 510
+    ExplicitWidth = 510
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
-    ExplicitWidth = 518
-    ExplicitHeight = 257
-    Height = 273
-    Width = 518
-    object memlebih_lanjut: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 190
-      Hint = 'Penjesalan Lebih Lanjut'
-      Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 0
-      Height = 47
-      Width = 298
-    end
-    object cxLabel10: TcxLabel
-      Left = 17
-      Top = 186
-      AutoSize = False
-      Caption = 'Penjelasan Lebih Lanjut'
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 31
-      Width = 135
-      AnchorY = 202
-    end
+    ExplicitWidth = 510
+    ExplicitHeight = 310
+    Height = 310
+    Width = 510
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
@@ -54,7 +28,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 2
+      TabOrder = 0
       Height = 24
       Width = 160
     end
@@ -71,7 +45,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
     end
     object Label1: TcxLabel
       Left = 17
-      Top = 129
+      Top = 238
       AutoSize = False
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
@@ -82,51 +56,28 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Transparent = True
       Height = 37
       Width = 135
-      AnchorY = 148
+      AnchorY = 257
     end
     object memtindak_lanjut: TcxMemo
       Tag = 1
       Left = 185
-      Top = 136
+      Top = 245
       Hint = 'Tindak Lanjut'
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 5
+      TabOrder = 3
       Height = 48
       Width = 298
     end
-    object cxLabel2: TcxLabel
+    object cxLabel3: TcxLabel
       Left = 17
-      Top = 83
-      AutoSize = False
-      Caption = 'Tugas Dan Tanggung Jawab'
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 33
-      Width = 152
-      AnchorY = 100
-    end
-    object memtugas: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 83
-      Hint = 'Tugas Dan Tanggung Jawab'
-      Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 7
-      Height = 47
-      Width = 298
-    end
-    object Label6: TcxLabel
-      Left = 17
-      Top = 56
+      Top = 53
       AutoSize = False
       Caption = 'NIK'
-      Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
-      Height = 19
+      Height = 21
       Width = 135
-      AnchorY = 66
+      AnchorY = 64
     end
     object nik: TcxTextEdit
       Tag = 1
@@ -140,18 +91,44 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 9
+      TabOrder = 5
       Height = 24
       Width = 298
     end
+    object memsaham: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 191
+      Hint = 'Hubungan Keluarga[III. Pemegang Saham]'
+      HelpType = htKeyword
+      Properties.OnChange = MemKeteranganPropertiesChange
+      TabOrder = 6
+      Height = 48
+      Width = 298
+    end
+    object cxLabel1: TcxLabel
+      Left = 17
+      Top = 178
+      AutoSize = False
+      BiDiMode = bdLeftToRight
+      Caption = 'Hubungan Keluarga'#13#10'[III. Pemegang Saham]'
+      ParentBiDiMode = False
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Alignment.Vert = taVCenter
+      Properties.WordWrap = True
+      Transparent = True
+      Height = 48
+      Width = 168
+      AnchorY = 202
+    end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 273
-    ExplicitTop = 257
-    ExplicitWidth = 518
+    Top = 310
+    ExplicitTop = 310
+    ExplicitWidth = 510
     ExplicitHeight = 44
     Height = 44
-    Width = 518
+    Width = 510
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -181,36 +158,35 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 331
+      Left = 323
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 331
-      ExplicitTop = 6
+      ExplicitLeft = 323
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 513
+      Left = 505
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 513
+      ExplicitLeft = 505
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 422
+      Left = 414
       Height = 34
-      ExplicitLeft = 422
+      ExplicitLeft = 414
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 325
+      Left = 317
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 325
+      ExplicitLeft = 317
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -225,53 +201,104 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 319
+      Left = 311
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 319
+      ExplicitLeft = 311
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 313
+      Left = 305
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 313
+      ExplicitLeft = 305
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 307
+      Left = 299
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 307
+      ExplicitLeft = 299
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 301
+      Left = 293
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 301
+      ExplicitLeft = 293
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 518
-    ExplicitWidth = 518
+    Width = 510
+    ExplicitWidth = 510
     inherited IconClose: TLabel
-      Left = 484
+      Left = 476
       ExplicitLeft = 771
     end
+  end
+  object memkomisaris: TcxMemo
+    Tag = 1
+    Left = 185
+    Top = 137
+    Hint = 'Hubungan Keluarga[II. Anggota Dewan Komisaris]'
+    Properties.OnChange = MemKeteranganPropertiesChange
+    TabOrder = 4
+    Height = 48
+    Width = 298
+  end
+  object cxLabel2: TcxLabel
+    Left = 17
+    Top = 123
+    Hint = 'Hubungan Keuangan[II. Anggota Dewan Komisaris]'
+    AutoSize = False
+    BiDiMode = bdLeftToRight
+    Caption = 'Hubungan  Keluarga'#13#10'[II. Anggota Komisaris]'
+    ParentBiDiMode = False
+    Properties.Alignment.Horz = taLeftJustify
+    Properties.Alignment.Vert = taVCenter
+    Properties.WordWrap = True
+    Transparent = True
+    Height = 51
+    Width = 162
+    AnchorY = 149
+  end
+  object memdireksi: TcxMemo
+    Tag = 1
+    Left = 185
+    Top = 83
+    Hint = 'Hubungan Keluarga[I. Anggota Direksi]'
+    Properties.OnChange = MemKeteranganPropertiesChange
+    TabOrder = 6
+    Height = 48
+    Width = 298
+  end
+  object cxLabel4: TcxLabel
+    Left = 17
+    Top = 76
+    AutoSize = False
+    BiDiMode = bdLeftToRight
+    Caption = 'Hubungan  Keluarga'#13#10'[I. Anggota Direksi]'
+    ParentBiDiMode = False
+    Properties.Alignment.Horz = taLeftJustify
+    Properties.Alignment.Vert = taVCenter
+    Properties.WordWrap = True
+    Transparent = True
+    Height = 37
+    Width = 135
+    AnchorY = 95
   end
   object MyDataSource1: TMyDataSource
     Left = 392

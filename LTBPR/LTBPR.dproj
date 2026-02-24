@@ -238,6 +238,86 @@
             <Form>fr_FormE0201</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="FormE0202.pas">
+            <Form>fr_FormE0202</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0202.pas">
+            <Form>fr_EntryFormE0202</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0203.pas">
+            <Form>fr_FormE0203</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0203.pas">
+            <Form>fr_EntryFormE0203</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0302.pas">
+            <Form>fr_FormE0302</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0302.pas">
+            <Form>fr_EntryFormE0302</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0303.pas">
+            <Form>fr_FormE0303</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0303.pas">
+            <Form>fr_EntryFormE0303</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0401.pas">
+            <Form>fr_EntryFormE0401</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0401.pas">
+            <Form>fr_FormE0401</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0402.pas">
+            <Form>fr_EntryFormE0402</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0402.pas">
+            <Form>fr_FormE0402</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0600.pas">
+            <Form>fr_EntryFormE0600</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0600.pas">
+            <Form>fr_FormE0600</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0701.pas">
+            <Form>fr_EntryFormE0701</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0701.pas">
+            <Form>fr_FormE0701</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0702.pas">
+            <Form>fr_EntryFormE0702</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0702.pas">
+            <Form>fr_FormE0702</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormE0800.pas">
+            <Form>fr_EntryFormE0800</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormE0800.pas">
+            <Form>fr_FormE0800</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

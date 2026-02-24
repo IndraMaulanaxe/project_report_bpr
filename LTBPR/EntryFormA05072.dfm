@@ -127,6 +127,48 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       TabOrder = 8
       Width = 298
     end
+    object Label6: TcxLabel
+      Left = 17
+      Top = 109
+      AutoSize = False
+      Caption = 'Tanggal'
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Alignment.Vert = taVCenter
+      Transparent = True
+      Height = 19
+      Width = 135
+      AnchorY = 119
+    end
+    object tgl_kegiatan: TcxDateEdit
+      Left = 185
+      Top = 107
+      Hint = 'Tanggal'
+      TabOrder = 10
+      Width = 121
+    end
+    object cxLabel4: TcxLabel
+      Left = 17
+      Top = 276
+      AutoSize = False
+      Caption = 'Keterangan'
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Alignment.Vert = taVCenter
+      Properties.WordWrap = True
+      Transparent = True
+      Height = 30
+      Width = 135
+      AnchorY = 291
+    end
+    object memketerangan: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 280
+      Hint = 'Keterangan'
+      Properties.OnChange = MemKeteranganPropertiesChange
+      TabOrder = 12
+      Height = 47
+      Width = 298
+    end
     object cxLabel2: TcxLabel
       Left = 17
       Top = 137
@@ -149,49 +191,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefPelaksana
-      TabOrder = 10
-      Width = 298
-    end
-    object Label6: TcxLabel
-      Left = 17
-      Top = 109
-      AutoSize = False
-      Caption = 'Tanggal'
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Transparent = True
-      Height = 19
-      Width = 135
-      AnchorY = 119
-    end
-    object tgl_kegiatan: TcxDateEdit
-      Left = 185
-      Top = 107
-      Hint = 'Tanggal'
-      TabOrder = 12
-      Width = 121
-    end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 276
-      AutoSize = False
-      Caption = 'Keterangan'
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 291
-    end
-    object memketerangan: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 280
-      Hint = 'Keterangan'
-      Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 14
-      Height = 47
       Width = 298
     end
   end

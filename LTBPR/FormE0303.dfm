@@ -1,7 +1,5 @@
-inherited fr_FormE0201: Tfr_FormE0201
-  Caption = 
-    'Form E0201 - Pelaksanaan Tugas dan Tanggung Jawab Anggota Direks' +
-    'i'
+inherited fr_FormE0303: Tfr_FormE0303
+  Caption = 'Entry Form E0303 - Kepemilikan Saham Pada Perusahaan Lain'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +48,7 @@ inherited fr_FormE0201: Tfr_FormE0201
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0201
+        DataController.DataSource = dsMyQE0303
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -87,23 +85,35 @@ inherited fr_FormE0201: Tfr_FormE0201
           HeaderAlignmentHorz = taCenter
           Width = 150
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
+        object cxGridDBTableView1nama: TcxGridDBColumn
+          Caption = 'Nama'
+          DataBinding.FieldName = 'nama'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1sandi_bank_lain: TcxGridDBColumn
+          Caption = 'Sandi Bank Lain'
+          DataBinding.FieldName = 'sandi_bank_lain'
+          HeaderAlignmentHorz = taCenter
+          Width = 150
+        end
+        object cxGridDBTableView1nama_bank_perusahaan_lain: TcxGridDBColumn
+          Caption = 'Nama Bank/Perusahaan Lain'
+          DataBinding.FieldName = 'nama_bank_perusahaan_lain'
           HeaderAlignmentHorz = taCenter
           Width = 350
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
+        object cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn
+          Caption = 'Persentase Kepemilikan'
+          DataBinding.FieldName = 'persentase_kepemilikan'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 155
         end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
-          Width = 350
+          Width = 300
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -249,41 +259,50 @@ inherited fr_FormE0201: Tfr_FormE0201
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0201: TMyDataSource
-    DataSet = MyQE0201
-    Left = 336
-    Top = 216
+  object dsMyQE0303: TMyDataSource
+    DataSet = MyQE0303
+    Left = 312
+    Top = 224
   end
-  object MyQE0201: TMyQuery
+  object MyQE0303: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0201_tugas_tanggung_jawab_direksi')
+      
+        'select * from ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lai' +
+        'n')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
     Top = 280
-    object MyQE0201flag_detail: TStringField
+    object MyQE0303flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0201kode_komponen: TStringField
+    object MyQE0303kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0201nik: TStringField
+    object MyQE0303nik: TStringField
       FieldName = 'nik'
       Size = 25
     end
-    object MyQE0201tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
+    object MyQE0303nama: TStringField
+      FieldName = 'nama'
+      Size = 50
     end
-    object MyQE0201footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
+    object MyQE0303sandi_bank_lain: TStringField
+      FieldName = 'sandi_bank_lain'
+      Size = 6
     end
-    object MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
+    object MyQE0303nama_bank_perusahaan_lain: TStringField
+      FieldName = 'nama_bank_perusahaan_lain'
+      Size = 50
+    end
+    object MyQE0303persentase_kepemilikan: TFloatField
+      FieldName = 'persentase_kepemilikan'
+    end
+    object MyQE0303footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end
