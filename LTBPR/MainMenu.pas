@@ -33,14 +33,6 @@ cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
 
 type
   Tfr_MainMenu = class(TForm)
-    CategoryPanelGroup1: TCategoryPanelGroup;
-    CategoryPanel1: TCategoryPanel;
-    bt_formA0301: TcxButton;
-    grp_login: TcxGroupBox;
-    Label1: TcxLabel;
-    user_id: TcxTextEdit;
-    bt_login: TcxButton;
-    SysLog: TcxMemo;
     PopupMenu1: TPopupMenu;
     M1: TMenuItem;
     N3: TMenuItem;
@@ -62,27 +54,6 @@ type
     ZipForge1: TZipForge;
     HTTP1: TipwHTTP;
     sPathDialog1: TsPathDialog;
-    cp_kepengurusan: TCategoryPanel;
-    cp_kepemilikan: TCategoryPanel;
-    cp_perkembanganbpr: TCategoryPanel;
-    bt_formA0301: TcxButton;
-    bt_formA0304: TcxButton;
-    cxButton1: TcxButton;
-    cp_strategi: TCategoryPanel;
-    cp_laporan_manajemen: TCategoryPanel;
-    cxButton3: TcxButton;
-    cp_sdm: TCategoryPanel;
-    bt_formA0502: TcxButton;
-    bt_formA0506: TcxButton;
-    cp_lap_keuangan: TCategoryPanel;
-    bt_formA05072: TcxButton;
-    cp_lap_akuntan_publik: TCategoryPanel;
-    cp_opini_akuntan: TCategoryPanel;
-    cp_sp_kebenaran_lpran: TCategoryPanel;
-    cp_transparasi: TCategoryPanel;
-    bt_formE0100: TcxButton;
-    bt_formE0201: TcxButton;
-    CategoryPanel10: TCategoryPanel;
     cxGroupBox1: TcxGroupBox;
     cxButton2: TcxButton;
     ProductName: TcxLabel;
@@ -124,7 +95,11 @@ type
     sGaugeJenisLaporan: TdxGaugeDigitalScale;
     sGaugeJenisLaporanCaption1: TdxGaugeDigitalScaleCaption;
     sGaugeStatusCaption1: TdxGaugeDigitalScaleCaption;
-    procedure CategoryPanel1Click(Sender: TObject);
+    CategoryPanelGroup1: TCategoryPanelGroup;
+    cp_lap_lanjutan: TCategoryPanel;
+    cp_transparasi: TCategoryPanel;
+    bt_formE0100: TcxButton;
+    bt_formE0201: TcxButton;
     bt_formE0202: TcxButton;
     bt_formE0203: TcxButton;
     bt_formE0204: TcxButton;
@@ -140,8 +115,24 @@ type
     bt_formE0900: TcxButton;
     bt_formE1000: TcxButton;
     bt_formE1100: TcxButton;
-    cp_lap_lanjutan: TCategoryPanel;
-    procedure CategoryPanel2Click(Sender: TObject);
+    cp_sp_kebenaran_lpran: TCategoryPanel;
+    cp_opini_akuntan: TCategoryPanel;
+    cp_lap_akuntan_publik: TCategoryPanel;
+    cp_lap_keuangan: TCategoryPanel;
+    cp_sdm: TCategoryPanel;
+    bt_formA05072: TcxButton;
+    cp_laporan_manajemen: TCategoryPanel;
+    bt_formA0502: TcxButton;
+    bt_formA0506: TcxButton;
+    cp_strategi: TCategoryPanel;
+    cxButton3: TcxButton;
+    cp_perkembanganbpr: TCategoryPanel;
+    bt_formA0301: TcxButton;
+    bt_formA0304: TcxButton;
+    cxButton1: TcxButton;
+    cp_kepemilikan: TCategoryPanel;
+    cp_kepengurusan: TCategoryPanel;
+    procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure bt_formA0301Click(Sender: TObject);
@@ -163,15 +154,21 @@ type
     procedure bt_restore_pointClick(Sender: TObject);
     procedure bt_restore_dataClick(Sender: TObject);
     procedure bt_formE0202Click(Sender: TObject);
-    procedure bt_formE0203Click(Sender: TObject);
-    procedure bt_formE0302Click(Sender: TObject);
-    procedure bt_formE0303Click(Sender: TObject);
-    procedure bt_formE0401Click(Sender: TObject);
-    procedure bt_formE0402Click(Sender: TObject);
-    procedure bt_formE0600Click(Sender: TObject);
-    procedure bt_formE0701Click(Sender: TObject);
-    procedure bt_formE0702Click(Sender: TObject);
+    procedure cxButton3Click(Sender: TObject);
+    procedure bt_formE1100Click(Sender: TObject);
+    procedure bt_formE1000Click(Sender: TObject);
+    procedure bt_formE0900Click(Sender: TObject);
     procedure bt_formE0800Click(Sender: TObject);
+    procedure bt_formE0702Click(Sender: TObject);
+    procedure bt_formE0701Click(Sender: TObject);
+    procedure bt_formE0600Click(Sender: TObject);
+    procedure bt_formE0500Click(Sender: TObject);
+    procedure bt_formE0402Click(Sender: TObject);
+    procedure bt_formE0401Click(Sender: TObject);
+    procedure bt_formE0303Click(Sender: TObject);
+    procedure bt_formE0302Click(Sender: TObject);
+    procedure bt_formE0204Click(Sender: TObject);
+    procedure bt_formE0203Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -181,21 +178,26 @@ type
 var
   fr_MainMenu: Tfr_MainMenu;
 
-    Var cKodeJenisPelaporan : String;
-
 implementation
 
 uses
   dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
-  DaftarBackupAPOLO,
-  FormA0506, FormA05072, FormE0100, FormE0201, FormE0202, FormE0203, FormE0302,
+  FormA0506, FormA05072, FormE0100, FormE0201, DaftarBackupAPOLO,
+  FormE0202, FormE0203, FormE0302,
   FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800;
+
+  Var cKodeJenisPelaporan : String;
 
 {$R *.dfm}
 
 procedure Tfr_MainMenu.CategoryPanel1Click(Sender: TObject);
 begin
 //  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
+end;
+
+procedure Tfr_MainMenu.cxButton3Click(Sender: TObject);
+begin
+//
 end;
 
 procedure Tfr_MainMenu.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -617,6 +619,16 @@ begin
   fr_FormE0100 := nil;
 end;
 
+procedure Tfr_MainMenu.bt_formE0201Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormE0201') = nil then
+    Application.CreateForm(Tfr_FormE0201, fr_FormE0201);
+  fr_FormE0201.Tag := 0;
+  fr_FormE0201.ShowModal;
+  fr_FormE0201.Free;
+  fr_FormE0201 := nil;
+end;
+
 procedure Tfr_MainMenu.bt_formE0202Click(Sender: TObject);
 begin
   if Application.FindComponent('fr_FormE0202') = nil then
@@ -635,6 +647,11 @@ begin
   fr_FormE0203.ShowModal;
   fr_FormE0203.Free;
   fr_FormE0203 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0204Click(Sender: TObject);
+begin
+//
 end;
 
 procedure Tfr_MainMenu.bt_formE0302Click(Sender: TObject);
@@ -677,6 +694,11 @@ begin
   fr_FormE0402 := nil;
 end;
 
+procedure Tfr_MainMenu.bt_formE0500Click(Sender: TObject);
+begin
+//
+end;
+
 procedure Tfr_MainMenu.bt_formE0600Click(Sender: TObject);
 begin
   if Application.FindComponent('fr_FormE0600') = nil then
@@ -715,6 +737,21 @@ begin
   fr_FormE0800.ShowModal;
   fr_FormE0800.Free;
   fr_FormE0800 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formE0900Click(Sender: TObject);
+begin
+//
+end;
+
+procedure Tfr_MainMenu.bt_formE1000Click(Sender: TObject);
+begin
+//
+end;
+
+procedure Tfr_MainMenu.bt_formE1100Click(Sender: TObject);
+begin
+//
 end;
 
 procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
