@@ -184,7 +184,8 @@ uses
   dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
   FormA0506, FormA05072, FormE0100, FormE0201, DaftarBackupAPOLO,
   FormE0202, FormE0203, FormE0302,
-  FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800;
+  FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800,
+  FormE0900, FormE1000, FormE1100, FormE0204, FormE0500;
 
   Var cKodeJenisPelaporan : String;
 
@@ -651,7 +652,12 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0204Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0204') = nil then
+    Application.CreateForm(Tfr_FormE0204, fr_FormE0204);
+  fr_FormE0204.Tag := 0;
+  fr_FormE0204.ShowModal;
+  fr_FormE0204.Free;
+  fr_FormE0204 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE0302Click(Sender: TObject);
@@ -696,7 +702,12 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0500Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0500') = nil then
+    Application.CreateForm(Tfr_FormE0500, fr_FormE0500);
+  fr_FormE0500.Tag := 0;
+  fr_FormE0500.ShowModal;
+  fr_FormE0500.Free;
+  fr_FormE0500 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE0600Click(Sender: TObject);
@@ -741,17 +752,32 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0900Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0900') = nil then
+    Application.CreateForm(Tfr_FormE0900, fr_FormE0900);
+  fr_FormE0900.Tag := 0;
+  fr_FormE0900.ShowModal;
+  fr_FormE0900.Free;
+  fr_FormE0900 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE1000Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE1000') = nil then
+    Application.CreateForm(Tfr_FormE1000, fr_FormE1000);
+  fr_FormE1000.Tag := 0;
+  fr_FormE1000.ShowModal;
+  fr_FormE1000.Free;
+  fr_FormE1000 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE1100Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE1100') = nil then
+    Application.CreateForm(Tfr_FormE1100, fr_FormE1100);
+  fr_FormE1100.Tag := 0;
+  fr_FormE1100.ShowModal;
+  fr_FormE1100.Free;
+  fr_FormE1100 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);

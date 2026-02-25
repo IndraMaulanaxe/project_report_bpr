@@ -1,7 +1,7 @@
-inherited fr_FormE0203: Tfr_FormE0203
+inherited fr_FormE1100: Tfr_FormE1100
   Caption = 
-    'Form E0203 - Tugas, Tanggung Jawab, Program Kerja, dan Realisasi' +
-    ' Program Kerja Komite'
+    'Form E1100 - Pemberian Dana untuk Kegiatan Sosial dan Kegiatan P' +
+    'olitik'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +50,7 @@ inherited fr_FormE0203: Tfr_FormE0203
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0203
+        DataController.DataSource = dsMyQE1100
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,41 +81,41 @@ inherited fr_FormE0203: Tfr_FormE0203
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1komite: TcxGridDBColumn
-          Caption = 'Komite'
-          DataBinding.FieldName = 'komite'
-          HeaderAlignmentHorz = taCenter
-          Width = 150
-        end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1program: TcxGridDBColumn
-          Caption = 'Program'
-          DataBinding.FieldName = 'program'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1realisasi: TcxGridDBColumn
-          Caption = 'Realisasi'
-          DataBinding.FieldName = 'realisasi'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1jumlah: TcxGridDBColumn
-          Caption = 'Jumlah'
-          DataBinding.FieldName = 'jumlah'
+        object cxGridDBTableView1tanggal_pelaksanaan: TcxGridDBColumn
+          Caption = 'Tanggal'
+          DataBinding.FieldName = 'tanggal_pelaksanaan'
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tindak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
+        object cxGridDBTableView1jenis_kegiatan_sosial_politik: TcxGridDBColumn
+          Caption = 'Jenis Kegiatan'
+          DataBinding.FieldName = 'jenis_kegiatan_sosial_politik'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1penjelasan_kegiatan: TcxGridDBColumn
+          Caption = 'Penjelasan Kegiatan'
+          DataBinding.FieldName = 'penjelasan_kegiatan'
           HeaderAlignmentHorz = taCenter
           Width = 250
+        end
+        object cxGridDBTableView1penerima_dana: TcxGridDBColumn
+          Caption = 'Penerima Dana'
+          DataBinding.FieldName = 'penerima_dana'
+          HeaderAlignmentHorz = taCenter
+          Width = 150
+        end
+        object cxGridDBTableView1jumlah_rp: TcxGridDBColumn
+          Caption = 'Jumlah (Rp.)'
+          DataBinding.FieldName = 'jumlah_rp'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
+          HeaderAlignmentHorz = taCenter
+          Width = 350
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -261,48 +261,47 @@ inherited fr_FormE0203: Tfr_FormE0203
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0203: TMyDataSource
-    DataSet = MyQE0203
+  object dsMyQE1100: TMyDataSource
+    DataSet = MyQE1100
     Left = 312
     Top = 224
   end
-  object MyQE0203: TMyQuery
+  object MyQE1100: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0203_tugas_tanggung_jawab_komite')
+      'select * from ltbprk_e1100_pemberian_dana_sosial_politik')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 336
+    Left = 312
     Top = 280
-    object MyQE0203flag_detail: TStringField
+    object MyQE1100flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0203kode_komponen: TStringField
+    object MyQE1100kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0203komite: TStringField
-      FieldName = 'komite'
+    object MyQE1100tanggal_pelaksanaan: TDateField
+      FieldName = 'tanggal_pelaksanaan'
+    end
+    object MyQE1100jenis_kegiatan_sosial_politik: TStringField
+      FieldName = 'jenis_kegiatan_sosial_politik'
       Size = 2
     end
-    object MyQE0203tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
+    object MyQE1100penjelasan_kegiatan: TStringField
+      FieldName = 'penjelasan_kegiatan'
       Size = 2000
     end
-    object MyQE0203program: TStringField
-      FieldName = 'program'
-      Size = 2000
+    object MyQE1100penerima_dana: TStringField
+      FieldName = 'penerima_dana'
+      Size = 100
     end
-    object MyQE0203realisasi: TStringField
-      FieldName = 'realisasi'
-      Size = 2000
+    object MyQE1100jumlah_rp: TFloatField
+      FieldName = 'jumlah_rp'
     end
-    object MyQE0203jumlah: TIntegerField
-      FieldName = 'jumlah'
-    end
-    object MyQE0203footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
+    object MyQE1100footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

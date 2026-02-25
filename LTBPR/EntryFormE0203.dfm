@@ -14,7 +14,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 576
-    ExplicitHeight = 257
+    ExplicitHeight = 333
     Height = 333
     Width = 576
     object memprogram: TcxMemo
@@ -186,7 +186,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   inherited PanelFooter: TcxGroupBox
     Top = 333
-    ExplicitTop = 257
+    ExplicitTop = 333
     ExplicitWidth = 576
     ExplicitHeight = 44
     Height = 44
@@ -317,7 +317,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   object dsMyQRefKomite: TMyDataSource
     DataSet = MyQRefKomite
-    Left = 392
+    Left = 408
     Top = 8
   end
   object MyQRefKomite: TMyQuery
@@ -327,7 +327,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       'FROM `ref_komite`'
       'ORDER BY sandi')
     Options.FieldOrigins = foNone
-    Left = 464
+    Left = 480
     Top = 8
     object MyQRefKomitesandi: TStringField
       FieldName = 'sandi'

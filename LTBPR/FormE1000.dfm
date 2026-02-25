@@ -1,7 +1,5 @@
-inherited fr_FormE0203: Tfr_FormE0203
-  Caption = 
-    'Form E0203 - Tugas, Tanggung Jawab, Program Kerja, dan Realisasi' +
-    ' Program Kerja Komite'
+inherited fr_FormE1000: Tfr_FormE1000
+  Caption = 'Form E1000 - Transaksi yang Mengandung Benturan Kepentingan'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +48,7 @@ inherited fr_FormE0203: Tfr_FormE0203
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0203
+        DataController.DataSource = dsMyQE1000
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,39 +79,63 @@ inherited fr_FormE0203: Tfr_FormE0203
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1komite: TcxGridDBColumn
-          Caption = 'Komite'
-          DataBinding.FieldName = 'komite'
+        object cxGridDBTableView1pihak_yang_memiliki_nama: TcxGridDBColumn
+          Caption = 'Nama Pihak Yang Memiliki'
+          DataBinding.FieldName = 'pihak_yang_memiliki_nama'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 200
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
+        object cxGridDBTableView1pihak_yang_memiliki_jabatan: TcxGridDBColumn
+          Caption = 'Jabatan Pihak Yang Memiliki'
+          DataBinding.FieldName = 'pihak_yang_memiliki_jabatan'
           HeaderAlignmentHorz = taCenter
-          Width = 250
+          Width = 200
         end
-        object cxGridDBTableView1program: TcxGridDBColumn
-          Caption = 'Program'
-          DataBinding.FieldName = 'program'
+        object cxGridDBTableView1pihak_yang_memiliki_nik: TcxGridDBColumn
+          Caption = 'NIK Pihak Yang Memiliki'
+          DataBinding.FieldName = 'pihak_yang_memiliki_nik'
           HeaderAlignmentHorz = taCenter
-          Width = 250
+          Width = 200
         end
-        object cxGridDBTableView1realisasi: TcxGridDBColumn
-          Caption = 'Realisasi'
-          DataBinding.FieldName = 'realisasi'
+        object cxGridDBTableView1pengambil_keputusan_nama: TcxGridDBColumn
+          Caption = 'Nama Pengambil Keputusan'
+          DataBinding.FieldName = 'pengambil_keputusan_nama'
           HeaderAlignmentHorz = taCenter
-          Width = 250
+          Width = 200
         end
-        object cxGridDBTableView1jumlah: TcxGridDBColumn
-          Caption = 'Jumlah'
-          DataBinding.FieldName = 'jumlah'
+        object cxGridDBTableView1pengambil_keputusan_jabatan: TcxGridDBColumn
+          Caption = 'Jabatan Pengambil Keputusan'
+          DataBinding.FieldName = 'pengambil_keputusan_jabatan'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1pengambil_keputusan_nik: TcxGridDBColumn
+          Caption = 'NIK Pengambil Keputusan'
+          DataBinding.FieldName = 'pengambil_keputusan_nik'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1jenis_transaksi: TcxGridDBColumn
+          Caption = 'Jenis Transaksi'
+          DataBinding.FieldName = 'jenis_transaksi'
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tindak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
+        object cxGridDBTableView1nilai_transaksi: TcxGridDBColumn
+          Caption = 'Nilai Transaksi'
+          DataBinding.FieldName = 'nilai_transaksi'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1keterangan: TcxGridDBColumn
+          Caption = 'Keterangan'
+          DataBinding.FieldName = 'keterangan'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
+        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
+          Caption = 'Penjelasan'
+          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
           Width = 250
         end
@@ -261,48 +283,64 @@ inherited fr_FormE0203: Tfr_FormE0203
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0203: TMyDataSource
-    DataSet = MyQE0203
+  object dsMyQE1000: TMyDataSource
+    DataSet = MyQE1000
     Left = 312
     Top = 224
   end
-  object MyQE0203: TMyQuery
+  object MyQE1000: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0203_tugas_tanggung_jawab_komite')
+      'select * from ltbprk_e1000_transaksi_benturan_kepentingan')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 336
+    Left = 312
     Top = 280
-    object MyQE0203flag_detail: TStringField
+    object MyQE1000flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0203kode_komponen: TStringField
+    object MyQE1000kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0203komite: TStringField
-      FieldName = 'komite'
-      Size = 2
+    object MyQE1000pihak_yang_memiliki_nama: TStringField
+      FieldName = 'pihak_yang_memiliki_nama'
+      Size = 50
     end
-    object MyQE0203tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
+    object MyQE1000pihak_yang_memiliki_jabatan: TStringField
+      FieldName = 'pihak_yang_memiliki_jabatan'
+      Size = 50
     end
-    object MyQE0203program: TStringField
-      FieldName = 'program'
-      Size = 2000
+    object MyQE1000pihak_yang_memiliki_nik: TStringField
+      FieldName = 'pihak_yang_memiliki_nik'
+      Size = 25
     end
-    object MyQE0203realisasi: TStringField
-      FieldName = 'realisasi'
-      Size = 2000
+    object MyQE1000pengambil_keputusan_nama: TStringField
+      FieldName = 'pengambil_keputusan_nama'
+      Size = 50
     end
-    object MyQE0203jumlah: TIntegerField
-      FieldName = 'jumlah'
+    object MyQE1000pengambil_keputusan_jabatan: TStringField
+      FieldName = 'pengambil_keputusan_jabatan'
+      Size = 50
     end
-    object MyQE0203footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
+    object MyQE1000pengambil_keputusan_nik: TStringField
+      FieldName = 'pengambil_keputusan_nik'
+      Size = 25
+    end
+    object MyQE1000jenis_transaksi: TStringField
+      FieldName = 'jenis_transaksi'
+      Size = 100
+    end
+    object MyQE1000nilai_transaksi: TFloatField
+      FieldName = 'nilai_transaksi'
+    end
+    object MyQE1000keterangan: TStringField
+      FieldName = 'keterangan'
+      Size = 200
+    end
+    object MyQE1000footer_1_penjelasan_lebih_lanjut: TStringField
+      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

@@ -414,6 +414,7 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 180
     Width = 361
     Height = 404
+    VertScrollBar.Position = 333
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -425,20 +426,20 @@ object fr_MainMenu: Tfr_MainMenu
     ParentDoubleBuffered = False
     TabOrder = 6
     object cp_lap_lanjutan: TCategoryPanel
-      Top = 386
-      Height = 31
+      Top = 746
+      Height = 30
       Caption = 'Laporan Keberlanjutan'
       Color = clGray
+      Collapsed = True
       TabOrder = 0
+      ExpandedHeight = 31
     end
     object cp_transparasi: TCategoryPanel
-      Top = 356
-      Height = 30
+      Top = 23
+      Height = 723
       Caption = 'Transparansi Tata Kelola'
       Color = clGray
-      Collapsed = True
       TabOrder = 1
-      ExpandedHeight = 723
       object bt_formE0100: TcxButton
         Left = 0
         Top = 0
@@ -499,6 +500,7 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 4
         WordWrap = True
         OnClick = bt_formE0204Click
+        ExplicitTop = 166
       end
       object bt_formE0600: TcxButton
         Left = 0
@@ -638,14 +640,14 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_sp_kebenaran_lpran: TCategoryPanel
-      Top = 325
+      Top = -8
       Height = 31
       Caption = 'Surat Pernyataan Kebenaran Laporan Keuangan Tahunan'
       Color = clGray
       TabOrder = 2
     end
     object cp_opini_akuntan: TCategoryPanel
-      Top = 295
+      Top = -38
       Height = 30
       Caption = 'Opini dari Akuntan'
       Color = clGray
@@ -654,7 +656,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 31
     end
     object cp_lap_akuntan_publik: TCategoryPanel
-      Top = 265
+      Top = -68
       Height = 30
       Caption = 'Laporan Akuntan Publik'
       Color = clGray
@@ -663,7 +665,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 31
     end
     object cp_lap_keuangan: TCategoryPanel
-      Top = 235
+      Top = -98
       Height = 30
       Caption = 'Laporan Keuangan Tahunan'
       Color = clGray
@@ -672,7 +674,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 185
     end
     object cp_sdm: TCategoryPanel
-      Top = 205
+      Top = -128
       Height = 30
       Caption = 'Pengembangan Sumber Daya Manusia'
       Color = clGray
@@ -692,7 +694,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_laporan_manajemen: TCategoryPanel
-      Top = 175
+      Top = -158
       Height = 30
       Caption = 'Laporan Manajemen'
       Color = clGray
@@ -723,7 +725,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_strategi: TCategoryPanel
-      Top = 145
+      Top = -188
       Height = 30
       Caption = 'Strategi Dan Kebijakan Manejemen'
       Color = clGray
@@ -743,7 +745,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_perkembanganbpr: TCategoryPanel
-      Top = 115
+      Top = -218
       Height = 30
       Caption = 'Perkembangan Usaha BPR'
       Color = clGray
@@ -785,7 +787,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_kepemilikan: TCategoryPanel
-      Top = 85
+      Top = -248
       Height = 30
       Caption = 'Kepemilikan'
       Color = clGray
@@ -794,7 +796,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 85
     end
     object cp_kepengurusan: TCategoryPanel
-      Top = 0
+      Top = -333
       Height = 85
       Caption = 'Kepengurusan'
       Color = clGray

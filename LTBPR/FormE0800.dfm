@@ -279,7 +279,7 @@ inherited fr_FormE0800: Tfr_FormE0800
   end
   object dsMyQE0800: TMyDataSource
     DataSet = MyQE0800
-    Left = 312
+    Left = 336
     Top = 224
   end
   object MyQE0800: TMyQuery

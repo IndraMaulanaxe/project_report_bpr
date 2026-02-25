@@ -1,7 +1,7 @@
-inherited fr_FormE0203: Tfr_FormE0203
+inherited fr_FormE0204: Tfr_FormE0204
   Caption = 
-    'Form E0203 - Tugas, Tanggung Jawab, Program Kerja, dan Realisasi' +
-    ' Program Kerja Komite'
+    'Entry Form E0204 - Struktur, Keanggotaan, Keahlian, dan Independ' +
+    'ensi Anggota Komite'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -50,7 +50,7 @@ inherited fr_FormE0203: Tfr_FormE0203
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQE0203
+        DataController.DataSource = dsMyQE0204
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -81,35 +81,59 @@ inherited fr_FormE0203: Tfr_FormE0203
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1komite: TcxGridDBColumn
-          Caption = 'Komite'
-          DataBinding.FieldName = 'komite'
+        object cxGridDBTableView1nama_anggota_komite: TcxGridDBColumn
+          Caption = 'Nama Anggota Komite'
+          DataBinding.FieldName = 'nama_anggota_komite'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 200
         end
-        object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
-          Caption = 'Tugas Dan Tanggung Jawab'
-          DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1program: TcxGridDBColumn
-          Caption = 'Program'
-          DataBinding.FieldName = 'program'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1realisasi: TcxGridDBColumn
-          Caption = 'Realisasi'
-          DataBinding.FieldName = 'realisasi'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1jumlah: TcxGridDBColumn
-          Caption = 'Jumlah'
-          DataBinding.FieldName = 'jumlah'
+        object cxGridDBTableView1nik: TcxGridDBColumn
+          Caption = 'NIK'
+          DataBinding.FieldName = 'nik'
           HeaderAlignmentHorz = taCenter
           Width = 100
+        end
+        object cxGridDBTableView1keahlian: TcxGridDBColumn
+          Caption = 'Keahlian'
+          DataBinding.FieldName = 'keahlian'
+          HeaderAlignmentHorz = taCenter
+          Width = 300
+        end
+        object cxGridDBTableView1komite_audit: TcxGridDBColumn
+          Caption = 'Komite Audit'
+          DataBinding.FieldName = 'komite_audit'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1komite_pemantau_risiko: TcxGridDBColumn
+          Caption = 'Komite Pemantau Risiko'
+          DataBinding.FieldName = 'komite_pemantau_risiko'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1komite_remunerasi_dan_nominasi: TcxGridDBColumn
+          Caption = 'Komite Remunerasi'
+          DataBinding.FieldName = 'komite_remunerasi_dan_nominasi'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1komite_management_risiko: TcxGridDBColumn
+          Caption = 'Komite Management Risiko'
+          DataBinding.FieldName = 'komite_management_risiko'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1komite_lainnya: TcxGridDBColumn
+          Caption = 'Komite Lainnya'
+          DataBinding.FieldName = 'komite_lainnya'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1pihak_independent: TcxGridDBColumn
+          Caption = 'Pihak Independent'
+          DataBinding.FieldName = 'pihak_independent'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
         end
         object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
           Caption = 'Tindak Lanjut'
@@ -261,47 +285,64 @@ inherited fr_FormE0203: Tfr_FormE0203
       FieldName = 'pbdp'
     end
   end
-  object dsMyQE0203: TMyDataSource
-    DataSet = MyQE0203
+  object dsMyQE0204: TMyDataSource
+    DataSet = MyQE0204
     Left = 312
     Top = 224
   end
-  object MyQE0203: TMyQuery
+  object MyQE0204: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0203_tugas_tanggung_jawab_komite')
+      'select * from ltbprk_e0204_struktur_independensi_anggota_komite')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 336
     Top = 280
-    object MyQE0203flag_detail: TStringField
+    object MyQE0204flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 3
     end
-    object MyQE0203kode_komponen: TStringField
+    object MyQE0204kode_komponen: TStringField
       FieldName = 'kode_komponen'
       Size = 12
     end
-    object MyQE0203komite: TStringField
-      FieldName = 'komite'
+    object MyQE0204nama_anggota_komite: TStringField
+      FieldName = 'nama_anggota_komite'
+      Size = 50
+    end
+    object MyQE0204nik: TStringField
+      FieldName = 'nik'
+      Size = 25
+    end
+    object MyQE0204keahlian: TStringField
+      FieldName = 'keahlian'
+      Size = 2000
+    end
+    object MyQE0204komite_audit: TStringField
+      FieldName = 'komite_audit'
       Size = 2
     end
-    object MyQE0203tugas_dan_tanggung_jawab: TStringField
-      FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
+    object MyQE0204komite_pemantau_risiko: TStringField
+      FieldName = 'komite_pemantau_risiko'
+      Size = 2
     end
-    object MyQE0203program: TStringField
-      FieldName = 'program'
-      Size = 2000
+    object MyQE0204komite_remunerasi_dan_nominasi: TStringField
+      FieldName = 'komite_remunerasi_dan_nominasi'
+      Size = 2
     end
-    object MyQE0203realisasi: TStringField
-      FieldName = 'realisasi'
-      Size = 2000
+    object MyQE0204komite_management_risiko: TStringField
+      FieldName = 'komite_management_risiko'
+      Size = 2
     end
-    object MyQE0203jumlah: TIntegerField
-      FieldName = 'jumlah'
+    object MyQE0204komite_lainnya: TStringField
+      FieldName = 'komite_lainnya'
+      Size = 2
     end
-    object MyQE0203footer_1_tindak_lanjut: TStringField
+    object MyQE0204pihak_independent: TStringField
+      FieldName = 'pihak_independent'
+      Size = 1
+    end
+    object MyQE0204footer_1_tindak_lanjut: TStringField
       FieldName = 'footer_1_tindak_lanjut'
       Size = 2000
     end
