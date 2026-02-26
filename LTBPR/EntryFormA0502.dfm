@@ -11,7 +11,6 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
     ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 569
     ExplicitHeight = 280
     Height = 280
@@ -34,6 +33,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 166
       Hint = 'Uraian'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -44,6 +44,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 219
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -67,6 +68,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -108,6 +110,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 113
       Hint = 'Nama Produk'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 48
@@ -129,6 +132,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 54
       Hint = 'Kegiatan Usaha'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -154,6 +158,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 83
       Hint = 'Jenis Produk'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item

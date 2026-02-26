@@ -10,12 +10,11 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 493
-    ExplicitWidth = 509
+    ExplicitWidth = 493
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
-    ExplicitWidth = 509
-    ExplicitHeight = 526
+    ExplicitWidth = 493
+    ExplicitHeight = 475
     Height = 475
     Width = 493
     object cxGroupBox1: TcxGroupBox
@@ -44,6 +43,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'Nama Pihak Yang Memiliki'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -71,6 +71,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'Jabatan Pihak Yang Memiliki'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -98,6 +99,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'NIK Nama Pihak Yang Memiliki'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -134,6 +136,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'Nama Pengambil Keputusan'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -161,6 +164,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'Jabatan Pengambil Keputusan'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -188,6 +192,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Hint = 'NIK Nama Pengambil Keputusan'
         TabStop = False
         AutoSize = False
+        ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
         StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -242,6 +247,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Hint = 'Jenis Transaksi'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -256,6 +262,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -284,6 +291,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Left = 185
       Top = 414
       Hint = 'Penjelasan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 8
       Height = 47
@@ -293,6 +301,9 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Left = 185
       Top = 331
       Hint = 'Nilai Transaksi'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 9
       Width = 121
@@ -315,6 +326,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Left = 185
       Top = 361
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 11
       Height = 47
@@ -323,8 +335,8 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   end
   inherited PanelFooter: TcxGroupBox
     Top = 475
-    ExplicitTop = 180
-    ExplicitWidth = 509
+    ExplicitTop = 475
+    ExplicitWidth = 493
     ExplicitHeight = 44
     Height = 44
     Width = 493
@@ -360,7 +372,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Left = 306
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 322
+      ExplicitLeft = 306
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -369,14 +381,14 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 504
+      ExplicitLeft = 488
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 397
       Height = 34
-      ExplicitLeft = 413
+      ExplicitLeft = 397
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -385,7 +397,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 316
+      ExplicitLeft = 300
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -405,7 +417,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 310
+      ExplicitLeft = 294
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -415,7 +427,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 304
+      ExplicitLeft = 288
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -425,7 +437,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 298
+      ExplicitLeft = 282
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -435,14 +447,14 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 292
+      ExplicitLeft = 276
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 493
-    ExplicitWidth = 509
+    ExplicitWidth = 493
     inherited IconClose: TLabel
       Left = 459
       ExplicitLeft = 771

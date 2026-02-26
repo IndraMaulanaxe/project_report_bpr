@@ -8,12 +8,11 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 498
-    ExplicitWidth = 569
+    ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
-    ExplicitWidth = 569
-    ExplicitHeight = 340
+    ExplicitWidth = 498
+    ExplicitHeight = 229
     Height = 229
     Width = 498
     object cxLabel8: TcxLabel
@@ -34,6 +33,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 185
       Top = 113
       Hint = 'Materi Pembahasan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -57,6 +57,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -96,6 +97,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 185
       Top = 53
       Hint = 'Tanggal'
+      ParentColor = True
       TabOrder = 6
       Width = 121
     end
@@ -117,6 +119,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 185
       Top = 166
       Hint = 'Penjelasan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 8
       Height = 47
@@ -125,8 +128,8 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
   end
   inherited PanelFooter: TcxGroupBox
     Top = 229
-    ExplicitTop = 340
-    ExplicitWidth = 569
+    ExplicitTop = 229
+    ExplicitWidth = 498
     ExplicitHeight = 44
     Height = 44
     Width = 498
@@ -162,7 +165,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 311
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 382
+      ExplicitLeft = 311
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -171,14 +174,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 564
+      ExplicitLeft = 493
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 402
       Height = 34
-      ExplicitLeft = 473
+      ExplicitLeft = 402
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -187,7 +190,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 376
+      ExplicitLeft = 305
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -207,7 +210,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 370
+      ExplicitLeft = 299
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -217,7 +220,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 364
+      ExplicitLeft = 293
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -227,7 +230,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 358
+      ExplicitLeft = 287
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -237,14 +240,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 352
+      ExplicitLeft = 281
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 498
-    ExplicitWidth = 569
+    ExplicitWidth = 498
     inherited IconClose: TLabel
       Left = 464
       ExplicitLeft = 771
@@ -254,6 +257,9 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
     Left = 185
     Top = 83
     Hint = 'Jumlah Peserta'
+    EditValue = '0'
+    ParentColor = True
+    Properties.Alignment.Horz = taRightJustify
     Properties.DisplayFormat = '#,##0'
     TabOrder = 4
     Width = 121

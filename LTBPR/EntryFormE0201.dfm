@@ -13,9 +13,8 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
     ExplicitWidth = 518
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 518
-    ExplicitHeight = 257
+    ExplicitHeight = 273
     Height = 273
     Width = 518
     object memlebih_lanjut: TcxMemo
@@ -23,6 +22,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Left = 185
       Top = 190
       Hint = 'Penjesalan Lebih Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 0
       Height = 47
@@ -46,6 +46,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -89,6 +90,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Left = 185
       Top = 136
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 5
       Height = 48
@@ -111,6 +113,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Left = 185
       Top = 83
       Hint = 'Tugas Dan Tanggung Jawab'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 47
@@ -135,6 +138,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -147,7 +151,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
   end
   inherited PanelFooter: TcxGroupBox
     Top = 273
-    ExplicitTop = 257
+    ExplicitTop = 273
     ExplicitWidth = 518
     ExplicitHeight = 44
     Height = 44
@@ -185,7 +189,6 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       OnClick = btlb_SaveClick
       ExplicitLeft = 331
-      ExplicitTop = 6
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton

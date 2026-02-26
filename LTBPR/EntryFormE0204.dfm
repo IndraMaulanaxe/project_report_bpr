@@ -10,12 +10,11 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 498
-    ExplicitWidth = 576
+    ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
-    ExplicitWidth = 634
-    ExplicitHeight = 601
+    ExplicitWidth = 498
+    ExplicitHeight = 404
     Height = 404
     Width = 498
     object kode_komponen: TcxButtonEdit
@@ -23,6 +22,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -66,6 +66,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 342
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 3
       Height = 48
@@ -76,6 +77,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 112
       Hint = 'Keahlian'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 4
       Height = 47
@@ -109,6 +111,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 165
       Hint = 'Komite Audit'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -123,6 +126,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 195
       Hint = 'Komite Pemantau Risiko'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -148,6 +152,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 254
       Hint = 'Komite Manajemen Risiko'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -173,6 +178,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 185
       Top = 224
       Hint = 'Komite Remunerasi dan Nominasi'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -212,6 +218,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Hint = 'Nama Anggota Komite'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -224,8 +231,8 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
   end
   inherited PanelFooter: TcxGroupBox
     Top = 404
-    ExplicitTop = 333
-    ExplicitWidth = 576
+    ExplicitTop = 404
+    ExplicitWidth = 498
     ExplicitHeight = 44
     Height = 44
     Width = 498
@@ -261,7 +268,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Left = 311
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 389
+      ExplicitLeft = 311
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -270,14 +277,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 571
+      ExplicitLeft = 493
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 402
       Height = 34
-      ExplicitLeft = 480
+      ExplicitLeft = 402
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -286,7 +293,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 383
+      ExplicitLeft = 305
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -306,7 +313,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 377
+      ExplicitLeft = 299
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -316,7 +323,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 371
+      ExplicitLeft = 293
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -326,7 +333,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 365
+      ExplicitLeft = 287
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -336,14 +343,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 359
+      ExplicitLeft = 281
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 498
-    ExplicitWidth = 576
+    ExplicitWidth = 498
     inherited IconClose: TLabel
       Left = 464
       ExplicitLeft = 771
@@ -354,6 +361,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Left = 185
     Top = 312
     Hint = 'Pihak Independen'
+    ParentColor = True
     Properties.KeyFieldNames = 'sandi'
     Properties.ListColumns = <
       item
@@ -379,6 +387,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Left = 185
     Top = 282
     Hint = 'Komite Lainnya'
+    ParentColor = True
     Properties.KeyFieldNames = 'sandi'
     Properties.ListColumns = <
       item
@@ -418,6 +427,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Hint = 'NIK'
     TabStop = False
     AutoSize = False
+    ParentColor = True
     Properties.Alignment.Horz = taLeftJustify
     Style.LookAndFeel.Kind = lfOffice11
     StyleDisabled.LookAndFeel.Kind = lfOffice11

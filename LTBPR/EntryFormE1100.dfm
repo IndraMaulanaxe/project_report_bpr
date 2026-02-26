@@ -13,7 +13,6 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
     ExplicitWidth = 493
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 493
     ExplicitHeight = 283
     Height = 283
@@ -62,6 +61,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Hint = 'Penerima Dana'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -76,6 +76,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -104,6 +105,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Left = 184
       Top = 225
       Hint = 'Penjelasan Lanjutan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 47
@@ -113,6 +115,9 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Left = 184
       Top = 195
       Hint = 'Nilai Transaksi'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 7
       Width = 121
@@ -133,6 +138,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Left = 185
       Top = 53
       Hint = 'Tanggal Pelaksanaan'
+      ParentColor = True
       TabOrder = 9
       Width = 121
     end
@@ -152,6 +158,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Left = 184
       Top = 83
       Hint = 'Jenis Kegiatan'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -179,6 +186,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Left = 184
       Top = 113
       Hint = 'Penjelasan Kegiatan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 13
       Height = 47
@@ -187,7 +195,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
   end
   inherited PanelFooter: TcxGroupBox
     Top = 283
-    ExplicitTop = 475
+    ExplicitTop = 283
     ExplicitWidth = 493
     ExplicitHeight = 44
     Height = 44

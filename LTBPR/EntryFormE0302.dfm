@@ -11,9 +11,8 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
     ExplicitWidth = 576
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 576
-    ExplicitHeight = 333
+    ExplicitHeight = 255
     Height = 255
     Width = 576
     object kode_komponen: TcxButtonEdit
@@ -21,6 +20,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -64,6 +64,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Left = 185
       Top = 196
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 3
       Height = 48
@@ -86,6 +87,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Left = 185
       Top = 83
       Hint = 'Nama Kelompok Usaha BPR'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 5
       Height = 47
@@ -119,7 +121,9 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Left = 185
       Top = 166
       Hint = 'Persentase Kepemilikan Tahun Sebelumnya(%)'
-      EditValue = 0.100000000000000000
+      EditValue = 0.000000000000000000
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0.00'
       Properties.MaxValue = 100.000000000000000000
       Properties.MinValue = 0.100000000000000000
@@ -143,7 +147,9 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Left = 185
       Top = 136
       Hint = 'Persentase Kepemilikan (%)'
-      EditValue = 0.100000000000000000
+      EditValue = 0.000000000000000000
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0.00'
       Properties.MaxValue = 100.000000000000000000
       Properties.MinValue = 0.100000000000000000
@@ -157,6 +163,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -169,7 +176,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
   end
   inherited PanelFooter: TcxGroupBox
     Top = 255
-    ExplicitTop = 333
+    ExplicitTop = 255
     ExplicitWidth = 576
     ExplicitHeight = 44
     Height = 44

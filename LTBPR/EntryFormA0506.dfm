@@ -35,6 +35,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 197
       Hint = 'Jenis Kerja Sama'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -45,6 +46,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 250
       Hint = 'Uraian Kerja Sama'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -68,6 +70,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -78,7 +81,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Properties.Images = dm_bpr1.ImageList1
       TabOrder = 4
       Height = 24
-      Width = 103
+      Width = 121
     end
     object Label3: TcxLabel
       Left = 17
@@ -109,6 +112,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 84
       Hint = 'Nama Bank Atau Lembaga'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 48
@@ -130,6 +134,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 54
       Hint = 'Referensi Lembaga'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -155,6 +160,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 137
       Hint = 'Sandi Bank'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -171,6 +177,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Hint = 'NPWP'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -208,6 +215,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 303
       Hint = 'Tanggal Kerja Sama'
+      ParentColor = True
       TabOrder = 15
       Width = 121
     end
@@ -229,6 +237,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Left = 185
       Top = 333
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 17
       Height = 47

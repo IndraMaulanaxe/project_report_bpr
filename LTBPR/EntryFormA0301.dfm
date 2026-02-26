@@ -22,6 +22,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Nomor Akta Pendirian'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -58,6 +59,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 84
       Hint = 'Tanggal Akta'
+      ParentColor = True
       TabOrder = 3
       Width = 121
     end
@@ -90,6 +92,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 146
       Hint = 'Tanggal Perubahan'
+      ParentColor = True
       TabOrder = 6
       Width = 121
     end
@@ -100,6 +103,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Nomor Perubahan'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -128,6 +132,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Nomor Pengesahan'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -141,6 +146,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 210
       Hint = 'Tanggal Pengesahan'
+      ParentColor = True
       TabOrder = 10
       Width = 121
     end
@@ -174,6 +180,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 241
       Hint = 'Tanggal Beroperasi'
+      ParentColor = True
       TabOrder = 13
       Width = 121
     end
@@ -182,6 +189,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 272
       Hint = 'Bidang Usaha'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 14
       Height = 24
@@ -218,6 +226,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 302
       Hint = 'Tempat Kedudukan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 17
       Height = 47
@@ -239,6 +248,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 358
       Hint = 'Nama Akuntan Publik'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -253,6 +263,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Left = 185
       Top = 388
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 20
       Height = 47
@@ -276,6 +287,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True

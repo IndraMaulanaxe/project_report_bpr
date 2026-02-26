@@ -20,6 +20,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -63,6 +64,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Left = 185
       Top = 245
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 3
       Height = 48
@@ -86,6 +88,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -101,6 +104,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Top = 191
       Hint = 'Hubungan Keluarga[III. Pemegang Saham]'
       HelpType = htKeyword
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 48
@@ -254,6 +258,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
     Left = 185
     Top = 137
     Hint = 'Hubungan Keluarga[II. Anggota Dewan Komisaris]'
+    ParentColor = True
     Properties.OnChange = MemKeteranganPropertiesChange
     TabOrder = 4
     Height = 48
@@ -280,6 +285,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
     Left = 185
     Top = 83
     Hint = 'Hubungan Keluarga[I. Anggota Direksi]'
+    ParentColor = True
     Properties.OnChange = MemKeteranganPropertiesChange
     TabOrder = 6
     Height = 48

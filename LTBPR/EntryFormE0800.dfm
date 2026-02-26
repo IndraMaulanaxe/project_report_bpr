@@ -46,6 +46,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 243
       Top = 291
       Hint = 'Penjelasan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -68,6 +69,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 241
       Top = 83
       Hint = 'Anggota Direksi Tahun Laporan'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 4
       Width = 121
@@ -76,6 +80,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 242
       Top = 112
       Hint = 'Anggota Komisaris Tahun Lalu'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 5
       Width = 121
@@ -85,6 +92,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 241
       Top = 23
       Hint = 'Kode Komponen'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -111,6 +119,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 241
       Top = 53
       Hint = 'Anggota Direksi Tahun Lalu'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 8
       Width = 121
@@ -119,6 +130,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 242
       Top = 142
       Hint = 'Anggota Komisaris Tahun Laporan'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 9
       Width = 121
@@ -127,6 +141,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 243
       Top = 261
       Hint = 'Pegawai Tidak Tetap Tahun Laporan'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 10
       Width = 121
@@ -135,6 +152,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 243
       Top = 231
       Hint = 'Pegawai Tidak Tetap Tahun Lalu'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 11
       Width = 121
@@ -143,6 +163,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 243
       Top = 202
       Hint = 'Pegawai Tetap Tahun Laporan'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 12
       Width = 121
@@ -151,6 +174,9 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Left = 242
       Top = 172
       Hint = 'Pegawai Tetap Tahun Lalu'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 13
       Width = 121
