@@ -414,7 +414,7 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 180
     Width = 361
     Height = 404
-    VertScrollBar.Position = 333
+    VertScrollBar.Position = 150
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -426,20 +426,32 @@ object fr_MainMenu: Tfr_MainMenu
     ParentDoubleBuffered = False
     TabOrder = 6
     object cp_lap_lanjutan: TCategoryPanel
-      Top = 746
-      Height = 30
+      Top = 324
+      Height = 76
       Caption = 'Laporan Keberlanjutan'
       Color = clGray
-      Collapsed = True
       TabOrder = 0
-      ExpandedHeight = 31
+      object bt_formF0000: TcxButton
+        Left = 0
+        Top = 0
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'FormF0000 - Dokumen Pendukung'
+        TabOrder = 0
+        WordWrap = True
+        OnClick = bt_formF0000Click
+        ExplicitTop = 8
+      end
     end
     object cp_transparasi: TCategoryPanel
-      Top = 23
-      Height = 723
+      Top = 294
+      Height = 30
       Caption = 'Transparansi Tata Kelola'
       Color = clGray
+      Collapsed = True
       TabOrder = 1
+      ExpandedHeight = 723
       object bt_formE0100: TcxButton
         Left = 0
         Top = 0
@@ -500,7 +512,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 4
         WordWrap = True
         OnClick = bt_formE0204Click
-        ExplicitTop = 166
       end
       object bt_formE0600: TcxButton
         Left = 0
@@ -640,14 +651,27 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_sp_kebenaran_lpran: TCategoryPanel
-      Top = -8
-      Height = 31
+      Top = 218
+      Height = 76
       Caption = 'Surat Pernyataan Kebenaran Laporan Keuangan Tahunan'
       Color = clGray
       TabOrder = 2
+      object bt_formD0000: TcxButton
+        Left = 0
+        Top = 0
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'FormD0000 - Surat Pernyataan Direksi'
+        TabOrder = 0
+        WordWrap = True
+        OnClick = bt_formD0000Click
+        ExplicitLeft = -1
+        ExplicitTop = 5
+      end
     end
     object cp_opini_akuntan: TCategoryPanel
-      Top = -38
+      Top = 188
       Height = 30
       Caption = 'Opini dari Akuntan'
       Color = clGray
@@ -656,16 +680,25 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 31
     end
     object cp_lap_akuntan_publik: TCategoryPanel
-      Top = -68
-      Height = 30
+      Top = 115
+      Height = 73
       Caption = 'Laporan Akuntan Publik'
       Color = clGray
-      Collapsed = True
       TabOrder = 4
-      ExpandedHeight = 31
+      object bt_formC0100: TcxButton
+        Left = 0
+        Top = 0
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'FormC0100 - Laporan Akuntan Publik'
+        TabOrder = 0
+        WordWrap = True
+        OnClick = bt_formC0100Click
+      end
     end
     object cp_lap_keuangan: TCategoryPanel
-      Top = -98
+      Top = 85
       Height = 30
       Caption = 'Laporan Keuangan Tahunan'
       Color = clGray
@@ -674,7 +707,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 185
     end
     object cp_sdm: TCategoryPanel
-      Top = -128
+      Top = 55
       Height = 30
       Caption = 'Pengembangan Sumber Daya Manusia'
       Color = clGray
@@ -694,13 +727,13 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_laporan_manajemen: TCategoryPanel
-      Top = -158
+      Top = 25
       Height = 30
       Caption = 'Laporan Manajemen'
       Color = clGray
       Collapsed = True
       TabOrder = 7
-      ExpandedHeight = 121
+      ExpandedHeight = 187
       object bt_formA0502: TcxButton
         Left = 0
         Top = 0
@@ -714,7 +747,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
       object bt_formA0506: TcxButton
         Left = 0
-        Top = 40
+        Top = 120
         Width = 338
         Height = 40
         Align = alTop
@@ -723,16 +756,38 @@ object fr_MainMenu: Tfr_MainMenu
         WordWrap = True
         OnClick = bt_formA0506Click
       end
+      object bt_formA0503: TcxButton
+        Left = 0
+        Top = 40
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0503 - Teknologi Informasi'
+        TabOrder = 2
+        WordWrap = True
+        OnClick = bt_formA0503Click
+      end
+      object bt_formA0504: TcxButton
+        Left = 0
+        Top = 80
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'FormA0504 - Perkembangan dan Target Pasar'
+        TabOrder = 3
+        WordWrap = True
+        OnClick = bt_formA0504Click
+      end
     end
     object cp_strategi: TCategoryPanel
-      Top = -188
+      Top = -5
       Height = 30
       Caption = 'Strategi Dan Kebijakan Manejemen'
       Color = clGray
       Collapsed = True
       TabOrder = 8
       ExpandedHeight = 65
-      object cxButton3: TcxButton
+      object bt_formA0400: TcxButton
         Left = 0
         Top = 0
         Width = 338
@@ -741,11 +796,11 @@ object fr_MainMenu: Tfr_MainMenu
         Caption = 'FormA0400 - Strategi dan Kebijakan Manajemen'
         TabOrder = 0
         WordWrap = True
-        OnClick = cxButton3Click
+        OnClick = bt_formA0400Click
       end
     end
     object cp_perkembanganbpr: TCategoryPanel
-      Top = -218
+      Top = -35
       Height = 30
       Caption = 'Perkembangan Usaha BPR'
       Color = clGray
@@ -774,7 +829,7 @@ object fr_MainMenu: Tfr_MainMenu
         WordWrap = True
         OnClick = bt_formA0304Click
       end
-      object cxButton1: TcxButton
+      object bt_formA0305: TcxButton
         Left = 0
         Top = 80
         Width = 338
@@ -783,11 +838,11 @@ object fr_MainMenu: Tfr_MainMenu
         Caption = 'FormA0305 - Pengembangan Usaha'
         TabOrder = 2
         WordWrap = True
-        OnClick = bt_formA0304Click
+        OnClick = bt_formA0305Click
       end
     end
     object cp_kepemilikan: TCategoryPanel
-      Top = -248
+      Top = -65
       Height = 30
       Caption = 'Kepemilikan'
       Color = clGray
@@ -796,7 +851,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 85
     end
     object cp_kepengurusan: TCategoryPanel
-      Top = -333
+      Top = -150
       Height = 85
       Caption = 'Kepengurusan'
       Color = clGray
@@ -943,5 +998,9 @@ object fr_MainMenu: Tfr_MainMenu
       '')
     Left = 448
     Top = 328
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 560
+    Top = 352
   end
 end
