@@ -11,7 +11,7 @@ object fr_MainMenu: Tfr_MainMenu
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   WindowState = wsMaximized
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -913,7 +913,7 @@ object fr_MainMenu: Tfr_MainMenu
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       'SELECT `id`, `kode_form`, `nama_form`, `nama_table`'
-      'FROM `pr_ref_kode_form` '
+      'FROM `ref_kode_form` '
       '#where nama_table in ('#39'apolo_f0600'#39')'
       'ORDER BY kode_form')
     Left = 680

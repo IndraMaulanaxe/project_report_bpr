@@ -816,7 +816,7 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN_','PRBPRKS');
+  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN','LTBPRK');
   cKodeBankLJK := kode_ljk.Text;
   cPeriodeLaporan := FormatDateTime('yyyyMMdd', per_tgl.DateTime);
   cTemp := GetMyParameter('LTBPR_JUMLAH_REC_PERFILE','1000');
@@ -838,11 +838,13 @@ begin
       sGaugeJenisLaporanCaption1.Text := '% '+MyQFormLapBulnama_table.AsString;
       cKodeForm := MyQFormLapBulkode_form.AsString;
 
+
       if cb_jenis_laporan.ItemIndex=0 then
         cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt'
       else
         cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt';
 
+      // Pesan(2,cNamaTargetTxt);
       if FileExists(cNamaTargetTxt) then
         begin
           //proses disini
@@ -989,7 +991,7 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN','PRBPRKS');
+  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN','LTBPRK');
   cKodeBankLJK := kode_ljk.Text;
   cPeriodeLaporan := FormatDateTime('yyyyMMdd', per_tgl.DateTime);
   
