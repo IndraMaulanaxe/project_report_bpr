@@ -33,6 +33,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Left = 185
       Top = 218
       Hint = 'Penjelasan Penilaian Komposit'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -56,6 +57,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -99,6 +101,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Left = 185
       Top = 53
       Hint = 'Alamat'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 48
@@ -109,6 +112,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Left = 185
       Top = 188
       Hint = 'Peringkat Komposit'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -134,6 +138,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Left = 185
       Top = 136
       Hint = 'Penjelasan Umum'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 9
       Height = 47
@@ -158,6 +163,7 @@ inherited fr_EntryFormE0100: Tfr_EntryFormE0100
       Hint = 'Nomor Telepon'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11

@@ -29,7 +29,8 @@ cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
   cxGroupBox, Data.DB, System.DateUtils, cxMemo, acPathDialog, ipwcore,
   ipwtypes, ipwhttp, ZipForge, ShellAPI, Vcl.ComCtrls, dxCore, cxDateUtils,
   cxMaskEdit, cxDropDownEdit, cxCalendar, cxCheckBox, cxSpinEdit, MemDS,
-  DBAccess, MyAccess, dxGaugeCustomScale, dxGaugeDigitalScale, dxGaugeControl, QExport4, QExport4XLS;
+  DBAccess, MyAccess, dxGaugeCustomScale, dxGaugeDigitalScale, dxGaugeControl, QExport4, QExport4XLS,
+   System.IOUtils;
 
 type
   Tfr_MainMenu = class(TForm)
@@ -125,13 +126,19 @@ type
     bt_formA0502: TcxButton;
     bt_formA0506: TcxButton;
     cp_strategi: TCategoryPanel;
-    cxButton3: TcxButton;
+    bt_formA0400: TcxButton;
     cp_perkembanganbpr: TCategoryPanel;
     bt_formA0301: TcxButton;
     bt_formA0304: TcxButton;
-    cxButton1: TcxButton;
+    bt_formA0305: TcxButton;
     cp_kepemilikan: TCategoryPanel;
     cp_kepengurusan: TCategoryPanel;
+    OpenDialog1: TOpenDialog;
+    bt_formA0503: TcxButton;
+    bt_formA0504: TcxButton;
+    bt_formC0100: TcxButton;
+    bt_formD0000: TcxButton;
+    bt_formF0000: TcxButton;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -154,7 +161,7 @@ type
     procedure bt_restore_pointClick(Sender: TObject);
     procedure bt_restore_dataClick(Sender: TObject);
     procedure bt_formE0202Click(Sender: TObject);
-    procedure cxButton3Click(Sender: TObject);
+    procedure bt_formA0400Click(Sender: TObject);
     procedure bt_formE1100Click(Sender: TObject);
     procedure bt_formE1000Click(Sender: TObject);
     procedure bt_formE0900Click(Sender: TObject);
@@ -169,7 +176,14 @@ type
     procedure bt_formE0302Click(Sender: TObject);
     procedure bt_formE0204Click(Sender: TObject);
     procedure bt_formE0203Click(Sender: TObject);
+    procedure bt_formA0305Click(Sender: TObject);
+    procedure bt_formA0503Click(Sender: TObject);
+    procedure bt_formA0504Click(Sender: TObject);
+    procedure bt_formC0100Click(Sender: TObject);
+    procedure bt_formD0000Click(Sender: TObject);
+    procedure bt_formF0000Click(Sender: TObject);
   private
+    procedure ProsesUpload(const SourceFile: string);
     { Private declarations }
   public
     { Public declarations }
@@ -184,20 +198,67 @@ uses
   dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
   FormA0506, FormA05072, FormE0100, FormE0201, DaftarBackupAPOLO,
   FormE0202, FormE0203, FormE0302,
-  FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800;
+  FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800,
+  FormE0900, FormE1000, FormE1100, FormE0204, FormE0500;
 
-  Var cKodeJenisPelaporan : String;
+  Var cKodeJenisPelaporan, cNameFileUpload : String;
 
 {$R *.dfm}
+
+procedure Tfr_MainMenu.ProsesUpload(const SourceFile: string);
+var
+  UploadPath: string;
+  NewFileName: string;
+  DestFile: string;
+begin
+  // Validasi ekstensi PDF
+  if not SameText(ExtractFileExt(SourceFile), '.pdf') then
+  begin
+    ShowMessage('File harus PDF!');
+    Exit;
+  end;
+
+  // Folder upload (1 folder dengan exe)
+  UploadPath := TPath.Combine(ExtractFilePath(Application.ExeName), 'upload');
+
+  if not TDirectory.Exists(UploadPath) then
+    TDirectory.CreateDirectory(UploadPath);
+
+  // Nama file otomatis dari Caption Button
+  NewFileName := cNameFileUpload + '.pdf';
+
+  // Hindari karakter ilegal Windows
+  NewFileName := StringReplace(NewFileName, '/', '-', [rfReplaceAll]);
+  NewFileName := StringReplace(NewFileName, '\', '-', [rfReplaceAll]);
+  NewFileName := StringReplace(NewFileName, ':', '-', [rfReplaceAll]);
+
+  DestFile := TPath.Combine(UploadPath, NewFileName);
+
+  // Jika file sudah ada >> hapus dulu
+  if TFile.Exists(DestFile) then
+    TFile.Delete(DestFile);
+
+  // Copy file baru
+  TFile.Copy(SourceFile, DestFile);
+
+  ShowMessage('File berhasil diupload dengan nama: ' + NewFileName);
+end;
 
 procedure Tfr_MainMenu.CategoryPanel1Click(Sender: TObject);
 begin
 //  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
 end;
 
-procedure Tfr_MainMenu.cxButton3Click(Sender: TObject);
+procedure Tfr_MainMenu.bt_formA0400Click(Sender: TObject);
 begin
-//
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formA0400.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
 end;
 
 procedure Tfr_MainMenu.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -579,6 +640,18 @@ begin
   fr_FormA0304 := nil;
 end;
 
+procedure Tfr_MainMenu.bt_formA0305Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formA0305.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
+end;
+
 procedure Tfr_MainMenu.bt_formA0502Click(Sender: TObject);
 begin
   if Application.FindComponent('fr_FormA0502') = nil then
@@ -587,6 +660,30 @@ begin
   fr_FormA0502.ShowModal;
   fr_FormA0502.Free;
   fr_FormA0502 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formA0503Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formA0503.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
+end;
+
+procedure Tfr_MainMenu.bt_formA0504Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formA0504.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_formA0506Click(Sender: TObject);
@@ -607,6 +704,30 @@ begin
   fr_FormA05072.ShowModal;
   fr_FormA05072.Free;
   fr_FormA05072 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formC0100Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formC0100.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
+end;
+
+procedure Tfr_MainMenu.bt_formD0000Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formD0000.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_formE0100Click(Sender: TObject);
@@ -651,7 +772,12 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0204Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0204') = nil then
+    Application.CreateForm(Tfr_FormE0204, fr_FormE0204);
+  fr_FormE0204.Tag := 0;
+  fr_FormE0204.ShowModal;
+  fr_FormE0204.Free;
+  fr_FormE0204 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE0302Click(Sender: TObject);
@@ -696,7 +822,12 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0500Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0500') = nil then
+    Application.CreateForm(Tfr_FormE0500, fr_FormE0500);
+  fr_FormE0500.Tag := 0;
+  fr_FormE0500.ShowModal;
+  fr_FormE0500.Free;
+  fr_FormE0500 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE0600Click(Sender: TObject);
@@ -741,17 +872,44 @@ end;
 
 procedure Tfr_MainMenu.bt_formE0900Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE0900') = nil then
+    Application.CreateForm(Tfr_FormE0900, fr_FormE0900);
+  fr_FormE0900.Tag := 0;
+  fr_FormE0900.ShowModal;
+  fr_FormE0900.Free;
+  fr_FormE0900 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE1000Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE1000') = nil then
+    Application.CreateForm(Tfr_FormE1000, fr_FormE1000);
+  fr_FormE1000.Tag := 0;
+  fr_FormE1000.ShowModal;
+  fr_FormE1000.Free;
+  fr_FormE1000 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formE1100Click(Sender: TObject);
 begin
-//
+  if Application.FindComponent('fr_FormE1100') = nil then
+    Application.CreateForm(Tfr_FormE1100, fr_FormE1100);
+  fr_FormE1100.Tag := 0;
+  fr_FormE1100.ShowModal;
+  fr_FormE1100.Free;
+  fr_FormE1100 := nil;
+end;
+
+procedure Tfr_MainMenu.bt_formF0000Click(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    cNameFileUpload:=bt_formF0000.Caption ;
+    ProsesUpload(OpenDialog1.FileName);
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);

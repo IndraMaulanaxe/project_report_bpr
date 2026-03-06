@@ -1,56 +1,75 @@
-inherited fr_EntryFormE0701: Tfr_EntryFormE0701
-  Caption = 'Entry Form E0701 - Pelaksanaan Rapat dalam 1 (satu) Tahun '
-  ClientHeight = 273
-  ClientWidth = 498
-  ExplicitWidth = 504
-  ExplicitHeight = 302
+inherited fr_EntryFormE1100: Tfr_EntryFormE1100
+  Caption = 
+    'Entry Form E1100 - Pemberian Dana untuk Kegiatan Sosial dan Kegi' +
+    'atan Politikn '
+  ClientHeight = 327
+  ClientWidth = 493
+  ExplicitWidth = 499
+  ExplicitHeight = 356
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 498
-    ExplicitWidth = 498
+    Width = 493
+    ExplicitWidth = 493
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 498
-    ExplicitHeight = 229
-    Height = 229
-    Width = 498
-    object cxLabel8: TcxLabel
-      Left = 17
-      Top = 81
+    ExplicitWidth = 493
+    ExplicitHeight = 283
+    Height = 283
+    Width = 493
+    object cxLabel2: TcxLabel
+      Left = 16
+      Top = 164
       AutoSize = False
-      Caption = 'Jumlah Peserta'
-      Properties.Alignment.Horz = taLeftJustify
+      Caption = 'Penerima Dana'
       Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
       Transparent = True
-      Height = 27
+      Height = 24
       Width = 135
-      AnchorY = 95
+      AnchorY = 176
     end
-    object memmateri: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 113
-      Hint = 'Materi Pembahasan'
-      ParentColor = True
-      Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 1
-      Height = 47
-      Width = 298
-    end
-    object cxLabel10: TcxLabel
-      Left = 17
-      Top = 109
+    object cxLabel4: TcxLabel
+      Left = 16
+      Top = 221
       AutoSize = False
-      Caption = 'Materi Pembahasan'
+      Caption = 'Penjelasan Lanjutan'
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
       Height = 30
       Width = 135
-      AnchorY = 124
+      AnchorY = 236
+    end
+    object frekuesi: TcxLabel
+      Left = 16
+      Top = 194
+      AutoSize = False
+      Caption = 'Jumlah (Rp.)'
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Alignment.Vert = taVCenter
+      Properties.WordWrap = True
+      Transparent = True
+      Height = 27
+      Width = 135
+      AnchorY = 208
+    end
+    object penerima_dana: TcxTextEdit
+      Tag = 1
+      Left = 184
+      Top = 165
+      Hint = 'Penerima Dana'
+      TabStop = False
+      AutoSize = False
+      ParentColor = True
+      Properties.Alignment.Horz = taLeftJustify
+      Style.LookAndFeel.Kind = lfOffice11
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      TabOrder = 3
+      Height = 24
+      Width = 298
     end
     object kode_komponen: TcxButtonEdit
       Left = 185
@@ -66,7 +85,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 3
+      TabOrder = 4
       Height = 24
       Width = 152
     end
@@ -81,6 +100,28 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Width = 135
       AnchorY = 34
     end
+    object mempenjelasan_lanjut: TcxMemo
+      Tag = 1
+      Left = 184
+      Top = 225
+      Hint = 'Penjelasan Lanjutan'
+      ParentColor = True
+      Properties.OnChange = MemKeteranganPropertiesChange
+      TabOrder = 6
+      Height = 47
+      Width = 298
+    end
+    object jumlah: TcxCurrencyEdit
+      Left = 184
+      Top = 195
+      Hint = 'Nilai Transaksi'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
+      Properties.DisplayFormat = '#,##0'
+      TabOrder = 7
+      Width = 121
+    end
     object Label6: TcxLabel
       Left = 17
       Top = 55
@@ -93,46 +134,72 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Width = 135
       AnchorY = 65
     end
-    object tanggal: TcxDateEdit
+    object tgl_kegiatan: TcxDateEdit
       Left = 185
       Top = 53
-      Hint = 'Tanggal'
+      Hint = 'Tanggal Pelaksanaan'
       ParentColor = True
-      TabOrder = 6
+      TabOrder = 9
       Width = 121
     end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 162
+    object cxLabel1: TcxLabel
+      Left = 16
+      Top = 83
       AutoSize = False
-      Caption = 'Penjelasan'
+      Caption = 'Jenis Kegiatan'
+      Properties.Alignment.Vert = taVCenter
+      Transparent = True
+      Height = 21
+      Width = 135
+      AnchorY = 94
+    end
+    object cb_jenis_kegiatan: TcxLookupComboBox
+      Tag = 1
+      Left = 184
+      Top = 83
+      Hint = 'Jenis Kegiatan'
+      ParentColor = True
+      Properties.KeyFieldNames = 'sandi'
+      Properties.ListColumns = <
+        item
+          FieldName = 'nama'
+        end>
+      Properties.ListSource = dsMyQRefJenis_Kegiatan
+      TabOrder = 11
+      Width = 298
+    end
+    object cxLabel3: TcxLabel
+      Left = 16
+      Top = 109
+      AutoSize = False
+      Caption = 'Penjelasan Kegiatan'
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
       Height = 30
       Width = 135
-      AnchorY = 177
+      AnchorY = 124
     end
-    object mempenjelasan: TcxMemo
+    object mempenjelasan_kegiatan: TcxMemo
       Tag = 1
-      Left = 185
-      Top = 166
-      Hint = 'Penjelasan'
+      Left = 184
+      Top = 113
+      Hint = 'Penjelasan Kegiatan'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 8
+      TabOrder = 13
       Height = 47
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 229
-    ExplicitTop = 229
-    ExplicitWidth = 498
+    Top = 283
+    ExplicitTop = 283
+    ExplicitWidth = 493
     ExplicitHeight = 44
     Height = 44
-    Width = 498
+    Width = 493
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -162,35 +229,35 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 311
+      Left = 306
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 311
+      ExplicitLeft = 306
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 493
+      Left = 488
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 493
+      ExplicitLeft = 488
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 402
+      Left = 397
       Height = 34
-      ExplicitLeft = 402
+      ExplicitLeft = 397
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 305
+      Left = 300
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 305
+      ExplicitLeft = 300
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -205,67 +272,79 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 299
+      Left = 294
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 299
+      ExplicitLeft = 294
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 293
+      Left = 288
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 293
+      ExplicitLeft = 288
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 287
+      Left = 282
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 287
+      ExplicitLeft = 282
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 281
+      Left = 276
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 281
+      ExplicitLeft = 276
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 498
-    ExplicitWidth = 498
+    Width = 493
+    ExplicitWidth = 493
     inherited IconClose: TLabel
-      Left = 464
+      Left = 459
       ExplicitLeft = 771
     end
-  end
-  object jumlah_peserta: TcxCurrencyEdit
-    Left = 185
-    Top = 83
-    Hint = 'Jumlah Peserta'
-    EditValue = '0'
-    ParentColor = True
-    Properties.Alignment.Horz = taRightJustify
-    Properties.DisplayFormat = '#,##0'
-    TabOrder = 4
-    Width = 121
   end
   object MyDataSource1: TMyDataSource
     Left = 392
     Top = 328
+  end
+  object dsMyQRefJenis_Kegiatan: TMyDataSource
+    DataSet = MyQRefJenis_Kegiatan
+    Left = 384
+    Top = 8
+  end
+  object MyQRefJenis_Kegiatan: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT sandi, CONCAT(sandi,'#39' - '#39',keterangan)AS nama'
+      'FROM `ref_sosial_politik`'
+      'ORDER BY sandi')
+    Options.FieldOrigins = foNone
+    Left = 456
+    Top = 8
+    object MyQRefJenis_Kegiatansandi: TStringField
+      FieldName = 'sandi'
+      Size = 3
+    end
+    object MyQRefJenis_Kegiatannama: TStringField
+      FieldName = 'nama'
+      Size = 261
+    end
   end
 end

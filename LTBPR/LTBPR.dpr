@@ -56,7 +56,17 @@ uses
   EntryFormE0702 in 'EntryFormE0702.pas' {fr_EntryFormE0702},
   FormE0702 in 'FormE0702.pas' {fr_FormE0702},
   EntryFormE0800 in 'EntryFormE0800.pas' {fr_EntryFormE0800},
-  FormE0800 in 'FormE0800.pas' {fr_FormE0800};
+  FormE0800 in 'FormE0800.pas' {fr_FormE0800},
+  EntryFormE0900 in 'EntryFormE0900.pas' {fr_EntryFormE0900},
+  FormE0900 in 'FormE0900.pas' {fr_FormE0900},
+  FormE1000 in 'FormE1000.pas' {fr_FormE1000},
+  EntryFormE1000 in 'EntryFormE1000.pas' {fr_EntryFormE1000},
+  EntryFormE1100 in 'EntryFormE1100.pas' {fr_EntryFormE1100},
+  FormE1100 in 'FormE1100.pas' {fr_FormE1100},
+  FormE0204 in 'FormE0204.pas' {fr_FormE0204},
+  EntryFormE0204 in 'EntryFormE0204.pas' {fr_EntryFormE0204},
+  FormE0500 in 'FormE0500.pas' {fr_FormE0500},
+  EntryFormE0500 in 'EntryFormE0500.pas' {fr_EntryFormE0500};
 
 {$R *.res}
 

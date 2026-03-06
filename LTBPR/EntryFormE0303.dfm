@@ -11,7 +11,6 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
     ExplicitWidth = 576
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 576
     ExplicitHeight = 255
     Height = 255
@@ -21,6 +20,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -64,6 +64,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Left = 185
       Top = 200
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 3
       Height = 48
@@ -109,7 +110,9 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Left = 185
       Top = 170
       Hint = 'Persentase Kepemilikan Tahun (%)'
-      EditValue = 0.100000000000000000
+      EditValue = 0.000000000000000000
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0.00'
       Properties.MaxValue = 100.000000000000000000
       Properties.MinValue = 0.100000000000000000
@@ -123,6 +126,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -139,6 +143,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Hint = 'Nama'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -164,6 +169,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Left = 185
       Top = 113
       Hint = 'Sandi Bank Lain'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -192,6 +198,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Hint = 'Nama Bank/Perusahan Lain'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11

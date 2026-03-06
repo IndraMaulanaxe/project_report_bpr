@@ -33,6 +33,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 227
       Hint = 'Uraian Kegiatan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -56,6 +57,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -97,6 +99,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 53
       Hint = 'Kegiatan '
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 48
@@ -118,6 +121,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 167
       Hint = 'Peserta'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -143,6 +147,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 107
       Hint = 'Tanggal'
+      ParentColor = True
       TabOrder = 10
       Width = 121
     end
@@ -164,6 +169,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 280
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 12
       Height = 47
@@ -185,6 +191,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 185
       Top = 137
       Hint = 'Pelaksana'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -326,6 +333,9 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
     Left = 185
     Top = 197
     Hint = 'Jumlah Peserta'
+    EditValue = '0'
+    ParentColor = True
+    Properties.Alignment.Horz = taRightJustify
     Properties.DisplayFormat = '#,##0'
     TabOrder = 4
     Width = 121

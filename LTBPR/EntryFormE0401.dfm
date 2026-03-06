@@ -8,12 +8,11 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 510
-    ExplicitWidth = 576
+    ExplicitWidth = 510
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
-    ExplicitWidth = 636
-    ExplicitHeight = 404
+    ExplicitWidth = 510
+    ExplicitHeight = 310
     Height = 310
     Width = 510
     object kode_komponen: TcxButtonEdit
@@ -21,6 +20,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -64,6 +64,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Left = 185
       Top = 245
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 3
       Height = 48
@@ -87,6 +88,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -102,6 +104,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Top = 191
       Hint = 'Hubungan Keuangan[III. Pemegang Saham]'
       HelpType = htKeyword
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 6
       Height = 48
@@ -125,8 +128,8 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
   end
   inherited PanelFooter: TcxGroupBox
     Top = 310
-    ExplicitTop = 255
-    ExplicitWidth = 576
+    ExplicitTop = 310
+    ExplicitWidth = 510
     ExplicitHeight = 44
     Height = 44
     Width = 510
@@ -162,7 +165,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Left = 323
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 389
+      ExplicitLeft = 323
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -171,14 +174,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 571
+      ExplicitLeft = 505
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 414
       Height = 34
-      ExplicitLeft = 480
+      ExplicitLeft = 414
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -187,7 +190,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 383
+      ExplicitLeft = 317
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -207,7 +210,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 377
+      ExplicitLeft = 311
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -217,7 +220,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 371
+      ExplicitLeft = 305
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -227,7 +230,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 365
+      ExplicitLeft = 299
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -237,14 +240,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 359
+      ExplicitLeft = 293
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 510
-    ExplicitWidth = 576
+    ExplicitWidth = 510
     inherited IconClose: TLabel
       Left = 476
       ExplicitLeft = 771
@@ -255,6 +258,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     Left = 185
     Top = 137
     Hint = 'Hubungan Keuangan[II. Anggota Dewan Komisaris]'
+    ParentColor = True
     Properties.OnChange = MemKeteranganPropertiesChange
     TabOrder = 4
     Height = 48
@@ -281,6 +285,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     Left = 185
     Top = 83
     Hint = 'Hubungan Keuangan[I. Anggota Direksi]'
+    ParentColor = True
     Properties.OnChange = MemKeteranganPropertiesChange
     TabOrder = 6
     Height = 48

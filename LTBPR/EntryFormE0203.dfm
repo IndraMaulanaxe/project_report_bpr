@@ -14,7 +14,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 576
-    ExplicitHeight = 257
+    ExplicitHeight = 333
     Height = 333
     Width = 576
     object memprogram: TcxMemo
@@ -22,6 +22,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 136
       Hint = 'Program'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 0
       Height = 47
@@ -45,6 +46,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -88,6 +90,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 272
       Hint = 'Tindak Lanjut'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 5
       Height = 48
@@ -110,6 +113,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 83
       Hint = 'Tugas Dan Tanggung Jawab'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 47
@@ -120,6 +124,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 189
       Hint = 'Realisasi'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 8
       Height = 47
@@ -153,6 +158,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 53
       Hint = 'Komite'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -179,6 +185,9 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       Left = 185
       Top = 242
       Hint = 'Jumlah'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 13
       Width = 121
@@ -186,7 +195,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   inherited PanelFooter: TcxGroupBox
     Top = 333
-    ExplicitTop = 257
+    ExplicitTop = 333
     ExplicitWidth = 576
     ExplicitHeight = 44
     Height = 44
@@ -317,7 +326,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
   end
   object dsMyQRefKomite: TMyDataSource
     DataSet = MyQRefKomite
-    Left = 392
+    Left = 408
     Top = 8
   end
   object MyQRefKomite: TMyQuery
@@ -327,7 +336,7 @@ inherited fr_EntryFormE0203: Tfr_EntryFormE0203
       'FROM `ref_komite`'
       'ORDER BY sandi')
     Options.FieldOrigins = foNone
-    Left = 464
+    Left = 480
     Top = 8
     object MyQRefKomitesandi: TStringField
       FieldName = 'sandi'

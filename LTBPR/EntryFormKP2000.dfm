@@ -37,6 +37,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Left = 143
       Top = 16
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -56,6 +57,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -82,6 +84,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Left = 143
       Top = 76
       Hint = 'Nama'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 4
       Height = 24
@@ -147,6 +150,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Left = 143
       Top = 106
       Hint = 'jabatan'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -161,6 +165,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Left = 143
       Top = 136
       Hint = 'status kepegawaian'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -175,6 +180,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Left = 143
       Top = 166
       Hint = 'Tingkat Pendidikan'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -189,6 +195,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Top = 196
       Hint = 'lama masa jabatan'
       EditValue = 43997d
+      ParentColor = True
       Properties.DisplayFormat = 'dd/MM/yyyy'
       TabOrder = 13
       Width = 114

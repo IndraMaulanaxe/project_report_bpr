@@ -33,6 +33,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Left = 185
       Top = 53
       Hint = 'Uraian'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -43,6 +44,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Left = 185
       Top = 106
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -66,6 +68,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True

@@ -33,6 +33,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 166
       Hint = 'Uraian'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 1
       Height = 47
@@ -43,6 +44,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 219
       Hint = 'Keterangan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 2
       Height = 47
@@ -66,6 +68,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -107,6 +110,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 113
       Hint = 'Nama Produk'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 7
       Height = 48
@@ -128,6 +132,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 54
       Hint = 'Kegiatan Usaha'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
@@ -153,11 +158,13 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Left = 185
       Top = 83
       Hint = 'Jenis Produk'
+      ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
+      Properties.ListSource = dsMyQJenis_Produk
       TabOrder = 11
       Width = 298
     end
@@ -312,6 +319,29 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Size = 3
     end
     object MyQrKegiatan_Usahanama: TStringField
+      FieldName = 'nama'
+      Size = 261
+    end
+  end
+  object dsMyQJenis_Produk: TMyDataSource
+    DataSet = MyQJenis_Produk
+    Left = 392
+    Top = 56
+  end
+  object MyQJenis_Produk: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT sandi, CONCAT(sandi,'#39' - '#39',keterangan)AS nama'
+      'FROM ref_jenis_produk'
+      'ORDER BY sandi')
+    Options.FieldOrigins = foNone
+    Left = 464
+    Top = 56
+    object StringField1: TStringField
+      FieldName = 'sandi'
+      Size = 3
+    end
+    object StringField2: TStringField
       FieldName = 'nama'
       Size = 261
     end

@@ -11,9 +11,8 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 498
-    ExplicitHeight = 306
+    ExplicitHeight = 259
     Height = 259
     Width = 498
     object cxLabel8: TcxLabel
@@ -34,6 +33,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Top = 23
       Hint = 'Kode Komponen'
       AutoSize = False
+      ParentColor = True
       Properties.Buttons = <
         item
           Default = True
@@ -75,6 +75,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Left = 185
       Top = 201
       Hint = 'Penjelasan'
+      ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       TabOrder = 4
       Height = 47
@@ -98,6 +99,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Hint = 'NIK'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -125,6 +127,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Hint = 'Nama Anggota Dewan Komisaris'
       TabStop = False
       AutoSize = False
+      ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
       StyleDisabled.LookAndFeel.Kind = lfOffice11
@@ -151,6 +154,9 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Left = 185
       Top = 112
       Hint = 'Frekuensi Kehadiran Fisik'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 10
       Width = 121
@@ -172,6 +178,9 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Left = 185
       Top = 141
       Hint = 'Frekuensi Kehadiran'
+      EditValue = '0'
+      ParentColor = True
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
       TabOrder = 12
       Width = 121
@@ -179,7 +188,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
   end
   inherited PanelFooter: TcxGroupBox
     Top = 259
-    ExplicitTop = 229
+    ExplicitTop = 259
     ExplicitWidth = 498
     ExplicitHeight = 44
     Height = 44
@@ -308,6 +317,9 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
     Left = 185
     Top = 171
     Hint = 'Tingkat Kehadiran Dalam Persen'
+    EditValue = '0'
+    ParentColor = True
+    Properties.Alignment.Horz = taRightJustify
     Properties.DisplayFormat = '#,##0'
     TabOrder = 4
     Width = 121
