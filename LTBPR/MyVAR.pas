@@ -143,7 +143,7 @@ var
   cUserEmail,
   cColorGridOddFront,cColorGridOddBg,cColorGridSelectedFront,cColorGridSelectedBg,
   cColorGridRow,cColorGridMinFront,cColorGridMaxFront,cFontJudulForm,cNo_Reff, cKodeKasUtama, cNamaKasUtama,
-  cUserIDDelegasiFrom,cMyIPPublic,cKodeCabang,cUserIDHeadIT,cRegIDGCM,cOtorisasiAndroid: String;
+  cUserIDDelegasiFrom,cMyIPPublic,cKodeCabang,cUserIDHeadIT,cRegIDGCM,cOtorisasiAndroid : String;
   Ogie_FileIni, cNamaRaveReport, cOtorisatorParameter, cDb1, cDb2, cDb3, cDb4, cDb5, cDb6,
   cParamWhere, cKolekBI, cTempSQL, cPerpanjangan, cSandiCabang,
   cNamaLengkapUser, cNamaCabangPT, cKodeBankPT, cWebMailNotif, cIPAddress : String;

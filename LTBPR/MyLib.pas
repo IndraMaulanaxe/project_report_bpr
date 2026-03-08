@@ -102,6 +102,8 @@ function GetAccrualBMHDHarian(cNoRekening: string; dTglTransaksi:TDate; lFlag: B
 function KirimSMS(cPesan, cNoTujuan: string): Boolean;
 function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
+function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
+function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
 
 var
   buat_pajak, lFlag_FSA: Boolean;
@@ -110,7 +112,86 @@ var
 implementation
 
 uses DateUtils, MyVAR, Math, StrUtils, CekPassword, dm_bpr, MyAccess,
-  IdException, CekMyPassword;
+  IdException, CekMyPassword,
+  System.IOUtils;
+
+
+function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+var
+  SourceFile : string;
+  DestFile   : string;
+begin
+  Result := False;
+
+  try
+    SourceFile := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) +
+                  'upload\' + SourceFileName;
+
+    DestFile := IncludeTrailingPathDelimiter(DestPath) + NewFileName;
+
+    if TFile.Exists(SourceFile) then
+    begin
+      TFile.Copy(SourceFile, DestFile, True); // overwrite
+      Result := True;
+    end;
+  except
+    Result := False;
+  end;
+end;
+
+function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
+var
+  UploadPath : string;
+  NewFileName: string;
+  DestFile   : string;
+begin
+  Result := False;
+
+  try
+    // Validasi ekstensi PDF
+    if not SameText(ExtractFileExt(SourceFile), '.pdf') then
+    begin
+      Pesan(2,'File harus PDF!');
+      Exit;
+    end;
+
+    // Folder upload
+    UploadPath := TPath.Combine(ExtractFilePath(Application.ExeName), 'upload');
+
+    if not TDirectory.Exists(UploadPath) then
+      TDirectory.CreateDirectory(UploadPath);
+
+    // Nama file
+    NewFileName := cNameFileUpload + '.pdf';
+
+    // Hindari karakter ilegal Windows
+    NewFileName := StringReplace(NewFileName, '/', '-', [rfReplaceAll]);
+    NewFileName := StringReplace(NewFileName, '\', '-', [rfReplaceAll]);
+    NewFileName := StringReplace(NewFileName, ':', '-', [rfReplaceAll]);
+
+    DestFile := TPath.Combine(UploadPath, NewFileName);
+
+    // Jika file sudah ada
+    if TFile.Exists(DestFile) then
+      TFile.Delete(DestFile);
+
+    // Copy file
+    TFile.Copy(SourceFile, DestFile);
+
+    if TFile.Exists(DestFile) then
+    begin
+      Pesan(1,'File berhasil diupload dengan nama: ' + NewFileName);
+      Result := True;
+    end;
+
+  except
+    on E: Exception do
+    begin
+      Pesan(2,'Upload gagal : ' + E.Message);
+      Result := False;
+    end;
+  end;
+end;
 
 Function MyExecuteSQL(cSQL: String): Boolean;
 begin
@@ -4612,9 +4693,10 @@ end;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 var
   MyQuery1: TMyQuery;
-  cContentLine, cScriptSQL, cColValue: string;
+  cContentLine, cScriptSQL, cColValue, cColValueFooter: string;
   cContent: TStrings;
-  nPosCol, nRow, nJmlMark: Integer;
+  nPosCol, nRow, nJmlMark, nPosColFooter, nRowFooter: Integer;
+
 begin
   Result := False;
   if not Empty(cFileName) then
@@ -4645,17 +4727,30 @@ begin
                   MyQuery1.Open;
 
                 cScriptSQL := '';
+                cColValueFooter := '';
                 nJmlMark := GetArgCount(cContentLine, '|');
                 for nPosCol := 1 to nJmlMark do
                   begin
                     cColValue := GetArg(cContentLine, nPosCol, '|');
+                    if ((cColValue='F01') or (cColValue='F02') ) and (nPosCol=1) then
+                        cColValueFooter := cColValue;
+//                    Pesan(2,'cColValue '+cColValue);
+//                    Pesan(2,'nRow '+IntToStr(nRow));
+//                    Pesan(2,'nPosCol '+IntToStr(nPosCol));
                     if Empty(cColValue) and (MyQuery1.Fields.Fields[nPosCol-1].DataType in [ftInteger, ftFloat]) then
                       cColValue := '0';
                     if Empty(cColValue) and (MyQuery1.Fields.Fields[nPosCol-1].DataType in [ftDate]) then
                       cColValue := '1899-12-30';
                     cScriptSQL := cScriptSQL + IfThen(Empty(cScriptSQL), '', ',') + QuotedStr(cColValue);
                   end;
-                MyExecuteSQL('INSERT INTO '+cTableTarget+' SELECT '+cScriptSQL);
+//                Pesan(2,'cColValueFooter '+cColValueFooter);
+                if (cColValueFooter='F01') or (cColValueFooter='F02') then
+                begin
+                  MyExecuteSQL('DELETE FROM '+cTableTarget+'_footer WHERE flag_detail='+QuotedStr(cColValueFooter));
+                  MyExecuteSQL('INSERT INTO '+cTableTarget+'_footer SELECT '+cScriptSQL);
+                end
+                else
+                  MyExecuteSQL('INSERT INTO '+cTableTarget+' SELECT '+cScriptSQL);
               end;
           end;
         Result := True;

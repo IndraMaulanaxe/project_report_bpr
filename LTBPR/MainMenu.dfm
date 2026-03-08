@@ -414,7 +414,6 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 180
     Width = 361
     Height = 404
-    VertScrollBar.Position = 150
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -426,7 +425,7 @@ object fr_MainMenu: Tfr_MainMenu
     ParentDoubleBuffered = False
     TabOrder = 6
     object cp_lap_lanjutan: TCategoryPanel
-      Top = 324
+      Top = 474
       Height = 76
       Caption = 'Laporan Keberlanjutan'
       Color = clGray
@@ -441,11 +440,10 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_formF0000Click
-        ExplicitTop = 8
       end
     end
     object cp_transparasi: TCategoryPanel
-      Top = 294
+      Top = 444
       Height = 30
       Caption = 'Transparansi Tata Kelola'
       Color = clGray
@@ -651,7 +649,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_sp_kebenaran_lpran: TCategoryPanel
-      Top = 218
+      Top = 368
       Height = 76
       Caption = 'Surat Pernyataan Kebenaran Laporan Keuangan Tahunan'
       Color = clGray
@@ -666,12 +664,10 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_formD0000Click
-        ExplicitLeft = -1
-        ExplicitTop = 5
       end
     end
     object cp_opini_akuntan: TCategoryPanel
-      Top = 188
+      Top = 338
       Height = 30
       Caption = 'Opini dari Akuntan'
       Color = clGray
@@ -680,7 +676,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 31
     end
     object cp_lap_akuntan_publik: TCategoryPanel
-      Top = 115
+      Top = 265
       Height = 73
       Caption = 'Laporan Akuntan Publik'
       Color = clGray
@@ -698,7 +694,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_lap_keuangan: TCategoryPanel
-      Top = 85
+      Top = 235
       Height = 30
       Caption = 'Laporan Keuangan Tahunan'
       Color = clGray
@@ -707,7 +703,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 185
     end
     object cp_sdm: TCategoryPanel
-      Top = 55
+      Top = 205
       Height = 30
       Caption = 'Pengembangan Sumber Daya Manusia'
       Color = clGray
@@ -727,7 +723,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_laporan_manajemen: TCategoryPanel
-      Top = 25
+      Top = 175
       Height = 30
       Caption = 'Laporan Manajemen'
       Color = clGray
@@ -780,7 +776,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_strategi: TCategoryPanel
-      Top = -5
+      Top = 145
       Height = 30
       Caption = 'Strategi Dan Kebijakan Manejemen'
       Color = clGray
@@ -800,7 +796,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_perkembanganbpr: TCategoryPanel
-      Top = -35
+      Top = 115
       Height = 30
       Caption = 'Perkembangan Usaha BPR'
       Color = clGray
@@ -842,7 +838,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_kepemilikan: TCategoryPanel
-      Top = -65
+      Top = 85
       Height = 30
       Caption = 'Kepemilikan'
       Color = clGray
@@ -851,7 +847,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 85
     end
     object cp_kepengurusan: TCategoryPanel
-      Top = -150
+      Top = 0
       Height = 85
       Caption = 'Kepengurusan'
       Color = clGray
@@ -969,9 +965,11 @@ object fr_MainMenu: Tfr_MainMenu
   object MyQFormLapBul: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT `id`, `kode_form`, `nama_form`, `nama_table`'
+      
+        'SELECT `id`, `kode_form`, `nama_form`, `nama_table`, is_footer, ' +
+        'is_file'
       'FROM `ref_kode_form` '
-      '#where nama_table in ('#39'apolo_f0600'#39')'
+      '#where kode_form in ('#39'A0301'#39')'
       'ORDER BY kode_form')
     Left = 680
     Top = 112
@@ -990,6 +988,12 @@ object fr_MainMenu: Tfr_MainMenu
     object MyQFormLapBulnama_table: TStringField
       FieldName = 'nama_table'
       Size = 250
+    end
+    object MyQFormLapBulis_footer: TSmallintField
+      FieldName = 'is_footer'
+    end
+    object MyQFormLapBulis_file: TSmallintField
+      FieldName = 'is_file'
     end
   end
   object MyQField: TMyQuery

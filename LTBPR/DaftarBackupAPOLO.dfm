@@ -5,7 +5,7 @@ inherited fr_DaftarBackupAPOLO: Tfr_DaftarBackupAPOLO
   ExplicitWidth = 728
   ExplicitHeight = 406
   PixelsPerInch = 96
-  TextHeight = 15
+  TextHeight = 13
   object sPanel1: TsPanel [1]
     Left = 0
     Top = 340
@@ -106,7 +106,6 @@ inherited fr_DaftarBackupAPOLO: Tfr_DaftarBackupAPOLO
       TabOrder = 0
       OnChange = Edit1Change
       OnKeyDown = DBGrid1KeyDown
-      ExplicitHeight = 23
     end
     object bt_search: TBitBtn
       Left = 377
@@ -138,8 +137,8 @@ inherited fr_DaftarBackupAPOLO: Tfr_DaftarBackupAPOLO
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -13
-    TitleFont.Name = 'Times New Roman'
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     OnDrawColumnCell = DBGrid1DrawColumnCell
     OnDblClick = bt_pilihClick
@@ -226,7 +225,7 @@ inherited fr_DaftarBackupAPOLO: Tfr_DaftarBackupAPOLO
       
         'SELECT `kode_arsip`, `tgl_laporan`, `created_by`, `last_created`' +
         ', `last_updated`'
-      'FROM `pr_backup_log`'
+      'FROM `ltbprk_backup_log`'
       '&WHERE'
       'ORDER BY `kode_arsip`')
     Left = 32
