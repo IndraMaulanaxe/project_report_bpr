@@ -115,12 +115,6 @@ inherited fr_FormA05072: Tfr_FormA05072
           HeaderAlignmentHorz = taCenter
           Width = 250
         end
-        object cxGridDBTableView1keterangan: TcxGridDBColumn
-          Caption = 'Keterangan'
-          DataBinding.FieldName = 'keterangan'
-          HeaderAlignmentHorz = taCenter
-          Width = 200
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -306,10 +300,6 @@ inherited fr_FormA05072: Tfr_FormA05072
     end
     object MyQA05072uraian_kegiatan: TStringField
       FieldName = 'uraian_kegiatan'
-      Size = 2000
-    end
-    object MyQA05072keterangan: TStringField
-      FieldName = 'keterangan'
       Size = 2000
     end
   end

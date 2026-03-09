@@ -26,8 +26,6 @@ inherited fr_FormA0304: Tfr_FormA0304
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitLeft = 4
-      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -84,12 +82,6 @@ inherited fr_FormA0304: Tfr_FormA0304
         object cxGridDBTableView1uraian: TcxGridDBColumn
           Caption = 'Uraian'
           DataBinding.FieldName = 'uraian'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1keterangan: TcxGridDBColumn
-          Caption = 'Keterangan'
-          DataBinding.FieldName = 'keterangan'
           HeaderAlignmentHorz = taCenter
           Width = 350
         end
@@ -260,10 +252,6 @@ inherited fr_FormA0304: Tfr_FormA0304
     end
     object MyQA0304uraian: TStringField
       FieldName = 'uraian'
-      Size = 2000
-    end
-    object MyQA0304keterangan: TStringField
-      FieldName = 'keterangan'
       Size = 2000
     end
   end

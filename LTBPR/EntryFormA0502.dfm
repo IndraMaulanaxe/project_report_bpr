@@ -20,6 +20,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 163
       AutoSize = False
       Caption = 'Uraian'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -34,7 +42,15 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 166
       Hint = 'Uraian'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 1
       Height = 47
       Width = 298
@@ -45,7 +61,15 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 219
       Hint = 'Keterangan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 2
       Height = 47
       Width = 298
@@ -55,6 +79,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 215
       AutoSize = False
       Caption = 'Keterangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -69,6 +101,7 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -77,6 +110,13 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 4
       Height = 24
       Width = 103
@@ -86,6 +126,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -97,6 +145,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 110
       AutoSize = False
       Caption = 'Nama Produk'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -111,7 +167,15 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 113
       Hint = 'Nama Produk'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 7
       Height = 48
       Width = 298
@@ -121,6 +185,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 53
       AutoSize = False
       Caption = 'Kegiatan Usaha'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -133,12 +205,20 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 54
       Hint = 'Kegiatan Usaha'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQrKegiatan_Usaha
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 9
       Width = 298
     end
@@ -147,6 +227,14 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 83
       AutoSize = False
       Caption = 'Jenis Produk'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -159,12 +247,20 @@ inherited fr_EntryFormA0502: Tfr_EntryFormA0502
       Top = 83
       Hint = 'Jenis Produk'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQJenis_Produk
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 11
       Width = 298
     end

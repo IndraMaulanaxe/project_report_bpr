@@ -52,11 +52,9 @@ type
     MyQA0304flag_detail: TStringField;
     MyQA0304kode_komponen: TStringField;
     MyQA0304uraian: TStringField;
-    MyQA0304keterangan: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1uraian: TcxGridDBColumn;
-    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -264,6 +262,9 @@ begin
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
 
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
+
   if MyQA0304.Active then
     MyQA0304.Refresh
   else
@@ -291,12 +292,12 @@ begin
       //size
       kode_komponen.Properties.MaxLength := MyQA0304kode_komponen.Size;
       memuraian.Properties.MaxLength := MyQA0304uraian.Size;
-      memketerangan.Properties.MaxLength := MyQA0304keterangan.Size;
 
       //assignment
       kode_komponen.Text := MyQA0304kode_komponen.Text;
       memuraian.Text := MyQA0304uraian.Text;
-      memketerangan.Text := MyQA0304keterangan.Text;
+      //Footer
+      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0304_penjelasan_npl_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -307,11 +308,18 @@ begin
       with fr_EntryFormA0304 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0304_penjelasan_npl` '+
-            'SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-            ', `uraian` = '+QuotedStr(memuraian.text)+
-            ', `keterangan` = '+QuotedStr(memketerangan.text)+
-            '  WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
+          MyExecuteSQL(' UPDATE '+cDb2+'.`ltbprk_a0304_penjelasan_npl` '+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        ', `uraian` = '+QuotedStr(memuraian.text)+
+                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
+
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0304.Active then
         MyQA0304.Refresh
@@ -342,7 +350,6 @@ begin
       //size
       kode_komponen.Properties.MaxLength := MyQA0304kode_komponen.Size;
       memuraian.Properties.MaxLength := MyQA0304uraian.Size;
-      memketerangan.Properties.MaxLength := MyQA0304keterangan.Size;
 
       //assignment
       kode_komponen.Text := '03002';
@@ -358,9 +365,15 @@ begin
           // Insert
           MyExecuteSQL( 'INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl` SET '+
                         '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `uraian` = '+QuotedStr(memuraian.Text)+
-                        ', `keterangan` = '+QuotedStr(memketerangan.Text)
+                        ', `uraian` = '+QuotedStr(memuraian.Text)
                       );
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0304.Active then
         MyQA0304.Refresh

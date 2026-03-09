@@ -55,14 +55,12 @@ type
     MyQA0502jenis_produk: TStringField;
     MyQA0502nama_produk: TStringField;
     MyQA0502uraian: TStringField;
-    MyQA0502keterangan: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1kategori_kegiatan_usaha: TcxGridDBColumn;
     cxGridDBTableView1jenis_produk: TcxGridDBColumn;
     cxGridDBTableView1nama_produk: TcxGridDBColumn;
     cxGridDBTableView1uraian: TcxGridDBColumn;
-    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -268,7 +266,15 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text));
+    '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
+    ' AND `kategori_kegiatan_usaha` = '+QuotedStr(MyQA0502kategori_kegiatan_usaha.Text)+
+    ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text)+
+    ' AND `nama_produk` = '+QuotedStr(MyQA0502nama_produk.Text)+
+    ' AND `uraian` = '+QuotedStr(MyQA0502uraian.Text)+
+    ' LIMIT 1');
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
 
   if MyQA0502.Active then
     MyQA0502.Refresh
@@ -293,6 +299,15 @@ begin
     begin
 
       //open table reff
+      if MyQrKegiatan_Usaha.Active then
+        MyQrKegiatan_Usaha.Refresh
+      else
+        MyQrKegiatan_Usaha.Open;
+
+      if MyQJenis_Produk.Active then
+        MyQJenis_Produk.Refresh
+      else
+        MyQJenis_Produk.Open;
 
       //size
       kode_komponen.Properties.MaxLength := MyQA0502kode_komponen.Size;
@@ -300,7 +315,6 @@ begin
       cb_jenis_produk.Properties.MaxLength := MyQA0502jenis_produk.Size;
       memnama_produk.Properties.MaxLength := MyQA0502nama_produk.Size;
       memuraian.Properties.MaxLength := MyQA0502uraian.Size;
-      memketerangan.Properties.MaxLength := MyQA0502keterangan.Size;
 
       //assignment
       kode_komponen.Text := MyQA0502kode_komponen.Text;
@@ -308,8 +322,9 @@ begin
       cb_jenis_produk.EditValue := MyQA0502jenis_produk.Text;
       memnama_produk.Text := MyQA0502nama_produk.Text;
       memuraian.Text := MyQA0502uraian.Text;
-      memketerangan.Text := MyQA0502keterangan.Text;
 
+      //Footer
+      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0502_bidang_usaha_footer ');
       kode_komponen.Enabled := False;
     end;
   fr_EntryFormA0502.Tag := 0;
@@ -320,13 +335,25 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0502_bidang_usaha` '+
-            'SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-            ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
-            ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
-            ', `nama_produk` = '+QuotedStr(memnama_produk.text)+
-            ', `uraian` = '+QuotedStr(memuraian.text)+
-            ', `keterangan` = '+QuotedStr(memketerangan.text)+
-            '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text));
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
+                        ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
+                        ', `nama_produk` = '+QuotedStr(memnama_produk.text)+
+                        ', `uraian` = '+QuotedStr(memuraian.text)+
+                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
+                        ' AND `kategori_kegiatan_usaha` = '+QuotedStr(MyQA0502kategori_kegiatan_usaha.Text)+
+                        ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text)+
+                        ' AND `nama_produk` = '+QuotedStr(MyQA0502nama_produk.Text)+
+                        ' AND `uraian` = '+QuotedStr(MyQA0502uraian.Text)+
+                        ' LIMIT 1');
+
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0502.Active then
         MyQA0502.Refresh
@@ -358,13 +385,17 @@ begin
       else
         MyQrKegiatan_Usaha.Open;
 
+      if MyQJenis_Produk.Active then
+        MyQJenis_Produk.Refresh
+      else
+        MyQJenis_Produk.Open;
+
       //size
       kode_komponen.Properties.MaxLength := MyQA0502kode_komponen.Size;
       cb_kegiatan_usaha.Properties.MaxLength := MyQA0502kategori_kegiatan_usaha.Size;
       cb_jenis_produk.Properties.MaxLength := MyQA0502jenis_produk.Size;
       memnama_produk.Properties.MaxLength := MyQA0502nama_produk.Size;
       memuraian.Properties.MaxLength := MyQA0502uraian.Size;
-      memketerangan.Properties.MaxLength := MyQA0502keterangan.Size;
 
       //assignment
       kode_komponen.Text := '05001';
@@ -383,9 +414,15 @@ begin
                         ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
                         ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
                         ', `nama_produk` = '+QuotedStr(memnama_produk.Text)+
-                        ', `uraian` = '+QuotedStr(memuraian.Text)+
-                        ', `keterangan` = '+QuotedStr(memketerangan.Text)
+                        ', `uraian` = '+QuotedStr(memuraian.Text)
                       );
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0502.Active then
         MyQA0502.Refresh

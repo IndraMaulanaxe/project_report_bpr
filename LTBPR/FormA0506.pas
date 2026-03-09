@@ -58,7 +58,6 @@ type
     MyQA0506jenis_kerja_sama: TStringField;
     MyQA0506uraian_kerja_sama: TStringField;
     MyQA0506tanggal_mulai_kerja_sama: TDateField;
-    MyQA0506keterangan: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1referensi_lembaga: TcxGridDBColumn;
@@ -68,7 +67,6 @@ type
     cxGridDBTableView1jenis_kerja_sama: TcxGridDBColumn;
     cxGridDBTableView1uraian_kerja_sama: TcxGridDBColumn;
     cxGridDBTableView1tanggal_mulai_kerja_sama: TcxGridDBColumn;
-    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -273,8 +271,19 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text));
+  MyExecuteSQL( 'DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` '+
+                '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
+                ' AND `referensi_lembaga` = '+QuotedStr(MyQA0506referensi_lembaga.Text)+
+                ' AND `nama_bank_lembaga_lain` = '+QuotedStr(MyQA0506nama_bank_lembaga_lain.Text)+
+                ' AND `sandi_bank` = '+QuotedStr(MyQA0506sandi_bank.Text)+
+                ' AND `npwp` = '+QuotedStr(MyQA0506npwp.text)+
+                ' AND `jenis_kerja_sama` = '+QuotedStr(MyQA0506jenis_kerja_sama.text)+
+                ' AND `uraian_kerja_sama` = '+QuotedStr(MyQA0506uraian_kerja_sama.text)+
+                ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value)+
+                ' LIMIT 1');
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
 
   if MyQA0506.Active then
     MyQA0506.Refresh
@@ -317,7 +326,6 @@ begin
       npwp.Properties.MaxLength := MyQA0506npwp.Size;
       memjenis_kerjasama.Properties.MaxLength := MyQA0506jenis_kerja_sama.Size;
       memuraian_kerjasama.Properties.MaxLength := MyQA0506uraian_kerja_sama.Size;
-      memketerangan.Properties.MaxLength := MyQA0506keterangan.Size;
       npwp.Properties.MaxLength := MyQA0506npwp.Size;
 
       //assignment
@@ -328,8 +336,9 @@ begin
       npwp.Text := MyQA0506npwp.Text;
       memjenis_kerjasama.Text := MyQA0506jenis_kerja_sama.Text;
       memuraian_kerjasama.Text := MyQA0506uraian_kerja_sama.Text;
-      memketerangan.Text := MyQA0506keterangan.Text;
       tgl_kerjasama.Date :=MyQA0506tanggal_mulai_kerja_sama.Value;
+      //Footer
+      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0506_kerja_sama_lembaga_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -349,8 +358,22 @@ begin
                         ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.text)+
                         ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.text)+
                         ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+
-                        ', `keterangan` = '+QuotedStr(memketerangan.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text));
+                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
+                        ' AND `referensi_lembaga` = '+QuotedStr(MyQA0506referensi_lembaga.Text)+
+                        ' AND `nama_bank_lembaga_lain` = '+QuotedStr(MyQA0506nama_bank_lembaga_lain.Text)+
+                        ' AND `sandi_bank` = '+QuotedStr(MyQA0506sandi_bank.Text)+
+                        ' AND `npwp` = '+QuotedStr(MyQA0506npwp.text)+
+                        ' AND `jenis_kerja_sama` = '+QuotedStr(MyQA0506jenis_kerja_sama.text)+
+                        ' AND `uraian_kerja_sama` = '+QuotedStr(MyQA0506uraian_kerja_sama.text)+
+                        ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value)+
+                        ' LIMIT 1');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0506.Active then
         MyQA0506.Refresh
@@ -395,7 +418,6 @@ begin
       npwp.Properties.MaxLength := MyQA0506npwp.Size;
       memjenis_kerjasama.Properties.MaxLength := MyQA0506jenis_kerja_sama.Size;
       memuraian_kerjasama.Properties.MaxLength := MyQA0506uraian_kerja_sama.Size;
-      memketerangan.Properties.MaxLength := MyQA0506keterangan.Size;
       npwp.Properties.MaxLength := MyQA0506npwp.Size;
 
       //assignment
@@ -419,9 +441,15 @@ begin
                         ', `npwp` = '+QuotedStr(npwp.Text)+
                         ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.Text)+
                         ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.Text)+
-                        ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+
-                        ', `keterangan` = '+QuotedStr(memketerangan.Text)
+                        ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)
                       );
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
+                        ' (`keterangan`) '+
+                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+          //
         end;
       if MyQA0506.Active then
         MyQA0506.Refresh

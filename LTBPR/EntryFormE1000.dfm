@@ -8,11 +8,17 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   ExplicitHeight = 548
   PixelsPerInch = 96
   TextHeight = 16
+  inherited lbl_view_only: TLabel
+    Top = 7
+    ExplicitTop = 7
+  end
   inherited PanelHeader: TPanel
     Width = 493
+    ExplicitTop = -1
     ExplicitWidth = 493
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 493
     ExplicitHeight = 475
     Height = 475
@@ -30,6 +36,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 20
         AutoSize = False
         Caption = 'Nama'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -46,6 +59,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -58,6 +72,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 50
         AutoSize = False
         Caption = 'Jabatan'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -74,6 +95,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -86,6 +108,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 80
         AutoSize = False
         Caption = 'NIK'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -102,6 +131,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -123,6 +153,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 20
         AutoSize = False
         Caption = 'Nama'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -139,6 +176,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -151,6 +189,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 50
         AutoSize = False
         Caption = 'Jabatan'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -167,6 +212,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -179,6 +225,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         Top = 80
         AutoSize = False
         Caption = 'NIK'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
         Properties.Alignment.Vert = taVCenter
         Transparent = True
         Height = 24
@@ -195,6 +248,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         ParentColor = True
         Properties.Alignment.Horz = taLeftJustify
         Style.LookAndFeel.Kind = lfOffice11
+        Style.TextColor = clWindow
         StyleDisabled.LookAndFeel.Kind = lfOffice11
         StyleFocused.LookAndFeel.Kind = lfOffice11
         StyleHot.LookAndFeel.Kind = lfOffice11
@@ -208,6 +262,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 300
       AutoSize = False
       Caption = 'Jenis Transaksi'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -219,6 +280,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 410
       AutoSize = False
       Caption = 'Penjelasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -232,6 +300,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 329
       AutoSize = False
       Caption = 'Nilai Transaksi'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -250,6 +325,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
@@ -271,6 +347,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.TextColor = clWindow
       TabOrder = 6
       Height = 24
       Width = 152
@@ -280,6 +357,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -293,6 +377,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Hint = 'Penjelasan'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
       TabOrder = 8
       Height = 47
       Width = 298
@@ -305,6 +390,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       ParentColor = True
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
+      Style.TextColor = clWindow
       TabOrder = 9
       Width = 121
     end
@@ -313,6 +399,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 357
       AutoSize = False
       Caption = 'Keterangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -328,6 +421,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Hint = 'Keterangan'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
       TabOrder = 11
       Height = 47
       Width = 298
@@ -454,6 +548,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   end
   inherited PanelTopSystem: TPanel
     Width = 493
+    ExplicitTop = -1
     ExplicitWidth = 493
     inherited IconClose: TLabel
       Left = 459

@@ -20,6 +20,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 195
       AutoSize = False
       Caption = 'Jumlah Peserta'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -34,7 +42,15 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 227
       Hint = 'Uraian Kegiatan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 1
       Height = 47
       Width = 298
@@ -44,6 +60,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 223
       AutoSize = False
       Caption = 'Uraian Kegiatan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -58,6 +82,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -66,6 +91,13 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 3
       Height = 24
       Width = 103
@@ -75,6 +107,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -86,6 +126,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 50
       AutoSize = False
       Caption = 'Kegiatan Pengembangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -100,7 +148,15 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 53
       Hint = 'Kegiatan '
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 6
       Height = 48
       Width = 298
@@ -110,6 +166,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 166
       AutoSize = False
       Caption = 'Peserta'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -122,12 +186,20 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 167
       Hint = 'Peserta'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefPeserta
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 8
       Width = 298
     end
@@ -136,6 +208,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 109
       AutoSize = False
       Caption = 'Tanggal'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
@@ -148,6 +228,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 107
       Hint = 'Tanggal'
       ParentColor = True
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 10
       Width = 121
     end
@@ -156,6 +244,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 276
       AutoSize = False
       Caption = 'Keterangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -170,7 +266,15 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 280
       Hint = 'Keterangan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 12
       Height = 47
       Width = 298
@@ -180,6 +284,14 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 137
       AutoSize = False
       Caption = 'Pelaksana'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -192,12 +304,20 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Top = 137
       Hint = 'Pelaksana'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefPelaksana
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 14
       Width = 298
     end
@@ -335,8 +455,16 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
     Hint = 'Jumlah Peserta'
     EditValue = '0'
     ParentColor = True
+    ParentFont = False
     Properties.Alignment.Horz = taRightJustify
     Properties.DisplayFormat = '#,##0'
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     TabOrder = 4
     Width = 121
   end

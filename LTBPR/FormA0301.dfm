@@ -26,8 +26,6 @@ inherited fr_FormA0301: Tfr_FormA0301
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -162,7 +160,6 @@ inherited fr_FormA0301: Tfr_FormA0301
     Width = 861
     inherited btlb_Refresh: TcxButton
       OnClick = btlb_RefreshClick
-      ExplicitTop = 6
     end
     inherited btlb_tools1: TcxButton
       Width = 0
@@ -228,7 +225,6 @@ inherited fr_FormA0301: Tfr_FormA0301
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
-      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -354,10 +350,6 @@ inherited fr_FormA0301: Tfr_FormA0301
     end
     object MyQA0301nama_akuntan_publik: TStringField
       FieldName = 'nama_akuntan_publik'
-      Size = 2000
-    end
-    object MyQA0301keterangan: TStringField
-      FieldName = 'keterangan'
       Size = 2000
     end
   end
