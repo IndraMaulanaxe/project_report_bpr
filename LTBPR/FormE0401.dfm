@@ -26,6 +26,8 @@ inherited fr_FormE0401: Tfr_FormE0401
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -100,12 +102,6 @@ inherited fr_FormE0401: Tfr_FormE0401
         object cxGridDBTableView1hubungan_keuangan_iii_pemegang: TcxGridDBColumn
           Caption = 'Hubungan Keuangan Anggota Pemegang Saham'
           DataBinding.FieldName = 'hubungan_keuangan_iii_pemegang'
-          HeaderAlignmentHorz = taCenter
-          Width = 300
-        end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
           Width = 300
         end
@@ -290,10 +286,6 @@ inherited fr_FormE0401: Tfr_FormE0401
     end
     object MyQE0401hubungan_keuangan_iii_pemegang: TStringField
       FieldName = 'hubungan_keuangan_iii_pemegang'
-      Size = 2000
-    end
-    object MyQE0401footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

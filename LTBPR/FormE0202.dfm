@@ -28,6 +28,8 @@ inherited fr_FormE0202: Tfr_FormE0202
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitLeft = 3
+      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -90,18 +92,6 @@ inherited fr_FormE0202: Tfr_FormE0202
         object cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn
           Caption = 'Tugas Dan Tanggung Jawab'
           DataBinding.FieldName = 'tugas_dan_tanggung_jawab'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
           HeaderAlignmentHorz = taCenter
           Width = 350
         end
@@ -276,14 +266,6 @@ inherited fr_FormE0202: Tfr_FormE0202
     end
     object MyQE0202tugas_dan_tanggung_jawab: TStringField
       FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
-    end
-    object MyQE0202footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
-    end
-    object MyQE0202footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

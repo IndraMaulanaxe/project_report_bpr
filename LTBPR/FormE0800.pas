@@ -59,7 +59,6 @@ type
     MyQE0800pegawai_tetap_tahun_laporan: TIntegerField;
     MyQE0800pegawai_tidak_tetap_tahun_sebelumnya: TIntegerField;
     MyQE0800pegawai_tidak_tetap_tahun_laporan: TIntegerField;
-    MyQE0800footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1anggota_direksi_tahun_sebelumnya: TcxGridDBColumn;
@@ -70,7 +69,6 @@ type
     cxGridDBTableView1pegawai_tetap_tahun_laporan: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_sebelumnya: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_laporan: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -277,6 +275,8 @@ begin
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE0800kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
 
   if MyQE0800.Active then
     MyQE0800.Refresh
@@ -316,7 +316,6 @@ begin
       tetap_thn_lalu.Properties.MaxLength := MyQE0800pegawai_tetap_tahun_laporan.Size;
       tidak_tetap_thn_lalu.Properties.MaxLength := MyQE0800pegawai_tidak_tetap_tahun_sebelumnya.Size;
       tidak_tetap_thn_laporan.Properties.MaxLength := MyQE0800pegawai_tidak_tetap_tahun_laporan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0800footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       cb_komponen.EditValue:= MyQE0800kode_komponen.Text;
@@ -328,7 +327,7 @@ begin
       tetap_thn_laporan.value := MyQE0800pegawai_tetap_tahun_laporan.Value;
       tidak_tetap_thn_lalu.value := MyQE0800pegawai_tidak_tetap_tahun_sebelumnya.Value;
       tidak_tetap_thn_laporan.value := MyQE0800pegawai_tidak_tetap_tahun_laporan.Value;
-      mempenjelasan.Text := MyQE0800footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0800_penyimpangan_internal_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       cb_komponen.Enabled := False;
     end;
@@ -349,8 +348,14 @@ begin
                         ', `pegawai_tetap_tahun_laporan` = '+FloatToStr(tetap_thn_laporan.Value)+
                         ', `pegawai_tidak_tetap_tahun_sebelumnya` = '+FloatToStr(tidak_tetap_thn_lalu.Value)+
                         ', `pegawai_tidak_tetap_tahun_laporan` = '+FloatToStr(tidak_tetap_thn_laporan.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE0800kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE0800.Active then
         MyQE0800.Refresh
@@ -392,7 +397,6 @@ begin
       tetap_thn_lalu.Properties.MaxLength := MyQE0800pegawai_tetap_tahun_laporan.Size;
       tidak_tetap_thn_lalu.Properties.MaxLength := MyQE0800pegawai_tidak_tetap_tahun_sebelumnya.Size;
       tidak_tetap_thn_laporan.Properties.MaxLength := MyQE0800pegawai_tidak_tetap_tahun_laporan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0800footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       //kode_komponen.Text := '082010000000';
@@ -415,8 +419,14 @@ begin
                        ', `pegawai_tetap_tahun_sebelumnya` = '+FloatToStr(tetap_thn_lalu.Value)+
                        ', `pegawai_tetap_tahun_laporan` = '+FloatToStr(tetap_thn_laporan.Value)+
                        ', `pegawai_tidak_tetap_tahun_sebelumnya` = '+FloatToStr(tidak_tetap_thn_lalu.Value)+
-                       ', `pegawai_tidak_tetap_tahun_laporan` = '+FloatToStr(tidak_tetap_thn_laporan.Value)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+                       ', `pegawai_tidak_tetap_tahun_laporan` = '+FloatToStr(tidak_tetap_thn_laporan.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
 
         end;
       if MyQE0800.Active then

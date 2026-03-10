@@ -103,12 +103,6 @@ inherited fr_FormE0402: Tfr_FormE0402
           HeaderAlignmentHorz = taCenter
           Width = 300
         end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 300
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -177,6 +171,7 @@ inherited fr_FormE0402: Tfr_FormE0402
       Left = 680
       OnClick = btlb_DeleteClick
       ExplicitLeft = 680
+      ExplicitTop = 4
     end
     inherited btlb_Edit: TcxButton
       Left = 589
@@ -290,10 +285,6 @@ inherited fr_FormE0402: Tfr_FormE0402
     end
     object MyQE0402hubungan_keluarga_iii_pemegang_saham: TStringField
       FieldName = 'hubungan_keluarga_iii_pemegang_saham'
-      Size = 2000
-    end
-    object MyQE0402footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

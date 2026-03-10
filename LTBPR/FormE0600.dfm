@@ -85,12 +85,6 @@ inherited fr_FormE0600: Tfr_FormE0600
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -258,10 +252,6 @@ inherited fr_FormE0600: Tfr_FormE0600
     end
     object MyQE0600rasio_gaji_perbandingan: TFloatField
       FieldName = 'rasio_gaji_perbandingan'
-    end
-    object MyQE0600footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
-      Size = 2000
     end
   end
 end

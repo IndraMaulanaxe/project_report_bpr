@@ -23,6 +23,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -31,6 +32,13 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 0
       Height = 24
       Width = 160
@@ -40,6 +48,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -53,6 +69,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -67,7 +91,15 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 342
       Hint = 'Tindak Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 3
       Height = 48
       Width = 298
@@ -78,7 +110,15 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 112
       Hint = 'Keahlian'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 4
       Height = 47
       Width = 298
@@ -88,6 +128,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 112
       AutoSize = False
       Caption = 'Keahlian'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -100,6 +148,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 165
       AutoSize = False
       Caption = 'Komite Audit'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -112,12 +168,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 165
       Hint = 'Komite Audit'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 7
       Width = 298
     end
@@ -127,12 +191,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 195
       Hint = 'Komite Pemantau Risiko'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 8
       Width = 298
     end
@@ -141,6 +213,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 195
       AutoSize = False
       Caption = 'Komite Pemantau Risiko'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -153,12 +233,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 254
       Hint = 'Komite Manajemen Risiko'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 10
       Width = 298
     end
@@ -167,6 +255,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 254
       AutoSize = False
       Caption = 'Komite Manajemen Risiko'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -179,12 +275,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 224
       Hint = 'Komite Remunerasi dan Nominasi'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 12
       Width = 298
     end
@@ -193,6 +297,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 224
       AutoSize = False
       Caption = 'Komite Remunerasi '
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -204,6 +316,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 56
       AutoSize = False
       Caption = 'Nama Anggota Komite'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
@@ -219,8 +339,16 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
@@ -362,12 +490,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 312
     Hint = 'Pihak Independen'
     ParentColor = True
+    ParentFont = False
     Properties.KeyFieldNames = 'sandi'
     Properties.ListColumns = <
       item
         FieldName = 'nama'
       end>
     Properties.ListSource = dsMyQRefindepeden
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     TabOrder = 4
     Width = 298
   end
@@ -376,6 +512,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 312
     AutoSize = False
     Caption = 'Pihak Independen'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Vert = taVCenter
     Transparent = True
     Height = 21
@@ -388,12 +532,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 282
     Hint = 'Komite Lainnya'
     ParentColor = True
+    ParentFont = False
     Properties.KeyFieldNames = 'sandi'
     Properties.ListColumns = <
       item
         FieldName = 'nama'
       end>
     Properties.ListSource = dsMyQRefKomite
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     TabOrder = 6
     Width = 298
   end
@@ -402,6 +554,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 282
     AutoSize = False
     Caption = 'Komite Lainnya'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Vert = taVCenter
     Transparent = True
     Height = 21
@@ -413,6 +573,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 86
     AutoSize = False
     Caption = 'NIK'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Horz = taLeftJustify
     Properties.Alignment.Vert = taVCenter
     Transparent = True
@@ -428,8 +596,16 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     TabStop = False
     AutoSize = False
     ParentColor = True
+    ParentFont = False
     Properties.Alignment.Horz = taLeftJustify
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
     Style.LookAndFeel.Kind = lfOffice11
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     StyleDisabled.LookAndFeel.Kind = lfOffice11
     StyleFocused.LookAndFeel.Kind = lfOffice11
     StyleHot.LookAndFeel.Kind = lfOffice11

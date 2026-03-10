@@ -56,7 +56,6 @@ type
     MyQE1100penjelasan_kegiatan: TStringField;
     MyQE1100penerima_dana: TStringField;
     MyQE1100jumlah_rp: TFloatField;
-    MyQE1100footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1tanggal_pelaksanaan: TcxGridDBColumn;
@@ -64,7 +63,6 @@ type
     cxGridDBTableView1penjelasan_kegiatan: TcxGridDBColumn;
     cxGridDBTableView1penerima_dana: TcxGridDBColumn;
     cxGridDBTableView1jumlah_rp: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -271,6 +269,8 @@ begin
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
 
   if MyQE1100.Active then
     MyQE1100.Refresh
@@ -306,7 +306,6 @@ begin
       mempenjelasan_kegiatan.Properties.MaxLength := MyQE1100penjelasan_kegiatan.Size;
       penerima_dana.Properties.MaxLength := MyQE1100penerima_dana.Size;
       jumlah.Properties.MaxLength := MyQE1100jumlah_rp.Size;
-      mempenjelasan_lanjut.Properties.MaxLength := MyQE1100footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE1100kode_komponen.Text;
@@ -315,7 +314,7 @@ begin
       mempenjelasan_kegiatan.Text := MyQE1100penjelasan_kegiatan.Text;
       penerima_dana.Text := MyQE1100penerima_dana.Text;
       jumlah.value := MyQE1100jumlah_rp.value;
-      mempenjelasan_lanjut.Text := MyQE1100footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1100_pemberian_dana_sosial_politik_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -333,8 +332,14 @@ begin
                         ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
                         ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
                         ', `jumlah_rp` = '+FloatToStr(jumlah.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan_lanjut.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan_lanjut.Text)+')');
+          //
         end;
       if MyQE1100.Active then
         MyQE1100.Refresh
@@ -372,7 +377,6 @@ begin
       mempenjelasan_kegiatan.Properties.MaxLength := MyQE1100penjelasan_kegiatan.Size;
       penerima_dana.Properties.MaxLength := MyQE1100penerima_dana.Size;
       jumlah.Properties.MaxLength := MyQE1100jumlah_rp.Size;
-      mempenjelasan_lanjut.Properties.MaxLength := MyQE1100footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '120100000000';
@@ -392,8 +396,14 @@ begin
                        ', `jenis_kegiatan_sosial_politik` = '+QuotedStr(cb_jenis_kegiatan.EditValue)+
                        ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
                        ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
-                       ', `jumlah_rp` = '+FloatToStr(jumlah.Value)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan_lanjut.Text));
+                       ', `jumlah_rp` = '+FloatToStr(jumlah.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan_lanjut.Text)+')');
+          //
 
         end;
       if MyQE1100.Active then

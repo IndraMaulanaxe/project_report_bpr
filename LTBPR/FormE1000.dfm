@@ -339,9 +339,5 @@ inherited fr_FormE1000: Tfr_FormE1000
       FieldName = 'keterangan'
       Size = 200
     end
-    object MyQE1000footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
-      Size = 2000
-    end
   end
 end

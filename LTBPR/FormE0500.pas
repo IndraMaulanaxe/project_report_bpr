@@ -55,14 +55,12 @@ type
     MyQE0500direksi_jumlah_keseluruhan: TFloatField;
     MyQE0500dewan_komisaris_jumlah_orang: TIntegerField;
     MyQE0500dewan_komisaris_jumlah_keseluruhan: TFloatField;
-    MyQE0500footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1direksi_jumlah_orang: TcxGridDBColumn;
     cxGridDBTableView1direksi_jumlah_keseluruhan: TcxGridDBColumn;
     cxGridDBTableView1dewan_komisaris_jumlah_orang: TcxGridDBColumn;
     cxGridDBTableView1dewan_komisaris_jumlah_keseluruhan: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -269,6 +267,8 @@ begin
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
 
   if MyQE0500.Active then
     MyQE0500.Refresh
@@ -304,7 +304,6 @@ begin
       direksi_jml_seluruh.Properties.MaxLength := MyQE0500direksi_jumlah_keseluruhan.Size;
       komisaris_jml_orang.Properties.MaxLength := MyQE0500dewan_komisaris_jumlah_orang.Size;
       komisaris_jml_seluruh.Properties.MaxLength := MyQE0500dewan_komisaris_jumlah_keseluruhan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0500footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       cb_komponen.EditValue := MyQE0500kode_komponen.Text;
@@ -312,7 +311,7 @@ begin
       direksi_jml_seluruh.value := MyQE0500direksi_jumlah_keseluruhan.Value;
       komisaris_jml_orang.value := MyQE0500dewan_komisaris_jumlah_orang.Value;
       komisaris_jml_seluruh.value := MyQE0500dewan_komisaris_jumlah_keseluruhan.Value;
-      mempenjelasan.Text := MyQE0500footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0500_kebijakan_berdasarkan_rups_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       cb_komponen.Enabled := False;
     end;
@@ -329,8 +328,14 @@ begin
                         ', `direksi_jumlah_keseluruhan` = '+FloatToStr(direksi_jml_seluruh.Value)+
                         ', `dewan_komisaris_jumlah_orang` = '+FloatToStr(komisaris_jml_orang.Value)+
                         ', `dewan_komisaris_jumlah_keseluruhan` = '+FloatToStr(komisaris_jml_seluruh.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE0500.Active then
         MyQE0500.Refresh
@@ -368,7 +373,6 @@ begin
       direksi_jml_seluruh.Properties.MaxLength := MyQE0500direksi_jumlah_keseluruhan.Size;
       komisaris_jml_orang.Properties.MaxLength := MyQE0500dewan_komisaris_jumlah_orang.Size;
       komisaris_jml_seluruh.Properties.MaxLength := MyQE0500dewan_komisaris_jumlah_keseluruhan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0500footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       //kode_komponen.Text := '082010000000';
@@ -387,8 +391,14 @@ begin
                        ', `direksi_jumlah_orang` = '+FloatToStr(direksi_jml_orang.Value)+
                        ', `direksi_jumlah_keseluruhan` = '+FloatToStr(direksi_jml_seluruh.Value)+
                        ', `dewan_komisaris_jumlah_orang` = '+FloatToStr(komisaris_jml_orang.Value)+
-                       ', `dewan_komisaris_jumlah_keseluruhan` = '+FloatToStr(komisaris_jml_seluruh.Value)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+                       ', `dewan_komisaris_jumlah_keseluruhan` = '+FloatToStr(komisaris_jml_seluruh.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
 
         end;
       if MyQE0500.Active then

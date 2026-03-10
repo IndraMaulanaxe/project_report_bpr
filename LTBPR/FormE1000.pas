@@ -60,7 +60,6 @@ type
     MyQE1000jenis_transaksi: TStringField;
     MyQE1000nilai_transaksi: TFloatField;
     MyQE1000keterangan: TStringField;
-    MyQE1000footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1pihak_yang_memiliki_nama: TcxGridDBColumn;
@@ -279,6 +278,8 @@ begin
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
 
   if MyQE1000.Active then
     MyQE1000.Refresh
@@ -315,7 +316,6 @@ begin
       jenis_trans.Properties.MaxLength := MyQE1000jenis_transaksi.Size;
       nilai_trans.Properties.MaxLength := MyQE1000nilai_transaksi.Size;
       memketer.Properties.MaxLength := MyQE1000keterangan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE1000footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE1000kode_komponen.Text;
@@ -328,7 +328,8 @@ begin
       jenis_trans.Text := MyQE1000jenis_transaksi.Text;
       nilai_trans.value := MyQE1000nilai_transaksi.value;
       memketer.Text := MyQE1000keterangan.Text;
-      mempenjelasan.Text := MyQE1000footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1000_transaksi_benturan_kepentingan_footer where flag_detail='+QuotedStr('F01')+'  ');
+
 
       kode_komponen.Enabled := False;
     end;
@@ -350,8 +351,14 @@ begin
                         ', `jenis_transaksi` = '+QuotedStr(jenis_trans.Text)+
                         ', `nilai_transaksi` = '+FloatToStr(nilai_trans.Value)+
                         ', `keterangan` = '+QuotedStr(memketer.text)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE1000.Active then
         MyQE1000.Refresh
@@ -390,7 +397,6 @@ begin
       jenis_trans.Properties.MaxLength := MyQE1000jenis_transaksi.Size;
       nilai_trans.Properties.MaxLength := MyQE1000nilai_transaksi.Size;
       memketer.Properties.MaxLength := MyQE1000keterangan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE1000footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '110100000000';
@@ -414,8 +420,13 @@ begin
                        ', `pengambil_keputusan_nik` = '+QuotedStr(nik_putusan.Text)+
                        ', `jenis_transaksi` = '+QuotedStr(jenis_trans.Text)+
                        ', `nilai_transaksi` = '+FloatToStr(nilai_trans.Value)+
-                       ', `keterangan` = '+QuotedStr(memketer.Text)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+                       ', `keterangan` = '+QuotedStr(memketer.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
 
         end;
       if MyQE1000.Active then

@@ -57,7 +57,6 @@ type
     MyQE0303sandi_bank_lain: TStringField;
     MyQE0303nama_bank_perusahaan_lain: TStringField;
     MyQE0303persentase_kepemilikan: TFloatField;
-    MyQE0303footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nik: TcxGridDBColumn;
@@ -65,7 +64,6 @@ type
     cxGridDBTableView1sandi_bank_lain: TcxGridDBColumn;
     cxGridDBTableView1nama_bank_perusahaan_lain: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -273,6 +271,9 @@ begin
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text));
 
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+
   if MyQE0303.Active then
     MyQE0303.Refresh
   else
@@ -307,7 +308,6 @@ begin
       cb_sandibank.Properties.MaxLength := MyQE0303sandi_bank_lain.Size;
       nama_bank.Properties.MaxLength := MyQE0303nama_bank_perusahaan_lain.Size;
       persen.Properties.MaxLength := MyQE0303persentase_kepemilikan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0303footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0303kode_komponen.Text;
@@ -316,7 +316,7 @@ begin
       cb_sandibank.EditValue := MyQE0303sandi_bank_lain.Text;
       nama_bank.Text := MyQE0303nama_bank_perusahaan_lain.Text;
       persen.Value := MyQE0303persentase_kepemilikan.Value;
-      memtindak_lanjut.Text := MyQE0303footer_1_penjelasan_lebih_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -334,8 +334,14 @@ begin
                         ', `sandi_bank_lain` = '+QuotedStr(cb_sandibank.EditValue)+
                         ', `nama_bank_perusahaan_lain` = '+QuotedStr(nama_bank.EditValue)+
                         ', `persentase_kepemilikan` = '+FloatToStr(persen.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0303.Active then
         MyQE0303.Refresh
@@ -374,7 +380,6 @@ begin
       cb_sandibank.Properties.MaxLength := MyQE0303sandi_bank_lain.Size;
       nama_bank.Properties.MaxLength := MyQE0303nama_bank_perusahaan_lain.Size;
       persen.Properties.MaxLength := MyQE0303persentase_kepemilikan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0303footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '022010000000';
@@ -394,18 +399,23 @@ begin
                       ' `nama`, '+
                       ' `sandi_bank_lain`, '+
                       ' `nama_bank_perusahaan_lain`, '+
-                      ' `persentase_kepemilikan`, '+
-                      ' `footer_1_penjelasan_lebih_lanjut` '+
+                      ' `persentase_kepemilikan` '+
                       ') VALUES ('+
                       QuotedStr(kode_komponen.Text)+', '+
                       QuotedStr(nik.Text)+', '+
                       QuotedStr(nama.Text)+', '+
                       QuotedStr(cb_sandibank.EditValue)+', '+
                       QuotedStr(nama_bank.EditValue)+', '+
-                      FloatToStr(persen.Value)+', '+
-                      QuotedStr(memtindak_lanjut.Text)+
+                      FloatToStr(persen.Value)+' '+
                       ')'
                     );
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0303.Active then
         MyQE0303.Refresh

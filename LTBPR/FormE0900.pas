@@ -53,12 +53,10 @@ type
     MyQE0900kode_komponen: TStringField;
     MyQE0900jumlah_perdata: TIntegerField;
     MyQE0900jumlah_pidana: TIntegerField;
-    MyQE0900footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1jumlah_perdata: TcxGridDBColumn;
     cxGridDBTableView1jumlah_pidana: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -265,6 +263,9 @@ begin
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` '+
     '  WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
+
 
   if MyQE0900.Active then
     MyQE0900.Refresh
@@ -298,13 +299,12 @@ begin
       cb_komponen.Properties.MaxLength := MyQE0900kode_komponen.Size;
       jumlah_perdata.Properties.MaxLength := MyQE0900jumlah_perdata.Size;
       jumlah_pidana.Properties.MaxLength := MyQE0900jumlah_pidana.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0900footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       cb_komponen.EditValue:= MyQE0900kode_komponen.Text;
       jumlah_perdata.value := MyQE0900jumlah_perdata.Value;
       jumlah_pidana.value := MyQE0900jumlah_pidana.Value;
-      mempenjelasan.Text := MyQE0900footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0900_permasalahan_hukum_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       cb_komponen.Enabled := False;
     end;
@@ -319,8 +319,14 @@ begin
                         ' SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
                         ', `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
                         ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
                         '  WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE0900.Active then
         MyQE0900.Refresh
@@ -356,7 +362,6 @@ begin
       cb_komponen.Properties.MaxLength := MyQE0900kode_komponen.Size;
       jumlah_perdata.Properties.MaxLength := MyQE0900jumlah_perdata.Size;
       jumlah_pidana.Properties.MaxLength := MyQE0900jumlah_pidana.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0900footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       //kode_komponen.Text := '082010000000';
@@ -373,8 +378,14 @@ begin
           MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` '+
                        'SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
                        ', `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
-                       ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+                       ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
 
         end;
       if MyQE0900.Active then
