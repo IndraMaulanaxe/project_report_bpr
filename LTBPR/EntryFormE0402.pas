@@ -46,10 +46,10 @@ type
     nik: TcxTextEdit;
     memsaham: TcxMemo;
     cxLabel1: TcxLabel;
-    memkomisaris: TcxMemo;
     cxLabel2: TcxLabel;
-    memdireksi: TcxMemo;
     cxLabel4: TcxLabel;
+    memkomisaris: TcxMemo;
+    memdireksi: TcxMemo;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);

@@ -22,11 +22,11 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
     Height = 475
     Width = 493
     object cxGroupBox1: TcxGroupBox
-      Left = 17
+      Left = 24
       Top = 52
       Caption = 'Pihak Yang Memiliki'
       Style.TextColor = clWhite
-      TabOrder = 0
+      TabOrder = 6
       Height = 118
       Width = 466
       object cxLabel1: TcxLabel
@@ -167,7 +167,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 176
       Caption = 'Pengambil Keputusan'
       Style.TextColor = clWhite
-      TabOrder = 1
+      TabOrder = 7
       Height = 118
       Width = 466
       object cxLabel7: TcxLabel
@@ -385,7 +385,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 5
+      TabOrder = 8
       Height = 24
       Width = 298
     end
@@ -411,7 +411,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 5
       Height = 24
       Width = 152
     end
@@ -449,7 +449,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 11
       Height = 47
       Width = 298
     end
@@ -508,13 +508,14 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 10
       Height = 47
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
     Top = 475
+    TabOrder = 3
     ExplicitTop = 475
     ExplicitWidth = 493
     ExplicitHeight = 44
@@ -634,6 +635,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   end
   inherited PanelTopSystem: TPanel
     Width = 493
+    TabOrder = 2
     ExplicitWidth = 493
     inherited IconClose: TLabel
       Left = 459

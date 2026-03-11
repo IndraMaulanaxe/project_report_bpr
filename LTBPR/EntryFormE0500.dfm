@@ -70,7 +70,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 2
+      TabOrder = 11
       Height = 47
       Width = 298
     end
@@ -111,7 +111,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 5
       Width = 121
     end
     object komisaris_jml_orang: TcxCurrencyEdit
@@ -130,7 +130,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 7
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -153,7 +153,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 4
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -193,7 +193,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 6
       Width = 121
     end
     object komisaris_jml_seluruh: TcxCurrencyEdit
@@ -212,7 +212,7 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 121
     end
     object cxLabel2: TcxLabel

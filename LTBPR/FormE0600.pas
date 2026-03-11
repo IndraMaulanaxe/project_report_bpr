@@ -261,7 +261,7 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
 
@@ -311,9 +311,8 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-                        ' SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                        ', `rasio_gaji_perbandingan` = '+FloatToStr(rasio.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+                      ' SET `rasio_gaji_perbandingan` = '+FloatToStr(rasio.Value)+
+                      ' WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
 
@@ -368,14 +367,11 @@ begin
       with fr_EntryFormE0600 do
         begin
           // Insert
-         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` ('+
-                      ' `kode_komponen`, '+
-                      ' `rasio_gaji_perbandingan` '+
-                      ') VALUES ('+
-                      QuotedStr(cb_komponen.EditValue)+', '+
-                      FloatToStr(rasio.Value)+' '+
-                      ')'
-                    );
+         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` SET '+
+                      '`kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
+                      ', `rasio_gaji_perbandingan` = '+StringReplace(FloatToStr(rasio.Value), ',', '.', [rfReplaceAll])+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`rasio_gaji_perbandingan` = VALUES(`rasio_gaji_perbandingan`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
 

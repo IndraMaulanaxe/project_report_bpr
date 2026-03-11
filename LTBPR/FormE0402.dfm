@@ -171,7 +171,6 @@ inherited fr_FormE0402: Tfr_FormE0402
       Left = 680
       OnClick = btlb_DeleteClick
       ExplicitLeft = 680
-      ExplicitTop = 4
     end
     inherited btlb_Edit: TcxButton
       Left = 589

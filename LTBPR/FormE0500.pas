@@ -266,7 +266,7 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
 
@@ -328,7 +328,7 @@ begin
                         ', `direksi_jumlah_keseluruhan` = '+FloatToStr(direksi_jml_seluruh.Value)+
                         ', `dewan_komisaris_jumlah_orang` = '+FloatToStr(komisaris_jml_orang.Value)+
                         ', `dewan_komisaris_jumlah_keseluruhan` = '+FloatToStr(komisaris_jml_seluruh.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0500kode_komponen.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
 
@@ -386,12 +386,17 @@ begin
       with fr_EntryFormE0500 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups` '+
-                       'SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                       ', `direksi_jumlah_orang` = '+FloatToStr(direksi_jml_orang.Value)+
-                       ', `direksi_jumlah_keseluruhan` = '+FloatToStr(direksi_jml_seluruh.Value)+
-                       ', `dewan_komisaris_jumlah_orang` = '+FloatToStr(komisaris_jml_orang.Value)+
-                       ', `dewan_komisaris_jumlah_keseluruhan` = '+FloatToStr(komisaris_jml_seluruh.Value));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups` SET '+
+                        '`kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
+                        ', `direksi_jumlah_orang` = '+StringReplace(FloatToStr(direksi_jml_orang.Value), ',', '.', [rfReplaceAll])+
+                        ', `direksi_jumlah_keseluruhan` = '+StringReplace(FloatToStr(direksi_jml_seluruh.Value), ',', '.', [rfReplaceAll])+
+                        ', `dewan_komisaris_jumlah_orang` = '+StringReplace(FloatToStr(komisaris_jml_orang.Value), ',', '.', [rfReplaceAll])+
+                        ', `dewan_komisaris_jumlah_keseluruhan` = '+StringReplace(FloatToStr(komisaris_jml_seluruh.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`direksi_jumlah_orang` = VALUES(`direksi_jumlah_orang`),'+
+                        '`direksi_jumlah_keseluruhan` = VALUES(`direksi_jumlah_keseluruhan`),'+
+                        '`dewan_komisaris_jumlah_orang` = VALUES(`dewan_komisaris_jumlah_orang`),'+
+                        '`dewan_komisaris_jumlah_keseluruhan` = VALUES(`dewan_komisaris_jumlah_keseluruhan`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0500_kebijakan_berdasarkan_rups_footer` ');
 

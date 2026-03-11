@@ -276,7 +276,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0204nik.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
@@ -349,17 +350,18 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `keahlian` = '+QuotedStr(memkeahlian.text)+
-                        ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
-                        ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
-                        ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
-                        ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
-                        ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
-                        ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text));
+                      'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
+                      ', `nik` = '+QuotedStr(nik.Text)+
+                      ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
+                      ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
+                      ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
+                      ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
+                      ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
+                      ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
+                      ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
+                      ' WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text)+
+                      ' AND `nik` = '+QuotedStr(MyQE0204nik.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
 
@@ -428,17 +430,26 @@ begin
       with fr_EntryFormE0204 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
-                       ', `nik` = '+QuotedStr(nik.Text)+
-                       ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
-                       ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
-                       ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
-                       ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
-                       ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
-                       ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
-                       ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` SET '+
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
+                      ', `nik` = '+QuotedStr(nik.Text)+
+                      ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
+                      ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
+                      ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
+                      ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
+                      ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
+                      ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
+                      ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`nama_anggota_komite` = VALUES(`nama_anggota_komite`),'+
+                      '`keahlian` = VALUES(`keahlian`),'+
+                      '`komite_audit` = VALUES(`komite_audit`),'+
+                      '`komite_pemantau_risiko` = VALUES(`komite_pemantau_risiko`),'+
+                      '`komite_remunerasi_dan_nominasi` = VALUES(`komite_remunerasi_dan_nominasi`),'+
+                      '`komite_management_risiko` = VALUES(`komite_management_risiko`),'+
+                      '`komite_lainnya` = VALUES(`komite_lainnya`),'+
+                      '`pihak_independent` = VALUES(`pihak_independent`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
 

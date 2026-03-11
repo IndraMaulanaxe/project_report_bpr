@@ -266,7 +266,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text));
+               ' WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text)+
+               ' AND `nik` = '+QuotedStr(MyQE0302nik.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
@@ -319,12 +320,13 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.Text)+
                         ', `persentase_kepemilikan` = '+FloatToStr(persen.Value)+
                         ', `persentase_kepemilikan_tahun` = '+FloatToStr(persen_sebelumya.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0302nik.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
 
@@ -383,8 +385,11 @@ begin
                         ', `nik` = '+QuotedStr(nik.Text)+
                         ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.Text)+
                         ', `persentase_kepemilikan` = '+StringReplace(FloatToStr(persen.Value), ',', '.', [rfReplaceAll])+
-                        ', `persentase_kepemilikan_tahun` = '+StringReplace(FloatToStr(persen_sebelumya.Value), ',', '.', [rfReplaceAll])
-                      );
+                        ', `persentase_kepemilikan_tahun` = '+StringReplace(FloatToStr(persen_sebelumya.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama_kelompok_usaha_bpr` = VALUES(`nama_kelompok_usaha_bpr`),'+
+                        '`persentase_kepemilikan` = VALUES(`persentase_kepemilikan`),'+
+                        '`persentase_kepemilikan_tahun` = VALUES(`persentase_kepemilikan_tahun`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
 

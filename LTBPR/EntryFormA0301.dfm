@@ -11,7 +11,6 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     ExplicitWidth = 558
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 558
     ExplicitHeight = 450
     Height = 450
@@ -30,7 +29,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 0
+      TabOrder = 1
       Height = 24
       Width = 298
     end
@@ -77,7 +76,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Tanggal Akta'
       ParentColor = True
       Style.TextColor = clWindow
-      TabOrder = 3
+      TabOrder = 2
       Width = 121
     end
     object cxLabel2: TcxLabel
@@ -125,7 +124,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Tanggal Perubahan'
       ParentColor = True
       Style.TextColor = clWindow
-      TabOrder = 6
+      TabOrder = 4
       Width = 121
     end
     object nomor_ubah_anggaran: TcxTextEdit
@@ -142,7 +141,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 7
+      TabOrder = 3
       Height = 24
       Width = 298
     end
@@ -179,7 +178,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 9
+      TabOrder = 5
       Height = 24
       Width = 298
     end
@@ -189,7 +188,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Tanggal Pengesahan'
       ParentColor = True
       Style.TextColor = clWindow
-      TabOrder = 10
+      TabOrder = 6
       Width = 121
     end
     object cxLabel5: TcxLabel
@@ -238,7 +237,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Hint = 'Tanggal Beroperasi'
       ParentColor = True
       Style.TextColor = clWindow
-      TabOrder = 13
+      TabOrder = 7
       Width = 121
     end
     object membidangusaha: TcxMemo
@@ -249,7 +248,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       Style.TextColor = clWindow
-      TabOrder = 14
+      TabOrder = 8
       Height = 24
       Width = 298
     end
@@ -301,7 +300,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       Style.TextColor = clWindow
-      TabOrder = 17
+      TabOrder = 9
       Height = 47
       Width = 298
     end
@@ -336,7 +335,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
         end>
       Properties.ListSource = dsMyQref_opini_akuntan_publik
       Style.TextColor = clWindow
-      TabOrder = 19
+      TabOrder = 10
       Width = 298
     end
     object memketerangan: TcxMemo
@@ -347,7 +346,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
       Style.TextColor = clWindow
-      TabOrder = 20
+      TabOrder = 11
       Height = 47
       Width = 298
     end
@@ -386,7 +385,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
       Style.TextColor = clWindow
-      TabOrder = 22
+      TabOrder = 0
       Height = 24
       Width = 103
     end

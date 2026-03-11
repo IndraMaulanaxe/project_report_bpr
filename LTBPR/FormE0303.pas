@@ -268,11 +268,12 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text));
+  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain` '+
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0303nik.Text));
 
   // footer
-  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer` ');
 
   if MyQE0303.Active then
     MyQE0303.Refresh
@@ -316,7 +317,7 @@ begin
       cb_sandibank.EditValue := MyQE0303sandi_bank_lain.Text;
       nama_bank.Text := MyQE0303nama_bank_perusahaan_lain.Text;
       persen.Value := MyQE0303persentase_kepemilikan.Value;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer where flag_detail='+QuotedStr('F01')+'  ');
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -327,18 +328,19 @@ begin
       with fr_EntryFormE0303 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `nama` = '+QuotedStr(nama.text)+
+          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain` '+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama` = '+QuotedStr(nama.Text)+
                         ', `sandi_bank_lain` = '+QuotedStr(cb_sandibank.EditValue)+
                         ', `nama_bank_perusahaan_lain` = '+QuotedStr(nama_bank.EditValue)+
                         ', `persentase_kepemilikan` = '+FloatToStr(persen.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0303kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0303nik.Text));
            // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer` ');
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` '+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer` '+
                         ' (`flag_detail`,`keterangan`) '+
                         ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
           //
@@ -393,26 +395,22 @@ begin
       with fr_EntryFormE0303 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain` ('+
-                      ' `kode_komponen`, '+
-                      ' `nik`, '+
-                      ' `nama`, '+
-                      ' `sandi_bank_lain`, '+
-                      ' `nama_bank_perusahaan_lain`, '+
-                      ' `persentase_kepemilikan` '+
-                      ') VALUES ('+
-                      QuotedStr(kode_komponen.Text)+', '+
-                      QuotedStr(nik.Text)+', '+
-                      QuotedStr(nama.Text)+', '+
-                      QuotedStr(cb_sandibank.EditValue)+', '+
-                      QuotedStr(nama_bank.EditValue)+', '+
-                      FloatToStr(persen.Value)+' '+
-                      ')'
-                    );
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama` = '+QuotedStr(nama.Text)+
+                        ', `sandi_bank_lain` = '+QuotedStr(cb_sandibank.EditValue)+
+                        ', `nama_bank_perusahaan_lain` = '+QuotedStr(nama_bank.EditValue)+
+                        ', `persentase_kepemilikan` = '+StringReplace(FloatToStr(persen.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama` = VALUES(`nama`),'+
+                        '`sandi_bank_lain` = VALUES(`sandi_bank_lain`),'+
+                        '`nama_bank_perusahaan_lain` = VALUES(`nama_bank_perusahaan_lain`),'+
+                        '`persentase_kepemilikan` = VALUES(`persentase_kepemilikan`)');
            // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` ');
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer` ');
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lain_footer` '+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0303_kepemilikan_saham_perusahaan_lain_footer` '+
                         ' (`flag_detail`,`keterangan`) '+
                         ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
           //

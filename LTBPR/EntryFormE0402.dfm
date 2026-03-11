@@ -11,6 +11,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
     ExplicitWidth = 510
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 510
     ExplicitHeight = 310
     Height = 310
@@ -98,7 +99,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 9
       Height = 48
       Width = 298
     end
@@ -142,7 +143,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 5
+      TabOrder = 4
       Height = 24
       Width = 298
     end
@@ -162,7 +163,7 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 7
       Height = 48
       Width = 298
     end
@@ -188,6 +189,44 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       Height = 48
       Width = 168
       AnchorY = 202
+    end
+    object memkomisaris: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 137
+      Hint = 'Hubungan Keluarga[II. Anggota Dewan Komisaris]'
+      ParentColor = True
+      ParentFont = False
+      Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      Height = 48
+      Width = 298
+    end
+    object memdireksi: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 83
+      Hint = 'Hubungan Keluarga[I. Anggota Direksi]'
+      ParentColor = True
+      ParentFont = False
+      Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Height = 48
+      Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
@@ -317,25 +356,6 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
       ExplicitLeft = 771
     end
   end
-  object memkomisaris: TcxMemo
-    Tag = 1
-    Left = 185
-    Top = 137
-    Hint = 'Hubungan Keluarga[II. Anggota Dewan Komisaris]'
-    ParentColor = True
-    ParentFont = False
-    Properties.OnChange = MemKeteranganPropertiesChange
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindow
-    Style.Font.Height = -13
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.TextColor = clWindow
-    Style.IsFontAssigned = True
-    TabOrder = 4
-    Height = 48
-    Width = 298
-  end
   object cxLabel2: TcxLabel
     Left = 17
     Top = 123
@@ -359,25 +379,6 @@ inherited fr_EntryFormE0402: Tfr_EntryFormE0402
     Height = 51
     Width = 162
     AnchorY = 149
-  end
-  object memdireksi: TcxMemo
-    Tag = 1
-    Left = 185
-    Top = 83
-    Hint = 'Hubungan Keluarga[I. Anggota Direksi]'
-    ParentColor = True
-    ParentFont = False
-    Properties.OnChange = MemKeteranganPropertiesChange
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindow
-    Style.Font.Height = -13
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.TextColor = clWindow
-    Style.IsFontAssigned = True
-    TabOrder = 6
-    Height = 48
-    Width = 298
   end
   object cxLabel4: TcxLabel
     Left = 17

@@ -8,9 +8,11 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 509
+    TabOrder = 1
     ExplicitWidth = 509
   end
   inherited PanelContent: TcxGroupBox
+    TabOrder = 2
     ExplicitWidth = 509
     ExplicitHeight = 180
     Height = 180
@@ -70,7 +72,7 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 2
+      TabOrder = 7
       Height = 47
       Width = 298
     end
@@ -111,7 +113,7 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 6
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -134,7 +136,7 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 3
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -174,12 +176,13 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 5
       Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
     Top = 180
+    TabOrder = 3
     ExplicitTop = 180
     ExplicitWidth = 509
     ExplicitHeight = 44
@@ -299,6 +302,7 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
   end
   inherited PanelTopSystem: TPanel
     Width = 509
+    TabOrder = 0
     ExplicitWidth = 509
     inherited IconClose: TLabel
       Left = 475

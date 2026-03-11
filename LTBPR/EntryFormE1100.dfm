@@ -13,6 +13,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
     ExplicitWidth = 493
   end
   inherited PanelContent: TcxGroupBox
+    TabOrder = 2
     ExplicitWidth = 493
     ExplicitHeight = 283
     Height = 283
@@ -99,7 +100,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 3
+      TabOrder = 11
       Height = 24
       Width = 298
     end
@@ -125,7 +126,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 7
       Height = 24
       Width = 152
     end
@@ -163,7 +164,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 13
       Height = 47
       Width = 298
     end
@@ -183,7 +184,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 12
       Width = 121
     end
     object Label6: TcxLabel
@@ -219,7 +220,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 121
     end
     object cxLabel1: TcxLabel
@@ -261,7 +262,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 9
       Width = 298
     end
     object cxLabel3: TcxLabel
@@ -300,13 +301,14 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 13
+      TabOrder = 10
       Height = 47
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
     Top = 283
+    TabOrder = 3
     ExplicitTop = 283
     ExplicitWidth = 493
     ExplicitHeight = 44
@@ -426,6 +428,7 @@ inherited fr_EntryFormE1100: Tfr_EntryFormE1100
   end
   inherited PanelTopSystem: TPanel
     Width = 493
+    TabOrder = 1
     ExplicitWidth = 493
     inherited IconClose: TLabel
       Left = 459

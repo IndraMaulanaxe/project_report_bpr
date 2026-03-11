@@ -11,6 +11,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 498
     ExplicitHeight = 229
     Height = 229
@@ -51,7 +52,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 1
+      TabOrder = 8
       Height = 47
       Width = 298
     end
@@ -98,7 +99,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 2
       Height = 24
       Width = 152
     end
@@ -154,7 +155,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 5
       Width = 121
     end
     object cxLabel4: TcxLabel
@@ -193,9 +194,28 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 9
       Height = 47
       Width = 298
+    end
+    object jumlah_peserta: TcxCurrencyEdit
+      Left = 184
+      Top = 83
+      Hint = 'Jumlah Peserta'
+      EditValue = '0'
+      ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.DisplayFormat = '#,##0'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
@@ -324,25 +344,6 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 464
       ExplicitLeft = 771
     end
-  end
-  object jumlah_peserta: TcxCurrencyEdit
-    Left = 185
-    Top = 83
-    Hint = 'Jumlah Peserta'
-    EditValue = '0'
-    ParentColor = True
-    ParentFont = False
-    Properties.Alignment.Horz = taRightJustify
-    Properties.DisplayFormat = '#,##0'
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindow
-    Style.Font.Height = -13
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.TextColor = clWindow
-    Style.IsFontAssigned = True
-    TabOrder = 4
-    Width = 121
   end
   object MyDataSource1: TMyDataSource
     Left = 392

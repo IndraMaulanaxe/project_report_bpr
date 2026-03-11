@@ -262,7 +262,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0201nik.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');
@@ -313,10 +314,11 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text));
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0201nik.Text));
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');
@@ -375,8 +377,9 @@ begin
          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi` SET '+
                       '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                       ', `nik` = '+QuotedStr(nik.Text)+
-                      ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)
-                    );
+                      ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`tugas_dan_tanggung_jawab` = VALUES(`tugas_dan_tanggung_jawab`)');
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');

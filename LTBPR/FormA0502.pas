@@ -266,12 +266,9 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
-    ' AND `kategori_kegiatan_usaha` = '+QuotedStr(MyQA0502kategori_kegiatan_usaha.Text)+
-    ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text)+
-    ' AND `nama_produk` = '+QuotedStr(MyQA0502nama_produk.Text)+
-    ' AND `uraian` = '+QuotedStr(MyQA0502uraian.Text)+
-    ' LIMIT 1');
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
+                ' AND `kategori_kegiatan_usaha` = '+QuotedStr(MyQA0502kategori_kegiatan_usaha.Text)+
+                ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
@@ -335,24 +332,21 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0502_bidang_usaha` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
                         ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
-                        ', `nama_produk` = '+QuotedStr(memnama_produk.text)+
-                        ', `uraian` = '+QuotedStr(memuraian.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
+                        ', `nama_produk` = '+QuotedStr(memnama_produk.Text)+
+                        ', `uraian` = '+QuotedStr(memuraian.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQA0502kode_komponen.Text)+
                         ' AND `kategori_kegiatan_usaha` = '+QuotedStr(MyQA0502kategori_kegiatan_usaha.Text)+
-                        ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text)+
-                        ' AND `nama_produk` = '+QuotedStr(MyQA0502nama_produk.Text)+
-                        ' AND `uraian` = '+QuotedStr(MyQA0502uraian.Text)+
-                        ' LIMIT 1');
+                        ' AND `jenis_produk` = '+QuotedStr(MyQA0502jenis_produk.Text));
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0502.Active then
@@ -410,18 +404,20 @@ begin
         begin
           // Insert
           MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0502_bidang_usaha` SET '+
-                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
-                        ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
-                        ', `nama_produk` = '+QuotedStr(memnama_produk.Text)+
-                        ', `uraian` = '+QuotedStr(memuraian.Text)
-                      );
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `kategori_kegiatan_usaha` = '+QuotedStr(cb_kegiatan_usaha.EditValue)+
+                      ', `jenis_produk` = '+QuotedStr(cb_jenis_produk.EditValue)+
+                      ', `nama_produk` = '+QuotedStr(memnama_produk.Text)+
+                      ', `uraian` = '+QuotedStr(memuraian.Text)+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`nama_produk` = VALUES(`nama_produk`),'+
+                      '`uraian` = VALUES(`uraian`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0502_bidang_usaha_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0502.Active then

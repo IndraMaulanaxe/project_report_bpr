@@ -94,7 +94,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
       Style.TextColor = clWindow
-      TabOrder = 4
+      TabOrder = 0
       Height = 24
       Width = 103
     end

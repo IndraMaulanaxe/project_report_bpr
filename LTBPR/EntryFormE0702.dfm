@@ -117,7 +117,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 13
       Height = 47
       Width = 298
     end
@@ -161,7 +161,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 6
+      TabOrder = 5
       Height = 24
       Width = 298
     end
@@ -205,7 +205,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 8
+      TabOrder = 7
       Height = 24
       Width = 298
     end
@@ -246,7 +246,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 9
       Width = 121
     end
     object frekuesi: TcxLabel
@@ -274,6 +274,25 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Left = 185
       Top = 141
       Hint = 'Frekuensi Kehadiran'
+      EditValue = '0'
+      ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.DisplayFormat = '#,##0'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 11
+      Width = 121
+    end
+    object tingkat_hadir: TcxCurrencyEdit
+      Left = 185
+      Top = 171
+      Hint = 'Tingkat Kehadiran Dalam Persen'
       EditValue = '0'
       ParentColor = True
       ParentFont = False
@@ -416,25 +435,6 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Left = 464
       ExplicitLeft = 771
     end
-  end
-  object tingkat_hadir: TcxCurrencyEdit
-    Left = 185
-    Top = 171
-    Hint = 'Tingkat Kehadiran Dalam Persen'
-    EditValue = '0'
-    ParentColor = True
-    ParentFont = False
-    Properties.Alignment.Horz = taRightJustify
-    Properties.DisplayFormat = '#,##0'
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindow
-    Style.Font.Height = -13
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.TextColor = clWindow
-    Style.IsFontAssigned = True
-    TabOrder = 4
-    Width = 121
   end
   object MyDataSource1: TMyDataSource
     Left = 392

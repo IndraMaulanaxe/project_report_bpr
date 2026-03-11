@@ -171,6 +171,7 @@ inherited fr_FormE0201: Tfr_FormE0201
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
+      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474

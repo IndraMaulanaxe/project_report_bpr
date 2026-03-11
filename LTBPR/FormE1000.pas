@@ -277,7 +277,13 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text)+
+                ' AND `pihak_yang_memiliki_nama` = '+QuotedStr(MyQE1000pihak_yang_memiliki_nama.Text)+
+                ' AND `pihak_yang_memiliki_jabatan` = '+QuotedStr(MyQE1000pihak_yang_memiliki_jabatan.Text)+
+                ' AND `pihak_yang_memiliki_nik` = '+QuotedStr(MyQE1000pihak_yang_memiliki_nik.Text)+
+                ' AND `pengambil_keputusan_nama` = '+QuotedStr(MyQE1000pengambil_keputusan_nama.Text)+
+                ' AND `pengambil_keputusan_jabatan` = '+QuotedStr(MyQE1000pengambil_keputusan_jabatan.Text)+
+                ' AND `pengambil_keputusan_nik` = '+QuotedStr(MyQE1000pengambil_keputusan_nik.Text));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
 
@@ -350,8 +356,14 @@ begin
                         ', `pengambil_keputusan_nik` = '+QuotedStr(nik_putusan.Text)+
                         ', `jenis_transaksi` = '+QuotedStr(jenis_trans.Text)+
                         ', `nilai_transaksi` = '+FloatToStr(nilai_trans.Value)+
-                        ', `keterangan` = '+QuotedStr(memketer.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text));
+                        ', `keterangan` = '+QuotedStr(memketer.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE1000kode_komponen.Text)+
+                        ' AND `pihak_yang_memiliki_nama` = '+QuotedStr(MyQE1000pihak_yang_memiliki_nama.Text)+
+                        ' AND `pihak_yang_memiliki_jabatan` = '+QuotedStr(MyQE1000pihak_yang_memiliki_jabatan.Text)+
+                        ' AND `pihak_yang_memiliki_nik` = '+QuotedStr(MyQE1000pihak_yang_memiliki_nik.Text)+
+                        ' AND `pengambil_keputusan_nama` = '+QuotedStr(MyQE1000pengambil_keputusan_nama.Text)+
+                        ' AND `pengambil_keputusan_jabatan` = '+QuotedStr(MyQE1000pengambil_keputusan_jabatan.Text)+
+                        ' AND `pengambil_keputusan_nik` = '+QuotedStr(MyQE1000pengambil_keputusan_nik.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
 
@@ -410,17 +422,21 @@ begin
       with fr_EntryFormE1000 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `pihak_yang_memiliki_nama` = '+QuotedStr(nama_milik.Text)+
-                       ', `pihak_yang_memiliki_jabatan` = '+QuotedStr(jabatan_milik.Text)+
-                       ', `pihak_yang_memiliki_nik` = '+QuotedStr(nik_milik.Text)+
-                       ', `pengambil_keputusan_nama` = '+QuotedStr(nama_putusan.Text)+
-                       ', `pengambil_keputusan_jabatan` = '+QuotedStr(jabatan_putusan.Text)+
-                       ', `pengambil_keputusan_nik` = '+QuotedStr(nik_putusan.Text)+
-                       ', `jenis_transaksi` = '+QuotedStr(jenis_trans.Text)+
-                       ', `nilai_transaksi` = '+FloatToStr(nilai_trans.Value)+
-                       ', `keterangan` = '+QuotedStr(memketer.Text));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `pihak_yang_memiliki_nama` = '+QuotedStr(nama_milik.Text)+
+                        ', `pihak_yang_memiliki_jabatan` = '+QuotedStr(jabatan_milik.Text)+
+                        ', `pihak_yang_memiliki_nik` = '+QuotedStr(nik_milik.Text)+
+                        ', `pengambil_keputusan_nama` = '+QuotedStr(nama_putusan.Text)+
+                        ', `pengambil_keputusan_jabatan` = '+QuotedStr(jabatan_putusan.Text)+
+                        ', `pengambil_keputusan_nik` = '+QuotedStr(nik_putusan.Text)+
+                        ', `jenis_transaksi` = '+QuotedStr(jenis_trans.Text)+
+                        ', `nilai_transaksi` = '+StringReplace(FloatToStr(nilai_trans.Value), ',', '.', [rfReplaceAll])+
+                        ', `keterangan` = '+QuotedStr(memketer.Text)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`jenis_transaksi` = VALUES(`jenis_transaksi`),'+
+                        '`nilai_transaksi` = VALUES(`nilai_transaksi`),'+
+                        '`keterangan` = VALUES(`keterangan`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
 

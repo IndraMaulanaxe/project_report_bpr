@@ -268,7 +268,12 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text)+
+                ' AND `komite` = '+QuotedStr(MyQE0203komite.Text)+
+                ' AND `tugas_dan_tanggung_jawab` = '+QuotedStr(MyQE0203tugas_dan_tanggung_jawab.Text)+
+                ' AND `program` = '+QuotedStr(MyQE0203program.Text)+
+                ' AND `realisasi` = '+QuotedStr(MyQE0203realisasi.Text)+
+                ' AND `jumlah` = '+FloatToStr(MyQE0203jumlah.Value));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
@@ -327,13 +332,18 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `komite` = '+QuotedStr(cb_komite.EditValue)+
-                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.text)+
-                        ', `program` = '+QuotedStr(memprogram.text)+
-                        ', `realisasi` = '+QuotedStr(memrealisasi.text)+
+                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
+                        ', `program` = '+QuotedStr(memprogram.Text)+
+                        ', `realisasi` = '+QuotedStr(memrealisasi.Text)+
                         ', `jumlah` = '+FloatToStr(jumlah.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text)+
+                        ' AND `komite` = '+QuotedStr(MyQE0203komite.Text)+
+                        ' AND `tugas_dan_tanggung_jawab` = '+QuotedStr(MyQE0203tugas_dan_tanggung_jawab.Text)+
+                        ' AND `program` = '+QuotedStr(MyQE0203program.Text)+
+                        ' AND `realisasi` = '+QuotedStr(MyQE0203realisasi.Text)+
+                        ' AND `jumlah` = '+FloatToStr(MyQE0203jumlah.Value));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
 

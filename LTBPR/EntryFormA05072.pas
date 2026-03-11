@@ -59,9 +59,9 @@ type
     MyQRefPeserta: TMyQuery;
     StringField1: TStringField;
     StringField2: TStringField;
-    jumlah_peserta: TcxCurrencyEdit;
     cxLabel2: TcxLabel;
     cb_pelaksana: TcxLookupComboBox;
+    jumlah_peserta: TcxCurrencyEdit;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);

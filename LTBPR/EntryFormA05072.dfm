@@ -51,7 +51,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 1
+      TabOrder = 8
       Height = 47
       Width = 298
     end
@@ -98,7 +98,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 2
       Height = 24
       Width = 103
     end
@@ -157,7 +157,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 3
       Height = 48
       Width = 298
     end
@@ -200,7 +200,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 6
       Width = 298
     end
     object Label6: TcxLabel
@@ -236,7 +236,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 4
       Width = 121
     end
     object cxLabel4: TcxLabel
@@ -275,7 +275,7 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 12
+      TabOrder = 9
       Height = 47
       Width = 298
     end
@@ -318,8 +318,27 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 14
+      TabOrder = 5
       Width = 298
+    end
+    object jumlah_peserta: TcxCurrencyEdit
+      Left = 185
+      Top = 197
+      Hint = 'Jumlah Peserta'
+      EditValue = '0'
+      ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.DisplayFormat = '#,##0'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
@@ -448,25 +467,6 @@ inherited fr_EntryFormA05072: Tfr_EntryFormA05072
       Left = 535
       ExplicitLeft = 771
     end
-  end
-  object jumlah_peserta: TcxCurrencyEdit
-    Left = 185
-    Top = 197
-    Hint = 'Jumlah Peserta'
-    EditValue = '0'
-    ParentColor = True
-    ParentFont = False
-    Properties.Alignment.Horz = taRightJustify
-    Properties.DisplayFormat = '#,##0'
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindow
-    Style.Font.Height = -13
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.TextColor = clWindow
-    Style.IsFontAssigned = True
-    TabOrder = 4
-    Width = 121
   end
   object MyDataSource1: TMyDataSource
     Left = 392

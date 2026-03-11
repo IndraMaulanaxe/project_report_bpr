@@ -268,7 +268,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text)+
+                ' AND `tanggal_pelaksanaan` = '+DateToStrSQL(MyQE1100tanggal_pelaksanaan.Value));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
 
@@ -325,14 +326,15 @@ begin
       with fr_EntryFormE1100 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
-                        ', `jenis_kegiatan_sosial_politik` = '+QuotedStr(cb_jenis_kegiatan.EditValue)+
-                        ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
-                        ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
-                        ', `jumlah_rp` = '+FloatToStr(jumlah.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text));
+         MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` '+
+                      ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
+                      ', `jenis_kegiatan_sosial_politik` = '+QuotedStr(cb_jenis_kegiatan.EditValue)+
+                      ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
+                      ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
+                      ', `jumlah_rp` = '+FloatToStr(jumlah.Value)+
+                      ' WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text)+
+                      ' AND `tanggal_pelaksanaan` = '+DateToStrSQL(MyQE1100tanggal_pelaksanaan.Value));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
 
@@ -390,13 +392,18 @@ begin
       with fr_EntryFormE1100 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
-                       ', `jenis_kegiatan_sosial_politik` = '+QuotedStr(cb_jenis_kegiatan.EditValue)+
-                       ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
-                       ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
-                       ', `jumlah_rp` = '+FloatToStr(jumlah.Value));
+         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik` SET '+
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
+                      ', `jenis_kegiatan_sosial_politik` = '+QuotedStr(cb_jenis_kegiatan.EditValue)+
+                      ', `penjelasan_kegiatan` = '+QuotedStr(mempenjelasan_kegiatan.Text)+
+                      ', `penerima_dana` = '+QuotedStr(penerima_dana.Text)+
+                      ', `jumlah_rp` = '+StringReplace(FloatToStr(jumlah.Value), ',', '.', [rfReplaceAll])+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`jenis_kegiatan_sosial_politik` = VALUES(`jenis_kegiatan_sosial_politik`),'+
+                      '`penjelasan_kegiatan` = VALUES(`penjelasan_kegiatan`),'+
+                      '`penerima_dana` = VALUES(`penerima_dana`),'+
+                      '`jumlah_rp` = VALUES(`jumlah_rp`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
 

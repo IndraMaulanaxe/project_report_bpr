@@ -279,8 +279,9 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
-    '  WHERE `nomor_perubahan_anggaran_dasar` = '+QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
+                '  WHERE `nomor_perubahan_anggaran_dasar` = '+
+                QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
@@ -345,28 +346,29 @@ begin
       with fr_EntryFormA0301 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
-            'SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-            ',`nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.text)+
-            ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
-            ',`nomor_perubahan_anggaran_dasar` = '+QuotedStr(nomor_ubah_anggaran.text)+
-            ', `tanggal_perubahan_anggaran_dasar` = '+DateToStrSQL(tgl_ubah_anggaran.Date)+
-            ',`nomor_pengesahan_dari_instansi` = '+QuotedStr(nomor_pengesahan.text)+
-            ', `tanggal_pengesahan_dari_instansi` = '+DateToStrSQL(tgl_pengesahan.Date)+
-            ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
-            ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.text)+
-            ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.text)+
-            ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.itemindex)+
-            ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
-            '  WHERE `nomor_perubahan_anggaran_dasar` = '+QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.Text)+
+                        ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
+                        ', `nomor_perubahan_anggaran_dasar` = '+QuotedStr(nomor_ubah_anggaran.Text)+
+                        ', `tanggal_perubahan_anggaran_dasar` = '+DateToStrSQL(tgl_ubah_anggaran.Date)+
+                        ', `nomor_pengesahan_dari_instansi` = '+QuotedStr(nomor_pengesahan.Text)+
+                        ', `tanggal_pengesahan_dari_instansi` = '+DateToStrSQL(tgl_pengesahan.Date)+
+                        ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
+                        ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
+                        ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
+                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ' WHERE `nomor_perubahan_anggaran_dasar` = '+
+                        QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
 
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
 
         end;
@@ -423,38 +425,37 @@ begin
       with fr_EntryFormA0301 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
-                        '(`kode_komponen`, '+
-                        '`nomor_akta_pendirian`, '+
-                        '`tanggal_akta_pendirian`, '+
-                        '`nomor_perubahan_anggaran_dasar`, '+
-                        '`tanggal_perubahan_anggaran_dasar`, '+
-                        '`nomor_pengesahan_dari_instansi`, '+
-                        '`tanggal_pengesahan_dari_instansi`, '+
-                        '`tanggal_mulai_beroperasi`, '+
-                        '`bidang_usaha_sesuai_anggaran_dasar`, '+
-                        '`tempat_kedudukan`, '+
-                        '`opini_akuntan_publik`, '+
-                        '`nama_akuntan_publik`) '+
-                        'VALUES ('+
-                        QuotedStr(kode_komponen.Text)+','+
-                        QuotedStr(nomor_akta_pendirian.Text)+','+
-                        DateToStrSQL(tgl_akta_pendirian.Date)+','+
-                        QuotedStr(nomor_ubah_anggaran.Text)+','+
-                        DateToStrSQL(tgl_ubah_anggaran.Date)+','+
-                        QuotedStr(nomor_pengesahan.Text)+','+
-                        DateToStrSQL(tgl_pengesahan.Date)+','+
-                        DateToStrSQL(tgl_mulai_operasi.Date)+','+
-                        QuotedStr(membidangusaha.Text)+','+
-                        QuotedStr(memtempat_kedudukan.Text)+','+
-                        IntToStr(cb_akuntan_publik.ItemIndex)+','+
-                        QuotedStr(cb_akuntan_publik.EditValue));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.Text)+
+                        ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
+                        ', `nomor_perubahan_anggaran_dasar` = '+QuotedStr(nomor_ubah_anggaran.Text)+
+                        ', `tanggal_perubahan_anggaran_dasar` = '+DateToStrSQL(tgl_ubah_anggaran.Date)+
+                        ', `nomor_pengesahan_dari_instansi` = '+QuotedStr(nomor_pengesahan.Text)+
+                        ', `tanggal_pengesahan_dari_instansi` = '+DateToStrSQL(tgl_pengesahan.Date)+
+                        ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
+                        ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
+                        ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
+                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`kode_komponen` = VALUES(`kode_komponen`),'+
+                        '`nomor_akta_pendirian` = VALUES(`nomor_akta_pendirian`),'+
+                        '`tanggal_akta_pendirian` = VALUES(`tanggal_akta_pendirian`),'+
+                        '`tanggal_perubahan_anggaran_dasar` = VALUES(`tanggal_perubahan_anggaran_dasar`),'+
+                        '`nomor_pengesahan_dari_instansi` = VALUES(`nomor_pengesahan_dari_instansi`),'+
+                        '`tanggal_pengesahan_dari_instansi` = VALUES(`tanggal_pengesahan_dari_instansi`),'+
+                        '`tanggal_mulai_beroperasi` = VALUES(`tanggal_mulai_beroperasi`),'+
+                        '`bidang_usaha_sesuai_anggaran_dasar` = VALUES(`bidang_usaha_sesuai_anggaran_dasar`),'+
+                        '`tempat_kedudukan` = VALUES(`tempat_kedudukan`),'+
+                        '`opini_akuntan_publik` = VALUES(`opini_akuntan_publik`),'+
+                        '`nama_akuntan_publik` = VALUES(`nama_akuntan_publik`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
 

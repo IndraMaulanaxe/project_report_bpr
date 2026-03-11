@@ -260,7 +260,7 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
@@ -309,16 +309,16 @@ begin
         begin
           // Update
           MyExecuteSQL(' UPDATE '+cDb2+'.`ltbprk_a0304_penjelasan_npl` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `uraian` = '+QuotedStr(memuraian.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `uraian` = '+QuotedStr(memuraian.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQA0304kode_komponen.Text));
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0304.Active then
@@ -363,16 +363,17 @@ begin
       with fr_EntryFormA0304 do
         begin
           // Insert
-          MyExecuteSQL( 'INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl` SET '+
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl` SET '+
                         '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `uraian` = '+QuotedStr(memuraian.Text)
-                      );
+                        ', `uraian` = '+QuotedStr(memuraian.Text)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`uraian` = VALUES(`uraian`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0304_penjelasan_npl_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0304.Active then

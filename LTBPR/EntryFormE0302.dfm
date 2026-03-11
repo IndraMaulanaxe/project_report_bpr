@@ -98,7 +98,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 11
       Height = 48
       Width = 298
     end
@@ -137,7 +137,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 2
       Height = 47
       Width = 298
     end
@@ -265,7 +265,7 @@ inherited fr_EntryFormE0302: Tfr_EntryFormE0302
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 11
+      TabOrder = 1
       Height = 24
       Width = 298
     end

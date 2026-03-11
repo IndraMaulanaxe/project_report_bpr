@@ -9,10 +9,10 @@ inherited fr_LoginBPR: Tfr_LoginBPR
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 340
-    ExplicitWidth = 352
+    ExplicitWidth = 340
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 352
+    ExplicitWidth = 340
     ExplicitHeight = 454
     Height = 454
     Width = 340
@@ -22,9 +22,6 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Align = alClient
       AutoSize = True
       TabOrder = 0
-      ExplicitTop = 22
-      ExplicitWidth = 348
-      ExplicitHeight = 230
       Height = 250
       Width = 336
     end
@@ -42,8 +39,6 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Style.IsFontAssigned = True
       Properties.Alignment.Horz = taCenter
       Transparent = True
-      ExplicitTop = 252
-      ExplicitWidth = 348
       AnchorX = 170
     end
     object ProductName: TcxLabel
@@ -60,9 +55,6 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Style.IsFontAssigned = True
       Properties.Alignment.Horz = taCenter
       Transparent = True
-      ExplicitLeft = 1
-      ExplicitTop = 248
-      ExplicitWidth = 351
       AnchorX = 170
     end
     object Copyright: TcxLabel
@@ -80,7 +72,6 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Style.IsFontAssigned = True
       Properties.Alignment.Horz = taCenter
       Transparent = True
-      ExplicitWidth = 342
       AnchorX = 170
     end
     object PanelLogin: TcxGroupBox
@@ -88,7 +79,6 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Top = 334
       Align = alBottom
       TabOrder = 4
-      ExplicitWidth = 348
       Height = 118
       Width = 336
       object cxLabel3: TcxLabel
@@ -112,7 +102,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       end
       object cxLabel4: TcxLabel
         Left = 29
-        Top = 56
+        Top = 57
         Caption = 'Password'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
@@ -216,7 +206,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
   inherited PanelFooter: TcxGroupBox
     Top = 454
     ExplicitTop = 454
-    ExplicitWidth = 352
+    ExplicitWidth = 340
     ExplicitHeight = 60
     Height = 60
     Width = 340
@@ -834,7 +824,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       OnClick = btlb_SaveClick
-      ExplicitLeft = 214
+      ExplicitLeft = 202
       ExplicitWidth = 60
       ExplicitHeight = 50
     end
@@ -1134,7 +1124,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
-      ExplicitLeft = 287
+      ExplicitLeft = 275
       ExplicitWidth = 60
       ExplicitHeight = 50
     end
@@ -1144,7 +1134,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Height = 50
       Caption = 'a'
       Visible = False
-      ExplicitLeft = 280
+      ExplicitLeft = 268
       ExplicitWidth = 1
       ExplicitHeight = 50
     end
@@ -1154,7 +1144,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Height = 50
       Caption = 'b'
       Visible = False
-      ExplicitLeft = 207
+      ExplicitLeft = 195
       ExplicitWidth = 1
       ExplicitHeight = 50
     end
@@ -1172,7 +1162,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Width = 1
       Height = 50
       Visible = False
-      ExplicitLeft = 193
+      ExplicitLeft = 181
       ExplicitWidth = 1
       ExplicitHeight = 50
     end
@@ -1181,7 +1171,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Width = 1
       Height = 50
       Visible = False
-      ExplicitLeft = 200
+      ExplicitLeft = 188
       ExplicitWidth = 1
       ExplicitHeight = 50
     end
@@ -1190,7 +1180,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Width = 1
       Height = 50
       Visible = False
-      ExplicitLeft = 120
+      ExplicitLeft = 108
       ExplicitWidth = 1
       ExplicitHeight = 50
     end
@@ -1493,14 +1483,14 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       Visible = False
       OnClick = btlb_PilihClick
       OnKeyDown = btlb_PilihKeyDown
-      ExplicitLeft = 127
+      ExplicitLeft = 115
       ExplicitWidth = 60
       ExplicitHeight = 50
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 340
-    ExplicitWidth = 352
+    ExplicitWidth = 340
     inherited IconClose: TLabel
       Left = 306
       ExplicitLeft = 318

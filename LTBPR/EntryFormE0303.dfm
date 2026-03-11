@@ -98,7 +98,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 6
       Height = 48
       Width = 298
     end
@@ -180,7 +180,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 5
       Width = 121
     end
     object nik: TcxTextEdit
@@ -204,7 +204,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 8
+      TabOrder = 1
       Height = 24
       Width = 298
     end
@@ -229,7 +229,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 9
+      TabOrder = 2
       Height = 24
       Width = 298
     end
@@ -272,7 +272,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 3
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -316,7 +316,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 13
+      TabOrder = 4
       Height = 24
       Width = 298
     end

@@ -72,7 +72,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 2
+      TabOrder = 13
       Height = 47
       Width = 298
     end
@@ -113,7 +113,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 6
       Width = 121
     end
     object komisaris_thn_lalu: TcxCurrencyEdit
@@ -132,7 +132,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 7
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -155,7 +155,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 4
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -195,7 +195,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 5
       Width = 121
     end
     object komisaris_thn_laporan: TcxCurrencyEdit
@@ -214,7 +214,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 121
     end
     object tidak_tetap_thn_laporan: TcxCurrencyEdit
@@ -233,7 +233,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 12
       Width = 121
     end
     object tidak_tetap_thn_lalu: TcxCurrencyEdit
@@ -271,7 +271,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 12
+      TabOrder = 10
       Width = 121
     end
     object tetap_thn_lalu: TcxCurrencyEdit
@@ -290,7 +290,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 13
+      TabOrder = 9
       Width = 121
     end
     object cxLabel2: TcxLabel

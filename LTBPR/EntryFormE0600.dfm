@@ -53,7 +53,7 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 1
+      TabOrder = 5
       Height = 48
       Width = 298
     end
@@ -117,7 +117,7 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 3
       Width = 298
     end
     object rasio: TcxCurrencyEdit
@@ -136,7 +136,7 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 4
       Width = 121
     end
   end

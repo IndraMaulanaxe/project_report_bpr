@@ -270,14 +270,9 @@ begin
     Exit;
 
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan` '+
-                '  WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
-                ' AND `kegiatan_pengembangan` = '+QuotedStr(MyQA05072kegiatan_pengembangan.text)+
-                ' AND `tanggal_pelaksanaan` = '+DateToStrSQL(MyQA05072tanggal_pelaksanaan.Value)+
-                ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
-                ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text)+
-                ' AND `jumlah_peserta` = '+FloatToStr(MyQA05072jumlah_peserta.Value)+
-                ' AND `uraian_kegiatan` = '+QuotedStr(MyQA05072uraian_kegiatan.text)+
-                ' LIMIT 1');
+               ' WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
+               ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
+               ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
@@ -343,27 +338,22 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `kegiatan_pengembangan` = '+QuotedStr(memkegiatan.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `kegiatan_pengembangan` = '+QuotedStr(memkegiatan.Text)+
                         ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
                         ', `pihak_pelaksana` = '+QuotedStr(cb_pelaksana.EditValue)+
                         ', `kategori_peserta` = '+QuotedStr(cb_peserta.EditValue)+
                         ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
-                        ' AND `kegiatan_pengembangan` = '+QuotedStr(MyQA05072kegiatan_pengembangan.text)+
-                        ' AND `tanggal_pelaksanaan` = '+DateToStrSQL(MyQA05072tanggal_pelaksanaan.Value)+
+                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
                         ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
-                        ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text)+
-                        ' AND `jumlah_peserta` = '+FloatToStr(MyQA05072jumlah_peserta.Value)+
-                        ' AND `uraian_kegiatan` = '+QuotedStr(MyQA05072uraian_kegiatan.text)+
-                        ' LIMIT 1');
+                        ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA05072.Active then
@@ -428,15 +418,19 @@ begin
                         ', `pihak_pelaksana` = '+QuotedStr(cb_pelaksana.EditValue)+
                         ', `kategori_peserta` = '+QuotedStr(cb_peserta.EditValue)+
                         ', `jumlah_peserta` = '+StringReplace(FloatToStr(jumlah_peserta.Value), ',', '.', [rfReplaceAll])+
-                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.Text)
-                      );
+                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.Text)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`kegiatan_pengembangan` = VALUES(`kegiatan_pengembangan`),'+
+                        '`tanggal_pelaksanaan` = VALUES(`tanggal_pelaksanaan`),'+
+                        '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
+                        '`uraian_kegiatan` = VALUES(`uraian_kegiatan`)');
 
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA05072.Active then

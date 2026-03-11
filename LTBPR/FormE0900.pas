@@ -262,7 +262,7 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
 
@@ -316,10 +316,9 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` '+
-                        ' SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                        ', `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
+                        ' SET `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
                         ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
 
@@ -375,10 +374,13 @@ begin
       with fr_EntryFormE0900 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` '+
-                       'SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                       ', `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
-                       ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum` SET '+
+                        '`kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
+                        ', `jumlah_perdata` = '+StringReplace(FloatToStr(jumlah_perdata.Value), ',', '.', [rfReplaceAll])+
+                        ', `jumlah_pidana` = '+StringReplace(FloatToStr(jumlah_pidana.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`jumlah_perdata` = VALUES(`jumlah_perdata`),'+
+                        '`jumlah_pidana` = VALUES(`jumlah_pidana`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
 

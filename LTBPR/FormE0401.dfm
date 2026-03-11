@@ -26,8 +26,6 @@ inherited fr_FormE0401: Tfr_FormE0401
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 3
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -257,9 +255,7 @@ inherited fr_FormE0401: Tfr_FormE0401
   object MyQE0401: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      
-        'select * from ltbprk_e0401_hubungan_keuangan_direksi_pemegang_sa' +
-        'ham')
+      'select * from ltbprk_e0401_hubungan_keuangan_direksi_ps')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312

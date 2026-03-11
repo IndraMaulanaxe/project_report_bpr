@@ -261,9 +261,7 @@ inherited fr_FormE0303: Tfr_FormE0303
   object MyQE0303: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      
-        'select * from ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lai' +
-        'n')
+      'select * from ltbprk_e0303_kepemilikan_saham_perusahaan_lain')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312

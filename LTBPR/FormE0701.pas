@@ -264,7 +264,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text)+
+                ' AND `tanggal_rapat` = '+DateToStrSQL(MyQE0701tanggal_rapat.Value));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
 
@@ -314,11 +315,12 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
                         ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
+                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text)+
+                        ' AND `tanggal_rapat` = '+DateToStrSQL(MyQE0701tanggal_rapat.Value));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
 
@@ -370,11 +372,14 @@ begin
       with fr_EntryFormE0701 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
-                       ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                       ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
+                        ', `jumlah_peserta` = '+StringReplace(FloatToStr(jumlah_peserta.Value), ',', '.', [rfReplaceAll])+
+                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
+                        '`topik_materi_pembahasan` = VALUES(`topik_materi_pembahasan`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
 

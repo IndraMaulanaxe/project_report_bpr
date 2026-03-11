@@ -13,6 +13,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 569
     ExplicitHeight = 393
     Height = 393
@@ -52,7 +53,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 1
+      TabOrder = 5
       Height = 47
       Width = 298
     end
@@ -71,7 +72,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 2
+      TabOrder = 6
       Height = 47
       Width = 298
     end
@@ -117,7 +118,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 0
       Height = 24
       Width = 121
     end
@@ -174,7 +175,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 2
       Height = 48
       Width = 298
     end
@@ -216,7 +217,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 1
       Width = 298
     end
     object cxLabel2: TcxLabel
@@ -257,7 +258,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 3
       Width = 298
     end
     object npwp: TcxTextEdit
@@ -281,7 +282,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 12
+      TabOrder = 4
       Height = 24
       Width = 298
     end
@@ -336,7 +337,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 15
+      TabOrder = 7
       Width = 121
     end
     object cxLabel4: TcxLabel
@@ -374,7 +375,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 17
+      TabOrder = 8
       Height = 47
       Width = 298
     end

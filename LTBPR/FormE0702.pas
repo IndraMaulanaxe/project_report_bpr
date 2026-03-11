@@ -268,7 +268,8 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text));
+              ' WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text)+
+              ' AND `nik` = '+QuotedStr(MyQE0702nik.Text));
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
 
@@ -325,13 +326,14 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.text)+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
                         ', `frekuensi_kehadiran_fisik` = '+FloatToStr(hadir_fisik.Value)+
                         ', `frekuensi_kehadiran` = '+FloatToStr(frekuensi_hadir.Value)+
                         ', `tingkat_kehadiran` = '+FloatToStr(tingkat_hadir.Value)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0702nik.Text));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
 
@@ -386,13 +388,18 @@ begin
       with fr_EntryFormE0702 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `nik` = '+QuotedStr(nik.Text)+
-                       ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
-                       ', `frekuensi_kehadiran_fisik` = '+FloatToStr(hadir_fisik.Value)+
-                       ', `frekuensi_kehadiran` = '+FloatToStr(frekuensi_hadir.Value)+
-                       ', `tingkat_kehadiran` = '+FloatToStr(tingkat_hadir.Value));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
+                        ', `frekuensi_kehadiran_fisik` = '+StringReplace(FloatToStr(hadir_fisik.Value), ',', '.', [rfReplaceAll])+
+                        ', `frekuensi_kehadiran` = '+StringReplace(FloatToStr(frekuensi_hadir.Value), ',', '.', [rfReplaceAll])+
+                        ', `tingkat_kehadiran` = '+StringReplace(FloatToStr(tingkat_hadir.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama_anggota_dewan_komisaris` = VALUES(`nama_anggota_dewan_komisaris`),'+
+                        '`frekuensi_kehadiran_fisik` = VALUES(`frekuensi_kehadiran_fisik`),'+
+                        '`frekuensi_kehadiran` = VALUES(`frekuensi_kehadiran`),'+
+                        '`tingkat_kehadiran` = VALUES(`tingkat_kehadiran`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
 

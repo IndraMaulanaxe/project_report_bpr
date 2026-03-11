@@ -272,15 +272,11 @@ begin
     Exit;
 
   MyExecuteSQL( 'DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` '+
-                '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
                 ' AND `referensi_lembaga` = '+QuotedStr(MyQA0506referensi_lembaga.Text)+
-                ' AND `nama_bank_lembaga_lain` = '+QuotedStr(MyQA0506nama_bank_lembaga_lain.Text)+
                 ' AND `sandi_bank` = '+QuotedStr(MyQA0506sandi_bank.Text)+
-                ' AND `npwp` = '+QuotedStr(MyQA0506npwp.text)+
-                ' AND `jenis_kerja_sama` = '+QuotedStr(MyQA0506jenis_kerja_sama.text)+
-                ' AND `uraian_kerja_sama` = '+QuotedStr(MyQA0506uraian_kerja_sama.text)+
-                ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value)+
-                ' LIMIT 1');
+                ' AND `npwp` = '+QuotedStr(MyQA0506npwp.Text)+
+                ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value));
 
   // footer
   MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
@@ -350,29 +346,25 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `referensi_lembaga` = '+QuotedStr(cb_ref_lembaga.EditValue)+
                         ', `nama_bank_lembaga_lain` = '+QuotedStr(memnama_bank_lembaga.Text)+
                         ', `sandi_bank` = '+QuotedStr(cb_sandi_bank.EditValue)+
-                        ', `npwp` = '+QuotedStr(npwp.text)+
-                        ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.text)+
-                        ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.text)+
+                        ', `npwp` = '+QuotedStr(npwp.Text)+
+                        ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.Text)+
+                        ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.Text)+
                         ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQA0506kode_komponen.Text)+
                         ' AND `referensi_lembaga` = '+QuotedStr(MyQA0506referensi_lembaga.Text)+
-                        ' AND `nama_bank_lembaga_lain` = '+QuotedStr(MyQA0506nama_bank_lembaga_lain.Text)+
                         ' AND `sandi_bank` = '+QuotedStr(MyQA0506sandi_bank.Text)+
-                        ' AND `npwp` = '+QuotedStr(MyQA0506npwp.text)+
-                        ' AND `jenis_kerja_sama` = '+QuotedStr(MyQA0506jenis_kerja_sama.text)+
-                        ' AND `uraian_kerja_sama` = '+QuotedStr(MyQA0506uraian_kerja_sama.text)+
-                        ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value)+
-                        ' LIMIT 1');
+                        ' AND `npwp` = '+QuotedStr(MyQA0506npwp.Text)+
+                        ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value));
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0506.Active then
@@ -441,14 +433,17 @@ begin
                         ', `npwp` = '+QuotedStr(npwp.Text)+
                         ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.Text)+
                         ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.Text)+
-                        ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)
-                      );
+                        ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama_bank_lembaga_lain` = VALUES(`nama_bank_lembaga_lain`),'+
+                        '`jenis_kerja_sama` = VALUES(`jenis_kerja_sama`),'+
+                        '`uraian_kerja_sama` = VALUES(`uraian_kerja_sama`)');
            // footer
            MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
 
            MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
-                        ' (`keterangan`) '+
-                        ' VALUES ('+QuotedStr(memketerangan.Text)+')');
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
           //
         end;
       if MyQA0506.Active then

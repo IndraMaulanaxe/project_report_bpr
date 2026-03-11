@@ -266,10 +266,11 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0401kode_komponen.Text));
+  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps` '+
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0401kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0401nik.Text));
   // footer
-  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer` ');
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps_footer` ');
 
   if MyQE0401.Active then
     MyQE0401.Refresh
@@ -307,7 +308,7 @@ begin
       memdireksi.Text := MyQE0401hubungan_keuangan_i_anggota.Text;
       memkomisaris.Text := MyQE0401hubungan_keuangan_ii_anggota.Text;
       memsaham.Text := MyQE0401hubungan_keuangan_iii_pemegang.Text;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer where flag_detail='+QuotedStr('F01')+'  ');
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0401_hubungan_keuangan_direksi_ps_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -318,17 +319,18 @@ begin
       with fr_EntryFormE0401 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `hubungan_keuangan_i_anggota` = '+QuotedStr(memdireksi.text)+
-                        ', `hubungan_keuangan_ii_anggota` = '+QuotedStr(memkomisaris.text)+
-                        ', `hubungan_keuangan_iii_pemegang` = '+QuotedStr(memsaham.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0401kode_komponen.Text));
+          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps` '+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `hubungan_keuangan_i_anggota` = '+QuotedStr(memdireksi.Text)+
+                        ', `hubungan_keuangan_ii_anggota` = '+QuotedStr(memkomisaris.Text)+
+                        ', `hubungan_keuangan_iii_pemegang` = '+QuotedStr(memsaham.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0401kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0401nik.Text));
            // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer` ');
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps_footer` ');
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer` '+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps_footer` '+
                         ' (`flag_detail`,`keterangan`) '+
                         ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
           //
@@ -378,24 +380,20 @@ begin
       with fr_EntryFormE0401 do
         begin
           // Insert
-         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham` ('+
-                      ' `kode_komponen`, '+
-                      ' `nik`, '+
-                      ' `hubungan_keuangan_i_anggota`, '+
-                      ' `hubungan_keuangan_ii_anggota`, '+
-                      ' `hubungan_keuangan_iii_pemegang` '+
-                      ') VALUES ('+
-                      QuotedStr(kode_komponen.Text)+', '+
-                      QuotedStr(nik.Text)+', '+
-                      QuotedStr(memdireksi.Text)+', '+
-                      QuotedStr(memkomisaris.Text)+', '+
-                      QuotedStr(memsaham.Text)+' '+
-                      ')'
-                    );
+        MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps` SET '+
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `nik` = '+QuotedStr(nik.Text)+
+                      ', `hubungan_keuangan_i_anggota` = '+QuotedStr(memdireksi.Text)+
+                      ', `hubungan_keuangan_ii_anggota` = '+QuotedStr(memkomisaris.Text)+
+                      ', `hubungan_keuangan_iii_pemegang` = '+QuotedStr(memsaham.Text)+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`hubungan_keuangan_i_anggota` = VALUES(`hubungan_keuangan_i_anggota`),'+
+                      '`hubungan_keuangan_ii_anggota` = VALUES(`hubungan_keuangan_ii_anggota`),'+
+                      '`hubungan_keuangan_iii_pemegang` = VALUES(`hubungan_keuangan_iii_pemegang`)');
            // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer` ');
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps_footer` ');
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_pemegang_saham_footer` '+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0401_hubungan_keuangan_direksi_ps_footer` '+
                         ' (`flag_detail`,`keterangan`) '+
                         ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
           //
