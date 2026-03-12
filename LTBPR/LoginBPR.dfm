@@ -106,7 +106,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
       end
       object cxLabel4: TcxLabel
         Left = 29
-        Top = 56
+        Top = 57
         Caption = 'Password'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET

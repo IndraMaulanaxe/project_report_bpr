@@ -54,13 +54,11 @@ type
     MyQE0701tanggal_rapat: TDateField;
     MyQE0701jumlah_peserta: TIntegerField;
     MyQE0701topik_materi_pembahasan: TStringField;
-    MyQE0701footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1tanggal_rapat: TcxGridDBColumn;
     cxGridDBTableView1jumlah_peserta: TcxGridDBColumn;
     cxGridDBTableView1topik_materi_pembahasan: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -266,7 +264,10 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text)+
+                ' AND `tanggal_rapat` = '+DateToStrSQL(MyQE0701tanggal_rapat.Value));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
 
   if MyQE0701.Active then
     MyQE0701.Refresh
@@ -295,14 +296,13 @@ begin
       //size
       kode_komponen.Properties.MaxLength := MyQE0701kode_komponen.Size;
       memmateri.Properties.MaxLength := MyQE0701topik_materi_pembahasan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0701footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0701kode_komponen.Text;
       tanggal.Date :=MyQE0701tanggal_rapat.Value;
       jumlah_peserta.Value := MyQE0701jumlah_peserta.Value;
       memmateri.Text := MyQE0701topik_materi_pembahasan.Text;
-      mempenjelasan.Text :=MyQE0701footer_1_penjelasan_lebih_lanjut.Value;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
       //tanggal.Date := dTglSystem;
@@ -315,12 +315,19 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
                         ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.text)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text));
+                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text)+
+                        ' AND `tanggal_rapat` = '+DateToStrSQL(MyQE0701tanggal_rapat.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE0701.Active then
         MyQE0701.Refresh
@@ -351,7 +358,6 @@ begin
       //size
       kode_komponen.Properties.MaxLength := MyQE0701kode_komponen.Size;
       memmateri.Properties.MaxLength := MyQE0701topik_materi_pembahasan.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0701footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '081010000000';
@@ -366,12 +372,20 @@ begin
       with fr_EntryFormE0701 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
-                       ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                       ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `tanggal_rapat` = '+DateToStrSQL(tanggal.Date)+
+                        ', `jumlah_peserta` = '+StringReplace(FloatToStr(jumlah_peserta.Value), ',', '.', [rfReplaceAll])+
+                        ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
+                        '`topik_materi_pembahasan` = VALUES(`topik_materi_pembahasan`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
 
         end;
       if MyQE0701.Active then

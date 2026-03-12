@@ -22,6 +22,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -33,6 +41,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 287
       AutoSize = False
       Caption = 'Penjelasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -47,8 +63,16 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 291
       Hint = 'Penjelasan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 2
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 13
       Height = 47
       Width = 298
     end
@@ -57,6 +81,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 81
       AutoSize = False
       Caption = 'Anggota Direksi Tahun Laporan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -71,9 +103,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Anggota Direksi Tahun Laporan'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Width = 121
     end
     object komisaris_thn_lalu: TcxCurrencyEdit
@@ -82,9 +122,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Anggota Komisaris Tahun Lalu'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 5
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -93,13 +141,21 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 23
       Hint = 'Kode Komponen'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefPenyimpangan
-      TabOrder = 6
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 4
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -107,6 +163,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 52
       AutoSize = False
       Caption = 'Anggota Direksi Tahun Lalu'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -121,9 +185,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Anggota Direksi Tahun Lalu'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 8
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
     object komisaris_thn_laporan: TcxCurrencyEdit
@@ -132,9 +204,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Anggota Komisaris Tahun Laporan'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 9
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Width = 121
     end
     object tidak_tetap_thn_laporan: TcxCurrencyEdit
@@ -143,9 +223,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Pegawai Tidak Tetap Tahun Laporan'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 10
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 12
       Width = 121
     end
     object tidak_tetap_thn_lalu: TcxCurrencyEdit
@@ -154,8 +242,16 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Pegawai Tidak Tetap Tahun Lalu'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 11
       Width = 121
     end
@@ -165,9 +261,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Pegawai Tetap Tahun Laporan'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 12
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 10
       Width = 121
     end
     object tetap_thn_lalu: TcxCurrencyEdit
@@ -176,9 +280,17 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Hint = 'Pegawai Tetap Tahun Lalu'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 13
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 9
       Width = 121
     end
     object cxLabel2: TcxLabel
@@ -186,6 +298,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 140
       AutoSize = False
       Caption = 'Anggota Komisaris Tahun Laporan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -199,6 +319,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 111
       AutoSize = False
       Caption = 'Anggota Komisaris Tahun Lalu'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -212,6 +340,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 200
       AutoSize = False
       Caption = 'Pegawai Tetap Tahun Laporan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -225,6 +361,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 170
       AutoSize = False
       Caption = 'Pegawai Tetap Tahun Lalu'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -238,6 +382,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 259
       AutoSize = False
       Caption = 'Pegawai Tidak Tetap Tahun Laporan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -251,6 +403,14 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Top = 229
       AutoSize = False
       Caption = 'Pegawai Tidak Tetap Tahun Lalu'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True

@@ -111,12 +111,6 @@ inherited fr_FormE1100: Tfr_FormE1100
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -299,10 +293,6 @@ inherited fr_FormE1100: Tfr_FormE1100
     end
     object MyQE1100jumlah_rp: TFloatField
       FieldName = 'jumlah_rp'
-    end
-    object MyQE1100footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
-      Size = 2000
     end
   end
 end

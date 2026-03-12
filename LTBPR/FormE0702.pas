@@ -56,7 +56,6 @@ type
     MyQE0702frekuensi_kehadiran_fisik: TIntegerField;
     MyQE0702frekuensi_kehadiran: TIntegerField;
     MyQE0702tingkat_kehadiran: TFloatField;
-    MyQE0702footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nik: TcxGridDBColumn;
@@ -64,7 +63,6 @@ type
     cxGridDBTableView1frekuensi_kehadiran_fisik: TcxGridDBColumn;
     cxGridDBTableView1frekuensi_kehadiran: TcxGridDBColumn;
     cxGridDBTableView1tingkat_kehadiran: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -270,7 +268,10 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text));
+              ' WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text)+
+              ' AND `nik` = '+QuotedStr(MyQE0702nik.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
 
   if MyQE0702.Active then
     MyQE0702.Refresh
@@ -303,7 +304,6 @@ begin
       hadir_fisik.Properties.MaxLength := MyQE0702frekuensi_kehadiran_fisik.Size;
       frekuensi_hadir.Properties.MaxLength := MyQE0702frekuensi_kehadiran.Size;
       tingkat_hadir.Properties.MaxLength := MyQE0702tingkat_kehadiran.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0702footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0702kode_komponen.Text;
@@ -312,7 +312,8 @@ begin
       hadir_fisik.Value := MyQE0702frekuensi_kehadiran_fisik.Value;
       frekuensi_hadir.Value := MyQE0702frekuensi_kehadiran.Value;
       tingkat_hadir.Value := MyQE0702tingkat_kehadiran.Value;
-      mempenjelasan.Text := MyQE0702footer_1_penjelasan_lebih_lanjut.Text;
+      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0702_kehadiran_anggota_komisaris_footer where flag_detail='+QuotedStr('F01')+'  ');
+
 
       kode_komponen.Enabled := False;
       //tanggal.Date := dTglSystem;
@@ -325,14 +326,21 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.text)+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
                         ', `frekuensi_kehadiran_fisik` = '+FloatToStr(hadir_fisik.Value)+
                         ', `frekuensi_kehadiran` = '+FloatToStr(frekuensi_hadir.Value)+
                         ', `tingkat_kehadiran` = '+FloatToStr(tingkat_hadir.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0702nik.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
         end;
       if MyQE0702.Active then
         MyQE0702.Refresh
@@ -367,7 +375,6 @@ begin
       hadir_fisik.Properties.MaxLength := MyQE0702frekuensi_kehadiran_fisik.Size;
       frekuensi_hadir.Properties.MaxLength := MyQE0702frekuensi_kehadiran.Size;
       tingkat_hadir.Properties.MaxLength := MyQE0702tingkat_kehadiran.Size;
-      mempenjelasan.Properties.MaxLength := MyQE0702footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '082010000000';
@@ -381,14 +388,25 @@ begin
       with fr_EntryFormE0702 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `nik` = '+QuotedStr(nik.Text)+
-                       ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
-                       ', `frekuensi_kehadiran_fisik` = '+FloatToStr(hadir_fisik.Value)+
-                       ', `frekuensi_kehadiran` = '+FloatToStr(frekuensi_hadir.Value)+
-                       ', `tingkat_kehadiran` = '+FloatToStr(tingkat_hadir.Value)+
-                       ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(mempenjelasan.Text));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_anggota_dewan_komisaris` = '+QuotedStr(nama_anggota.Text)+
+                        ', `frekuensi_kehadiran_fisik` = '+StringReplace(FloatToStr(hadir_fisik.Value), ',', '.', [rfReplaceAll])+
+                        ', `frekuensi_kehadiran` = '+StringReplace(FloatToStr(frekuensi_hadir.Value), ',', '.', [rfReplaceAll])+
+                        ', `tingkat_kehadiran` = '+StringReplace(FloatToStr(tingkat_hadir.Value), ',', '.', [rfReplaceAll])+
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama_anggota_dewan_komisaris` = VALUES(`nama_anggota_dewan_komisaris`),'+
+                        '`frekuensi_kehadiran_fisik` = VALUES(`frekuensi_kehadiran_fisik`),'+
+                        '`frekuensi_kehadiran` = VALUES(`frekuensi_kehadiran`),'+
+                        '`tingkat_kehadiran` = VALUES(`tingkat_kehadiran`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
+          //
 
         end;
       if MyQE0702.Active then

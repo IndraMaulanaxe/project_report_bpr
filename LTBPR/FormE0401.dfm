@@ -103,12 +103,6 @@ inherited fr_FormE0401: Tfr_FormE0401
           HeaderAlignmentHorz = taCenter
           Width = 300
         end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 300
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -261,9 +255,7 @@ inherited fr_FormE0401: Tfr_FormE0401
   object MyQE0401: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      
-        'select * from ltbprk_e0401_hubungan_keuangan_direksi_pemegang_sa' +
-        'ham')
+      'select * from ltbprk_e0401_hubungan_keuangan_direksi_ps')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -290,10 +282,6 @@ inherited fr_FormE0401: Tfr_FormE0401
     end
     object MyQE0401hubungan_keuangan_iii_pemegang: TStringField
       FieldName = 'hubungan_keuangan_iii_pemegang'
-      Size = 2000
-    end
-    object MyQE0401footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

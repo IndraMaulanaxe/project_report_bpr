@@ -11,6 +11,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     ExplicitWidth = 510
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 510
     ExplicitHeight = 310
     Height = 310
@@ -21,6 +22,7 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -29,6 +31,13 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 0
       Height = 24
       Width = 160
@@ -38,6 +47,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -51,6 +68,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -65,8 +90,16 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Top = 245
       Hint = 'Tindak Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 3
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 9
       Height = 48
       Width = 298
     end
@@ -75,6 +108,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Top = 53
       AutoSize = False
       Caption = 'NIK'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -89,12 +130,20 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 5
+      TabOrder = 1
       Height = 24
       Width = 298
     end
@@ -105,8 +154,16 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Hint = 'Hubungan Keuangan[III. Pemegang Saham]'
       HelpType = htKeyword
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 6
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Height = 48
       Width = 298
     end
@@ -117,6 +174,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       BiDiMode = bdLeftToRight
       Caption = 'Hubungan Keuangan'#13#10'[III. Pemegang Saham]'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -124,6 +189,44 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       Height = 48
       Width = 168
       AnchorY = 202
+    end
+    object memkomisaris: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 137
+      Hint = 'Hubungan Keuangan[II. Anggota Dewan Komisaris]'
+      ParentColor = True
+      ParentFont = False
+      Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      Height = 48
+      Width = 298
+    end
+    object memdireksi: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 83
+      Hint = 'Hubungan Keuangan[I. Anggota Direksi]'
+      ParentColor = True
+      ParentFont = False
+      Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clBlack
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      Height = 48
+      Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
@@ -253,17 +356,6 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
       ExplicitLeft = 771
     end
   end
-  object memkomisaris: TcxMemo
-    Tag = 1
-    Left = 185
-    Top = 137
-    Hint = 'Hubungan Keuangan[II. Anggota Dewan Komisaris]'
-    ParentColor = True
-    Properties.OnChange = MemKeteranganPropertiesChange
-    TabOrder = 4
-    Height = 48
-    Width = 298
-  end
   object cxLabel2: TcxLabel
     Left = 17
     Top = 123
@@ -272,6 +364,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     BiDiMode = bdLeftToRight
     Caption = 'Hubungan  Keuangan'#13#10'[II. Anggota Komisaris]'
     ParentBiDiMode = False
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Horz = taLeftJustify
     Properties.Alignment.Vert = taVCenter
     Properties.WordWrap = True
@@ -280,17 +380,6 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     Width = 162
     AnchorY = 149
   end
-  object memdireksi: TcxMemo
-    Tag = 1
-    Left = 185
-    Top = 83
-    Hint = 'Hubungan Keuangan[I. Anggota Direksi]'
-    ParentColor = True
-    Properties.OnChange = MemKeteranganPropertiesChange
-    TabOrder = 6
-    Height = 48
-    Width = 298
-  end
   object cxLabel4: TcxLabel
     Left = 17
     Top = 76
@@ -298,6 +387,14 @@ inherited fr_EntryFormE0401: Tfr_EntryFormE0401
     BiDiMode = bdLeftToRight
     Caption = 'Hubungan  Keuangan'#13#10'[I. Anggota Direksi]'
     ParentBiDiMode = False
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Horz = taLeftJustify
     Properties.Alignment.Vert = taVCenter
     Properties.WordWrap = True

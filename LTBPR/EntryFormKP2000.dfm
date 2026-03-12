@@ -17,12 +17,12 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
     Width = 554
     object Label3: TcxLabel
       Left = 18
-      Top = 11
+      Top = 15
       AutoSize = False
       Caption = 'Kode Komponen'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowFrame
+      Style.Font.Color = clWindow
       Style.Font.Height = -13
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
@@ -31,7 +31,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Transparent = True
       Height = 24
       Width = 135
-      AnchorY = 23
+      AnchorY = 27
     end
     object kode_komponen: TcxButtonEdit
       Left = 143
@@ -46,6 +46,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.TextColor = clWindow
       TabOrder = 1
       Height = 24
       Width = 103
@@ -60,6 +61,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       ParentColor = True
       Properties.Alignment.Horz = taLeftJustify
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
@@ -68,16 +70,23 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Width = 298
     end
     object Label6: TcxLabel
-      Left = 18
-      Top = 71
+      Left = 17
+      Top = 78
       AutoSize = False
       Caption = 'Nama'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 19
       Width = 135
-      AnchorY = 81
+      AnchorY = 88
     end
     object MemNama: TcxMemo
       Tag = 1
@@ -86,26 +95,41 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Hint = 'Nama'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
       TabOrder = 4
       Height = 24
       Width = 298
     end
     object cxLabel1: TcxLabel
       Left = 18
-      Top = 46
+      Top = 45
       AutoSize = False
       Caption = 'NIK'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
       Width = 135
-      AnchorY = 58
+      AnchorY = 57
     end
     object cxLabel2: TcxLabel
       Left = 18
       Top = 106
       AutoSize = False
       Caption = 'Jabatan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -117,6 +141,13 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Top = 136
       AutoSize = False
       Caption = 'Status Kepegawaian'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -128,6 +159,13 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Top = 166
       AutoSize = False
       Caption = 'Tingkat Pendidikan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -139,6 +177,13 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       Top = 196
       AutoSize = False
       Caption = 'Lama Masa Jabatan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -157,6 +202,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQSandiJabatan
+      Style.TextColor = clWindow
       TabOrder = 10
       Width = 298
     end
@@ -172,6 +218,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
           FieldName = 'status'
         end>
       Properties.ListSource = dsMyQSandiKepegawaian
+      Style.TextColor = clWindow
       TabOrder = 11
       Width = 298
     end
@@ -187,6 +234,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
           FieldName = 'tingkat'
         end>
       Properties.ListSource = dsMyQSandiPendidikan
+      Style.TextColor = clWindow
       TabOrder = 12
       Width = 114
     end
@@ -197,6 +245,7 @@ inherited fr_EntryForm2000: Tfr_EntryForm2000
       EditValue = 43997d
       ParentColor = True
       Properties.DisplayFormat = 'dd/MM/yyyy'
+      Style.TextColor = clWindow
       TabOrder = 13
       Width = 114
     end

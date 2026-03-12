@@ -13,6 +13,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 569
     ExplicitHeight = 393
     Height = 393
@@ -22,6 +23,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 194
       AutoSize = False
       Caption = 'Jenis Kerja Sama'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -36,8 +44,16 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 197
       Hint = 'Jenis Kerja Sama'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Height = 47
       Width = 298
     end
@@ -47,8 +63,16 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 250
       Hint = 'Uraian Kerja Sama'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 2
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Height = 47
       Width = 298
     end
@@ -57,6 +81,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 246
       AutoSize = False
       Caption = 'Uraian Kerja Sama'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -71,6 +102,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -79,7 +111,14 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 0
       Height = 24
       Width = 121
     end
@@ -88,6 +127,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -99,6 +145,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 81
       AutoSize = False
       Caption = 'Nama Bank / Lembaga Lain'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -113,8 +166,16 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 84
       Hint = 'Nama Bank Atau Lembaga'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 7
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 2
       Height = 48
       Width = 298
     end
@@ -123,6 +184,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 53
       AutoSize = False
       Caption = 'Referensi Lembaga'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -135,13 +203,21 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 54
       Hint = 'Referensi Lembaga'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefLembaga
-      TabOrder = 9
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 1
       Width = 298
     end
     object cxLabel2: TcxLabel
@@ -149,6 +225,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 137
       AutoSize = False
       Caption = 'Sandi Bank'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -161,13 +244,21 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 137
       Hint = 'Sandi Bank'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefSandiBank
-      TabOrder = 11
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 3
       Width = 298
     end
     object npwp: TcxTextEdit
@@ -178,12 +269,20 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 12
+      TabOrder = 4
       Height = 24
       Width = 298
     end
@@ -192,6 +291,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 164
       AutoSize = False
       Caption = 'NPWP'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -204,6 +310,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 305
       AutoSize = False
       Caption = 'Tanggal Kerja Sama'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
@@ -216,7 +329,15 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 303
       Hint = 'Tanggal Kerja Sama'
       ParentColor = True
-      TabOrder = 15
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Width = 121
     end
     object cxLabel4: TcxLabel
@@ -224,6 +345,13 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 329
       AutoSize = False
       Caption = 'Keterangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -238,8 +366,16 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Top = 333
       Hint = 'Keterangan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 17
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Height = 47
       Width = 298
     end

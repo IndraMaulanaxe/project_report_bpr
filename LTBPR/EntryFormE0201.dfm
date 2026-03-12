@@ -23,8 +23,16 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 190
       Hint = 'Penjesalan Lebih Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 0
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 9
       Height = 47
       Width = 298
     end
@@ -33,6 +41,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 186
       AutoSize = False
       Caption = 'Penjelasan Lebih Lanjut'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -47,6 +63,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -55,7 +72,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 2
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Height = 24
       Width = 160
     end
@@ -64,6 +88,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -77,6 +109,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -91,8 +131,16 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 136
       Hint = 'Tindak Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 5
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Height = 48
       Width = 298
     end
@@ -101,6 +149,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 83
       AutoSize = False
       Caption = 'Tugas Dan Tanggung Jawab'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -114,7 +170,15 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 83
       Hint = 'Tugas Dan Tanggung Jawab'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 7
       Height = 47
       Width = 298
@@ -124,12 +188,20 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Top = 56
       AutoSize = False
       Caption = 'NIK'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWhite
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
-      Height = 19
+      Height = 17
       Width = 135
-      AnchorY = 66
+      AnchorY = 65
     end
     object nik: TcxTextEdit
       Tag = 1
@@ -139,12 +211,20 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 9
+      TabOrder = 6
       Height = 24
       Width = 298
     end

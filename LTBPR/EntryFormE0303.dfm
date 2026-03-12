@@ -21,6 +21,7 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -29,6 +30,13 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 0
       Height = 24
       Width = 160
@@ -38,6 +46,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -51,6 +67,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -65,8 +89,16 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 200
       Hint = 'Tindak Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 3
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Height = 48
       Width = 298
     end
@@ -75,6 +107,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 78
       AutoSize = False
       Caption = 'Nama'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -87,6 +127,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 53
       AutoSize = False
       Caption = 'NIK'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -98,6 +146,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 168
       AutoSize = False
       Caption = 'Kepemilikan (%)'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -110,13 +166,21 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Left = 185
       Top = 170
       Hint = 'Persentase Kepemilikan Tahun (%)'
-      EditValue = 0.000000000000000000
+      EditValue = 0.100000000000000000
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0.00'
       Properties.MaxValue = 100.000000000000000000
       Properties.MinValue = 0.100000000000000000
-      TabOrder = 7
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
     object nik: TcxTextEdit
@@ -127,12 +191,20 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 8
+      TabOrder = 1
       Height = 24
       Width = 298
     end
@@ -144,12 +216,20 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 9
+      TabOrder = 2
       Height = 24
       Width = 298
     end
@@ -158,6 +238,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 113
       AutoSize = False
       Caption = 'Sandi Bank Lain'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -170,13 +258,21 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 113
       Hint = 'Sandi Bank Lain'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefSandiBank
-      TabOrder = 11
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 3
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -184,6 +280,14 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       Top = 137
       AutoSize = False
       Caption = 'Nama Bank/Perusahan Lain'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -199,12 +303,20 @@ inherited fr_EntryFormE0303: Tfr_EntryFormE0303
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 13
+      TabOrder = 4
       Height = 24
       Width = 298
     end

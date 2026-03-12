@@ -109,12 +109,6 @@ inherited fr_FormE0303: Tfr_FormE0303
           HeaderAlignmentHorz = taCenter
           Width = 155
         end
-        object cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan'
-          DataBinding.FieldName = 'footer_1_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 300
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -267,9 +261,7 @@ inherited fr_FormE0303: Tfr_FormE0303
   object MyQE0303: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      
-        'select * from ltbprk_e0303_kepemilikan_saham_pada_perusahaan_lai' +
-        'n')
+      'select * from ltbprk_e0303_kepemilikan_saham_perusahaan_lain')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -300,10 +292,6 @@ inherited fr_FormE0303: Tfr_FormE0303
     end
     object MyQE0303persentase_kepemilikan: TFloatField
       FieldName = 'persentase_kepemilikan'
-    end
-    object MyQE0303footer_1_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_1_penjelasan_lebih_lanjut'
-      Size = 2000
     end
   end
 end

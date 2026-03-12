@@ -8,9 +8,11 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 509
+    TabOrder = 1
     ExplicitWidth = 509
   end
   inherited PanelContent: TcxGroupBox
+    TabOrder = 2
     ExplicitWidth = 509
     ExplicitHeight = 180
     Height = 180
@@ -20,6 +22,14 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -31,6 +41,14 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 110
       AutoSize = False
       Caption = 'Penjelasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -45,8 +63,16 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 114
       Hint = 'Penjelasan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 2
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Height = 47
       Width = 298
     end
@@ -55,6 +81,14 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 81
       AutoSize = False
       Caption = 'Jumlah Pidana'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -67,9 +101,19 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Left = 185
       Top = 83
       Hint = 'Jumlah Pidana'
+      EditValue = '0'
       ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -78,13 +122,21 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 23
       Hint = 'Kode Komponen'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefHukum
-      TabOrder = 5
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 3
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -92,6 +144,14 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Top = 52
       AutoSize = False
       Caption = 'Jumlah Perdata'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -106,14 +166,23 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
       Hint = 'Jumlah Perdata'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 7
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
     Top = 180
+    TabOrder = 3
     ExplicitTop = 180
     ExplicitWidth = 509
     ExplicitHeight = 44
@@ -233,6 +302,7 @@ inherited fr_EntryFormE0900: Tfr_EntryFormE0900
   end
   inherited PanelTopSystem: TPanel
     Width = 509
+    TabOrder = 0
     ExplicitWidth = 509
     inherited IconClose: TLabel
       Left = 475

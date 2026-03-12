@@ -60,7 +60,6 @@ type
     MyQE0204komite_management_risiko: TStringField;
     MyQE0204komite_lainnya: TStringField;
     MyQE0204pihak_independent: TStringField;
-    MyQE0204footer_1_tindak_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nama_anggota_komite: TcxGridDBColumn;
@@ -72,7 +71,6 @@ type
     cxGridDBTableView1komite_management_risiko: TcxGridDBColumn;
     cxGridDBTableView1komite_lainnya: TcxGridDBColumn;
     cxGridDBTableView1pihak_independent: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -278,7 +276,11 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0204nik.Text));
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
 
   if MyQE0204.Active then
     MyQE0204.Refresh
@@ -323,7 +325,6 @@ begin
       cb_manaj.Properties.MaxLength := MyQE0204komite_management_risiko.Size;
       cb_lainya.Properties.MaxLength := MyQE0204komite_lainnya.Size;
       cb_pihak.Properties.MaxLength := MyQE0204pihak_independent.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0204footer_1_tindak_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0204kode_komponen.Text;
@@ -336,7 +337,8 @@ begin
       cb_manaj.EditValue := MyQE0204komite_management_risiko.Text;
       cb_lainya.EditValue := MyQE0204komite_lainnya.Text;
       cb_pihak.EditValue := MyQE0204pihak_independent.Text;
-      memtindak_lanjut.Text := MyQE0204footer_1_tindak_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0204_struktur_independensi_anggota_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
+
 
       kode_komponen.Enabled := False;
     end;
@@ -348,18 +350,25 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `keahlian` = '+QuotedStr(memkeahlian.text)+
-                        ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
-                        ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
-                        ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
-                        ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
-                        ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
-                        ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
-                        ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text));
+                      'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
+                      ', `nik` = '+QuotedStr(nik.Text)+
+                      ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
+                      ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
+                      ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
+                      ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
+                      ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
+                      ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
+                      ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
+                      ' WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text)+
+                      ' AND `nik` = '+QuotedStr(MyQE0204nik.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0204.Active then
         MyQE0204.Refresh
@@ -407,7 +416,6 @@ begin
       cb_manaj.Properties.MaxLength := MyQE0204komite_management_risiko.Size;
       cb_lainya.Properties.MaxLength := MyQE0204komite_lainnya.Size;
       cb_pihak.Properties.MaxLength := MyQE0204pihak_independent.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0204footer_1_tindak_lanjut.Size;
 
 
       //assignment
@@ -422,18 +430,33 @@ begin
       with fr_EntryFormE0204 do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` '+
-                       'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                       ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
-                       ', `nik` = '+QuotedStr(nik.Text)+
-                       ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
-                       ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
-                       ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
-                       ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
-                       ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
-                       ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
-                       ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
-                       ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.Text));
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite` SET '+
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `nama_anggota_komite` = '+QuotedStr(nama_anggota.Text)+
+                      ', `nik` = '+QuotedStr(nik.Text)+
+                      ', `keahlian` = '+QuotedStr(memkeahlian.Text)+
+                      ', `komite_audit` = '+QuotedStr(cb_audit.EditValue)+
+                      ', `komite_pemantau_risiko` = '+QuotedStr(cb_pantau.EditValue)+
+                      ', `komite_remunerasi_dan_nominasi` = '+QuotedStr(cb_remunerasi.EditValue)+
+                      ', `komite_management_risiko` = '+QuotedStr(cb_manaj.EditValue)+
+                      ', `komite_lainnya` = '+QuotedStr(cb_lainya.EditValue)+
+                      ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`nama_anggota_komite` = VALUES(`nama_anggota_komite`),'+
+                      '`keahlian` = VALUES(`keahlian`),'+
+                      '`komite_audit` = VALUES(`komite_audit`),'+
+                      '`komite_pemantau_risiko` = VALUES(`komite_pemantau_risiko`),'+
+                      '`komite_remunerasi_dan_nominasi` = VALUES(`komite_remunerasi_dan_nominasi`),'+
+                      '`komite_management_risiko` = VALUES(`komite_management_risiko`),'+
+                      '`komite_lainnya` = VALUES(`komite_lainnya`),'+
+                      '`pihak_independent` = VALUES(`pihak_independent`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
 
         end;
       if MyQE0204.Active then

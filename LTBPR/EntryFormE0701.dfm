@@ -11,6 +11,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 498
     ExplicitHeight = 229
     Height = 229
@@ -20,6 +21,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 81
       AutoSize = False
       Caption = 'Jumlah Peserta'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -34,8 +43,16 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 113
       Hint = 'Materi Pembahasan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Height = 47
       Width = 298
     end
@@ -44,6 +61,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 109
       AutoSize = False
       Caption = 'Materi Pembahasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -58,6 +83,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -66,7 +92,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 3
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 2
       Height = 24
       Width = 152
     end
@@ -75,6 +108,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -86,6 +127,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 55
       AutoSize = False
       Caption = 'Tanggal'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
@@ -98,7 +147,15 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 53
       Hint = 'Tanggal'
       ParentColor = True
-      TabOrder = 6
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
     object cxLabel4: TcxLabel
@@ -106,6 +163,14 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 162
       AutoSize = False
       Caption = 'Penjelasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -120,10 +185,37 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Top = 166
       Hint = 'Penjelasan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 8
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 9
       Height = 47
       Width = 298
+    end
+    object jumlah_peserta: TcxCurrencyEdit
+      Left = 184
+      Top = 83
+      Hint = 'Jumlah Peserta'
+      EditValue = '0'
+      ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taRightJustify
+      Properties.DisplayFormat = '#,##0'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
@@ -252,17 +344,6 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Left = 464
       ExplicitLeft = 771
     end
-  end
-  object jumlah_peserta: TcxCurrencyEdit
-    Left = 185
-    Top = 83
-    Hint = 'Jumlah Peserta'
-    EditValue = '0'
-    ParentColor = True
-    Properties.Alignment.Horz = taRightJustify
-    Properties.DisplayFormat = '#,##0'
-    TabOrder = 4
-    Width = 121
   end
   object MyDataSource1: TMyDataSource
     Left = 392

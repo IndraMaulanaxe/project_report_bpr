@@ -55,14 +55,12 @@ type
     MyQE0302nama_kelompok_usaha_bpr: TStringField;
     MyQE0302persentase_kepemilikan: TFloatField;
     MyQE0302persentase_kepemilikan_tahun: TFloatField;
-    MyQE0302footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nik: TcxGridDBColumn;
     cxGridDBTableView1nama_kelompok_usaha_bpr: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan_tahun: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -268,7 +266,11 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text));
+               ' WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text)+
+               ' AND `nik` = '+QuotedStr(MyQE0302nik.Text));
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
 
   if MyQE0302.Active then
     MyQE0302.Refresh
@@ -299,7 +301,6 @@ begin
       memkelompok.Properties.MaxLength := MyQE0302nama_kelompok_usaha_bpr.Size;
       persen.Properties.MaxLength := MyQE0302persentase_kepemilikan.Size;
       persen_sebelumya.Properties.MaxLength := MyQE0302persentase_kepemilikan_tahun.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0302footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0302kode_komponen.Text;
@@ -307,7 +308,7 @@ begin
       memkelompok.Text := MyQE0302nama_kelompok_usaha_bpr.Text;
       persen.Value := MyQE0302persentase_kepemilikan.Value;
       persen_sebelumya.Value := MyQE0302persentase_kepemilikan_tahun.Value;
-      memtindak_lanjut.Text := MyQE0302footer_1_penjelasan_lebih_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -319,13 +320,20 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.text)+
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.Text)+
                         ', `persentase_kepemilikan` = '+FloatToStr(persen.Value)+
                         ', `persentase_kepemilikan_tahun` = '+FloatToStr(persen_sebelumya.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0302nik.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0302.Active then
         MyQE0302.Refresh
@@ -359,7 +367,6 @@ begin
       memkelompok.Properties.MaxLength := MyQE0302nama_kelompok_usaha_bpr.Size;
       persen.Properties.MaxLength := MyQE0302persentase_kepemilikan.Size;
       persen_sebelumya.Properties.MaxLength := MyQE0302persentase_kepemilikan_tahun.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0302footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '042010000000';
@@ -379,8 +386,17 @@ begin
                         ', `nama_kelompok_usaha_bpr` = '+QuotedStr(memkelompok.Text)+
                         ', `persentase_kepemilikan` = '+StringReplace(FloatToStr(persen.Value), ',', '.', [rfReplaceAll])+
                         ', `persentase_kepemilikan_tahun` = '+StringReplace(FloatToStr(persen_sebelumya.Value), ',', '.', [rfReplaceAll])+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(memtindak_lanjut.Text)
-                      );
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`nama_kelompok_usaha_bpr` = VALUES(`nama_kelompok_usaha_bpr`),'+
+                        '`persentase_kepemilikan` = VALUES(`persentase_kepemilikan`),'+
+                        '`persentase_kepemilikan_tahun` = VALUES(`persentase_kepemilikan_tahun`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
 
 
         end;

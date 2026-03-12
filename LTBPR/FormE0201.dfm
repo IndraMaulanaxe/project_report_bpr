@@ -93,18 +93,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           HeaderAlignmentHorz = taCenter
           Width = 350
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tidak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
-        object cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn
-          Caption = 'Penjelasan Lebih Lanjut'
-          DataBinding.FieldName = 'footer_2_penjelasan_lebih_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 350
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -183,6 +171,7 @@ inherited fr_FormE0201: Tfr_FormE0201
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
+      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -276,14 +265,6 @@ inherited fr_FormE0201: Tfr_FormE0201
     end
     object MyQE0201tugas_dan_tanggung_jawab: TStringField
       FieldName = 'tugas_dan_tanggung_jawab'
-      Size = 2000
-    end
-    object MyQE0201footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
-    end
-    object MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField
-      FieldName = 'footer_2_penjelasan_lebih_lanjut'
       Size = 2000
     end
   end

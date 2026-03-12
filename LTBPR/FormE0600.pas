@@ -53,11 +53,9 @@ type
     MyQE0600flag_detail: TStringField;
     MyQE0600kode_komponen: TStringField;
     MyQE0600rasio_gaji_perbandingan: TFloatField;
-    MyQE0600footer_1_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1rasio_gaji_perbandingan: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -263,7 +261,9 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
 
   if MyQE0600.Active then
     MyQE0600.Refresh
@@ -295,12 +295,11 @@ begin
       //size
       cb_komponen.Properties.MaxLength := MyQE0600kode_komponen.Size;
       rasio.Properties.MaxLength := MyQE0600rasio_gaji_perbandingan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0600footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       cb_komponen.EditValue := MyQE0600kode_komponen.Text;
       rasio.value := MyQE0600rasio_gaji_perbandingan.Value;
-      memtindak_lanjut.Text := MyQE0600footer_1_penjelasan_lebih_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0600_rasio_gaji_tinggi_rendah_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       cb_komponen.Enabled := False;
     end;
@@ -312,10 +311,15 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` '+
-                        ' SET `kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
-                        ', `rasio_gaji_perbandingan` = '+FloatToStr(rasio.Value)+
-                        ', `footer_1_penjelasan_lebih_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+                      ' SET `rasio_gaji_perbandingan` = '+FloatToStr(rasio.Value)+
+                      ' WHERE `kode_komponen` = '+QuotedStr(MyQE0600kode_komponen.Text));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0600.Active then
         MyQE0600.Refresh
@@ -350,7 +354,6 @@ begin
       //size
       cb_komponen.Properties.MaxLength := MyQE0600kode_komponen.Size;
       rasio.Properties.MaxLength := MyQE0600rasio_gaji_perbandingan.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0600footer_1_penjelasan_lebih_lanjut.Size;
 
       //assignment
       //kode_komponen.Text := '032010000000';
@@ -364,16 +367,18 @@ begin
       with fr_EntryFormE0600 do
         begin
           // Insert
-         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` ('+
-                      ' `kode_komponen`, '+
-                      ' `rasio_gaji_perbandingan`, '+
-                      ' `footer_1_penjelasan_lebih_lanjut` '+
-                      ') VALUES ('+
-                      QuotedStr(cb_komponen.EditValue)+', '+
-                      FloatToStr(rasio.Value)+', '+
-                      QuotedStr(memtindak_lanjut.Text)+
-                      ')'
-                    );
+         MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah` SET '+
+                      '`kode_komponen` = '+QuotedStr(cb_komponen.EditValue)+
+                      ', `rasio_gaji_perbandingan` = '+StringReplace(FloatToStr(rasio.Value), ',', '.', [rfReplaceAll])+
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`rasio_gaji_perbandingan` = VALUES(`rasio_gaji_perbandingan`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0600_rasio_gaji_tinggi_rendah_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
 
 
         end;

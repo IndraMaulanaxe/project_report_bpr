@@ -111,12 +111,6 @@ inherited fr_FormE0203: Tfr_FormE0203
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
-        object cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn
-          Caption = 'Tindak Lanjut'
-          DataBinding.FieldName = 'footer_1_tindak_lanjut'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
@@ -300,10 +294,6 @@ inherited fr_FormE0203: Tfr_FormE0203
     end
     object MyQE0203jumlah: TIntegerField
       FieldName = 'jumlah'
-    end
-    object MyQE0203footer_1_tindak_lanjut: TStringField
-      FieldName = 'footer_1_tindak_lanjut'
-      Size = 2000
     end
   end
 end

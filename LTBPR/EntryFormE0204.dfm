@@ -13,6 +13,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 498
     ExplicitHeight = 404
     Height = 404
@@ -23,6 +24,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Hint = 'Kode Komponen'
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Buttons = <
         item
           Default = True
@@ -31,6 +33,13 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       TabOrder = 0
       Height = 24
       Width = 160
@@ -40,6 +49,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -53,6 +70,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       BiDiMode = bdLeftToRight
       Caption = 'Tindak Lanjut'
       ParentBiDiMode = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -67,8 +92,16 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 342
       Hint = 'Tindak Lanjut'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 3
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 18
       Height = 48
       Width = 298
     end
@@ -78,8 +111,16 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 112
       Hint = 'Keahlian'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Height = 47
       Width = 298
     end
@@ -88,6 +129,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 112
       AutoSize = False
       Caption = 'Keahlian'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
@@ -100,6 +149,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 165
       AutoSize = False
       Caption = 'Komite Audit'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -112,13 +169,21 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 165
       Hint = 'Komite Audit'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
-      TabOrder = 7
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Width = 298
     end
     object cb_pantau: TcxLookupComboBox
@@ -127,13 +192,21 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 195
       Hint = 'Komite Pemantau Risiko'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
-      TabOrder = 8
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Width = 298
     end
     object cxLabel4: TcxLabel
@@ -141,6 +214,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 195
       AutoSize = False
       Caption = 'Komite Pemantau Risiko'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -153,13 +234,21 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 254
       Hint = 'Komite Manajemen Risiko'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
-      TabOrder = 10
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 9
       Width = 298
     end
     object cxLabel5: TcxLabel
@@ -167,6 +256,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 254
       AutoSize = False
       Caption = 'Komite Manajemen Risiko'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -179,13 +276,21 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 224
       Hint = 'Komite Remunerasi dan Nominasi'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefKomite
-      TabOrder = 12
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Width = 298
     end
     object cxLabel6: TcxLabel
@@ -193,6 +298,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 224
       AutoSize = False
       Caption = 'Komite Remunerasi '
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 21
@@ -204,6 +317,14 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Top = 56
       AutoSize = False
       Caption = 'Nama Anggota Komite'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Transparent = True
@@ -219,13 +340,92 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       TabStop = False
       AutoSize = False
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
       Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 15
+      TabOrder = 1
       Height = 24
+      Width = 298
+    end
+    object nik: TcxTextEdit
+      Tag = 1
+      Left = 185
+      Top = 83
+      Hint = 'NIK'
+      TabStop = False
+      AutoSize = False
+      ParentColor = True
+      ParentFont = False
+      Properties.Alignment.Horz = taLeftJustify
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.LookAndFeel.Kind = lfOffice11
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.Kind = lfOffice11
+      StyleFocused.LookAndFeel.Kind = lfOffice11
+      StyleHot.LookAndFeel.Kind = lfOffice11
+      TabOrder = 2
+      Height = 24
+      Width = 298
+    end
+    object cb_lainya: TcxLookupComboBox
+      Tag = 1
+      Left = 185
+      Top = 282
+      Hint = 'Komite Lainnya'
+      ParentColor = True
+      ParentFont = False
+      Properties.KeyFieldNames = 'sandi'
+      Properties.ListColumns = <
+        item
+          FieldName = 'nama'
+        end>
+      Properties.ListSource = dsMyQRefKomite
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 10
+      Width = 298
+    end
+    object cb_pihak: TcxLookupComboBox
+      Tag = 1
+      Left = 185
+      Top = 312
+      Hint = 'Pihak Independen'
+      ParentColor = True
+      ParentFont = False
+      Properties.KeyFieldNames = 'sandi'
+      Properties.ListColumns = <
+        item
+          FieldName = 'nama'
+        end>
+      Properties.ListSource = dsMyQRefindepeden
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 11
       Width = 298
     end
   end
@@ -356,52 +556,38 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       ExplicitLeft = 771
     end
   end
-  object cb_pihak: TcxLookupComboBox
-    Tag = 1
-    Left = 185
-    Top = 312
-    Hint = 'Pihak Independen'
-    ParentColor = True
-    Properties.KeyFieldNames = 'sandi'
-    Properties.ListColumns = <
-      item
-        FieldName = 'nama'
-      end>
-    Properties.ListSource = dsMyQRefindepeden
-    TabOrder = 4
-    Width = 298
-  end
   object cxLabel7: TcxLabel
     Left = 17
     Top = 312
     AutoSize = False
     Caption = 'Pihak Independen'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Vert = taVCenter
     Transparent = True
     Height = 21
     Width = 135
     AnchorY = 323
   end
-  object cb_lainya: TcxLookupComboBox
-    Tag = 1
-    Left = 185
-    Top = 282
-    Hint = 'Komite Lainnya'
-    ParentColor = True
-    Properties.KeyFieldNames = 'sandi'
-    Properties.ListColumns = <
-      item
-        FieldName = 'nama'
-      end>
-    Properties.ListSource = dsMyQRefKomite
-    TabOrder = 6
-    Width = 298
-  end
   object cxLabel9: TcxLabel
     Left = 17
     Top = 282
     AutoSize = False
     Caption = 'Komite Lainnya'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Vert = taVCenter
     Transparent = True
     Height = 21
@@ -413,29 +599,20 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     Top = 86
     AutoSize = False
     Caption = 'NIK'
+    ParentFont = False
+    Style.Font.Charset = DEFAULT_CHARSET
+    Style.Font.Color = clWindow
+    Style.Font.Height = -13
+    Style.Font.Name = 'Tahoma'
+    Style.Font.Style = []
+    Style.TextColor = clWindow
+    Style.IsFontAssigned = True
     Properties.Alignment.Horz = taLeftJustify
     Properties.Alignment.Vert = taVCenter
     Transparent = True
     Height = 19
     Width = 135
     AnchorY = 96
-  end
-  object nik: TcxTextEdit
-    Tag = 1
-    Left = 185
-    Top = 83
-    Hint = 'NIK'
-    TabStop = False
-    AutoSize = False
-    ParentColor = True
-    Properties.Alignment.Horz = taLeftJustify
-    Style.LookAndFeel.Kind = lfOffice11
-    StyleDisabled.LookAndFeel.Kind = lfOffice11
-    StyleFocused.LookAndFeel.Kind = lfOffice11
-    StyleHot.LookAndFeel.Kind = lfOffice11
-    TabOrder = 9
-    Height = 24
-    Width = 298
   end
   object MyDataSource1: TMyDataSource
     Left = 392

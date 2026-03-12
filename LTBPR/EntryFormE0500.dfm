@@ -20,6 +20,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24
@@ -31,6 +39,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 169
       AutoSize = False
       Caption = 'Penjelasan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -45,8 +61,16 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 173
       Hint = 'Penjelasan'
       ParentColor = True
+      ParentFont = False
       Properties.OnChange = MemKeteranganPropertiesChange
-      TabOrder = 2
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 11
       Height = 47
       Width = 298
     end
@@ -55,6 +79,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 81
       AutoSize = False
       Caption = 'Direksi (Jumlah Seluruh Rp)'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -69,9 +101,17 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Hint = 'Direksi[Jumlah Keseluruhan (Rp)]'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 5
       Width = 121
     end
     object komisaris_jml_orang: TcxCurrencyEdit
@@ -80,9 +120,17 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Hint = 'Dewan Komisaris[Jumlah Orang]'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 5
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 7
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -91,13 +139,21 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 23
       Hint = 'Kode Komponen'
       ParentColor = True
+      ParentFont = False
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
         item
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefRemunerasi
-      TabOrder = 6
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 4
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -105,6 +161,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 52
       AutoSize = False
       Caption = 'Direksi (Jumlah Orang)'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -119,9 +183,17 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Hint = 'Direksi[Jumlah Orang]'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 8
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 6
       Width = 121
     end
     object komisaris_jml_seluruh: TcxCurrencyEdit
@@ -130,9 +202,17 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Hint = 'Dewan Komisaris[Jumlah Keseluruhan (Rp)]'
       EditValue = '0'
       ParentColor = True
+      ParentFont = False
       Properties.Alignment.Horz = taRightJustify
       Properties.DisplayFormat = '#,##0'
-      TabOrder = 9
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
+      TabOrder = 8
       Width = 121
     end
     object cxLabel2: TcxLabel
@@ -140,6 +220,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 140
       AutoSize = False
       Caption = 'Komisaris (Jumlah Seluruh Rp)'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -153,6 +241,14 @@ inherited fr_EntryFormE0500: Tfr_EntryFormE0500
       Top = 111
       AutoSize = False
       Caption = 'Komisaris (Jumlah Orang)'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.TextColor = clWindow
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True

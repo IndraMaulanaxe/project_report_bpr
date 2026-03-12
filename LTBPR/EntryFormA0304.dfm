@@ -20,6 +20,13 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Top = 50
       AutoSize = False
       Caption = 'Uraian'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -35,6 +42,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Hint = 'Uraian'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
       TabOrder = 1
       Height = 47
       Width = 298
@@ -46,6 +54,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Hint = 'Keterangan'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
       TabOrder = 2
       Height = 47
       Width = 298
@@ -55,6 +64,13 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Top = 102
       AutoSize = False
       Caption = 'Keterangan'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Horz = taLeftJustify
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
@@ -77,7 +93,8 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
         end>
       Properties.CharCase = ecUpperCase
       Properties.Images = dm_bpr1.ImageList1
-      TabOrder = 4
+      Style.TextColor = clWindow
+      TabOrder = 0
       Height = 24
       Width = 103
     end
@@ -86,6 +103,13 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       Top = 22
       AutoSize = False
       Caption = 'Kode Komponen'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
       Properties.Alignment.Vert = taVCenter
       Transparent = True
       Height = 24

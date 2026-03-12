@@ -56,7 +56,6 @@ type
     MyQE0203program: TStringField;
     MyQE0203realisasi: TStringField;
     MyQE0203jumlah: TIntegerField;
-    MyQE0203footer_1_tindak_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1komite: TcxGridDBColumn;
@@ -64,7 +63,6 @@ type
     cxGridDBTableView1program: TcxGridDBColumn;
     cxGridDBTableView1realisasi: TcxGridDBColumn;
     cxGridDBTableView1jumlah: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -270,7 +268,15 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text)+
+                ' AND `komite` = '+QuotedStr(MyQE0203komite.Text)+
+                ' AND `tugas_dan_tanggung_jawab` = '+QuotedStr(MyQE0203tugas_dan_tanggung_jawab.Text)+
+                ' AND `program` = '+QuotedStr(MyQE0203program.Text)+
+                ' AND `realisasi` = '+QuotedStr(MyQE0203realisasi.Text)+
+                ' AND `jumlah` = '+FloatToStr(MyQE0203jumlah.Value));
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
 
   if MyQE0203.Active then
     MyQE0203.Refresh
@@ -305,7 +311,6 @@ begin
       memtugas.Properties.MaxLength := MyQE0203tugas_dan_tanggung_jawab.Size;
       memprogram.Properties.MaxLength := MyQE0203program.Size;
       memrealisasi.Properties.MaxLength := MyQE0203realisasi.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0203footer_1_tindak_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0203kode_komponen.Text;
@@ -313,7 +318,8 @@ begin
       memtugas.Text := MyQE0203tugas_dan_tanggung_jawab.Text;
       memprogram.Text := MyQE0203program.Text;
       memrealisasi.Text := MyQE0203realisasi.Text;
-      memtindak_lanjut.Text := MyQE0203footer_1_tindak_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0203_tugas_tanggung_jawab_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
+
       jumlah.Value := MyQE0203jumlah.Value;
 
       kode_komponen.Enabled := False;
@@ -326,14 +332,25 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
+                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `komite` = '+QuotedStr(cb_komite.EditValue)+
-                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.text)+
-                        ', `program` = '+QuotedStr(memprogram.text)+
-                        ', `realisasi` = '+QuotedStr(memrealisasi.text)+
+                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
+                        ', `program` = '+QuotedStr(memprogram.Text)+
+                        ', `realisasi` = '+QuotedStr(memrealisasi.Text)+
                         ', `jumlah` = '+FloatToStr(jumlah.Value)+
-                        ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text));
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0203kode_komponen.Text)+
+                        ' AND `komite` = '+QuotedStr(MyQE0203komite.Text)+
+                        ' AND `tugas_dan_tanggung_jawab` = '+QuotedStr(MyQE0203tugas_dan_tanggung_jawab.Text)+
+                        ' AND `program` = '+QuotedStr(MyQE0203program.Text)+
+                        ' AND `realisasi` = '+QuotedStr(MyQE0203realisasi.Text)+
+                        ' AND `jumlah` = '+FloatToStr(MyQE0203jumlah.Value));
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
         end;
       if MyQE0203.Active then
         MyQE0203.Refresh
@@ -371,7 +388,6 @@ begin
       memtugas.Properties.MaxLength := MyQE0203tugas_dan_tanggung_jawab.Size;
       memprogram.Properties.MaxLength := MyQE0203program.Size;
       memrealisasi.Properties.MaxLength := MyQE0203realisasi.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0203footer_1_tindak_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '013301000000';
@@ -391,9 +407,15 @@ begin
                         ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
                         ', `program` = '+QuotedStr(memprogram.Text)+
                         ', `realisasi` = '+QuotedStr(memrealisasi.Text)+
-                        ', `jumlah` = '+StringReplace(FloatToStr(jumlah.Value), ',', '.', [rfReplaceAll])+
-                        ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.Text)
+                        ', `jumlah` = '+StringReplace(FloatToStr(jumlah.Value), ',', '.', [rfReplaceAll])
                       );
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+          //
 
         end;
       if MyQE0203.Active then

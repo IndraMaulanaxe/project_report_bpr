@@ -62,7 +62,6 @@ type
     MyQA0301tempat_kedudukan: TStringField;
     MyQA0301opini_akuntan_publik: TStringField;
     MyQA0301nama_akuntan_publik: TStringField;
-    MyQA0301keterangan: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nomor_akta_pendirian: TcxGridDBColumn;
@@ -280,8 +279,12 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
-    '  WHERE `nomor_perubahan_anggaran_dasar` = '+QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
+                '  WHERE `nomor_perubahan_anggaran_dasar` = '+
+                QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
 
   if MyQA0301.Active then
     MyQA0301.Refresh
@@ -317,7 +320,6 @@ begin
       nomor_ubah_anggaran.Properties.MaxLength := MyQA0301nomor_perubahan_anggaran_dasar.Size;
       membidangusaha.Properties.MaxLength := MyQA0301bidang_usaha_sesuai_anggaran_dasar.Size;
       memtempat_kedudukan.Properties.MaxLength := MyQA0301tempat_kedudukan.Size;
-      memketerangan.Properties.MaxLength := MyQA0301keterangan.Size;
 
       //assignment
       kode_komponen.Text := MyQA0301kode_komponen.Text;
@@ -330,8 +332,10 @@ begin
       tgl_mulai_operasi.Date :=MyQA0301tanggal_mulai_beroperasi.Value;
       membidangusaha.Text := MyQA0301bidang_usaha_sesuai_anggaran_dasar.Text;
       memtempat_kedudukan.Text := MyQA0301tempat_kedudukan.Text;
-      memketerangan.Text := MyQA0301keterangan.Text;
       cb_akuntan_publik.EditValue := MyQA0301opini_akuntan_publik.Text;
+
+      //Footer
+      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0301_riwayat_pendirian_bpr_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -342,21 +346,31 @@ begin
       with fr_EntryFormA0301 do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` '+
-            'SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-            ',`nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.text)+
-            ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
-            ',`nomor_perubahan_anggaran_dasar` = '+QuotedStr(nomor_ubah_anggaran.text)+
-            ', `tanggal_perubahan_anggaran_dasar` = '+DateToStrSQL(tgl_ubah_anggaran.Date)+
-            ',`nomor_pengesahan_dari_instansi` = '+QuotedStr(nomor_pengesahan.text)+
-            ', `tanggal_pengesahan_dari_instansi` = '+DateToStrSQL(tgl_pengesahan.Date)+
-            ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
-            ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.text)+
-            ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.text)+
-            ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.itemindex)+
-            ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
-            ', `keterangan` = '+QuotedStr(memketerangan.text)+
-            '  WHERE `nomor_perubahan_anggaran_dasar` = '+QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` SET '+
+                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.Text)+
+                        ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
+                        ', `nomor_perubahan_anggaran_dasar` = '+QuotedStr(nomor_ubah_anggaran.Text)+
+                        ', `tanggal_perubahan_anggaran_dasar` = '+DateToStrSQL(tgl_ubah_anggaran.Date)+
+                        ', `nomor_pengesahan_dari_instansi` = '+QuotedStr(nomor_pengesahan.Text)+
+                        ', `tanggal_pengesahan_dari_instansi` = '+DateToStrSQL(tgl_pengesahan.Date)+
+                        ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
+                        ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
+                        ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
+                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ' WHERE `nomor_perubahan_anggaran_dasar` = '+
+                        QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
+
+
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
+          //
+
         end;
       if MyQA0301.Active then
         MyQA0301.Refresh
@@ -394,7 +408,6 @@ begin
       nomor_ubah_anggaran.Properties.MaxLength := MyQA0301nomor_perubahan_anggaran_dasar.Size;
       membidangusaha.Properties.MaxLength := MyQA0301bidang_usaha_sesuai_anggaran_dasar.Size;
       memtempat_kedudukan.Properties.MaxLength := MyQA0301tempat_kedudukan.Size;
-      memketerangan.Properties.MaxLength := MyQA0301keterangan.Size;
 
       //assignment
       tgl_akta_pendirian.Date := dTglSystem;
@@ -412,7 +425,7 @@ begin
       with fr_EntryFormA0301 do
         begin
           // Insert
-          MyExecuteSQL( 'INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` SET '+
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr` SET '+
                         '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `nomor_akta_pendirian` = '+QuotedStr(nomor_akta_pendirian.Text)+
                         ', `tanggal_akta_pendirian` = '+DateToStrSQL(tgl_akta_pendirian.Date)+
@@ -425,9 +438,27 @@ begin
                         ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
                         ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
                         ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
-                        ', `keterangan` = '+QuotedStr(memketerangan.Text)
-                      );
+                        ' ON DUPLICATE KEY UPDATE '+
+                        '`kode_komponen` = VALUES(`kode_komponen`),'+
+                        '`nomor_akta_pendirian` = VALUES(`nomor_akta_pendirian`),'+
+                        '`tanggal_akta_pendirian` = VALUES(`tanggal_akta_pendirian`),'+
+                        '`tanggal_perubahan_anggaran_dasar` = VALUES(`tanggal_perubahan_anggaran_dasar`),'+
+                        '`nomor_pengesahan_dari_instansi` = VALUES(`nomor_pengesahan_dari_instansi`),'+
+                        '`tanggal_pengesahan_dari_instansi` = VALUES(`tanggal_pengesahan_dari_instansi`),'+
+                        '`tanggal_mulai_beroperasi` = VALUES(`tanggal_mulai_beroperasi`),'+
+                        '`bidang_usaha_sesuai_anggaran_dasar` = VALUES(`bidang_usaha_sesuai_anggaran_dasar`),'+
+                        '`tempat_kedudukan` = VALUES(`tempat_kedudukan`),'+
+                        '`opini_akuntan_publik` = VALUES(`opini_akuntan_publik`),'+
+                        '`nama_akuntan_publik` = VALUES(`nama_akuntan_publik`)');
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
+          //
         end;
+
       if MyQA0301.Active then
         MyQA0301.Refresh
       else

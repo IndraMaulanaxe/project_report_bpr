@@ -53,14 +53,10 @@ type
     MyQE0201kode_komponen: TStringField;
     MyQE0201nik: TStringField;
     MyQE0201tugas_dan_tanggung_jawab: TStringField;
-    MyQE0201footer_1_tindak_lanjut: TStringField;
-    MyQE0201footer_2_penjelasan_lebih_lanjut: TStringField;
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nik: TcxGridDBColumn;
     cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn;
-    cxGridDBTableView1footer_1_tindak_lanjut: TcxGridDBColumn;
-    cxGridDBTableView1footer_2_penjelasan_lebih_lanjut: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -266,7 +262,11 @@ begin
     Exit;
 
   MyExecuteSQL('DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi` '+
-    '  WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text));
+                ' WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text)+
+                ' AND `nik` = '+QuotedStr(MyQE0201nik.Text));
+
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');
 
   if MyQE0201.Active then
     MyQE0201.Refresh
@@ -295,15 +295,14 @@ begin
       kode_komponen.Properties.MaxLength := MyQE0201kode_komponen.Size;
       nik.Properties.MaxLength := MyQE0201nik.Size;
       memtugas.Properties.MaxLength := MyQE0201tugas_dan_tanggung_jawab.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0201footer_1_tindak_lanjut.Size;
-      memlebih_lanjut.Properties.MaxLength := MyQE0201footer_2_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := MyQE0201kode_komponen.Text;
       nik.Text := MyQE0201nik.Text;
       memtugas.Text := MyQE0201tugas_dan_tanggung_jawab.Text;
-      memtindak_lanjut.Text := MyQE0201footer_1_tindak_lanjut.Text;
-      memlebih_lanjut.Text := MyQE0201footer_2_penjelasan_lebih_lanjut.Text;
+      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F01')+' ');
+      memlebih_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F02')+'  ');
+
 
       kode_komponen.Enabled := False;
     end;
@@ -315,12 +314,22 @@ begin
         begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi` '+
-                        ' SET `kode_komponen` = '+QuotedStr(kode_komponen.text)+
-                        ', `nik` = '+QuotedStr(nik.text)+
-                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.text)+
-                        ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.text)+
-                        ', `footer_2_penjelasan_lebih_lanjut` = '+QuotedStr(memlebih_lanjut.text)+
-                        '  WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text));
+                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                        ', `nik` = '+QuotedStr(nik.Text)+
+                        ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
+                        ' WHERE `kode_komponen` = '+QuotedStr(MyQE0201kode_komponen.Text)+
+                        ' AND `nik` = '+QuotedStr(MyQE0201nik.Text));
+
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F02')+', '+QuotedStr(memlebih_lanjut.Text)+')');
+          //
         end;
       if MyQE0201.Active then
         MyQE0201.Refresh
@@ -352,8 +361,6 @@ begin
       kode_komponen.Properties.MaxLength := MyQE0201kode_komponen.Size;
       nik.Properties.MaxLength := MyQE0201nik.Size;
       memtugas.Properties.MaxLength := MyQE0201tugas_dan_tanggung_jawab.Size;
-      memtindak_lanjut.Properties.MaxLength := MyQE0201footer_1_tindak_lanjut.Size;
-      memlebih_lanjut.Properties.MaxLength := MyQE0201footer_2_penjelasan_lebih_lanjut.Size;
 
       //assignment
       kode_komponen.Text := '011000000000';
@@ -371,9 +378,19 @@ begin
                       '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                       ', `nik` = '+QuotedStr(nik.Text)+
                       ', `tugas_dan_tanggung_jawab` = '+QuotedStr(memtugas.Text)+
-                      ', `footer_1_tindak_lanjut` = '+QuotedStr(memtindak_lanjut.Text)+
-                      ', `footer_2_penjelasan_lebih_lanjut` = '+QuotedStr(memlebih_lanjut.Text)
-                    );
+                      ' ON DUPLICATE KEY UPDATE '+
+                      '`tugas_dan_tanggung_jawab` = VALUES(`tugas_dan_tanggung_jawab`)');
+
+           // footer
+           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` ');
+
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
+           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0201_tugas_tanggung_jawab_direksi_footer` '+
+                        ' (`flag_detail`,`keterangan`) '+
+                        ' VALUES ('+QuotedStr('F02')+', '+QuotedStr(memlebih_lanjut.Text)+')');
+          //
         end;
       if MyQE0201.Active then
         MyQE0201.Refresh

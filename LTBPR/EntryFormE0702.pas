@@ -43,7 +43,6 @@ type
     Label3: TcxLabel;
     cxLabel4: TcxLabel;
     mempenjelasan: TcxMemo;
-    tingkat_hadir: TcxCurrencyEdit;
     cxLabel1: TcxLabel;
     nik: TcxTextEdit;
     cxLabel2: TcxLabel;
@@ -52,6 +51,7 @@ type
     hadir_fisik: TcxCurrencyEdit;
     frekuesi: TcxLabel;
     frekuensi_hadir: TcxCurrencyEdit;
+    tingkat_hadir: TcxCurrencyEdit;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
