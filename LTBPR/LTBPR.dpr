@@ -72,7 +72,8 @@ uses
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
+//  Application.MainFormOnTaskbar := True;
+  Application.Title := 'Laporan Bulanan :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
   Application.Run;
 end.

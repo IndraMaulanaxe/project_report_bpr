@@ -30,7 +30,7 @@ cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
   ipwtypes, ipwhttp, ZipForge, ShellAPI, Vcl.ComCtrls, dxCore, cxDateUtils,
   cxMaskEdit, cxDropDownEdit, cxCalendar, cxCheckBox, cxSpinEdit, MemDS,
   DBAccess, MyAccess, dxGaugeCustomScale, dxGaugeDigitalScale, dxGaugeControl, QExport4, QExport4XLS,
-   System.IOUtils;
+   System.IOUtils, dxGaugeQuantitativeScale, dxGaugeLinearScale, cxProgressBar;
 
 type
   Tfr_MainMenu = class(TForm)
@@ -90,12 +90,6 @@ type
     MyQFormLapBulnama_form: TStringField;
     MyQFormLapBulnama_table: TStringField;
     MyQField: TMyQuery;
-    dxGaugeControl1: TdxGaugeControl;
-    sGaugeStatus: TdxGaugeDigitalScale;
-    dxGaugeControl2: TdxGaugeControl;
-    sGaugeJenisLaporan: TdxGaugeDigitalScale;
-    sGaugeJenisLaporanCaption1: TdxGaugeDigitalScaleCaption;
-    sGaugeStatusCaption1: TdxGaugeDigitalScaleCaption;
     CategoryPanelGroup1: TCategoryPanelGroup;
     cp_lap_lanjutan: TCategoryPanel;
     cp_transparasi: TCategoryPanel;
@@ -141,6 +135,8 @@ type
     bt_formF0000: TcxButton;
     MyQFormLapBulis_footer: TSmallintField;
     MyQFormLapBulis_file: TSmallintField;
+    sGaugeStatus: TcxProgressBar;
+    sGaugeJenisLaporan: TcxProgressBar;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -184,6 +180,7 @@ type
     procedure bt_formC0100Click(Sender: TObject);
     procedure bt_formD0000Click(Sender: TObject);
     procedure bt_formF0000Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -222,6 +219,11 @@ begin
   begin
     ProsesUpload(OpenDialog1.FileName,'A0400');
   end;
+end;
+
+procedure Tfr_MainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ Application.Terminate;
 end;
 
 procedure Tfr_MainMenu.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -509,7 +511,7 @@ end;
 
 procedure Tfr_MainMenu.bt_closeClick(Sender: TObject);
 begin
-Application.Terminate;
+  Close;
 end;
 
 procedure Tfr_MainMenu.bt_export_excelClick(Sender: TObject);
@@ -544,15 +546,15 @@ begin
   else
     MyQFormLapBul.Open;
 
-//  sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-  sGaugeJenisLaporan.Value := '0';
+  sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
      if  (MyQFormLapBulis_footer.AsInteger=0) and  (MyQFormLapBulis_file.AsInteger=0) then
       begin
-        sGaugeJenisLaporanCaption1.Text := '% '+MyQFormLapBulnama_table.AsString;
+        sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
         cKodeForm := MyQFormLapBulkode_form.AsString;
 
         if cb_jenis_laporan.ItemIndex=0 then
@@ -593,7 +595,7 @@ begin
       end;
 
       MyQFormLapBul.Next;
-      sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
       Application.ProcessMessages;
     end;
 
@@ -963,8 +965,8 @@ begin
   else
     MyQFormLapBul.Open;
 
-  //sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-  sGaugeJenisLaporan.Value := '0';
+  sGaugeJenisLaporan.Properties.Max  := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
@@ -972,7 +974,7 @@ begin
       if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=0) then
       begin
 
-        sGaugeJenisLaporanCaption1.Text := '% '+MyQFormLapBulnama_table.AsString;
+        sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
         cKodeForm := MyQFormLapBulkode_form.AsString;
 
 
@@ -992,7 +994,7 @@ begin
 
       MyQFormLapBul.Next;
       sGaugeStatus.Visible := False;
-      sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
       Application.ProcessMessages;
     end;
 
@@ -1144,13 +1146,13 @@ begin
   else
     MyQFormLapBul.Open;
 
-  //sGaugeJenisLaporan.  MaxValue := MyQFormLapBul.RecordCount;
-  sGaugeJenisLaporan.Value := '0';
+  sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
-      sGaugeJenisLaporanCaption1.Text := '% '+MyQFormLapBulnama_table.AsString;
+     sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+'% '+MyQFormLapBulnama_table.AsString;
 
      if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=1)  then
       begin
@@ -1223,8 +1225,8 @@ begin
         else
           MyQuery1.Open;
 
-        //sGaugeStatus.MaxValue := MyQuery1.RecordCount;
-        sGaugeStatus.Value := '0';
+        sGaugeStatus.Properties.Max := MyQuery1.RecordCount;
+        sGaugeStatus.Position := 0;
         sGaugeStatus.Visible := True;
         MyQuery1.First;
         while not MyQuery1.Eof do
@@ -1315,14 +1317,14 @@ begin
             AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
 
             MyQuery1.Next;
-            sGaugeStatus.Value := IntToStr(StrToInt(sGaugeStatus.Value)+1);
+            sGaugeStatus.Position := sGaugeStatus.Position+1;
             Application.ProcessMessages;
           end;
       end;
 
       MyQFormLapBul.Next;
       sGaugeStatus.Visible := False;
-      sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
       Application.ProcessMessages;
     end;
 
@@ -1368,8 +1370,8 @@ begin
       else
         MyQFormLapBul.Open;
 
-//      sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-      sGaugeJenisLaporan.Value := '0';
+      sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+      sGaugeJenisLaporan.Position := 0;
       sGaugeJenisLaporan.Visible := True;
       MyQFormLapBul.First;
       while not MyQFormLapBul.Eof do
@@ -1402,7 +1404,7 @@ begin
               MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' LIKE '+cKodeForm);
               MyExecuteSQLNoTrans('INSERT INTO '+cKodeFormBAK+
                 ' SELECT '+cAllField+' FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
-              sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+              sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
             except
               on E: Exception do     //    on E: EIdException do
                 begin
@@ -1462,8 +1464,8 @@ begin
       else
         MyQFormLapBul.Open;
 
-//      sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-      sGaugeJenisLaporan.Value := '0';
+      sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+      sGaugeJenisLaporan.Position := 0;
       sGaugeJenisLaporan.Visible := True;
       MyQFormLapBul.First;
 
@@ -1493,7 +1495,7 @@ begin
             try
               MyExecuteSQLNoTrans('DELETE FROM '+cKodeForm);
               MyExecuteSQLNoTrans('INSERT INTO '+cKodeForm+' SELECT * FROM '+cKodeFormBAK);
-              sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+              sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
             except
               on E: Exception do     //    on E: EIdException do
                 begin
@@ -1533,8 +1535,8 @@ begin
   else
     MyQFormLapBul.Open;
 
-  //sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-  sGaugeJenisLaporan.Value := '0';
+  sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
@@ -1548,7 +1550,7 @@ begin
           MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
           MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' SELECT * FROM '+cKodeForm);
 
-          sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+          sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
         except
           on E: Exception do     //    on E: EIdException do
             begin
@@ -1581,8 +1583,8 @@ begin
   else
     MyQFormLapBul.Open;
 
-  //sGaugeJenisLaporan.MaxValue := MyQFormLapBul.RecordCount;
-  sGaugeJenisLaporan.Value := '0';
+  sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
@@ -1601,7 +1603,7 @@ begin
             MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
 
 
-           sGaugeJenisLaporan.Value :=  IntToStr(StrToInt(sGaugeJenisLaporan.Value)+1);
+           sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
           except
             on E: Exception do     //    on E: EIdException do
               begin

@@ -13,6 +13,7 @@ object fr_MainMenu: Tfr_MainMenu
   OldCreateOrder = False
   Position = poMainFormCenter
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -374,46 +375,11 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 5
     end
   end
-  object dxGaugeControl1: TdxGaugeControl
-    Left = 0
-    Top = 600
-    Width = 1135
-    Height = 16
-    Align = alBottom
-    object sGaugeStatus: TdxGaugeDigitalScale
-      StyleName = 'DarkNight'
-      Value = '5'
-      object sGaugeStatusCaption1: TdxGaugeDigitalScaleCaption
-        OptionsView.Font.Charset = DEFAULT_CHARSET
-        OptionsView.Font.Color = clWindowText
-        OptionsView.Font.Height = -11
-        OptionsView.Font.Name = 'Tahoma'
-        OptionsView.Font.Style = []
-      end
-    end
-  end
-  object dxGaugeControl2: TdxGaugeControl
-    Left = 0
-    Top = 584
-    Width = 1135
-    Height = 16
-    Align = alBottom
-    object sGaugeJenisLaporan: TdxGaugeDigitalScale
-      StyleName = 'DarkNight'
-      object sGaugeJenisLaporanCaption1: TdxGaugeDigitalScaleCaption
-        OptionsView.Font.Charset = DEFAULT_CHARSET
-        OptionsView.Font.Color = clWindowText
-        OptionsView.Font.Height = -11
-        OptionsView.Font.Name = 'Tahoma'
-        OptionsView.Font.Style = []
-      end
-    end
-  end
   object CategoryPanelGroup1: TCategoryPanelGroup
     Left = 0
     Top = 180
     Width = 361
-    Height = 404
+    Height = 388
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -423,7 +389,8 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Name = 'Tahoma'
     HeaderFont.Style = []
     ParentDoubleBuffered = False
-    TabOrder = 6
+    TabOrder = 4
+    ExplicitHeight = 404
     object cp_lap_lanjutan: TCategoryPanel
       Top = 474
       Height = 76
@@ -853,6 +820,37 @@ object fr_MainMenu: Tfr_MainMenu
       Color = clGray
       TabOrder = 11
     end
+  end
+  object sGaugeStatus: TcxProgressBar
+    Left = 0
+    Top = 592
+    Align = alBottom
+    Properties.AnimationPath = cxapPingPong
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = clWindowText
+    Properties.ShowTextStyle = cxtsText
+    TabOrder = 5
+    Visible = False
+    ExplicitLeft = 496
+    ExplicitTop = 576
+    ExplicitWidth = 121
+    Width = 1135
+  end
+  object sGaugeJenisLaporan: TcxProgressBar
+    Left = 0
+    Top = 568
+    Align = alBottom
+    Properties.AnimationPath = cxapPingPong
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = clWindowText
+    Properties.PeakValue = 100.000000000000000000
+    Properties.ShowTextStyle = cxtsText
+    TabOrder = 6
+    Visible = False
+    ExplicitLeft = 576
+    ExplicitTop = 552
+    ExplicitWidth = 121
+    Width = 1135
   end
   object PopupMenu1: TPopupMenu
     Images = dm_bpr1.ImageList1
