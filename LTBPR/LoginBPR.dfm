@@ -12,6 +12,7 @@ inherited fr_LoginBPR: Tfr_LoginBPR
     ExplicitWidth = 340
   end
   inherited PanelContent: TcxGroupBox
+    Style.BorderStyle = ebsNone
     ExplicitWidth = 340
     ExplicitHeight = 454
     Height = 454

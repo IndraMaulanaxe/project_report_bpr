@@ -390,7 +390,7 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
-    ExplicitHeight = 404
+    ExplicitHeight = 394
     object cp_lap_lanjutan: TCategoryPanel
       Top = 474
       Height = 76
@@ -831,9 +831,7 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
-    ExplicitLeft = 496
-    ExplicitTop = 576
-    ExplicitWidth = 121
+    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
@@ -847,9 +845,7 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 6
     Visible = False
-    ExplicitLeft = 576
-    ExplicitTop = 552
-    ExplicitWidth = 121
+    ExplicitTop = 571
     Width = 1135
   end
   object PopupMenu1: TPopupMenu

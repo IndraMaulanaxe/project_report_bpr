@@ -1,8 +1,8 @@
-program LTBPR;
+program SAFTBPR;
 
 uses
   Vcl.Forms,
-  Unit1 in 'Unit1.pas' {Form1},
+  System.SysUtils,
   Form_Template in 'Form_Template.pas' {fr_template},
   NewTemplate in 'NewTemplate.pas' {fr_new_template},
   AboutProgram in 'AboutProgram.pas' {fr_AboutLTBPR},
@@ -10,11 +10,7 @@ uses
   CekPassword in 'CekPassword.pas' {fr_CekPassword},
   DaftarBackupAPOLO in 'DaftarBackupAPOLO.pas' {fr_DaftarBackupAPOLO},
   dm_bpr in 'dm_bpr.pas' {dm_bpr1: TDataModule},
-  EntryFormKP2000 in 'EntryFormKP2000.pas' {fr_EntryForm2000},
-  FormKP2000 in 'FormKP2000.pas' {fr_FormKP2000},
   FormRefAPOLO in 'FormRefAPOLO.pas' {fr_FormRefAPOLO},
-  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
-  LoginLTBPR in 'LoginLTBPR.pas' {fr_LoginBPR},
   MainMenu in 'MainMenu.pas' {fr_MainMenu},
   MasterRefLTBPR in 'MasterRefLTBPR.pas' {fr_MasterRefAPOLO},
   MyLib in 'MyLib.pas',
@@ -23,17 +19,17 @@ uses
   Progress in 'Progress.pas' {fr_Progress},
   SettingKoneksi in 'SettingKoneksi.pas' {fr_SettingKoneksi},
   Wcrypt2 in 'Wcrypt2.pas',
+  LoginBPR in 'LoginBPR.pas' {fr_LoginBPR},
   FormA0301 in 'FormA0301.pas' {fr_FormA0301},
-  EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301};
+  EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301},
+  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
+  Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
+  Application.Title := 'SAFTBPR :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
-  Application.CreateForm(Tfr_FormA0301, fr_FormA0301);
-  Application.CreateForm(Tfr_FormA0301, fr_FormA0301);
-  Application.CreateForm(Tfr_EntryFormA0301, fr_EntryFormA0301);
   Application.Run;
 end.

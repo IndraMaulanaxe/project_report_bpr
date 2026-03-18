@@ -1,7 +1,7 @@
 program LTBPR;
 
 uses
-  Vcl.Forms,
+  Vcl.Forms, System.SysUtils,
   Unit1 in 'Unit1.pas' {Form1},
   Form_Template in 'Form_Template.pas' {fr_template},
   NewTemplate in 'NewTemplate.pas' {fr_new_template},
@@ -12,7 +12,6 @@ uses
   dm_bpr in 'dm_bpr.pas' {dm_bpr1: TDataModule},
   FormKP2000 in 'FormKP2000.pas' {fr_FormKP2000},
   FormRefAPOLO in 'FormRefAPOLO.pas' {fr_FormRefAPOLO},
-  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
   MainMenu in 'MainMenu.pas' {fr_MainMenu},
   MasterRefLTBPR in 'MasterRefLTBPR.pas' {fr_MasterRefAPOLO},
   MyLib in 'MyLib.pas',
@@ -66,14 +65,16 @@ uses
   FormE0204 in 'FormE0204.pas' {fr_FormE0204},
   EntryFormE0204 in 'EntryFormE0204.pas' {fr_EntryFormE0204},
   FormE0500 in 'FormE0500.pas' {fr_FormE0500},
-  EntryFormE0500 in 'EntryFormE0500.pas' {fr_EntryFormE0500};
+  EntryFormE0500 in 'EntryFormE0500.pas' {fr_EntryFormE0500},
+  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-//  Application.MainFormOnTaskbar := True;
+  Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'Laporan Bulanan :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
+  Application.CreateForm(Tfr_GetSystemDate, fr_GetSystemDate);
   Application.Run;
 end.
