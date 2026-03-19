@@ -1,0 +1,686 @@
+unit EntryForm01A;
+
+interface
+
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, NewTemplate, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
+//  dxSkinsCore,
+//  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+//  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+//  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+//  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+//  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+//  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+//  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+//  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+//  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+//  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+//  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+//  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+//  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+//  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+//  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  Vcl.Menus, Vcl.StdCtrls, cxButtons,
+  cxGroupBox, Vcl.ExtCtrls, cxMemo, cxTextEdit, cxMaskEdit, cxButtonEdit,
+  cxLabel, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox,
+  dm_bpr, Data.DB, DBAccess, MyAccess, MemDS, Vcl.ComCtrls, dxCore, cxDateUtils,
+  //add RN
+  sEdit, sMemo, sCheckBox, sLabel, sRadioButton, sGroupBox, cxCurrencyEdit,
+  dxGDIPlusClasses, Vcl.Buttons, acPNG, DBCtrls, DBGrids, System.UITypes,
+  cxCheckBox, System.StrUtils, cxSpinEdit,
+  //
+
+  cxCalendar, dxBarBuiltInMenu, cxPC;
+
+type
+  Tfr_EntryForm01A = class(Tfr_new_template)
+    MyDataSource1: TMyDataSource;
+    dsMyQRefkejadian_menurut_pelaku: TMyDataSource;
+    MyQRefkejadian_menurut_pelaku: TMyQuery;
+    MyQRefkejadian_menurut_pelakusandi: TStringField;
+    MyQRefkejadian_menurut_pelakunama: TStringField;
+    dsMyQRefJenisFraud: TMyDataSource;
+    MyQRefJenisFraud: TMyQuery;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    cxPageControl1: TcxPageControl;
+    cxTabDataFraud: TcxTabSheet;
+    PanelTab1: TcxGroupBox;
+    cxTabDataKerugian: TcxTabSheet;
+    cxTabSebabDanTindakan: TcxTabSheet;
+    cxTabDataPelaku: TcxTabSheet;
+    PanelTab2: TcxGroupBox;
+    PanelTab3: TcxGroupBox;
+    PanelTab4: TcxGroupBox;
+    Label3: TcxLabel;
+    kode_komponen: TcxButtonEdit;
+    cxLabel2: TcxLabel;
+    kejadian_menurut_pelaku: TcxLookupComboBox;
+    id_kejadian: TcxTextEdit;
+    cxLabel1: TcxLabel;
+    cxLabel5: TcxLabel;
+    jenis_fraud: TcxLookupComboBox;
+    memketerangan_jenis_fraud: TcxMemo;
+    cxLabel4: TcxLabel;
+    cxLabel6: TcxLabel;
+    aktivitas_fraud: TcxLookupComboBox;
+    dsMyQRefAktivitasFraud: TMyDataSource;
+    MyQRefAktivitasFraud: TMyQuery;
+    StringField3: TStringField;
+    StringField4: TStringField;
+    cxLabel7: TcxLabel;
+    memdeskripsi_fraud: TcxMemo;
+    cxLabel10: TcxLabel;
+    lokasi_fraud: TcxLookupComboBox;
+    cxLabel11: TcxLabel;
+    ket_lokasi_fraud: TcxLookupComboBox;
+    dsMyQRefLokasiFraud: TMyDataSource;
+    MyQRefLokasiFraud: TMyQuery;
+    StringField5: TStringField;
+    StringField6: TStringField;
+    dsMyQRefKetLokasiFraud: TMyDataSource;
+    MyQRefKetLokasiFraud: TMyQuery;
+    StringField7: TStringField;
+    StringField8: TStringField;
+    cxLabel12: TcxLabel;
+    memDivisiFraud: TcxMemo;
+    cxLabel13: TcxLabel;
+    pihak_dirugikan: TcxLookupComboBox;
+    dsMyQRefPihakRugi: TMyDataSource;
+    MyQRefPihakRugi: TMyQuery;
+    StringField9: TStringField;
+    StringField10: TStringField;
+    cxLabel3: TcxLabel;
+    dtAwalKejadian: TcxDateEdit;
+    cxLabel14: TcxLabel;
+    dtAkhirKejadian: TcxDateEdit;
+    cxLabel15: TcxLabel;
+    dtDiketahui: TcxDateEdit;
+    gb_ljk: TcxGroupBox;
+    cxLabel8: TcxLabel;
+    ljk_rill: TcxCurrencyEdit;
+    ljk_potensial: TcxCurrencyEdit;
+    cxLabel16: TcxLabel;
+    ljk_recovery: TcxCurrencyEdit;
+    cxLabel17: TcxLabel;
+    gb_konsumen: TcxGroupBox;
+    cxLabel18: TcxLabel;
+    Konsumen_rill: TcxCurrencyEdit;
+    konsumen_potensial: TcxCurrencyEdit;
+    cxLabel19: TcxLabel;
+    konsumen_recovery: TcxCurrencyEdit;
+    cxLabel20: TcxLabel;
+    gb_pihak_lain: TcxGroupBox;
+    cxLabel21: TcxLabel;
+    lain_rill: TcxCurrencyEdit;
+    lain_potensial: TcxCurrencyEdit;
+    cxLabel22: TcxLabel;
+    lain_recovery: TcxCurrencyEdit;
+    cxLabel23: TcxLabel;
+    cxLabel9: TcxLabel;
+    cxLabel24: TcxLabel;
+    memkelemahan_sebab_fraud: TcxMemo;
+    kelemahan_sebab_fraud: TcxLookupComboBox;
+    dsMyQRefSebabFraud: TMyDataSource;
+    MyQRefSebabFraud: TMyQuery;
+    StringField11: TStringField;
+    StringField12: TStringField;
+    cxLabel25: TcxLabel;
+    cxLabel26: TcxLabel;
+    mempenanganan_fraud: TcxMemo;
+    penanganan_fraud: TcxLookupComboBox;
+    dsMyQRefPenangananFraud: TMyDataSource;
+    MyQRefPenangananFraud: TMyQuery;
+    StringField13: TStringField;
+    StringField14: TStringField;
+    cxLabel27: TcxLabel;
+    cxLabel28: TcxLabel;
+    memperbaikan_fraud: TcxMemo;
+    perbaikan_fraud: TcxLookupComboBox;
+    dsMyQRefPerbaikanFraud: TMyDataSource;
+    MyQRefPerbaikanFraud: TMyQuery;
+    StringField15: TStringField;
+    StringField16: TStringField;
+    cxLabel29: TcxLabel;
+    waktu_pelaksanaan: TcxTextEdit;
+    cxLabel30: TcxLabel;
+    realiasasi_pelaksanaan: TcxTextEdit;
+    cxLabel31: TcxLabel;
+    intern_ekstern: TcxLookupComboBox;
+    cxLabel32: TcxLabel;
+    nama: TcxTextEdit;
+    cxLabel33: TcxLabel;
+    cxLabel34: TcxLabel;
+    nomor_identitas: TcxTextEdit;
+    jenis_identitas: TcxLookupComboBox;
+    cxLabel35: TcxLabel;
+    jenis_kelamin: TcxLookupComboBox;
+    cxLabel36: TcxLabel;
+    memalamat_identitas: TcxMemo;
+    memalamat_domisili: TcxMemo;
+    cxLabel37: TcxLabel;
+    cxLabel38: TcxLabel;
+    dttanggal_lahir: TcxDateEdit;
+    cxLabel39: TcxLabel;
+    cxMemo1: TcxMemo;
+    dsMyQRefInternalEkstern: TMyDataSource;
+    MyQRefInternalEkstern: TMyQuery;
+    StringField17: TStringField;
+    StringField18: TStringField;
+    dsMyQRefJenisIdentitas: TMyDataSource;
+    MyQRefJenisIdentitas: TMyQuery;
+    StringField19: TStringField;
+    StringField20: TStringField;
+    dsMyQRefJenisKelamin: TMyDataSource;
+    MyQRefJenisKelamin: TMyQuery;
+    StringField21: TStringField;
+    StringField22: TStringField;
+    cxLabel40: TcxLabel;
+    status_pelaku: TcxLookupComboBox;
+    cxLabel41: TcxLabel;
+    cxLabel42: TcxLabel;
+    memjabatan_saat_terjadi: TcxMemo;
+    jabatan_saat_terjadi: TcxLookupComboBox;
+    dsMyQRefStatusPelaku: TMyDataSource;
+    MyQRefStatusPelaku: TMyQuery;
+    StringField23: TStringField;
+    StringField24: TStringField;
+    MyQRefJabatanSaatTerjadi: TMyQuery;
+    StringField25: TStringField;
+    StringField26: TStringField;
+    dsMyQRefJabatanSaatTerjadi: TMyDataSource;
+    cxLabel43: TcxLabel;
+    cxLabel44: TcxLabel;
+    memjabatan_saat_diketahui: TcxMemo;
+    jabatan_saat_diketahui: TcxLookupComboBox;
+    dsMyQRefJabatanSaatDiketahui: TMyDataSource;
+    MyQRefJabatanSaatDiketahui: TMyQuery;
+    StringField27: TStringField;
+    StringField28: TStringField;
+    cxLabel45: TcxLabel;
+    cxLabel46: TcxLabel;
+    memsanksi: TcxMemo;
+    keterangan_pelaku: TcxLookupComboBox;
+    cxLabel47: TcxLabel;
+    status_penanganan: TcxLookupComboBox;
+    dsMyQRefKetPelaku: TMyDataSource;
+    MyQRefKetPelaku: TMyQuery;
+    StringField29: TStringField;
+    StringField30: TStringField;
+    dsMyQRefStatusPenanganan: TMyDataSource;
+    MyQRefStatusPenanganan: TMyQuery;
+    StringField31: TStringField;
+    StringField32: TStringField;
+    procedure MemKeteranganPropertiesChange(Sender: TObject);
+    procedure btlb_SaveClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+    FDownPoint: TPoint;
+    FDragging: Boolean;
+    FAllowDrag: Boolean;
+  public
+    { Public declarations }
+    property AllowDrag: Boolean read FAllowDrag write FAllowDrag;
+    function Cek_Validasi(Sender: TObject): Boolean;
+  end;
+
+var
+  fr_EntryForm01A: Tfr_EntryForm01A;
+  cLabelIni, cNewLabelIni: String;
+
+implementation
+uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
+
+{$R *.dfm}
+
+function Tfr_EntryForm01A.Cek_Validasi(Sender: TObject): Boolean;
+var
+  jml: Integer;
+  cPesan, cHint: string;
+begin
+  cPesan := '';
+  Result := False;
+    for jml := 0 to ComponentCount -1 do
+    if Components[jml] is TEdit then
+      begin
+        if (TEdit(Components[jml]).Tag=0) then
+          begin
+            TEdit(Components[jml]).Ctl3D := False;
+          end;
+
+        if (Trim(TEdit(Components[jml]).Text)='') and (TEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            TEdit(Components[jml]).Ctl3D := False;
+            if TEdit(Components[jml]).CanFocus then
+              TEdit(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TsEdit then
+      begin
+        if (TsEdit(Components[jml]).Tag=0) then
+          begin
+            TsEdit(Components[jml]).Ctl3D := False;
+          end;
+
+        if (Trim(TsEdit(Components[jml]).Text)='') and (TsEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TsEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TsEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            TsEdit(Components[jml]).Ctl3D := False;
+            if TsEdit(Components[jml]).CanFocus then
+              TsEdit(Components[jml]).SetFocus;
+          end;
+      end
+//here
+    else if Components[jml] is TcxButtonEdit then
+      begin
+        if (TcxButtonEdit(Components[jml]).Tag=0) then
+          TcxButtonEdit(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxButtonEdit(Components[jml]).Text)='')
+          and (TcxButtonEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxButtonEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxButtonEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxButtonEdit(Components[jml]).Enabled) then
+              TcxButtonEdit(Components[jml]).Style.BorderColor := clSilver;
+            if TcxButtonEdit(Components[jml]).CanFocus then
+              TcxButtonEdit(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxTextEdit then
+      begin
+        if (TcxTextEdit(Components[jml]).Tag=0) then
+          TcxTextEdit(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxTextEdit(Components[jml]).Text)='') and (TcxTextEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxTextEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxTextEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxTextEdit(Components[jml]).Enabled) then
+              TcxTextEdit(Components[jml]).Style.BorderColor := clSilver;
+            if TcxTextEdit(Components[jml]).CanFocus then
+              TcxTextEdit(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxCurrencyEdit then
+      begin
+        if (TcxCurrencyEdit(Components[jml]).Tag=0) then
+          TcxCurrencyEdit(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxCurrencyEdit(Components[jml]).Text)='') and (TcxCurrencyEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxCurrencyEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxCurrencyEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxCurrencyEdit(Components[jml]).Enabled) then
+              TcxCurrencyEdit(Components[jml]).Style.BorderColor := clSilver;
+            if TcxCurrencyEdit(Components[jml]).CanFocus then
+              TcxCurrencyEdit(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxMemo then
+      begin
+        if (TcxMemo(Components[jml]).Tag=0) then
+          TcxMemo(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxMemo(Components[jml]).Lines.Text)='')
+          and (TcxMemo(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxMemo(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxMemo(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxMemo(Components[jml]).Enabled) then
+              TcxMemo(Components[jml]).Style.BorderColor := clSilver;
+            if TcxMemo(Components[jml]).CanFocus then
+              TcxMemo(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxDateEdit then
+      begin
+        if (TcxDateEdit(Components[jml]).Tag=0) then
+            TcxDateEdit(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (DateOf(TcxDateEdit(Components[jml]).Date) <= DateOf(dTglSystem)) and (TcxDateEdit(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxDateEdit(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxDateEdit(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' belum diset atau sudah expired !'+#13#10;
+            if (TcxButtonEdit(Components[jml]).Enabled) then
+              TcxDateEdit(Components[jml]).Style.BorderColor := clSilver;
+            if TcxDateEdit(Components[jml]).CanFocus then
+              TcxDateEdit(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxComboBox then
+      begin
+        if (TcxComboBox(Components[jml]).Tag=0) then
+          TcxComboBox(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxComboBox(Components[jml]).Text)='')
+          and (TcxComboBox(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxComboBox(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxComboBox(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxComboBox(Components[jml]).Enabled) then
+              TcxComboBox(Components[jml]).Style.BorderColor := clSilver;
+            if TcxComboBox(Components[jml]).CanFocus then
+              TcxComboBox(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TcxLookupComboBox then
+      begin
+        if (TcxLookupComboBox(Components[jml]).Tag=0) then
+          TcxLookupComboBox(Components[jml]).Style.BorderColor := clWindowFrame;
+
+        if (Trim(TcxLookupComboBox(Components[jml]).Text)='')
+          and (TcxLookupComboBox(Components[jml]).Tag=1) then
+          begin
+            cHint  := TcxLookupComboBox(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TcxLookupComboBox(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            if (TcxLookupComboBox(Components[jml]).Enabled) then
+              TcxLookupComboBox(Components[jml]).Style.BorderColor := clSilver;
+            if TcxLookupComboBox(Components[jml]).CanFocus then
+              TcxLookupComboBox(Components[jml]).SetFocus;
+          end;
+      end
+//here
+    else if Components[jml] is TMemo then
+      begin
+        if (TMemo(Components[jml]).Tag=0) then
+          begin
+            TMemo(Components[jml]).Ctl3D := False;
+          end;
+
+        if (Trim(TMemo(Components[jml]).Lines.Text)='') and (TMemo(Components[jml]).Tag=1) then
+          begin
+            cHint  := TMemo(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TMemo(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            TMemo(Components[jml]).Ctl3D := False;
+            if TMemo(Components[jml]).CanFocus then
+              TMemo(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TsMemo then
+      begin
+        if (TsMemo(Components[jml]).Tag=0) then
+          begin
+            TsMemo(Components[jml]).Ctl3D := False;
+          end;
+
+        if (Trim(TsMemo(Components[jml]).Lines.Text)='') and (TsMemo(Components[jml]).Tag=1) then
+          begin
+            cHint  := TsMemo(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TsMemo(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            TsMemo(Components[jml]).Ctl3D := False;
+            if TsMemo(Components[jml]).CanFocus then
+              TsMemo(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TDateTimePicker then
+      begin
+        if (DateOf(TDateTimePicker(Components[jml]).Date) <= DateOf(dTglSystem)) and (TDateTimePicker(Components[jml]).Tag=1) then
+          begin
+            cHint  := TDateTimePicker(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TDateTimePicker(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' belum diset atau sudah expired !'+#13#10;
+            if TDateTimePicker(Components[jml]).CanFocus then
+              TDateTimePicker(Components[jml]).SetFocus;
+          end;
+      end
+    else if Components[jml] is TDBLookupComboBox then
+      begin
+          TDBLookupComboBox(Components[jml]).Ctl3D := False;
+
+        if (TDBLookupComboBox(Components[jml]).Text='') and (TDBLookupComboBox(Components[jml]).Tag=1) then
+          begin
+            cHint  := TDBLookupComboBox(Components[jml]).Hint;
+            if Empty(cHint) then
+              cHint := TDBLookupComboBox(Components[jml]).Name;
+
+            cPesan := cPesan + cHint + ' masih kosong !'+#13#10;
+            TDBLookupComboBox(Components[jml]).Ctl3D := False;
+            if TDBLookupComboBox(Components[jml]).CanFocus then
+              TDBLookupComboBox(Components[jml]).SetFocus;
+          end;
+      end;
+
+  if not Empty(cPesan) then
+    Pesan(2,Trim(cPesan))
+  else
+    Result := True;
+end;
+
+procedure Tfr_EntryForm01A.btlb_SaveClick(Sender: TObject);
+begin
+  inherited;
+  if not Cek_Validasi(Sender) then
+    Exit;
+
+  Tag := 2;
+  Close;
+end;
+
+procedure Tfr_EntryForm01A.FormActivate(Sender: TObject);
+var
+  jml: Integer;
+begin
+if not lbl_view_only.Enabled then
+  begin
+    //dikembalikan ke true, agar tidak bergerak saat form show
+    lbl_view_only.Enabled := True;
+
+    for jml := 0 to ComponentCount -1 do
+      begin
+        if Components[jml] is TEdit then
+          TEdit(Components[jml]).ReadOnly:=True;
+        if Components[jml] is TcxTextEdit then
+          TcxTextEdit(Components[jml]).Properties.ReadOnly:=True;
+        if Components[jml] is TMemo then
+          TMemo(Components[jml]).ReadOnly:=True;
+        if Components[jml] is TcxMemo then
+          TcxMemo(Components[jml]).Properties.ReadOnly:=True;
+        if Components[jml] is TCheckBox then
+          TCheckBox(Components[jml]).Enabled:=False;
+        if Components[jml] is TComboBox then
+          TComboBox(Components[jml]).Enabled:=False;
+
+        if Components[jml] is TcxCurrencyEdit then
+          TcxCurrencyEdit(Components[jml]).Properties.ReadOnly:=True;
+        if Components[jml] is TcxCheckBox then
+          TcxCheckBox(Components[jml]).Properties.ReadOnly:=True;
+        if Components[jml] is TcxComboBox then
+          TcxComboBox(Components[jml]).Properties.ReadOnly:=True;
+        if Components[jml] is TcxSpinEdit then
+          TcxSpinEdit(Components[jml]).Properties.ReadOnly:=True;
+
+        if Components[jml] is TDateTimePicker then
+          TDateTimePicker(Components[jml]).Enabled:=False;
+
+        if Components[jml] is TcxDateEdit then
+          TcxDateEdit(Components[jml]).Properties.ReadOnly := True;
+        if Components[jml] is TDBLookupComboBox then
+          TDBLookupComboBox(Components[jml]).Enabled:=False;
+        if Components[jml] is TButton then
+            if not ((TButton(Components[jml]).Name='bt_batal')
+              or (TButton(Components[jml]).Name='bt_cancel')
+              or (TButton(Components[jml]).Name='bt_keluar')
+              or (TButton(Components[jml]).Name='bt_close'))then
+          TButton(Components[jml]).Enabled:=False;
+
+        if Components[jml] is TcxButton then
+          begin
+            if not ((TcxButton(Components[jml]).Name='bt_batal')
+              or (TcxButton(Components[jml]).Name='bt_cancel')
+              or (TcxButton(Components[jml]).Name='bt_keluar')
+              or (TcxButton(Components[jml]).Name='bt_close'))then
+              TcxButton(Components[jml]).Enabled:=False;
+          end;
+
+        if Components[jml] is TBitBtn then
+          begin
+            if not ((TBitBtn(Components[jml]).Name='bt_batal')
+              or (TBitBtn(Components[jml]).Name='bt_cancel')
+              or (TBitBtn(Components[jml]).Name='bt_keluar')
+              or (TBitBtn(Components[jml]).Name='bt_close'))then
+              TBitBtn(Components[jml]).Enabled:=False;
+          end;
+
+        if Components[jml] is TcxButtonEdit then
+          begin
+            TcxButtonEdit(Components[jml]).Properties.ReadOnly:=True;
+            TcxButtonEdit(Components[jml]).Properties.Buttons[0].Enabled:=False;
+          end;
+
+        if Components[jml] is TcxButton then
+          begin
+            if ((TcxButton(Components[jml]).Name='btlb_tools1')
+              or (TcxButton(Components[jml]).Name='btlb_tools2')
+              or (TcxButton(Components[jml]).Name='btlb_tools3')
+              or (TcxButton(Components[jml]).Name='btlb_Pilih')
+              or (TcxButton(Components[jml]).Name='btlb_Insert')
+              //or (TcxButton(Components[jml]).Name='btlb_Edit')
+              or (TcxButton(Components[jml]).Name='btlb_Delete')
+              or (TcxButton(Components[jml]).Name='btlb_Save')
+              or (TcxButton(Components[jml]).Name='btlb_Print')
+              //or (TLabel(Components[jml]).Name='btlb_Cancel')
+              //or (TLabel(Components[jml]).Name='btlb_Close')
+              or (TcxButton(Components[jml]).Name='btlb_Refresh')) then
+              TcxButton(Components[jml]).Enabled:=False;
+            if (TcxButton(Components[jml]).Name='btlb_Edit') then
+              TcxButton(Components[jml]).Caption:='View';
+          end;
+      end;
+  end;
+end;
+
+procedure Tfr_EntryForm01A.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Release;
+  Action := caFree;
+end;
+
+procedure Tfr_EntryForm01A.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if (Tag=1) then
+    begin
+      if Application.MessageBox('Yakin keluar dari aplikasi ?', 'Konfirmasi',
+        MB_YESNO + MB_ICONQUESTION + MB_DEFBUTTON2 + MB_TOPMOST) = IDNO then
+          begin
+            CanClose := False;
+          end;
+    end;
+end;
+
+procedure Tfr_EntryForm01A.FormCreate(Sender: TObject);
+var
+  jml, jml2: Integer;
+  cCaption, cTag, cHint, cWidth, cScale: String;
+  cTemp: string;
+  lLabeling: Boolean;
+  DesignDPI: Integer;
+begin
+  KeyPreview:=True;
+  FAllowDrag := True;
+  Tag := 1;
+
+  cScale := IniGetStringValue(Ogie_FileIni, 'Configuration', 'ScaleScreen', '110');
+  DesignDPI := StrToInt(cScale);  //110; // DPI saat form didesain
+  if 100 <> DesignDPI then
+    Self.ScaleBy(DesignDPI, 100); // Menyesuaikan skala form
+
+  if not Self.Showing then
+    begin
+      if (Self.Width > Screen.Width) or (Self.Height > Screen.Height+75) then
+        ShowScrollBar(Handle, SB_BOTH, True);
+
+      if (Self.Width > Screen.Width) then
+        begin
+          HorzScrollBar.Range := Self.Width; // set the range to an higher number
+          Self.Width := Self.Width + 30;
+        end;
+      if (Self.Height > Screen.Height+75) then
+        begin
+          VertScrollBar.Range := Self.Height; // set the range to an higher number
+          Self.Height := Self.Height + 75;
+          Self.Width := Self.Width + 30;
+        end;
+    end;
+
+  PanelTopSystem.Color := clDefault;
+  PanelHeader.Color := clDefault;
+  PanelContent.Color := clDefault;
+  PanelFooter.Color := clDefault;
+
+  Self.Font.Color := clDefault;
+
+  FAllowDrag := True;
+  GetOgieGlobalSetting;
+
+  cLocation := ExtractFilePath(Application.ExeName);
+  SetCurrentDir(cLocation);
+end;
+
+procedure Tfr_EntryForm01A.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    begin
+      Key := #0;
+      PostMessage(Handle, WM_NEXTDLGCTL, 0, 0);
+    end;
+  if Key = #27 then
+    Close;
+end;
+
+procedure Tfr_EntryForm01A.MemKeteranganPropertiesChange(
+  Sender: TObject);
+begin
+  inherited;
+  Tag := 1;
+end;
+
+end.

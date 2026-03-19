@@ -22,7 +22,9 @@ uses
   LoginBPR in 'LoginBPR.pas' {fr_LoginBPR},
   FormA0301 in 'FormA0301.pas' {fr_FormA0301},
   EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301},
-  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate};
+  GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
+  Form01A in 'Form01A.pas' {fr_Form01A},
+  EntryForm01A in 'EntryForm01A.pas' {fr_EntryForm01A};
 
 {$R *.res}
 
@@ -31,5 +33,8 @@ begin
   Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'SAFTBPR :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
+  Application.CreateForm(Tfr_Form01A, fr_Form01A);
+  Application.CreateForm(Tfr_EntryForm01A, fr_EntryForm01A);
+  Application.CreateForm(Tfr_EntryForm01A, fr_EntryForm01A);
   Application.Run;
 end.
