@@ -1,4 +1,4 @@
-﻿unit MyLib;
+unit MyLib;
 
 interface
 
@@ -104,6 +104,7 @@ function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+function CopyBaseUpload(BaseName, NewFileName, DestPath: string): Boolean;
 
 var
   buat_pajak, lFlag_FSA: Boolean;
@@ -113,7 +114,59 @@ implementation
 
 uses DateUtils, MyVAR, Math, StrUtils, CekPassword, dm_bpr, MyAccess,
   IdException, CekMyPassword,
-  System.IOUtils;
+  System.IOUtils, System.Types;
+
+function CopyBaseUpload(BaseName, NewFileName, DestPath: string): Boolean;
+var
+  SourcePath : string;
+  Files      : TStringDynArray;
+  FileName   : string;
+  DestFile   : string;
+  Counter    : Integer;
+  Ext        : string;
+begin
+  Result := True;
+
+  try
+    SourcePath := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'upload\';
+
+    // Ambil semua file: 0200*.pdf
+    Files := TDirectory.GetFiles(SourcePath, BaseName + '*.pdf');
+
+    if Length(Files) = 0 then
+    begin
+      Result := False;
+      Exit;
+    end;
+
+    Counter := 0;
+    Ext := '.pdf';
+
+    for FileName in Files do
+    begin
+      // Nama target (biar tidak overwrite)
+      if Counter = 0 then
+        DestFile := IncludeTrailingPathDelimiter(DestPath) + NewFileName + Ext
+      else
+        DestFile := IncludeTrailingPathDelimiter(DestPath) +
+                    NewFileName + '-' + IntToStr(Counter) + Ext;
+
+      // Kalau masih ada, naikkan counter lagi
+      while TFile.Exists(DestFile) do
+      begin
+        Inc(Counter);
+        DestFile := IncludeTrailingPathDelimiter(DestPath) +
+                    NewFileName + '-' + IntToStr(Counter) + Ext;
+      end;
+
+      TFile.Copy(FileName, DestFile, False); // False = jangan overwrite
+      Inc(Counter);
+    end;
+
+  except
+    Result := False;
+  end;
+end;
 
 
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
@@ -164,7 +217,7 @@ begin
     if not TDirectory.Exists(UploadPath) then
       TDirectory.CreateDirectory(UploadPath);
 
-    // Base nama file
+     // Base nama file
     BaseName := cNameFileUpload;
     Ext := '.pdf';
 
@@ -185,17 +238,18 @@ begin
       Inc(Counter);
     until not TFile.Exists(DestFile);
 
-    // Nama file
-//    NewFileName := cNameFileUpload + '.pdf';
 
-    // Hindari karakter ilegal Windows
+//    // Nama file
+//    NewFileName := cNameFileUpload + '.pdf';
+//
+//    // Hindari karakter ilegal Windows
 //    NewFileName := StringReplace(NewFileName, '/', '-', [rfReplaceAll]);
 //    NewFileName := StringReplace(NewFileName, '\', '-', [rfReplaceAll]);
 //    NewFileName := StringReplace(NewFileName, ':', '-', [rfReplaceAll]);
-
+//
 //    DestFile := TPath.Combine(UploadPath, NewFileName);
-
-    // Jika file sudah ada
+//
+//    // Jika file sudah ada
 //    if TFile.Exists(DestFile) then
 //      TFile.Delete(DestFile);
 
@@ -204,7 +258,7 @@ begin
 
     if TFile.Exists(DestFile) then
     begin
-      Pesan(1,'File berhasil diupload dengan nama nama: ' + NewFileName);
+      Pesan(1,'File berhasil diupload dengan nama: ' + NewFileName);
       Result := True;
     end;
 
