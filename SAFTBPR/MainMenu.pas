@@ -141,7 +141,7 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils,  MyVAR, MyLib, FormA0301,  DaftarBackupAPOLO;
+  dm_bpr, StrUtils,  MyVAR, MyLib, FormA0301,  DaftarBackupAPOLO, Form01A;
 
   Var cKodePelaporan, cKodeJenisPelaporan, cKodeBankLJK, cKodeSektorLJK : String;
 
@@ -594,7 +594,12 @@ end;
 
 procedure Tfr_MainMenu.bt_form01AClick(Sender: TObject);
 begin
-//KODING SHOW
+  if Application.FindComponent('fr_Form01A') = nil then
+    Application.CreateForm(Tfr_Form01A, fr_Form01A);
+  fr_Form01A.Tag := 0;
+  fr_Form01A.ShowModal;
+  fr_Form01A.Free;
+  fr_Form01A := nil;
 end;
 
 procedure Tfr_MainMenu.bt_form01BClick(Sender: TObject);

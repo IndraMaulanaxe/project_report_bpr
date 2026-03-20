@@ -56,8 +56,6 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      ExplicitLeft = 303
-      ExplicitWidth = 830
       Width = 876
       AnchorX = 695
       AnchorY = 30
@@ -77,7 +75,6 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Horz = taCenter
       Properties.Alignment.Vert = taVCenter
       Transparent = True
-      ExplicitLeft = 100
       AnchorX = 167
       AnchorY = 30
     end
@@ -398,6 +395,7 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
+    ExplicitHeight = 394
     object cp_lap_fraud_berdampak_signifikan: TCategoryPanel
       Top = 180
       Height = 150
@@ -414,8 +412,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_form02BClick
-        ExplicitTop = 0
-        ExplicitWidth = 338
       end
       object bt_form01B: TcxButton
         Left = 0
@@ -448,7 +444,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_form00AClick
-        ExplicitTop = -6
       end
       object bt_form01A: TcxButton
         Left = 0
@@ -462,8 +457,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 1
         WordWrap = True
         OnClick = bt_form01AClick
-        ExplicitLeft = -3
-        ExplicitTop = 24
       end
       object bt_form02A: TcxButton
         Left = 0
@@ -475,7 +468,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 2
         WordWrap = True
         OnClick = bt_form02AClick
-        ExplicitTop = 8
       end
     end
   end

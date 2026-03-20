@@ -13,12 +13,13 @@ object dm_bpr1: Tdm_bpr1
     Top = 8
   end
   object MyCon2: TMyConnection
-    Database = 'ltbpr'
+    Database = 'saftbpr'
     ConnectionTimeout = 60
     Options.Compress = True
     Options.LocalFailover = True
     Username = 'root'
     Server = 'localhost'
+    Connected = True
     AfterConnect = MyCon2AfterConnect
     BeforeConnect = MyCon2BeforeConnect
     OnError = MyCon2Error
