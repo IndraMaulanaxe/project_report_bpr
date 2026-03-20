@@ -2,10 +2,11 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   Caption = 
     'Entry Form 01A - Laporan Penerapan SAF yang mencakup informasi k' +
     'ejadian fraud dan informasi pelaku fraud '
-  ClientHeight = 437
+  ClientHeight = 615
   ClientWidth = 1017
+  OnShow = FormShow
   ExplicitWidth = 1023
-  ExplicitHeight = 466
+  ExplicitHeight = 644
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -16,21 +17,21 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
     ExplicitLeft = -8
     ExplicitWidth = 1017
     ExplicitHeight = 507
-    Height = 393
+    Height = 571
     Width = 1017
     object cxPageControl1: TcxPageControl
       Left = 2
       Top = 2
       Width = 1013
-      Height = 389
+      Height = 567
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabDataPelaku
+      Properties.ActivePage = cxTabDataFraud
       Properties.CustomButtons.Buttons = <>
       ExplicitLeft = 4
       ExplicitTop = 3
       ExplicitHeight = 490
-      ClientRectBottom = 385
+      ClientRectBottom = 563
       ClientRectLeft = 4
       ClientRectRight = 1009
       ClientRectTop = 27
@@ -57,7 +58,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           ExplicitTop = 2
           ExplicitWidth = 808
           ExplicitHeight = 459
-          Height = 358
+          Height = 536
           Width = 1005
           object Label3: TcxLabel
             Left = 17
@@ -632,6 +633,16 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             TabOrder = 27
             Width = 121
           end
+          object Memo1: TMemo
+            Left = 536
+            Top = 272
+            Width = 417
+            Height = 209
+            Lines.Strings = (
+              'Memo1')
+            TabOrder = 28
+            Visible = False
+          end
         end
       end
       object cxTabDataKerugian: TcxTabSheet
@@ -653,7 +664,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseUp = bgMouseUp
           ExplicitLeft = -1
           ExplicitHeight = 459
-          Height = 358
+          Height = 536
           Width = 1005
           object gb_ljk: TcxGroupBox
             Left = 17
@@ -1083,7 +1094,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
           ExplicitLeft = -1
-          Height = 358
+          ExplicitHeight = 358
+          Height = 536
           Width = 1005
           object cxLabel9: TcxLabel
             AlignWithMargins = True
@@ -1432,7 +1444,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseUp = bgMouseUp
           ExplicitTop = 1
           ExplicitHeight = 472
-          Height = 358
+          Height = 536
           Width = 1005
           object cxLabel31: TcxLabel
             AlignWithMargins = True
@@ -1775,7 +1787,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Width = 162
             AnchorY = 206
           end
-          object cxMemo1: TcxMemo
+          object memtempat_lahir: TcxMemo
             Tag = 1
             Left = 185
             Top = 190
@@ -2139,7 +2151,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 393
+    Top = 571
     ExplicitTop = 340
     ExplicitWidth = 569
     ExplicitHeight = 44
@@ -2277,7 +2289,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefkejadian_menurut_pelaku: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_fraud_pelaku`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2300,7 +2312,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefJenisFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_jenis_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2323,7 +2335,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefAktivitasFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_aktivitas_terkait_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2346,7 +2358,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefLokasiFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_lokasi_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2369,7 +2381,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefKetLokasiFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_sandi_kab_kota`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2392,7 +2404,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefPihakRugi: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_pihak_rugi`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2415,7 +2427,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefSebabFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_kelemahan_sebab_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2438,7 +2450,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefPenangananFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_tindakan_penanganan_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2461,7 +2473,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefPerbaikanFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_perbaikan_cegah_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2484,7 +2496,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefInternalEkstern: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_pelaku_fraud`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2507,7 +2519,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefJenisIdentitas: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_jenis_identitas`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2530,7 +2542,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefJenisKelamin: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_jenis_kelamin`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2553,7 +2565,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefStatusPelaku: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(code,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(code,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_status_pelaku`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2571,7 +2583,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefJabatanSaatTerjadi: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_jabatan_pelaku_saat_fraud_terjadi`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2599,7 +2611,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefJabatanSaatDiketahui: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_jabatan_pelaku_saat_fraud_diketahui`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2622,7 +2634,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefKetPelaku: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(code,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(code,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_keterangan_pelaku`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
@@ -2645,7 +2657,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   object MyQRefStatusPenanganan: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT CODE, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
       'FROM `ref_status`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone

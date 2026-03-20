@@ -264,8 +264,8 @@ inherited fr_Form01A: Tfr_Form01A
   end
   object dsMyQ01A: TMyDataSource
     DataSet = MyQ01A
-    Left = 312
-    Top = 224
+    Left = 320
+    Top = 208
   end
   object MyQ01A: TMyQuery
     Connection = dm_bpr1.MyCon2

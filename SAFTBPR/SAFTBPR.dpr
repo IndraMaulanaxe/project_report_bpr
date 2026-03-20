@@ -33,8 +33,5 @@ begin
   Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'SAFTBPR :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
-  Application.CreateForm(Tfr_Form01A, fr_Form01A);
-  Application.CreateForm(Tfr_EntryForm01A, fr_EntryForm01A);
-  Application.CreateForm(Tfr_EntryForm01A, fr_EntryForm01A);
   Application.Run;
 end.

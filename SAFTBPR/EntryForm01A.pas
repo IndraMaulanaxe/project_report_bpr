@@ -165,7 +165,7 @@ type
     cxLabel38: TcxLabel;
     dttanggal_lahir: TcxDateEdit;
     cxLabel39: TcxLabel;
-    cxMemo1: TcxMemo;
+    memtempat_lahir: TcxMemo;
     dsMyQRefInternalEkstern: TMyDataSource;
     MyQRefInternalEkstern: TMyQuery;
     StringField17: TStringField;
@@ -214,6 +214,7 @@ type
     MyQRefStatusPenanganan: TMyQuery;
     StringField31: TStringField;
     StringField32: TStringField;
+    Memo1: TMemo;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -221,6 +222,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -230,6 +232,8 @@ type
     { Public declarations }
     property AllowDrag: Boolean read FAllowDrag write FAllowDrag;
     function Cek_Validasi(Sender: TObject): Boolean;
+    procedure GetInputControls(AParent: TWinControl; AMemo: TMemo);
+    procedure ListPerTab;
   end;
 
 var
@@ -493,6 +497,50 @@ begin
     Result := True;
 end;
 
+procedure Tfr_EntryForm01A.GetInputControls(AParent: TWinControl; AMemo: TMemo);
+var
+  i: Integer;
+  ctrl: TControl;
+begin
+  for i := 0 to AParent.ControlCount - 1 do
+  begin
+    ctrl := AParent.Controls[i];
+
+    // hanya ambil input
+    if (ctrl is TcxTextEdit) or
+       (ctrl is TcxMemo) or
+       (ctrl is TcxLookupComboBox) or
+       (ctrl is TcxDateEdit) or
+       (ctrl is TcxCurrencyEdit) then
+    begin
+      AMemo.Lines.Add('- ' + ctrl.Name);
+    end;
+
+    // recursive
+    if ctrl is TWinControl then
+      GetInputControls(TWinControl(ctrl), AMemo);
+  end;
+end;
+
+procedure Tfr_EntryForm01A.ListPerTab;
+var
+  i: Integer;
+begin
+  Memo1.Clear;
+
+  for i := 0 to cxPageControl1.PageCount - 1 do
+  begin
+    // judul tab
+    Memo1.Lines.Add(cxPageControl1.Pages[i].Caption);
+
+    // isi field
+    GetInputControls(cxPageControl1.Pages[i], Memo1);
+
+    // spasi antar tab
+    Memo1.Lines.Add('');
+  end;
+end;
+
 procedure Tfr_EntryForm01A.btlb_SaveClick(Sender: TObject);
 begin
   inherited;
@@ -674,6 +722,12 @@ begin
     end;
   if Key = #27 then
     Close;
+end;
+
+procedure Tfr_EntryForm01A.FormShow(Sender: TObject);
+begin
+  inherited;
+ListPerTab
 end;
 
 procedure Tfr_EntryForm01A.MemKeteranganPropertiesChange(

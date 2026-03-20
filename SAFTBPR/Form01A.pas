@@ -301,7 +301,7 @@ end;
 procedure Tfr_Form01A.btlb_DeleteClick(Sender: TObject);
 begin
   inherited;
-  {if (MyQA05072.RecordCount=0) or (not MyQA05072.Active) then
+  if (MyQ01A.RecordCount=0) or (not MyQ01A.Active) then
     begin
       Pesan(2,'Maaf, Tidak ada data...!');
       Exit;
@@ -310,25 +310,23 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan` '+
-               ' WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
-               ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
-               ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text));
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`saftbpr_01a` '+
+               ' WHERE `id_kejadian_fraud` = '+QuotedStr(MyQ01Aid_kejadian_fraud.Text)+
+               ' AND `jenis_fraud` = '+QuotedStr(MyQ01Ajenis_fraud.Text)+
+               ' AND `jenis_identitas` = '+QuotedStr(MyQ01Ajenis_fraud.Text)+
+               ' AND `nomor_identitas` = '+QuotedStr(MyQ01Anomor_identitas.Text));
 
-  // footer
-  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
-
-  if MyQA05072.Active then
-    MyQA05072.Refresh
+  if MyQ01A.Active then
+    MyQ01A.Refresh
   else
-    MyQA05072.Open; }
+    MyQ01A.Open;
 
 end;
 
 procedure Tfr_Form01A.btlb_EditClick(Sender: TObject);
 begin
   inherited;
-  {if (MyQA05072.RecordCount=0) or (not MyQA05072.Active) then
+  if (MyQ01A.RecordCount=0) or (not MyQ01A.Active) then
     begin
       Pesan(2,'Maaf, Tidak ada data...!');
       Exit;
@@ -341,33 +339,219 @@ begin
     begin
 
       //open table reff
-      if MyQRefPelaksana.Active then
-        MyQRefPelaksana.Refresh
+      if MyQRefkejadian_menurut_pelaku.Active then
+        MyQRefkejadian_menurut_pelaku.Refresh
       else
-        MyQRefPelaksana.Open;
+        MyQRefkejadian_menurut_pelaku.Open;
 
-      if MyQRefPeserta.Active then
-        MyQRefPeserta.Refresh
+      if MyQRefJenisFraud.Active then
+        MyQRefJenisFraud.Refresh
       else
-        MyQRefPeserta.Open;
+        MyQRefJenisFraud.Open;
+
+      if MyQRefAktivitasFraud.Active then
+        MyQRefAktivitasFraud.Refresh
+      else
+        MyQRefAktivitasFraud.Open;
+
+      if MyQRefLokasiFraud.Active then
+        MyQRefLokasiFraud.Refresh
+      else
+        MyQRefLokasiFraud.Open;
+
+      if MyQRefKetLokasiFraud.Active then
+        MyQRefKetLokasiFraud.Refresh
+      else
+        MyQRefKetLokasiFraud.Open;
+
+      if MyQRefPihakRugi.Active then
+        MyQRefPihakRugi.Refresh
+      else
+        MyQRefPihakRugi.Open;
+
+      if MyQRefSebabFraud.Active then
+        MyQRefSebabFraud.Refresh
+      else
+        MyQRefSebabFraud.Open;
+
+      if MyQRefPenangananFraud.Active then
+        MyQRefPenangananFraud.Refresh
+      else
+        MyQRefPenangananFraud.Open;
+
+      if MyQRefPerbaikanFraud.Active then
+        MyQRefPerbaikanFraud.Refresh
+      else
+        MyQRefPerbaikanFraud.Open;
+
+      if MyQRefInternalEkstern.Active then
+        MyQRefInternalEkstern.Refresh
+      else
+        MyQRefInternalEkstern.Open;
+
+      if MyQRefJenisIdentitas.Active then
+        MyQRefJenisIdentitas.Refresh
+      else
+        MyQRefJenisIdentitas.Open;
+
+      if MyQRefJenisKelamin.Active then
+        MyQRefJenisKelamin.Refresh
+      else
+        MyQRefJenisKelamin.Open;
+
+      if MyQRefStatusPelaku.Active then
+        MyQRefStatusPelaku.Refresh
+      else
+        MyQRefStatusPelaku.Open;
+
+      if MyQRefJabatanSaatTerjadi.Active then
+        MyQRefJabatanSaatTerjadi.Refresh
+      else
+        MyQRefJabatanSaatTerjadi.Open;
+
+      if MyQRefJabatanSaatDiketahui.Active then
+        MyQRefJabatanSaatDiketahui.Refresh
+      else
+        MyQRefJabatanSaatDiketahui.Open;
+
+      if MyQRefKetPelaku.Active then
+        MyQRefKetPelaku.Refresh
+      else
+        MyQRefKetPelaku.Open;
+
+      if MyQRefStatusPenanganan.Active then
+        MyQRefStatusPenanganan.Refresh
+      else
+        MyQRefStatusPenanganan.Open;
+
 
       //size
-      kode_komponen.Properties.MaxLength := MyQA05072kode_komponen.Size;
-      memkegiatan.Properties.MaxLength := MyQA05072kegiatan_pengembangan.Size;
-      cb_pelaksana.Properties.MaxLength := MyQA05072pihak_pelaksana.Size;
-      cb_peserta.Properties.MaxLength := MyQA05072pihak_pelaksana.Size;
-      memuraian_kegiatan.Properties.MaxLength := MyQA05072uraian_kegiatan.Size;
+      //Tab Data Fraud
+      kode_komponen.Properties.MaxLength := MyQ01Akode_komponen.Size;
+      kejadian_menurut_pelaku.Properties.MaxLength := MyQ01Akejadian_fraud_menurut_pelaku.Size;
+      id_kejadian.Properties.MaxLength := MyQ01Aid_kejadian_fraud.Size;
+      jenis_fraud.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      memketerangan_jenis_fraud.Properties.MaxLength := MyQ01Aket_jenis_fraud.Size;
+      aktivitas_fraud.Properties.MaxLength := MyQ01Aaktivitas_terkait_fraud.Size;
+      memdeskripsi_fraud.Properties.MaxLength := MyQ01Adeskripsi_fraud.Size;
+      lokasi_fraud.Properties.MaxLength := MyQ01Alokasi_fraud.Size;
+      ket_lokasi_fraud.Properties.MaxLength := MyQ01Aket_lokasi_fraud.Size;
+      memDivisiFraud.Properties.MaxLength := MyQ01Adivisi_unit_kerja.Size;
+      pihak_dirugikan.Properties.MaxLength := MyQ01Apihak_yang_dirugikan.Size;
+      //dtAwalKejadian.Properties.MaxLength := MyQ01A.Size;
+      //dtAkhirKejadian.Properties.MaxLength := MyQ01A.Size;
+      //dtDiketahui.Properties.MaxLength := MyQ01A.Size;
+
+      //Data Kerugian
+      ljk_rill.Properties.MaxLength := MyQ01Aljk_riil.Size;
+      ljk_potensial.Properties.MaxLength := MyQ01Aljk_potensial.Size;
+      ljk_recovery.Properties.MaxLength := MyQ01Aljk_recovery.Size;
+      Konsumen_rill.Properties.MaxLength := MyQ01Akonsumen_riil.Size;
+      konsumen_potensial.Properties.MaxLength := MyQ01Akonsumen_potensial.Size;
+      konsumen_recovery.Properties.MaxLength := MyQ01Akonsumen_recovery.Size;
+      lain_rill.Properties.MaxLength := MyQ01Apihak_lain_riil.Size;
+      lain_potensial.Properties.MaxLength := MyQ01Apihak_lain_potensial.Size;
+      lain_recovery.Properties.MaxLength := MyQ01Apihak_lain_recovery.Size;
+
+      //Data Penyebab Dan Tindakan
+      memkelemahan_sebab_fraud.Properties.MaxLength := MyQ01Aket_kelemahan_fraud.Size;
+      kelemahan_sebab_fraud.Properties.MaxLength := MyQ01Akelemahan_penyebab_fraud.Size;
+      mempenanganan_fraud.Properties.MaxLength := MyQ01Aket_tindakan_penanganan.Size;
+      penanganan_fraud.Properties.MaxLength := MyQ01Atindakan_penanganan_fraud.Size;
+      memperbaikan_fraud.Properties.MaxLength := MyQ01Aket_tindakan_pencegahan.Size;
+      perbaikan_fraud.Properties.MaxLength := MyQ01Atindakan_pencegahan_fraud.Size;
+      //waktu_pelaksanaan.Properties.MaxLength := MyQ01A.Size;
+      //realiasasi_pelaksanaan.Properties.MaxLength := MyQ01A.Size;
+
+      //Data Pelaku
+      intern_ekstern.Properties.MaxLength := MyQ01Aintern_ekstern.Size;
+      nama.Properties.MaxLength := MyQ01Anama_pelaku.Size;
+      nomor_identitas.Properties.MaxLength := MyQ01Anomor_identitas.Size;
+      jenis_identitas.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      jenis_kelamin.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      memalamat_identitas.Properties.MaxLength := MyQ01Aalamat_identitas.Size;
+      memalamat_domisili.Properties.MaxLength := MyQ01Aalamat_domisili.Size;
+      //dttanggal_lahir.Properties.MaxLength := MyQ01A.Size;
+      memtempat_lahir.Properties.MaxLength := MyQ01Atempat_lahir.Size;
+      status_pelaku.Properties.MaxLength := MyQ01Astatus_pelaku.Size;
+      memjabatan_saat_terjadi.Properties.MaxLength := MyQ01Aket_jabatan_saat_fraud.Size;
+      jabatan_saat_terjadi.Properties.MaxLength := MyQ01Ajabatan_saat_fraud.Size;
+      memjabatan_saat_diketahui.Properties.MaxLength := MyQ01Aket_jabatan_saat_diketahui.Size;
+      jabatan_saat_diketahui.Properties.MaxLength := MyQ01Ajabatan_saat_diketahui.Size;
+      memsanksi.Properties.MaxLength := MyQ01Apengenaan_sanksi.Size;
+      keterangan_pelaku.Properties.MaxLength := MyQ01Aketerangan_pelaku.Size;
+      status_penanganan.Properties.MaxLength := MyQ01Astatus_penanganan.Size;
 
       //assignment
-      kode_komponen.Text := MyQA05072kode_komponen.Text;
-      memkegiatan.Text := MyQA05072kegiatan_pengembangan.Text;
-      tgl_kegiatan.Date :=MyQA05072tanggal_pelaksanaan.Value;
-      cb_pelaksana.EditValue := MyQA05072pihak_pelaksana.Text;
-      cb_peserta.EditValue := MyQA05072kategori_peserta.Text;
-      jumlah_peserta.Value := MyQA05072jumlah_peserta.Value;
-      memuraian_kegiatan.Text := MyQA05072uraian_kegiatan.Text;
-      //Footer
-      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a05072_kegiatan_pengembangan_footer ');
+      // DATA FRAUD
+      kode_komponen.Text := MyQ01Akode_komponen.AsString;
+      kejadian_menurut_pelaku.EditValue := MyQ01Akejadian_fraud_menurut_pelaku.AsString;
+      id_kejadian.Text := MyQ01Aid_kejadian_fraud.AsString;
+      jenis_fraud.EditValue := MyQ01Ajenis_fraud.AsString;
+      memketerangan_jenis_fraud.Text := MyQ01Aket_jenis_fraud.AsString;
+      aktivitas_fraud.EditValue := MyQ01Aaktivitas_terkait_fraud.AsString;
+      memdeskripsi_fraud.Text := MyQ01Adeskripsi_fraud.AsString;
+      lokasi_fraud.EditValue := MyQ01Alokasi_fraud.AsString;
+      ket_lokasi_fraud.EditValue := MyQ01Aket_lokasi_fraud.AsString;
+      memDivisiFraud.Text := MyQ01Adivisi_unit_kerja.AsString;
+      pihak_dirugikan.EditValue := MyQ01Apihak_yang_dirugikan.AsString;
+      dtAwalKejadian.Date := MyQ01Awaktu_terjadi_awal.AsDateTime;
+      dtAkhirKejadian.Date := MyQ01Awaktu_terjadi_akhir.AsDateTime;
+      dtDiketahui.Date := MyQ01Afraud_diketahui.AsDateTime;
+
+
+      // DATA KERUGIAN
+      ljk_rill.Value := MyQ01Aljk_riil.AsFloat;
+      ljk_potensial.Value := MyQ01Aljk_potensial.AsFloat;
+      ljk_recovery.Value := MyQ01Aljk_recovery.AsFloat;
+
+      Konsumen_rill.Value := MyQ01Akonsumen_riil.AsFloat;
+      konsumen_potensial.Value := MyQ01Akonsumen_potensial.AsFloat;
+      konsumen_recovery.Value := MyQ01Akonsumen_recovery.AsFloat;
+
+      lain_rill.Value := MyQ01Apihak_lain_riil.AsFloat;
+      lain_potensial.Value := MyQ01Apihak_lain_potensial.AsFloat;
+      lain_recovery.Value := MyQ01Apihak_lain_recovery.AsFloat;
+
+      // DATA PENYEBAB & TINDAKAN
+      memkelemahan_sebab_fraud.Text := MyQ01Aket_kelemahan_fraud.AsString;
+      kelemahan_sebab_fraud.EditValue := MyQ01Akelemahan_penyebab_fraud.AsString;
+
+      mempenanganan_fraud.Text := MyQ01Aket_tindakan_penanganan.AsString;
+      penanganan_fraud.EditValue := MyQ01Atindakan_penanganan_fraud.AsString;
+
+      memperbaikan_fraud.Text := MyQ01Aket_tindakan_pencegahan.AsString;
+      perbaikan_fraud.EditValue := MyQ01Atindakan_pencegahan_fraud.AsString;
+
+      waktu_pelaksanaan.Text := MyQ01Atarget_waktu_pelaksanaan.AsString;
+      realiasasi_pelaksanaan.Text := MyQ01Arealisasi_pelaksanaan.AsString;
+
+
+      // DATA PELAKU
+      intern_ekstern.EditValue := MyQ01Aintern_ekstern.AsString;
+      nama.Text := MyQ01Anama_pelaku.AsString;
+      nomor_identitas.Text := MyQ01Anomor_identitas.AsString;
+      jenis_identitas.EditValue := MyQ01Ajenis_identitas.AsString;
+      jenis_kelamin.EditValue := MyQ01Ajenis_kelamin.AsString;
+
+      memalamat_identitas.Text := MyQ01Aalamat_identitas.AsString;
+      memalamat_domisili.Text := MyQ01Aalamat_domisili.AsString;
+
+      dttanggal_lahir.Date := MyQ01Atanggal_lahir.AsDateTime;
+      memtempat_lahir.Text := MyQ01Atempat_lahir.AsString;
+
+      status_pelaku.EditValue := MyQ01Astatus_pelaku.AsString;
+
+      memjabatan_saat_terjadi.Text := MyQ01Aket_jabatan_saat_fraud.AsString;
+      jabatan_saat_terjadi.EditValue := MyQ01Ajabatan_saat_fraud.AsString;
+
+      memjabatan_saat_diketahui.Text := MyQ01Aket_jabatan_saat_diketahui.AsString;
+      jabatan_saat_diketahui.EditValue := MyQ01Ajabatan_saat_diketahui.AsString;
+
+      memsanksi.Text := MyQ01Apengenaan_sanksi.AsString;
+      keterangan_pelaku.EditValue := MyQ01Aketerangan_pelaku.AsString;
+
+      status_penanganan.EditValue := MyQ01Astatus_penanganan.AsString;
 
       kode_komponen.Enabled := False;
     end;
@@ -378,39 +562,84 @@ begin
       with fr_EntryForm01A do
         begin
           // Update
-          MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan` '+
-                        'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `kegiatan_pengembangan` = '+QuotedStr(memkegiatan.Text)+
-                        ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
-                        ', `pihak_pelaksana` = '+QuotedStr(cb_pelaksana.EditValue)+
-                        ', `kategori_peserta` = '+QuotedStr(cb_peserta.EditValue)+
-                        ', `jumlah_peserta` = '+FloatToStr(jumlah_peserta.Value)+
-                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.Text)+
-                        ' WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
-                        ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
-                        ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
+          MyExecuteSQL('UPDATE '+cDb2+'.`saftbpr_01a` '+
+                      'SET '+
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
+                      // TAB DATA FRAUD
+                      '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
+                      ', `kejadian_fraud_menurut_pelaku` = '+QuotedStr(kejadian_menurut_pelaku.EditValue)+
+                      ', `id_kejadian_fraud` = '+QuotedStr(id_kejadian.Text)+
+                      ', `jenis_fraud` = '+QuotedStr(jenis_fraud.EditValue)+
+                      ', `ket_jenis_fraud` = '+QuotedStr(memketerangan_jenis_fraud.Text)+
+                      ', `aktivitas_terkait_fraud` = '+QuotedStr(aktivitas_fraud.EditValue)+
+                      ', `deskripsi_fraud` = '+QuotedStr(memdeskripsi_fraud.Text)+
+                      ', `lokasi_fraud` = '+QuotedStr(lokasi_fraud.EditValue)+
+                      ', `ket_lokasi_fraud` = '+QuotedStr(ket_lokasi_fraud.EditValue)+
+                      ', `divisi_unit_kerja` = '+QuotedStr(memDivisiFraud.Text)+
+                      ', `pihak_yang_dirugikan` = '+QuotedStr(pihak_dirugikan.EditValue)+
+                      ', `waktu_terjadi_awal` = '+DateToStrSQL(dtAwalKejadian.Date)+
+                      ', `waktu_terjadi_akhir` = '+DateToStrSQL(dtAkhirKejadian.Date)+
+                      ', `fraud_diketahui` = '+DateToStrSQL(dtDiketahui.Date)+
+
+                      // TAB DATA KERUGIAN
+                      ', `ljk_riil` = '+FloatToStr(ljk_rill.Value)+
+                      ', `ljk_potensial` = '+FloatToStr(ljk_potensial.Value)+
+                      ', `ljk_recovery` = '+FloatToStr(ljk_recovery.Value)+
+                      ', `konsumen_riil` = '+FloatToStr(Konsumen_rill.Value)+
+                      ', `konsumen_potensial` = '+FloatToStr(konsumen_potensial.Value)+
+                      ', `konsumen_recovery` = '+FloatToStr(konsumen_recovery.Value)+
+                      ', `pihak_lain_riil` = '+FloatToStr(lain_rill.Value)+
+                      ', `pihak_lain_potensial` = '+FloatToStr(lain_potensial.Value)+
+                      ', `pihak_lain_recovery` = '+FloatToStr(lain_recovery.Value)+
+
+                      // TAB PENYEBAB & TINDAKAN
+                      ', `kelemahan_penyebab_fraud` = '+QuotedStr(kelemahan_sebab_fraud.EditValue)+
+                      ', `ket_kelemahan_fraud` = '+QuotedStr(memkelemahan_sebab_fraud.Text)+
+                      ', `tindakan_penanganan_fraud` = '+QuotedStr(penanganan_fraud.EditValue)+
+                      ', `ket_tindakan_penanganan` = '+QuotedStr(mempenanganan_fraud.Text)+
+                      ', `tindakan_pencegahan_fraud` = '+QuotedStr(perbaikan_fraud.EditValue)+
+                      ', `ket_tindakan_pencegahan` = '+QuotedStr(memperbaikan_fraud.Text)+
+                      ', `target_waktu_pelaksanaan` = '+QuotedStr(waktu_pelaksanaan.Text)+
+                      ', `realisasi_pelaksanaan` = '+QuotedStr(realiasasi_pelaksanaan.Text)+
+
+                      // TAB DATA PELAKU
+                      ', `intern_ekstern` = '+QuotedStr(intern_ekstern.EditValue)+
+                      ', `nama_pelaku` = '+QuotedStr(nama.Text)+
+                      ', `jenis_identitas` = '+QuotedStr(jenis_identitas.EditValue)+
+                      ', `nomor_identitas` = '+QuotedStr(nomor_identitas.Text)+
+                      ', `jenis_kelamin` = '+QuotedStr(jenis_kelamin.EditValue)+
+                      ', `alamat_identitas` = '+QuotedStr(memalamat_identitas.Text)+
+                      ', `alamat_domisili` = '+QuotedStr(memalamat_domisili.Text)+
+                      ', `tempat_lahir` = '+QuotedStr(memtempat_lahir.Text)+
+                      ', `tanggal_lahir` = '+DateToStrSQL(dttanggal_lahir.Date)+
+                      ', `status_pelaku` = '+QuotedStr(status_pelaku.EditValue)+
+                      ', `jabatan_saat_fraud` = '+QuotedStr(jabatan_saat_terjadi.EditValue)+
+                      ', `ket_jabatan_saat_fraud` = '+QuotedStr(memjabatan_saat_terjadi.Text)+
+                      ', `jabatan_saat_diketahui` = '+QuotedStr(jabatan_saat_diketahui.EditValue)+
+                      ', `ket_jabatan_saat_diketahui` = '+QuotedStr(memjabatan_saat_diketahui.Text)+
+                      ', `keterangan_pelaku` = '+QuotedStr(keterangan_pelaku.EditValue)+
+                      ', `pengenaan_sanksi` = '+QuotedStr(memsanksi.Text)+
+                      ', `status_penanganan` = '+QuotedStr(status_penanganan.EditValue)+
+
+                      ' WHERE `id_kejadian_fraud` = '+QuotedStr(MyQ01Aid_kejadian_fraud.Text)+
+                      ' AND `nomor_identitas` = '+QuotedStr(MyQ01Anomor_identitas.Text)+
+                      ' AND `jenis_fraud` = '+QuotedStr(MyQ01Ajenis_fraud.Text)+
+                      ' AND `jenis_identitas` = '+QuotedStr(MyQ01Ajenis_identitas.Text));
         end;
-      if MyQA05072.Active then
-        MyQA05072.Refresh
+      if MyQ01A.Active then
+        MyQ01A.Refresh
       else
-        MyQA05072.Open;
+        MyQ01A.Open;
     end;
 
   fr_EntryForm01A.Free;
-  fr_EntryForm01A := nil; }
+  fr_EntryForm01A := nil;
 end;
 
 procedure Tfr_Form01A.btlb_InsertClick(Sender: TObject);
 begin
   inherited;
-  {if (not MyQA05072.Active) then
+  if (not MyQ01A.Active) then
     begin
       Pesan(2,'Maaf, table belum aktif...!');
       Exit;
@@ -422,26 +651,155 @@ begin
   with fr_EntryForm01A do
     begin
       //open table reff
-      if MyQRefPelaksana.Active then
-        MyQRefPelaksana.Refresh
+      if MyQRefkejadian_menurut_pelaku.Active then
+        MyQRefkejadian_menurut_pelaku.Refresh
       else
-        MyQRefPelaksana.Open;
+        MyQRefkejadian_menurut_pelaku.Open;
 
-      if MyQRefPeserta.Active then
-        MyQRefPeserta.Refresh
+      if MyQRefJenisFraud.Active then
+        MyQRefJenisFraud.Refresh
       else
-        MyQRefPeserta.Open;
+        MyQRefJenisFraud.Open;
+
+      if MyQRefAktivitasFraud.Active then
+        MyQRefAktivitasFraud.Refresh
+      else
+        MyQRefAktivitasFraud.Open;
+
+      if MyQRefLokasiFraud.Active then
+        MyQRefLokasiFraud.Refresh
+      else
+        MyQRefLokasiFraud.Open;
+
+      if MyQRefKetLokasiFraud.Active then
+        MyQRefKetLokasiFraud.Refresh
+      else
+        MyQRefKetLokasiFraud.Open;
+
+      if MyQRefPihakRugi.Active then
+        MyQRefPihakRugi.Refresh
+      else
+        MyQRefPihakRugi.Open;
+
+      if MyQRefSebabFraud.Active then
+        MyQRefSebabFraud.Refresh
+      else
+        MyQRefSebabFraud.Open;
+
+      if MyQRefPenangananFraud.Active then
+        MyQRefPenangananFraud.Refresh
+      else
+        MyQRefPenangananFraud.Open;
+
+      if MyQRefPerbaikanFraud.Active then
+        MyQRefPerbaikanFraud.Refresh
+      else
+        MyQRefPerbaikanFraud.Open;
+
+      if MyQRefInternalEkstern.Active then
+        MyQRefInternalEkstern.Refresh
+      else
+        MyQRefInternalEkstern.Open;
+
+      if MyQRefJenisIdentitas.Active then
+        MyQRefJenisIdentitas.Refresh
+      else
+        MyQRefJenisIdentitas.Open;
+
+      if MyQRefJenisKelamin.Active then
+        MyQRefJenisKelamin.Refresh
+      else
+        MyQRefJenisKelamin.Open;
+
+      if MyQRefStatusPelaku.Active then
+        MyQRefStatusPelaku.Refresh
+      else
+        MyQRefStatusPelaku.Open;
+
+      if MyQRefJabatanSaatTerjadi.Active then
+        MyQRefJabatanSaatTerjadi.Refresh
+      else
+        MyQRefJabatanSaatTerjadi.Open;
+
+      if MyQRefJabatanSaatDiketahui.Active then
+        MyQRefJabatanSaatDiketahui.Refresh
+      else
+        MyQRefJabatanSaatDiketahui.Open;
+
+      if MyQRefKetPelaku.Active then
+        MyQRefKetPelaku.Refresh
+      else
+        MyQRefKetPelaku.Open;
+
+      if MyQRefStatusPenanganan.Active then
+        MyQRefStatusPenanganan.Refresh
+      else
+        MyQRefStatusPenanganan.Open;
+
 
       //size
-      kode_komponen.Properties.MaxLength := MyQA05072kode_komponen.Size;
-      memkegiatan.Properties.MaxLength := MyQA05072kegiatan_pengembangan.Size;
-      cb_pelaksana.Properties.MaxLength := MyQA05072pihak_pelaksana.Size;
-      cb_peserta.Properties.MaxLength := MyQA05072pihak_pelaksana.Size;
-      memuraian_kegiatan.Properties.MaxLength := MyQA05072uraian_kegiatan.Size;
+      //Tab Data Fraud
+      kode_komponen.Properties.MaxLength := MyQ01Akode_komponen.Size;
+      kejadian_menurut_pelaku.Properties.MaxLength := MyQ01Akejadian_fraud_menurut_pelaku.Size;
+      id_kejadian.Properties.MaxLength := MyQ01Aid_kejadian_fraud.Size;
+      jenis_fraud.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      memketerangan_jenis_fraud.Properties.MaxLength := MyQ01Aket_jenis_fraud.Size;
+      aktivitas_fraud.Properties.MaxLength := MyQ01Aaktivitas_terkait_fraud.Size;
+      memdeskripsi_fraud.Properties.MaxLength := MyQ01Adeskripsi_fraud.Size;
+      lokasi_fraud.Properties.MaxLength := MyQ01Alokasi_fraud.Size;
+      ket_lokasi_fraud.Properties.MaxLength := MyQ01Aket_lokasi_fraud.Size;
+      memDivisiFraud.Properties.MaxLength := MyQ01Adivisi_unit_kerja.Size;
+      pihak_dirugikan.Properties.MaxLength := MyQ01Apihak_yang_dirugikan.Size;
+      //dtAwalKejadian.Properties.MaxLength := MyQ01A.Size;
+      //dtAkhirKejadian.Properties.MaxLength := MyQ01A.Size;
+      //dtDiketahui.Properties.MaxLength := MyQ01A.Size;
+
+      //Data Kerugian
+      ljk_rill.Properties.MaxLength := MyQ01Aljk_riil.Size;
+      ljk_potensial.Properties.MaxLength := MyQ01Aljk_potensial.Size;
+      ljk_recovery.Properties.MaxLength := MyQ01Aljk_recovery.Size;
+      Konsumen_rill.Properties.MaxLength := MyQ01Akonsumen_riil.Size;
+      konsumen_potensial.Properties.MaxLength := MyQ01Akonsumen_potensial.Size;
+      konsumen_recovery.Properties.MaxLength := MyQ01Akonsumen_recovery.Size;
+      lain_rill.Properties.MaxLength := MyQ01Apihak_lain_riil.Size;
+      lain_potensial.Properties.MaxLength := MyQ01Apihak_lain_potensial.Size;
+      lain_recovery.Properties.MaxLength := MyQ01Apihak_lain_recovery.Size;
+
+      //Data Penyebab Dan Tindakan
+      memkelemahan_sebab_fraud.Properties.MaxLength := MyQ01Aket_kelemahan_fraud.Size;
+      kelemahan_sebab_fraud.Properties.MaxLength := MyQ01Akelemahan_penyebab_fraud.Size;
+      mempenanganan_fraud.Properties.MaxLength := MyQ01Aket_tindakan_penanganan.Size;
+      penanganan_fraud.Properties.MaxLength := MyQ01Atindakan_penanganan_fraud.Size;
+      memperbaikan_fraud.Properties.MaxLength := MyQ01Aket_tindakan_pencegahan.Size;
+      perbaikan_fraud.Properties.MaxLength := MyQ01Atindakan_pencegahan_fraud.Size;
+      //waktu_pelaksanaan.Properties.MaxLength := MyQ01A.Size;
+      //realiasasi_pelaksanaan.Properties.MaxLength := MyQ01A.Size;
+
+      //Data Pelaku
+      intern_ekstern.Properties.MaxLength := MyQ01Aintern_ekstern.Size;
+      nama.Properties.MaxLength := MyQ01Anama_pelaku.Size;
+      nomor_identitas.Properties.MaxLength := MyQ01Anomor_identitas.Size;
+      jenis_identitas.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      jenis_kelamin.Properties.MaxLength := MyQ01Ajenis_fraud.Size;
+      memalamat_identitas.Properties.MaxLength := MyQ01Aalamat_identitas.Size;
+      memalamat_domisili.Properties.MaxLength := MyQ01Aalamat_domisili.Size;
+      //dttanggal_lahir.Properties.MaxLength := MyQ01A.Size;
+      memtempat_lahir.Properties.MaxLength := MyQ01Atempat_lahir.Size;
+      status_pelaku.Properties.MaxLength := MyQ01Astatus_pelaku.Size;
+      memjabatan_saat_terjadi.Properties.MaxLength := MyQ01Aket_jabatan_saat_fraud.Size;
+      jabatan_saat_terjadi.Properties.MaxLength := MyQ01Ajabatan_saat_fraud.Size;
+      memjabatan_saat_diketahui.Properties.MaxLength := MyQ01Aket_jabatan_saat_diketahui.Size;
+      jabatan_saat_diketahui.Properties.MaxLength := MyQ01Ajabatan_saat_diketahui.Size;
+      memsanksi.Properties.MaxLength := MyQ01Apengenaan_sanksi.Size;
+      keterangan_pelaku.Properties.MaxLength := MyQ01Aketerangan_pelaku.Size;
+      status_penanganan.Properties.MaxLength := MyQ01Astatus_penanganan.Size;
 
       //assignment
-      kode_komponen.Text := '05026';
-      tgl_kegiatan.Date := dTglSystem;
+      kode_komponen.Text := '0101000000';
+      dtAwalKejadian.Date := dTglSystem;
+      dtAkhirKejadian.Date := dTglSystem;
+      dtDiketahui.Date := dTglSystem;
+      dttanggal_lahir.Date := dTglSystem;
 
       kode_komponen.Enabled := False;
     end;
@@ -452,46 +810,105 @@ begin
       with fr_EntryForm01A do
         begin
           // Insert
-          MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan` SET '+
-                        '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
-                        ', `kegiatan_pengembangan` = '+QuotedStr(memkegiatan.Text)+
-                        ', `tanggal_pelaksanaan` = '+DateToStrSQL(tgl_kegiatan.Date)+
-                        ', `pihak_pelaksana` = '+QuotedStr(cb_pelaksana.EditValue)+
-                        ', `kategori_peserta` = '+QuotedStr(cb_peserta.EditValue)+
-                        ', `jumlah_peserta` = '+StringReplace(FloatToStr(jumlah_peserta.Value), ',', '.', [rfReplaceAll])+
-                        ', `uraian_kegiatan` = '+QuotedStr(memuraian_kegiatan.Text)+
-                        ' ON DUPLICATE KEY UPDATE '+
-                        '`kegiatan_pengembangan` = VALUES(`kegiatan_pengembangan`),'+
-                        '`tanggal_pelaksanaan` = VALUES(`tanggal_pelaksanaan`),'+
-                        '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
-                        '`uraian_kegiatan` = VALUES(`uraian_kegiatan`)');
+          MyExecuteSQL('INSERT INTO '+cDb2+'.`saftbpr_01a` ('+
+                        // TAB DATA FRAUD
+                        '`flag_detail`, `kode_komponen`, `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, `ket_jenis_fraud`, '+
+                        '`aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, `ket_lokasi_fraud`, `divisi_unit_kerja`, `pihak_yang_dirugikan`, '+
+                        '`waktu_terjadi_awal`, `waktu_terjadi_akhir`, `fraud_diketahui`, '+
 
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
+                        // TAB DATA KERUGIAN
+                        '`ljk_riil`, `ljk_potensial`, `ljk_recovery`, `konsumen_riil`, `konsumen_potensial`, `konsumen_recovery`, '+
+                        '`pihak_lain_riil`, `pihak_lain_potensial`, `pihak_lain_recovery`, '+
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
+                        // TAB PENYEBAB & TINDAKAN
+                        '`kelemahan_penyebab_fraud`, `ket_kelemahan_fraud`, `tindakan_penanganan_fraud`, `ket_tindakan_penanganan`, '+
+                        '`tindakan_pencegahan_fraud`, `ket_tindakan_pencegahan`, `target_waktu_pelaksanaan`, `realisasi_pelaksanaan`, '+
+
+                        // TAB DATA PELAKU
+                        '`intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
+                        '`alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
+                        '`jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
+                        '`keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan`'+
+
+                        ') VALUES ('+
+
+                        // TAB DATA FRAUD
+                        QuotedStr('D01')+
+                        ', '+QuotedStr(kode_komponen.Text)+
+                        ', '+QuotedStr(kejadian_menurut_pelaku.EditValue)+
+                        ', '+QuotedStr(id_kejadian.Text)+
+                        ', '+QuotedStr(jenis_fraud.EditValue)+
+                        ', '+QuotedStr(memketerangan_jenis_fraud.Text)+
+                        ', '+QuotedStr(aktivitas_fraud.EditValue)+
+                        ', '+QuotedStr(memdeskripsi_fraud.Text)+
+                        ', '+QuotedStr(lokasi_fraud.EditValue)+
+                        ', '+QuotedStr(ket_lokasi_fraud.EditValue)+
+                        ', '+QuotedStr(memDivisiFraud.Text)+
+                        ', '+QuotedStr(pihak_dirugikan.EditValue)+
+                        ', '+DateToStrSQL(dtAwalKejadian.Date)+
+                        ', '+DateToStrSQL(dtAkhirKejadian.Date)+
+                        ', '+DateToStrSQL(dtDiketahui.Date)+
+
+                        // TAB DATA KERUGIAN
+                        ', '+FloatToStr(ljk_rill.Value)+
+                        ', '+FloatToStr(ljk_potensial.Value)+
+                        ', '+FloatToStr(ljk_recovery.Value)+
+                        ', '+FloatToStr(Konsumen_rill.Value)+
+                        ', '+FloatToStr(konsumen_potensial.Value)+
+                        ', '+FloatToStr(konsumen_recovery.Value)+
+                        ', '+FloatToStr(lain_rill.Value)+
+                        ', '+FloatToStr(lain_potensial.Value)+
+                        ', '+FloatToStr(lain_recovery.Value)+
+
+                        // TAB PENYEBAB & TINDAKAN
+                        ', '+QuotedStr(kelemahan_sebab_fraud.EditValue)+
+                        ', '+QuotedStr(memkelemahan_sebab_fraud.Text)+
+                        ', '+QuotedStr(penanganan_fraud.EditValue)+
+                        ', '+QuotedStr(mempenanganan_fraud.Text)+
+                        ', '+QuotedStr(perbaikan_fraud.EditValue)+
+                        ', '+QuotedStr(memperbaikan_fraud.Text)+
+                        ', '+QuotedStr(waktu_pelaksanaan.Text)+
+                        ', '+QuotedStr(realiasasi_pelaksanaan.Text)+
+
+                        // TAB DATA PELAKU
+                        ', '+QuotedStr(intern_ekstern.EditValue)+
+                        ', '+QuotedStr(nama.Text)+
+                        ', '+QuotedStr(jenis_identitas.EditValue)+
+                        ', '+QuotedStr(nomor_identitas.Text)+
+                        ', '+QuotedStr(jenis_kelamin.EditValue)+
+                        ', '+QuotedStr(memalamat_identitas.Text)+
+                        ', '+QuotedStr(memalamat_domisili.Text)+
+                        ', '+QuotedStr(memtempat_lahir.Text)+
+                        ', '+DateToStrSQL(dttanggal_lahir.Date)+
+                        ', '+QuotedStr(status_pelaku.EditValue)+
+                        ', '+QuotedStr(jabatan_saat_terjadi.EditValue)+
+                        ', '+QuotedStr(memjabatan_saat_terjadi.Text)+
+                        ', '+QuotedStr(jabatan_saat_diketahui.EditValue)+
+                        ', '+QuotedStr(memjabatan_saat_diketahui.Text)+
+                        ', '+QuotedStr(keterangan_pelaku.EditValue)+
+                        ', '+QuotedStr(memsanksi.Text)+
+                        ', '+QuotedStr(status_penanganan.EditValue)+
+
+                        ')');
         end;
-      if MyQA05072.Active then
-        MyQA05072.Refresh
+      if MyQ01A.Active then
+        MyQ01A.Refresh
       else
-        MyQA05072.Open;
+        MyQ01A.Open;
     end;
 
   fr_EntryForm01A.Free;
-  fr_EntryForm01A := nil; }
+  fr_EntryForm01A := nil;
   fr_EntryForm01A.ShowModal;
 end;
 
 procedure Tfr_Form01A.btlb_RefreshClick(Sender: TObject);
 begin
   inherited;
-  {if MyQA05072.Active then
-    MyQA05072.Refresh
+  if MyQ01A.Active then
+    MyQ01A.Refresh
   else
-    MyQA05072.Open;}
+    MyQ01A.Open;
 end;
 
 procedure Tfr_Form01A.cxGridDBTableView1CellDblClick(
