@@ -89,8 +89,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=PT. Teknologi Prima Operator;FileDescription=LTBPR;FileVersion=1.0.0.1;InternalName=LTBPR;LegalCopyright=Copyrights © 2023 :: PT. Teknologi Prima Operator;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=LTBPR;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=PT. Teknologi Prima Operator;FileDescription=LTBPR;FileVersion=1.0.0.0;InternalName=LTBPR;LegalCopyright=Copyrights © 2023 :: PT. Teknologi Prima Operator;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=LTBPR;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

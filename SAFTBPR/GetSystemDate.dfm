@@ -31,7 +31,7 @@ inherited fr_GetSystemDate: Tfr_GetSystemDate
       Left = 2
       Top = 91
       Align = alBottom
-      Caption = 'Laporan Tahunan'
+      Caption = 'Laporan SAFT'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindow

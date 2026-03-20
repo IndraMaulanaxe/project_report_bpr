@@ -141,7 +141,8 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils,  MyVAR, MyLib, FormA0301,  DaftarBackupAPOLO, Form01A;
+  dm_bpr, StrUtils,  MyVAR, MyLib, FormA0301,  DaftarBackupAPOLO, Form01A,
+  GetSystemDate;
 
   Var cKodePelaporan, cKodeJenisPelaporan, cKodeBankLJK, cKodeSektorLJK : String;
 
@@ -195,8 +196,8 @@ begin
         ' VALUES ("TGL_SAFTBPR", '+DateToStrSQL(per_tgl.Date)+') '+
         ' ON DUPLICATE KEY UPDATE tanggal='+DateToStrSQL(per_tgl.Date));
     end;
-  per_tgl.Format := 'MMMM yyyy';
-  cKodeArsipCek := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  per_tgl.Format := 'dd/MM/yyyy';
+  cKodeArsipCek := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   cKodeFormArsipCek := cDb2+'.'+'saftbpr_header_arsip';
   nCountCek := StrToIntDef(SelectRow('SELECT count(*) FROM '+cKodeFormArsipCek+
               ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)),0);
@@ -644,15 +645,14 @@ procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
 var cKodeArsip : string;
 begin
   inherited;
-    cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+    cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   //cek update status bulan lalu
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         ' WHERE kode_arsip='+QuotedStr(cKodeArsip)+' AND '+
         ' tgl_laporan='+DateToStrSQL(per_tgl.Date)) = '0') then
     begin
-      Pesan(2, 'Maaf, Anda belum melakukan Update Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
-      ' Tahun='+IntToStr(YearOf(per_tgl.Date))+'...!'#13#10 +
+      Pesan(2, 'Maaf, Anda belum melakukan Update Status Kirim Data Pelaporan Tanggal='+DateIndo(per_tgl.Date)+'...!'#13#10 +
       ' Step-Step untuk Update Status Kirim Data'#13#10 +
       ' 1. Klik Button Export ALL '#13#10 +
       ' 2. Klik Button Save Point '#13#10 +
@@ -660,16 +660,23 @@ begin
       Exit;
     end;
 
-  if not Pesan(3, 'Jalankan Proses Ganti Bulan Data manjadi '+
-    MonthIndo(IncMonth(per_tgl.Date,1))+'-'+IntToStr(YearOf(IncMonth(per_tgl.Date,1)))+' ?') then
-    Exit;
+  ITglChange := True;
+  Application.CreateForm(Tfr_GetSystemDate, fr_GetSystemDate);
+  fr_GetSystemDate.ShowModal;
+  if (fr_GetSystemDate.Tag=2) then
+  begin
+    per_tgl.Date := dTglChange;
+  end;
+  fr_GetSystemDate.Free;
+  fr_GetSystemDate := nil;
 
-  if MyExecuteSQL('UPDATE '+cDb2+'.sistem SET tanggal='+DateToStrSQL(EndOfTheMonth(IncMonth(per_tgl.Date,1)))+
-      'WHERE jenis="TGL_SAFTBPR"') then
-        begin
-          FormCreate(Sender);
-          Pesan(1, 'Proses Ganti Bulan sudah dijalankan...');
-        end;
+  if per_tgl.Date <> GetDateFValueByFKeyValue('sistem','jenis','TGL_SAFTBPR','tanggal') then
+    if MyExecuteSQL('UPDATE '+cDb2+'.sistem SET tanggal='+DateToStrSQL(per_tgl.Date)+
+          ' WHERE jenis="TGL_SAFTBPR"') then
+    begin
+      FormCreate(Sender);
+      Pesan(1, 'Proses Ganti Tanggal sudah dijalankan...');
+    end;
 
 end;
 
@@ -681,13 +688,12 @@ var
   //nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
     begin
-      Pesan(2, 'Maaf, Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
-      ' Tahun='+IntToStr(YearOf(per_tgl.Date))+
+      Pesan(2, 'Maaf, Status Kirim Data Pelaporan Tanggal='+DateIndo(per_tgl.Date)+
       IfThen(flg_koreksi.Checked,' Koreksi Ke='+koreksi_ke.Text,'')+
       ' sudah ada...! (Kode Arsip : '+cKodeArsip+')');
       Exit;
@@ -868,13 +874,12 @@ var
 begin
   inherited;
 
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
     begin
-      if not Pesan(3, 'Maaf, Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
-        ' Tahun='+IntToStr(YearOf(per_tgl.Date))+
+      if not Pesan(3, 'Maaf, Status Kirim Data Pelaporan Tanggal='+DateIndo(per_tgl.Date)+
         IfThen(flg_koreksi.Checked,' Koreksi Ke='+koreksi_ke.Text,'')+
         ' sudah ada...! (Kode Arsip : '+cKodeArsip+'), Lanjutkan ?') then
         Exit;
@@ -1246,7 +1251,7 @@ begin
       if (MyQFormLapBulis_file.AsInteger=0) then
       begin
         cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
+        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
         try
           MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
@@ -1296,14 +1301,14 @@ begin
   sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   while not MyQFormLapBul.Eof do
     begin
        if (MyQFormLapBulis_file.AsInteger=0) then
         begin
           cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
           cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
+          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
           try
             MyExecuteSQLNoTrans('DELETE FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));

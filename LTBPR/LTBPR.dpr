@@ -1,7 +1,8 @@
 program LTBPR;
 
 uses
-  Vcl.Forms, System.SysUtils,
+  Vcl.Forms,
+  System.SysUtils,
   Unit1 in 'Unit1.pas' {Form1},
   Form_Template in 'Form_Template.pas' {fr_template},
   NewTemplate in 'NewTemplate.pas' {fr_new_template},
@@ -75,6 +76,5 @@ begin
   Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'Laporan Bulanan :: Aplikasi Pelaporan Online OJK';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
-  Application.CreateForm(Tfr_GetSystemDate, fr_GetSystemDate);
   Application.Run;
 end.

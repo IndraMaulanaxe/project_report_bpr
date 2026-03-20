@@ -38,7 +38,7 @@ inherited fr_AboutLTBPR: Tfr_AboutLTBPR
     Height = 13
     Alignment = taCenter
     AutoSize = False
-    Caption = 'LAPORAN TAHUNAN BPR'
+    Caption = 'LAPORAN SAFT BPR'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -11

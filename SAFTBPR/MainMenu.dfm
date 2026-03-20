@@ -151,6 +151,7 @@ object fr_MainMenu: Tfr_MainMenu
       Height = 66
       Align = alLeft
       Caption = 'Update Status'
+      Enabled = False
       OptionsImage.ImageIndex = 44
       OptionsImage.Images = dm_bpr1.ImageList2
       OptionsImage.Layout = blGlyphTop
@@ -192,7 +193,8 @@ object fr_MainMenu: Tfr_MainMenu
       Width = 100
       Height = 66
       Align = alLeft
-      Caption = 'Ganti Bulan'
+      Caption = 'Ganti Tanggal'
+      Enabled = False
       OptionsImage.ImageIndex = 50
       OptionsImage.Images = dm_bpr1.ImageList2
       OptionsImage.Layout = blGlyphTop
@@ -374,9 +376,9 @@ object fr_MainMenu: Tfr_MainMenu
       Width = 131
       Height = 24
       Date = 42583.000000000000000000
-      Format = 'MMMM yyyy'
+      Format = 'dd/MM/yyyy'
       Time = 0.690934780090174200
-      DateMode = dmUpDown
+      Enabled = False
       TabOrder = 5
     end
   end

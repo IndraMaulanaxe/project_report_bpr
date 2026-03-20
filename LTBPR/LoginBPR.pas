@@ -157,7 +157,7 @@ begin
     begin
       nConIndex := cb_db.ItemIndex;
       cDb1 := IniGetStringValue(Ogie_FileIni,'KONEKSI_'+StrZero(cb_db.ItemIndex+1,2),'DatabaseCore','dbcbs');
-      cDbName := IniGetStringValue(Ogie_FileIni,'KONEKSI_'+StrZero(cb_db.ItemIndex+1,2),'DatabaseName','profil_risiko');
+      cDbName := IniGetStringValue(Ogie_FileIni,'KONEKSI_'+StrZero(cb_db.ItemIndex+1,2),'DatabaseName','ltbpr');
       cDb2 := cDbName;
     end;
 
@@ -220,7 +220,7 @@ begin
       if (dm_bpr1.MyQueryTemp.RecordCount=0) then
         begin
           Pesan(2, 'Maaf User Name tidak ditemukan...!');
-          ReleaseLimitUser('LOGIN_PROFIL_RISIKO' + '_' + Trim(UpperCase(cNamaUser)));
+          ReleaseLimitUser('LOGIN_LTBPR' + '_' + Trim(UpperCase(cNamaUser)));
           Application.Terminate;
           Exit;
         end;
@@ -241,7 +241,7 @@ begin
         begin
           Pesan(2,'Maaf, User anda sudah di Blokir, '+#13#10+
             'anda tidak berhak menggunakan Aplikasi ini...!');
-          ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+          ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
           Application.Terminate;
           Exit;
         end;
@@ -254,7 +254,7 @@ begin
         begin
           Pesan(2,'Maaf, User anda telah expired, '+#13#10+
             'anda tidak berhak lagi menggunakan Aplikasi ini...!');
-          ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+          ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
           Application.Terminate;
           Exit;
         end;
@@ -266,7 +266,7 @@ begin
 
 
 
-      if LimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser))) then
+      if LimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser))) then
         begin
           Pesan(2,'Penggunaan Aplikasi melebihi jumlah yang ditetapkan (max '+
             GetMyParameter('MAX_LIMIT_PC','2')+'/PC)...!');
@@ -283,7 +283,7 @@ begin
               begin
                 fr_GetSystemDate.Free;
                 fr_GetSystemDate := nil;
-                ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+                ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
                 Close;
                 Exit;
               end;
@@ -307,18 +307,18 @@ begin
                     end
                   else
                     begin
-                      ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+                      ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
                       Exit;
                     end;
                 end;
 
-              if (GetMyParameter('CEK_LAST_VERSION_PROFIL_RISIKO','YA')='YA') then
+              if (GetMyParameter('CEK_LAST_VERSION_LTBPR','YA')='YA') then
                 begin
-                  cCurrentVersion := GetMyParameter('LAST_VERSION_PROFIL_RISIKO','1.0.0.0');
+                  cCurrentVersion := GetMyParameter('LAST_VERSION_LTBPR','1.0.0.0');
                   if AmbilVersi < cCurrentVersion then
                     begin
                       Pesan(2,'Harap Update System ke Versi '+cCurrentVersion+'...!');
-                      ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+                      ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
                       if Application.FindComponent('fr_MainMenu') = nil then
                           Application.CreateForm(Tfr_MainMenu, fr_MainMenu);
                       fr_MainMenu.TimerUpdaterTimer(Sender);
@@ -328,7 +328,7 @@ begin
                     end;
                 end;
               if AmbilVersi > cCurrentVersion then
-                SetMyParameter('LAST_VERSION_PROFIL_RISIKO',AmbilVersi);
+                SetMyParameter('LAST_VERSION_LTBPR',AmbilVersi);
 
               nDuration:=0;
 
@@ -422,12 +422,12 @@ begin
             Pesan(2,cPesanError);
             if (nWrongPass > 2) then
               begin
-                ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+                ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
                 Application.Terminate;
                 Exit;
               end;
             log_password.SetFocus;
-            ReleaseLimitUser('LOGIN_PROFIL_RISIKO'+'_'+Trim(UpperCase(cNamaUser)));
+            ReleaseLimitUser('LOGIN_LTBPR'+'_'+Trim(UpperCase(cNamaUser)));
             Exit;
           end;
     end;

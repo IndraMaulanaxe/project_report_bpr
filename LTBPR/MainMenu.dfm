@@ -151,6 +151,7 @@ object fr_MainMenu: Tfr_MainMenu
       Height = 66
       Align = alLeft
       Caption = 'Update Status'
+      Enabled = False
       OptionsImage.ImageIndex = 44
       OptionsImage.Images = dm_bpr1.ImageList2
       OptionsImage.Layout = blGlyphTop
@@ -193,6 +194,7 @@ object fr_MainMenu: Tfr_MainMenu
       Height = 66
       Align = alLeft
       Caption = 'Ganti Bulan'
+      Enabled = False
       OptionsImage.ImageIndex = 50
       OptionsImage.Images = dm_bpr1.ImageList2
       OptionsImage.Layout = blGlyphTop
