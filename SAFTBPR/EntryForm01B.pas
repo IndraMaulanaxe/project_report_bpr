@@ -1,4 +1,4 @@
-unit EntryForm01A;
+unit EntryForm01B;
 
 interface
 
@@ -36,24 +36,16 @@ uses
   cxCalendar, dxBarBuiltInMenu, cxPC;
 
 type
-  Tfr_EntryForm01A = class(Tfr_new_template)
+  Tfr_EntryForm01B = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
     dsMyQRefkejadian_menurut_pelaku: TMyDataSource;
     MyQRefkejadian_menurut_pelaku: TMyQuery;
     MyQRefkejadian_menurut_pelakusandi: TStringField;
     MyQRefkejadian_menurut_pelakunama: TStringField;
-    dsMyQRefJenisFraud: TMyDataSource;
-    MyQRefJenisFraud: TMyQuery;
-    StringField1: TStringField;
-    StringField2: TStringField;
     cxPageControl1: TcxPageControl;
     cxTabDataFraud: TcxTabSheet;
     PanelTab1: TcxGroupBox;
-    cxTabDataKerugian: TcxTabSheet;
-    cxTabSebabDanTindakan: TcxTabSheet;
     cxTabDataPelaku: TcxTabSheet;
-    PanelTab2: TcxGroupBox;
-    PanelTab3: TcxGroupBox;
     PanelTab4: TcxGroupBox;
     Label3: TcxLabel;
     kode_komponen: TcxButtonEdit;
@@ -67,87 +59,22 @@ type
     cxLabel4: TcxLabel;
     cxLabel6: TcxLabel;
     aktivitas_fraud: TcxLookupComboBox;
-    dsMyQRefAktivitasFraud: TMyDataSource;
-    MyQRefAktivitasFraud: TMyQuery;
-    StringField3: TStringField;
-    StringField4: TStringField;
     cxLabel7: TcxLabel;
     memdeskripsi_fraud: TcxMemo;
     cxLabel10: TcxLabel;
     lokasi_fraud: TcxLookupComboBox;
     cxLabel11: TcxLabel;
     ket_lokasi_fraud: TcxLookupComboBox;
-    dsMyQRefLokasiFraud: TMyDataSource;
-    MyQRefLokasiFraud: TMyQuery;
-    StringField5: TStringField;
-    StringField6: TStringField;
-    dsMyQRefKetLokasiFraud: TMyDataSource;
-    MyQRefKetLokasiFraud: TMyQuery;
-    StringField7: TStringField;
-    StringField8: TStringField;
     cxLabel12: TcxLabel;
     memDivisiFraud: TcxMemo;
     cxLabel13: TcxLabel;
     pihak_dirugikan: TcxLookupComboBox;
-    dsMyQRefPihakRugi: TMyDataSource;
-    MyQRefPihakRugi: TMyQuery;
-    StringField9: TStringField;
-    StringField10: TStringField;
     cxLabel3: TcxLabel;
     dtAwalKejadian: TcxDateEdit;
     cxLabel14: TcxLabel;
     dtAkhirKejadian: TcxDateEdit;
     cxLabel15: TcxLabel;
     dtDiketahui: TcxDateEdit;
-    gb_ljk: TcxGroupBox;
-    cxLabel8: TcxLabel;
-    ljk_rill: TcxCurrencyEdit;
-    ljk_potensial: TcxCurrencyEdit;
-    cxLabel16: TcxLabel;
-    ljk_recovery: TcxCurrencyEdit;
-    cxLabel17: TcxLabel;
-    gb_konsumen: TcxGroupBox;
-    cxLabel18: TcxLabel;
-    Konsumen_rill: TcxCurrencyEdit;
-    konsumen_potensial: TcxCurrencyEdit;
-    cxLabel19: TcxLabel;
-    konsumen_recovery: TcxCurrencyEdit;
-    cxLabel20: TcxLabel;
-    gb_pihak_lain: TcxGroupBox;
-    cxLabel21: TcxLabel;
-    lain_rill: TcxCurrencyEdit;
-    lain_potensial: TcxCurrencyEdit;
-    cxLabel22: TcxLabel;
-    lain_recovery: TcxCurrencyEdit;
-    cxLabel23: TcxLabel;
-    cxLabel9: TcxLabel;
-    cxLabel24: TcxLabel;
-    memkelemahan_sebab_fraud: TcxMemo;
-    kelemahan_sebab_fraud: TcxLookupComboBox;
-    dsMyQRefSebabFraud: TMyDataSource;
-    MyQRefSebabFraud: TMyQuery;
-    StringField11: TStringField;
-    StringField12: TStringField;
-    cxLabel25: TcxLabel;
-    cxLabel26: TcxLabel;
-    mempenanganan_fraud: TcxMemo;
-    penanganan_fraud: TcxLookupComboBox;
-    dsMyQRefPenangananFraud: TMyDataSource;
-    MyQRefPenangananFraud: TMyQuery;
-    StringField13: TStringField;
-    StringField14: TStringField;
-    cxLabel27: TcxLabel;
-    cxLabel28: TcxLabel;
-    memperbaikan_fraud: TcxMemo;
-    perbaikan_fraud: TcxLookupComboBox;
-    dsMyQRefPerbaikanFraud: TMyDataSource;
-    MyQRefPerbaikanFraud: TMyQuery;
-    StringField15: TStringField;
-    StringField16: TStringField;
-    cxLabel29: TcxLabel;
-    waktu_pelaksanaan: TcxTextEdit;
-    cxLabel30: TcxLabel;
-    realiasasi_pelaksanaan: TcxTextEdit;
     cxLabel31: TcxLabel;
     intern_ekstern: TcxLookupComboBox;
     cxLabel32: TcxLabel;
@@ -166,50 +93,74 @@ type
     dttanggal_lahir: TcxDateEdit;
     cxLabel39: TcxLabel;
     memtempat_lahir: TcxMemo;
-    dsMyQRefInternalEkstern: TMyDataSource;
-    MyQRefInternalEkstern: TMyQuery;
-    StringField17: TStringField;
-    StringField18: TStringField;
-    dsMyQRefJenisIdentitas: TMyDataSource;
-    MyQRefJenisIdentitas: TMyQuery;
-    StringField19: TStringField;
-    StringField20: TStringField;
-    dsMyQRefJenisKelamin: TMyDataSource;
-    MyQRefJenisKelamin: TMyQuery;
-    StringField21: TStringField;
-    StringField22: TStringField;
     cxLabel40: TcxLabel;
     status_pelaku: TcxLookupComboBox;
     cxLabel41: TcxLabel;
     cxLabel42: TcxLabel;
     memjabatan_saat_terjadi: TcxMemo;
     jabatan_saat_terjadi: TcxLookupComboBox;
-    dsMyQRefStatusPelaku: TMyDataSource;
-    MyQRefStatusPelaku: TMyQuery;
-    StringField23: TStringField;
-    StringField24: TStringField;
-    MyQRefJabatanSaatTerjadi: TMyQuery;
-    StringField25: TStringField;
-    StringField26: TStringField;
-    dsMyQRefJabatanSaatTerjadi: TMyDataSource;
     cxLabel43: TcxLabel;
     cxLabel44: TcxLabel;
     memjabatan_saat_diketahui: TcxMemo;
     jabatan_saat_diketahui: TcxLookupComboBox;
-    dsMyQRefJabatanSaatDiketahui: TMyDataSource;
-    MyQRefJabatanSaatDiketahui: TMyQuery;
-    StringField27: TStringField;
-    StringField28: TStringField;
     cxLabel45: TcxLabel;
     cxLabel46: TcxLabel;
     memsanksi: TcxMemo;
     keterangan_pelaku: TcxLookupComboBox;
     cxLabel47: TcxLabel;
     status_penanganan: TcxLookupComboBox;
-    dsMyQRefKetPelaku: TMyDataSource;
+    cxLabel48: TcxLabel;
+    jumlah_kerugian: TcxCurrencyEdit;
+    cxLabel49: TcxLabel;
+    memtindak_lanjut_ljk: TcxMemo;
+    MyQRefJenisFraud: TMyQuery;
+    StringField1: TStringField;
+    StringField2: TStringField;
+    dsMyQRefJenisFraud: TMyDataSource;
+    dsMyQRefAktivitasFraud: TMyDataSource;
+    MyQRefAktivitasFraud: TMyQuery;
+    StringField3: TStringField;
+    StringField4: TStringField;
+    MyQRefLokasiFraud: TMyQuery;
+    StringField5: TStringField;
+    StringField6: TStringField;
+    dsMyQRefLokasiFraud: TMyDataSource;
+    MyQRefKetLokasiFraud: TMyQuery;
+    StringField7: TStringField;
+    StringField8: TStringField;
+    dsMyQRefKetLokasiFraud: TMyDataSource;
+    dsMyQRefPihakRugi: TMyDataSource;
+    MyQRefPihakRugi: TMyQuery;
+    StringField9: TStringField;
+    StringField10: TStringField;
+    dsMyQRefInternalEkstern: TMyDataSource;
+    dsMyQRefJenisIdentitas: TMyDataSource;
+    dsMyQRefJenisKelamin: TMyDataSource;
+    MyQRefJenisKelamin: TMyQuery;
+    StringField21: TStringField;
+    StringField22: TStringField;
+    MyQRefJenisIdentitas: TMyQuery;
+    StringField19: TStringField;
+    StringField20: TStringField;
+    MyQRefInternalEkstern: TMyQuery;
+    StringField17: TStringField;
+    StringField18: TStringField;
+    dsMyQRefStatusPelaku: TMyDataSource;
+    MyQRefStatusPelaku: TMyQuery;
+    StringField23: TStringField;
+    StringField24: TStringField;
+    dsMyQRefJabatanSaatTerjadi: TMyDataSource;
+    dsMyQRefJabatanSaatDiketahui: TMyDataSource;
+    MyQRefJabatanSaatDiketahui: TMyQuery;
+    StringField27: TStringField;
+    StringField28: TStringField;
+    MyQRefJabatanSaatTerjadi: TMyQuery;
+    StringField25: TStringField;
+    StringField26: TStringField;
     MyQRefKetPelaku: TMyQuery;
     StringField29: TStringField;
     StringField30: TStringField;
+    dsMyQRefKetPelaku: TMyDataSource;
     dsMyQRefStatusPenanganan: TMyDataSource;
     MyQRefStatusPenanganan: TMyQuery;
     StringField31: TStringField;
@@ -233,7 +184,7 @@ type
   end;
 
 var
-  fr_EntryForm01A: Tfr_EntryForm01A;
+  fr_EntryForm01B: Tfr_EntryForm01B;
   cLabelIni, cNewLabelIni: String;
 
 implementation
@@ -241,7 +192,7 @@ uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
 
 {$R *.dfm}
 
-function Tfr_EntryForm01A.Cek_Validasi(Sender: TObject): Boolean;
+function Tfr_EntryForm01B.Cek_Validasi(Sender: TObject): Boolean;
 var
   jml: Integer;
   cPesan, cHint: string;
@@ -493,7 +444,7 @@ begin
     Result := True;
 end;
 
-procedure Tfr_EntryForm01A.btlb_SaveClick(Sender: TObject);
+procedure Tfr_EntryForm01B.btlb_SaveClick(Sender: TObject);
 begin
   inherited;
   if not Cek_Validasi(Sender) then
@@ -503,7 +454,7 @@ begin
   Close;
 end;
 
-procedure Tfr_EntryForm01A.FormActivate(Sender: TObject);
+procedure Tfr_EntryForm01B.FormActivate(Sender: TObject);
 var
   jml: Integer;
 begin
@@ -596,14 +547,14 @@ if not lbl_view_only.Enabled then
   end;
 end;
 
-procedure Tfr_EntryForm01A.FormClose(Sender: TObject;
+procedure Tfr_EntryForm01B.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Release;
   Action := caFree;
 end;
 
-procedure Tfr_EntryForm01A.FormCloseQuery(Sender: TObject;
+procedure Tfr_EntryForm01B.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if (Tag=1) then
@@ -616,7 +567,7 @@ begin
     end;
 end;
 
-procedure Tfr_EntryForm01A.FormCreate(Sender: TObject);
+procedure Tfr_EntryForm01B.FormCreate(Sender: TObject);
 var
   jml, jml2: Integer;
   cCaption, cTag, cHint, cWidth, cScale: String;
@@ -665,7 +616,7 @@ begin
   SetCurrentDir(cLocation);
 end;
 
-procedure Tfr_EntryForm01A.FormKeyPress(Sender: TObject; var Key: Char);
+procedure Tfr_EntryForm01B.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     begin
@@ -676,7 +627,7 @@ begin
     Close;
 end;
 
-procedure Tfr_EntryForm01A.MemKeteranganPropertiesChange(
+procedure Tfr_EntryForm01B.MemKeteranganPropertiesChange(
   Sender: TObject);
 begin
   inherited;

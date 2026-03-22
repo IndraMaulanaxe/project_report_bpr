@@ -56,6 +56,8 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
+      ExplicitLeft = 198
+      ExplicitWidth = 935
       Width = 876
       AnchorX = 695
       AnchorY = 30
@@ -386,7 +388,7 @@ object fr_MainMenu: Tfr_MainMenu
     Left = 0
     Top = 180
     Width = 361
-    Height = 388
+    Height = 394
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -397,7 +399,6 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
-    ExplicitHeight = 394
     object cp_lap_fraud_berdampak_signifikan: TCategoryPanel
       Top = 180
       Height = 150
@@ -475,7 +476,7 @@ object fr_MainMenu: Tfr_MainMenu
   end
   object sGaugeStatus: TcxProgressBar
     Left = 0
-    Top = 592
+    Top = 595
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
@@ -483,12 +484,11 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
-    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
     Left = 0
-    Top = 568
+    Top = 574
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation

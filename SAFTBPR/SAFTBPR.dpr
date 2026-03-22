@@ -24,7 +24,9 @@ uses
   EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301},
   GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
   Form01A in 'Form01A.pas' {fr_Form01A},
-  EntryForm01A in 'EntryForm01A.pas' {fr_EntryForm01A};
+  EntryForm01A in 'EntryForm01A.pas' {fr_EntryForm01A},
+  EntryForm01B in 'EntryForm01B.pas' {fr_EntryForm01B},
+  Form01B in 'Form01B.pas' {fr_Form01B};
 
 {$R *.res}
 

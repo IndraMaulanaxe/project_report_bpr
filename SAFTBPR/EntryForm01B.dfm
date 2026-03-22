@@ -1,46 +1,41 @@
-inherited fr_EntryForm01A: Tfr_EntryForm01A
+inherited fr_EntryForm01B: Tfr_EntryForm01B
   Caption = 
-    'Entry Form 01A - Laporan Penerapan SAF yang mencakup informasi k' +
-    'ejadian fraud dan informasi pelaku fraud '
-  ClientHeight = 361
+    'Entry Form 01B - Laporan Penerapan SAF berdampak signifikan yang' +
+    ' mencakup informasi kejadian fraud dan informasi pelaku fraud be' +
+    'rdampak signifikan '
+  ClientHeight = 420
   ClientWidth = 1017
   ExplicitWidth = 1023
-  ExplicitHeight = 390
+  ExplicitHeight = 449
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 1017
-    ExplicitWidth = 569
+    ExplicitWidth = 1017
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitLeft = -8
     ExplicitWidth = 1017
-    ExplicitHeight = 507
-    Height = 317
+    ExplicitHeight = 571
+    Height = 376
     Width = 1017
     object cxPageControl1: TcxPageControl
       Left = 2
       Top = 2
       Width = 1013
-      Height = 313
+      Height = 372
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = cxTabDataFraud
       Properties.CustomButtons.Buttons = <>
-      ExplicitLeft = 4
-      ExplicitTop = 3
-      ExplicitHeight = 490
-      ClientRectBottom = 309
+      ExplicitHeight = 567
+      ClientRectBottom = 368
       ClientRectLeft = 4
       ClientRectRight = 1009
       ClientRectTop = 27
       object cxTabDataFraud: TcxTabSheet
         Caption = 'Data Fraud'
         ImageIndex = 0
-        ExplicitLeft = 5
-        ExplicitTop = 28
-        ExplicitWidth = 281
-        ExplicitHeight = 162
+        ExplicitHeight = 536
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -54,10 +49,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
           ExplicitLeft = 2
-          ExplicitTop = 2
-          ExplicitWidth = 808
-          ExplicitHeight = 459
-          Height = 282
+          ExplicitHeight = 536
+          Height = 341
           Width = 1005
           object Label3: TcxLabel
             Left = 17
@@ -632,486 +625,11 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             TabOrder = 27
             Width = 121
           end
-        end
-      end
-      object cxTabDataKerugian: TcxTabSheet
-        Caption = 'Data Kerugian'
-        ImageIndex = 1
-        ExplicitWidth = 634
-        ExplicitHeight = 379
-        object PanelTab2: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alClient
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = 3355443
-          TabOrder = 0
-          OnMouseDown = bgMouseDown
-          OnMouseMove = bgMouseMove
-          OnMouseUp = bgMouseUp
-          ExplicitLeft = -1
-          ExplicitHeight = 459
-          Height = 282
-          Width = 1005
-          object gb_ljk: TcxGroupBox
-            Left = 17
-            Top = 3
-            Caption = 'LJK'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            Height = 118
-            Width = 480
-            object cxLabel8: TcxLabel
-              Left = 33
-              Top = 19
-              AutoSize = False
-              Caption = 'Riil (Incurred)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 33
-            end
-            object ljk_rill: TcxCurrencyEdit
-              Left = 241
-              Top = 21
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              Width = 200
-            end
-            object ljk_potensial: TcxCurrencyEdit
-              Left = 241
-              Top = 51
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              Width = 200
-            end
-            object cxLabel16: TcxLabel
-              Left = 33
-              Top = 49
-              AutoSize = False
-              Caption = 'Potensial (Potential)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 63
-            end
-            object ljk_recovery: TcxCurrencyEdit
-              Left = 241
-              Top = 81
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              Width = 200
-            end
-            object cxLabel17: TcxLabel
-              Left = 33
-              Top = 79
-              AutoSize = False
-              Caption = 'Setelah Pengembalian (Recovery)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 216
-              AnchorY = 93
-            end
-          end
-          object gb_konsumen: TcxGroupBox
-            Left = 503
-            Top = 3
-            Caption = 'Konsumen'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            Height = 118
-            Width = 480
-            object cxLabel18: TcxLabel
-              Left = 33
-              Top = 19
-              AutoSize = False
-              Caption = 'Riil (Incurred)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 33
-            end
-            object Konsumen_rill: TcxCurrencyEdit
-              Left = 241
-              Top = 21
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              Width = 200
-            end
-            object konsumen_potensial: TcxCurrencyEdit
-              Left = 241
-              Top = 51
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              Width = 200
-            end
-            object cxLabel19: TcxLabel
-              Left = 33
-              Top = 49
-              AutoSize = False
-              Caption = 'Potensial (Potential)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 63
-            end
-            object konsumen_recovery: TcxCurrencyEdit
-              Left = 241
-              Top = 81
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              Width = 200
-            end
-            object cxLabel20: TcxLabel
-              Left = 33
-              Top = 79
-              AutoSize = False
-              Caption = 'Setelah Pengembalian (Recovery)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 216
-              AnchorY = 93
-            end
-          end
-          object gb_pihak_lain: TcxGroupBox
-            Left = 17
-            Top = 127
-            Caption = 'Pihak Lain'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 2
-            Height = 118
-            Width = 480
-            object cxLabel21: TcxLabel
-              Left = 33
-              Top = 19
-              AutoSize = False
-              Caption = 'Riil (Incurred)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 33
-            end
-            object lain_rill: TcxCurrencyEdit
-              Left = 241
-              Top = 21
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              Width = 200
-            end
-            object lain_potensial: TcxCurrencyEdit
-              Left = 241
-              Top = 51
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              Width = 200
-            end
-            object cxLabel22: TcxLabel
-              Left = 33
-              Top = 49
-              AutoSize = False
-              Caption = 'Potensial (Potential)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 135
-              AnchorY = 63
-            end
-            object lain_recovery: TcxCurrencyEdit
-              Left = 241
-              Top = 81
-              Hint = 'Jumlah Peserta'
-              EditValue = '0'
-              ParentColor = True
-              ParentFont = False
-              Properties.Alignment.Horz = taRightJustify
-              Properties.DisplayFormat = '#,##0'
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              Width = 200
-            end
-            object cxLabel23: TcxLabel
-              Left = 33
-              Top = 79
-              AutoSize = False
-              Caption = 'Setelah Pengembalian (Recovery)'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindow
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clWindow
-              Style.IsFontAssigned = True
-              Properties.Alignment.Horz = taLeftJustify
-              Properties.Alignment.Vert = taVCenter
-              Properties.WordWrap = True
-              Transparent = True
-              Height = 27
-              Width = 216
-              AnchorY = 93
-            end
-          end
-        end
-      end
-      object cxTabSebabDanTindakan: TcxTabSheet
-        Caption = 'Data Penyebab Dan Tindakan'
-        ImageIndex = 2
-        ExplicitWidth = 634
-        ExplicitHeight = 379
-        object PanelTab3: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alClient
-          PanelStyle.Active = True
-          ParentBackground = False
-          ParentColor = False
-          Style.Color = 3355443
-          TabOrder = 0
-          OnMouseDown = bgMouseDown
-          OnMouseMove = bgMouseMove
-          OnMouseUp = bgMouseUp
-          ExplicitLeft = -1
-          ExplicitHeight = 358
-          Height = 282
-          Width = 1005
-          object cxLabel9: TcxLabel
-            AlignWithMargins = True
-            Left = 17
-            Top = 22
+          object cxLabel48: TcxLabel
+            Left = 507
+            Top = 251
             AutoSize = False
-            Caption = 'Kelemahan Penyebab Fraud'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 169
-            AnchorY = 32
-          end
-          object cxLabel24: TcxLabel
-            Left = 17
-            Top = 48
-            AutoSize = False
-            Caption = 'Keterangan Kelemahan Penyebab Fraud'
+            Caption = 'Jumlah Kerugian Potensial'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -1124,18 +642,19 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Properties.Alignment.Vert = taVCenter
             Properties.WordWrap = True
             Transparent = True
-            Height = 35
+            Height = 27
             Width = 162
-            AnchorY = 66
+            AnchorY = 265
           end
-          object memkelemahan_sebab_fraud: TcxMemo
-            Tag = 1
-            Left = 185
-            Top = 50
-            Hint = 'Keterangan'
+          object jumlah_kerugian: TcxCurrencyEdit
+            Left = 675
+            Top = 253
+            Hint = 'Jumlah Peserta'
+            EditValue = '0'
             ParentColor = True
             ParentFont = False
-            Properties.OnChange = MemKeteranganPropertiesChange
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,##0'
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
             Style.Font.Height = -13
@@ -1143,59 +662,14 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Style.Font.Style = []
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
-            TabOrder = 2
-            Height = 47
-            Width = 298
+            TabOrder = 29
+            Width = 200
           end
-          object kelemahan_sebab_fraud: TcxLookupComboBox
-            Tag = 1
-            Left = 185
-            Top = 20
-            Hint = 'Peserta'
-            ParentColor = True
-            ParentFont = False
-            Properties.KeyFieldNames = 'sandi'
-            Properties.ListColumns = <
-              item
-                FieldName = 'nama'
-              end>
-            Properties.ListSource = dsMyQRefSebabFraud
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 3
-            Width = 298
-          end
-          object cxLabel25: TcxLabel
-            AlignWithMargins = True
-            Left = 17
-            Top = 104
+          object cxLabel49: TcxLabel
+            Left = 507
+            Top = 279
             AutoSize = False
-            Caption = 'Tindakan Penanganan Fraud'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 169
-            AnchorY = 114
-          end
-          object cxLabel26: TcxLabel
-            Left = 17
-            Top = 130
-            AutoSize = False
-            Caption = 'Keterangan Tindakan Penanganan Fraud'
+            Caption = 'Tindak Lanjut LJK'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -1208,206 +682,27 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Properties.Alignment.Vert = taVCenter
             Properties.WordWrap = True
             Transparent = True
-            Height = 35
-            Width = 162
-            AnchorY = 148
-          end
-          object mempenanganan_fraud: TcxMemo
-            Tag = 1
-            Left = 185
-            Top = 132
-            Hint = 'Keterangan'
-            ParentColor = True
-            ParentFont = False
-            Properties.OnChange = MemKeteranganPropertiesChange
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 6
-            Height = 47
-            Width = 298
-          end
-          object penanganan_fraud: TcxLookupComboBox
-            Tag = 1
-            Left = 185
-            Top = 102
-            Hint = 'Peserta'
-            ParentColor = True
-            ParentFont = False
-            Properties.KeyFieldNames = 'sandi'
-            Properties.ListColumns = <
-              item
-                FieldName = 'nama'
-              end>
-            Properties.ListSource = dsMyQRefPenangananFraud
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 7
-            Width = 298
-          end
-          object cxLabel27: TcxLabel
-            AlignWithMargins = True
-            Left = 497
-            Top = 22
-            AutoSize = False
-            Caption = 'Tindakan Perbaikan Fraud'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 169
-            AnchorY = 32
-          end
-          object cxLabel28: TcxLabel
-            Left = 497
-            Top = 48
-            AutoSize = False
-            Caption = 'Keterangan Tindakan Perbaikan Fraud'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 35
-            Width = 162
-            AnchorY = 66
-          end
-          object memperbaikan_fraud: TcxMemo
-            Tag = 1
-            Left = 665
-            Top = 50
-            Hint = 'Keterangan'
-            ParentColor = True
-            ParentFont = False
-            Properties.OnChange = MemKeteranganPropertiesChange
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 10
-            Height = 47
-            Width = 298
-          end
-          object perbaikan_fraud: TcxLookupComboBox
-            Tag = 1
-            Left = 665
-            Top = 20
-            Hint = 'Peserta'
-            ParentColor = True
-            ParentFont = False
-            Properties.KeyFieldNames = 'sandi'
-            Properties.ListColumns = <
-              item
-                FieldName = 'nama'
-              end>
-            Properties.ListSource = dsMyQRefPerbaikanFraud
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 11
-            Width = 298
-          end
-          object cxLabel29: TcxLabel
-            Left = 497
-            Top = 102
-            AutoSize = False
-            Caption = 'Target Waktu Pelaksanaan'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Transparent = True
-            Height = 24
-            Width = 162
-            AnchorY = 114
-          end
-          object waktu_pelaksanaan: TcxTextEdit
-            Tag = 1
-            Left = 665
-            Top = 103
-            Hint = 'Nomor Akta Pendirian'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 13
-            Height = 24
-            Width = 298
-          end
-          object cxLabel30: TcxLabel
-            Left = 497
-            Top = 132
-            AutoSize = False
-            Caption = 'Realisasi Pelaksanaan'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Transparent = True
-            Height = 24
+            Height = 30
             Width = 135
-            AnchorY = 144
+            AnchorY = 294
           end
-          object realiasasi_pelaksanaan: TcxTextEdit
+          object memtindak_lanjut_ljk: TcxMemo
             Tag = 1
-            Left = 665
-            Top = 133
-            Hint = 'Nomor Akta Pendirian'
-            TabStop = False
-            AutoSize = False
+            Left = 675
+            Top = 283
+            Hint = 'Keterangan'
             ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
+            ParentFont = False
+            Properties.OnChange = MemKeteranganPropertiesChange
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
             Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 15
-            Height = 24
+            Style.IsFontAssigned = True
+            TabOrder = 31
+            Height = 47
             Width = 298
           end
         end
@@ -1415,10 +710,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataPelaku: TcxTabSheet
         Caption = 'Data Pelaku'
         ImageIndex = 3
-        ExplicitLeft = 5
-        ExplicitTop = 28
-        ExplicitWidth = 634
-        ExplicitHeight = 379
+        ExplicitHeight = 536
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -1431,9 +723,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitTop = 1
-          ExplicitHeight = 472
-          Height = 282
+          ExplicitHeight = 536
+          Height = 341
           Width = 1005
           object cxLabel31: TcxLabel
             AlignWithMargins = True
@@ -2080,7 +1371,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
               item
                 FieldName = 'nama'
               end>
-            Properties.ListSource = dsMyQRefKetPelaku
+            Properties.ListSource = dsMyQRefkejadian_menurut_pelaku
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
             Style.Font.Height = -13
@@ -2140,9 +1431,9 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 317
-    ExplicitTop = 340
-    ExplicitWidth = 569
+    Top = 376
+    ExplicitTop = 571
+    ExplicitWidth = 1017
     ExplicitHeight = 44
     Height = 44
     Width = 1017
@@ -2178,7 +1469,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Left = 830
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 382
+      ExplicitLeft = 830
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -2187,14 +1478,14 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 564
+      ExplicitLeft = 1012
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 921
       Height = 34
-      ExplicitLeft = 473
+      ExplicitLeft = 921
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -2203,7 +1494,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 376
+      ExplicitLeft = 824
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2223,7 +1514,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 370
+      ExplicitLeft = 818
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2233,7 +1524,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 364
+      ExplicitLeft = 812
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2243,7 +1534,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 358
+      ExplicitLeft = 806
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2253,14 +1544,14 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 352
+      ExplicitLeft = 800
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 1017
-    ExplicitWidth = 569
+    ExplicitWidth = 1017
     inherited IconClose: TLabel
       Left = 983
       ExplicitLeft = 771
@@ -2293,11 +1584,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
-  object dsMyQRefJenisFraud: TMyDataSource
-    DataSet = MyQRefJenisFraud
-    Left = 48
-    Top = 368
-  end
   object MyQRefJenisFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
@@ -2315,6 +1601,11 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       FieldName = 'nama'
       Size = 261
     end
+  end
+  object dsMyQRefJenisFraud: TMyDataSource
+    DataSet = MyQRefJenisFraud
+    Left = 48
+    Top = 368
   end
   object dsMyQRefAktivitasFraud: TMyDataSource
     DataSet = MyQRefAktivitasFraud
@@ -2339,11 +1630,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
-  object dsMyQRefLokasiFraud: TMyDataSource
-    DataSet = MyQRefLokasiFraud
-    Left = 48
-    Top = 472
-  end
   object MyQRefLokasiFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
@@ -2362,10 +1648,10 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
-  object dsMyQRefKetLokasiFraud: TMyDataSource
-    DataSet = MyQRefKetLokasiFraud
-    Left = 280
-    Top = 320
+  object dsMyQRefLokasiFraud: TMyDataSource
+    DataSet = MyQRefLokasiFraud
+    Left = 48
+    Top = 472
   end
   object MyQRefKetLokasiFraud: TMyQuery
     Connection = dm_bpr1.MyCon2
@@ -2384,6 +1670,11 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       FieldName = 'nama'
       Size = 261
     end
+  end
+  object dsMyQRefKetLokasiFraud: TMyDataSource
+    DataSet = MyQRefKetLokasiFraud
+    Left = 280
+    Top = 320
   end
   object dsMyQRefPihakRugi: TMyDataSource
     DataSet = MyQRefPihakRugi
@@ -2408,125 +1699,20 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
-  object dsMyQRefSebabFraud: TMyDataSource
-    DataSet = MyQRefSebabFraud
-    Left = 280
-    Top = 416
-  end
-  object MyQRefSebabFraud: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_kelemahan_sebab_fraud`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 352
-    Top = 416
-    object StringField11: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField12: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
-  end
-  object dsMyQRefPenangananFraud: TMyDataSource
-    DataSet = MyQRefPenangananFraud
-    Left = 280
-    Top = 464
-  end
-  object MyQRefPenangananFraud: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_tindakan_penanganan_fraud`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 352
-    Top = 464
-    object StringField13: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField14: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
-  end
-  object dsMyQRefPerbaikanFraud: TMyDataSource
-    DataSet = MyQRefPerbaikanFraud
-    Left = 512
-    Top = 320
-  end
-  object MyQRefPerbaikanFraud: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_perbaikan_cegah_fraud`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 592
-    Top = 320
-    object StringField15: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField16: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
-  end
   object dsMyQRefInternalEkstern: TMyDataSource
     DataSet = MyQRefInternalEkstern
-    Left = 512
-    Top = 368
-  end
-  object MyQRefInternalEkstern: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_pelaku_fraud`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 592
-    Top = 368
-    object StringField17: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField18: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
+    Left = 278
+    Top = 416
   end
   object dsMyQRefJenisIdentitas: TMyDataSource
     DataSet = MyQRefJenisIdentitas
-    Left = 512
-    Top = 416
-  end
-  object MyQRefJenisIdentitas: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_jenis_identitas`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 592
-    Top = 416
-    object StringField19: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField20: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
+    Left = 278
+    Top = 464
   end
   object dsMyQRefJenisKelamin: TMyDataSource
     DataSet = MyQRefJenisKelamin
-    Left = 512
-    Top = 464
+    Left = 278
+    Top = 512
   end
   object MyQRefJenisKelamin: TMyQuery
     Connection = dm_bpr1.MyCon2
@@ -2535,8 +1721,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       'FROM `ref_jenis_kelamin`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
-    Left = 592
-    Top = 464
+    Left = 358
+    Top = 512
     object StringField21: TStringField
       FieldName = 'sandi'
       Size = 3
@@ -2546,10 +1732,46 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
+  object MyQRefJenisIdentitas: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'FROM `ref_jenis_identitas`'
+      'ORDER BY CODE')
+    Options.FieldOrigins = foNone
+    Left = 358
+    Top = 464
+    object StringField19: TStringField
+      FieldName = 'sandi'
+      Size = 3
+    end
+    object StringField20: TStringField
+      FieldName = 'nama'
+      Size = 261
+    end
+  end
+  object MyQRefInternalEkstern: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'FROM `ref_pelaku_fraud`'
+      'ORDER BY CODE')
+    Options.FieldOrigins = foNone
+    Left = 358
+    Top = 416
+    object StringField17: TStringField
+      FieldName = 'sandi'
+      Size = 3
+    end
+    object StringField18: TStringField
+      FieldName = 'nama'
+      Size = 261
+    end
+  end
   object dsMyQRefStatusPelaku: TMyDataSource
     DataSet = MyQRefStatusPelaku
-    Left = 760
-    Top = 320
+    Left = 526
+    Top = 368
   end
   object MyQRefStatusPelaku: TMyQuery
     Connection = dm_bpr1.MyCon2
@@ -2558,13 +1780,41 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       'FROM `ref_status_pelaku`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
-    Left = 840
-    Top = 320
+    Left = 606
+    Top = 368
     object StringField23: TStringField
       FieldName = 'sandi'
       Size = 3
     end
     object StringField24: TStringField
+      FieldName = 'nama'
+      Size = 261
+    end
+  end
+  object dsMyQRefJabatanSaatTerjadi: TMyDataSource
+    DataSet = MyQRefJabatanSaatTerjadi
+    Left = 526
+    Top = 416
+  end
+  object dsMyQRefJabatanSaatDiketahui: TMyDataSource
+    DataSet = MyQRefJabatanSaatDiketahui
+    Left = 526
+    Top = 464
+  end
+  object MyQRefJabatanSaatDiketahui: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
+      'FROM `ref_jabatan_pelaku_saat_fraud_diketahui`'
+      'ORDER BY CODE')
+    Options.FieldOrigins = foNone
+    Left = 606
+    Top = 464
+    object StringField27: TStringField
+      FieldName = 'sandi'
+      Size = 3
+    end
+    object StringField28: TStringField
       FieldName = 'nama'
       Size = 261
     end
@@ -2576,8 +1826,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       'FROM `ref_jabatan_pelaku_saat_fraud_terjadi`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
-    Left = 840
-    Top = 368
+    Left = 606
+    Top = 416
     object StringField25: TStringField
       FieldName = 'sandi'
       Size = 3
@@ -2587,39 +1837,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
-  object dsMyQRefJabatanSaatTerjadi: TMyDataSource
-    DataSet = MyQRefJabatanSaatTerjadi
-    Left = 760
-    Top = 368
-  end
-  object dsMyQRefJabatanSaatDiketahui: TMyDataSource
-    DataSet = MyQRefJabatanSaatDiketahui
-    Left = 760
-    Top = 416
-  end
-  object MyQRefJabatanSaatDiketahui: TMyQuery
-    Connection = dm_bpr1.MyCon2
-    SQL.Strings = (
-      'SELECT CODE as sandi, CONCAT(CODE,'#39' - '#39',deskripsi)AS nama'
-      'FROM `ref_jabatan_pelaku_saat_fraud_diketahui`'
-      'ORDER BY CODE')
-    Options.FieldOrigins = foNone
-    Left = 840
-    Top = 416
-    object StringField27: TStringField
-      FieldName = 'sandi'
-      Size = 3
-    end
-    object StringField28: TStringField
-      FieldName = 'nama'
-      Size = 261
-    end
-  end
-  object dsMyQRefKetPelaku: TMyDataSource
-    DataSet = MyQRefKetPelaku
-    Left = 760
-    Top = 464
-  end
   object MyQRefKetPelaku: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
@@ -2627,8 +1844,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       'FROM `ref_keterangan_pelaku`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
-    Left = 840
-    Top = 464
+    Left = 606
+    Top = 512
     object StringField29: TStringField
       FieldName = 'sandi'
       Size = 3
@@ -2638,10 +1855,15 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Size = 261
     end
   end
+  object dsMyQRefKetPelaku: TMyDataSource
+    DataSet = MyQRefKetPelaku
+    Left = 526
+    Top = 512
+  end
   object dsMyQRefStatusPenanganan: TMyDataSource
     DataSet = MyQRefStatusPenanganan
-    Left = 760
-    Top = 512
+    Left = 526
+    Top = 328
   end
   object MyQRefStatusPenanganan: TMyQuery
     Connection = dm_bpr1.MyCon2
@@ -2650,8 +1872,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       'FROM `ref_status`'
       'ORDER BY CODE')
     Options.FieldOrigins = foNone
-    Left = 840
-    Top = 512
+    Left = 606
+    Top = 328
     object StringField31: TStringField
       FieldName = 'sandi'
       Size = 3

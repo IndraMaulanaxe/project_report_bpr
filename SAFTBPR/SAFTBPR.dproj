@@ -168,6 +168,14 @@
             <Form>fr_EntryForm01A</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="EntryForm01B.pas">
+            <Form>fr_EntryForm01B</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Form01B.pas">
+            <Form>fr_Form01B</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
