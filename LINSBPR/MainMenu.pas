@@ -129,7 +129,8 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils, MyVAR, MyLib, FormA0304, DaftarBackupAPOLO, GetSystemDate;
+  dm_bpr, StrUtils, MyVAR, MyLib, FormA0304, DaftarBackupAPOLO, GetSystemDate,
+  Form0100;
 
   Var cKodeJenisPelaporan : String;
 
@@ -523,7 +524,12 @@ end;
 
 procedure Tfr_MainMenu.bt_form0100Click(Sender: TObject);
 begin
-//kode form show
+  if Application.FindComponent('fr_Form0100') = nil then
+    Application.CreateForm(Tfr_Form0100, fr_Form0100);
+  fr_Form0100.Tag := 0;
+  fr_Form0100.ShowModal;
+  fr_Form0100.Free;
+  fr_Form0100 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_form0200Click(Sender: TObject);
