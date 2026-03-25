@@ -167,27 +167,6 @@ insert  into `ref_kelompok_berlaku`(`code`,`deskripsi`) values
 ('8','BUK'),
 ('9','BUS');
 
-/*Table structure for table `ref_kode_form` */
-
-DROP TABLE IF EXISTS `ref_kode_form`;
-
-CREATE TABLE `ref_kode_form` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_form` varchar(10) NOT NULL,
-  `nama_form` varchar(250) NOT NULL,
-  `nama_table` varchar(250) DEFAULT NULL,
-  `is_footer` smallint(2) DEFAULT 0,
-  `is_file` smallint(2) DEFAULT 0,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `kode_form` (`kode_form`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-/*Data for the table `ref_kode_form` */
-
-insert  into `ref_kode_form`(`id`,`kode_form`,`nama_form`,`nama_table`,`is_footer`,`is_file`) values 
-(81,'0100','Form 01.00 - Informasi Utama','linsbpr_0100',0,0),
-(83,'0200','Form 02.00 - Dokumen Pendukung','0200',0,1);
-
 /*Table structure for table `ref_kode_sektor` */
 
 DROP TABLE IF EXISTS `ref_kode_sektor`;
