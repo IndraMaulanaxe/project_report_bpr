@@ -1,5 +1,5 @@
 /*
-SQLyog Community v13.3.1 (64 bit)
+SQLyog Enterprise v13.1.1 (64 bit)
 MySQL - 10.4.32-MariaDB : Database - linsbpr
 *********************************************************************
 */
@@ -110,7 +110,7 @@ CREATE TABLE `daftar_dblock` (
   PRIMARY KEY (`id`),
   KEY `waktu` (`waktu`),
   KEY `key_name` (`key_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `daftar_dblock` */
 
@@ -146,17 +146,7 @@ insert  into `daftar_dblock`(`id`,`key_name`,`status`,`user_id`,`waktu`,`compute
 (31,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-20 07:57:02','IT','192.168.0.116','DH-IT INDRA',NULL),
 (32,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-20 07:59:55','IT','192.168.0.116','DH-IT INDRA',NULL),
 (33,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-20 08:03:14','IT','192.168.0.116','DH-IT INDRA',NULL),
-(34,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-20 08:04:28','IT','192.168.0.116','DH-IT INDRA',NULL),
-(35,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-24 23:49:40','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(36,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-24 23:50:23','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(37,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-24 23:51:26','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(38,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-24 23:52:26','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(39,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 00:11:42','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(40,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 01:10:22','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(41,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 01:13:34','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(42,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 01:17:15','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(43,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 01:19:51','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL),
-(44,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-25 01:21:34','DESKTOP-QEQVPKN','192.168.1.55','USER',NULL);
+(34,'LOGIN_LINSBPR_INDRA_MAULANA','Y','855','2026-03-20 08:04:28','IT','192.168.0.116','DH-IT INDRA',NULL);
 
 /*Table structure for table `hari_libur` */
 
@@ -228,7 +218,6 @@ CREATE TABLE `linsbpr_0100` (
 /*Data for the table `linsbpr_0100` */
 
 insert  into `linsbpr_0100`(`flag_detail`,`sandi_laporan`,`tanggal_kejadian`,`nomor_sk_ojk`,`tanggal_sk_ojk`,`nomor_akta`,`tanggal_akta`,`nomor_persetujuan`,`tanggal_persetujuan`,`tanggal_efektif`,`nama_pihak`,`nik_npwp`,`jabatan`,`jenis_produk`,`nama_produk`,`jenis_kantor`,`alamat`,`alamat_baru`,`tanggal_selesai`,`pelanggaran`,`alasan`,`nama_pjti`,`register_ref`,`langkah_perbaikan`,`target_waktu`,`realisasi`,`status`,`status_dokumen`) values 
-('D01','BP004','2026-03-25','123','2026-03-26','456','2026-03-27','789','2026-03-28','2026-03-29','nama','098','1','1','produk','1','alamat','alamat baru','2026-03-30','1','alasan','nama pjt','regris','langkah','2026-03-31','realisasi','1','1'),
 ('D01','KL001','2024-09-24','SK-1/2024 Koreksi','2024-08-22','NomorAkta1Koreksi','2024-09-21','NomorSetuju1Koreksi','2024-09-18','2024-09-23','','','','','','','','',NULL,'','Alasan 1 Koreksi','','','',NULL,'','','1'),
 ('D01','KL001','2024-09-24','SK-2/2024 Koreksi','2024-08-23','NomorAkta2Koreksi','2024-09-22','NomorSetuju2Koreksi','2024-09-19','2024-09-24','','','','','','','','',NULL,'','Alasan 2 Koreksi','','','',NULL,'','','2');
 
@@ -869,7 +858,7 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`user`,`nik`,`password`,`level`,`kd_cabang`,`nama`,`divisi_id`,`kode_jabatan`,`jabatan`,`tgl_register`,`tgl_expired`,`flg_block`,`session`,`session_date`,`user_id`,`user_id_induk`,`user_code`,`ip_address`,`flag`,`kode_perk_kas`,`kode_perk_kas_utama`,`penerimaan`,`pengeluaran`,`penerimaan_ob`,`pengeluaran_ob`,`plafon_caa`,`group_menu`,`group_menu_webtool`,`email`,`no_hp`,`imei`,`reg_id_gcm`,`fcm_token`,`flg_busy`,`sound`,`kode_group3`,`kode_area`,`kode_region`,`id_lokasi`,`ip_public`,`flg_survey`,`min_survey`,`jam_masuk`,`jam_keluar`,`initial`,`is_login`,`last_update`,`access_menu_asuransi`,`photo`,`tgl_resign`) values 
-('indra_maulana','021901013','202cb962ac59075b964b07152d234b70','1','00','Indra Maulana','IT','','Information & Technology  Department Head','2019-01-21','2025-12-31','N',NULL,NULL,855,706,'3','192.168.1.55',1,'10102','10101',0.00,0.00,0.00,0.00,0.00,'IT',NULL,'indra.maulana@kreditmandiri.co.id',NULL,NULL,'-','dXGBw9QVQFmuTdMr8Yxa-2:APA91bGUZuT1JBeKmLSnxL2AMfToO-kjvt4z3E9aKWu5EbPr5GPQKkTrebHH5IxaFuCOZqynuovyHkbPxr1cy8hs50I3JtZajzhYv8ToCaVcEkgI8g77Yx0',0,'beep','0','','','00','',0,0.00,'08:00:00','17:00:00','HO',1,'2026-03-24 23:49:41',NULL,NULL,NULL);
+('indra_maulana','021901013','202cb962ac59075b964b07152d234b70','1','00','Indra Maulana','IT','','Information & Technology  Department Head','2019-01-21','2025-12-31','N',NULL,NULL,855,706,'3','192.168.0.116',1,'10102','10101',0.00,0.00,0.00,0.00,0.00,'IT',NULL,'indra.maulana@kreditmandiri.co.id',NULL,NULL,'-','dXGBw9QVQFmuTdMr8Yxa-2:APA91bGUZuT1JBeKmLSnxL2AMfToO-kjvt4z3E9aKWu5EbPr5GPQKkTrebHH5IxaFuCOZqynuovyHkbPxr1cy8hs50I3JtZajzhYv8ToCaVcEkgI8g77Yx0',0,'beep','0','','','00','',0,0.00,'08:00:00','17:00:00','HO',1,'2026-03-19 04:15:34',NULL,NULL,NULL);
 
 /*Table structure for table `user_log` */
 
@@ -886,7 +875,7 @@ CREATE TABLE `user_log` (
   PRIMARY KEY (`id`),
   KEY `kd_menu` (`kd_menu`),
   KEY `waktu` (`waktu`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='log user yang mengakses program';
+) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='log user yang mengakses program';
 
 /*Data for the table `user_log` */
 
@@ -957,27 +946,7 @@ insert  into `user_log`(`id`,`user`,`kd_menu`,`waktu`,`ket`,`ip`,`AppVer`) value
 (64,'indra_maulana','fr_GetSystemDate','2026-03-20 08:03:18','Login Tgl System Sukses : indra_maulana Tgl System : 20 Maret 2026 IP : 192.168.0.116 OS User : DH-IT INDRA',NULL,'1.0.0.0'),
 (65,'indra_maulana','fr_LoginBPR','2026-03-20 08:03:18','Login Sukses : indra_maulana Tanggal System : 20 Maret 2026 IP : 192.168.0.116 OS User : DH-IT INDRA',NULL,'1.0.0.0'),
 (66,'indra_maulana','fr_GetSystemDate','2026-03-20 08:04:31','Login Tgl System Sukses : indra_maulana Tgl System : 20 Maret 2026 IP : 192.168.0.116 OS User : DH-IT INDRA',NULL,'1.0.0.0'),
-(67,'indra_maulana','fr_LoginBPR','2026-03-20 08:04:31','Login Sukses : indra_maulana Tanggal System : 20 Maret 2026 IP : 192.168.0.116 OS User : DH-IT INDRA',NULL,'1.0.0.0'),
-(68,'indra_maulana','fr_GetSystemDate','2026-03-24 23:49:41','Login Tgl System Sukses : indra_maulana Tgl System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(69,'indra_maulana','fr_LoginBPR','2026-03-24 23:49:41','Login Sukses : indra_maulana Tanggal System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(70,'indra_maulana','fr_GetSystemDate','2026-03-24 23:50:24','Login Tgl System Sukses : indra_maulana Tgl System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(71,'indra_maulana','fr_LoginBPR','2026-03-24 23:50:25','Login Sukses : indra_maulana Tanggal System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(72,'indra_maulana','fr_GetSystemDate','2026-03-24 23:51:28','Login Tgl System Sukses : indra_maulana Tgl System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(73,'indra_maulana','fr_LoginBPR','2026-03-24 23:51:28','Login Sukses : indra_maulana Tanggal System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(74,'indra_maulana','fr_GetSystemDate','2026-03-24 23:52:27','Login Tgl System Sukses : indra_maulana Tgl System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(75,'indra_maulana','fr_LoginBPR','2026-03-24 23:52:27','Login Sukses : indra_maulana Tanggal System : 24 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(76,'indra_maulana','fr_GetSystemDate','2026-03-25 00:11:43','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(77,'indra_maulana','fr_LoginBPR','2026-03-25 00:11:43','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(78,'indra_maulana','fr_GetSystemDate','2026-03-25 01:10:23','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(79,'indra_maulana','fr_LoginBPR','2026-03-25 01:10:23','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(80,'indra_maulana','fr_GetSystemDate','2026-03-25 01:13:44','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(81,'indra_maulana','fr_LoginBPR','2026-03-25 01:13:44','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(82,'indra_maulana','fr_GetSystemDate','2026-03-25 01:17:17','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(83,'indra_maulana','fr_LoginBPR','2026-03-25 01:17:17','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(84,'indra_maulana','fr_GetSystemDate','2026-03-25 01:19:52','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(85,'indra_maulana','fr_LoginBPR','2026-03-25 01:19:53','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(86,'indra_maulana','fr_GetSystemDate','2026-03-25 01:21:37','Login Tgl System Sukses : indra_maulana Tgl System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0'),
-(87,'indra_maulana','fr_LoginBPR','2026-03-25 01:21:37','Login Sukses : indra_maulana Tanggal System : 25 Maret 2026 IP : 192.168.1.55 OS User : USER',NULL,'1.0.0.0');
+(67,'indra_maulana','fr_LoginBPR','2026-03-20 08:04:31','Login Sukses : indra_maulana Tanggal System : 20 Maret 2026 IP : 192.168.0.116 OS User : DH-IT INDRA',NULL,'1.0.0.0');
 
 /*Table structure for table `user_password` */
 
@@ -1000,7 +969,7 @@ insert  into `user_password`(`user`,`password`,`tgl_expired`) values
 /*!50003 DROP FUNCTION IF EXISTS `get_jam` */;
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `get_jam`() RETURNS time
+/*!50003 CREATE FUNCTION `get_jam`() RETURNS time
 BEGIN
   RETURN CURTIME();
 END */$$
@@ -1011,7 +980,7 @@ DELIMITER ;
 /*!50003 DROP FUNCTION IF EXISTS `get_tgl` */;
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `get_tgl`() RETURNS date
+/*!50003 CREATE FUNCTION `get_tgl`() RETURNS date
 BEGIN
   RETURN CURDATE();
 END */$$

@@ -1,18 +1,3 @@
-/*
-SQLyog Community v13.3.1 (64 bit)
-MySQL - 10.4.32-MariaDB : Database - saftbpr
-*********************************************************************
-*/
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`saftbpr` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
 USE `saftbpr`;
 
@@ -276,30 +261,6 @@ insert  into `ref_keterangan_pelaku`(`code`,`deskripsi`) values
 ('1','Konsumen'),
 ('2','Pihak yang bekerjasama dengan LJK (antara lain vendor, investor, supplier, pejabat negara, atau rekanan)'),
 ('3','Pihak yang tidak berhubungan langsung dengan LJK');
-
-/*Table structure for table `ref_kode_form` */
-
-DROP TABLE IF EXISTS `ref_kode_form`;
-
-CREATE TABLE `ref_kode_form` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_form` varchar(10) NOT NULL,
-  `nama_form` varchar(250) NOT NULL,
-  `nama_table` varchar(250) DEFAULT NULL,
-  `is_footer` smallint(2) DEFAULT 0,
-  `is_file` smallint(2) DEFAULT 0,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `kode_form` (`kode_form`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-/*Data for the table `ref_kode_form` */
-
-insert  into `ref_kode_form`(`id`,`kode_form`,`nama_form`,`nama_table`,`is_footer`,`is_file`) values 
-(81,'01A','SAFTBPR01A','saftbpr_01a',0,0),
-(82,'01B','SAFTBPR01B','saftbpr_01b',0,0),
-(83,'00A','SAFTBPR00A','SAFTBPR00A',0,1),
-(84,'02A','SAFTBPR02A','SAFTBPR02A',0,1),
-(85,'02B','SAFTBPR02B','SAFTBPR02B',0,1);
 
 /*Table structure for table `ref_kode_sektor` */
 
