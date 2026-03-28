@@ -332,7 +332,8 @@ begin
       tgl_mulai_operasi.Date :=MyQA0301tanggal_mulai_beroperasi.Value;
       membidangusaha.Text := MyQA0301bidang_usaha_sesuai_anggaran_dasar.Text;
       memtempat_kedudukan.Text := MyQA0301tempat_kedudukan.Text;
-      cb_akuntan_publik.EditValue := MyQA0301opini_akuntan_publik.Text;
+      akuntan_publik.EditValue := MyQA0301opini_akuntan_publik.Text;
+      memnama_akuntan.Text := MyQA0301nama_akuntan_publik.Text;
 
       //Footer
       memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0301_riwayat_pendirian_bpr_footer ');
@@ -357,8 +358,8 @@ begin
                         ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
                         ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
                         ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
-                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
-                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ', `opini_akuntan_publik` = '+IntToStr(akuntan_publik.EditValue)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(memnama_akuntan.Text)+
                         ' WHERE `nomor_perubahan_anggaran_dasar` = '+
                         QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
 
@@ -436,8 +437,8 @@ begin
                         ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
                         ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
                         ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
-                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
-                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ', `opini_akuntan_publik` = '+IntToStr(akuntan_publik.EditValue)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(memnama_akuntan.Text)+
                         ' ON DUPLICATE KEY UPDATE '+
                         '`kode_komponen` = VALUES(`kode_komponen`),'+
                         '`nomor_akta_pendirian` = VALUES(`nomor_akta_pendirian`),'+

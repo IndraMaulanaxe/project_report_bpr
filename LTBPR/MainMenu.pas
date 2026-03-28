@@ -181,6 +181,8 @@ type
     procedure bt_formD0000Click(Sender: TObject);
     procedure bt_formF0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -269,6 +271,22 @@ begin
 
   if (nCountCek > 0) then
       bt_ganti_bulan.Enabled:=True;
+end;
+
+procedure Tfr_MainMenu.FormResize(Sender: TObject);
+begin
+  CategoryPanelGroup1.Width := Round(Self.ClientWidth * 0.25);
+
+  if CategoryPanelGroup1.Width < 220 then
+    CategoryPanelGroup1.Width := 220;
+
+  if CategoryPanelGroup1.Width > 350 then
+    CategoryPanelGroup1.Width := 350;
+end;
+
+procedure Tfr_MainMenu.FormShow(Sender: TObject);
+begin
+  FormResize(Sender);
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);

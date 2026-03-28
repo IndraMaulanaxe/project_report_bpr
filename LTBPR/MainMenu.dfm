@@ -1,9 +1,10 @@
 object fr_MainMenu: Tfr_MainMenu
   Left = 0
   Top = 0
+  Width = 1151
+  Height = 725
+  AutoScroll = True
   Caption = 'Main Menu - Development Version'
-  ClientHeight = 686
-  ClientWidth = 1135
   Color = 3355443
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,6 +17,8 @@ object fr_MainMenu: Tfr_MainMenu
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
+  OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 16
   object cxGroupBox1: TcxGroupBox
@@ -378,10 +381,12 @@ object fr_MainMenu: Tfr_MainMenu
     end
   end
   object CategoryPanelGroup1: TCategoryPanelGroup
-    Left = 0
-    Top = 180
+    AlignWithMargins = True
+    Left = 3
+    Top = 183
     Width = 361
-    Height = 388
+    Height = 382
+    VertScrollBar.Position = 753
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -392,9 +397,11 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
-    ExplicitHeight = 394
+    ExplicitLeft = 0
+    ExplicitTop = 180
+    ExplicitHeight = 388
     object cp_lap_lanjutan: TCategoryPanel
-      Top = 474
+      Top = 414
       Height = 76
       Caption = 'Laporan Keberlanjutan'
       Color = clGray
@@ -412,13 +419,11 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_transparasi: TCategoryPanel
-      Top = 444
-      Height = 30
+      Top = -309
+      Height = 723
       Caption = 'Transparansi Tata Kelola'
       Color = clGray
-      Collapsed = True
       TabOrder = 1
-      ExpandedHeight = 723
       object bt_formE0100: TcxButton
         Left = 0
         Top = 0
@@ -503,6 +508,8 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 6
         WordWrap = True
         OnClick = bt_formE0500Click
+        ExplicitLeft = -1
+        ExplicitTop = 366
       end
       object bt_formE0402: TcxButton
         Left = 0
@@ -618,7 +625,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_sp_kebenaran_lpran: TCategoryPanel
-      Top = 368
+      Top = -385
       Height = 76
       Caption = 'Surat Pernyataan Kebenaran Laporan Keuangan Tahunan'
       Color = clGray
@@ -636,7 +643,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_opini_akuntan: TCategoryPanel
-      Top = 338
+      Top = -415
       Height = 30
       Caption = 'Opini dari Akuntan'
       Color = clGray
@@ -645,7 +652,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 31
     end
     object cp_lap_akuntan_publik: TCategoryPanel
-      Top = 265
+      Top = -488
       Height = 73
       Caption = 'Laporan Akuntan Publik'
       Color = clGray
@@ -663,7 +670,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_lap_keuangan: TCategoryPanel
-      Top = 235
+      Top = -518
       Height = 30
       Caption = 'Laporan Keuangan Tahunan'
       Color = clGray
@@ -672,7 +679,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 185
     end
     object cp_sdm: TCategoryPanel
-      Top = 205
+      Top = -548
       Height = 30
       Caption = 'Pengembangan Sumber Daya Manusia'
       Color = clGray
@@ -692,7 +699,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_laporan_manajemen: TCategoryPanel
-      Top = 175
+      Top = -578
       Height = 30
       Caption = 'Laporan Manajemen'
       Color = clGray
@@ -745,7 +752,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_strategi: TCategoryPanel
-      Top = 145
+      Top = -608
       Height = 30
       Caption = 'Strategi Dan Kebijakan Manejemen'
       Color = clGray
@@ -765,7 +772,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_perkembanganbpr: TCategoryPanel
-      Top = 115
+      Top = -638
       Height = 30
       Caption = 'Perkembangan Usaha BPR'
       Color = clGray
@@ -807,7 +814,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_kepemilikan: TCategoryPanel
-      Top = 85
+      Top = -668
       Height = 30
       Caption = 'Kepemilikan'
       Color = clGray
@@ -816,7 +823,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 85
     end
     object cp_kepengurusan: TCategoryPanel
-      Top = 0
+      Top = -753
       Height = 85
       Caption = 'Kepengurusan'
       Color = clGray

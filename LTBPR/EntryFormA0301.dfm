@@ -1,9 +1,9 @@
 inherited fr_EntryFormA0301: Tfr_EntryFormA0301
   Caption = 'Entry Form A0301 -  Riwayat Pendirian BPR '
-  ClientHeight = 494
+  ClientHeight = 544
   ClientWidth = 558
   ExplicitWidth = 564
-  ExplicitHeight = 523
+  ExplicitHeight = 573
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -13,7 +13,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 558
     ExplicitHeight = 450
-    Height = 450
+    Height = 500
     Width = 558
     object nomor_akta_pendirian: TcxTextEdit
       Tag = 1
@@ -306,9 +306,9 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     end
     object cxLabel9: TcxLabel
       Left = 17
-      Top = 357
+      Top = 352
       AutoSize = False
-      Caption = 'Nama Akuntan Publik'
+      Caption = 'Opini Akuntan Publik'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindow
@@ -320,13 +320,13 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Transparent = True
       Height = 24
       Width = 135
-      AnchorY = 369
+      AnchorY = 364
     end
-    object cb_akuntan_publik: TcxLookupComboBox
+    object akuntan_publik: TcxLookupComboBox
       Tag = 1
       Left = 185
-      Top = 358
-      Hint = 'Nama Akuntan Publik'
+      Top = 354
+      Hint = 'Opini Akuntan Publik'
       ParentColor = True
       Properties.KeyFieldNames = 'sandi'
       Properties.ListColumns = <
@@ -341,7 +341,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     object memketerangan: TcxMemo
       Tag = 1
       Left = 185
-      Top = 388
+      Top = 435
       Hint = 'Keterangan'
       ParentColor = True
       Properties.OnChange = MemKeteranganPropertiesChange
@@ -352,7 +352,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
     end
     object cxLabel10: TcxLabel
       Left = 17
-      Top = 384
+      Top = 431
       AutoSize = False
       Caption = 'Keterangan'
       ParentFont = False
@@ -368,7 +368,7 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Transparent = True
       Height = 30
       Width = 135
-      AnchorY = 399
+      AnchorY = 446
     end
     object kode_komponen: TcxButtonEdit
       Left = 185
@@ -407,9 +407,41 @@ inherited fr_EntryFormA0301: Tfr_EntryFormA0301
       Width = 135
       AnchorY = 34
     end
+    object memnama_akuntan: TcxMemo
+      Tag = 1
+      Left = 185
+      Top = 384
+      Hint = 'Nama Akuntan Publik'
+      ParentColor = True
+      Properties.OnChange = MemKeteranganPropertiesChange
+      Style.TextColor = clWindow
+      TabOrder = 24
+      Height = 47
+      Width = 298
+    end
+    object cxLabel11: TcxLabel
+      Left = 17
+      Top = 382
+      AutoSize = False
+      Caption = 'Nama Akuntan Publik'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindow
+      Style.Font.Height = -13
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.IsFontAssigned = True
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Alignment.Vert = taVCenter
+      Properties.WordWrap = True
+      Transparent = True
+      Height = 30
+      Width = 135
+      AnchorY = 397
+    end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 450
+    Top = 500
     ExplicitTop = 450
     ExplicitWidth = 558
     ExplicitHeight = 44

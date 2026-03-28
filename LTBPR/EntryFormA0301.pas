@@ -57,7 +57,7 @@ type
     cxLabel8: TcxLabel;
     memtempat_kedudukan: TcxMemo;
     cxLabel9: TcxLabel;
-    cb_akuntan_publik: TcxLookupComboBox;
+    akuntan_publik: TcxLookupComboBox;
     memketerangan: TcxMemo;
     cxLabel10: TcxLabel;
     kode_komponen: TcxButtonEdit;
@@ -66,6 +66,8 @@ type
     MyQref_opini_akuntan_publik: TMyQuery;
     MyQref_opini_akuntan_publiksandi: TStringField;
     MyQref_opini_akuntan_publiknama: TStringField;
+    memnama_akuntan: TcxMemo;
+    cxLabel11: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
