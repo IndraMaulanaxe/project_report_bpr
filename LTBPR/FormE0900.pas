@@ -57,6 +57,8 @@ type
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1jumlah_perdata: TcxGridDBColumn;
     cxGridDBTableView1jumlah_pidana: TcxGridDBColumn;
+    MyQE0900keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

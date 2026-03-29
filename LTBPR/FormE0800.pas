@@ -69,6 +69,8 @@ type
     cxGridDBTableView1pegawai_tetap_tahun_laporan: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_sebelumnya: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_laporan: TcxGridDBColumn;
+    MyQE0800keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

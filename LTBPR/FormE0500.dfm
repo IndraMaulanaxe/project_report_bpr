@@ -79,6 +79,12 @@ inherited fr_FormE0500: Tfr_FormE0500
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
+        object cxGridDBTableView1keterangan: TcxGridDBColumn
+          Caption = 'Nama Komponen'
+          DataBinding.FieldName = 'keterangan'
+          HeaderAlignmentHorz = taCenter
+          Width = 250
+        end
         object cxGridDBTableView1direksi_jumlah_orang: TcxGridDBColumn
           Caption = 'Direksi (Jumlah Orang)'
           DataBinding.FieldName = 'direksi_jumlah_orang'
@@ -255,7 +261,10 @@ inherited fr_FormE0500: Tfr_FormE0500
   object MyQE0500: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0500_kebijakan_berdasarkan_rups')
+      
+        'SELECT a.*, b.keterangan FROM ltbprk_e0500_kebijakan_berdasarkan' +
+        '_rups a'
+      'LEFT JOIN ref_remunerasi b ON a.kode_komponen=b.sandi')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -279,6 +288,10 @@ inherited fr_FormE0500: Tfr_FormE0500
     end
     object MyQE0500dewan_komisaris_jumlah_keseluruhan: TFloatField
       FieldName = 'dewan_komisaris_jumlah_keseluruhan'
+    end
+    object MyQE0500keterangan: TStringField
+      FieldName = 'keterangan'
+      Size = 200
     end
   end
 end

@@ -13,7 +13,6 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
     ExplicitWidth = 569
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 569
     ExplicitHeight = 393
     Height = 393
@@ -210,6 +209,7 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefLembaga
+      Properties.OnChange = cb_ref_lembagaPropertiesChange
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindow
       Style.Font.Height = -13
@@ -239,7 +239,6 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       AnchorY = 148
     end
     object cb_sandi_bank: TcxLookupComboBox
-      Tag = 1
       Left = 185
       Top = 137
       Hint = 'Sandi Bank'
@@ -262,7 +261,6 @@ inherited fr_EntryFormA0506: Tfr_EntryFormA0506
       Width = 298
     end
     object npwp: TcxTextEdit
-      Tag = 1
       Left = 185
       Top = 167
       Hint = 'NPWP'

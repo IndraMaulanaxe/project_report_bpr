@@ -56,6 +56,8 @@ type
     cxGridDBTableView1flag_detail: TcxGridDBColumn;
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1rasio_gaji_perbandingan: TcxGridDBColumn;
+    MyQE0600keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -358,7 +360,7 @@ begin
       //assignment
       //kode_komponen.Text := '032010000000';
 
-      cb_komponen.Enabled := False;
+      //cb_komponen.Enabled := False;
     end;
   fr_EntryFormE0600.Tag := 0;
   fr_EntryFormE0600.ShowModal;

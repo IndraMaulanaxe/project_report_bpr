@@ -79,6 +79,12 @@ inherited fr_FormE0800: Tfr_FormE0800
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
+        object cxGridDBTableView1keterangan: TcxGridDBColumn
+          Caption = 'Nama Komponen'
+          DataBinding.FieldName = 'keterangan'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
         object cxGridDBTableView1anggota_direksi_tahun_sebelumnya: TcxGridDBColumn
           Caption = 'Jumlah Direksi Tahun Lalu'
           DataBinding.FieldName = 'anggota_direksi_tahun_sebelumnya'
@@ -279,7 +285,10 @@ inherited fr_FormE0800: Tfr_FormE0800
   object MyQE0800: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0800_penyimpangan_internal')
+      
+        'SELECT a.*, b.keterangan FROM ltbprk_e0800_penyimpangan_internal' +
+        ' a'
+      'LEFT JOIN ref_jumlah_penyimpangan b ON a.kode_komponen=b.sandi')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -315,6 +324,10 @@ inherited fr_FormE0800: Tfr_FormE0800
     end
     object MyQE0800pegawai_tidak_tetap_tahun_laporan: TIntegerField
       FieldName = 'pegawai_tidak_tetap_tahun_laporan'
+    end
+    object MyQE0800keterangan: TStringField
+      FieldName = 'keterangan'
+      Size = 100
     end
   end
 end

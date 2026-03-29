@@ -22,11 +22,11 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
     Height = 475
     Width = 493
     object cxGroupBox1: TcxGroupBox
-      Left = 24
+      Left = 16
       Top = 52
       Caption = 'Pihak Yang Memiliki'
       Style.TextColor = clWhite
-      TabOrder = 6
+      TabOrder = 4
       Height = 118
       Width = 466
       object cxLabel1: TcxLabel
@@ -167,7 +167,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 176
       Caption = 'Pengambil Keputusan'
       Style.TextColor = clWhite
-      TabOrder = 7
+      TabOrder = 6
       Height = 118
       Width = 466
       object cxLabel7: TcxLabel
@@ -385,7 +385,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 8
+      TabOrder = 7
       Height = 24
       Width = 298
     end
@@ -411,7 +411,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 3
       Height = 24
       Width = 152
     end
@@ -469,7 +469,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 121
     end
     object cxLabel5: TcxLabel
@@ -508,7 +508,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 9
       Height = 47
       Width = 298
     end

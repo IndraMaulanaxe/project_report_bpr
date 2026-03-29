@@ -71,6 +71,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure cb_ref_lembagaPropertiesChange(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -80,6 +81,7 @@ type
     { Public declarations }
     property AllowDrag: Boolean read FAllowDrag write FAllowDrag;
     function Cek_Validasi(Sender: TObject): Boolean;
+    function vcek_validasi_data: Boolean;
   end;
 
 var
@@ -90,6 +92,58 @@ implementation
 uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
 
 {$R *.dfm}
+
+function Tfr_EntryFormA0506.vcek_validasi_data: Boolean;
+var
+  ValReferensi: string;
+begin
+  Result := True;
+  ValReferensi := Trim(cb_ref_lembaga.Text);
+
+
+  if (ValReferensi = '1 - Bank') or (ValReferensi = '1') then
+  begin
+    if Trim(cb_sandi_bank.Text) = '' then
+    begin
+      ShowMessage('Sandi Bank WAJIB diisi jika Referensi Lembaga adalah Bank!');
+      cb_sandi_bank.SetFocus;
+      Result := False;
+      Exit;
+    end;
+  end
+
+  else if (ValReferensi = 'Lembaga Lain') or (ValReferensi = '2') then
+  begin
+    if Trim(npwp.Text) = '' then
+    begin
+      ShowMessage('NPWP WAJIB diisi jika Referensi Lembaga adalah Lembaga Lain!');
+      npwp.SetFocus;
+      Result := False;
+      Exit;
+    end;
+  end;
+
+end;
+
+
+procedure Tfr_EntryFormA0506.cb_ref_lembagaPropertiesChange(Sender: TObject);
+begin
+  inherited;
+if (cb_ref_lembaga.Text = '1 - Bank') then
+  begin
+    cb_sandi_bank.Enabled := True;
+
+    npwp.Clear;
+    npwp.Enabled := False;
+  end
+  else if (cb_ref_lembaga.Text = '2 - Lembaga Lain') then
+  begin
+    cb_sandi_bank.Clear;
+    cb_sandi_bank.Enabled := False;
+
+    npwp.Enabled := True;
+  end;
+end;
 
 function Tfr_EntryFormA0506.Cek_Validasi(Sender: TObject): Boolean;
 var
@@ -348,6 +402,8 @@ begin
   inherited;
   if not Cek_Validasi(Sender) then
     Exit;
+
+  if not vcek_validasi_data then Exit;
 
   Tag := 2;
   Close;

@@ -100,7 +100,6 @@ implementation
 uses Types, TypInfo, dm_bpr, SHFolder, DateUtils;
 
 {$R *.dfm}
-
 procedure Tfr_FormA0506.judulMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var
@@ -289,6 +288,8 @@ begin
 end;
 
 procedure Tfr_FormA0506.btlb_EditClick(Sender: TObject);
+var
+  vSandiBank, vNPWP: string;
 begin
   inherited;
   if (MyQA0506.RecordCount=0) or (not MyQA0506.Active) then
@@ -344,13 +345,24 @@ begin
     begin
       with fr_EntryFormA0506 do
         begin
+
+        if VarIsNull(cb_sandi_bank.EditValue) or (Trim(VarToStr(cb_sandi_bank.EditValue)) = '') then
+          vSandiBank := QuotedStr('')
+        else
+          vSandiBank := QuotedStr(VarToStr(cb_sandi_bank.EditValue));
+
+        if VarIsNull(npwp.Text) or (Trim(VarToStr(npwp.Text)) = '') then
+          vNPWP := QuotedStr('')
+        else
+          vNPWP := QuotedStr(Trim(npwp.Text));
+
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` '+
                         'SET `kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `referensi_lembaga` = '+QuotedStr(cb_ref_lembaga.EditValue)+
                         ', `nama_bank_lembaga_lain` = '+QuotedStr(memnama_bank_lembaga.Text)+
-                        ', `sandi_bank` = '+QuotedStr(cb_sandi_bank.EditValue)+
-                        ', `npwp` = '+QuotedStr(npwp.Text)+
+                        ', `sandi_bank` = '+vSandiBank+
+                        ', `npwp` = '+vNPWP+
                         ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.Text)+
                         ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.Text)+
                         ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+
@@ -378,8 +390,11 @@ begin
 end;
 
 procedure Tfr_FormA0506.btlb_InsertClick(Sender: TObject);
+var
+  vSandiBank, vNPWP: string;
 begin
   inherited;
+
   if (not MyQA0506.Active) then
     begin
       Pesan(2,'Maaf, table belum aktif...!');
@@ -424,13 +439,24 @@ begin
     begin
       with fr_EntryFormA0506 do
         begin
+
+        if VarIsNull(cb_sandi_bank.EditValue) or (Trim(VarToStr(cb_sandi_bank.EditValue)) = '') then
+          vSandiBank := QuotedStr('')
+        else
+          vSandiBank := QuotedStr(VarToStr(cb_sandi_bank.EditValue));
+
+        if VarIsNull(npwp.Text) or (Trim(VarToStr(npwp.Text)) = '') then
+          vNPWP := QuotedStr('')
+        else
+          vNPWP := QuotedStr(Trim(npwp.Text));
+
           // Insert
           MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga` SET '+
                         '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                         ', `referensi_lembaga` = '+QuotedStr(cb_ref_lembaga.EditValue)+
                         ', `nama_bank_lembaga_lain` = '+QuotedStr(memnama_bank_lembaga.Text)+
-                        ', `sandi_bank` = '+QuotedStr(cb_sandi_bank.EditValue)+
-                        ', `npwp` = '+QuotedStr(npwp.Text)+
+                        ', `sandi_bank` = '+vSandiBank+
+                        ', `npwp` = '+vNPWP+
                         ', `jenis_kerja_sama` = '+QuotedStr(memjenis_kerjasama.Text)+
                         ', `uraian_kerja_sama` = '+QuotedStr(memuraian_kerjasama.Text)+
                         ', `tanggal_mulai_kerja_sama` = '+DateToStrSQL(tgl_kerjasama.Date)+

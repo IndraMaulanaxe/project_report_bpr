@@ -14,6 +14,7 @@ inherited fr_FormE0201: Tfr_FormE0201
     ExplicitWidth = 861
   end
   inherited PanelContent: TcxGroupBox
+    ExplicitTop = -1
     ExplicitWidth = 861
     ExplicitHeight = 398
     Height = 398
@@ -22,12 +23,15 @@ inherited fr_FormE0201: Tfr_FormE0201
       Left = 2
       Top = 2
       Width = 857
-      Height = 394
+      Height = 230
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitLeft = 3
+      ExplicitTop = -4
+      ExplicitHeight = 276
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -96,6 +100,265 @@ inherited fr_FormE0201: Tfr_FormE0201
       end
       object cxGridLevel1: TcxGridLevel
         GridView = cxGridDBTableView1
+      end
+    end
+    object cxGroupBox1: TcxGroupBox
+      Left = 2
+      Top = 232
+      Align = alBottom
+      Caption = 'Footer'
+      Style.TextColor = clWhite
+      TabOrder = 1
+      ExplicitLeft = 1
+      ExplicitTop = 233
+      Height = 164
+      Width = 857
+      object Label1: TcxLabel
+        Left = 18
+        Top = 17
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = 'Tindak Lanjut'
+        ParentBiDiMode = False
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.TextColor = clWhite
+        Style.IsFontAssigned = True
+        Properties.Alignment.Horz = taLeftJustify
+        Properties.Alignment.Vert = taVCenter
+        Properties.WordWrap = True
+        Transparent = True
+        Height = 19
+        Width = 135
+        AnchorY = 27
+      end
+      object cxLabel10: TcxLabel
+        Left = 18
+        Top = 62
+        AutoSize = False
+        Caption = 'Penjelasan Lebih Lanjut'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.TextColor = clWhite
+        Style.IsFontAssigned = True
+        Properties.Alignment.Horz = taLeftJustify
+        Properties.Alignment.Vert = taVCenter
+        Properties.WordWrap = True
+        Transparent = True
+        Height = 31
+        Width = 167
+        AnchorY = 78
+      end
+      object memlebih_lanjut_footer: TcxMemo
+        Tag = 1
+        Left = 186
+        Top = 15
+        Hint = 'Penjesalan Lebih Lanjut'
+        ParentColor = True
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.TextColor = clWindow
+        Style.IsFontAssigned = True
+        TabOrder = 2
+        Height = 47
+        Width = 655
+      end
+      object memtindak_lanjut_footer: TcxMemo
+        Tag = 1
+        Left = 186
+        Top = 66
+        Hint = 'Tindak Lanjut'
+        ParentColor = True
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.TextColor = clWindow
+        Style.IsFontAssigned = True
+        TabOrder = 3
+        Height = 48
+        Width = 655
+      end
+      object cxGroupBox2: TcxGroupBox
+        Left = 2
+        Top = 118
+        Align = alBottom
+        PanelStyle.Active = True
+        ParentBackground = False
+        TabOrder = 4
+        OnMouseDown = bgMouseDown
+        OnMouseMove = bgMouseMove
+        OnMouseUp = bgMouseUp
+        ExplicitLeft = 0
+        ExplicitTop = 273
+        Height = 44
+        Width = 853
+        object cxButton1: TcxButton
+          AlignWithMargins = True
+          Left = 5
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Refresh'
+          Align = alLeft
+          Caption = 'Refresh'
+          Enabled = False
+          TabOrder = 0
+          Visible = False
+        end
+        object cxButton2: TcxButton
+          AlignWithMargins = True
+          Left = 11
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 1'
+          Enabled = False
+          TabOrder = 1
+          Visible = False
+        end
+        object cxButton3: TcxButton
+          AlignWithMargins = True
+          Left = 17
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 2'
+          Enabled = False
+          TabOrder = 2
+          Visible = False
+        end
+        object cxButton4: TcxButton
+          AlignWithMargins = True
+          Left = 757
+          Top = 5
+          Width = 85
+          Height = 34
+          Hint = 'Simpan'
+          Align = alRight
+          Caption = 'Simpan'
+          OptionsImage.ImageIndex = 78
+          TabOrder = 3
+          OnClick = cxButton4Click
+          ExplicitLeft = 666
+        end
+        object cxButton5: TcxButton
+          AlignWithMargins = True
+          Left = 848
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Keluar'
+          Align = alRight
+          Caption = 'Keluar'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 4
+          Visible = False
+          OnClick = btlb_CloseClick
+        end
+        object cxButton7: TcxButton
+          AlignWithMargins = True
+          Left = 751
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Cetak'
+          Align = alRight
+          Caption = 'Cetak'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 5
+          Visible = False
+          ExplicitLeft = 660
+        end
+        object cxButton8: TcxButton
+          AlignWithMargins = True
+          Left = 23
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 3'
+          Enabled = False
+          TabOrder = 6
+          Visible = False
+        end
+        object cxButton9: TcxButton
+          AlignWithMargins = True
+          Left = 745
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Hapus'
+          Align = alRight
+          Caption = 'Hapus'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 7
+          Visible = False
+          ExplicitLeft = 654
+        end
+        object cxButton10: TcxButton
+          AlignWithMargins = True
+          Left = 739
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Koreksi'
+          Align = alRight
+          Caption = 'Koreksi'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 8
+          Visible = False
+          ExplicitLeft = 648
+        end
+        object cxButton11: TcxButton
+          AlignWithMargins = True
+          Left = 733
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Tambah'
+          Align = alRight
+          Caption = 'Tambah'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 9
+          Visible = False
+          ExplicitLeft = 642
+        end
+        object cxButton12: TcxButton
+          AlignWithMargins = True
+          Left = 727
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Pilih'
+          Align = alRight
+          Caption = 'Pilih'
+          Enabled = False
+          TabOrder = 10
+          Visible = False
+          ExplicitLeft = 636
+        end
       end
     end
   end
@@ -171,7 +434,6 @@ inherited fr_FormE0201: Tfr_FormE0201
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
-      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -207,8 +469,8 @@ inherited fr_FormE0201: Tfr_FormE0201
       '&WHERE')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 88
-    Top = 248
+    Left = 96
+    Top = 232
     MacroData = <
       item
         Name = 'WHERE'

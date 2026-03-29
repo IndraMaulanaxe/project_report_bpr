@@ -61,6 +61,8 @@ type
     cxGridDBTableView1direksi_jumlah_keseluruhan: TcxGridDBColumn;
     cxGridDBTableView1dewan_komisaris_jumlah_orang: TcxGridDBColumn;
     cxGridDBTableView1dewan_komisaris_jumlah_keseluruhan: TcxGridDBColumn;
+    MyQE0500keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

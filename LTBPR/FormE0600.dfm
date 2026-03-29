@@ -79,6 +79,11 @@ inherited fr_FormE0600: Tfr_FormE0600
           HeaderAlignmentHorz = taCenter
           Width = 100
         end
+        object cxGridDBTableView1keterangan: TcxGridDBColumn
+          Caption = 'Nama Komponen'
+          DataBinding.FieldName = 'keterangan'
+          Width = 200
+        end
         object cxGridDBTableView1rasio_gaji_perbandingan: TcxGridDBColumn
           Caption = 'Rasio Gaji'
           DataBinding.FieldName = 'rasio_gaji_perbandingan'
@@ -237,7 +242,10 @@ inherited fr_FormE0600: Tfr_FormE0600
   object MyQE0600: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'select * from ltbprk_e0600_rasio_gaji_tinggi_rendah')
+      
+        'SELECT a.*, b.keterangan FROM ltbprk_e0600_rasio_gaji_tinggi_ren' +
+        'dah a'
+      'LEFT JOIN ref_rasio_gaji b ON a.kode_komponen=b.sandi')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -252,6 +260,10 @@ inherited fr_FormE0600: Tfr_FormE0600
     end
     object MyQE0600rasio_gaji_perbandingan: TFloatField
       FieldName = 'rasio_gaji_perbandingan'
+    end
+    object MyQE0600keterangan: TStringField
+      FieldName = 'keterangan'
+      Size = 255
     end
   end
 end
