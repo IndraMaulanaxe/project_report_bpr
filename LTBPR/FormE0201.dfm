@@ -14,7 +14,6 @@ inherited fr_FormE0201: Tfr_FormE0201
     ExplicitWidth = 861
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 861
     ExplicitHeight = 398
     Height = 398
@@ -29,9 +28,6 @@ inherited fr_FormE0201: Tfr_FormE0201
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = -4
-      ExplicitHeight = 276
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -102,15 +98,14 @@ inherited fr_FormE0201: Tfr_FormE0201
         GridView = cxGridDBTableView1
       end
     end
-    object cxGroupBox1: TcxGroupBox
+    object cxGBFooter: TcxGroupBox
       Left = 2
       Top = 232
       Align = alBottom
       Caption = 'Footer'
       Style.TextColor = clWhite
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 233
+      Visible = False
       Height = 164
       Width = 857
       object Label1: TcxLabel
@@ -203,8 +198,6 @@ inherited fr_FormE0201: Tfr_FormE0201
         OnMouseDown = bgMouseDown
         OnMouseMove = bgMouseMove
         OnMouseUp = bgMouseUp
-        ExplicitLeft = 0
-        ExplicitTop = 273
         Height = 44
         Width = 853
         object cxButton1: TcxButton
@@ -256,7 +249,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           OptionsImage.ImageIndex = 78
           TabOrder = 3
           OnClick = cxButton4Click
-          ExplicitLeft = 666
         end
         object cxButton5: TcxButton
           AlignWithMargins = True
@@ -286,7 +278,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           OptionsImage.ImageIndex = 78
           TabOrder = 5
           Visible = False
-          ExplicitLeft = 660
         end
         object cxButton8: TcxButton
           AlignWithMargins = True
@@ -313,7 +304,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           OptionsImage.ImageIndex = 78
           TabOrder = 7
           Visible = False
-          ExplicitLeft = 654
         end
         object cxButton10: TcxButton
           AlignWithMargins = True
@@ -328,7 +318,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           OptionsImage.ImageIndex = 78
           TabOrder = 8
           Visible = False
-          ExplicitLeft = 648
         end
         object cxButton11: TcxButton
           AlignWithMargins = True
@@ -343,7 +332,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           OptionsImage.ImageIndex = 78
           TabOrder = 9
           Visible = False
-          ExplicitLeft = 642
         end
         object cxButton12: TcxButton
           AlignWithMargins = True
@@ -357,7 +345,6 @@ inherited fr_FormE0201: Tfr_FormE0201
           Enabled = False
           TabOrder = 10
           Visible = False
-          ExplicitLeft = 636
         end
       end
     end
@@ -369,15 +356,18 @@ inherited fr_FormE0201: Tfr_FormE0201
     Width = 861
     inherited btlb_Refresh: TcxButton
       OnClick = btlb_RefreshClick
+      ExplicitLeft = -32
+      ExplicitTop = 4
     end
     inherited btlb_tools1: TcxButton
+      Left = 187
       Width = 0
       Enabled = False
       Visible = False
       ExplicitWidth = 0
     end
     inherited btlb_tools2: TcxButton
-      Left = 102
+      Left = 193
       Width = 0
       Enabled = False
       Visible = False
@@ -413,7 +403,7 @@ inherited fr_FormE0201: Tfr_FormE0201
       ExplicitWidth = 0
     end
     inherited btlb_tools3: TcxButton
-      Left = 108
+      Left = 199
       Width = 0
       Enabled = False
       Visible = False
@@ -442,6 +432,20 @@ inherited fr_FormE0201: Tfr_FormE0201
       Visible = False
       ExplicitLeft = 474
       ExplicitWidth = 0
+    end
+    object btlb_Footer: TcxButton
+      AlignWithMargins = True
+      Left = 96
+      Top = 5
+      Width = 85
+      Height = 32
+      Hint = 'Refresh'
+      Align = alLeft
+      Caption = 'Footer'
+      TabOrder = 12
+      OnClick = btlb_FooterClick
+      ExplicitLeft = 13
+      ExplicitTop = 10
     end
   end
   inherited PanelTopSystem: TPanel

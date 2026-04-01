@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormA05072, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormA05072 = class(Tfr_new_template)
@@ -65,6 +66,22 @@ type
     cxGridDBTableView1kategori_peserta: TcxGridDBColumn;
     cxGridDBTableView1jumlah_peserta: TcxGridDBColumn;
     cxGridDBTableView1uraian_kegiatan: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memketerangan_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -80,6 +97,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -325,8 +344,6 @@ begin
       cb_peserta.EditValue := MyQA05072kategori_peserta.Text;
       jumlah_peserta.Value := MyQA05072jumlah_peserta.Value;
       memuraian_kegiatan.Text := MyQA05072uraian_kegiatan.Text;
-      //Footer
-      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a05072_kegiatan_pengembangan_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -348,13 +365,6 @@ begin
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQA05072kode_komponen.Text)+
                         ' AND `pihak_pelaksana` = '+QuotedStr(MyQA05072pihak_pelaksana.Text)+
                         ' AND `kategori_peserta` = '+QuotedStr(MyQA05072kategori_peserta.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
         end;
       if MyQA05072.Active then
         MyQA05072.Refresh
@@ -364,6 +374,14 @@ begin
 
   fr_EntryFormA05072.Free;
   fr_EntryFormA05072 := nil;
+end;
+
+procedure Tfr_FormA05072.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //Footer
+  memketerangan_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a05072_kegiatan_pengembangan_footer ');
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormA05072.btlb_InsertClick(Sender: TObject);
@@ -424,14 +442,6 @@ begin
                         '`tanggal_pelaksanaan` = VALUES(`tanggal_pelaksanaan`),'+
                         '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
                         '`uraian_kegiatan` = VALUES(`uraian_kegiatan`)');
-
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
         end;
       if MyQA05072.Active then
         MyQA05072.Refresh
@@ -450,6 +460,19 @@ begin
     MyQA05072.Refresh
   else
     MyQA05072.Open;
+end;
+
+procedure Tfr_FormA05072.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a05072_kegiatan_pengembangan_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormA05072.cxGridDBTableView1CellDblClick(

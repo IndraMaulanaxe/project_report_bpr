@@ -2,61 +2,21 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
   Caption = 
     'Entry Form E0202 - Pelaksanaan Tugas dan Tanggung Jawab Anggota ' +
     'Dewan Komisaris'
-  ClientHeight = 301
-  ClientWidth = 576
-  ExplicitWidth = 582
-  ExplicitHeight = 330
+  ClientHeight = 182
+  ClientWidth = 494
+  ExplicitWidth = 500
+  ExplicitHeight = 211
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 576
+    Width = 494
     ExplicitWidth = 576
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 576
     ExplicitHeight = 257
-    Height = 257
-    Width = 576
-    object memlebih_lanjut: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 190
-      Hint = 'Penjesalan Lebih Lanjut'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 9
-      Height = 47
-      Width = 298
-    end
-    object cxLabel10: TcxLabel
-      Left = 17
-      Top = 186
-      AutoSize = False
-      Caption = 'Penjelasan Lebih Lanjut'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 31
-      Width = 135
-      AnchorY = 202
-    end
+    Height = 138
+    Width = 494
     object kode_komponen: TcxButtonEdit
       Left = 185
       Top = 23
@@ -79,7 +39,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 1
       Height = 24
       Width = 160
     end
@@ -101,48 +61,6 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       Height = 24
       Width = 135
       AnchorY = 34
-    end
-    object Label1: TcxLabel
-      Left = 17
-      Top = 129
-      AutoSize = False
-      BiDiMode = bdLeftToRight
-      Caption = 'Tindak Lanjut'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWhite
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 37
-      Width = 135
-      AnchorY = 148
-    end
-    object memtindak_lanjut: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 136
-      Hint = 'Tindak Lanjut'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 8
-      Height = 48
-      Width = 298
     end
     object cxLabel2: TcxLabel
       Left = 17
@@ -179,7 +97,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 3
       Height = 47
       Width = 298
     end
@@ -224,18 +142,18 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 6
+      TabOrder = 2
       Height = 24
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 257
+    Top = 138
     ExplicitTop = 257
     ExplicitWidth = 576
     ExplicitHeight = 44
     Height = 44
-    Width = 576
+    Width = 494
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -265,14 +183,14 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 389
+      Left = 307
       Height = 34
       OnClick = btlb_SaveClick
       ExplicitLeft = 389
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 571
+      Left = 489
       Width = 0
       Height = 34
       Enabled = False
@@ -282,13 +200,13 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 480
+      Left = 398
       Height = 34
       ExplicitLeft = 480
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 383
+      Left = 301
       Width = 0
       Height = 34
       Enabled = False
@@ -308,7 +226,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 377
+      Left = 295
       Width = 0
       Height = 34
       Enabled = False
@@ -318,7 +236,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 371
+      Left = 289
       Width = 0
       Height = 34
       Enabled = False
@@ -328,7 +246,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 365
+      Left = 283
       Width = 0
       Height = 34
       Enabled = False
@@ -338,7 +256,7 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 359
+      Left = 277
       Width = 0
       Height = 34
       Enabled = False
@@ -349,10 +267,10 @@ inherited fr_EntryFormE0202: Tfr_EntryFormE0202
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 576
+    Width = 494
     ExplicitWidth = 576
     inherited IconClose: TLabel
-      Left = 542
+      Left = 460
       ExplicitLeft = 771
     end
   end

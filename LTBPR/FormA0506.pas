@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormA0506, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormA0506 = class(Tfr_new_template)
@@ -67,6 +68,22 @@ type
     cxGridDBTableView1jenis_kerja_sama: TcxGridDBColumn;
     cxGridDBTableView1uraian_kerja_sama: TcxGridDBColumn;
     cxGridDBTableView1tanggal_mulai_kerja_sama: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memketerangan_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -82,6 +99,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -334,8 +353,6 @@ begin
       memjenis_kerjasama.Text := MyQA0506jenis_kerja_sama.Text;
       memuraian_kerjasama.Text := MyQA0506uraian_kerja_sama.Text;
       tgl_kerjasama.Date :=MyQA0506tanggal_mulai_kerja_sama.Value;
-      //Footer
-      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0506_kerja_sama_lembaga_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -371,13 +388,6 @@ begin
                         ' AND `sandi_bank` = '+QuotedStr(MyQA0506sandi_bank.Text)+
                         ' AND `npwp` = '+QuotedStr(MyQA0506npwp.Text)+
                         ' AND `tanggal_mulai_kerja_sama` = '+DateToStrSQL(MyQA0506tanggal_mulai_kerja_sama.Value));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
         end;
       if MyQA0506.Active then
         MyQA0506.Refresh
@@ -387,6 +397,14 @@ begin
 
   fr_EntryFormA0506.Free;
   fr_EntryFormA0506 := nil;
+end;
+
+procedure Tfr_FormA0506.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //Footer
+  memketerangan_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0506_kerja_sama_lembaga_footer ');
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormA0506.btlb_InsertClick(Sender: TObject);
@@ -464,13 +482,6 @@ begin
                         '`nama_bank_lembaga_lain` = VALUES(`nama_bank_lembaga_lain`),'+
                         '`jenis_kerja_sama` = VALUES(`jenis_kerja_sama`),'+
                         '`uraian_kerja_sama` = VALUES(`uraian_kerja_sama`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
         end;
       if MyQA0506.Active then
         MyQA0506.Refresh
@@ -489,6 +500,19 @@ begin
     MyQA0506.Refresh
   else
     MyQA0506.Open;
+end;
+
+procedure Tfr_FormA0506.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0506_kerja_sama_lembaga_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormA0506.cxGridDBTableView1CellDblClick(

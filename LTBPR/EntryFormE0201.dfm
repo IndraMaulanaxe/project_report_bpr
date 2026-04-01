@@ -10,11 +10,11 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 685
-    ExplicitWidth = 518
+    ExplicitWidth = 685
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 518
-    ExplicitHeight = 273
+    ExplicitWidth = 685
+    ExplicitHeight = 141
     Height = 141
     Width = 685
     object kode_komponen: TcxButtonEdit
@@ -149,8 +149,8 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
   end
   inherited PanelFooter: TcxGroupBox
     Top = 141
-    ExplicitTop = 273
-    ExplicitWidth = 518
+    ExplicitTop = 141
+    ExplicitWidth = 685
     ExplicitHeight = 44
     Height = 44
     Width = 685
@@ -186,7 +186,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Left = 498
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 331
+      ExplicitLeft = 498
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -195,14 +195,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 513
+      ExplicitLeft = 680
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 589
       Height = 34
-      ExplicitLeft = 422
+      ExplicitLeft = 589
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -211,7 +211,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 325
+      ExplicitLeft = 492
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -231,7 +231,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 319
+      ExplicitLeft = 486
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -241,7 +241,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 313
+      ExplicitLeft = 480
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -251,7 +251,7 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 307
+      ExplicitLeft = 474
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -261,14 +261,14 @@ inherited fr_EntryFormE0201: Tfr_EntryFormE0201
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 301
+      ExplicitLeft = 468
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 685
-    ExplicitWidth = 518
+    ExplicitWidth = 685
     inherited IconClose: TLabel
       Left = 651
       ExplicitLeft = 771

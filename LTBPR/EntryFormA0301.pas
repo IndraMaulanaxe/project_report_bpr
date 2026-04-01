@@ -58,8 +58,6 @@ type
     memtempat_kedudukan: TcxMemo;
     cxLabel9: TcxLabel;
     akuntan_publik: TcxLookupComboBox;
-    memketerangan: TcxMemo;
-    cxLabel10: TcxLabel;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
     dsMyQref_opini_akuntan_publik: TMyDataSource;

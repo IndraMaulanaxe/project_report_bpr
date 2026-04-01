@@ -53,8 +53,6 @@ type
     MyQRefPelaksananama: TStringField;
     Label6: TcxLabel;
     tgl_kegiatan: TcxDateEdit;
-    cxLabel4: TcxLabel;
-    memketerangan: TcxMemo;
     dsMyQRefPeserta: TMyDataSource;
     MyQRefPeserta: TMyQuery;
     StringField1: TStringField;

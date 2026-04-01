@@ -40,8 +40,6 @@ type
     MyDataSource1: TMyDataSource;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
-    Label1: TcxLabel;
-    memtindak_lanjut: TcxMemo;
     cxLabel2: TcxLabel;
     memkelompok: TcxMemo;
     cxLabel3: TcxLabel;

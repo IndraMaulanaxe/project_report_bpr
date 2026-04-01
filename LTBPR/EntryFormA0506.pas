@@ -58,8 +58,6 @@ type
     cxLabel3: TcxLabel;
     Label6: TcxLabel;
     tgl_kerjasama: TcxDateEdit;
-    cxLabel4: TcxLabel;
-    memketerangan: TcxMemo;
     dsMyQRefSandiBank: TMyDataSource;
     MyQRefSandiBank: TMyQuery;
     StringField1: TStringField;
@@ -100,7 +98,6 @@ begin
   Result := True;
   ValReferensi := Trim(cb_ref_lembaga.Text);
 
-
   if (ValReferensi = '1 - Bank') or (ValReferensi = '1') then
   begin
     if Trim(cb_sandi_bank.Text) = '' then
@@ -111,7 +108,6 @@ begin
       Exit;
     end;
   end
-
   else if (ValReferensi = 'Lembaga Lain') or (ValReferensi = '2') then
   begin
     if Trim(npwp.Text) = '' then
@@ -122,7 +118,6 @@ begin
       Exit;
     end;
   end;
-
 end;
 
 

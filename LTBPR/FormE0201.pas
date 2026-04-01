@@ -58,7 +58,7 @@ type
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1nik: TcxGridDBColumn;
     cxGridDBTableView1tugas_dan_tanggung_jawab: TcxGridDBColumn;
-    cxGroupBox1: TcxGroupBox;
+    cxGBFooter: TcxGroupBox;
     Label1: TcxLabel;
     cxLabel10: TcxLabel;
     memlebih_lanjut_footer: TcxMemo;
@@ -75,6 +75,7 @@ type
     cxButton10: TcxButton;
     cxButton11: TcxButton;
     cxButton12: TcxButton;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -91,6 +92,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure cxButton4Click(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -346,6 +348,16 @@ begin
   fr_EntryFormE0201 := nil;
 end;
 
+procedure Tfr_FormE0201.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //Footer
+    memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F01')+' ');
+    memlebih_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F02')+'  ');
+
+  cxGBFooter.Visible:=true;
+end;
+
 procedure Tfr_FormE0201.btlb_InsertClick(Sender: TObject);
 begin
   inherited;
@@ -404,10 +416,6 @@ begin
     MyQE0201.Refresh
   else
     MyQE0201.Open;
-
-    memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F01')+' ');
-    memlebih_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0201_tugas_tanggung_jawab_direksi_footer where flag_detail='+QuotedStr('F02')+'  ');
-
 end;
 
 procedure Tfr_FormE0201.cxButton4Click(Sender: TObject);
@@ -424,6 +432,8 @@ begin
                ' (`flag_detail`,`keterangan`) '+
                ' VALUES ('+QuotedStr('F02')+', '+QuotedStr(memlebih_lanjut_footer.Text)+')');
  //
+
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0201.cxGridDBTableView1CellDblClick(
