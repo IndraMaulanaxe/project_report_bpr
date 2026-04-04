@@ -1,9 +1,9 @@
 inherited fr_EntryFormE0702: Tfr_EntryFormE0702
   Caption = 'Entry Form E0702 - Kehadiran Anggota Dewan Komisaris '
-  ClientHeight = 303
+  ClientHeight = 246
   ClientWidth = 498
   ExplicitWidth = 504
-  ExplicitHeight = 332
+  ExplicitHeight = 275
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -13,7 +13,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 498
     ExplicitHeight = 259
-    Height = 259
+    Height = 202
     Width = 498
     object cxLabel8: TcxLabel
       Left = 17
@@ -81,46 +81,6 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Width = 135
       AnchorY = 34
     end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 197
-      AutoSize = False
-      Caption = 'Penjelasan'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 212
-    end
-    object mempenjelasan: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 201
-      Hint = 'Penjelasan'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 13
-      Height = 47
-      Width = 298
-    end
     object cxLabel1: TcxLabel
       Left = 17
       Top = 52
@@ -161,7 +121,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 5
+      TabOrder = 3
       Height = 24
       Width = 298
     end
@@ -205,7 +165,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 7
+      TabOrder = 5
       Height = 24
       Width = 298
     end
@@ -246,7 +206,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 7
       Width = 121
     end
     object frekuesi: TcxLabel
@@ -286,7 +246,7 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 9
       Width = 121
     end
     object tingkat_hadir: TcxCurrencyEdit
@@ -305,12 +265,12 @@ inherited fr_EntryFormE0702: Tfr_EntryFormE0702
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 12
+      TabOrder = 10
       Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 259
+    Top = 202
     ExplicitTop = 259
     ExplicitWidth = 498
     ExplicitHeight = 44

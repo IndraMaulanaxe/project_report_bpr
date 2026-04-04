@@ -12,7 +12,6 @@ inherited fr_FormE0303: Tfr_FormE0303
     ExplicitWidth = 861
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 861
     ExplicitHeight = 398
     Height = 398
@@ -27,7 +26,6 @@ inherited fr_FormE0303: Tfr_FormE0303
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitHeight = 255
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -289,7 +287,7 @@ inherited fr_FormE0303: Tfr_FormE0303
         Left = 13
         Top = 13
         AutoSize = False
-        Caption = 'Tindak Lanjut'
+        Caption = 'Penjelasan'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindow
@@ -309,7 +307,7 @@ inherited fr_FormE0303: Tfr_FormE0303
         Tag = 1
         Left = 180
         Top = 17
-        Hint = 'Tindak Lanjut'
+        Hint = 'Penjelasan'
         ParentColor = True
         Style.TextColor = clWindow
         TabOrder = 2
@@ -331,6 +329,7 @@ inherited fr_FormE0303: Tfr_FormE0303
       Width = 0
       Enabled = False
       Visible = False
+      ExplicitLeft = 187
       ExplicitWidth = 0
     end
     inherited btlb_tools2: TcxButton
@@ -338,7 +337,7 @@ inherited fr_FormE0303: Tfr_FormE0303
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 102
+      ExplicitLeft = 193
       ExplicitWidth = 0
     end
     inherited btlb_Save: TcxButton
@@ -374,7 +373,7 @@ inherited fr_FormE0303: Tfr_FormE0303
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 108
+      ExplicitLeft = 199
       ExplicitWidth = 0
     end
     inherited btlb_Delete: TcxButton
@@ -411,7 +410,6 @@ inherited fr_FormE0303: Tfr_FormE0303
       Caption = 'Footer'
       TabOrder = 12
       OnClick = btlb_FooterClick
-      ExplicitTop = 4
     end
   end
   inherited PanelTopSystem: TPanel

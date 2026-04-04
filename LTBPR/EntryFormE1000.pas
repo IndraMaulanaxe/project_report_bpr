@@ -53,12 +53,10 @@ type
     cxLabel9: TcxLabel;
     nik_putusan: TcxTextEdit;
     cxLabel2: TcxLabel;
-    cxLabel4: TcxLabel;
     frekuesi: TcxLabel;
     jenis_trans: TcxTextEdit;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
-    mempenjelasan: TcxMemo;
     nilai_trans: TcxCurrencyEdit;
     cxLabel5: TcxLabel;
     memketer: TcxMemo;

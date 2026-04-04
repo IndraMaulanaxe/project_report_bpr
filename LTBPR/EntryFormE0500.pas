@@ -39,8 +39,6 @@ type
   Tfr_EntryFormE0500 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
     Label3: TcxLabel;
-    cxLabel4: TcxLabel;
-    mempenjelasan: TcxMemo;
     cxLabel3: TcxLabel;
     direksi_jml_seluruh: TcxCurrencyEdit;
     komisaris_jml_orang: TcxCurrencyEdit;
@@ -61,6 +59,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure cb_komponenPropertiesChange(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -81,6 +80,29 @@ uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
 
 {$R *.dfm}
 
+procedure Tfr_EntryFormE0500.cb_komponenPropertiesChange(Sender: TObject);var
+  KodeKomponen: string;
+begin
+  KodeKomponen := Copy(cb_komponen.Text, 1, 3);
+  if (KodeKomponen = '616') or (KodeKomponen = '625') or (KodeKomponen = '630') then
+  begin
+    direksi_jml_orang.value := 0;
+    komisaris_jml_orang.value := 0;
+
+    direksi_jml_orang.Enabled := False;
+    komisaris_jml_orang.Enabled := False;
+
+  end
+  else
+  begin
+    direksi_jml_orang.Enabled := True;
+    komisaris_jml_orang.Enabled := True;
+
+
+    if Trim(direksi_jml_orang.Text) = '' then direksi_jml_orang.Text := '0';
+    if Trim(komisaris_jml_orang.Text) = '' then komisaris_jml_orang.Text := '0';
+  end;
+end;
 function Tfr_EntryFormE0500.Cek_Validasi(Sender: TObject): Boolean;
 var
   jml: Integer;
@@ -338,6 +360,20 @@ begin
   inherited;
   if not Cek_Validasi(Sender) then
     Exit;
+
+    if StrToFloatDef(direksi_jml_seluruh.Text, 0) < 0 then
+    begin
+      ShowMessage('Jumlah Rupiah Direksi tidak boleh bernilai negatif!');
+      direksi_jml_seluruh.SetFocus;
+      Exit;
+    end;
+
+    if StrToFloatDef(komisaris_jml_seluruh.Text, 0) < 0 then
+    begin
+      ShowMessage('Jumlah Rupiah Komisaris tidak boleh bernilai negatif!');
+      komisaris_jml_seluruh.SetFocus;
+      Exit;
+    end;
 
   Tag := 2;
   Close;

@@ -39,12 +39,10 @@ type
   Tfr_EntryFormE1100 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
     cxLabel2: TcxLabel;
-    cxLabel4: TcxLabel;
     frekuesi: TcxLabel;
     penerima_dana: TcxTextEdit;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
-    mempenjelasan_lanjut: TcxMemo;
     jumlah: TcxCurrencyEdit;
     Label6: TcxLabel;
     tgl_kegiatan: TcxDateEdit;

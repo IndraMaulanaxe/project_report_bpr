@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE1100, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE1100 = class(Tfr_new_template)
@@ -63,6 +64,22 @@ type
     cxGridDBTableView1penjelasan_kegiatan: TcxGridDBColumn;
     cxGridDBTableView1penerima_dana: TcxGridDBColumn;
     cxGridDBTableView1jumlah_rp: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -78,6 +95,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -315,8 +334,7 @@ begin
       mempenjelasan_kegiatan.Text := MyQE1100penjelasan_kegiatan.Text;
       penerima_dana.Text := MyQE1100penerima_dana.Text;
       jumlah.value := MyQE1100jumlah_rp.value;
-      mempenjelasan_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1100_pemberian_dana_sosial_politik_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
       kode_komponen.Enabled := False;
     end;
   fr_EntryFormE1100.Tag := 0;
@@ -335,13 +353,7 @@ begin
                       ', `jumlah_rp` = '+FloatToStr(jumlah.Value)+
                       ' WHERE `kode_komponen` = '+QuotedStr(MyQE1100kode_komponen.Text)+
                       ' AND `tanggal_pelaksanaan` = '+DateToStrSQL(MyQE1100tanggal_pelaksanaan.Value));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan_lanjut.Text)+')');
-          //
+           
         end;
       if MyQE1100.Active then
         MyQE1100.Refresh
@@ -351,6 +363,15 @@ begin
 
   fr_EntryFormE1100.Free;
   fr_EntryFormE1100 := nil;
+end;
+
+procedure Tfr_FormE1100.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1100_pemberian_dana_sosial_politik_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE1100.btlb_InsertClick(Sender: TObject);
@@ -404,13 +425,7 @@ begin
                       '`penjelasan_kegiatan` = VALUES(`penjelasan_kegiatan`),'+
                       '`penerima_dana` = VALUES(`penerima_dana`),'+
                       '`jumlah_rp` = VALUES(`jumlah_rp`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan_lanjut.Text)+')');
-          //
+          
 
         end;
       if MyQE1100.Active then
@@ -430,6 +445,19 @@ begin
     MyQE1100.Refresh
   else
     MyQE1100.Open;
+end;
+
+procedure Tfr_FormE1100.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1100_pemberian_dana_sosial_politik_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE1100.cxGridDBTableView1CellDblClick(

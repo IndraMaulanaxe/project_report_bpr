@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0701, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0701 = class(Tfr_new_template)
@@ -59,6 +60,22 @@ type
     cxGridDBTableView1tanggal_rapat: TcxGridDBColumn;
     cxGridDBTableView1jumlah_peserta: TcxGridDBColumn;
     cxGridDBTableView1topik_materi_pembahasan: TcxGridDBColumn;
+    btlb_Footer: TcxButton;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -74,6 +91,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -302,8 +321,7 @@ begin
       tanggal.Date :=MyQE0701tanggal_rapat.Value;
       jumlah_peserta.Value := MyQE0701jumlah_peserta.Value;
       memmateri.Text := MyQE0701topik_materi_pembahasan.Text;
-      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
       kode_komponen.Enabled := False;
       //tanggal.Date := dTglSystem;
     end;
@@ -321,13 +339,6 @@ begin
                         ', `topik_materi_pembahasan` = '+QuotedStr(memmateri.Text)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0701kode_komponen.Text)+
                         ' AND `tanggal_rapat` = '+DateToStrSQL(MyQE0701tanggal_rapat.Value));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
         end;
       if MyQE0701.Active then
         MyQE0701.Refresh
@@ -337,6 +348,15 @@ begin
 
   fr_EntryFormE0701.Free;
   fr_EntryFormE0701 := nil;
+end;
+
+procedure Tfr_FormE0701.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0701.btlb_InsertClick(Sender: TObject);
@@ -380,13 +400,6 @@ begin
                         ' ON DUPLICATE KEY UPDATE '+
                         '`jumlah_peserta` = VALUES(`jumlah_peserta`),'+
                         '`topik_materi_pembahasan` = VALUES(`topik_materi_pembahasan`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-
         end;
       if MyQE0701.Active then
         MyQE0701.Refresh
@@ -405,6 +418,19 @@ begin
     MyQE0701.Refresh
   else
     MyQE0701.Open;
+end;
+
+procedure Tfr_FormE0701.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0701_pelaksanaan_rapat_dalam_setahun_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0701.cxGridDBTableView1CellDblClick(

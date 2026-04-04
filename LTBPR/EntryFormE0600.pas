@@ -38,8 +38,6 @@ uses
 type
   Tfr_EntryFormE0600 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
-    Label1: TcxLabel;
-    memtindak_lanjut: TcxMemo;
     dsMyQRefRasio: TMyDataSource;
     MyQRefRasio: TMyQuery;
     MyQRefRasiosandi: TStringField;
@@ -55,6 +53,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure rasioKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -515,6 +514,19 @@ procedure Tfr_EntryFormE0600.MemKeteranganPropertiesChange(
 begin
   inherited;
   Tag := 1;
+end;
+
+procedure Tfr_EntryFormE0600.rasioKeyPress(Sender: TObject; var Key: Char);
+begin
+  inherited;
+  if not (Key in ['0'..'9', #8, '.']) then
+  begin
+    Key := #0;
+  end
+  else if (Key = '.') and (Pos('.', rasio.Text) > 0) then
+  begin
+    Key := #0;
+  end;
 end;
 
 end.

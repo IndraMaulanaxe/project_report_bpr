@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0702, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0702 = class(Tfr_new_template)
@@ -63,6 +64,22 @@ type
     cxGridDBTableView1frekuensi_kehadiran_fisik: TcxGridDBColumn;
     cxGridDBTableView1frekuensi_kehadiran: TcxGridDBColumn;
     cxGridDBTableView1tingkat_kehadiran: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -78,6 +95,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -312,8 +331,7 @@ begin
       hadir_fisik.Value := MyQE0702frekuensi_kehadiran_fisik.Value;
       frekuensi_hadir.Value := MyQE0702frekuensi_kehadiran.Value;
       tingkat_hadir.Value := MyQE0702tingkat_kehadiran.Value;
-      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0702_kehadiran_anggota_komisaris_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
 
       kode_komponen.Enabled := False;
       //tanggal.Date := dTglSystem;
@@ -334,13 +352,6 @@ begin
                         ', `tingkat_kehadiran` = '+FloatToStr(tingkat_hadir.Value)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0702kode_komponen.Text)+
                         ' AND `nik` = '+QuotedStr(MyQE0702nik.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
         end;
       if MyQE0702.Active then
         MyQE0702.Refresh
@@ -350,6 +361,15 @@ begin
 
   fr_EntryFormE0702.Free;
   fr_EntryFormE0702 := nil;
+end;
+
+procedure Tfr_FormE0702.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0702_kehadiran_anggota_komisaris_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0702.btlb_InsertClick(Sender: TObject);
@@ -400,13 +420,6 @@ begin
                         '`frekuensi_kehadiran_fisik` = VALUES(`frekuensi_kehadiran_fisik`),'+
                         '`frekuensi_kehadiran` = VALUES(`frekuensi_kehadiran`),'+
                         '`tingkat_kehadiran` = VALUES(`tingkat_kehadiran`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
 
         end;
       if MyQE0702.Active then
@@ -426,6 +439,19 @@ begin
     MyQE0702.Refresh
   else
     MyQE0702.Open;
+end;
+
+procedure Tfr_FormE0702.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0702_kehadiran_anggota_komisaris_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0702.cxGridDBTableView1CellDblClick(

@@ -39,8 +39,6 @@ type
   Tfr_EntryFormE0900 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
     Label3: TcxLabel;
-    cxLabel4: TcxLabel;
-    mempenjelasan: TcxMemo;
     cxLabel3: TcxLabel;
     jumlah_pidana: TcxCurrencyEdit;
     cb_komponen: TcxLookupComboBox;

@@ -2,10 +2,10 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   Caption = 
     'Entry Form E1000 - Transaksi yang Mengandung Benturan Kepentinga' +
     'n '
-  ClientHeight = 519
+  ClientHeight = 459
   ClientWidth = 493
   ExplicitWidth = 499
-  ExplicitHeight = 548
+  ExplicitHeight = 488
   PixelsPerInch = 96
   TextHeight = 16
   inherited lbl_view_only: TLabel
@@ -19,14 +19,14 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 493
     ExplicitHeight = 475
-    Height = 475
+    Height = 415
     Width = 493
     object cxGroupBox1: TcxGroupBox
       Left = 16
       Top = 52
       Caption = 'Pihak Yang Memiliki'
       Style.TextColor = clWhite
-      TabOrder = 4
+      TabOrder = 2
       Height = 118
       Width = 466
       object cxLabel1: TcxLabel
@@ -167,7 +167,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Top = 176
       Caption = 'Pengambil Keputusan'
       Style.TextColor = clWhite
-      TabOrder = 6
+      TabOrder = 4
       Height = 118
       Width = 466
       object cxLabel7: TcxLabel
@@ -322,27 +322,6 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Width = 135
       AnchorY = 312
     end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 410
-      AutoSize = False
-      Caption = 'Penjelasan'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 425
-    end
     object frekuesi: TcxLabel
       Left = 17
       Top = 329
@@ -385,7 +364,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       StyleDisabled.LookAndFeel.Kind = lfOffice11
       StyleFocused.LookAndFeel.Kind = lfOffice11
       StyleHot.LookAndFeel.Kind = lfOffice11
-      TabOrder = 7
+      TabOrder = 6
       Height = 24
       Width = 298
     end
@@ -411,7 +390,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 1
       Height = 24
       Width = 152
     end
@@ -434,25 +413,6 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Width = 135
       AnchorY = 34
     end
-    object mempenjelasan: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 414
-      Hint = 'Penjelasan'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 11
-      Height = 47
-      Width = 298
-    end
     object nilai_trans: TcxCurrencyEdit
       Left = 185
       Top = 331
@@ -469,7 +429,7 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 7
       Width = 121
     end
     object cxLabel5: TcxLabel
@@ -508,13 +468,13 @@ inherited fr_EntryFormE1000: Tfr_EntryFormE1000
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Height = 47
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 475
+    Top = 415
     TabOrder = 3
     ExplicitTop = 475
     ExplicitWidth = 493

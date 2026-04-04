@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE1000, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE1000 = class(Tfr_new_template)
@@ -72,6 +73,22 @@ type
     cxGridDBTableView1nilai_transaksi: TcxGridDBColumn;
     cxGridDBTableView1keterangan: TcxGridDBColumn;
     cxGridDBTableView1footer_1_penjelasan_lebih_lanjut: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -87,6 +104,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -334,8 +353,7 @@ begin
       jenis_trans.Text := MyQE1000jenis_transaksi.Text;
       nilai_trans.value := MyQE1000nilai_transaksi.value;
       memketer.Text := MyQE1000keterangan.Text;
-      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1000_transaksi_benturan_kepentingan_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
 
       kode_komponen.Enabled := False;
     end;
@@ -364,13 +382,6 @@ begin
                         ' AND `pengambil_keputusan_nama` = '+QuotedStr(MyQE1000pengambil_keputusan_nama.Text)+
                         ' AND `pengambil_keputusan_jabatan` = '+QuotedStr(MyQE1000pengambil_keputusan_jabatan.Text)+
                         ' AND `pengambil_keputusan_nik` = '+QuotedStr(MyQE1000pengambil_keputusan_nik.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
         end;
       if MyQE1000.Active then
         MyQE1000.Refresh
@@ -380,6 +391,16 @@ begin
 
   fr_EntryFormE1000.Free;
   fr_EntryFormE1000 := nil;
+end;
+
+procedure Tfr_FormE1000.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e1000_transaksi_benturan_kepentingan_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE1000.btlb_InsertClick(Sender: TObject);
@@ -437,13 +458,6 @@ begin
                         '`jenis_transaksi` = VALUES(`jenis_transaksi`),'+
                         '`nilai_transaksi` = VALUES(`nilai_transaksi`),'+
                         '`keterangan` = VALUES(`keterangan`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-
         end;
       if MyQE1000.Active then
         MyQE1000.Refresh
@@ -462,6 +476,19 @@ begin
     MyQE1000.Refresh
   else
     MyQE1000.Open;
+end;
+
+procedure Tfr_FormE1000.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e1000_transaksi_benturan_kepentingan_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE1000.cxGridDBTableView1CellDblClick(

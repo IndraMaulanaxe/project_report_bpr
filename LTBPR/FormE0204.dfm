@@ -311,7 +311,7 @@ inherited fr_FormE0204: Tfr_FormE0204
       end
       object cxLabel10: TcxLabel
         Left = 13
-        Top = 13
+        Top = 15
         AutoSize = False
         Caption = 'Tindak Lanjut'
         ParentFont = False
@@ -325,7 +325,7 @@ inherited fr_FormE0204: Tfr_FormE0204
         Properties.Alignment.Vert = taVCenter
         Properties.WordWrap = True
         Transparent = True
-        Height = 30
+        Height = 26
         Width = 135
         AnchorY = 28
       end

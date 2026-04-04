@@ -22,12 +22,13 @@ inherited fr_FormE1100: Tfr_FormE1100
       Left = 2
       Top = 2
       Width = 857
-      Height = 394
+      Height = 278
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitHeight = 207
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -116,6 +117,207 @@ inherited fr_FormE1100: Tfr_FormE1100
         GridView = cxGridDBTableView1
       end
     end
+    object cxGBFooter: TcxGroupBox
+      Left = 2
+      Top = 280
+      Align = alBottom
+      Caption = 'Footer'
+      Style.TextColor = clWhite
+      TabOrder = 1
+      Visible = False
+      Height = 116
+      Width = 857
+      object cxGroupBox2: TcxGroupBox
+        Left = 2
+        Top = 70
+        Align = alBottom
+        PanelStyle.Active = True
+        ParentBackground = False
+        TabOrder = 0
+        OnMouseDown = bgMouseDown
+        OnMouseMove = bgMouseMove
+        OnMouseUp = bgMouseUp
+        Height = 44
+        Width = 853
+        object cxButton1: TcxButton
+          AlignWithMargins = True
+          Left = 5
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Refresh'
+          Align = alLeft
+          Caption = 'Refresh'
+          Enabled = False
+          TabOrder = 0
+          Visible = False
+        end
+        object cxButton2: TcxButton
+          AlignWithMargins = True
+          Left = 11
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 1'
+          Enabled = False
+          TabOrder = 1
+          Visible = False
+        end
+        object cxButton3: TcxButton
+          AlignWithMargins = True
+          Left = 17
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 2'
+          Enabled = False
+          TabOrder = 2
+          Visible = False
+        end
+        object cxButton4: TcxButton
+          AlignWithMargins = True
+          Left = 757
+          Top = 5
+          Width = 85
+          Height = 34
+          Hint = 'Simpan'
+          Align = alRight
+          Caption = 'Simpan'
+          OptionsImage.ImageIndex = 78
+          TabOrder = 3
+          OnClick = cxButton4Click
+        end
+        object cxButton5: TcxButton
+          AlignWithMargins = True
+          Left = 848
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Keluar'
+          Align = alRight
+          Caption = 'Keluar'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 4
+          Visible = False
+          OnClick = btlb_CloseClick
+        end
+        object cxButton7: TcxButton
+          AlignWithMargins = True
+          Left = 751
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Cetak'
+          Align = alRight
+          Caption = 'Cetak'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 5
+          Visible = False
+        end
+        object cxButton8: TcxButton
+          AlignWithMargins = True
+          Left = 23
+          Top = 5
+          Width = 0
+          Height = 34
+          Align = alLeft
+          Caption = 'Tools 3'
+          Enabled = False
+          TabOrder = 6
+          Visible = False
+        end
+        object cxButton9: TcxButton
+          AlignWithMargins = True
+          Left = 745
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Hapus'
+          Align = alRight
+          Caption = 'Hapus'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 7
+          Visible = False
+        end
+        object cxButton10: TcxButton
+          AlignWithMargins = True
+          Left = 739
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Koreksi'
+          Align = alRight
+          Caption = 'Koreksi'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 8
+          Visible = False
+        end
+        object cxButton11: TcxButton
+          AlignWithMargins = True
+          Left = 733
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Tambah'
+          Align = alRight
+          Caption = 'Tambah'
+          Enabled = False
+          OptionsImage.ImageIndex = 78
+          TabOrder = 9
+          Visible = False
+        end
+        object cxButton12: TcxButton
+          AlignWithMargins = True
+          Left = 727
+          Top = 5
+          Width = 0
+          Height = 34
+          Hint = 'Pilih'
+          Align = alRight
+          Caption = 'Pilih'
+          Enabled = False
+          TabOrder = 10
+          Visible = False
+        end
+      end
+      object cxLabel10: TcxLabel
+        Left = 13
+        Top = 15
+        AutoSize = False
+        Caption = 'Penjelasan'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindow
+        Style.Font.Height = -13
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        Properties.Alignment.Horz = taLeftJustify
+        Properties.Alignment.Vert = taVCenter
+        Properties.WordWrap = True
+        Transparent = True
+        Height = 26
+        Width = 135
+        AnchorY = 28
+      end
+      object memtindak_lanjut_footer: TcxMemo
+        Tag = 1
+        Left = 180
+        Top = 17
+        Hint = 'Penjelasan'
+        ParentColor = True
+        Style.TextColor = clWindow
+        TabOrder = 2
+        Height = 47
+        Width = 664
+      end
+    end
   end
   inherited PanelFooter: TcxGroupBox
     Top = 398
@@ -126,13 +328,14 @@ inherited fr_FormE1100: Tfr_FormE1100
       OnClick = btlb_RefreshClick
     end
     inherited btlb_tools1: TcxButton
+      Left = 187
       Width = 0
       Enabled = False
       Visible = False
       ExplicitWidth = 0
     end
     inherited btlb_tools2: TcxButton
-      Left = 102
+      Left = 193
       Width = 0
       Enabled = False
       Visible = False
@@ -168,7 +371,7 @@ inherited fr_FormE1100: Tfr_FormE1100
       ExplicitWidth = 0
     end
     inherited btlb_tools3: TcxButton
-      Left = 108
+      Left = 199
       Width = 0
       Enabled = False
       Visible = False
@@ -197,6 +400,19 @@ inherited fr_FormE1100: Tfr_FormE1100
       Visible = False
       ExplicitLeft = 474
       ExplicitWidth = 0
+    end
+    object btlb_Footer: TcxButton
+      AlignWithMargins = True
+      Left = 96
+      Top = 5
+      Width = 85
+      Height = 32
+      Hint = 'Refresh'
+      Align = alLeft
+      Caption = 'Footer'
+      TabOrder = 12
+      OnClick = btlb_FooterClick
+      ExplicitTop = 6
     end
   end
   inherited PanelTopSystem: TPanel
