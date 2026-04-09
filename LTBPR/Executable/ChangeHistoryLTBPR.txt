@@ -1,0 +1,4 @@
+* Versi 1.0.0.0, 14 Desember 2025
+  = Inisiasi Project
+
+
