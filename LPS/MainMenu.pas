@@ -105,12 +105,6 @@ type
     procedure bt_formA0301Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure TimerUpdaterTimer(Sender: TObject);
-    procedure bt_formA0304Click(Sender: TObject);
-    procedure bt_formA0502Click(Sender: TObject);
-    procedure bt_formA0506Click(Sender: TObject);
-    procedure bt_formA05072Click(Sender: TObject);
-    procedure bt_formE0100Click(Sender: TObject);
-    procedure bt_formE0201Click(Sender: TObject);
     procedure bt_ganti_bulanClick(Sender: TObject);
     procedure bt_closeClick(Sender: TObject);
     procedure bt_prosesClick(Sender: TObject);
@@ -120,22 +114,7 @@ type
     procedure bt_update_statusClick(Sender: TObject);
     procedure bt_restore_pointClick(Sender: TObject);
     procedure bt_restore_dataClick(Sender: TObject);
-    procedure bt_formE0202Click(Sender: TObject);
     procedure bt_formA0400Click(Sender: TObject);
-    procedure bt_formE1100Click(Sender: TObject);
-    procedure bt_formE1000Click(Sender: TObject);
-    procedure bt_formE0900Click(Sender: TObject);
-    procedure bt_formE0800Click(Sender: TObject);
-    procedure bt_formE0702Click(Sender: TObject);
-    procedure bt_formE0701Click(Sender: TObject);
-    procedure bt_formE0600Click(Sender: TObject);
-    procedure bt_formE0500Click(Sender: TObject);
-    procedure bt_formE0402Click(Sender: TObject);
-    procedure bt_formE0401Click(Sender: TObject);
-    procedure bt_formE0303Click(Sender: TObject);
-    procedure bt_formE0302Click(Sender: TObject);
-    procedure bt_formE0204Click(Sender: TObject);
-    procedure bt_formE0203Click(Sender: TObject);
     procedure bt_formA0305Click(Sender: TObject);
     procedure bt_form0002Click(Sender: TObject);
     procedure bt_form0001Click(Sender: TObject);
@@ -155,11 +134,7 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils, FormKP2000,  MyVAR, MyLib, FormA0301, FormA0304, FormA0502,
-  FormA0506, FormA05072, FormE0100, FormE0201, DaftarBackupAPOLO,
-  FormE0202, FormE0203, FormE0302,
-  FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800,
-  FormE0900, FormE1000, FormE1100, FormE0204, FormE0500;
+  dm_bpr, StrUtils, MyVAR, MyLib, FormA0301;
 
   Var cKodeJenisPelaporan : String;
 
@@ -199,7 +174,7 @@ var cNamaTabelCek, cKodeArsipCek, cKodeFormArsipCek : string;
  nCountCek : Integer;
 begin
   inherited;
-  cp_lap_lanjutan.Collapsed := True;
+  {cp_lap_lanjutan.Collapsed := True;
   cp_transparasi.Collapsed := True;
   cp_sp_kebenaran_lpran.Collapsed := True;
   cp_opini_akuntan.Collapsed := True;
@@ -230,7 +205,7 @@ begin
               ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)),0);
 
   if (nCountCek > 0) then
-      bt_ganti_bulan.Enabled:=True;
+      bt_ganti_bulan.Enabled:=True;  }
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -488,7 +463,7 @@ procedure Tfr_MainMenu.bt_export_excelClick(Sender: TObject);
 begin
   inherited;
 
-  if not Pesan(3, 'Pastikan Anda sudah memilih Kode Jenis Laporan dengan benar, Lanjutkan ?') then
+ { if not Pesan(3, 'Pastikan Anda sudah memilih Kode Jenis Laporan dengan benar, Lanjutkan ?') then
     Exit;
 
   if not sPathDialog1.Execute then
@@ -562,7 +537,7 @@ begin
     end;
 
   Pesan(1,'Proses telah selesai...!');
-  sGaugeJenisLaporan.Visible := False;
+  sGaugeJenisLaporan.Visible := False;  }
 
 end;
 
@@ -576,16 +551,6 @@ begin
   fr_FormA0301 := nil;
 end;
 
-procedure Tfr_MainMenu.bt_formA0304Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormA0304') = nil then
-    Application.CreateForm(Tfr_FormA0304, fr_FormA0304);
-  fr_FormA0304.Tag := 0;
-  fr_FormA0304.ShowModal;
-  fr_FormA0304.Free;
-  fr_FormA0304 := nil;
-end;
-
 procedure Tfr_MainMenu.bt_formA0305Click(Sender: TObject);
 begin
   OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
@@ -595,16 +560,6 @@ begin
   begin
     ProsesUpload(OpenDialog1.FileName,'A0305');
   end;
-end;
-
-procedure Tfr_MainMenu.bt_formA0502Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormA0502') = nil then
-    Application.CreateForm(Tfr_FormA0502, fr_FormA0502);
-  fr_FormA0502.Tag := 0;
-  fr_FormA0502.ShowModal;
-  fr_FormA0502.Free;
-  fr_FormA0502 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_form0002Click(Sender: TObject);
@@ -629,26 +584,6 @@ begin
   end;
 end;
 
-procedure Tfr_MainMenu.bt_formA0506Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormA0506') = nil then
-    Application.CreateForm(Tfr_FormA0506, fr_FormA0506);
-  fr_FormA0506.Tag := 0;
-  fr_FormA0506.ShowModal;
-  fr_FormA0506.Free;
-  fr_FormA0506 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formA05072Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormA05072') = nil then
-    Application.CreateForm(Tfr_FormA05072, fr_FormA05072);
-  fr_FormA05072.Tag := 0;
-  fr_FormA05072.ShowModal;
-  fr_FormA05072.Free;
-  fr_FormA05072 := nil;
-end;
-
 procedure Tfr_MainMenu.bt_formC0100Click(Sender: TObject);
 begin
   OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
@@ -669,176 +604,6 @@ begin
   begin
     ProsesUpload(OpenDialog1.FileName,'D0000');
   end;
-end;
-
-procedure Tfr_MainMenu.bt_formE0100Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0100') = nil then
-    Application.CreateForm(Tfr_FormE0100, fr_FormE0100);
-  fr_FormE0100.Tag := 0;
-  fr_FormE0100.ShowModal;
-  fr_FormE0100.Free;
-  fr_FormE0100 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0201Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0201') = nil then
-    Application.CreateForm(Tfr_FormE0201, fr_FormE0201);
-  fr_FormE0201.Tag := 0;
-  fr_FormE0201.ShowModal;
-  fr_FormE0201.Free;
-  fr_FormE0201 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0202Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0202') = nil then
-    Application.CreateForm(Tfr_FormE0202, fr_FormE0202);
-  fr_FormE0202.Tag := 0;
-  fr_FormE0202.ShowModal;
-  fr_FormE0202.Free;
-  fr_FormE0202 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0203Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0203') = nil then
-    Application.CreateForm(Tfr_FormE0203, fr_FormE0203);
-  fr_FormE0203.Tag := 0;
-  fr_FormE0203.ShowModal;
-  fr_FormE0203.Free;
-  fr_FormE0203 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0204Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0204') = nil then
-    Application.CreateForm(Tfr_FormE0204, fr_FormE0204);
-  fr_FormE0204.Tag := 0;
-  fr_FormE0204.ShowModal;
-  fr_FormE0204.Free;
-  fr_FormE0204 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0302Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0302') = nil then
-    Application.CreateForm(Tfr_FormE0302, fr_FormE0302);
-  fr_FormE0302.Tag := 0;
-  fr_FormE0302.ShowModal;
-  fr_FormE0302.Free;
-  fr_FormE0302 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0303Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0303') = nil then
-    Application.CreateForm(Tfr_FormE0303, fr_FormE0303);
-  fr_FormE0303.Tag := 0;
-  fr_FormE0303.ShowModal;
-  fr_FormE0303.Free;
-  fr_FormE0303 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0401Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0401') = nil then
-    Application.CreateForm(Tfr_FormE0401, fr_FormE0401);
-  fr_FormE0401.Tag := 0;
-  fr_FormE0401.ShowModal;
-  fr_FormE0401.Free;
-  fr_FormE0401 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0402Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0402') = nil then
-    Application.CreateForm(Tfr_FormE0402, fr_FormE0402);
-  fr_FormE0402.Tag := 0;
-  fr_FormE0402.ShowModal;
-  fr_FormE0402.Free;
-  fr_FormE0402 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0500Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0500') = nil then
-    Application.CreateForm(Tfr_FormE0500, fr_FormE0500);
-  fr_FormE0500.Tag := 0;
-  fr_FormE0500.ShowModal;
-  fr_FormE0500.Free;
-  fr_FormE0500 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0600Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0600') = nil then
-    Application.CreateForm(Tfr_FormE0600, fr_FormE0600);
-  fr_FormE0600.Tag := 0;
-  fr_FormE0600.ShowModal;
-  fr_FormE0600.Free;
-  fr_FormE0600 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0701Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0701') = nil then
-    Application.CreateForm(Tfr_FormE0701, fr_FormE0701);
-  fr_FormE0701.Tag := 0;
-  fr_FormE0701.ShowModal;
-  fr_FormE0701.Free;
-  fr_FormE0701 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0702Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0702') = nil then
-    Application.CreateForm(Tfr_FormE0702, fr_FormE0702);
-  fr_FormE0702.Tag := 0;
-  fr_FormE0702.ShowModal;
-  fr_FormE0702.Free;
-  fr_FormE0702 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0800Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0800') = nil then
-    Application.CreateForm(Tfr_FormE0800, fr_FormE0800);
-  fr_FormE0800.Tag := 0;
-  fr_FormE0800.ShowModal;
-  fr_FormE0800.Free;
-  fr_FormE0800 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE0900Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE0900') = nil then
-    Application.CreateForm(Tfr_FormE0900, fr_FormE0900);
-  fr_FormE0900.Tag := 0;
-  fr_FormE0900.ShowModal;
-  fr_FormE0900.Free;
-  fr_FormE0900 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE1000Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE1000') = nil then
-    Application.CreateForm(Tfr_FormE1000, fr_FormE1000);
-  fr_FormE1000.Tag := 0;
-  fr_FormE1000.ShowModal;
-  fr_FormE1000.Free;
-  fr_FormE1000 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formE1100Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormE1100') = nil then
-    Application.CreateForm(Tfr_FormE1100, fr_FormE1100);
-  fr_FormE1100.Tag := 0;
-  fr_FormE1100.ShowModal;
-  fr_FormE1100.Free;
-  fr_FormE1100 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formF0000Click(Sender: TObject);
@@ -893,7 +658,7 @@ var
   //nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
-  cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  {cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`ltbprk_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -963,7 +728,7 @@ begin
   Pesan(1,'Proses telah selesai...!, Jangan lupa klik tombol Save Point untuk menyimpan arsip laporan');
   sGaugeJenisLaporan.Visible := False;
   bt_proses.Enabled := True;
-  bt_save.Enabled := True;
+  bt_save.Enabled := True; }
 
 end;
 
@@ -1072,7 +837,7 @@ var
 begin
   inherited;
 
-  cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+ { cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`ltbprk_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -1293,7 +1058,7 @@ begin
   Pesan(1,'Proses telah selesai...!, Jangan lupa klik tombol Save Point untuk menyimpan arsip laporan');
   sGaugeJenisLaporan.Visible := False;
   bt_proses.Enabled := True;
-  bt_save.Enabled := True;
+  bt_save.Enabled := True; }
 
 end;
 
@@ -1305,7 +1070,7 @@ var
 begin
   inherited;
 
-  if not Pesan(3, 'Restore Data Hasil Pengiriman, lanjutkan ?') then
+  {if not Pesan(3, 'Restore Data Hasil Pengiriman, lanjutkan ?') then
     Exit;
 
   bt_restore_data.Enabled := False;
@@ -1388,7 +1153,7 @@ begin
           FormCreate(Sender);
           Pesan(1, 'Restore Data Hasil Pengiriman berhasil...');
         end;
-    end;
+    end; }
 
 end;
 
@@ -1399,7 +1164,7 @@ procedure Tfr_MainMenu.bt_restore_pointClick(Sender: TObject);
 begin
   inherited;
 
-  if not Pesan(3, 'Restore Data dari Restore Point, lanjutkan ?') then
+  {if not Pesan(3, 'Restore Data dari Restore Point, lanjutkan ?') then
     Exit;
 
   bt_restore_point.Enabled := False;
@@ -1478,7 +1243,7 @@ begin
           FormCreate(Sender);
           Pesan(1, 'Restore Data Hasil Pengiriman berhasil...');
         end;
-    end;
+    end; }
 end;
 
 procedure Tfr_MainMenu.bt_saveClick(Sender: TObject);
@@ -1535,7 +1300,7 @@ var
   cKodeForm, cKodeFormArsip, cKodeFormBAK, cKodeArsip: string;
 begin
   inherited;
-  if not Pesan(3, 'Data Hasil Pengiriman akan dibackup, lanjutkan ?') then
+ { if not Pesan(3, 'Data Hasil Pengiriman akan dibackup, lanjutkan ?') then
     Exit;
 
   bt_update_status.Enabled := False;
@@ -1603,7 +1368,7 @@ begin
       Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
       sGaugeJenisLaporan.Visible := False;
       bt_ganti_bulan.Enabled := True;
-    end;
+    end;  }
 
 end;
 

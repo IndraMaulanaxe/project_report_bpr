@@ -1,7 +1,7 @@
 object dm_bpr1: Tdm_bpr1
   OldCreateOrder = False
-  Height = 471
-  Width = 616
+  Height = 669
+  Width = 1113
   object MyQuery1: TMyQuery
     Connection = MyCon2
     Left = 16
@@ -14,11 +14,12 @@ object dm_bpr1: Tdm_bpr1
   end
   object MyCon2: TMyConnection
     Database = 'lps'
+    Port = 38038
     ConnectionTimeout = 60
     Options.Compress = True
     Options.LocalFailover = True
-    Username = 'root'
-    Server = 'localhost'
+    Username = 'GX+Z:m=3MBc[mxF'
+    Server = '19.19.19.10'
     AfterConnect = MyCon2AfterConnect
     BeforeConnect = MyCon2BeforeConnect
     OnError = MyCon2Error
@@ -27,7 +28,7 @@ object dm_bpr1: Tdm_bpr1
     LoginPrompt = False
     Left = 16
     Top = 56
-    EncryptedPassword = '96FF91FF9BFF8DFF9EFF'
+    EncryptedPassword = 'B8FFA7FFA5FF92FFCCFFB2FFBDFF9CFF92FF87FFB9FF9EFF86FF'
   end
   object MyConnectDialog1: TMyConnectDialog
     Caption = 'Connect'
@@ -148,6 +149,188 @@ object dm_bpr1: Tdm_bpr1
     Left = 72
     Top = 152
   end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Program Files (x' +
+      '86)\att2008\att2000.mdb;Persist Security Info=False;'
+    LoginPrompt = False
+    Mode = cmShareDenyNone
+    Provider = 'Microsoft.Jet.OLEDB.4.0'
+    Left = 480
+    Top = 8
+  end
+  object ADOQuery1: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    ParamCheck = False
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM CHECKINOUT '
+      '  LEFT JOIN USERINFO ON USERINFO.USERID=CHECKINOUT.USERID'
+      'WHERE CHECKTIME >=#06/21/2011 00:00#'
+      'ORDER BY `Badgenumber`,`CHECKTIME`')
+    Left = 512
+    Top = 8
+    object ADOQuery1CHECKINOUTUSERID: TIntegerField
+      FieldName = 'CHECKINOUT.USERID'
+    end
+    object ADOQuery1CHECKTIME: TDateTimeField
+      FieldName = 'CHECKTIME'
+      DisplayFormat = 'dd/MM/yyyy HH:mm:ss'
+    end
+    object ADOQuery1CHECKTYPE: TWideStringField
+      Alignment = taCenter
+      FieldName = 'CHECKTYPE'
+      Size = 1
+    end
+    object ADOQuery1VERIFYCODE: TIntegerField
+      FieldName = 'VERIFYCODE'
+    end
+    object ADOQuery1SENSORID: TWideStringField
+      FieldName = 'SENSORID'
+      Size = 5
+    end
+    object ADOQuery1WorkCode: TIntegerField
+      FieldName = 'WorkCode'
+    end
+    object ADOQuery1sn: TWideStringField
+      FieldName = 'sn'
+    end
+    object ADOQuery1USERINFOUSERID: TAutoIncField
+      FieldName = 'USERINFO.USERID'
+      ReadOnly = True
+    end
+    object ADOQuery1Badgenumber: TWideStringField
+      FieldName = 'Badgenumber'
+      Size = 24
+    end
+    object ADOQuery1SSN: TWideStringField
+      FieldName = 'SSN'
+    end
+    object ADOQuery1Name: TWideStringField
+      FieldName = 'Name'
+      Size = 40
+    end
+    object ADOQuery1Gender: TWideStringField
+      FieldName = 'Gender'
+      Size = 8
+    end
+    object ADOQuery1TITLE: TWideStringField
+      FieldName = 'TITLE'
+    end
+    object ADOQuery1PAGER: TWideStringField
+      FieldName = 'PAGER'
+    end
+    object ADOQuery1BIRTHDAY: TDateTimeField
+      FieldName = 'BIRTHDAY'
+    end
+    object ADOQuery1HIREDDAY: TDateTimeField
+      FieldName = 'HIREDDAY'
+    end
+    object ADOQuery1street: TWideStringField
+      FieldName = 'street'
+      Size = 80
+    end
+    object ADOQuery1CITY: TWideStringField
+      FieldName = 'CITY'
+      Size = 2
+    end
+    object ADOQuery1STATE: TWideStringField
+      FieldName = 'STATE'
+      Size = 2
+    end
+    object ADOQuery1ZIP: TWideStringField
+      FieldName = 'ZIP'
+      Size = 12
+    end
+    object ADOQuery1OPHONE: TWideStringField
+      FieldName = 'OPHONE'
+    end
+    object ADOQuery1FPHONE: TWideStringField
+      FieldName = 'FPHONE'
+    end
+    object ADOQuery1VERIFICATIONMETHOD: TSmallintField
+      FieldName = 'VERIFICATIONMETHOD'
+    end
+    object ADOQuery1DEFAULTDEPTID: TSmallintField
+      FieldName = 'DEFAULTDEPTID'
+    end
+    object ADOQuery1SECURITYFLAGS: TSmallintField
+      FieldName = 'SECURITYFLAGS'
+    end
+    object ADOQuery1ATT: TSmallintField
+      FieldName = 'ATT'
+    end
+    object ADOQuery1INLATE: TSmallintField
+      FieldName = 'INLATE'
+    end
+    object ADOQuery1OUTEARLY: TSmallintField
+      FieldName = 'OUTEARLY'
+    end
+    object ADOQuery1OVERTIME: TSmallintField
+      FieldName = 'OVERTIME'
+    end
+    object ADOQuery1SEP: TSmallintField
+      FieldName = 'SEP'
+    end
+    object ADOQuery1HOLIDAY: TSmallintField
+      FieldName = 'HOLIDAY'
+    end
+    object ADOQuery1MINZU: TWideStringField
+      FieldName = 'MINZU'
+      Size = 8
+    end
+    object ADOQuery1PASSWORD: TWideStringField
+      FieldName = 'PASSWORD'
+    end
+    object ADOQuery1LUNCHDURATION: TSmallintField
+      FieldName = 'LUNCHDURATION'
+    end
+    object ADOQuery1MVERIFYPASS: TWideStringField
+      FieldName = 'MVERIFYPASS'
+      Size = 10
+    end
+    object ADOQuery1PHOTO: TBlobField
+      FieldName = 'PHOTO'
+    end
+    object ADOQuery1Notes: TBlobField
+      FieldName = 'Notes'
+    end
+    object ADOQuery1privilege: TIntegerField
+      FieldName = 'privilege'
+    end
+    object ADOQuery1InheritDeptSch: TSmallintField
+      FieldName = 'InheritDeptSch'
+    end
+    object ADOQuery1InheritDeptSchClass: TSmallintField
+      FieldName = 'InheritDeptSchClass'
+    end
+    object ADOQuery1AutoSchPlan: TSmallintField
+      FieldName = 'AutoSchPlan'
+    end
+    object ADOQuery1MinAutoSchInterval: TIntegerField
+      FieldName = 'MinAutoSchInterval'
+    end
+    object ADOQuery1RegisterOT: TSmallintField
+      FieldName = 'RegisterOT'
+    end
+    object ADOQuery1InheritDeptRule: TSmallintField
+      FieldName = 'InheritDeptRule'
+    end
+    object ADOQuery1EMPRIVILEGE: TSmallintField
+      FieldName = 'EMPRIVILEGE'
+    end
+    object ADOQuery1CardNo: TWideStringField
+      FieldName = 'CardNo'
+    end
+  end
+  object ADOCommand1: TADOCommand
+    Connection = ADOConnection1
+    Parameters = <>
+    ParamCheck = False
+    Left = 544
+    Top = 8
+  end
   object sSaveDialog1: TsSaveDialog
     DefaultExt = 'xls'
     Filter = 'Excel Files|*.xls'
@@ -157,238 +340,302 @@ object dm_bpr1: Tdm_bpr1
     Left = 16
     Top = 200
   end
-  object QExport4XLS1: TQExport4XLS
-    About = '(About EMS AdvancedExport)'
-    _Version = '4.2.0.6'
-    OnEndExport = QExport4XLS1EndExport
-    ShowFile = True
-    Formats.DecimalSeparator = '.'
-    Formats.ThousandSeparator = ','
-    Formats.DateSeparator = '/'
-    Formats.TimeSeparator = ':'
-    Formats.BooleanTrue = 'true'
-    Formats.BooleanFalse = 'false'
-    Formats.IntegerFormat = '#,###,###,###,##0'
-    Formats.FloatFormat = '#,###,###,###,##0.00'
-    Formats.DateFormat = 'M/d/yyyy'
-    Formats.TimeFormat = 'h:mm AMPM'
-    Formats.DateTimeFormat = 'dd/MM/yyyy hh:mm:ss'
-    Formats.CurrencyFormat = 'Rp. #,###,###,###,##0.00'
-    Options.PageFooter = 'Page &P of &N'
-    Options.SheetTitle = 'Sheet 1'
-    Options.CaptionsFormat.Font.Style = [xfsBold]
-    Options.DataFormat.Font.Size = 8
-    Options.DataFormat.Font.Name = 'Arial Narrow'
-    Options.HyperlinkFormat.Font.Color = clrBlue
-    Options.HyperlinkFormat.Font.Underline = fulSingle
-    Options.NoteFormat.Alignment.Horizontal = halLeft
-    Options.NoteFormat.Alignment.Vertical = valTop
-    Options.NoteFormat.Font.Size = 8
-    Options.NoteFormat.Font.Style = [xfsBold]
-    Options.NoteFormat.Font.Name = 'Tahoma'
-    FieldFormats = <
-      item
-      end>
-    StripStyles = <>
-    Hyperlinks = <>
-    Notes = <>
-    Charts = <>
-    Sheets = <>
-    Pictures = <>
-    Images = <>
-    Cells = <>
-    Aggregates = <>
-    MergedCells = <>
-    Left = 72
-    Top = 201
+  object MyQLapKreProduk: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT '#39'*'#39' AS kode_produk,CONCAT('#39'*'#39','#39' - '#39','#39'Semua'#39') AS nm_produk'
+      'UNION ALL'
+      
+        'SELECT kode_produk, CONCAT(kode_produk," - ",deskripsi_produk) A' +
+        'S nm_produk'
+      'FROM kre_produk'
+      'ORDER BY kode_produk')
+    Left = 384
+    Top = 72
   end
-  object QExport4Dialog1: TQExport4Dialog
-    HelpFile = 'AExportDialog.hlp'
-    Formats.DecimalSeparator = '.'
-    Formats.ThousandSeparator = ','
-    Formats.DateSeparator = '/'
-    Formats.TimeSeparator = ':'
-    Formats.BooleanTrue = 'true'
-    Formats.BooleanFalse = 'false'
-    Formats.IntegerFormat = '#,###,##0'
-    Formats.FloatFormat = '#,###,##0.00'
-    Formats.DateFormat = 'M/d/yyyy'
-    Formats.TimeFormat = 'h:mm AMPM'
-    Formats.DateTimeFormat = 'M/d/yyyy h:mm:ss AMPM'
-    Formats.CurrencyFormat = '$#,###,##0.00'
-    RTFOptions.CaptionStyle.Font.Charset = DEFAULT_CHARSET
-    RTFOptions.CaptionStyle.Font.Color = clBlack
-    RTFOptions.CaptionStyle.Font.Height = -13
-    RTFOptions.CaptionStyle.Font.Name = 'Arial'
-    RTFOptions.CaptionStyle.Font.Style = [fsBold]
-    RTFOptions.CaptionStyle.AllowHighlight = True
-    RTFOptions.CaptionStyle.Alignment = talCenter
-    RTFOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
-    RTFOptions.DataStyle.Font.Color = clBlack
-    RTFOptions.DataStyle.Font.Height = -13
-    RTFOptions.DataStyle.Font.Name = 'Arial'
-    RTFOptions.DataStyle.Font.Style = []
-    RTFOptions.DataStyle.AllowHighlight = True
-    RTFOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
-    RTFOptions.FooterStyle.Font.Color = clBlack
-    RTFOptions.FooterStyle.Font.Height = -13
-    RTFOptions.FooterStyle.Font.Name = 'Arial'
-    RTFOptions.FooterStyle.Font.Style = []
-    RTFOptions.FooterStyle.AllowHighlight = True
-    RTFOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
-    RTFOptions.HeaderStyle.Font.Color = clBlack
-    RTFOptions.HeaderStyle.Font.Height = -13
-    RTFOptions.HeaderStyle.Font.Name = 'Arial'
-    RTFOptions.HeaderStyle.Font.Style = []
-    RTFOptions.HeaderStyle.AllowHighlight = True
-    RTFOptions.StripStyles = <>
-    HTMLPageOptions.TextFont.Charset = DEFAULT_CHARSET
-    HTMLPageOptions.TextFont.Color = clWhite
-    HTMLPageOptions.TextFont.Height = -11
-    HTMLPageOptions.TextFont.Name = 'Arial'
-    HTMLPageOptions.TextFont.Style = []
-    CSVOptions.Comma = ';'
-    PDFOptions.PageOptions.MarginLeft = 1.170000000000000000
-    PDFOptions.PageOptions.MarginRight = 0.570000000000000000
-    PDFOptions.PageOptions.MarginTop = 0.780000000000000000
-    PDFOptions.PageOptions.MarginBottom = 0.780000000000000000
-    PDFOptions.HeaderFont.UserFont.Charset = DEFAULT_CHARSET
-    PDFOptions.HeaderFont.UserFont.Color = clWindowText
-    PDFOptions.HeaderFont.UserFont.Height = -13
-    PDFOptions.HeaderFont.UserFont.Name = 'Arial'
-    PDFOptions.HeaderFont.UserFont.Style = []
-    PDFOptions.HeaderFont.Charset = ANSI_CHARSET
-    PDFOptions.CaptionFont.UserFont.Charset = DEFAULT_CHARSET
-    PDFOptions.CaptionFont.UserFont.Color = clWindowText
-    PDFOptions.CaptionFont.UserFont.Height = -13
-    PDFOptions.CaptionFont.UserFont.Name = 'Arial'
-    PDFOptions.CaptionFont.UserFont.Style = []
-    PDFOptions.CaptionFont.Charset = ANSI_CHARSET
-    PDFOptions.DataFont.UserFont.Charset = DEFAULT_CHARSET
-    PDFOptions.DataFont.UserFont.Color = clWindowText
-    PDFOptions.DataFont.UserFont.Height = -13
-    PDFOptions.DataFont.UserFont.Name = 'Arial'
-    PDFOptions.DataFont.UserFont.Style = []
-    PDFOptions.DataFont.Charset = ANSI_CHARSET
-    PDFOptions.FooterFont.UserFont.Charset = DEFAULT_CHARSET
-    PDFOptions.FooterFont.UserFont.Color = clWindowText
-    PDFOptions.FooterFont.UserFont.Height = -13
-    PDFOptions.FooterFont.UserFont.Name = 'Arial'
-    PDFOptions.FooterFont.UserFont.Style = []
-    PDFOptions.FooterFont.Charset = ANSI_CHARSET
-    XLSOptions.PageFooter = 'Page &P of &N'
-    XLSOptions.SheetTitle = 'Sheet 1'
-    XLSOptions.CaptionFormat.Font.Style = [xfsBold]
-    XLSOptions.HyperlinkFormat.Font.Color = clrBlue
-    XLSOptions.HyperlinkFormat.Font.Underline = fulSingle
-    XLSOptions.NoteFormat.Alignment.Horizontal = halLeft
-    XLSOptions.NoteFormat.Alignment.Vertical = valTop
-    XLSOptions.NoteFormat.Font.Size = 8
-    XLSOptions.NoteFormat.Font.Style = [xfsBold]
-    XLSOptions.NoteFormat.Font.Name = 'Tahoma'
-    XLSOptions.FieldFormats = <>
-    XLSOptions.StripStyles = <>
-    XLSOptions.Hyperlinks = <>
-    XLSOptions.Notes = <>
-    XLSOptions.Charts = <>
-    XLSOptions.Pictures = <>
-    XLSOptions.Images = <>
-    XLSOptions.Cells = <>
-    XLSOptions.MergedCells = <>
-    ODSOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
-    ODSOptions.HeaderStyle.Font.Color = clBlack
-    ODSOptions.HeaderStyle.Font.Height = -13
-    ODSOptions.HeaderStyle.Font.Name = 'Arial'
-    ODSOptions.HeaderStyle.Font.Style = []
-    ODSOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
-    ODSOptions.FooterStyle.Font.Color = clBlack
-    ODSOptions.FooterStyle.Font.Height = -13
-    ODSOptions.FooterStyle.Font.Name = 'Arial'
-    ODSOptions.FooterStyle.Font.Style = []
-    ODSOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
-    ODSOptions.CaptionRowStyle.Font.Color = clBlack
-    ODSOptions.CaptionRowStyle.Font.Height = -13
-    ODSOptions.CaptionRowStyle.Font.Name = 'Arial'
-    ODSOptions.CaptionRowStyle.Font.Style = []
-    ODSOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
-    ODSOptions.DataStyle.Font.Color = clBlack
-    ODSOptions.DataStyle.Font.Height = -13
-    ODSOptions.DataStyle.Font.Name = 'Arial'
-    ODSOptions.DataStyle.Font.Style = []
-    ODSOptions.StripStylesList = <>
-    ODTOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
-    ODTOptions.HeaderStyle.Font.Color = clBlack
-    ODTOptions.HeaderStyle.Font.Height = -13
-    ODTOptions.HeaderStyle.Font.Name = 'Arial'
-    ODTOptions.HeaderStyle.Font.Style = []
-    ODTOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
-    ODTOptions.FooterStyle.Font.Color = clBlack
-    ODTOptions.FooterStyle.Font.Height = -13
-    ODTOptions.FooterStyle.Font.Name = 'Arial'
-    ODTOptions.FooterStyle.Font.Style = []
-    ODTOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
-    ODTOptions.CaptionRowStyle.Font.Color = clBlack
-    ODTOptions.CaptionRowStyle.Font.Height = -13
-    ODTOptions.CaptionRowStyle.Font.Name = 'Arial'
-    ODTOptions.CaptionRowStyle.Font.Style = []
-    ODTOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
-    ODTOptions.DataStyle.Font.Color = clBlack
-    ODTOptions.DataStyle.Font.Height = -13
-    ODTOptions.DataStyle.Font.Name = 'Arial'
-    ODTOptions.DataStyle.Font.Style = []
-    ODTOptions.StripStylesList = <>
-    ODTOptions.Border.BorderStyle = bsODFSolid
-    XlsxOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
-    XlsxOptions.HeaderStyle.Font.Color = clBlack
-    XlsxOptions.HeaderStyle.Font.Height = -15
-    XlsxOptions.HeaderStyle.Font.Name = 'Calibri'
-    XlsxOptions.HeaderStyle.Font.Style = []
-    XlsxOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
-    XlsxOptions.CaptionRowStyle.Font.Color = clBlack
-    XlsxOptions.CaptionRowStyle.Font.Height = -15
-    XlsxOptions.CaptionRowStyle.Font.Name = 'Calibri'
-    XlsxOptions.CaptionRowStyle.Font.Style = []
-    XlsxOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
-    XlsxOptions.DataStyle.Font.Color = clBlack
-    XlsxOptions.DataStyle.Font.Height = -15
-    XlsxOptions.DataStyle.Font.Name = 'Calibri'
-    XlsxOptions.DataStyle.Font.Style = []
-    XlsxOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
-    XlsxOptions.FooterStyle.Font.Color = clBlack
-    XlsxOptions.FooterStyle.Font.Height = -15
-    XlsxOptions.FooterStyle.Font.Name = 'Calibri'
-    XlsxOptions.FooterStyle.Font.Style = []
-    XlsxOptions.StripStylesList = <>
-    XlsxOptions.PageSettings.MarginLeft = 0.700000000000000000
-    XlsxOptions.PageSettings.MarginRight = 0.700000000000000000
-    XlsxOptions.PageSettings.MarginTop = 0.750000000000000000
-    XlsxOptions.PageSettings.MarginBottom = 0.750000000000000000
-    XlsxOptions.PageSettings.Header = 0.300000000000000000
-    XlsxOptions.PageSettings.Footer = 0.300000000000000000
-    DocxOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
-    DocxOptions.HeaderStyle.Font.Color = clBlack
-    DocxOptions.HeaderStyle.Font.Height = -15
-    DocxOptions.HeaderStyle.Font.Name = 'Calibri'
-    DocxOptions.HeaderStyle.Font.Style = []
-    DocxOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
-    DocxOptions.CaptionRowStyle.Font.Color = clBlack
-    DocxOptions.CaptionRowStyle.Font.Height = -15
-    DocxOptions.CaptionRowStyle.Font.Name = 'Calibri'
-    DocxOptions.CaptionRowStyle.Font.Style = []
-    DocxOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
-    DocxOptions.DataStyle.Font.Color = clBlack
-    DocxOptions.DataStyle.Font.Height = -15
-    DocxOptions.DataStyle.Font.Name = 'Calibri'
-    DocxOptions.DataStyle.Font.Style = []
-    DocxOptions.StripStylesList = <>
-    DocxOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
-    DocxOptions.FooterStyle.Font.Color = clBlack
-    DocxOptions.FooterStyle.Font.Height = -15
-    DocxOptions.FooterStyle.Font.Name = 'Calibri'
-    DocxOptions.FooterStyle.Font.Style = []
-    AccessOptions.TableName = 'EXPORT_TABLE'
-    Left = 168
-    Top = 200
+  object dsLapKreProduk: TMyDataSource
+    DataSet = MyQLapKreProduk
+    Left = 424
+    Top = 72
+  end
+  object ADOQuery2: TADOQuery
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    ParamCheck = False
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * '
+      'FROM USERINFO'
+      'ORDER BY USERID')
+    Left = 592
+    Top = 8
+    object ADOQuery2USERID: TAutoIncField
+      FieldName = 'USERID'
+      ReadOnly = True
+    end
+    object ADOQuery2Badgenumber: TWideStringField
+      FieldName = 'Badgenumber'
+      Size = 24
+    end
+    object ADOQuery2SSN: TWideStringField
+      FieldName = 'SSN'
+    end
+    object ADOQuery2Name: TWideStringField
+      FieldName = 'Name'
+      Size = 40
+    end
+    object ADOQuery2Gender: TWideStringField
+      FieldName = 'Gender'
+      Size = 8
+    end
+    object ADOQuery2TITLE: TWideStringField
+      FieldName = 'TITLE'
+    end
+    object ADOQuery2PAGER: TWideStringField
+      FieldName = 'PAGER'
+    end
+    object ADOQuery2BIRTHDAY: TDateTimeField
+      FieldName = 'BIRTHDAY'
+    end
+    object ADOQuery2HIREDDAY: TDateTimeField
+      FieldName = 'HIREDDAY'
+    end
+    object ADOQuery2street: TWideStringField
+      FieldName = 'street'
+      Size = 80
+    end
+    object ADOQuery2CITY: TWideStringField
+      FieldName = 'CITY'
+      Size = 2
+    end
+    object ADOQuery2STATE: TWideStringField
+      FieldName = 'STATE'
+      Size = 2
+    end
+    object ADOQuery2ZIP: TWideStringField
+      FieldName = 'ZIP'
+      Size = 12
+    end
+    object ADOQuery2OPHONE: TWideStringField
+      FieldName = 'OPHONE'
+    end
+    object ADOQuery2FPHONE: TWideStringField
+      FieldName = 'FPHONE'
+    end
+    object ADOQuery2VERIFICATIONMETHOD: TSmallintField
+      FieldName = 'VERIFICATIONMETHOD'
+    end
+    object ADOQuery2DEFAULTDEPTID: TSmallintField
+      FieldName = 'DEFAULTDEPTID'
+    end
+    object ADOQuery2SECURITYFLAGS: TSmallintField
+      FieldName = 'SECURITYFLAGS'
+    end
+    object ADOQuery2ATT: TSmallintField
+      FieldName = 'ATT'
+    end
+    object ADOQuery2INLATE: TSmallintField
+      FieldName = 'INLATE'
+    end
+    object ADOQuery2OUTEARLY: TSmallintField
+      FieldName = 'OUTEARLY'
+    end
+    object ADOQuery2OVERTIME: TSmallintField
+      FieldName = 'OVERTIME'
+    end
+    object ADOQuery2SEP: TSmallintField
+      FieldName = 'SEP'
+    end
+    object ADOQuery2HOLIDAY: TSmallintField
+      FieldName = 'HOLIDAY'
+    end
+    object ADOQuery2MINZU: TWideStringField
+      FieldName = 'MINZU'
+      Size = 8
+    end
+    object ADOQuery2PASSWORD: TWideStringField
+      FieldName = 'PASSWORD'
+    end
+    object ADOQuery2LUNCHDURATION: TSmallintField
+      FieldName = 'LUNCHDURATION'
+    end
+    object ADOQuery2MVERIFYPASS: TWideStringField
+      FieldName = 'MVERIFYPASS'
+      Size = 10
+    end
+    object ADOQuery2PHOTO: TBlobField
+      FieldName = 'PHOTO'
+    end
+    object ADOQuery2Notes: TBlobField
+      FieldName = 'Notes'
+    end
+    object ADOQuery2privilege: TIntegerField
+      FieldName = 'privilege'
+    end
+    object ADOQuery2InheritDeptSch: TSmallintField
+      FieldName = 'InheritDeptSch'
+    end
+    object ADOQuery2InheritDeptSchClass: TSmallintField
+      FieldName = 'InheritDeptSchClass'
+    end
+    object ADOQuery2AutoSchPlan: TSmallintField
+      FieldName = 'AutoSchPlan'
+    end
+    object ADOQuery2MinAutoSchInterval: TIntegerField
+      FieldName = 'MinAutoSchInterval'
+    end
+    object ADOQuery2RegisterOT: TSmallintField
+      FieldName = 'RegisterOT'
+    end
+    object ADOQuery2InheritDeptRule: TSmallintField
+      FieldName = 'InheritDeptRule'
+    end
+    object ADOQuery2EMPRIVILEGE: TSmallintField
+      FieldName = 'EMPRIVILEGE'
+    end
+    object ADOQuery2CardNo: TWideStringField
+      FieldName = 'CardNo'
+    end
+  end
+  object MyQInvIntegrasi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_integrasi, CONCAT(kode_integrasi," - ",deskripsi_int' +
+        'egrasi) AS nm_integrasi'
+      'FROM inv_kode_integrasi'
+      'WHERE flg_aktif=1'
+      'ORDER BY kode_integrasi')
+    Left = 736
+    Top = 64
+    object MyQInvIntegrasikode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQInvIntegrasinm_integrasi: TStringField
+      FieldName = 'nm_integrasi'
+      Size = 57
+    end
+  end
+  object dsInvIntegrasi: TMyDataSource
+    DataSet = MyQInvIntegrasi
+    Left = 768
+    Top = 64
+  end
+  object MyQInvGroup1: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_group1, CONCAT(kode_group1," - ",deskripsi_group1) A' +
+        'S nm_group1'
+      'FROM inv_kode_group1'
+      'WHERE flg_aktif=1'
+      'ORDER BY kode_group1')
+    Left = 736
+    Top = 112
+    object MyQInvGroup1kode_group1: TStringField
+      FieldName = 'kode_group1'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQInvGroup1nm_group1: TStringField
+      FieldName = 'nm_group1'
+      Size = 107
+    end
+  end
+  object dsInvGroup1: TMyDataSource
+    DataSet = MyQInvGroup1
+    Left = 768
+    Top = 112
+  end
+  object MyQInvGroup2: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_group2, CONCAT(kode_group2," - ",deskripsi_group2) A' +
+        'S nm_group2'
+      'FROM inv_kode_group2'
+      'WHERE flg_aktif=1'
+      'ORDER BY kode_group2')
+    Left = 736
+    Top = 160
+    object MyQInvGroup2kode_group2: TStringField
+      FieldName = 'kode_group2'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQInvGroup2nm_group2: TStringField
+      FieldName = 'nm_group2'
+      Size = 107
+    end
+  end
+  object dsInvGroup2: TMyDataSource
+    DataSet = MyQInvGroup2
+    Left = 768
+    Top = 160
+  end
+  object MyQInvGroup3: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_group3, CONCAT(kode_group3," - ",deskripsi_group3) A' +
+        'S nm_group3'
+      'FROM inv_kode_group3'
+      'WHERE flg_aktif=1'
+      'ORDER BY kode_group3')
+    Left = 736
+    Top = 208
+    object MyQInvGroup3kode_group3: TStringField
+      FieldName = 'kode_group3'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQInvGroup3nm_group3: TStringField
+      FieldName = 'nm_group3'
+      Size = 107
+    end
+  end
+  object dsInvGroup3: TMyDataSource
+    DataSet = MyQInvGroup3
+    Left = 768
+    Top = 208
+  end
+  object MyQInvSandiBI: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT sandi, CONCAT(sandi," - ",IF(LEFT(sandi,1)=1,"ATI - ","AT' +
+        'B - "),keterangan, " (",nama_sumber,")") AS nm_sandi'
+      'FROM lbi_fixaset2013'
+      'WHERE sandi_sumber <> 0 AND kode_kantor = &KODE_KANTOR'
+      '  &WHERE2'
+      'ORDER BY sandi')
+    Left = 736
+    Top = 256
+    MacroData = <
+      item
+        Name = 'KODE_KANTOR'
+        Value = #39'00'#39
+      end
+      item
+        Name = 'WHERE2'
+      end>
+    object MyQInvSandiBIsandi: TStringField
+      FieldName = 'sandi'
+      Origin = 'lbi_fixaset2013.sandi'
+      Size = 10
+    end
+    object MyQInvSandiBInm_sandi: TStringField
+      FieldName = 'nm_sandi'
+      Origin = 'nm_sandi'
+      Size = 278
+    end
+  end
+  object dsInvSandiBI: TMyDataSource
+    DataSet = MyQInvSandiBI
+    Left = 768
+    Top = 256
   end
   object MyQuery2: TMyQuery
     Connection = MyCon2
@@ -406,7 +653,7 @@ object dm_bpr1: Tdm_bpr1
       '    AND `tgl_expired` >= CURDATE() '
       '    &WHERE2'
       'ORDER BY `user`')
-    Left = 360
+    Left = 384
     Top = 120
     MacroData = <
       item
@@ -419,10 +666,2360 @@ object dm_bpr1: Tdm_bpr1
     Left = 424
     Top = 120
   end
+  object MyQTmpKredit: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT * FROM `vmicro_master_kredit`'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    Left = 240
+    Top = 208
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTmpKreditnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      Origin = 'vmicro_master_kredit.nasabah_id'
+      FixedChar = True
+    end
+    object MyQTmpKreditno_rekening: TStringField
+      FieldName = 'no_rekening'
+      Origin = 'vmicro_master_kredit.no_rekening'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTmpKreditno_alternatif: TStringField
+      FieldName = 'no_alternatif'
+      Origin = 'vmicro_master_kredit.no_alternatif'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTmpKreditkode_group1: TStringField
+      FieldName = 'kode_group1'
+      Origin = 'vmicro_master_kredit.kode_group1'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_group2: TStringField
+      FieldName = 'kode_group2'
+      Origin = 'vmicro_master_kredit.kode_group2'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_ao_ro: TStringField
+      FieldName = 'kode_ao_ro'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_group3: TStringField
+      FieldName = 'kode_group3'
+      Origin = 'vmicro_master_kredit.kode_group3'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_group4: TStringField
+      FieldName = 'kode_group4'
+      Origin = 'vmicro_master_kredit.kode_group4'
+      FixedChar = True
+      Size = 8
+    end
+    object MyQTmpKreditkode_group5: TStringField
+      FieldName = 'kode_group5'
+      Origin = 'vmicro_master_kredit.kode_group5'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTmpKreditkode_group6: TStringField
+      FieldName = 'kode_group6'
+      Origin = 'vmicro_master_kredit.kode_group6'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_group7: TStringField
+      FieldName = 'kode_group7'
+      Origin = 'vmicro_master_kredit.kode_group7'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditnama_nasabah: TStringField
+      FieldName = 'nama_nasabah'
+      Origin = 'vmicro_master_kredit.nama_nasabah'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTmpKreditalamat: TStringField
+      FieldName = 'alamat'
+      Origin = 'vmicro_master_kredit.alamat'
+      Size = 308
+    end
+    object MyQTmpKreditno_telp: TStringField
+      FieldName = 'no_telp'
+      Origin = 'vmicro_master_kredit.no_telp'
+      Size = 50
+    end
+    object MyQTmpKreditno_hp: TStringField
+      FieldName = 'no_hp'
+      Origin = 'vmicro_master_kredit.no_hp'
+      Size = 50
+    end
+    object MyQTmpKreditjml_pinjaman: TFloatField
+      FieldName = 'jml_pinjaman'
+      Origin = 'vmicro_master_kredit.jml_pinjaman'
+    end
+    object MyQTmpKredittgl_realisasi: TDateField
+      FieldName = 'tgl_realisasi'
+      Origin = 'vmicro_master_kredit.tgl_realisasi'
+    end
+    object MyQTmpKredittgl_jatuh_tempo: TDateField
+      FieldName = 'tgl_jatuh_tempo'
+      Origin = 'vmicro_master_kredit.tgl_jatuh_tempo'
+    end
+    object MyQTmpKreditpokok_saldo_akhir: TFloatField
+      FieldName = 'pokok_saldo_akhir'
+      Origin = 'vmicro_master_kredit.pokok_saldo_akhir'
+    end
+    object MyQTmpKreditverifikasi: TStringField
+      FieldName = 'verifikasi'
+      Origin = 'vmicro_master_kredit.verifikasi'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditsaldo_bunga_yad: TFloatField
+      FieldName = 'saldo_bunga_yad'
+      Origin = 'vmicro_master_kredit.saldo_bunga_yad'
+    end
+    object MyQTmpKreditsaldo_akhir_debius: TFloatField
+      FieldName = 'saldo_akhir_debius'
+      Origin = 'vmicro_master_kredit.saldo_akhir_debius'
+    end
+    object MyQTmpKreditkode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      Origin = 'vmicro_master_kredit.kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTmpKredittype_kredit: TStringField
+      FieldName = 'type_kredit'
+      Origin = 'vmicro_master_kredit.type_kredit'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditprovisi: TFloatField
+      FieldName = 'provisi'
+      Origin = 'vmicro_master_kredit.provisi'
+    end
+    object MyQTmpKredittabungan: TFloatField
+      FieldName = 'tabungan'
+      Origin = 'vmicro_master_kredit.tabungan'
+    end
+    object MyQTmpKreditmaterai: TFloatField
+      FieldName = 'materai'
+      Origin = 'vmicro_master_kredit.materai'
+    end
+    object MyQTmpKreditpremi: TFloatField
+      FieldName = 'premi'
+      Origin = 'vmicro_master_kredit.premi'
+    end
+    object MyQTmpKreditnotariel: TFloatField
+      FieldName = 'notariel'
+      Origin = 'vmicro_master_kredit.notariel'
+    end
+    object MyQTmpKreditadm_lainnya: TFloatField
+      FieldName = 'adm_lainnya'
+      Origin = 'vmicro_master_kredit.adm_lainnya'
+    end
+    object MyQTmpKreditadm_per_bln: TFloatField
+      FieldName = 'adm_per_bln'
+      Origin = 'vmicro_master_kredit.adm_per_bln'
+    end
+    object MyQTmpKreditpotongan1: TFloatField
+      FieldName = 'potongan1'
+      Origin = 'vmicro_master_kredit.potongan1'
+    end
+    object MyQTmpKreditpotongan2: TFloatField
+      FieldName = 'potongan2'
+      Origin = 'vmicro_master_kredit.potongan2'
+    end
+    object MyQTmpKreditpotongan3: TFloatField
+      FieldName = 'potongan3'
+      Origin = 'vmicro_master_kredit.potongan3'
+    end
+    object MyQTmpKreditpotongan4: TFloatField
+      FieldName = 'potongan4'
+      Origin = 'vmicro_master_kredit.potongan4'
+    end
+    object MyQTmpKreditpotongan5: TFloatField
+      FieldName = 'potongan5'
+      Origin = 'vmicro_master_kredit.potongan5'
+    end
+    object MyQTmpKreditpotongan6: TFloatField
+      FieldName = 'potongan6'
+      Origin = 'vmicro_master_kredit.potongan6'
+    end
+    object MyQTmpKreditpotongan7: TFloatField
+      FieldName = 'potongan7'
+      Origin = 'vmicro_master_kredit.potongan7'
+    end
+    object MyQTmpKreditpotongan8: TFloatField
+      FieldName = 'potongan8'
+      Origin = 'vmicro_master_kredit.potongan8'
+    end
+    object MyQTmpKreditpotongan9: TFloatField
+      FieldName = 'potongan9'
+      Origin = 'vmicro_master_kredit.potongan9'
+    end
+    object MyQTmpKreditpotongan10: TFloatField
+      FieldName = 'potongan10'
+      Origin = 'vmicro_master_kredit.potongan10'
+    end
+    object MyQTmpKreditpotongan11: TFloatField
+      FieldName = 'potongan11'
+      Origin = 'vmicro_master_kredit.potongan11'
+    end
+    object MyQTmpKreditpotongan12: TFloatField
+      FieldName = 'potongan12'
+      Origin = 'vmicro_master_kredit.potongan12'
+    end
+    object MyQTmpKreditbiaya_transaksi: TFloatField
+      FieldName = 'biaya_transaksi'
+      Origin = 'vmicro_master_kredit.biaya_transaksi'
+    end
+    object MyQTmpKreditkode_produk: TStringField
+      FieldName = 'kode_produk'
+      Origin = 'vmicro_master_kredit.kode_produk'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditkode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      Origin = 'vmicro_master_kredit.kode_integrasi'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditstatus: TSmallintField
+      FieldName = 'status'
+      Origin = 'vmicro_master_kredit.status'
+    end
+    object MyQTmpKreditpotongan_tabungan: TFloatField
+      FieldName = 'potongan_tabungan'
+      Origin = 'vmicro_master_kredit.potongan_tabungan'
+    end
+    object MyQTmpKreditnorek_tawab: TStringField
+      FieldName = 'norek_tawab'
+      Origin = 'vmicro_master_kredit.norek_tawab'
+      FixedChar = True
+    end
+    object MyQTmpKreditnorek_tabungan: TStringField
+      FieldName = 'norek_tabungan'
+      Origin = 'vmicro_master_kredit.norek_tabungan'
+      FixedChar = True
+    end
+    object MyQTmpKreditjml_angsuran: TIntegerField
+      FieldName = 'jml_angsuran'
+      Origin = 'vmicro_master_kredit.jml_angsuran'
+    end
+    object MyQTmpKreditis_advance: TStringField
+      FieldName = 'is_advance'
+      Origin = 'vmicro_master_kredit.is_advance'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditsuku_bunga_per_tahun: TFloatField
+      FieldName = 'suku_bunga_per_tahun'
+      Origin = 'vmicro_master_kredit.suku_bunga_per_tahun'
+    end
+    object MyQTmpKreditdebius: TSmallintField
+      FieldName = 'debius'
+      Origin = 'vmicro_master_kredit.debius'
+    end
+    object MyQTmpKredittgl_debius: TDateField
+      FieldName = 'tgl_debius'
+      Origin = 'vmicro_master_kredit.tgl_debius'
+    end
+    object MyQTmpKreditsaldo_debius: TFloatField
+      FieldName = 'saldo_debius'
+      Origin = 'vmicro_master_kredit.saldo_debius'
+    end
+    object MyQTmpKredittgl_lunas: TDateField
+      FieldName = 'tgl_lunas'
+      Origin = 'vmicro_master_kredit.tgl_lunas'
+    end
+    object MyQTmpKreditayda: TSmallintField
+      FieldName = 'ayda'
+      Origin = 'vmicro_master_kredit.ayda'
+    end
+    object MyQTmpKredittgl_ayda: TDateField
+      FieldName = 'tgl_ayda'
+      Origin = 'vmicro_master_kredit.tgl_ayda'
+    end
+    object MyQTmpKreditsaldo_ayda_pokok: TFloatField
+      FieldName = 'saldo_ayda_pokok'
+      Origin = 'vmicro_master_kredit.saldo_ayda_pokok'
+    end
+    object MyQTmpKreditsaldo_ayda_bunga: TFloatField
+      FieldName = 'saldo_ayda_bunga'
+      Origin = 'vmicro_master_kredit.saldo_ayda_bunga'
+    end
+    object MyQTmpKredithapus_tagih: TSmallintField
+      FieldName = 'hapus_tagih'
+      Origin = 'vmicro_master_kredit.hapus_tagih'
+    end
+    object MyQTmpKredittgl_hapus_tagih: TDateField
+      FieldName = 'tgl_hapus_tagih'
+      Origin = 'vmicro_master_kredit.tgl_hapus_tagih'
+    end
+    object MyQTmpKreditsaldo_hapus_tagih: TFloatField
+      FieldName = 'saldo_hapus_tagih'
+      Origin = 'vmicro_master_kredit.saldo_hapus_tagih'
+    end
+    object MyQTmpKreditjkw_asuransi: TIntegerField
+      FieldName = 'jkw_asuransi'
+      Origin = 'vmicro_master_kredit.jkw_asuransi'
+    end
+    object MyQTmpKreditno_spk: TStringField
+      FieldName = 'no_spk'
+      Origin = 'vmicro_master_kredit.no_spk'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTmpKreditkode_sumber_dana: TStringField
+      FieldName = 'kode_sumber_dana'
+      Origin = 'vmicro_master_kredit.kode_sumber_dana'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditperiode_angsuran: TIntegerField
+      FieldName = 'periode_angsuran'
+      Origin = 'vmicro_master_kredit.periode_angsuran'
+    end
+    object MyQTmpKreditsatuan_waktu_angsuran: TStringField
+      FieldName = 'satuan_waktu_angsuran'
+      Origin = 'vmicro_master_kredit.satuan_waktu_angsuran'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKredittype_kolek: TStringField
+      FieldName = 'type_kolek'
+      Origin = 'vmicro_master_kredit.type_kolek'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditgrace_period: TIntegerField
+      FieldName = 'grace_period'
+      Origin = 'vmicro_master_kredit.grace_period'
+    end
+    object MyQTmpKredittgl_tagihan: TSmallintField
+      FieldName = 'tgl_tagihan'
+      Origin = 'vmicro_master_kredit.tgl_tagihan'
+    end
+    object MyQTmpKreditjml_mark_up: TFloatField
+      FieldName = 'jml_mark_up'
+      Origin = 'vmicro_master_kredit.jml_mark_up'
+    end
+    object MyQTmpKreditperc_denda: TFloatField
+      FieldName = 'perc_denda'
+      Origin = 'vmicro_master_kredit.perc_denda'
+    end
+    object MyQTmpKreditnorek_deposito: TStringField
+      FieldName = 'norek_deposito'
+      Origin = 'vmicro_master_kredit.norek_deposito'
+      FixedChar = True
+    end
+    object MyQTmpKreditnorek_deposito2: TStringField
+      FieldName = 'norek_deposito2'
+      Origin = 'vmicro_master_kredit.norek_deposito2'
+      FixedChar = True
+    end
+    object MyQTmpKreditdep_yg_dijaminkan: TFloatField
+      FieldName = 'dep_yg_dijaminkan'
+      Origin = 'vmicro_master_kredit.dep_yg_dijaminkan'
+    end
+    object MyQTmpKreditagunan_id1: TStringField
+      FieldName = 'agunan_id1'
+      Origin = 'vmicro_master_kredit.agunan_id1'
+      FixedChar = True
+    end
+    object MyQTmpKreditagunan_id2: TStringField
+      FieldName = 'agunan_id2'
+      Origin = 'vmicro_master_kredit.agunan_id2'
+      FixedChar = True
+    end
+    object MyQTmpKreditagunan_id3: TStringField
+      FieldName = 'agunan_id3'
+      Origin = 'vmicro_master_kredit.agunan_id3'
+      FixedChar = True
+    end
+    object MyQTmpKreditagunan_id4: TStringField
+      FieldName = 'agunan_id4'
+      Origin = 'vmicro_master_kredit.agunan_id4'
+      FixedChar = True
+    end
+    object MyQTmpKreditagunan_id5: TStringField
+      FieldName = 'agunan_id5'
+      Origin = 'vmicro_master_kredit.agunan_id5'
+      FixedChar = True
+    end
+    object MyQTmpKreditket_biaya: TStringField
+      FieldName = 'ket_biaya'
+      Origin = 'vmicro_master_kredit.ket_biaya'
+      Size = 100
+    end
+    object MyQTmpKreditpayment: TFloatField
+      FieldName = 'payment'
+      Origin = 'vmicro_master_kredit.payment'
+    end
+    object MyQTmpKreditkode_asuransi: TStringField
+      FieldName = 'kode_asuransi'
+      Origin = 'vmicro_master_kredit.kode_asuransi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKredittgl_jt_asuransi: TDateField
+      FieldName = 'tgl_jt_asuransi'
+      Origin = 'vmicro_master_kredit.tgl_jt_asuransi'
+    end
+    object MyQTmpKreditnilai_asuransi: TFloatField
+      FieldName = 'nilai_asuransi'
+      Origin = 'vmicro_master_kredit.nilai_asuransi'
+    end
+    object MyQTmpKreditpenjamin: TStringField
+      FieldName = 'penjamin'
+      Origin = 'vmicro_master_kredit.penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditalamat_penjamin: TStringField
+      FieldName = 'alamat_penjamin'
+      Origin = 'vmicro_master_kredit.alamat_penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditpekerjaan_penjamin: TStringField
+      FieldName = 'pekerjaan_penjamin'
+      Origin = 'vmicro_master_kredit.pekerjaan_penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditidentitas_penjamin: TStringField
+      FieldName = 'identitas_penjamin'
+      Origin = 'vmicro_master_kredit.identitas_penjamin'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTmpKreditnpwp_penjamin: TStringField
+      FieldName = 'npwp_penjamin'
+      Origin = 'vmicro_master_kredit.npwp_penjamin'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTmpKreditstatus_pasangan: TStringField
+      FieldName = 'status_pasangan'
+      Origin = 'vmicro_master_kredit.status_pasangan'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTmpKreditnama_pasangan: TStringField
+      FieldName = 'nama_pasangan'
+      Origin = 'vmicro_master_kredit.nama_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditalamat_pasangan: TStringField
+      FieldName = 'alamat_pasangan'
+      Origin = 'vmicro_master_kredit.alamat_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditpekerjaan_pasangan: TStringField
+      FieldName = 'pekerjaan_pasangan'
+      Origin = 'vmicro_master_kredit.pekerjaan_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditno_id_pasangan: TStringField
+      FieldName = 'no_id_pasangan'
+      Origin = 'vmicro_master_kredit.no_id_pasangan'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTmpKreditstatus_pasangan_penjamin: TStringField
+      FieldName = 'status_pasangan_penjamin'
+      Origin = 'vmicro_master_kredit.status_pasangan_penjamin'
+      Size = 10
+    end
+    object MyQTmpKreditnama_pasangan_penjamin: TStringField
+      FieldName = 'nama_pasangan_penjamin'
+      Origin = 'vmicro_master_kredit.nama_pasangan_penjamin'
+      Size = 200
+    end
+    object MyQTmpKreditalamat_pasangan_penjamin: TStringField
+      FieldName = 'alamat_pasangan_penjamin'
+      Origin = 'vmicro_master_kredit.alamat_pasangan_penjamin'
+      Size = 200
+    end
+    object MyQTmpKreditpekerjaan_pasangan_penjamin: TStringField
+      FieldName = 'pekerjaan_pasangan_penjamin'
+      Origin = 'vmicro_master_kredit.pekerjaan_pasangan_penjamin'
+      Size = 200
+    end
+    object MyQTmpKreditno_id_pasangan_penjamin: TStringField
+      FieldName = 'no_id_pasangan_penjamin'
+      Origin = 'vmicro_master_kredit.no_id_pasangan_penjamin'
+      Size = 100
+    end
+    object MyQTmpKreditketerangan: TStringField
+      FieldName = 'keterangan'
+      Origin = 'vmicro_master_kredit.keterangan'
+      FixedChar = True
+      Size = 250
+    end
+    object MyQTmpKredittujuan_usaha: TStringField
+      FieldName = 'tujuan_usaha'
+      Origin = 'vmicro_master_kredit.tujuan_usaha'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTmpKreditjenis_agunan: TStringField
+      FieldName = 'jenis_agunan'
+      Origin = 'vmicro_master_kredit.jenis_agunan'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTmpKreditkuantum_agunan: TSmallintField
+      FieldName = 'kuantum_agunan'
+      Origin = 'vmicro_master_kredit.kuantum_agunan'
+    end
+    object MyQTmpKreditikatan_agunan: TStringField
+      FieldName = 'ikatan_agunan'
+      Origin = 'vmicro_master_kredit.ikatan_agunan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKredittgl_penilaian_agunan: TDateField
+      FieldName = 'tgl_penilaian_agunan'
+      Origin = 'vmicro_master_kredit.tgl_penilaian_agunan'
+    end
+    object MyQTmpKreditno_sppk: TStringField
+      FieldName = 'no_sppk'
+      Origin = 'vmicro_master_kredit.no_sppk'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTmpKreditnilai_njop_agunan: TFloatField
+      FieldName = 'nilai_njop_agunan'
+      Origin = 'vmicro_master_kredit.nilai_njop_agunan'
+    end
+    object MyQTmpKreditnilai_taksasi_agunan: TFloatField
+      FieldName = 'nilai_taksasi_agunan'
+      Origin = 'vmicro_master_kredit.nilai_taksasi_agunan'
+    end
+    object MyQTmpKreditharga_pasar: TFloatField
+      FieldName = 'harga_pasar'
+      Origin = 'vmicro_master_kredit.harga_pasar'
+    end
+    object MyQTmpKreditnilai_apht_agunan: TFloatField
+      FieldName = 'nilai_apht_agunan'
+      Origin = 'vmicro_master_kredit.nilai_apht_agunan'
+    end
+    object MyQTmpKreditpersen_dijaminkan: TFloatField
+      FieldName = 'persen_dijaminkan'
+      Origin = 'vmicro_master_kredit.persen_dijaminkan'
+    end
+    object MyQTmpKreditjenis_fasilitas: TStringField
+      FieldName = 'jenis_fasilitas'
+      Origin = 'vmicro_master_kredit.jenis_fasilitas'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTmpKreditapplication_id: TStringField
+      FieldName = 'application_id'
+      Origin = 'vmicro_master_kredit.application_id'
+      Size = 40
+    end
+    object MyQTmpKreditno_rekening_old: TStringField
+      FieldName = 'no_rekening_old'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTmpKreditbi_gol_debitur: TStringField
+      FieldName = 'bi_gol_debitur'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditbi_sifat: TStringField
+      FieldName = 'bi_sifat'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditbi_jenis_penggunaan: TStringField
+      FieldName = 'bi_jenis_penggunaan'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditbi_sektor_ekonomi: TStringField
+      FieldName = 'bi_sektor_ekonomi'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTmpKreditbi_gol_penjamin: TStringField
+      FieldName = 'bi_gol_penjamin'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditkode_keterkaitan: TStringField
+      FieldName = 'kode_keterkaitan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditkode_sumber_pelunasan: TStringField
+      FieldName = 'kode_sumber_pelunasan'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditkode_jenis_usaha: TStringField
+      FieldName = 'kode_jenis_usaha'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditstatus_kredit: TStringField
+      FieldName = 'status_kredit'
+      FixedChar = True
+      Size = 12
+    end
+    object MyQTmpKreditno_rekening_old_kolek: TStringField
+      FieldName = 'no_rekening_old_kolek'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditkode_chanelling: TStringField
+      FieldName = 'kode_chanelling'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditsifat: TStringField
+      FieldName = 'sifat'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditgol_kredit: TStringField
+      FieldName = 'gol_kredit'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditjen_penggunaan: TStringField
+      FieldName = 'jen_penggunaan'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTmpKreditsektor_ekonomi: TStringField
+      FieldName = 'sektor_ekonomi'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTmpKreditpersen_penjamin: TFloatField
+      FieldName = 'persen_penjamin'
+    end
+    object MyQTmpKreditjml_pendapatan_notaris: TFloatField
+      FieldName = 'jml_pendapatan_notaris'
+    end
+    object MyQTmpKreditrekomendasi_ca: TStringField
+      FieldName = 'rekomendasi_ca'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTmpKreditjml_rekomendasi: TFloatField
+      FieldName = 'jml_rekomendasi'
+    end
+    object MyQTmpKreditketerangan_ca: TStringField
+      FieldName = 'keterangan_ca'
+      Size = 200
+    end
+    object MyQTmpKreditkode_asuransi_jiwa: TStringField
+      FieldName = 'kode_asuransi_jiwa'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTmpKreditjkw_asuransi_jiwa: TIntegerField
+      FieldName = 'jkw_asuransi_jiwa'
+    end
+    object MyQTmpKredittgl_jt_asuransi_jiwa: TDateField
+      FieldName = 'tgl_jt_asuransi_jiwa'
+    end
+    object MyQTmpKreditnilai_asuransi_jiwa: TFloatField
+      FieldName = 'nilai_asuransi_jiwa'
+    end
+    object MyQTmpKreditberat_asuransi_jiwa: TFloatField
+      FieldName = 'berat_asuransi_jiwa'
+    end
+    object MyQTmpKredittinggi_asuransi_jiwa: TFloatField
+      FieldName = 'tinggi_asuransi_jiwa'
+    end
+    object MyQTmpKreditdep_yg_dijaminkan2: TFloatField
+      FieldName = 'dep_yg_dijaminkan2'
+    end
+  end
   object MyQuery3: TMyQuery
     Connection = MyCon2
     Left = 128
     Top = 104
+  end
+  object MyQTempSPK: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT &NO_REKENING INTO @pv_no_rekening;'
+      
+        'SELECT nasabah_id, nama_nasabah, alamat, kelurahan, kecamatan, k' +
+        'odepos,'
+      
+        '    kota_kab, telpon, hp, deskripsi_group1, no_id, tempat_bekerj' +
+        'a,'
+      
+        '    kode_integrasi, deskripsi_integrasi, no_rekening, suku_bunga' +
+        '_per_tahun, '
+      
+        '    jml_angsuran, tgl_realisasi, tgl_jatuh_tempo, provisi, tabun' +
+        'gan, '
+      
+        '    materai, premi, notariel, adm_lainnya, jml_pinjaman, type_kr' +
+        'edit,'
+      
+        '    kode_group1, kode_group2, kode_group3, kode_group4, kode_gro' +
+        'up5, kode_group6,'
+      
+        '    nama_pasangan, alamat_pasangan, pekerjaan_pasangan, status_p' +
+        'asangan, '
+      
+        '    kuantum_agunan, ikatan_agunan, nilai_taksasi_agunan, nilai_n' +
+        'jop_agunan, '
+      
+        '    kode_asuransi, nilai_asuransi, agunan_id1, agunan_id2, aguna' +
+        'n_id3, agunan_id4, agunan_id5,'
+      
+        '    tgl_lunas, no_spk, potongan1, potongan2, potongan3, potongan' +
+        '4, potongan5,'
+      
+        '    penjamin, alamat_penjamin, pekerjaan_penjamin, identitas_pen' +
+        'jamin, npwp_penjamin,'
+      
+        '    jen_penggunaan, jenis_agunan, kode_kantor, pokok, bunga, den' +
+        'da, tgl_trans,'
+      
+        '    norek_tabungan, jkw_asuransi, is_advance, potongan6, potonga' +
+        'n7, potongan8,'
+      
+        '    potongan9, potongan10, potongan11, potongan12, biaya_transak' +
+        'si, tgl_tagihan,'
+      
+        '    angsuran_ke, my_kode_trans, deskripsi_kode_dati, kode_jenis_' +
+        'penggunaan'
+      'FROM vmicro_kredit_spk'
+      '&WHERE')
+    Left = 24
+    Top = 432
+    MacroData = <
+      item
+        Name = 'NO_REKENING'
+        Value = #39'04-24-00001-17'#39
+      end
+      item
+        Name = 'WHERE'
+      end>
+    object MyQTempSPKnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      Origin = 'kretrans.nasabah_id'
+      FixedChar = True
+    end
+    object MyQTempSPKnama_nasabah: TStringField
+      FieldName = 'nama_nasabah'
+      Origin = 'kretrans.nama_nasabah'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempSPKalamat: TStringField
+      FieldName = 'alamat'
+      Origin = 'kretrans.alamat'
+      Size = 308
+    end
+    object MyQTempSPKkelurahan: TStringField
+      FieldName = 'kelurahan'
+      Origin = 'kretrans.kelurahan'
+      Size = 50
+    end
+    object MyQTempSPKkecamatan: TStringField
+      FieldName = 'kecamatan'
+      Origin = 'kretrans.kecamatan'
+      Size = 50
+    end
+    object MyQTempSPKkodepos: TStringField
+      FieldName = 'kodepos'
+      Origin = 'kretrans.kodepos'
+      Size = 5
+    end
+    object MyQTempSPKkota_kab: TStringField
+      FieldName = 'kota_kab'
+      Origin = 'kretrans.kota_kab'
+    end
+    object MyQTempSPKtelpon: TStringField
+      FieldName = 'telpon'
+      Origin = 'kretrans.telpon'
+      Size = 50
+    end
+    object MyQTempSPKhp: TStringField
+      FieldName = 'hp'
+      Origin = 'kretrans.hp'
+      Size = 50
+    end
+    object MyQTempSPKdeskripsi_group1: TStringField
+      FieldName = 'deskripsi_group1'
+      Origin = 'kretrans.deskripsi_group1'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempSPKno_id: TStringField
+      FieldName = 'no_id'
+      Origin = 'kretrans.no_id'
+      Size = 30
+    end
+    object MyQTempSPKtempat_bekerja: TStringField
+      FieldName = 'tempat_bekerja'
+      Origin = 'kretrans.tempat_bekerja'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempSPKkode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      Origin = 'kretrans.kode_integrasi'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempSPKdeskripsi_integrasi: TStringField
+      FieldName = 'deskripsi_integrasi'
+      Origin = 'kretrans.deskripsi_integrasi'
+      FixedChar = True
+      Size = 40
+    end
+    object MyQTempSPKno_rekening: TStringField
+      FieldName = 'no_rekening'
+      Origin = 'kretrans.no_rekening'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempSPKsuku_bunga_per_tahun: TFloatField
+      FieldName = 'suku_bunga_per_tahun'
+      Origin = 'kretrans.suku_bunga_per_tahun'
+    end
+    object MyQTempSPKjml_angsuran: TIntegerField
+      FieldName = 'jml_angsuran'
+      Origin = 'kretrans.jml_angsuran'
+    end
+    object MyQTempSPKtgl_realisasi: TDateField
+      FieldName = 'tgl_realisasi'
+      Origin = 'kretrans.tgl_realisasi'
+    end
+    object MyQTempSPKtgl_jatuh_tempo: TDateField
+      FieldName = 'tgl_jatuh_tempo'
+      Origin = 'kretrans.tgl_jatuh_tempo'
+    end
+    object MyQTempSPKprovisi: TFloatField
+      FieldName = 'provisi'
+      Origin = 'kretrans.provisi'
+    end
+    object MyQTempSPKtabungan: TFloatField
+      FieldName = 'tabungan'
+      Origin = 'kretrans.tabungan'
+    end
+    object MyQTempSPKmaterai: TFloatField
+      FieldName = 'materai'
+      Origin = 'kretrans.materai'
+    end
+    object MyQTempSPKpremi: TFloatField
+      FieldName = 'premi'
+      Origin = 'kretrans.premi'
+    end
+    object MyQTempSPKnotariel: TFloatField
+      FieldName = 'notariel'
+      Origin = 'kretrans.notariel'
+    end
+    object MyQTempSPKadm_lainnya: TFloatField
+      FieldName = 'adm_lainnya'
+      Origin = 'kretrans.adm_lainnya'
+    end
+    object MyQTempSPKjml_pinjaman: TFloatField
+      FieldName = 'jml_pinjaman'
+      Origin = 'kretrans.jml_pinjaman'
+    end
+    object MyQTempSPKtype_kredit: TStringField
+      FieldName = 'type_kredit'
+      Origin = 'kretrans.type_kredit'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempSPKkode_group1: TStringField
+      FieldName = 'kode_group1'
+      Origin = 'kretrans.kode_group1'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempSPKkode_group2: TStringField
+      FieldName = 'kode_group2'
+      Origin = 'kretrans.kode_group2'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempSPKkode_group3: TStringField
+      FieldName = 'kode_group3'
+      Origin = 'kretrans.kode_group3'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempSPKkode_group4: TStringField
+      FieldName = 'kode_group4'
+      Origin = 'kretrans.kode_group4'
+      FixedChar = True
+      Size = 8
+    end
+    object MyQTempSPKkode_group5: TStringField
+      FieldName = 'kode_group5'
+      Origin = 'kretrans.kode_group5'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTempSPKkode_group6: TStringField
+      FieldName = 'kode_group6'
+      Origin = 'kretrans.kode_group6'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempSPKnama_pasangan: TStringField
+      FieldName = 'nama_pasangan'
+      Origin = 'kretrans.nama_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKalamat_pasangan: TStringField
+      FieldName = 'alamat_pasangan'
+      Origin = 'kretrans.alamat_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKpekerjaan_pasangan: TStringField
+      FieldName = 'pekerjaan_pasangan'
+      Origin = 'kretrans.pekerjaan_pasangan'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKstatus_pasangan: TStringField
+      FieldName = 'status_pasangan'
+      Origin = 'kretrans.status_pasangan'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTempSPKkuantum_agunan: TSmallintField
+      FieldName = 'kuantum_agunan'
+      Origin = 'kretrans.kuantum_agunan'
+    end
+    object MyQTempSPKikatan_agunan: TStringField
+      FieldName = 'ikatan_agunan'
+      Origin = 'kretrans.ikatan_agunan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempSPKnilai_taksasi_agunan: TFloatField
+      FieldName = 'nilai_taksasi_agunan'
+      Origin = 'kretrans.nilai_taksasi_agunan'
+    end
+    object MyQTempSPKnilai_njop_agunan: TFloatField
+      FieldName = 'nilai_njop_agunan'
+      Origin = 'kretrans.nilai_njop_agunan'
+    end
+    object MyQTempSPKkode_asuransi: TStringField
+      FieldName = 'kode_asuransi'
+      Origin = 'kretrans.kode_asuransi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempSPKnilai_asuransi: TFloatField
+      FieldName = 'nilai_asuransi'
+      Origin = 'kretrans.nilai_asuransi'
+    end
+    object MyQTempSPKagunan_id1: TStringField
+      FieldName = 'agunan_id1'
+      Origin = 'kretrans.agunan_id1'
+      FixedChar = True
+    end
+    object MyQTempSPKagunan_id2: TStringField
+      FieldName = 'agunan_id2'
+      Origin = 'kretrans.agunan_id2'
+      FixedChar = True
+    end
+    object MyQTempSPKagunan_id3: TStringField
+      FieldName = 'agunan_id3'
+      Origin = 'kretrans.agunan_id3'
+      FixedChar = True
+    end
+    object MyQTempSPKagunan_id4: TStringField
+      FieldName = 'agunan_id4'
+      Origin = 'kretrans.agunan_id4'
+      FixedChar = True
+    end
+    object MyQTempSPKagunan_id5: TStringField
+      FieldName = 'agunan_id5'
+      Origin = 'kretrans.agunan_id5'
+      FixedChar = True
+    end
+    object MyQTempSPKtgl_lunas: TDateField
+      FieldName = 'tgl_lunas'
+      Origin = 'kretrans.tgl_lunas'
+    end
+    object MyQTempSPKno_spk: TStringField
+      FieldName = 'no_spk'
+      Origin = 'kretrans.no_spk'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempSPKpotongan1: TFloatField
+      FieldName = 'potongan1'
+      Origin = 'kretrans.potongan1'
+    end
+    object MyQTempSPKpotongan2: TFloatField
+      FieldName = 'potongan2'
+      Origin = 'kretrans.potongan2'
+    end
+    object MyQTempSPKpotongan3: TFloatField
+      FieldName = 'potongan3'
+      Origin = 'kretrans.potongan3'
+    end
+    object MyQTempSPKpotongan4: TFloatField
+      FieldName = 'potongan4'
+      Origin = 'kretrans.potongan4'
+    end
+    object MyQTempSPKpotongan5: TFloatField
+      FieldName = 'potongan5'
+      Origin = 'kretrans.potongan5'
+    end
+    object MyQTempSPKpenjamin: TStringField
+      FieldName = 'penjamin'
+      Origin = 'kretrans.penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKalamat_penjamin: TStringField
+      FieldName = 'alamat_penjamin'
+      Origin = 'kretrans.alamat_penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKpekerjaan_penjamin: TStringField
+      FieldName = 'pekerjaan_penjamin'
+      Origin = 'kretrans.pekerjaan_penjamin'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempSPKidentitas_penjamin: TStringField
+      FieldName = 'identitas_penjamin'
+      Origin = 'kretrans.identitas_penjamin'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempSPKnpwp_penjamin: TStringField
+      FieldName = 'npwp_penjamin'
+      Origin = 'kretrans.npwp_penjamin'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempSPKjen_penggunaan: TStringField
+      FieldName = 'jen_penggunaan'
+      Origin = 'kretrans.jen_penggunaan'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempSPKjenis_agunan: TStringField
+      FieldName = 'jenis_agunan'
+      Origin = 'kretrans.jenis_agunan'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTempSPKkode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      Origin = 'kretrans.kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempSPKpokok: TFloatField
+      FieldName = 'pokok'
+      Origin = 'kretrans.pokok'
+    end
+    object MyQTempSPKbunga: TFloatField
+      FieldName = 'bunga'
+      Origin = 'kretrans.bunga'
+    end
+    object MyQTempSPKdenda: TFloatField
+      FieldName = 'denda'
+      Origin = 'kretrans.denda'
+    end
+    object MyQTempSPKtgl_trans: TDateField
+      FieldName = 'tgl_trans'
+      Origin = 'kretrans.tgl_trans'
+    end
+    object MyQTempSPKnorek_tabungan: TStringField
+      FieldName = 'norek_tabungan'
+      Origin = 'kretrans.norek_tabungan'
+      FixedChar = True
+    end
+    object MyQTempSPKjkw_asuransi: TIntegerField
+      FieldName = 'jkw_asuransi'
+      Origin = 'kretrans.jkw_asuransi'
+    end
+    object MyQTempSPKis_advance: TStringField
+      FieldName = 'is_advance'
+      Origin = 'kretrans.is_advance'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempSPKpotongan6: TFloatField
+      FieldName = 'potongan6'
+      Origin = 'kretrans.potongan6'
+    end
+    object MyQTempSPKpotongan7: TFloatField
+      FieldName = 'potongan7'
+      Origin = 'kretrans.potongan7'
+    end
+    object MyQTempSPKpotongan8: TFloatField
+      FieldName = 'potongan8'
+      Origin = 'kretrans.potongan8'
+    end
+    object MyQTempSPKpotongan9: TFloatField
+      FieldName = 'potongan9'
+      Origin = 'kretrans.potongan9'
+    end
+    object MyQTempSPKpotongan10: TFloatField
+      FieldName = 'potongan10'
+      Origin = 'kretrans.potongan10'
+    end
+    object MyQTempSPKpotongan11: TFloatField
+      FieldName = 'potongan11'
+      Origin = 'kretrans.potongan11'
+    end
+    object MyQTempSPKpotongan12: TFloatField
+      FieldName = 'potongan12'
+      Origin = 'kretrans.potongan12'
+    end
+    object MyQTempSPKbiaya_transaksi: TFloatField
+      FieldName = 'biaya_transaksi'
+      Origin = 'kretrans.biaya_transaksi'
+    end
+    object MyQTempSPKtgl_tagihan: TSmallintField
+      FieldName = 'tgl_tagihan'
+      Origin = 'kretrans.tgl_tagihan'
+    end
+    object MyQTempSPKangsuran_ke: TIntegerField
+      FieldName = 'angsuran_ke'
+      Origin = 'kretrans.angsuran_ke'
+    end
+    object MyQTempSPKmy_kode_trans: TIntegerField
+      FieldName = 'my_kode_trans'
+      Origin = 'kretrans.my_kode_trans'
+    end
+    object MyQTempSPKdeskripsi_kode_dati: TStringField
+      FieldName = 'deskripsi_kode_dati'
+      Origin = 'kretrans.deskripsi_kode_dati'
+      Size = 245
+    end
+    object MyQTempSPKkode_jenis_penggunaan: TStringField
+      FieldName = 'kode_jenis_penggunaan'
+      Origin = 'kretrans.kode_jenis_penggunaan'
+      Size = 1
+    end
+  end
+  object MyQTempJadwalAngsuranSPK: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT * '
+      'FROM kretrans '
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    Left = 24
+    Top = 472
+    MacroData = <
+      item
+        Name = 'WHERE'
+        Value = 'WHERE no_rekening='#39#39
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTempJadwalAngsuranSPKKRETRANS_ID: TIntegerField
+      FieldName = 'KRETRANS_ID'
+    end
+    object MyQTempJadwalAngsuranSPKTGL_TRANS: TDateField
+      FieldName = 'TGL_TRANS'
+    end
+    object MyQTempJadwalAngsuranSPKNO_REKENING: TStringField
+      FieldName = 'NO_REKENING'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempJadwalAngsuranSPKMY_KODE_TRANS: TIntegerField
+      FieldName = 'MY_KODE_TRANS'
+    end
+    object MyQTempJadwalAngsuranSPKKUITANSI: TStringField
+      FieldName = 'KUITANSI'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKANGSURAN_KE: TIntegerField
+      FieldName = 'ANGSURAN_KE'
+    end
+    object MyQTempJadwalAngsuranSPKpokok: TFloatField
+      FieldName = 'pokok'
+    end
+    object MyQTempJadwalAngsuranSPKbunga: TFloatField
+      FieldName = 'bunga'
+    end
+    object MyQTempJadwalAngsuranSPKdenda: TFloatField
+      FieldName = 'denda'
+    end
+    object MyQTempJadwalAngsuranSPKprovisi: TFloatField
+      FieldName = 'provisi'
+    end
+    object MyQTempJadwalAngsuranSPKmaterai: TFloatField
+      FieldName = 'materai'
+    end
+    object MyQTempJadwalAngsuranSPKpremi: TFloatField
+      FieldName = 'premi'
+    end
+    object MyQTempJadwalAngsuranSPKnotariel: TFloatField
+      FieldName = 'notariel'
+    end
+    object MyQTempJadwalAngsuranSPKadm_lainnya: TFloatField
+      FieldName = 'adm_lainnya'
+    end
+    object MyQTempJadwalAngsuranSPKtabungan: TFloatField
+      FieldName = 'tabungan'
+    end
+    object MyQTempJadwalAngsuranSPKKETERANGAN: TStringField
+      FieldName = 'KETERANGAN'
+      FixedChar = True
+      Size = 250
+    end
+    object MyQTempJadwalAngsuranSPKVERIFIKASI: TStringField
+      FieldName = 'VERIFIKASI'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKUSERID: TIntegerField
+      FieldName = 'USERID'
+    end
+    object MyQTempJadwalAngsuranSPKKODE_TRANS: TStringField
+      FieldName = 'KODE_TRANS'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempJadwalAngsuranSPKNO_REKENING_TABUNGAN: TStringField
+      FieldName = 'NO_REKENING_TABUNGAN'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKKRETRANS_TAG: TIntegerField
+      FieldName = 'KRETRANS_TAG'
+    end
+    object MyQTempJadwalAngsuranSPKTOB: TStringField
+      FieldName = 'TOB'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKDEBIUS: TSmallintField
+      FieldName = 'DEBIUS'
+    end
+    object MyQTempJadwalAngsuranSPKpelunasan: TStringField
+      FieldName = 'pelunasan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKACCRUAL: TStringField
+      FieldName = 'ACCRUAL'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKKolek: TStringField
+      FieldName = 'Kolek'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempJadwalAngsuranSPKOTORISASI: TIntegerField
+      FieldName = 'OTORISASI'
+    end
+    object MyQTempJadwalAngsuranSPKFLAG: TSmallintField
+      FieldName = 'FLAG'
+    end
+    object MyQTempJadwalAngsuranSPKkode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempJadwalAngsuranSPKKODE_PERK_OB: TStringField
+      FieldName = 'KODE_PERK_OB'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKKODE_PERK_RAK: TStringField
+      FieldName = 'KODE_PERK_RAK'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKcounter_sign: TIntegerField
+      FieldName = 'counter_sign'
+    end
+    object MyQTempJadwalAngsuranSPKbunga_yad: TFloatField
+      FieldName = 'bunga_yad'
+    end
+    object MyQTempJadwalAngsuranSPKTRANS_ID_SOURCE: TIntegerField
+      FieldName = 'TRANS_ID_SOURCE'
+    end
+    object MyQTempJadwalAngsuranSPKMODUL_ID_SOURCE: TStringField
+      FieldName = 'MODUL_ID_SOURCE'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_premi: TStringField
+      FieldName = 'rek_tab_premi'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_notariel: TStringField
+      FieldName = 'rek_tab_notariel'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKkode_kolektor: TStringField
+      FieldName = 'kode_kolektor'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempJadwalAngsuranSPKpotongan1: TFloatField
+      FieldName = 'potongan1'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan2: TFloatField
+      FieldName = 'potongan2'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan3: TFloatField
+      FieldName = 'potongan3'
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_potongan1: TStringField
+      FieldName = 'rek_tab_potongan1'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_potongan2: TStringField
+      FieldName = 'rek_tab_potongan2'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_potongan3: TStringField
+      FieldName = 'rek_tab_potongan3'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKsuku_bunga: TFloatField
+      FieldName = 'suku_bunga'
+    end
+    object MyQTempJadwalAngsuranSPKJKW: TIntegerField
+      FieldName = 'JKW'
+    end
+    object MyQTempJadwalAngsuranSPKPRINT_KARTU: TStringField
+      FieldName = 'PRINT_KARTU'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKdiscount: TFloatField
+      FieldName = 'discount'
+    end
+    object MyQTempJadwalAngsuranSPKjam: TTimeField
+      FieldName = 'jam'
+    end
+    object MyQTempJadwalAngsuranSPKip_add: TStringField
+      FieldName = 'ip_add'
+      FixedChar = True
+      Size = 90
+    end
+    object MyQTempJadwalAngsuranSPKflag_pelunasan: TStringField
+      FieldName = 'flag_pelunasan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempJadwalAngsuranSPKjml_pinjaman_lama: TFloatField
+      FieldName = 'jml_pinjaman_lama'
+    end
+    object MyQTempJadwalAngsuranSPKjml_provisi_lama: TFloatField
+      FieldName = 'jml_provisi_lama'
+    end
+    object MyQTempJadwalAngsuranSPKSUKU_BUNGA_LAMA: TFloatField
+      FieldName = 'SUKU_BUNGA_LAMA'
+    end
+    object MyQTempJadwalAngsuranSPKflag_autodebet: TSmallintField
+      FieldName = 'flag_autodebet'
+    end
+    object MyQTempJadwalAngsuranSPKflag_double: TSmallintField
+      FieldName = 'flag_double'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan4: TFloatField
+      FieldName = 'potongan4'
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_potongan4: TStringField
+      FieldName = 'rek_tab_potongan4'
+      FixedChar = True
+    end
+    object MyQTempJadwalAngsuranSPKadm_lainnya1: TFloatField
+      FieldName = 'adm_lainnya1'
+    end
+    object MyQTempJadwalAngsuranSPKbunga_tunggakan: TFloatField
+      FieldName = 'bunga_tunggakan'
+    end
+    object MyQTempJadwalAngsuranSPKDISKON_TRANS: TFloatField
+      FieldName = 'DISKON_TRANS'
+    end
+    object MyQTempJadwalAngsuranSPKflag_trans_rk: TSmallintField
+      FieldName = 'flag_trans_rk'
+    end
+    object MyQTempJadwalAngsuranSPKkomisi_notariel: TFloatField
+      FieldName = 'komisi_notariel'
+    end
+    object MyQTempJadwalAngsuranSPKkomisi_premi: TFloatField
+      FieldName = 'komisi_premi'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan5: TFloatField
+      FieldName = 'potongan5'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan6: TFloatField
+      FieldName = 'potongan6'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan7: TFloatField
+      FieldName = 'potongan7'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan8: TFloatField
+      FieldName = 'potongan8'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan9: TFloatField
+      FieldName = 'potongan9'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan10: TFloatField
+      FieldName = 'potongan10'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan11: TFloatField
+      FieldName = 'potongan11'
+    end
+    object MyQTempJadwalAngsuranSPKpotongan12: TFloatField
+      FieldName = 'potongan12'
+    end
+    object MyQTempJadwalAngsuranSPKbunga_giro: TFloatField
+      FieldName = 'bunga_giro'
+    end
+    object MyQTempJadwalAngsuranSPKDISC_DENDA: TFloatField
+      FieldName = 'DISC_DENDA'
+    end
+    object MyQTempJadwalAngsuranSPKno_rekening_kredit: TStringField
+      FieldName = 'no_rekening_kredit'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempJadwalAngsuranSPKkontra_pokok: TFloatField
+      FieldName = 'kontra_pokok'
+    end
+    object MyQTempJadwalAngsuranSPKtransfer: TIntegerField
+      FieldName = 'transfer'
+    end
+    object MyQTempJadwalAngsuranSPKprovisi_amor: TFloatField
+      FieldName = 'provisi_amor'
+    end
+    object MyQTempJadwalAngsuranSPKbunga_yad_kl: TFloatField
+      FieldName = 'bunga_yad_kl'
+    end
+    object MyQTempJadwalAngsuranSPKdisc_pdpt: TFloatField
+      FieldName = 'disc_pdpt'
+    end
+    object MyQTempJadwalAngsuranSPKno_slip: TStringField
+      FieldName = 'no_slip'
+      FixedChar = True
+      Size = 15
+    end
+    object MyQTempJadwalAngsuranSPKBIAYA_TRANSAKSI: TFloatField
+      FieldName = 'BIAYA_TRANSAKSI'
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_biaya_trans: TStringField
+      FieldName = 'rek_tab_biaya_trans'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempJadwalAngsuranSPKadm_amor: TFloatField
+      FieldName = 'adm_amor'
+    end
+    object MyQTempJadwalAngsuranSPKbiaya_amor: TFloatField
+      FieldName = 'biaya_amor'
+    end
+    object MyQTempJadwalAngsuranSPKonline_kk: TStringField
+      FieldName = 'online_kk'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempJadwalAngsuranSPKonline_id: TStringField
+      FieldName = 'online_id'
+      FixedChar = True
+      Size = 16
+    end
+    object MyQTempJadwalAngsuranSPKno_rekening_aba: TStringField
+      FieldName = 'no_rekening_aba'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempJadwalAngsuranSPKtunggakan_bunga_kita: TFloatField
+      FieldName = 'tunggakan_bunga_kita'
+    end
+    object MyQTempJadwalAngsuranSPKtunggakan_denda_kita: TFloatField
+      FieldName = 'tunggakan_denda_kita'
+    end
+    object MyQTempJadwalAngsuranSPKkode_group1_trans: TStringField
+      FieldName = 'kode_group1_trans'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempJadwalAngsuranSPKkode_group2_trans: TStringField
+      FieldName = 'kode_group2_trans'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempJadwalAngsuranSPKdisc_bunga: TFloatField
+      FieldName = 'disc_bunga'
+    end
+    object MyQTempJadwalAngsuranSPKhari_tunggakan_bunga_kita: TIntegerField
+      FieldName = 'hari_tunggakan_bunga_kita'
+    end
+    object MyQTempJadwalAngsuranSPKtabungan_amor: TFloatField
+      FieldName = 'tabungan_amor'
+    end
+    object MyQTempJadwalAngsuranSPKTYPE_KREDIT_LAMA: TStringField
+      FieldName = 'TYPE_KREDIT_LAMA'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempJadwalAngsuranSPKTYPE_KREDIT_BARU: TStringField
+      FieldName = 'TYPE_KREDIT_BARU'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempJadwalAngsuranSPKasuransi_kredit: TFloatField
+      FieldName = 'asuransi_kredit'
+    end
+    object MyQTempJadwalAngsuranSPKfee_freelance: TFloatField
+      FieldName = 'fee_freelance'
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_asuransi: TStringField
+      FieldName = 'rek_tab_asuransi'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempJadwalAngsuranSPKrek_tab_fee_freelance: TStringField
+      FieldName = 'rek_tab_fee_freelance'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempJadwalAngsuranSPKkolek_temp: TStringField
+      FieldName = 'kolek_temp'
+      Size = 10
+    end
+    object MyQTempJadwalAngsuranSPKno_rekening_abp: TStringField
+      FieldName = 'no_rekening_abp'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempJadwalAngsuranSPKkode_dispensasi: TStringField
+      FieldName = 'kode_dispensasi'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempJadwalAngsuranSPKtgl_transfer: TDateField
+      FieldName = 'tgl_transfer'
+    end
+    object MyQTempJadwalAngsuranSPKno_bss: TStringField
+      FieldName = 'no_bss'
+      FixedChar = True
+      Size = 25
+    end
+  end
+  object MyQLogo: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT logo '
+      'FROM logo '
+      'LIMIT 1')
+    Left = 24
+    Top = 392
+    object MyQLogologo: TBlobField
+      FieldName = 'logo'
+      Origin = 'logo.logo'
+    end
+  end
+  object MyQTempNasabah: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT `nasabah_id`, `nama_nasabah`, `alamat`, `telpon`, `jenis_' +
+        'kelamin`, `tempatlahir`, '
+      
+        '    `tgllahir`, `jenis_id`, `no_id`, `keterangan`, `kode_group1`' +
+        ', `kode_group2`, '
+      
+        '    `kode_group3`, `kode_agama`, `desa`, `kecamatan`, `kota_kab`' +
+        ', `propinsi`, '
+      '    #`waris_nama`, `waris_alamat`, `waris_telp`, '
+      '    `verifikasi`, `hp`, `tgl_register`, '
+      '    #`photo`, `tandatangan`, '
+      
+        '    `nama_ibu_kandung`, `nama_alias`, `npwp`, `status_gelar`, `k' +
+        'et_status`, `jenis_debitur`, '
+      
+        '    `tempat_badan_usaha`, `tgl_akte_awal`, `no_akte_awal`, `no_p' +
+        'aspor`, `kodepos`, `din`, '
+      '    `kode_kantor`, `userid`, '
+      
+        '    #`waris_tgl_lahir`, `waris_sex`, `waris_hub`, `waris2_nama`,' +
+        ' '
+      
+        '    #`waris2_alamat`, `waris2_tgl_lahir`, `waris2_sex`, `waris2_' +
+        'hub`, `waris3_nama`, `waris3_alamat`, '
+      '    #`waris3_tgl_lahir`, `waris3_sex`, `waris3_hub`, '
+      '    `alamat_ktp`, `alamat_surat`, `email`, '
+      
+        '    `alamat_kantor`, `nama_kantor`, `nama_instansi`, `telpon_kan' +
+        'tor`, `kode_area`, `negara_domisili`, '
+      
+        '    `gol_debitur`, `sandi_pekerjaan`, `tempat_bekerja`, `bidang_' +
+        'usaha`, `hub_dgn_bank`, `langgar_bmpk`, '
+      
+        '    `lampaui_bmpk`, `masa_berlaku_ktp`, `tujuan_pembukaan_rekeni' +
+        'ng_tab`, `penghasilan_utama`, `kode_sumber_penghasilan`, '
+      
+        '    `kode_pemasukan_per_bulan`, `kode_frek_pemasukan_per_bulan`,' +
+        ' `kode_pengeluaran_per_bulan`, '
+      
+        '    `kode_frek_pengeluaran_per_bulan`, `kode_sumber_dana_untuk_s' +
+        'etoran`, `tujuan_penggunaan_dana`, '
+      
+        '    `nasabah_alternatif`, `nama_nasabah_sid`, `nama_suami_atau_i' +
+        'stri`, `tgl_lahir_suami_atau_istri`, '
+      '    `tgl_pernikahan_suami_atau_istri`, `hobi`, '
+      '    #`nama_anak1`, `tgl_lahir_anak1`, `nama_anak2`, '
+      
+        '    #`tgl_lahir_anak2`, `nama_anak3`, `tgl_lahir_anak3`, `nama_a' +
+        'nak4`, `tgl_lahir_anak4`, `nama_anak5`, '
+      
+        '    #`tgl_lahir_anak5`, `nama_anak6`, `tgl_lahir_anak6`, `nama_a' +
+        'nak7`, `tgl_lahir_anak7`, '
+      '    `nama_perusahaan`, '
+      
+        '    `alamat_perusahaan`, `telpon_perusahaan`, `fax_perusahaan`, ' +
+        '`nama_pejabat1`, `tempat_lahir_pejabat1`, '
+      
+        '    `tgl_lahir_pejabat1`, `alamat_pejabat1`, `telpon_pejabat1`, ' +
+        '`nama_pejabat2`, `tempat_lahir_pejabat2`, '
+      
+        '    `tgl_lahir_pejabat2`, `alamat_pejabat2`, `telpon_pejabat2`, ' +
+        '`kode_group4`, `kode_group5`, `alamat2`, '
+      '    `flag_sid`, `no_rek_bank`, '
+      '    `flag_backlist`, '
+      '    `ket_backlist`, '
+      '    #`flag_backlist` AS `flag_blacklist`, '
+      '    #`ket_backlist` AS `ket_blacklist`, '
+      '    `npm`, `ket_warning`, '
+      
+        '    #`tandatangan1`, `tandatangan2`, `tandatangan3`, `tandatanga' +
+        'n4`, '
+      '    `gelar1`, `gelar2`, `flag_masa_berlaku`, `status_marital`, '
+      
+        '    `jabatan_pekerjaan`, `nasabah_id_qq`, `transfer`, `gin`, `ra' +
+        'ting_debitur`, `lembaga_rating`, `go_public`, '
+      
+        '    `id_jabatan`, `pangsa_pemilikan`, `id_debitur`, `id_pengurus' +
+        '`, `flag_koreksi_ktp`, `online_kk`, '
+      
+        '    `online_id`, `pid`, `phone_number`, `phone_pin`, `kode_tingk' +
+        'at_resiko`,  '
+      
+        '    #`penjamin_nama`, `penjamin_status`, `penjamin_kelamin`, `pe' +
+        'njamin_alamat`, `penjamin_telpon`, `penjamin_pekerjaan`, '
+      '    #`penjamin_deskripsi_pekerjaan`, '
+      
+        '    `deskripsi_pekerjaan`, `nama_suami_or_istri`, `penjamin_alam' +
+        'at_pekerjaan`, '
+      
+        '    `no_kk`, `tgl_lahir_bapak_kandung`, `tgl_lahir_ibu_kandung`,' +
+        ' `penjamin_tgllahir`, `smart_pin`, `smart_tgl_mulai`, '
+      
+        '    `smart_tgl_expired`, `baris_buku`, `alamat_legal`, `alamat_t' +
+        'agih`, `nasabah_id_old`, '
+      '    #`foto_ktp`, '
+      
+        '    `no_akte_perubahan_terakhir`, `tgl_akte_perubahan_terakhir`,' +
+        ' `group_debitur`, `tgl_pemeringkat`, '
+      
+        '    `no_identitas_suami_atau_istri`, `jumlah_tanggungan`, `janji' +
+        '_pisah_harta`, `slik_kode_gelar`, '
+      
+        '    `slik_kode_pekerjaan`, `slik_kode_hub_ljk`, `slik_kode_gol_d' +
+        'ebitur`, `slik_kode_negara`, '
+      
+        '    `slik_tempat_bekerja`, `slik_kode_bidang_usaha`, `slik_melan' +
+        'ggar_bmpk`, `slik_melampaui_bmpk`'
+      'FROM `vmicro_nasabah` as nasabah'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    Left = 240
+    Top = 256
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTempNasabahnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+    end
+    object MyQTempNasabahnama_nasabah: TStringField
+      FieldName = 'nama_nasabah'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahalamat: TStringField
+      FieldName = 'alamat'
+      Size = 250
+    end
+    object MyQTempNasabahtelpon: TStringField
+      FieldName = 'telpon'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahjenis_kelamin: TStringField
+      FieldName = 'jenis_kelamin'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempNasabahtempatlahir: TStringField
+      FieldName = 'tempatlahir'
+      Size = 50
+    end
+    object MyQTempNasabahtgllahir: TDateField
+      FieldName = 'tgllahir'
+    end
+    object MyQTempNasabahjenis_id: TStringField
+      FieldName = 'jenis_id'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahno_id: TStringField
+      FieldName = 'no_id'
+      Size = 30
+    end
+    object MyQTempNasabahketerangan: TStringField
+      FieldName = 'keterangan'
+      Size = 200
+    end
+    object MyQTempNasabahkode_group1: TStringField
+      FieldName = 'kode_group1'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempNasabahkode_group2: TStringField
+      FieldName = 'kode_group2'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempNasabahkode_group3: TStringField
+      FieldName = 'kode_group3'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempNasabahkode_agama: TStringField
+      FieldName = 'kode_agama'
+      Size = 10
+    end
+    object MyQTempNasabahdesa: TStringField
+      FieldName = 'desa'
+      Size = 50
+    end
+    object MyQTempNasabahkecamatan: TStringField
+      FieldName = 'kecamatan'
+      Size = 50
+    end
+    object MyQTempNasabahkota_kab: TStringField
+      FieldName = 'kota_kab'
+    end
+    object MyQTempNasabahpropinsi: TStringField
+      FieldName = 'propinsi'
+    end
+    object MyQTempNasabahverifikasi: TStringField
+      FieldName = 'verifikasi'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahhp: TStringField
+      FieldName = 'hp'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahtgl_register: TDateField
+      FieldName = 'tgl_register'
+    end
+    object MyQTempNasabahnama_ibu_kandung: TStringField
+      FieldName = 'nama_ibu_kandung'
+      Size = 35
+    end
+    object MyQTempNasabahnama_alias: TStringField
+      FieldName = 'nama_alias'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahnpwp: TStringField
+      FieldName = 'npwp'
+      FixedChar = True
+    end
+    object MyQTempNasabahstatus_gelar: TStringField
+      FieldName = 'status_gelar'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahket_status: TStringField
+      FieldName = 'ket_status'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahjenis_debitur: TStringField
+      FieldName = 'jenis_debitur'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahtempat_badan_usaha: TStringField
+      FieldName = 'tempat_badan_usaha'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahtgl_akte_awal: TDateField
+      FieldName = 'tgl_akte_awal'
+    end
+    object MyQTempNasabahno_akte_awal: TStringField
+      FieldName = 'no_akte_awal'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempNasabahno_paspor: TStringField
+      FieldName = 'no_paspor'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempNasabahkodepos: TStringField
+      FieldName = 'kodepos'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempNasabahdin: TStringField
+      FieldName = 'din'
+      Size = 100
+    end
+    object MyQTempNasabahkode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahuserid: TIntegerField
+      FieldName = 'userid'
+    end
+    object MyQTempNasabahalamat_ktp: TStringField
+      FieldName = 'alamat_ktp'
+      Size = 250
+    end
+    object MyQTempNasabahalamat_surat: TStringField
+      FieldName = 'alamat_surat'
+      Size = 250
+    end
+    object MyQTempNasabahemail: TStringField
+      FieldName = 'email'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahalamat_kantor: TStringField
+      FieldName = 'alamat_kantor'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempNasabahnama_kantor: TStringField
+      FieldName = 'nama_kantor'
+      FixedChar = True
+      Size = 75
+    end
+    object MyQTempNasabahnama_instansi: TStringField
+      FieldName = 'nama_instansi'
+      FixedChar = True
+      Size = 75
+    end
+    object MyQTempNasabahtelpon_kantor: TStringField
+      FieldName = 'telpon_kantor'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahkode_area: TStringField
+      FieldName = 'kode_area'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahnegara_domisili: TStringField
+      FieldName = 'negara_domisili'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahgol_debitur: TStringField
+      FieldName = 'gol_debitur'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahsandi_pekerjaan: TStringField
+      FieldName = 'sandi_pekerjaan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahtempat_bekerja: TStringField
+      FieldName = 'tempat_bekerja'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahbidang_usaha: TStringField
+      FieldName = 'bidang_usaha'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempNasabahhub_dgn_bank: TStringField
+      FieldName = 'hub_dgn_bank'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahlanggar_bmpk: TStringField
+      FieldName = 'langgar_bmpk'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahlampaui_bmpk: TStringField
+      FieldName = 'lampaui_bmpk'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahmasa_berlaku_ktp: TDateField
+      FieldName = 'masa_berlaku_ktp'
+    end
+    object MyQTempNasabahtujuan_pembukaan_rekening_tab: TStringField
+      FieldName = 'tujuan_pembukaan_rekening_tab'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahpenghasilan_utama: TFloatField
+      FieldName = 'penghasilan_utama'
+    end
+    object MyQTempNasabahkode_sumber_penghasilan: TStringField
+      FieldName = 'kode_sumber_penghasilan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_pemasukan_per_bulan: TStringField
+      FieldName = 'kode_pemasukan_per_bulan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_frek_pemasukan_per_bulan: TStringField
+      FieldName = 'kode_frek_pemasukan_per_bulan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_pengeluaran_per_bulan: TStringField
+      FieldName = 'kode_pengeluaran_per_bulan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_frek_pengeluaran_per_bulan: TStringField
+      FieldName = 'kode_frek_pengeluaran_per_bulan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_sumber_dana_untuk_setoran: TStringField
+      FieldName = 'kode_sumber_dana_untuk_setoran'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahtujuan_penggunaan_dana: TStringField
+      FieldName = 'tujuan_penggunaan_dana'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahnasabah_alternatif: TStringField
+      FieldName = 'nasabah_alternatif'
+      FixedChar = True
+    end
+    object MyQTempNasabahnama_nasabah_sid: TStringField
+      FieldName = 'nama_nasabah_sid'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahnama_suami_atau_istri: TStringField
+      FieldName = 'nama_suami_atau_istri'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahtgl_lahir_suami_atau_istri: TDateField
+      FieldName = 'tgl_lahir_suami_atau_istri'
+    end
+    object MyQTempNasabahtgl_pernikahan_suami_atau_istri: TDateField
+      FieldName = 'tgl_pernikahan_suami_atau_istri'
+    end
+    object MyQTempNasabahhobi: TStringField
+      FieldName = 'hobi'
+      FixedChar = True
+      Size = 75
+    end
+    object MyQTempNasabahnama_perusahaan: TStringField
+      FieldName = 'nama_perusahaan'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahalamat_perusahaan: TStringField
+      FieldName = 'alamat_perusahaan'
+      FixedChar = True
+      Size = 125
+    end
+    object MyQTempNasabahtelpon_perusahaan: TStringField
+      FieldName = 'telpon_perusahaan'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahfax_perusahaan: TStringField
+      FieldName = 'fax_perusahaan'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahnama_pejabat1: TStringField
+      FieldName = 'nama_pejabat1'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahtempat_lahir_pejabat1: TStringField
+      FieldName = 'tempat_lahir_pejabat1'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahtgl_lahir_pejabat1: TDateField
+      FieldName = 'tgl_lahir_pejabat1'
+    end
+    object MyQTempNasabahalamat_pejabat1: TStringField
+      FieldName = 'alamat_pejabat1'
+      FixedChar = True
+      Size = 125
+    end
+    object MyQTempNasabahtelpon_pejabat1: TStringField
+      FieldName = 'telpon_pejabat1'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahnama_pejabat2: TStringField
+      FieldName = 'nama_pejabat2'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahtempat_lahir_pejabat2: TStringField
+      FieldName = 'tempat_lahir_pejabat2'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahtgl_lahir_pejabat2: TDateField
+      FieldName = 'tgl_lahir_pejabat2'
+    end
+    object MyQTempNasabahalamat_pejabat2: TStringField
+      FieldName = 'alamat_pejabat2'
+      FixedChar = True
+      Size = 125
+    end
+    object MyQTempNasabahtelpon_pejabat2: TStringField
+      FieldName = 'telpon_pejabat2'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahkode_group4: TStringField
+      FieldName = 'kode_group4'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahkode_group5: TStringField
+      FieldName = 'kode_group5'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahalamat2: TStringField
+      FieldName = 'alamat2'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempNasabahflag_sid: TStringField
+      FieldName = 'flag_sid'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahno_rek_bank: TStringField
+      FieldName = 'no_rek_bank'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahflag_backlist: TSmallintField
+      FieldName = 'flag_backlist'
+    end
+    object MyQTempNasabahket_backlist: TStringField
+      FieldName = 'ket_backlist'
+      Size = 200
+    end
+    object MyQTempNasabahnpm: TStringField
+      FieldName = 'npm'
+      FixedChar = True
+      Size = 7
+    end
+    object MyQTempNasabahket_warning: TStringField
+      FieldName = 'ket_warning'
+      FixedChar = True
+      Size = 200
+    end
+    object MyQTempNasabahgelar1: TStringField
+      FieldName = 'gelar1'
+      FixedChar = True
+    end
+    object MyQTempNasabahgelar2: TStringField
+      FieldName = 'gelar2'
+      FixedChar = True
+    end
+    object MyQTempNasabahflag_masa_berlaku: TStringField
+      FieldName = 'flag_masa_berlaku'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahstatus_marital: TStringField
+      FieldName = 'status_marital'
+      FixedChar = True
+    end
+    object MyQTempNasabahjabatan_pekerjaan: TStringField
+      FieldName = 'jabatan_pekerjaan'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempNasabahnasabah_id_qq: TStringField
+      FieldName = 'nasabah_id_qq'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempNasabahtransfer: TIntegerField
+      FieldName = 'transfer'
+    end
+    object MyQTempNasabahgin: TStringField
+      FieldName = 'gin'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahrating_debitur: TStringField
+      FieldName = 'rating_debitur'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahlembaga_rating: TStringField
+      FieldName = 'lembaga_rating'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempNasabahgo_public: TStringField
+      FieldName = 'go_public'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahid_jabatan: TStringField
+      FieldName = 'id_jabatan'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempNasabahpangsa_pemilikan: TFloatField
+      FieldName = 'pangsa_pemilikan'
+    end
+    object MyQTempNasabahid_debitur: TStringField
+      FieldName = 'id_debitur'
+      FixedChar = True
+      Size = 45
+    end
+    object MyQTempNasabahid_pengurus: TStringField
+      FieldName = 'id_pengurus'
+      FixedChar = True
+      Size = 35
+    end
+    object MyQTempNasabahflag_koreksi_ktp: TIntegerField
+      FieldName = 'flag_koreksi_ktp'
+    end
+    object MyQTempNasabahonline_kk: TStringField
+      FieldName = 'online_kk'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahonline_id: TStringField
+      FieldName = 'online_id'
+      FixedChar = True
+      Size = 16
+    end
+    object MyQTempNasabahpid: TStringField
+      FieldName = 'pid'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempNasabahphone_number: TStringField
+      FieldName = 'phone_number'
+      FixedChar = True
+    end
+    object MyQTempNasabahphone_pin: TStringField
+      FieldName = 'phone_pin'
+      FixedChar = True
+      Size = 16
+    end
+    object MyQTempNasabahkode_tingkat_resiko: TStringField
+      FieldName = 'kode_tingkat_resiko'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempNasabahdeskripsi_pekerjaan: TStringField
+      FieldName = 'deskripsi_pekerjaan'
+      Size = 200
+    end
+    object MyQTempNasabahnama_suami_or_istri: TStringField
+      FieldName = 'nama_suami_or_istri'
+      Size = 30
+    end
+    object MyQTempNasabahpenjamin_alamat_pekerjaan: TStringField
+      FieldName = 'penjamin_alamat_pekerjaan'
+      Size = 100
+    end
+    object MyQTempNasabahno_kk: TStringField
+      FieldName = 'no_kk'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempNasabahtgl_lahir_bapak_kandung: TDateField
+      FieldName = 'tgl_lahir_bapak_kandung'
+    end
+    object MyQTempNasabahtgl_lahir_ibu_kandung: TDateField
+      FieldName = 'tgl_lahir_ibu_kandung'
+    end
+    object MyQTempNasabahpenjamin_tgllahir: TDateField
+      FieldName = 'penjamin_tgllahir'
+    end
+    object MyQTempNasabahsmart_pin: TStringField
+      FieldName = 'smart_pin'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahsmart_tgl_mulai: TDateField
+      FieldName = 'smart_tgl_mulai'
+    end
+    object MyQTempNasabahsmart_tgl_expired: TDateField
+      FieldName = 'smart_tgl_expired'
+    end
+    object MyQTempNasabahbaris_buku: TIntegerField
+      FieldName = 'baris_buku'
+    end
+    object MyQTempNasabahalamat_legal: TStringField
+      FieldName = 'alamat_legal'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahalamat_tagih: TStringField
+      FieldName = 'alamat_tagih'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahnasabah_id_old: TStringField
+      FieldName = 'nasabah_id_old'
+    end
+    object MyQTempNasabahno_akte_perubahan_terakhir: TStringField
+      FieldName = 'no_akte_perubahan_terakhir'
+      Size = 30
+    end
+    object MyQTempNasabahtgl_akte_perubahan_terakhir: TDateField
+      FieldName = 'tgl_akte_perubahan_terakhir'
+    end
+    object MyQTempNasabahgroup_debitur: TStringField
+      FieldName = 'group_debitur'
+      FixedChar = True
+      Size = 150
+    end
+    object MyQTempNasabahtgl_pemeringkat: TDateField
+      FieldName = 'tgl_pemeringkat'
+    end
+    object MyQTempNasabahno_identitas_suami_atau_istri: TStringField
+      FieldName = 'no_identitas_suami_atau_istri'
+      Size = 25
+    end
+    object MyQTempNasabahjumlah_tanggungan: TFloatField
+      FieldName = 'jumlah_tanggungan'
+    end
+    object MyQTempNasabahjanji_pisah_harta: TStringField
+      FieldName = 'janji_pisah_harta'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahslik_kode_gelar: TStringField
+      FieldName = 'slik_kode_gelar'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahslik_kode_pekerjaan: TStringField
+      FieldName = 'slik_kode_pekerjaan'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempNasabahslik_kode_hub_ljk: TStringField
+      FieldName = 'slik_kode_hub_ljk'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahslik_kode_gol_debitur: TStringField
+      FieldName = 'slik_kode_gol_debitur'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempNasabahslik_kode_negara: TStringField
+      FieldName = 'slik_kode_negara'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempNasabahslik_tempat_bekerja: TStringField
+      FieldName = 'slik_tempat_bekerja'
+      Size = 50
+    end
+    object MyQTempNasabahslik_kode_bidang_usaha: TStringField
+      FieldName = 'slik_kode_bidang_usaha'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempNasabahslik_melanggar_bmpk: TStringField
+      FieldName = 'slik_melanggar_bmpk'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempNasabahslik_melampaui_bmpk: TStringField
+      FieldName = 'slik_melampaui_bmpk'
+      FixedChar = True
+      Size = 1
+    end
   end
   object MyQTableList: TMyQuery
     Connection = MyCon2
@@ -439,13 +3036,128 @@ object dm_bpr1: Tdm_bpr1
         'nasabah_old'#39','#39'nasabah_sid'#39','#39'tabung'#39','#39'deposito'#39','#39'kredit'#39','#39'nasabah' +
         #39')'
       '   AND `TABLE_NAME` NOT LIKE '#39'myt%'#39)
-    Left = 184
-    Top = 138
+    Left = 384
+    Top = 384
+  end
+  object MyQCSSJenisIdentitas: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT jenis_id, nama_identitas AS nm_identitas'
+      'FROM css_kode_jenis_identitas'
+      '&WHERE'
+      'ORDER BY jenis_id')
+    Left = 904
+    Top = 192
+    MacroData = <
+      item
+        Name = 'WHERE'
+        Value = 'WHERE flg_aktif=1'
+      end>
+    object MyQCSSJenisIdentitasjenis_id: TStringField
+      FieldName = 'jenis_id'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQCSSJenisIdentitasnm_identitas: TStringField
+      FieldName = 'nm_identitas'
+      FixedChar = True
+      Size = 10
+    end
+  end
+  object dsCSSJenisIdentitas: TMyDataSource
+    DataSet = MyQCSSJenisIdentitas
+    Left = 936
+    Top = 192
+  end
+  object MyQDaftarOtorisasi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT user_id, `user` AS user_name, kd_cabang AS unit_kerja, pe' +
+        'nerimaan, pengeluaran, '
+      
+        '  kode_perk_kas, penerimaan_ob, pengeluaran_ob, ip_address, emai' +
+        'l, no_hp'
+      'FROM `user`'
+      
+        'WHERE (  (tgl_expired > CURDATE() AND user_code=3 AND flg_block=' +
+        #39'N'#39' &WHERE1 ) '
+      
+        '               OR (tgl_expired > CURDATE() AND flg_block='#39'N'#39' AND' +
+        ' user_code=2 &WHERE2 )'
+      '            )'
+      '&WHERE3'
+      '&HAVING'
+      'ORDER BY `user`')
+    Left = 736
+    Top = 328
+    MacroData = <
+      item
+        Name = 'WHERE1'
+      end
+      item
+        Name = 'WHERE2'
+      end
+      item
+        Name = 'WHERE3'
+      end
+      item
+        Name = 'HAVING'
+      end>
+    object MyQDaftarOtorisasiuser_id: TIntegerField
+      FieldName = 'user_id'
+    end
+    object MyQDaftarOtorisasiuser_name: TStringField
+      FieldName = 'user_name'
+      Size = 30
+    end
+    object MyQDaftarOtorisasiunit_kerja: TStringField
+      FieldName = 'unit_kerja'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQDaftarOtorisasipenerimaan: TFloatField
+      FieldName = 'penerimaan'
+      DisplayFormat = '#,#0.00'
+    end
+    object MyQDaftarOtorisasipengeluaran: TFloatField
+      FieldName = 'pengeluaran'
+      DisplayFormat = '#,#0.00'
+    end
+    object MyQDaftarOtorisasikode_perk_kas: TStringField
+      FieldName = 'kode_perk_kas'
+      FixedChar = True
+    end
+    object MyQDaftarOtorisasipenerimaan_ob: TFloatField
+      FieldName = 'penerimaan_ob'
+      DisplayFormat = '#,#0.00'
+    end
+    object MyQDaftarOtorisasipengeluaran_ob: TFloatField
+      FieldName = 'pengeluaran_ob'
+      DisplayFormat = '#,#0.00'
+    end
+    object MyQDaftarOtorisasiip_address: TStringField
+      FieldName = 'ip_address'
+      Size = 50
+    end
+    object MyQDaftarOtorisasiemail: TStringField
+      FieldName = 'email'
+      Size = 50
+    end
+    object MyQDaftarOtorisasino_hp: TStringField
+      FieldName = 'no_hp'
+      Size = 50
+    end
+  end
+  object dsMyQDaftarOtorisasi: TMyDataSource
+    DataSet = MyQDaftarOtorisasi
+    Left = 768
+    Top = 328
   end
   object ImageList1: TImageList
     DrawingStyle = dsTransparent
-    Left = 336
-    Top = 192
+    Left = 1048
+    Top = 16
     Bitmap = {
       494C010164006800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000A0010000010020000000000000A0
@@ -3890,8 +6602,8 @@ object dm_bpr1: Tdm_bpr1
     DrawingStyle = dsTransparent
     Height = 24
     Width = 24
-    Left = 336
-    Top = 240
+    Left = 1048
+    Top = 64
     Bitmap = {
       494C01013800F000040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000060000000680100000100200000000000001C
@@ -8359,8 +11071,8 @@ object dm_bpr1: Tdm_bpr1
     DrawingStyle = dsTransparent
     Height = 48
     Width = 48
-    Left = 336
-    Top = 288
+    Left = 1048
+    Top = 112
     Bitmap = {
       494C01017100B400040030003000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000C00000007005000001002000000000000050
@@ -42825,8 +45537,8 @@ object dm_bpr1: Tdm_bpr1
     DrawingStyle = dsTransparent
     Height = 32
     Width = 32
-    Left = 336
-    Top = 336
+    Left = 1048
+    Top = 160
     Bitmap = {
       494C010160006800040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002003000001002000000000000040
@@ -56035,6 +58747,1102 @@ object dm_bpr1: Tdm_bpr1
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFF9FF00000000000000000000000000000000
       000000000000}
   end
+  object MyQTempABPPinjaman: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT `no_rekening`, `no_alternatif`, `no_rekening_bank`, `kode' +
+        '_kantor`, `nama_bank`, `alamat`, `nama_pic`, `no_telp_pic`, '
+      
+        '    `kode_integrasi`, `sandi_gol_kreditur`, `sandi_bank`, `sandi' +
+        '_bpr`, `sandi_lokasi_bank`, `sandi_jenis_bank`, '
+      
+        '    `sandi_jenis`, `sandi_keterkaitan`, `sandi_cara_perhitugan_b' +
+        'unga`, `tgl_mulai`, `jkw`, `tgl_jt`, `kualitas`, '
+      
+        '    `kode_perk`, `suku_bunga`, `jml_deposito`, `jml_pinjaman`, `' +
+        'jml_provisi`, `jml_administrasi`, `jml_biaya_trans`, '
+      
+        '    `saldo_akhir_pokok`, `saldo_akhir_pokok_migrasi`, `saldo_akh' +
+        'ir_provisi_migrasi`, `saldo_akhir_adm_migrasi`, '
+      
+        '    `saldo_akhir_biaya_trans_migrasi`, `verifikasi`, `bunga_bln_' +
+        'ini`, `pajak_bln_ini`, `adm_bln_ini`, `status`, '
+      
+        '    `saldo_efektif`, `adm_per_bulan`, `provisi_saldo`, `provisi_' +
+        'amortisasi`, `adm_saldo`, `adm_amortisasi`, '
+      
+        '    `biaya_trans_saldo`, `biaya_trans_amortisasi`, `bunga_byad_s' +
+        'aldo`, `bunga_byad_anggaran`, `transfer`, '
+      
+        '    `titipan_bunga`, `baris_buku`, `keterangan`, `no_bilyet`, `n' +
+        'ilai_dijaminkan`, `aro`'
+      'FROM `abp`'
+      '&WHERE &HAVING &ORDER &LIMIT')
+    FetchAll = False
+    Left = 240
+    Top = 312
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'HAVING'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTempABPPinjamanno_rekening: TStringField
+      FieldName = 'no_rekening'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempABPPinjamanno_alternatif: TStringField
+      FieldName = 'no_alternatif'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempABPPinjamanno_rekening_bank: TStringField
+      FieldName = 'no_rekening_bank'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempABPPinjamankode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABPPinjamannama_bank: TStringField
+      FieldName = 'nama_bank'
+      FixedChar = True
+      Size = 150
+    end
+    object MyQTempABPPinjamanalamat: TStringField
+      FieldName = 'alamat'
+      FixedChar = True
+      Size = 250
+    end
+    object MyQTempABPPinjamannama_pic: TStringField
+      FieldName = 'nama_pic'
+      FixedChar = True
+      Size = 150
+    end
+    object MyQTempABPPinjamanno_telp_pic: TStringField
+      FieldName = 'no_telp_pic'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempABPPinjamankode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempABPPinjamansandi_gol_kreditur: TStringField
+      FieldName = 'sandi_gol_kreditur'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABPPinjamansandi_bank: TStringField
+      FieldName = 'sandi_bank'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABPPinjamansandi_bpr: TStringField
+      FieldName = 'sandi_bpr'
+      FixedChar = True
+      Size = 9
+    end
+    object MyQTempABPPinjamansandi_lokasi_bank: TStringField
+      FieldName = 'sandi_lokasi_bank'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABPPinjamansandi_jenis_bank: TStringField
+      FieldName = 'sandi_jenis_bank'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempABPPinjamansandi_jenis: TStringField
+      FieldName = 'sandi_jenis'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempABPPinjamansandi_keterkaitan: TStringField
+      FieldName = 'sandi_keterkaitan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempABPPinjamansandi_cara_perhitugan_bunga: TStringField
+      FieldName = 'sandi_cara_perhitugan_bunga'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABPPinjamantgl_mulai: TDateField
+      FieldName = 'tgl_mulai'
+    end
+    object MyQTempABPPinjamanjkw: TIntegerField
+      FieldName = 'jkw'
+    end
+    object MyQTempABPPinjamantgl_jt: TDateField
+      FieldName = 'tgl_jt'
+    end
+    object MyQTempABPPinjamankualitas: TStringField
+      FieldName = 'kualitas'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempABPPinjamankode_perk: TStringField
+      FieldName = 'kode_perk'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempABPPinjamansuku_bunga: TFloatField
+      FieldName = 'suku_bunga'
+    end
+    object MyQTempABPPinjamanjml_deposito: TFloatField
+      FieldName = 'jml_deposito'
+    end
+    object MyQTempABPPinjamanjml_pinjaman: TFloatField
+      FieldName = 'jml_pinjaman'
+    end
+    object MyQTempABPPinjamanjml_provisi: TFloatField
+      FieldName = 'jml_provisi'
+    end
+    object MyQTempABPPinjamanjml_administrasi: TFloatField
+      FieldName = 'jml_administrasi'
+    end
+    object MyQTempABPPinjamanjml_biaya_trans: TFloatField
+      FieldName = 'jml_biaya_trans'
+    end
+    object MyQTempABPPinjamansaldo_akhir_pokok: TFloatField
+      FieldName = 'saldo_akhir_pokok'
+    end
+    object MyQTempABPPinjamansaldo_akhir_pokok_migrasi: TFloatField
+      FieldName = 'saldo_akhir_pokok_migrasi'
+    end
+    object MyQTempABPPinjamansaldo_akhir_provisi_migrasi: TFloatField
+      FieldName = 'saldo_akhir_provisi_migrasi'
+    end
+    object MyQTempABPPinjamansaldo_akhir_adm_migrasi: TFloatField
+      FieldName = 'saldo_akhir_adm_migrasi'
+    end
+    object MyQTempABPPinjamansaldo_akhir_biaya_trans_migrasi: TFloatField
+      FieldName = 'saldo_akhir_biaya_trans_migrasi'
+    end
+    object MyQTempABPPinjamanverifikasi: TIntegerField
+      FieldName = 'verifikasi'
+    end
+    object MyQTempABPPinjamanbunga_bln_ini: TFloatField
+      FieldName = 'bunga_bln_ini'
+    end
+    object MyQTempABPPinjamanpajak_bln_ini: TFloatField
+      FieldName = 'pajak_bln_ini'
+    end
+    object MyQTempABPPinjamanadm_bln_ini: TFloatField
+      FieldName = 'adm_bln_ini'
+    end
+    object MyQTempABPPinjamanstatus: TIntegerField
+      FieldName = 'status'
+    end
+    object MyQTempABPPinjamansaldo_efektif: TFloatField
+      FieldName = 'saldo_efektif'
+    end
+    object MyQTempABPPinjamanadm_per_bulan: TFloatField
+      FieldName = 'adm_per_bulan'
+    end
+    object MyQTempABPPinjamanprovisi_saldo: TFloatField
+      FieldName = 'provisi_saldo'
+    end
+    object MyQTempABPPinjamanprovisi_amortisasi: TFloatField
+      FieldName = 'provisi_amortisasi'
+    end
+    object MyQTempABPPinjamanadm_saldo: TFloatField
+      FieldName = 'adm_saldo'
+    end
+    object MyQTempABPPinjamanadm_amortisasi: TFloatField
+      FieldName = 'adm_amortisasi'
+    end
+    object MyQTempABPPinjamanbiaya_trans_saldo: TFloatField
+      FieldName = 'biaya_trans_saldo'
+    end
+    object MyQTempABPPinjamanbiaya_trans_amortisasi: TFloatField
+      FieldName = 'biaya_trans_amortisasi'
+    end
+    object MyQTempABPPinjamanbunga_byad_saldo: TFloatField
+      FieldName = 'bunga_byad_saldo'
+    end
+    object MyQTempABPPinjamanbunga_byad_anggaran: TFloatField
+      FieldName = 'bunga_byad_anggaran'
+    end
+    object MyQTempABPPinjamantransfer: TIntegerField
+      FieldName = 'transfer'
+    end
+    object MyQTempABPPinjamantitipan_bunga: TFloatField
+      FieldName = 'titipan_bunga'
+    end
+    object MyQTempABPPinjamanbaris_buku: TIntegerField
+      FieldName = 'baris_buku'
+    end
+    object MyQTempABPPinjamanketerangan: TStringField
+      FieldName = 'keterangan'
+      FixedChar = True
+      Size = 250
+    end
+    object MyQTempABPPinjamanno_bilyet: TStringField
+      FieldName = 'no_bilyet'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempABPPinjamannilai_dijaminkan: TFloatField
+      FieldName = 'nilai_dijaminkan'
+    end
+    object MyQTempABPPinjamanaro: TSmallintField
+      FieldName = 'aro'
+    end
+  end
+  object MyQTempABA: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT `no_rekening`, `no_alternatif`, `nama_bank`, `alamat`, `k' +
+        'ode_kantor`, `kode_integrasi`, '
+      
+        #9'`jenis_bank`, `sandi_bank`, `sandi_bpr`, `lokasi_Bank`, `jenis`' +
+        ', `keterkaitan`, `tgl_register`,'
+      
+        #9'`tgl_mulai`, `jkw`, `tgl_jt`, `kualitas`, `kode_perk`, `suku_bu' +
+        'nga`, '
+      
+        #9'`saldo_akhir_pokok`, `saldo_akhir_migrasi`, `verifikasi`, `bung' +
+        'a_bln_ini`, '
+      
+        #9'`pajak_bln_ini`, `adm_bln_ini`, `status`, `saldo_efektif`, `jml' +
+        '_deposito`, '
+      
+        #9'`diskonto`, `adm_per_bulan`, `jml_pinjaman`, `transfer`, `keter' +
+        'angan`, `nilai_dijaminkan`'
+      'FROM `aba`'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    Left = 904
+    Top = 312
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTempABAno_rekening: TStringField
+      FieldName = 'no_rekening'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempABAno_alternatif: TStringField
+      FieldName = 'no_alternatif'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempABAnama_bank: TStringField
+      FieldName = 'nama_bank'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempABAalamat: TStringField
+      FieldName = 'alamat'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempABAkode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABAkode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempABAjenis_bank: TStringField
+      FieldName = 'jenis_bank'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempABAsandi_bank: TStringField
+      FieldName = 'sandi_bank'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABAsandi_bpr: TStringField
+      FieldName = 'sandi_bpr'
+      FixedChar = True
+      Size = 9
+    end
+    object MyQTempABAlokasi_Bank: TStringField
+      FieldName = 'lokasi_Bank'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempABAjenis: TStringField
+      FieldName = 'jenis'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQTempABAketerkaitan: TStringField
+      FieldName = 'keterkaitan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempABAtgl_register: TDateField
+      FieldName = 'tgl_register'
+    end
+    object MyQTempABAtgl_mulai: TDateField
+      FieldName = 'tgl_mulai'
+    end
+    object MyQTempABAjkw: TIntegerField
+      FieldName = 'jkw'
+    end
+    object MyQTempABAtgl_jt: TDateField
+      FieldName = 'tgl_jt'
+    end
+    object MyQTempABAkualitas: TStringField
+      FieldName = 'kualitas'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempABAkode_perk: TStringField
+      FieldName = 'kode_perk'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempABAsuku_bunga: TFloatField
+      FieldName = 'suku_bunga'
+    end
+    object MyQTempABAsaldo_akhir_pokok: TFloatField
+      FieldName = 'saldo_akhir_pokok'
+    end
+    object MyQTempABAsaldo_akhir_migrasi: TFloatField
+      FieldName = 'saldo_akhir_migrasi'
+    end
+    object MyQTempABAverifikasi: TIntegerField
+      FieldName = 'verifikasi'
+    end
+    object MyQTempABAbunga_bln_ini: TFloatField
+      FieldName = 'bunga_bln_ini'
+    end
+    object MyQTempABApajak_bln_ini: TFloatField
+      FieldName = 'pajak_bln_ini'
+    end
+    object MyQTempABAadm_bln_ini: TFloatField
+      FieldName = 'adm_bln_ini'
+    end
+    object MyQTempABAstatus: TIntegerField
+      FieldName = 'status'
+    end
+    object MyQTempABAsaldo_efektif: TFloatField
+      FieldName = 'saldo_efektif'
+    end
+    object MyQTempABAjml_deposito: TFloatField
+      FieldName = 'jml_deposito'
+    end
+    object MyQTempABAdiskonto: TFloatField
+      FieldName = 'diskonto'
+    end
+    object MyQTempABAadm_per_bulan: TFloatField
+      FieldName = 'adm_per_bulan'
+    end
+    object MyQTempABAjml_pinjaman: TFloatField
+      FieldName = 'jml_pinjaman'
+    end
+    object MyQTempABAtransfer: TIntegerField
+      FieldName = 'transfer'
+    end
+    object MyQTempABAketerangan: TStringField
+      FieldName = 'keterangan'
+      FixedChar = True
+      Size = 224
+    end
+    object MyQTempABAnilai_dijaminkan: TFloatField
+      FieldName = 'nilai_dijaminkan'
+    end
+  end
+  object MyQABAKodeTransaksi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_trans, CONCAT(kode_trans,'#39' - '#39',deskripsi_trans) AS n' +
+        'm_trans, tob'
+      'FROM aba_kode_trans'
+      '&WHERE'
+      '&ORDER')
+    Left = 904
+    Top = 416
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end>
+    object MyQABAKodeTransaksikode_trans: TStringField
+      FieldName = 'kode_trans'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQABAKodeTransaksinm_trans: TStringField
+      FieldName = 'nm_trans'
+      Size = 56
+    end
+    object MyQABAKodeTransaksitob: TStringField
+      FieldName = 'tob'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsABAKodeTransaksi: TMyDataSource
+    AutoEdit = False
+    DataSet = MyQABAKodeTransaksi
+    Left = 960
+    Top = 416
+  end
+  object MyQABAIntegrasi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_aba AS kode_integrasi, CONCAT(kode_aba," - ",deskrip' +
+        'si_aba) AS nm_integrasi'
+      'FROM aba_integrasi'
+      '&WHERE'
+      'ORDER BY kode_integrasi')
+    Left = 904
+    Top = 368
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+    object MyQABAIntegrasikode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQABAIntegrasinm_integrasi: TStringField
+      FieldName = 'nm_integrasi'
+      Size = 56
+    end
+  end
+  object dsABAIntegrasi: TMyDataSource
+    AutoEdit = False
+    DataSet = MyQABAIntegrasi
+    Left = 960
+    Top = 368
+  end
+  object MyQTTD: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT `id`, `logo`'
+      'FROM `img_tanda_tangan`'
+      '&WHERE'
+      'LIMIT 1')
+    Left = 736
+    Top = 400
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+    object MyQTTDid: TStringField
+      FieldName = 'id'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTTDlogo: TBlobField
+      FieldName = 'logo'
+    end
+  end
+  object MyQTempTabungan: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT `no_rekening`, `no_alternatif`, `nasabah_id`, `kode_produ' +
+        'k1`, '
+      
+        '    `kode_bi_pemilik`, `suku_bunga`, `persen_pph`, `tgl_register' +
+        '`, `saldo_akhir`, '
+      
+        '    `saldo_efektif_bln_ini`, `suku_bunga_efektif_bln_ini`, `bung' +
+        'a_bln_ini`, '
+      
+        '    `pajak_bln_ini`, `adm_bln_ini`, `kode_group1`, `kode_group2`' +
+        ', `kode_group3`, '
+      
+        '    `keterangan`, `minimum`, `last_tgl_adm`, `setoran_minimum`, ' +
+        '`tgl_jt`, `setoran_per_bln`, '
+      
+        '    `jkw`, `last_tgl_trans`, `abp`, `baris_buku`, `baris_kartu`,' +
+        ' `baris_buku_alt`, '
+      
+        '    `baris_kartu_alt`, `verifikasi`, `migrasi_saldo_awal`, `stat' +
+        'us`, `setoran_wajib`, '
+      
+        '    `adm_per_bln`, `status_efektif_bln_ini`, `saldo_akhir_temp1`' +
+        ', `saldo_akhir_temp2`, '
+      
+        '    `saldo_akhir_temp3`, `saldo_akhir_temp4`, `saldo_akhir_temp5' +
+        '`, '
+      
+        '    `tanggal_temp1`, `tanggal_temp2`, `persen_pph_efektif_bln_in' +
+        'i`, `tanggal_temp3`, '
+      
+        '    `tanggal_temp4`, `tanggal_temp5`, `no_rek_jam_kredit`, `sald' +
+        'o_jam_kredit`, '
+      
+        '    `bunga_nasabah`, `bunga_promosi`, `kode_kantor`, `kode_integ' +
+        'rasi`, `kode_produk`, '
+      
+        '    `no_rekening_baru`, `userid`, `setoran_awal`, `p2p_status`, ' +
+        '`target_nominal`, '
+      
+        '    `norek_tab_program`, `saldo_akhir_titipan_bunga`, `migrasi_s' +
+        'aldo_awal_titipan`, '
+      
+        '    `tunggakan_setoran`, `saldo_seharusnya`, `ft_tunggakan`, `sa' +
+        'ldo_penyesuaian`, `kode_bi_lokasi`, '
+      
+        '    `potongan_tabungan`, `potongan_sp`, `potongan_sw`, `potongan' +
+        '_ss`, `potongan_lainnya`, '
+      
+        '    `saldo_titipan_pokok`, `migrasi_saldo_titipan_pokok`, `setor' +
+        'an_insentif_per_bln`, '
+      
+        '    `migrasi_titipan_bunga_ks`, `saldo_titipan_bunga_ks`, `poton' +
+        'gan_tab`, `adm_tab_pasif_bln_ini`, '
+      
+        '    `kode_perk_abp`, `sandi_bank`, `nama_perk_abp`, `kode_altern' +
+        'atif_abp`, `saldo_blokir`, '
+      
+        '    `no_seri_buku`, `gaji_bln_ini`, `nama_qq`, `tanggal_cutoff`,' +
+        ' `baris_buku_rmb`, `migrasi_saldo_awal_bunga`, '
+      
+        '    `flag_duplikat_buku`, `premi`, `no_pin`, `transfer`, `adm_ta' +
+        'b_tutup_bln_ini`, `no_hp_sms`, `no_pin_sms`, '
+      
+        '    `bonus_bln_ini`, `pajak_bonus_bln_ini`, `premi_bln_ini`, `ty' +
+        'pe_kta`, `nasabah_id_join`, `type_join`, '
+      
+        '    `flag_no_cantik`, `kode_keterkaitan`, `online_kk`, `online_i' +
+        'd`, `fee_marketing`, `bunga_program_bln_ini`, '
+      
+        '    `pajak_program_bln_ini`, `saldo_voucher`, `saldo_premi`, `am' +
+        'or_voucher`, `amor_premi`, `voucher`, '
+      
+        '    `tgl_expired_voucher`, `beasiswa`, `migrasi_tgl_trans_akhir`' +
+        ', `no_rekening_sekolah`, '
+      
+        '    `no_rekening_asuransi`, `migrasi_setoran_taka`, `periode_set' +
+        'oran`, `shu_tahun_ini`, '
+      
+        '    `total_poin_undian`, `tab_saldo_blokir`, `tgl_tab_tidak_akti' +
+        'f`, `point_milyader`, '
+      
+        '    `flag_posting`, `kode_group1_temp`, `kode_group4`, `kode_gro' +
+        'up5`, `flag_pay`, `kode_jenis`'
+      'FROM `tabung`'
+      '&WHERE &HAVING &ORDER &LIMIT')
+    FetchAll = False
+    Left = 240
+    Top = 368
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'HAVING'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQTempTabunganno_rekening: TStringField
+      FieldName = 'no_rekening'
+      FixedChar = True
+    end
+    object MyQTempTabunganno_alternatif: TStringField
+      FieldName = 'no_alternatif'
+      FixedChar = True
+    end
+    object MyQTempTabungannasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      FixedChar = True
+    end
+    object MyQTempTabungankode_produk1: TStringField
+      FieldName = 'kode_produk1'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabungankode_bi_pemilik: TStringField
+      FieldName = 'kode_bi_pemilik'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabungansuku_bunga: TFloatField
+      FieldName = 'suku_bunga'
+    end
+    object MyQTempTabunganpersen_pph: TFloatField
+      FieldName = 'persen_pph'
+    end
+    object MyQTempTabungantgl_register: TDateField
+      FieldName = 'tgl_register'
+    end
+    object MyQTempTabungansaldo_akhir: TFloatField
+      FieldName = 'saldo_akhir'
+    end
+    object MyQTempTabungansaldo_efektif_bln_ini: TFloatField
+      FieldName = 'saldo_efektif_bln_ini'
+    end
+    object MyQTempTabungansuku_bunga_efektif_bln_ini: TFloatField
+      FieldName = 'suku_bunga_efektif_bln_ini'
+    end
+    object MyQTempTabunganbunga_bln_ini: TFloatField
+      FieldName = 'bunga_bln_ini'
+    end
+    object MyQTempTabunganpajak_bln_ini: TFloatField
+      FieldName = 'pajak_bln_ini'
+    end
+    object MyQTempTabunganadm_bln_ini: TFloatField
+      FieldName = 'adm_bln_ini'
+    end
+    object MyQTempTabungankode_group1: TStringField
+      FieldName = 'kode_group1'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempTabungankode_group2: TStringField
+      FieldName = 'kode_group2'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempTabungankode_group3: TStringField
+      FieldName = 'kode_group3'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempTabunganketerangan: TStringField
+      FieldName = 'keterangan'
+      FixedChar = True
+      Size = 250
+    end
+    object MyQTempTabunganminimum: TFloatField
+      FieldName = 'minimum'
+    end
+    object MyQTempTabunganlast_tgl_adm: TDateField
+      FieldName = 'last_tgl_adm'
+    end
+    object MyQTempTabungansetoran_minimum: TFloatField
+      FieldName = 'setoran_minimum'
+    end
+    object MyQTempTabungantgl_jt: TDateField
+      FieldName = 'tgl_jt'
+    end
+    object MyQTempTabungansetoran_per_bln: TFloatField
+      FieldName = 'setoran_per_bln'
+    end
+    object MyQTempTabunganjkw: TIntegerField
+      FieldName = 'jkw'
+    end
+    object MyQTempTabunganlast_tgl_trans: TDateField
+      FieldName = 'last_tgl_trans'
+    end
+    object MyQTempTabunganabp: TSmallintField
+      FieldName = 'abp'
+    end
+    object MyQTempTabunganbaris_buku: TIntegerField
+      FieldName = 'baris_buku'
+    end
+    object MyQTempTabunganbaris_kartu: TIntegerField
+      FieldName = 'baris_kartu'
+    end
+    object MyQTempTabunganbaris_buku_alt: TIntegerField
+      FieldName = 'baris_buku_alt'
+    end
+    object MyQTempTabunganbaris_kartu_alt: TIntegerField
+      FieldName = 'baris_kartu_alt'
+    end
+    object MyQTempTabunganverifikasi: TStringField
+      FieldName = 'verifikasi'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempTabunganmigrasi_saldo_awal: TFloatField
+      FieldName = 'migrasi_saldo_awal'
+    end
+    object MyQTempTabunganstatus: TSmallintField
+      FieldName = 'status'
+    end
+    object MyQTempTabungansetoran_wajib: TFloatField
+      FieldName = 'setoran_wajib'
+    end
+    object MyQTempTabunganadm_per_bln: TFloatField
+      FieldName = 'adm_per_bln'
+    end
+    object MyQTempTabunganstatus_efektif_bln_ini: TStringField
+      FieldName = 'status_efektif_bln_ini'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempTabungansaldo_akhir_temp1: TFloatField
+      FieldName = 'saldo_akhir_temp1'
+    end
+    object MyQTempTabungansaldo_akhir_temp2: TFloatField
+      FieldName = 'saldo_akhir_temp2'
+    end
+    object MyQTempTabungansaldo_akhir_temp3: TFloatField
+      FieldName = 'saldo_akhir_temp3'
+    end
+    object MyQTempTabungansaldo_akhir_temp4: TFloatField
+      FieldName = 'saldo_akhir_temp4'
+    end
+    object MyQTempTabungansaldo_akhir_temp5: TFloatField
+      FieldName = 'saldo_akhir_temp5'
+    end
+    object MyQTempTabungantanggal_temp1: TDateField
+      FieldName = 'tanggal_temp1'
+    end
+    object MyQTempTabungantanggal_temp2: TDateField
+      FieldName = 'tanggal_temp2'
+    end
+    object MyQTempTabunganpersen_pph_efektif_bln_ini: TFloatField
+      FieldName = 'persen_pph_efektif_bln_ini'
+    end
+    object MyQTempTabungantanggal_temp3: TDateField
+      FieldName = 'tanggal_temp3'
+    end
+    object MyQTempTabungantanggal_temp4: TDateField
+      FieldName = 'tanggal_temp4'
+    end
+    object MyQTempTabungantanggal_temp5: TDateField
+      FieldName = 'tanggal_temp5'
+    end
+    object MyQTempTabunganno_rek_jam_kredit: TStringField
+      FieldName = 'no_rek_jam_kredit'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempTabungansaldo_jam_kredit: TFloatField
+      FieldName = 'saldo_jam_kredit'
+    end
+    object MyQTempTabunganbunga_nasabah: TFloatField
+      FieldName = 'bunga_nasabah'
+    end
+    object MyQTempTabunganbunga_promosi: TFloatField
+      FieldName = 'bunga_promosi'
+    end
+    object MyQTempTabungankode_kantor: TStringField
+      FieldName = 'kode_kantor'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempTabungankode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabungankode_produk: TStringField
+      FieldName = 'kode_produk'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabunganno_rekening_baru: TStringField
+      FieldName = 'no_rekening_baru'
+      FixedChar = True
+    end
+    object MyQTempTabunganuserid: TIntegerField
+      FieldName = 'userid'
+    end
+    object MyQTempTabungansetoran_awal: TFloatField
+      FieldName = 'setoran_awal'
+    end
+    object MyQTempTabunganp2p_status: TIntegerField
+      FieldName = 'p2p_status'
+    end
+    object MyQTempTabungantarget_nominal: TFloatField
+      FieldName = 'target_nominal'
+    end
+    object MyQTempTabungannorek_tab_program: TStringField
+      FieldName = 'norek_tab_program'
+      FixedChar = True
+    end
+    object MyQTempTabungansaldo_akhir_titipan_bunga: TFloatField
+      FieldName = 'saldo_akhir_titipan_bunga'
+    end
+    object MyQTempTabunganmigrasi_saldo_awal_titipan: TFloatField
+      FieldName = 'migrasi_saldo_awal_titipan'
+    end
+    object MyQTempTabungantunggakan_setoran: TFloatField
+      FieldName = 'tunggakan_setoran'
+    end
+    object MyQTempTabungansaldo_seharusnya: TFloatField
+      FieldName = 'saldo_seharusnya'
+    end
+    object MyQTempTabunganft_tunggakan: TIntegerField
+      FieldName = 'ft_tunggakan'
+    end
+    object MyQTempTabungansaldo_penyesuaian: TFloatField
+      FieldName = 'saldo_penyesuaian'
+    end
+    object MyQTempTabungankode_bi_lokasi: TStringField
+      FieldName = 'kode_bi_lokasi'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabunganpotongan_tabungan: TFloatField
+      FieldName = 'potongan_tabungan'
+    end
+    object MyQTempTabunganpotongan_sp: TFloatField
+      FieldName = 'potongan_sp'
+    end
+    object MyQTempTabunganpotongan_sw: TFloatField
+      FieldName = 'potongan_sw'
+    end
+    object MyQTempTabunganpotongan_ss: TFloatField
+      FieldName = 'potongan_ss'
+    end
+    object MyQTempTabunganpotongan_lainnya: TFloatField
+      FieldName = 'potongan_lainnya'
+    end
+    object MyQTempTabungansaldo_titipan_pokok: TFloatField
+      FieldName = 'saldo_titipan_pokok'
+    end
+    object MyQTempTabunganmigrasi_saldo_titipan_pokok: TFloatField
+      FieldName = 'migrasi_saldo_titipan_pokok'
+    end
+    object MyQTempTabungansetoran_insentif_per_bln: TFloatField
+      FieldName = 'setoran_insentif_per_bln'
+    end
+    object MyQTempTabunganmigrasi_titipan_bunga_ks: TFloatField
+      FieldName = 'migrasi_titipan_bunga_ks'
+    end
+    object MyQTempTabungansaldo_titipan_bunga_ks: TFloatField
+      FieldName = 'saldo_titipan_bunga_ks'
+    end
+    object MyQTempTabunganpotongan_tab: TFloatField
+      FieldName = 'potongan_tab'
+    end
+    object MyQTempTabunganadm_tab_pasif_bln_ini: TFloatField
+      FieldName = 'adm_tab_pasif_bln_ini'
+    end
+    object MyQTempTabungankode_perk_abp: TStringField
+      FieldName = 'kode_perk_abp'
+      FixedChar = True
+    end
+    object MyQTempTabungansandi_bank: TStringField
+      FieldName = 'sandi_bank'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabungannama_perk_abp: TStringField
+      FieldName = 'nama_perk_abp'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQTempTabungankode_alternatif_abp: TStringField
+      FieldName = 'kode_alternatif_abp'
+      FixedChar = True
+    end
+    object MyQTempTabungansaldo_blokir: TFloatField
+      FieldName = 'saldo_blokir'
+    end
+    object MyQTempTabunganno_seri_buku: TStringField
+      FieldName = 'no_seri_buku'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempTabungangaji_bln_ini: TFloatField
+      FieldName = 'gaji_bln_ini'
+    end
+    object MyQTempTabungannama_qq: TStringField
+      FieldName = 'nama_qq'
+      FixedChar = True
+      Size = 100
+    end
+    object MyQTempTabungantanggal_cutoff: TDateField
+      FieldName = 'tanggal_cutoff'
+    end
+    object MyQTempTabunganbaris_buku_rmb: TIntegerField
+      FieldName = 'baris_buku_rmb'
+    end
+    object MyQTempTabunganmigrasi_saldo_awal_bunga: TFloatField
+      FieldName = 'migrasi_saldo_awal_bunga'
+    end
+    object MyQTempTabunganflag_duplikat_buku: TStringField
+      FieldName = 'flag_duplikat_buku'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempTabunganpremi: TFloatField
+      FieldName = 'premi'
+    end
+    object MyQTempTabunganno_pin: TStringField
+      FieldName = 'no_pin'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempTabungantransfer: TIntegerField
+      FieldName = 'transfer'
+    end
+    object MyQTempTabunganadm_tab_tutup_bln_ini: TFloatField
+      FieldName = 'adm_tab_tutup_bln_ini'
+    end
+    object MyQTempTabunganno_hp_sms: TStringField
+      FieldName = 'no_hp_sms'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQTempTabunganno_pin_sms: TStringField
+      FieldName = 'no_pin_sms'
+      FixedChar = True
+      Size = 10
+    end
+    object MyQTempTabunganbonus_bln_ini: TFloatField
+      FieldName = 'bonus_bln_ini'
+    end
+    object MyQTempTabunganpajak_bonus_bln_ini: TFloatField
+      FieldName = 'pajak_bonus_bln_ini'
+    end
+    object MyQTempTabunganpremi_bln_ini: TFloatField
+      FieldName = 'premi_bln_ini'
+    end
+    object MyQTempTabungantype_kta: TStringField
+      FieldName = 'type_kta'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQTempTabungannasabah_id_join: TStringField
+      FieldName = 'nasabah_id_join'
+      FixedChar = True
+    end
+    object MyQTempTabungantype_join: TStringField
+      FieldName = 'type_join'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTempTabunganflag_no_cantik: TIntegerField
+      FieldName = 'flag_no_cantik'
+    end
+    object MyQTempTabungankode_keterkaitan: TStringField
+      FieldName = 'kode_keterkaitan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempTabunganonline_kk: TStringField
+      FieldName = 'online_kk'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQTempTabunganonline_id: TStringField
+      FieldName = 'online_id'
+      FixedChar = True
+      Size = 16
+    end
+    object MyQTempTabunganfee_marketing: TFloatField
+      FieldName = 'fee_marketing'
+    end
+    object MyQTempTabunganbunga_program_bln_ini: TFloatField
+      FieldName = 'bunga_program_bln_ini'
+    end
+    object MyQTempTabunganpajak_program_bln_ini: TFloatField
+      FieldName = 'pajak_program_bln_ini'
+    end
+    object MyQTempTabungansaldo_voucher: TFloatField
+      FieldName = 'saldo_voucher'
+    end
+    object MyQTempTabungansaldo_premi: TFloatField
+      FieldName = 'saldo_premi'
+    end
+    object MyQTempTabunganamor_voucher: TFloatField
+      FieldName = 'amor_voucher'
+    end
+    object MyQTempTabunganamor_premi: TFloatField
+      FieldName = 'amor_premi'
+    end
+    object MyQTempTabunganvoucher: TFloatField
+      FieldName = 'voucher'
+    end
+    object MyQTempTabungantgl_expired_voucher: TDateField
+      FieldName = 'tgl_expired_voucher'
+    end
+    object MyQTempTabunganbeasiswa: TFloatField
+      FieldName = 'beasiswa'
+    end
+    object MyQTempTabunganmigrasi_tgl_trans_akhir: TDateField
+      FieldName = 'migrasi_tgl_trans_akhir'
+    end
+    object MyQTempTabunganno_rekening_sekolah: TStringField
+      FieldName = 'no_rekening_sekolah'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempTabunganno_rekening_asuransi: TStringField
+      FieldName = 'no_rekening_asuransi'
+      FixedChar = True
+      Size = 30
+    end
+    object MyQTempTabunganmigrasi_setoran_taka: TFloatField
+      FieldName = 'migrasi_setoran_taka'
+    end
+    object MyQTempTabunganperiode_setoran: TIntegerField
+      FieldName = 'periode_setoran'
+    end
+    object MyQTempTabunganshu_tahun_ini: TFloatField
+      FieldName = 'shu_tahun_ini'
+    end
+    object MyQTempTabungantotal_poin_undian: TIntegerField
+      FieldName = 'total_poin_undian'
+    end
+    object MyQTempTabungantab_saldo_blokir: TFloatField
+      FieldName = 'tab_saldo_blokir'
+    end
+    object MyQTempTabungantgl_tab_tidak_aktif: TDateField
+      FieldName = 'tgl_tab_tidak_aktif'
+    end
+    object MyQTempTabunganpoint_milyader: TIntegerField
+      FieldName = 'point_milyader'
+    end
+    object MyQTempTabunganflag_posting: TSmallintField
+      FieldName = 'flag_posting'
+    end
+    object MyQTempTabungankode_group1_temp: TStringField
+      FieldName = 'kode_group1_temp'
+      Size = 5
+    end
+    object MyQTempTabungankode_group4: TStringField
+      FieldName = 'kode_group4'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempTabungankode_group5: TStringField
+      FieldName = 'kode_group5'
+      FixedChar = True
+      Size = 5
+    end
+    object MyQTempTabunganflag_pay: TStringField
+      FieldName = 'flag_pay'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQTempTabungankode_jenis: TStringField
+      FieldName = 'kode_jenis'
+      FixedChar = True
+      Size = 2
+    end
+  end
   object IdHTTP1: TIdHTTP
     ProxyParams.BasicAuthentication = False
     ProxyParams.ProxyPort = 0
@@ -56050,6 +59858,394 @@ object dm_bpr1: Tdm_bpr1
     HTTPOptions = [hoForceEncodeParams]
     Left = 64
     Top = 64
+  end
+  object MyQSLIKKredit: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      'SELECT * FROM slik_kredit'
+      '&WHERE'
+      '&ORDER'
+      '&LIMIT')
+    Left = 240
+    Top = 424
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end
+      item
+        Name = 'LIMIT'
+      end>
+    object MyQSLIKKreditflag_detail: TStringField
+      FieldName = 'flag_detail'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKreditno_rekening: TStringField
+      FieldName = 'no_rekening'
+      Size = 25
+    end
+    object MyQSLIKKreditcif: TStringField
+      FieldName = 'cif'
+    end
+    object MyQSLIKKreditkode_sifat_kredit: TStringField
+      FieldName = 'kode_sifat_kredit'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKreditkode_jenis_kredit: TStringField
+      FieldName = 'kode_jenis_kredit'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQSLIKKreditkode_skim: TStringField
+      FieldName = 'kode_skim'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQSLIKKreditno_akad_awal: TStringField
+      FieldName = 'no_akad_awal'
+      Size = 50
+    end
+    object MyQSLIKKredittanggal_akad_awal: TDateField
+      FieldName = 'tanggal_akad_awal'
+    end
+    object MyQSLIKKreditno_akad_akhir: TStringField
+      FieldName = 'no_akad_akhir'
+      Size = 50
+    end
+    object MyQSLIKKredittanggal_akad_akhir: TDateField
+      FieldName = 'tanggal_akad_akhir'
+    end
+    object MyQSLIKKreditbaru_perpanjangan: TSmallintField
+      FieldName = 'baru_perpanjangan'
+    end
+    object MyQSLIKKredittanggal_awal_kredit: TDateField
+      FieldName = 'tanggal_awal_kredit'
+    end
+    object MyQSLIKKredittanggal_mulai: TDateField
+      FieldName = 'tanggal_mulai'
+    end
+    object MyQSLIKKredittanggal_jatuh_tempo: TDateField
+      FieldName = 'tanggal_jatuh_tempo'
+    end
+    object MyQSLIKKreditkode_kategori_debitur: TStringField
+      FieldName = 'kode_kategori_debitur'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQSLIKKreditkode_jenis_penggunaan: TStringField
+      FieldName = 'kode_jenis_penggunaan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKreditkode_orientasi_penggunaan: TStringField
+      FieldName = 'kode_orientasi_penggunaan'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKreditkode_sektor_ekonomi: TStringField
+      FieldName = 'kode_sektor_ekonomi'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQSLIKKreditkode_kab_kota: TStringField
+      FieldName = 'kode_kab_kota'
+      FixedChar = True
+      Size = 4
+    end
+    object MyQSLIKKreditnilai_proyek: TFloatField
+      FieldName = 'nilai_proyek'
+    end
+    object MyQSLIKKreditkode_valuta: TStringField
+      FieldName = 'kode_valuta'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQSLIKKreditprosentase_suku_bunga: TFloatField
+      FieldName = 'prosentase_suku_bunga'
+    end
+    object MyQSLIKKreditjenis_suku_bunga: TStringField
+      FieldName = 'jenis_suku_bunga'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKreditkredit_program_pemerintah: TStringField
+      FieldName = 'kredit_program_pemerintah'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQSLIKKredittakeover_dari: TStringField
+      FieldName = 'takeover_dari'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQSLIKKreditsumber_dana: TStringField
+      FieldName = 'sumber_dana'
+      FixedChar = True
+      Size = 6
+    end
+    object MyQSLIKKreditplafon_awal: TFloatField
+      FieldName = 'plafon_awal'
+    end
+    object MyQSLIKKreditplafon: TFloatField
+      FieldName = 'plafon'
+    end
+    object MyQSLIKKreditrealisasi_atau_pencairan_bulan_berjalan: TFloatField
+      FieldName = 'realisasi_atau_pencairan_bulan_berjalan'
+    end
+    object MyQSLIKKreditdenda: TFloatField
+      FieldName = 'denda'
+    end
+    object MyQSLIKKreditbaki_debet: TFloatField
+      FieldName = 'baki_debet'
+    end
+    object MyQSLIKKreditnilai_dalam_mata_uang_asal: TFloatField
+      FieldName = 'nilai_dalam_mata_uang_asal'
+    end
+    object MyQSLIKKreditkode_kolektibilitas: TStringField
+      FieldName = 'kode_kolektibilitas'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQSLIKKredittanggal_macet: TDateField
+      FieldName = 'tanggal_macet'
+    end
+    object MyQSLIKKreditkode_sebab_macet: TStringField
+      FieldName = 'kode_sebab_macet'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQSLIKKredittunggakan_pokok: TFloatField
+      FieldName = 'tunggakan_pokok'
+    end
+    object MyQSLIKKredittunggakan_bunga: TFloatField
+      FieldName = 'tunggakan_bunga'
+    end
+    object MyQSLIKKreditjumlah_hari_tunggakan: TFloatField
+      FieldName = 'jumlah_hari_tunggakan'
+    end
+    object MyQSLIKKreditfrekuensi_tunggakan: TFloatField
+      FieldName = 'frekuensi_tunggakan'
+    end
+    object MyQSLIKKreditfrekuensi_restrukturisasi: TFloatField
+      FieldName = 'frekuensi_restrukturisasi'
+    end
+    object MyQSLIKKredittanggal_restrukturisasi_awal: TDateField
+      FieldName = 'tanggal_restrukturisasi_awal'
+    end
+    object MyQSLIKKredittanggal_restrukturisasi_akhir: TDateField
+      FieldName = 'tanggal_restrukturisasi_akhir'
+    end
+    object MyQSLIKKreditkode_cara_restrukturisasi_awal: TStringField
+      FieldName = 'kode_cara_restrukturisasi_awal'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQSLIKKreditkode_kondisi: TStringField
+      FieldName = 'kode_kondisi'
+      FixedChar = True
+      Size = 2
+    end
+    object MyQSLIKKredittanggal_kondisi: TDateField
+      FieldName = 'tanggal_kondisi'
+    end
+    object MyQSLIKKreditketerangan: TStringField
+      FieldName = 'keterangan'
+      Size = 300
+    end
+    object MyQSLIKKreditkode_kantor_cabang: TStringField
+      FieldName = 'kode_kantor_cabang'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQSLIKKreditoperasi_data: TStringField
+      FieldName = 'operasi_data'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object MyQProduk: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_produk, CONCAT(kode_produk," - ",deskripsi_produk) A' +
+        'S nm_produk'
+      'FROM kre_produk'
+      '&WHERE'
+      'ORDER BY kode_produk')
+    Left = 544
+    Top = 120
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+  end
+  object dsMyQProduk: TMyDataSource
+    DataSet = MyQProduk
+    Left = 584
+    Top = 120
+  end
+  object MyQIntegrasi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_integrasi, CONCAT(kode_integrasi," - ",deskripsi_int' +
+        'egrasi) AS nm_integrasi'
+      'FROM kre_integrasi'
+      'ORDER BY kode_integrasi')
+    Left = 544
+    Top = 80
+  end
+  object dsMyQIntegrasi: TMyDataSource
+    DataSet = MyQIntegrasi
+    Left = 584
+    Top = 80
+  end
+  object MyQKreIkatanAgunan: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_ikatan_hukum, CONCAT(kode_ikatan_hukum," - ",deskrip' +
+        'si_ikatan_hukum) AS ikatan_agunan, persen_default'
+      'FROM kre_kode_ikatan_hukum_agunan'
+      'ORDER BY kode_ikatan_hukum')
+    Left = 544
+    Top = 504
+    object MyQKreIkatanAgunankode_ikatan_hukum: TStringField
+      FieldName = 'kode_ikatan_hukum'
+      FixedChar = True
+      Size = 1
+    end
+    object MyQKreIkatanAgunanikatan_agunan: TStringField
+      FieldName = 'ikatan_agunan'
+      Size = 132
+    end
+    object MyQKreIkatanAgunanpersen_default: TFloatField
+      FieldName = 'persen_default'
+    end
+  end
+  object dsMyQKreIkatanAgunan: TMyDataSource
+    DataSet = MyQKreIkatanAgunan
+    Left = 584
+    Top = 504
+  end
+  object MyQSumberDana: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_sumber_dana, CONCAT(kode_sumber_dana," - ",deskripsi' +
+        '_sumber_dana) AS sumber_dana'
+      'FROM kre_sumber_dana'
+      'ORDER BY kode_sumber_dana')
+    Left = 544
+    Top = 168
+  end
+  object dsMyQSumberDana: TMyDataSource
+    DataSet = MyQSumberDana
+    Left = 584
+    Top = 168
+  end
+  object MyQSatuanWaktu: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_satuan_waktu, CONCAT(kode_satuan_waktu," - ",deskrip' +
+        'si_satuan_waktu) AS satuan_waktu'
+      'FROM kre_kode_satuan_waktu'
+      'ORDER BY kode_satuan_bi')
+    Left = 544
+    Top = 216
+  end
+  object dsMyQSatuanWaktu: TMyDataSource
+    DataSet = MyQSatuanWaktu
+    Left = 584
+    Top = 216
+  end
+  object MyQTypeKolek: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_type_kolek, CONCAT(kode_type_kolek," - ",deskripsi_t' +
+        'ype_kolek) AS type_kolek'
+      'FROM kre_kode_type_kolek'
+      'ORDER BY kode_type_kolek')
+    Left = 544
+    Top = 264
+  end
+  object dsMyQTypeKolek: TMyDataSource
+    DataSet = MyQTypeKolek
+    Left = 584
+    Top = 264
+  end
+  object MyQTypeKredit: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_type_kredit, CONCAT(kode_type_kredit," - ",deskripsi' +
+        '_type_kredit) AS type_kredit'
+      'FROM kre_kode_type'
+      
+        'WHERE kode_type_kredit IN ('#39'100'#39','#39'200'#39','#39'300'#39','#39'400'#39','#39'500'#39','#39'700'#39','#39 +
+        '710'#39')'
+      'ORDER BY kode_type_kredit')
+    Left = 544
+    Top = 312
+  end
+  object dsMyQTypeKredit: TMyDataSource
+    DataSet = MyQTypeKredit
+    Left = 584
+    Top = 312
+  end
+  object MyQKreAsuransi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_asuransi, CONCAT(kode_asuransi," - ",deskripsi_asura' +
+        'nsi) AS nm_asuransi'
+      'FROM kre_kode_asuransi'
+      'ORDER BY kode_asuransi')
+    Left = 544
+    Top = 360
+  end
+  object dsMyQKreAsuransi: TMyDataSource
+    DataSet = MyQKreAsuransi
+    Left = 584
+    Top = 360
+  end
+  object dsMyQKreAsuransiJiwa: TMyDataSource
+    DataSet = MyQKreAsuransiJiwa
+    Left = 584
+    Top = 408
+  end
+  object MyQKreAsuransiJiwa: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_asuransi, CONCAT(kode_asuransi," - ",deskripsi_asura' +
+        'nsi) AS nm_asuransi'
+      'FROM kre_kode_asuransi'
+      'ORDER BY kode_asuransi')
+    Left = 544
+    Top = 408
+  end
+  object MyQKreJenisAgunan: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT kode_jenis_agunan, CONCAT(kode_jenis_agunan," - ",deskrip' +
+        'si_jenis_agunan) AS jenis_agunan, persen_default'
+      'FROM kre_kode_jenis_agunan'
+      'ORDER BY kode_jenis_agunan')
+    Left = 544
+    Top = 456
+  end
+  object dsMyQKreJenisAgunan: TMyDataSource
+    DataSet = MyQKreJenisAgunan
+    Left = 584
+    Top = 456
   end
   object MyQLapKodeKantorUser: TMyQuery
     Connection = MyCon2
@@ -56080,6 +60276,39 @@ object dm_bpr1: Tdm_bpr1
       Origin = 'nama_database'
     end
   end
+  object MyQLapKodeGroup5: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'SELECT '#39'*'#39' AS kode_group5,CONCAT('#39'*'#39','#39' - '#39','#39'Semua'#39') AS nama_grou' +
+        'p5'
+      'UNION ALL'
+      
+        'SELECT kode_group5, CONCAT(kode_group5,'#39' - '#39',deskripsi_group5) A' +
+        'S nama_group5'
+      'FROM kre_kode_group5'
+      '&WHERE'
+      'ORDER BY kode_group5')
+    Left = 536
+    Top = 560
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+    object MyQLapKodeGroup5kode_group5: TStringField
+      FieldName = 'kode_group5'
+      Size = 10
+    end
+    object MyQLapKodeGroup5nama_group5: TStringField
+      FieldName = 'nama_group5'
+      Size = 113
+    end
+  end
+  object dsLapKodeGroup5: TMyDataSource
+    DataSet = MyQLapKodeGroup5
+    Left = 592
+    Top = 560
+  end
   object dsLapKodeKantorUser: TMyDataSource
     DataSet = MyQLapKodeKantorUser
     Left = 144
@@ -56090,6 +60319,71 @@ object dm_bpr1: Tdm_bpr1
     Left = 144
     Top = 272
   end
+  object MyQTabKodeTransaksi: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'select kode_trans, concat(kode_trans,'#39' - '#39',deskripsi_trans) as n' +
+        'm_trans, tob'
+      'from tab_kode_trans'
+      '&WHERE'
+      '&ORDER'
+      '#kode_trans='#39'104'#39' or Kode_trans='#39'204'#39' or'
+      '#kode_trans='#39'205'#39)
+    Left = 728
+    Top = 472
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'ORDER'
+      end>
+    object MyQTabKodeTransaksikode_trans: TStringField
+      FieldName = 'kode_trans'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTabKodeTransaksinm_trans: TStringField
+      FieldName = 'nm_trans'
+      Size = 56
+    end
+    object MyQTabKodeTransaksitob: TStringField
+      FieldName = 'tob'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object dsTabKodeTransaksi: TMyDataSource
+    DataSet = MyQTabKodeTransaksi
+    Left = 792
+    Top = 472
+  end
+  object MyQTabSandiTrans: TMyQuery
+    Connection = MyCon2
+    SQL.Strings = (
+      
+        'select sandi_kode, concat(sandi_kode,'#39' - '#39',sandi_deskripsi) as n' +
+        'm_sandi'
+      'from tab_sandi_trans'
+      'order by sandi_kode')
+    Left = 728
+    Top = 528
+    object MyQTabSandiTranssandi_kode: TStringField
+      FieldName = 'sandi_kode'
+      FixedChar = True
+      Size = 3
+    end
+    object MyQTabSandiTransnm_sandi: TStringField
+      FieldName = 'nm_sandi'
+      Size = 66
+    end
+  end
+  object dsTabSandiTrans: TMyDataSource
+    DataSet = MyQTabSandiTrans
+    Left = 792
+    Top = 528
+  end
   object sOpenDialog1: TsOpenDialog
     DefaultExt = '.txt'
     Filter = 'Text Files|*.txt'
@@ -56097,21 +60391,366 @@ object dm_bpr1: Tdm_bpr1
     Left = 232
     Top = 112
   end
-  object QExport4Xlsx1: TQExport4Xlsx
-    About = '(About EMS AdvancedExport)'
-    _Version = '4.2.0.6'
-    Formats.DecimalSeparator = '.'
-    Formats.ThousandSeparator = ','
+  object frxDBDataset1: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 432
+    Top = 192
+  end
+  object QExport4XLS1: TQExport4XLS
+    About = '(About Advanced Data Export VCL)'
+    _Version = '4.16.0.2'
+    Formats.DecimalSeparator = ','
+    Formats.ThousandSeparator = '.'
     Formats.DateSeparator = '/'
-    Formats.TimeSeparator = ':'
+    Formats.TimeSeparator = '.'
     Formats.BooleanTrue = 'true'
     Formats.BooleanFalse = 'false'
     Formats.IntegerFormat = '#,###,##0'
     Formats.FloatFormat = '#,###,##0.00'
-    Formats.DateFormat = 'M/d/yyyy'
-    Formats.TimeFormat = 'h:mm AMPM'
-    Formats.DateTimeFormat = 'M/d/yyyy h:mm:ss AMPM'
-    Formats.CurrencyFormat = '$#,###,##0.00'
+    Formats.DateFormat = 'dd/MM/yyyy'
+    Formats.TimeFormat = 'hh:mm'
+    Formats.DateTimeFormat = 'dd/MM/yyyy hh:mm:ss'
+    Formats.CurrencyFormat = 'Rp#,###,##0.00'
+    Options.PageFooter = 'Page &P of &N'
+    Options.SheetTitle = 'Sheet 1'
+    Options.CaptionsFormat.Font.Style = [xfsBold]
+    Options.HyperlinkFormat.Font.Color = clrBlue
+    Options.HyperlinkFormat.Font.Underline = fulSingle
+    Options.NoteFormat.Alignment.Horizontal = halLeft
+    Options.NoteFormat.Alignment.Vertical = valTop
+    Options.NoteFormat.Font.Size = 8
+    Options.NoteFormat.Font.Style = [xfsBold]
+    Options.NoteFormat.Font.Name = 'Tahoma'
+    FieldFormats = <>
+    StripStyles = <>
+    Hyperlinks = <>
+    Notes = <>
+    Charts = <>
+    Sheets = <>
+    Pictures = <>
+    Images = <>
+    Cells = <>
+    Aggregates = <>
+    MergedCells = <>
+    Left = 72
+    Top = 200
+  end
+  object QExport4Dialog1: TQExport4Dialog
+    HelpFile = 'AExportDialog.hlp'
+    Formats.DecimalSeparator = ','
+    Formats.ThousandSeparator = '.'
+    Formats.DateSeparator = '/'
+    Formats.TimeSeparator = '.'
+    Formats.BooleanTrue = 'true'
+    Formats.BooleanFalse = 'false'
+    Formats.IntegerFormat = '#,###,##0'
+    Formats.FloatFormat = '#,###,##0.00'
+    Formats.DateFormat = 'dd/MM/yyyy'
+    Formats.TimeFormat = 'hh:mm'
+    Formats.DateTimeFormat = 'dd/MM/yyyy hh:mm:ss'
+    Formats.CurrencyFormat = 'Rp#,###,##0.00'
+    RTFOptions.CaptionStyle.Font.Charset = DEFAULT_CHARSET
+    RTFOptions.CaptionStyle.Font.Color = clBlack
+    RTFOptions.CaptionStyle.Font.Height = -13
+    RTFOptions.CaptionStyle.Font.Name = 'Arial'
+    RTFOptions.CaptionStyle.Font.Style = [fsBold]
+    RTFOptions.CaptionStyle.AllowHighlight = True
+    RTFOptions.CaptionStyle.Alignment = talCenter
+    RTFOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
+    RTFOptions.DataStyle.Font.Color = clBlack
+    RTFOptions.DataStyle.Font.Height = -13
+    RTFOptions.DataStyle.Font.Name = 'Arial'
+    RTFOptions.DataStyle.Font.Style = []
+    RTFOptions.DataStyle.AllowHighlight = True
+    RTFOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
+    RTFOptions.FooterStyle.Font.Color = clBlack
+    RTFOptions.FooterStyle.Font.Height = -13
+    RTFOptions.FooterStyle.Font.Name = 'Arial'
+    RTFOptions.FooterStyle.Font.Style = []
+    RTFOptions.FooterStyle.AllowHighlight = True
+    RTFOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
+    RTFOptions.HeaderStyle.Font.Color = clBlack
+    RTFOptions.HeaderStyle.Font.Height = -13
+    RTFOptions.HeaderStyle.Font.Name = 'Arial'
+    RTFOptions.HeaderStyle.Font.Style = []
+    RTFOptions.HeaderStyle.AllowHighlight = True
+    RTFOptions.StripStyles = <>
+    HTMLPageOptions.TextFont.Charset = DEFAULT_CHARSET
+    HTMLPageOptions.TextFont.Color = clWhite
+    HTMLPageOptions.TextFont.Height = -11
+    HTMLPageOptions.TextFont.Name = 'Arial'
+    HTMLPageOptions.TextFont.Style = []
+    CSVOptions.Comma = ';'
+    PDFOptions.PageOptions.MarginLeft = 1.170000000000000000
+    PDFOptions.PageOptions.MarginRight = 0.569999999999999900
+    PDFOptions.PageOptions.MarginTop = 0.780000000000000000
+    PDFOptions.PageOptions.MarginBottom = 0.780000000000000000
+    PDFOptions.HeaderFont.UserFont.Charset = DEFAULT_CHARSET
+    PDFOptions.HeaderFont.UserFont.Color = clWindowText
+    PDFOptions.HeaderFont.UserFont.Height = -13
+    PDFOptions.HeaderFont.UserFont.Name = 'Arial'
+    PDFOptions.HeaderFont.UserFont.Style = []
+    PDFOptions.HeaderFont.Charset = ANSI_CHARSET
+    PDFOptions.CaptionFont.UserFont.Charset = DEFAULT_CHARSET
+    PDFOptions.CaptionFont.UserFont.Color = clWindowText
+    PDFOptions.CaptionFont.UserFont.Height = -13
+    PDFOptions.CaptionFont.UserFont.Name = 'Arial'
+    PDFOptions.CaptionFont.UserFont.Style = []
+    PDFOptions.CaptionFont.Charset = ANSI_CHARSET
+    PDFOptions.DataFont.UserFont.Charset = DEFAULT_CHARSET
+    PDFOptions.DataFont.UserFont.Color = clWindowText
+    PDFOptions.DataFont.UserFont.Height = -13
+    PDFOptions.DataFont.UserFont.Name = 'Arial'
+    PDFOptions.DataFont.UserFont.Style = []
+    PDFOptions.DataFont.Charset = ANSI_CHARSET
+    PDFOptions.FooterFont.UserFont.Charset = DEFAULT_CHARSET
+    PDFOptions.FooterFont.UserFont.Color = clWindowText
+    PDFOptions.FooterFont.UserFont.Height = -13
+    PDFOptions.FooterFont.UserFont.Name = 'Arial'
+    PDFOptions.FooterFont.UserFont.Style = []
+    PDFOptions.FooterFont.Charset = ANSI_CHARSET
+    XLSOptions.PageFooter = 'Page &P of &N'
+    XLSOptions.SheetTitle = 'Sheet 1'
+    XLSOptions.CaptionFormat.Font.Style = [xfsBold]
+    XLSOptions.HyperlinkFormat.Font.Color = clrBlue
+    XLSOptions.HyperlinkFormat.Font.Underline = fulSingle
+    XLSOptions.NoteFormat.Alignment.Horizontal = halLeft
+    XLSOptions.NoteFormat.Alignment.Vertical = valTop
+    XLSOptions.NoteFormat.Font.Size = 8
+    XLSOptions.NoteFormat.Font.Style = [xfsBold]
+    XLSOptions.NoteFormat.Font.Name = 'Tahoma'
+    XLSOptions.FieldFormats = <>
+    XLSOptions.StripStyles = <>
+    XLSOptions.Hyperlinks = <>
+    XLSOptions.Notes = <>
+    XLSOptions.Charts = <>
+    XLSOptions.Pictures = <>
+    XLSOptions.Images = <>
+    XLSOptions.Cells = <>
+    XLSOptions.MergedCells = <>
+    ODSOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
+    ODSOptions.HeaderStyle.Font.Color = clBlack
+    ODSOptions.HeaderStyle.Font.Height = -13
+    ODSOptions.HeaderStyle.Font.Name = 'Arial'
+    ODSOptions.HeaderStyle.Font.Style = []
+    ODSOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
+    ODSOptions.FooterStyle.Font.Color = clBlack
+    ODSOptions.FooterStyle.Font.Height = -13
+    ODSOptions.FooterStyle.Font.Name = 'Arial'
+    ODSOptions.FooterStyle.Font.Style = []
+    ODSOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
+    ODSOptions.CaptionRowStyle.Font.Color = clBlack
+    ODSOptions.CaptionRowStyle.Font.Height = -13
+    ODSOptions.CaptionRowStyle.Font.Name = 'Arial'
+    ODSOptions.CaptionRowStyle.Font.Style = []
+    ODSOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
+    ODSOptions.DataStyle.Font.Color = clBlack
+    ODSOptions.DataStyle.Font.Height = -13
+    ODSOptions.DataStyle.Font.Name = 'Arial'
+    ODSOptions.DataStyle.Font.Style = []
+    ODSOptions.StripStylesList = <>
+    ODTOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
+    ODTOptions.HeaderStyle.Font.Color = clBlack
+    ODTOptions.HeaderStyle.Font.Height = -13
+    ODTOptions.HeaderStyle.Font.Name = 'Arial'
+    ODTOptions.HeaderStyle.Font.Style = []
+    ODTOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
+    ODTOptions.FooterStyle.Font.Color = clBlack
+    ODTOptions.FooterStyle.Font.Height = -13
+    ODTOptions.FooterStyle.Font.Name = 'Arial'
+    ODTOptions.FooterStyle.Font.Style = []
+    ODTOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
+    ODTOptions.CaptionRowStyle.Font.Color = clBlack
+    ODTOptions.CaptionRowStyle.Font.Height = -13
+    ODTOptions.CaptionRowStyle.Font.Name = 'Arial'
+    ODTOptions.CaptionRowStyle.Font.Style = []
+    ODTOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
+    ODTOptions.DataStyle.Font.Color = clBlack
+    ODTOptions.DataStyle.Font.Height = -13
+    ODTOptions.DataStyle.Font.Name = 'Arial'
+    ODTOptions.DataStyle.Font.Style = []
+    ODTOptions.StripStylesList = <>
+    ODTOptions.Border.BorderStyle = bsODFSolid
+    XlsxOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
+    XlsxOptions.HeaderStyle.Font.Color = clBlack
+    XlsxOptions.HeaderStyle.Font.Height = -15
+    XlsxOptions.HeaderStyle.Font.Name = 'Calibri'
+    XlsxOptions.HeaderStyle.Font.Style = []
+    XlsxOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
+    XlsxOptions.CaptionRowStyle.Font.Color = clBlack
+    XlsxOptions.CaptionRowStyle.Font.Height = -15
+    XlsxOptions.CaptionRowStyle.Font.Name = 'Calibri'
+    XlsxOptions.CaptionRowStyle.Font.Style = []
+    XlsxOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
+    XlsxOptions.DataStyle.Font.Color = clBlack
+    XlsxOptions.DataStyle.Font.Height = -15
+    XlsxOptions.DataStyle.Font.Name = 'Calibri'
+    XlsxOptions.DataStyle.Font.Style = []
+    XlsxOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
+    XlsxOptions.FooterStyle.Font.Color = clBlack
+    XlsxOptions.FooterStyle.Font.Height = -15
+    XlsxOptions.FooterStyle.Font.Name = 'Calibri'
+    XlsxOptions.FooterStyle.Font.Style = []
+    XlsxOptions.StripStylesList = <>
+    XlsxOptions.PageSettings.MarginLeft = 0.700000000000000000
+    XlsxOptions.PageSettings.MarginRight = 0.700000000000000000
+    XlsxOptions.PageSettings.MarginTop = 0.750000000000000000
+    XlsxOptions.PageSettings.MarginBottom = 0.750000000000000000
+    XlsxOptions.PageSettings.Header = 0.300000000000000000
+    XlsxOptions.PageSettings.Footer = 0.300000000000000000
+    DocxOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
+    DocxOptions.HeaderStyle.Font.Color = clBlack
+    DocxOptions.HeaderStyle.Font.Height = -15
+    DocxOptions.HeaderStyle.Font.Name = 'Calibri'
+    DocxOptions.HeaderStyle.Font.Style = []
+    DocxOptions.CaptionRowStyle.Font.Charset = DEFAULT_CHARSET
+    DocxOptions.CaptionRowStyle.Font.Color = clBlack
+    DocxOptions.CaptionRowStyle.Font.Height = -15
+    DocxOptions.CaptionRowStyle.Font.Name = 'Calibri'
+    DocxOptions.CaptionRowStyle.Font.Style = []
+    DocxOptions.DataStyle.Font.Charset = DEFAULT_CHARSET
+    DocxOptions.DataStyle.Font.Color = clBlack
+    DocxOptions.DataStyle.Font.Height = -15
+    DocxOptions.DataStyle.Font.Name = 'Calibri'
+    DocxOptions.DataStyle.Font.Style = []
+    DocxOptions.StripStylesList = <>
+    DocxOptions.FooterStyle.Font.Charset = DEFAULT_CHARSET
+    DocxOptions.FooterStyle.Font.Color = clBlack
+    DocxOptions.FooterStyle.Font.Height = -15
+    DocxOptions.FooterStyle.Font.Name = 'Calibri'
+    DocxOptions.FooterStyle.Font.Style = []
+    AccessOptions.TableName = 'EXPORT_TABLE'
+    Left = 128
+    Top = 200
+  end
+  object RvNDRWriter1: TRvNDRWriter
+    StatusFormat = 'Printing page %p'
+    UnitsFactor = 1.000000000000000000
+    Title = 'Rave Report'
+    Orientation = poPortrait
+    ScaleX = 100.000000000000000000
+    ScaleY = 100.000000000000000000
+    Left = 848
+    Top = 8
+  end
+  object RvRenderRTF1: TRvRenderRTF
+    DisplayName = 'Rich Text Format (RTF)'
+    FileExtension = '*.rtf'
+    Left = 896
+    Top = 8
+  end
+  object RvRenderText1: TRvRenderText
+    DisplayName = 'Plain Text (TXT)'
+    FileExtension = '*.txt'
+    CPI = 10.000000000000000000
+    LPI = 6.000000000000000000
+    Left = 848
+    Top = 56
+  end
+  object RvRenderPDF1: TRvRenderPDF
+    DisplayName = 'Adobe Acrobat (PDF)'
+    FileExtension = '*.pdf'
+    DocInfo.Creator = 'Rave Reports (http://www.nevrona.com/rave)'
+    DocInfo.Producer = 'Nevrona Designs'
+    Left = 896
+    Top = 56
+  end
+  object RvSystem1: TRvSystem
+    TitleSetup = 'Output Options'
+    TitleStatus = 'Report Status'
+    TitlePreview = 'Report Preview'
+    SystemFiler.StatusFormat = 'Generating page %p'
+    SystemPreview.ZoomFactor = 100.000000000000000000
+    SystemPrinter.ScaleX = 100.000000000000000000
+    SystemPrinter.ScaleY = 100.000000000000000000
+    SystemPrinter.StatusFormat = 'Printing page %p'
+    SystemPrinter.Title = 'Rave Report'
+    SystemPrinter.UnitsFactor = 1.000000000000000000
+    Left = 944
+    Top = 56
+  end
+  object RvSystem2: TRvSystem
+    TitleSetup = 'Output Options'
+    TitleStatus = 'Report Status'
+    TitlePreview = 'Report Preview'
+    SystemFiler.StatusFormat = 'Generating page %p'
+    SystemPreview.ZoomFactor = 100.000000000000000000
+    SystemPrinter.ScaleX = 100.000000000000000000
+    SystemPrinter.ScaleY = 100.000000000000000000
+    SystemPrinter.StatusFormat = 'Printing page %p'
+    SystemPrinter.Title = 'Rave Report'
+    SystemPrinter.UnitsFactor = 1.000000000000000000
+    Left = 944
+    Top = 96
+  end
+  object RvSystem3: TRvSystem
+    TitleSetup = 'Output Options'
+    TitleStatus = 'Report Status'
+    TitlePreview = 'Report Preview'
+    SystemFiler.StatusFormat = 'Generating page %p'
+    SystemPreview.ZoomFactor = 100.000000000000000000
+    SystemPrinter.ScaleX = 100.000000000000000000
+    SystemPrinter.ScaleY = 100.000000000000000000
+    SystemPrinter.StatusFormat = 'Printing page %p'
+    SystemPrinter.Title = 'Rave Report'
+    SystemPrinter.UnitsFactor = 1.000000000000000000
+    Left = 896
+    Top = 104
+  end
+  object RvPreviewjual: TRvSystem
+    TitleSetup = 'Output Options'
+    TitleStatus = 'Report Status'
+    TitlePreview = 'Report Preview'
+    SystemFiler.StatusFormat = 'Generating page %p'
+    SystemPreview.ZoomFactor = 100.000000000000000000
+    SystemPrinter.ScaleX = 100.000000000000000000
+    SystemPrinter.ScaleY = 100.000000000000000000
+    SystemPrinter.StatusFormat = 'Printing page %p'
+    SystemPrinter.Title = 'Rave Report'
+    SystemPrinter.UnitsFactor = 1.000000000000000000
+    Left = 944
+    Top = 144
+  end
+  object RvOgisoft: TRvProject
+    Left = 944
+    Top = 8
+  end
+  object ZipForge1: TZipForge
+    ExtractCorruptedFiles = False
+    CompressionLevel = clFastest
+    CompressionMode = 1
+    CurrentVersion = '6.93 '
+    SpanningMode = smNone
+    SpanningOptions.AdvancedNaming = False
+    SpanningOptions.FirstVolumeSize = 0
+    SpanningOptions.VolumeSize = vsAutoDetect
+    SpanningOptions.CustomVolumeSize = 65536
+    Options.FlushBuffers = True
+    Options.OEMFileNames = True
+    InMemory = False
+    Zip64Mode = zmDisabled
+    UnicodeFilenames = False
+    EncryptionMethod = caPkzipClassic
+    Left = 184
+    Top = 176
+  end
+  object QExport4Xlsx1: TQExport4Xlsx
+    About = '(About Advanced Data Export VCL)'
+    _Version = '4.16.0.2'
+    Formats.DecimalSeparator = ','
+    Formats.ThousandSeparator = '.'
+    Formats.DateSeparator = '/'
+    Formats.TimeSeparator = '.'
+    Formats.BooleanTrue = 'true'
+    Formats.BooleanFalse = 'false'
+    Formats.IntegerFormat = '#,###,##0'
+    Formats.FloatFormat = '#,###,##0.00'
+    Formats.DateFormat = 'dd/MM/yyyy'
+    Formats.TimeFormat = 'hh:mm'
+    Formats.DateTimeFormat = 'dd/MM/yyyy hh:mm:ss'
+    Formats.CurrencyFormat = 'Rp#,###,##0.00'
     SheetName = 'sheet1'
     XlsxOptions.HeaderStyle.Font.Charset = DEFAULT_CHARSET
     XlsxOptions.HeaderStyle.Font.Color = clBlack
@@ -56140,7 +60779,171 @@ object dm_bpr1: Tdm_bpr1
     XlsxOptions.PageSettings.MarginBottom = 0.750000000000000000
     XlsxOptions.PageSettings.Header = 0.300000000000000000
     XlsxOptions.PageSettings.Footer = 0.300000000000000000
-    Left = 248
-    Top = 271
+    Left = 168
+    Top = 480
+  end
+  object frxReport1: TfrxReport
+    Version = '6.9.12'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42948.444186238430000000
+    ReportOptions.LastChange = 42948.444186238430000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 384
+    Top = 192
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+    end
+  end
+  object frxDesigner1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = [drDontShowRecentFiles]
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 384
+    Top = 248
+  end
+  object frxDBDatasetLogo: TfrxDBDataset
+    UserName = 'frxDBDatasetLogo'
+    CloseDataSource = False
+    DataSet = MyQLogo
+    BCDToCurrency = False
+    Left = 160
+    Top = 392
+  end
+  object RvTempJadwalAngsuranSPK: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = MyQTempJadwalAngsuranSPK
+    Left = 64
+    Top = 472
+  end
+  object RvTempSPK: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = MyQTempSPK
+    Left = 64
+    Top = 432
+  end
+  object RvLogo: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = MyQLogo
+    Left = 64
+    Top = 392
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = True
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
+    Left = 288
+    Top = 536
+  end
+  object frxXLSXExport1: TfrxXLSXExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    ChunkSize = 0
+    OpenAfterExport = True
+    PictureType = gpPNG
+    Left = 328
+    Top = 536
+  end
+  object frxCSVExport1: TfrxCSVExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Separator = ','
+    OEMCodepage = False
+    UTF8 = False
+    OpenAfterExport = True
+    NoSysSymbols = True
+    ForcedQuotes = False
+    Left = 368
+    Top = 536
+  end
+  object ReportAll: TfrxReport
+    Version = '6.9.12'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43517.376684664350000000
+    ReportOptions.LastChange = 43517.376684664350000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 232
+    Top = 536
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object RvTTD: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = MyQTTD
+    Left = 776
+    Top = 400
   end
 end

@@ -57,8 +57,8 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      ExplicitLeft = 303
-      ExplicitWidth = 830
+      ExplicitLeft = 198
+      ExplicitWidth = 935
       Width = 1006
       AnchorX = 630
       AnchorY = 30
@@ -78,7 +78,6 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Horz = taCenter
       Properties.Alignment.Vert = taVCenter
       Transparent = True
-      ExplicitLeft = 165
       AnchorX = 102
       AnchorY = 30
     end
@@ -362,7 +361,7 @@ object fr_MainMenu: Tfr_MainMenu
     Left = 0
     Top = 180
     Width = 361
-    Height = 388
+    Height = 394
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -400,7 +399,6 @@ object fr_MainMenu: Tfr_MainMenu
         Caption = 'FormA0502 - Bidang Usaha'
         TabOrder = 1
         WordWrap = True
-        OnClick = bt_formA0502Click
         ExplicitTop = 0
       end
       object bt_form0002: TcxButton
@@ -430,7 +428,7 @@ object fr_MainMenu: Tfr_MainMenu
   end
   object sGaugeStatus: TcxProgressBar
     Left = 0
-    Top = 592
+    Top = 595
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
@@ -438,12 +436,11 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
-    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
     Left = 0
-    Top = 568
+    Top = 574
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation

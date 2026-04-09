@@ -1,0 +1,256 @@
+* Versi 1.0.5.5, 8 Oktober 2021
+  = Validasi Export File Text untuk perubahan sesuai ketentuan OJK
+  = Form 0000, perubahan sesuai ketentuan OJK
+  = Form 0002, perubahan sesuai ketentuan OJK
+  = Form 0003, perubahan sesuai ketentuan OJK
+  = Form 0004, perubahan sesuai ketentuan OJK
+  + Form 0009, perubahan sesuai ketentuan OJK
+  + Form 0010, perubahan sesuai ketentuan OJK
+  + Form 0011, perubahan sesuai ketentuan OJK
+  + Form 0012, perubahan sesuai ketentuan OJK
+
+* Versi 1.0.5.2, 18 Januari 2021
+  = Form 1100, fix update/delete saldo yang sudah nol
+  = Form 1200, fix update/delete saldo yang sudah nol
+  = Form 1300, fix update/delete saldo yang sudah nol
+
+* Versi 1.0.5.1, 26 November 2020
+  = Form 0600, fix status restruktur dan lokasi penggunaan sesuai wilayah bpr
+
+* Versi 1.0.5.0, 20 November 2020
+  = Form 1200, fix update tgl mulai, jt tempo dan suku bunga per periode laporan
+  = Form 0601, fix update nilai_diperhitungkan, agunan_diagunkan
+
+* Versi 1.0.4.9, 15 Agustus 2020
+  = Form 0600, fix bug saldo kredit plafond efektif
+  = Export All, fix bug query f0007 tanggal akhir bulan
+
+* Versi 1.0.4.8, 14 Agustus 2020
+  = Form 0600, fix bug saldo kredit restruktur dan update baki debet netto
+
+* Versi 1.0.4.7, 13 Agustus 2020
+  = Form 0600, fix bug saldo dari nominatif
+
+* Versi 1.0.4.6, 29 April 2020
+  = Form 0600, fix bug query Update saldo provisi dan biaya untuk yang baki debet = 0
+
+* Versi 1.0.4.5, 21 April 2020
+  = Form 0600, fix import untuk pos PAD hanya untuk kolek 3,4,5 dan baki debet > 0
+    dan set PAD=0 dan tunggakan bunga=0 untuk baki debet = 0
+  = Update saldo provisi dan biaya untuk yang baki debet = 0
+
+* Versi 1.0.4.4, 19 Februari 2020
+  = Form 0500, fix bug filter edit
+
+* Versi 1.0.4.3, 07 Februari 2020
+  = Form 0200, Fix total pada view konsol
+
+* Versi 1.0.4.2, 05 Februari 2020
+  = Form 0100, Fix total
+  = Form 0200, Fix total
+
+* Versi 1.0.4.1, 04 Februari 2020
+  = Form 0100, Fix total konsol pos Antar Kantor
+  = Form 0200, Fix total konsol pos Antar Kantor
+
+* Versi 1.0.4.0, 09 Januari 2020
+  = Form 1500, fix import data dari core
+  = Form 0500, fix update query update
+
+* Versi 1.0.3.9, 24 Desember 2019
+  = Form 0901, restore button Insert, Edit dan Delete, dan fix cek rasio > 25%
+
+* Versi 1.0.3.8, 23 Desember 2019
+  = Form 0600, penambahan pencarian by no_rekening
+  = Form 1100, penambahan pencarian by no_rekening
+  = Form 1200, penambahan pencarian by no_rekening
+  = Form 1500, penambahan pencarian by no_rekening
+  = Form 0600, fix import dari core, hapus data yang sudah baki_debet=0/baki_debet_netto=0
+  = Form 0007, validasi tgl mulai/selesai dengan huruf tebal
+  = Form 0601, fix bug import dari core
+  = Form 1200, fix validasi total netto
+
+* Versi 1.0.3.7, 19 Desember 2019
+  = Form Utama, penambahan fitur import all dari file text (28 file hasil export)
+  = Form 0100, penambahan fitur import dari file text (hasil export)
+  = Form 0200, penambahan fitur import dari file text (hasil export)
+  = Form 1100, penambahan fitur import dari file text (hasil export)
+  = Form 1200, penambahan fitur import dari file text (hasil export)
+  = Form 0600, fix bug error saat import dari core
+
+* Versi 1.0.3.6, 18 Desember 2019
+  = Form 0100, penambahan informasi per cabang saat import all
+  = Form 0200, penambahan informasi per cabang saat import all
+  = Form 0600, fix import dari core
+
+* Versi 1.0.3.5, 17 Desember 2019
+  = Form 0600, fix import hari tunggakan pokok dan bunga tidak boleh minus
+  = Form 1300, fix import dari core dan fix export no rekening
+  = Form 0700, fix import dari core
+
+* Versi 1.0.3.4, 13 Desember 2019
+  = Perubahan filter cabang yang belum aktif pada bulan berjalan
+  = Form 0008, fix format persentase
+  = Form 0500, penambahan summary nominatif vs neraca
+
+* Versi 1.0.3.3, 12 Desember 2019
+  = Form 0600, fix import per cabang, dan fix bug adjustment
+
+* Versi 1.0.3.2, 11 Desember 2019
+  = Form 0800, perubahan import by COA, bukan dari nominatif
+  + Penambahan Form Setting COA ATI
+  = Form 0000, fix non mandatory bonus tantiem
+  = Form 0600, fix import jumlah PAD = tunggakan bunga untuk kolek 3,4,5
+
+* Versi 1.0.3.1, 10 Desember 2019
+  + NonAktifkan Filter Cabang, karena harus dilaporkan semua
+  + Save Point = untuk menyimpan 'Data Kerja' setelah export ke 'Save Point'
+  + Update Status = untuk membackup data 'Save Point' ke 'Data Arsip'
+  + Restore Data = untuk membuka 'Data Arsip' menjadi data 'Save Point'
+  + Restore Point = untuk membuka 'Save Point' ke 'Data Kerja'
+
+* Versi 1.0.3.0, 10 Desember 2019
+  = Form APOLO, fix save point, untuk pembentukan arsip data
+    dan add update status, untuk backup arsip data
+
+* Versi 1.0.2.9, 09 Desember 2019
+  = Form 1500, fix import dari Core, fix formula dan info saldo dari neraca 0100
+
+* Versi 1.0.2.8, 07 Desember 2019
+  = Form 0600, fix saldo after adjustment, dan info saldo dari neraca 0100
+  = Form 0100, fix saldo after adjustment, dan info saldo dari neraca 0100
+  = Form 0200, add summary total, dan info saldo dari neraca 0100
+
+* Versi 1.0.2.7, 06 Desember 2019
+  = Form 0100, add Import Item dari core
+
+* Versi 1.0.2.6, 06 Desember 2019
+  = Form 0200, add summary total, dan laba rugi pada neraca 0100
+
+* Versi 1.0.2.6, 06 Desember 2019
+  = Form 0100, add summary total
+  = Form 0200, update subtotal
+  = Form 0600, add adjustment pos provisi, biaya, ppap dan pyad
+
+* Versi 1.0.2.5, 05 Desember 2019
+  = Form 0101, fix bug sum total per kantor
+
+* Versi 1.0.2.4, 05 Desember 2019
+  = Form 0007, add summary baki debet netto
+  = Form 0601, fix import agunan dari core
+
+* Versi 1.0.2.3, 28 November 2019
+  = Form 0500, add summary ppap, pyad dan filter kode cabang
+  = Form 0600, fix kolektibilitas versi OJK 1-5, dan tgl mulai macet jika kolek <> 5
+  = Form 0800, add summary ppap, pyad dan filter kode cabang
+  = Setting Koneksi ke Core
+
+* Versi 1.0.2.2, 10 November 2019
+  = Form 1500, fix import dari core dan perhitungan saldo debius
+  = Form 0900, Pos PYAD (1299010200) =  Form 06 Total PYAD (Adj. Pembulatan)
+
+* Versi 1.0.2.1, 31 Okt 2019
+  = Form 0500, fix import dari core dan perhitungan PYAD
+
+* Versi 1.0.2.0, 28 Okt 2019
+  = Form 0600, fix jml pokok awal
+  = Form 0004, filter berdasarkan bulan buka kantor
+
+* Versi 1.0.1.9, 25 Okt 2019
+  = Form 1100, integrasi CRUD ke core
+  = Form 1200, integrasi CRUD ke core
+
+* Versi 1.0.1.8, 23 Okt 2019
+  = Form 0901, export hanya jika rasio <= 25%
+  = Form 0008, export hanya untuk periode 3 bulanan
+  = Form 1100, fix import data dari core
+  = Form 1200, fix import data dari core
+
+* Versi 1.0.1.7, 15 Okt 2019
+  = Form 0001, fix format persentase kepemilikan saat export (berubah lagi setelah ada update dari OJK)
+  = Form 0004, fix filter import cabang yang blom buka saat pelaporan
+
+* Versi 1.0.1.6, 28 Sept 2019
+  = Form 0001, fix format persentase kepemilikan saat export
+  = Form 1300, fix format persentase suku bunga saat export
+  = Form 0901, remove kode konsol 000
+  = Form 1400, remove kode konsol 000
+  = Form 1401, remove kode konsol 000
+  = Form 1000, remove kode konsol 000
+  = Form 0100, fix bug error
+  = Form 0200, fix pos pos total
+  = Form 0101, fix pos pos total
+  = Form 0500, fix validasi
+  = Form 0600, fix format export
+  = Form 1100, fix import data dari core
+  = Form 1200, fix format no rekening
+  = Form 1200, fix format no rekening
+  = Form 1500, fix format no rekening
+
+* Versi 1.0.1.5, 31 Ags 2019
+  = Form 0900, remove kode konsol 000
+
+* Versi 1.0.1.4, 23 Ags 2019
+  = Form 0900, fix total
+  = Form 1000, fix total
+
+* Versi 1.0.1.3, 23 Ags 2019
+  = Form 0900, add view konsol, add total
+  = Form 1000, add view konsol, add total
+  = Form 1400, add view konsol, add total
+  = Form 1401, add view konsol, filter by cabang, add total
+  = Form 0901, fix CRUD
+  = Form 1300, fix field mandatory
+
+* Versi 1.0.1.2, 21 Ags 2019
+  = All Form, Fix bug searching Master Referensi
+  = Form 0008, fix table refresh
+  = Form 0100, fix import all, add view konsol
+  = Form 0101, fix import all, add view konsol
+  = Form 0200, fix import all, add view konsol
+  = Form 0900, fix import all
+  = Form 1000, fix import all
+  = Form 0901, fix import all, filter by cabang
+  = Form 0007, fix validasi baki debet netto, fix display nama reff pada form
+
+* Versi 1.0.1.1, 20 Ags 2019
+  = Form 0800, fix validasi inputan nilai_tercatat=biaya_perolehan-akumulasi_amortisasi-akumulasi_kerugian
+  = Form 0007, fix bug tgl mulai
+
+* Versi 1.0.1.0, 20 Ags 2019
+  = Form 0900, fix validasi penyimpanan dan export text
+  = Form 1000, fix validasi penyimpanan dan export text
+  = Form 1400, fix validasi penyimpanan dan export text
+
+* Versi 1.0.0.9, 20 Ags 2019
+  = Form 0101, fix validasi penyimpanan dan export text
+  = Form 0500, fix validasi penyimpanan dan export text
+  = Form 0600, fix validasi penyimpanan dan export text
+  = Form 0800, fix validasi penyimpanan dan export text
+
+* Versi 1.0.0.8, 20 Ags 2019
+  = Form 0100, fix proses import dari core
+  = Form 0200, fix proses import dari core
+
+* Versi 1.0.0.7, 19 Ags 2019
+  = Form 0007, fix format persentase dan filter tanggal mulai
+
+* Versi 1.0.0.6, 19 Ags 2019
+  = Form 0002, fix validasi penyimpanan dan export text
+
+* Versi 1.0.0.5, 19 Ags 2019
+  = Form 0002, fix validasi penyimpanan dan export text
+
+* Versi 1.0.0.4, 26 Juli 2019
+  = Proses Export All (Text File), fix format sesuai ketentuan dari OJK
+  
+* Versi 1.0.0.2, 28 Juni 2019
+  = Update Struktur 0000
+  = Fix Progress Proses Export All
+
+* Versi 1.0.0.3, 30 Juni 2019
+  = Update Import dari Core
+
+* Versi 1.0.0.4, 26 Juli 2019
+  = Proses Export All (Text File), fix format sesuai ketentuan dari OJK
+
