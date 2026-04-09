@@ -133,9 +133,6 @@
         <DCCReference Include="MainMenu.pas">
             <Form>fr_MainMenu</Form>
         </DCCReference>
-        <DCCReference Include="MasterRefLTBPR.pas">
-            <Form>fr_MasterRefAPOLO</Form>
-        </DCCReference>
         <DCCReference Include="MyLib.pas"/>
         <DCCReference Include="MyVAR.pas"/>
         <DCCReference Include="ProgramSetting.pas">
@@ -159,6 +156,18 @@
         </DCCReference>
         <DCCReference Include="GetSystemDate.pas">
             <Form>fr_GetSystemDate</Form>
+        </DCCReference>
+        <DCCReference Include="FormDN0001.pas">
+            <Form>fr_FormDN0001</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EntryFormDN0001.pas">
+            <Form>fr_EntryFormDN0001</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormRefLPS.pas">
+            <Form>fr_FormRefLPS</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

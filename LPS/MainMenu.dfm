@@ -57,8 +57,6 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      ExplicitLeft = 198
-      ExplicitWidth = 935
       Width = 1006
       AnchorX = 630
       AnchorY = 30
@@ -361,7 +359,7 @@ object fr_MainMenu: Tfr_MainMenu
     Left = 0
     Top = 180
     Width = 361
-    Height = 394
+    Height = 388
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -372,6 +370,7 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
+    ExplicitHeight = 394
     object cp_lap_akuntan_publik: TCategoryPanel
       Top = 0
       Caption = 'Form Laporan Bulanan 0001'
@@ -387,8 +386,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_formC0100Click
-        ExplicitTop = 0
-        ExplicitWidth = 338
       end
       object bt_formA0502: TcxButton
         Left = 0
@@ -399,7 +396,6 @@ object fr_MainMenu: Tfr_MainMenu
         Caption = 'FormA0502 - Bidang Usaha'
         TabOrder = 1
         WordWrap = True
-        ExplicitTop = 0
       end
       object bt_form0002: TcxButton
         Left = 0
@@ -411,7 +407,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 2
         WordWrap = True
         OnClick = bt_form0002Click
-        ExplicitTop = 0
       end
       object bt_form0001: TcxButton
         Left = 0
@@ -428,7 +423,7 @@ object fr_MainMenu: Tfr_MainMenu
   end
   object sGaugeStatus: TcxProgressBar
     Left = 0
-    Top = 595
+    Top = 592
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
@@ -436,11 +431,12 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
+    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
     Left = 0
-    Top = 574
+    Top = 568
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
