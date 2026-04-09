@@ -2,21 +2,21 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
   Caption = 
     'Entry Form E0800 - Jumlah Penyimpangan Internal (Internal Fraud)' +
     ' '
-  ClientHeight = 397
-  ClientWidth = 561
-  ExplicitWidth = 567
-  ExplicitHeight = 426
+  ClientHeight = 341
+  ClientWidth = 548
+  ExplicitWidth = 554
+  ExplicitHeight = 370
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 561
-    ExplicitWidth = 561
+    Width = 548
+    ExplicitWidth = 548
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 561
-    ExplicitHeight = 353
-    Height = 353
-    Width = 561
+    ExplicitWidth = 548
+    ExplicitHeight = 297
+    Height = 297
+    Width = 548
     object Label3: TcxLabel
       Left = 17
       Top = 22
@@ -35,46 +35,6 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Height = 24
       Width = 135
       AnchorY = 34
-    end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 287
-      AutoSize = False
-      Caption = 'Penjelasan'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 302
-    end
-    object mempenjelasan: TcxMemo
-      Tag = 1
-      Left = 243
-      Top = 291
-      Hint = 'Penjelasan'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 13
-      Height = 47
-      Width = 298
     end
     object cxLabel3: TcxLabel
       Left = 17
@@ -113,7 +73,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 4
       Width = 121
     end
     object komisaris_thn_lalu: TcxCurrencyEdit
@@ -132,7 +92,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 5
       Width = 121
     end
     object cb_komponen: TcxLookupComboBox
@@ -148,6 +108,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
           FieldName = 'nama'
         end>
       Properties.ListSource = dsMyQRefPenyimpangan
+      Properties.OnChange = cb_komponenPropertiesChange
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindow
       Style.Font.Height = -13
@@ -155,7 +116,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 2
       Width = 298
     end
     object cxLabel1: TcxLabel
@@ -195,7 +156,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 3
       Width = 121
     end
     object komisaris_thn_laporan: TcxCurrencyEdit
@@ -214,7 +175,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 6
       Width = 121
     end
     object tidak_tetap_thn_laporan: TcxCurrencyEdit
@@ -233,7 +194,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 12
+      TabOrder = 10
       Width = 121
     end
     object tidak_tetap_thn_lalu: TcxCurrencyEdit
@@ -252,7 +213,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 9
       Width = 121
     end
     object tetap_thn_laporan: TcxCurrencyEdit
@@ -271,7 +232,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 8
       Width = 121
     end
     object tetap_thn_lalu: TcxCurrencyEdit
@@ -290,7 +251,7 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 7
       Width = 121
     end
     object cxLabel2: TcxLabel
@@ -421,12 +382,12 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 353
-    ExplicitTop = 353
-    ExplicitWidth = 561
+    Top = 297
+    ExplicitTop = 297
+    ExplicitWidth = 548
     ExplicitHeight = 44
     Height = 44
-    Width = 561
+    Width = 548
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -456,35 +417,35 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 374
+      Left = 361
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 374
+      ExplicitLeft = 361
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 556
+      Left = 543
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 556
+      ExplicitLeft = 543
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 465
+      Left = 452
       Height = 34
-      ExplicitLeft = 465
+      ExplicitLeft = 452
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 368
+      Left = 355
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 368
+      ExplicitLeft = 355
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -499,51 +460,51 @@ inherited fr_EntryFormE0800: Tfr_EntryFormE0800
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 362
+      Left = 349
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 362
+      ExplicitLeft = 349
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 356
+      Left = 343
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 356
+      ExplicitLeft = 343
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 350
+      Left = 337
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 350
+      ExplicitLeft = 337
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 344
+      Left = 331
       Width = 0
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 344
+      ExplicitLeft = 331
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 561
-    ExplicitWidth = 561
+    Width = 548
+    ExplicitWidth = 548
     inherited IconClose: TLabel
-      Left = 527
+      Left = 514
       ExplicitLeft = 771
     end
   end

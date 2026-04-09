@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0900, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0900 = class(Tfr_new_template)
@@ -57,6 +58,24 @@ type
     cxGridDBTableView1kode_komponen: TcxGridDBColumn;
     cxGridDBTableView1jumlah_perdata: TcxGridDBColumn;
     cxGridDBTableView1jumlah_pidana: TcxGridDBColumn;
+    MyQE0900keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -72,6 +91,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -304,8 +325,7 @@ begin
       cb_komponen.EditValue:= MyQE0900kode_komponen.Text;
       jumlah_perdata.value := MyQE0900jumlah_perdata.Value;
       jumlah_pidana.value := MyQE0900jumlah_pidana.Value;
-      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0900_permasalahan_hukum_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
       cb_komponen.Enabled := False;
     end;
   fr_EntryFormE0900.Tag := 0;
@@ -319,13 +339,7 @@ begin
                         ' SET `jumlah_perdata` = '+FloatToStr(jumlah_perdata.Value)+
                         ', `jumlah_pidana` = '+FloatToStr(jumlah_pidana.Value)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0900kode_komponen.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
+           
         end;
       if MyQE0900.Active then
         MyQE0900.Refresh
@@ -335,6 +349,15 @@ begin
 
   fr_EntryFormE0900.Free;
   fr_EntryFormE0900 := nil;
+end;
+
+procedure Tfr_FormE0900.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0900_permasalahan_hukum_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0900.btlb_InsertClick(Sender: TObject);
@@ -381,13 +404,7 @@ begin
                         ' ON DUPLICATE KEY UPDATE '+
                         '`jumlah_perdata` = VALUES(`jumlah_perdata`),'+
                         '`jumlah_pidana` = VALUES(`jumlah_pidana`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
+          
 
         end;
       if MyQE0900.Active then
@@ -407,6 +424,19 @@ begin
     MyQE0900.Refresh
   else
     MyQE0900.Open;
+end;
+
+procedure Tfr_FormE0900.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0900_permasalahan_hukum_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0900.cxGridDBTableView1CellDblClick(

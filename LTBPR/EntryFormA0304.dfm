@@ -1,20 +1,20 @@
 inherited fr_EntryFormA0304: Tfr_EntryFormA0304
   Caption = 'Entry Form A0304 -  Penjelasan NPL '
-  ClientHeight = 210
-  ClientWidth = 558
-  ExplicitWidth = 564
-  ExplicitHeight = 239
+  ClientHeight = 155
+  ClientWidth = 491
+  ExplicitWidth = 497
+  ExplicitHeight = 184
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
-    Width = 558
+    Width = 491
     ExplicitWidth = 558
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 558
     ExplicitHeight = 166
-    Height = 166
-    Width = 558
+    Height = 111
+    Width = 491
     object cxLabel8: TcxLabel
       Left = 17
       Top = 50
@@ -46,38 +46,6 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       TabOrder = 1
       Height = 47
       Width = 298
-    end
-    object memketerangan: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 106
-      Hint = 'Keterangan'
-      ParentColor = True
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.TextColor = clWindow
-      TabOrder = 2
-      Height = 47
-      Width = 298
-    end
-    object cxLabel10: TcxLabel
-      Left = 17
-      Top = 102
-      AutoSize = False
-      Caption = 'Keterangan'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 117
     end
     object kode_komponen: TcxButtonEdit
       Left = 185
@@ -118,12 +86,12 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 166
+    Top = 111
     ExplicitTop = 166
     ExplicitWidth = 558
     ExplicitHeight = 44
     Height = 44
-    Width = 558
+    Width = 491
     inherited btlb_Refresh: TcxButton
       Width = 0
       Height = 34
@@ -153,14 +121,14 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Save: TcxButton
-      Left = 371
+      Left = 304
       Height = 34
       OnClick = btlb_SaveClick
       ExplicitLeft = 371
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
-      Left = 553
+      Left = 486
       Width = 0
       Height = 34
       Enabled = False
@@ -170,13 +138,13 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
-      Left = 462
+      Left = 395
       Height = 34
       ExplicitLeft = 462
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
-      Left = 365
+      Left = 298
       Width = 0
       Height = 34
       Enabled = False
@@ -196,7 +164,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Delete: TcxButton
-      Left = 359
+      Left = 292
       Width = 0
       Height = 34
       Enabled = False
@@ -206,7 +174,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Edit: TcxButton
-      Left = 353
+      Left = 286
       Width = 0
       Height = 34
       Enabled = False
@@ -216,7 +184,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Insert: TcxButton
-      Left = 347
+      Left = 280
       Width = 0
       Height = 34
       Enabled = False
@@ -226,7 +194,7 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
       ExplicitHeight = 34
     end
     inherited btlb_Pilih: TcxButton
-      Left = 341
+      Left = 274
       Width = 0
       Height = 34
       Enabled = False
@@ -237,10 +205,10 @@ inherited fr_EntryFormA0304: Tfr_EntryFormA0304
     end
   end
   inherited PanelTopSystem: TPanel
-    Width = 558
+    Width = 491
     ExplicitWidth = 558
     inherited IconClose: TLabel
-      Left = 524
+      Left = 457
       ExplicitLeft = 771
     end
   end

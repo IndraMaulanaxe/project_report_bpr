@@ -1,9 +1,9 @@
 inherited fr_EntryFormE0701: Tfr_EntryFormE0701
   Caption = 'Entry Form E0701 - Pelaksanaan Rapat dalam 1 (satu) Tahun '
-  ClientHeight = 273
+  ClientHeight = 215
   ClientWidth = 498
   ExplicitWidth = 504
-  ExplicitHeight = 302
+  ExplicitHeight = 244
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -11,10 +11,9 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 498
     ExplicitHeight = 229
-    Height = 229
+    Height = 171
     Width = 498
     object cxLabel8: TcxLabel
       Left = 17
@@ -52,7 +51,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 7
       Height = 47
       Width = 298
     end
@@ -99,7 +98,7 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 2
+      TabOrder = 1
       Height = 24
       Width = 152
     end
@@ -155,48 +154,8 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 4
       Width = 121
-    end
-    object cxLabel4: TcxLabel
-      Left = 17
-      Top = 162
-      AutoSize = False
-      Caption = 'Penjelasan'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 30
-      Width = 135
-      AnchorY = 177
-    end
-    object mempenjelasan: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 166
-      Hint = 'Penjelasan'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 9
-      Height = 47
-      Width = 298
     end
     object jumlah_peserta: TcxCurrencyEdit
       Left = 184
@@ -214,12 +173,12 @@ inherited fr_EntryFormE0701: Tfr_EntryFormE0701
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 6
       Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 229
+    Top = 171
     ExplicitTop = 229
     ExplicitWidth = 498
     ExplicitHeight = 44

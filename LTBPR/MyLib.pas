@@ -147,67 +147,67 @@ var
   BaseName   : string;
   Ext        : string;
   Counter    : Integer;
+  DlgResult  : Integer;
 begin
   Result := False;
-
   try
-    // Validasi ekstensi PDF
     if not SameText(ExtractFileExt(SourceFile), '.pdf') then
     begin
       Pesan(2,'File harus PDF!');
       Exit;
     end;
-
-    // Folder upload
+    if not TFile.Exists(SourceFile) then
+    begin
+      Pesan(2, 'File sumber tidak ditemukan!');
+      Exit;
+    end;
     UploadPath := TPath.Combine(ExtractFilePath(Application.ExeName), 'upload');
-
     if not TDirectory.Exists(UploadPath) then
       TDirectory.CreateDirectory(UploadPath);
-
-    // Base nama file
     BaseName := cNameFileUpload;
     Ext := '.pdf';
-
-    // Hindari karakter ilegal
     BaseName := StringReplace(BaseName, '/', '-', [rfReplaceAll]);
     BaseName := StringReplace(BaseName, '\', '-', [rfReplaceAll]);
     BaseName := StringReplace(BaseName, ':', '-', [rfReplaceAll]);
-
-    // Cek file existing
-    Counter := 0;
-    repeat
-      if Counter = 0 then
-        NewFileName := BaseName + Ext
-      else
-        NewFileName := BaseName + '_' + IntToStr(Counter) + Ext;
-
-      DestFile := TPath.Combine(UploadPath, NewFileName);
-      Inc(Counter);
-    until not TFile.Exists(DestFile);
-
-    // Nama file
-//    NewFileName := cNameFileUpload + '.pdf';
-
-    // Hindari karakter ilegal Windows
-//    NewFileName := StringReplace(NewFileName, '/', '-', [rfReplaceAll]);
-//    NewFileName := StringReplace(NewFileName, '\', '-', [rfReplaceAll]);
-//    NewFileName := StringReplace(NewFileName, ':', '-', [rfReplaceAll]);
-
-//    DestFile := TPath.Combine(UploadPath, NewFileName);
-
-    // Jika file sudah ada
-//    if TFile.Exists(DestFile) then
-//      TFile.Delete(DestFile);
-
-    // Copy file
-    TFile.Copy(SourceFile, DestFile);
-
+    NewFileName := BaseName + Ext;
+    DestFile := TPath.Combine(UploadPath, NewFileName);
     if TFile.Exists(DestFile) then
     begin
-      Pesan(1,'File berhasil diupload dengan nama nama: ' + NewFileName);
+      if SameText(SourceFile, DestFile) then
+      begin
+        Pesan(1,'File berhasil diupload dengan nama: ' + NewFileName);
+        Result := True;
+        Exit;
+      end;
+      DlgResult := MessageDlg('Dokumen dengan nama tersebut sudah ada!' + #13#10 +
+                              'Klik [YES] untuk REPLACE (Timpa dokumen lama)' + #13#10 +
+                              'Klik [NO] untuk SIMPAN SEBAGAI DOKUMEN TAMBAHAN' + #13#10 +
+                              'Klik [CANCEL] untuk Batal Upload',
+                              mtConfirmation, [mbYes, mbNo, mbCancel], 0);
+      if DlgResult = mrCancel then
+      begin
+        Exit;
+      end
+      else if DlgResult = mrYes then
+      begin
+        TFile.Delete(DestFile);
+      end
+      else if DlgResult = mrNo then
+      begin
+        Counter := 1;
+        repeat
+          NewFileName := BaseName + '_' + IntToStr(Counter) + Ext;
+          DestFile := TPath.Combine(UploadPath, NewFileName);
+          Inc(Counter);
+        until not TFile.Exists(DestFile);
+      end;
+    end;
+    TFile.Copy(SourceFile, DestFile);
+    if TFile.Exists(DestFile) then
+    begin
+      Pesan(1,'File berhasil diupload dengan nama: ' + NewFileName);
       Result := True;
     end;
-
   except
     on E: Exception do
     begin

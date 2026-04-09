@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormA0301, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormA0301 = class(Tfr_new_template)
@@ -75,6 +76,22 @@ type
     cxGridDBTableView1tempat_kedudukan: TcxGridDBColumn;
     cxGridDBTableView1opini_akuntan_publik: TcxGridDBColumn;
     cxGridDBTableView1nama_akuntan_publik: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    btlb_Footer: TcxButton;
+    cxLabel10: TcxLabel;
+    memketerangan_footer: TcxMemo;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -90,6 +107,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -332,10 +351,9 @@ begin
       tgl_mulai_operasi.Date :=MyQA0301tanggal_mulai_beroperasi.Value;
       membidangusaha.Text := MyQA0301bidang_usaha_sesuai_anggaran_dasar.Text;
       memtempat_kedudukan.Text := MyQA0301tempat_kedudukan.Text;
-      cb_akuntan_publik.EditValue := MyQA0301opini_akuntan_publik.Text;
+      akuntan_publik.EditValue := MyQA0301opini_akuntan_publik.Text;
+      memnama_akuntan.Text := MyQA0301nama_akuntan_publik.Text;
 
-      //Footer
-      memketerangan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0301_riwayat_pendirian_bpr_footer ');
 
       kode_komponen.Enabled := False;
     end;
@@ -357,19 +375,10 @@ begin
                         ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
                         ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
                         ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
-                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
-                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ', `opini_akuntan_publik` = '+IntToStr(akuntan_publik.EditValue)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(memnama_akuntan.Text)+
                         ' WHERE `nomor_perubahan_anggaran_dasar` = '+
                         QuotedStr(MyQA0301nomor_perubahan_anggaran_dasar.Text));
-
-
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
 
         end;
       if MyQA0301.Active then
@@ -380,6 +389,14 @@ begin
 
   fr_EntryFormA0301.Free;
   fr_EntryFormA0301 := nil;
+end;
+
+procedure Tfr_FormA0301.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //Footer
+  memketerangan_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_a0301_riwayat_pendirian_bpr_footer ');
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormA0301.btlb_InsertClick(Sender: TObject);
@@ -436,8 +453,8 @@ begin
                         ', `tanggal_mulai_beroperasi` = '+DateToStrSQL(tgl_mulai_operasi.Date)+
                         ', `bidang_usaha_sesuai_anggaran_dasar` = '+QuotedStr(membidangusaha.Text)+
                         ', `tempat_kedudukan` = '+QuotedStr(memtempat_kedudukan.Text)+
-                        ', `opini_akuntan_publik` = '+IntToStr(cb_akuntan_publik.ItemIndex)+
-                        ', `nama_akuntan_publik` = '+QuotedStr(cb_akuntan_publik.EditValue)+
+                        ', `opini_akuntan_publik` = '+IntToStr(akuntan_publik.EditValue)+
+                        ', `nama_akuntan_publik` = '+QuotedStr(memnama_akuntan.Text)+
                         ' ON DUPLICATE KEY UPDATE '+
                         '`kode_komponen` = VALUES(`kode_komponen`),'+
                         '`nomor_akta_pendirian` = VALUES(`nomor_akta_pendirian`),'+
@@ -450,13 +467,7 @@ begin
                         '`tempat_kedudukan` = VALUES(`tempat_kedudukan`),'+
                         '`opini_akuntan_publik` = VALUES(`opini_akuntan_publik`),'+
                         '`nama_akuntan_publik` = VALUES(`nama_akuntan_publik`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
 
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan.Text)+')');
-          //
         end;
 
       if MyQA0301.Active then
@@ -476,6 +487,19 @@ begin
     MyQA0301.Refresh
   else
     MyQA0301.Open;
+end;
+
+procedure Tfr_FormA0301.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_a0301_riwayat_pendirian_bpr_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+              ' VALUES ('+QuotedStr('F01')+','+QuotedStr(memketerangan_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormA0301.cxGridDBTableView1CellDblClick(

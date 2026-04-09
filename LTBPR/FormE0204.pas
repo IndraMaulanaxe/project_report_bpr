@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0204, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0204 = class(Tfr_new_template)
@@ -71,6 +72,22 @@ type
     cxGridDBTableView1komite_management_risiko: TcxGridDBColumn;
     cxGridDBTableView1komite_lainnya: TcxGridDBColumn;
     cxGridDBTableView1pihak_independent: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -86,6 +103,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -337,8 +356,7 @@ begin
       cb_manaj.EditValue := MyQE0204komite_management_risiko.Text;
       cb_lainya.EditValue := MyQE0204komite_lainnya.Text;
       cb_pihak.EditValue := MyQE0204pihak_independent.Text;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0204_struktur_independensi_anggota_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
 
       kode_komponen.Enabled := False;
     end;
@@ -362,13 +380,6 @@ begin
                       ', `pihak_independent` = '+QuotedStr(cb_pihak.EditValue)+
                       ' WHERE `kode_komponen` = '+QuotedStr(MyQE0204kode_komponen.Text)+
                       ' AND `nik` = '+QuotedStr(MyQE0204nik.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
         end;
       if MyQE0204.Active then
         MyQE0204.Refresh
@@ -378,6 +389,15 @@ begin
 
   fr_EntryFormE0204.Free;
   fr_EntryFormE0204 := nil;
+end;
+
+procedure Tfr_FormE0204.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0204_struktur_independensi_anggota_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0204.btlb_InsertClick(Sender: TObject);
@@ -450,13 +470,6 @@ begin
                       '`komite_management_risiko` = VALUES(`komite_management_risiko`),'+
                       '`komite_lainnya` = VALUES(`komite_lainnya`),'+
                       '`pihak_independent` = VALUES(`pihak_independent`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
 
         end;
       if MyQE0204.Active then
@@ -476,6 +489,19 @@ begin
     MyQE0204.Refresh
   else
     MyQE0204.Open;
+end;
+
+procedure Tfr_FormE0204.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0204_struktur_independensi_anggota_komite_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0204.cxGridDBTableView1CellDblClick(

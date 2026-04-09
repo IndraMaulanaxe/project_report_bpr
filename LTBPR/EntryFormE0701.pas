@@ -45,8 +45,6 @@ type
     Label3: TcxLabel;
     Label6: TcxLabel;
     tanggal: TcxDateEdit;
-    cxLabel4: TcxLabel;
-    mempenjelasan: TcxMemo;
     jumlah_peserta: TcxCurrencyEdit;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);

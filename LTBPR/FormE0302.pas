@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0302, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0302 = class(Tfr_new_template)
@@ -61,6 +62,22 @@ type
     cxGridDBTableView1nama_kelompok_usaha_bpr: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan_tahun: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -76,6 +93,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -308,8 +327,7 @@ begin
       memkelompok.Text := MyQE0302nama_kelompok_usaha_bpr.Text;
       persen.Value := MyQE0302persentase_kepemilikan.Value;
       persen_sebelumya.Value := MyQE0302persentase_kepemilikan_tahun.Value;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
       kode_komponen.Enabled := False;
     end;
   fr_EntryFormE0302.Tag := 0;
@@ -327,13 +345,6 @@ begin
                         ', `persentase_kepemilikan_tahun` = '+FloatToStr(persen_sebelumya.Value)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0302kode_komponen.Text)+
                         ' AND `nik` = '+QuotedStr(MyQE0302nik.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
         end;
       if MyQE0302.Active then
         MyQE0302.Refresh
@@ -343,6 +354,15 @@ begin
 
   fr_EntryFormE0302.Free;
   fr_EntryFormE0302 := nil;
+end;
+
+procedure Tfr_FormE0302.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0302.btlb_InsertClick(Sender: TObject);
@@ -390,15 +410,6 @@ begin
                         '`nama_kelompok_usaha_bpr` = VALUES(`nama_kelompok_usaha_bpr`),'+
                         '`persentase_kepemilikan` = VALUES(`persentase_kepemilikan`),'+
                         '`persentase_kepemilikan_tahun` = VALUES(`persentase_kepemilikan_tahun`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
-
-
         end;
       if MyQE0302.Active then
         MyQE0302.Refresh
@@ -417,6 +428,19 @@ begin
     MyQE0302.Refresh
   else
     MyQE0302.Open;
+end;
+
+procedure Tfr_FormE0302.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0302_kepemilikan_saham_kelompok_usaha_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0302.cxGridDBTableView1CellDblClick(

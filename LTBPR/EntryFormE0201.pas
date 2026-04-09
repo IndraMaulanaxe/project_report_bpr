@@ -38,12 +38,8 @@ uses
 type
   Tfr_EntryFormE0201 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
-    memlebih_lanjut: TcxMemo;
-    cxLabel10: TcxLabel;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
-    Label1: TcxLabel;
-    memtindak_lanjut: TcxMemo;
     cxLabel2: TcxLabel;
     memtugas: TcxMemo;
     Label6: TcxLabel;

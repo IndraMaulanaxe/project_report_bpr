@@ -41,8 +41,6 @@ type
     cxLabel8: TcxLabel;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
-    cxLabel4: TcxLabel;
-    mempenjelasan: TcxMemo;
     cxLabel1: TcxLabel;
     nik: TcxTextEdit;
     cxLabel2: TcxLabel;

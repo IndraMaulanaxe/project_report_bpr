@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0203, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0203 = class(Tfr_new_template)
@@ -63,6 +64,22 @@ type
     cxGridDBTableView1program: TcxGridDBColumn;
     cxGridDBTableView1realisasi: TcxGridDBColumn;
     cxGridDBTableView1jumlah: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -78,6 +95,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -318,8 +337,7 @@ begin
       memtugas.Text := MyQE0203tugas_dan_tanggung_jawab.Text;
       memprogram.Text := MyQE0203program.Text;
       memrealisasi.Text := MyQE0203realisasi.Text;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0203_tugas_tanggung_jawab_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+     
       jumlah.Value := MyQE0203jumlah.Value;
 
       kode_komponen.Enabled := False;
@@ -344,13 +362,6 @@ begin
                         ' AND `program` = '+QuotedStr(MyQE0203program.Text)+
                         ' AND `realisasi` = '+QuotedStr(MyQE0203realisasi.Text)+
                         ' AND `jumlah` = '+FloatToStr(MyQE0203jumlah.Value));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
         end;
       if MyQE0203.Active then
         MyQE0203.Refresh
@@ -360,6 +371,15 @@ begin
 
   fr_EntryFormE0203.Free;
   fr_EntryFormE0203 := nil;
+end;
+
+procedure Tfr_FormE0203.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //Footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0203_tugas_tanggung_jawab_komite_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0203.btlb_InsertClick(Sender: TObject);
@@ -409,13 +429,6 @@ begin
                         ', `realisasi` = '+QuotedStr(memrealisasi.Text)+
                         ', `jumlah` = '+StringReplace(FloatToStr(jumlah.Value), ',', '.', [rfReplaceAll])
                       );
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
 
         end;
       if MyQE0203.Active then
@@ -435,6 +448,19 @@ begin
     MyQE0203.Refresh
   else
     MyQE0203.Open;
+end;
+
+procedure Tfr_FormE0203.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0203_tugas_tanggung_jawab_komite_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+   cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0203.cxGridDBTableView1CellDblClick(

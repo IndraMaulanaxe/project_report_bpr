@@ -1,9 +1,9 @@
 inherited fr_EntryFormE0600: Tfr_EntryFormE0600
   Caption = 'Entry Form E0600 - Rasio Gaji Tertinggi dan Gaji Terendah'
-  ClientHeight = 205
+  ClientHeight = 146
   ClientWidth = 499
   ExplicitWidth = 505
-  ExplicitHeight = 234
+  ExplicitHeight = 175
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -12,51 +12,9 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 499
-    ExplicitHeight = 161
-    Height = 161
+    ExplicitHeight = 102
+    Height = 102
     Width = 499
-    object Label1: TcxLabel
-      Left = 17
-      Top = 92
-      AutoSize = False
-      BiDiMode = bdLeftToRight
-      Caption = 'Tindak Lanjut'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 37
-      Width = 135
-      AnchorY = 111
-    end
-    object memtindak_lanjut: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 99
-      Hint = 'Tindak Lanjut'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 5
-      Height = 48
-      Width = 298
-    end
     object cxLabel9: TcxLabel
       Left = 17
       Top = 38
@@ -80,7 +38,7 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Left = 17
       Top = 67
       AutoSize = False
-      Caption = 'Rasio'
+      Caption = 'Perbandingan [a/b]'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindow
@@ -117,7 +75,7 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 3
+      TabOrder = 1
       Width = 298
     end
     object rasio: TcxCurrencyEdit
@@ -136,13 +94,14 @@ inherited fr_EntryFormE0600: Tfr_EntryFormE0600
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 2
+      OnKeyPress = rasioKeyPress
       Width = 121
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 161
-    ExplicitTop = 161
+    Top = 102
+    ExplicitTop = 102
     ExplicitWidth = 499
     ExplicitHeight = 44
     Height = 44

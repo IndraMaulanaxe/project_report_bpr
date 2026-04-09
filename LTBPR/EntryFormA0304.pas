@@ -40,8 +40,6 @@ type
     MyDataSource1: TMyDataSource;
     cxLabel8: TcxLabel;
     memuraian: TcxMemo;
-    memketerangan: TcxMemo;
-    cxLabel10: TcxLabel;
     kode_komponen: TcxButtonEdit;
     Label3: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);

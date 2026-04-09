@@ -2,10 +2,10 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
   Caption = 
     'Entry Form E0204 - Struktur, Keanggotaan, Keahlian, dan Independ' +
     'ensi Anggota Komite'
-  ClientHeight = 448
+  ClientHeight = 388
   ClientWidth = 498
   ExplicitWidth = 504
-  ExplicitHeight = 477
+  ExplicitHeight = 417
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
@@ -13,10 +13,9 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
     ExplicitWidth = 498
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitTop = -1
     ExplicitWidth = 498
     ExplicitHeight = 404
-    Height = 404
+    Height = 344
     Width = 498
     object kode_komponen: TcxButtonEdit
       Left = 185
@@ -63,48 +62,6 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Width = 135
       AnchorY = 34
     end
-    object Label1: TcxLabel
-      Left = 17
-      Top = 335
-      AutoSize = False
-      BiDiMode = bdLeftToRight
-      Caption = 'Tindak Lanjut'
-      ParentBiDiMode = False
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      Properties.Alignment.Horz = taLeftJustify
-      Properties.Alignment.Vert = taVCenter
-      Properties.WordWrap = True
-      Transparent = True
-      Height = 37
-      Width = 135
-      AnchorY = 354
-    end
-    object memtindak_lanjut: TcxMemo
-      Tag = 1
-      Left = 185
-      Top = 342
-      Hint = 'Tindak Lanjut'
-      ParentColor = True
-      ParentFont = False
-      Properties.OnChange = MemKeteranganPropertiesChange
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindow
-      Style.Font.Height = -13
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.TextColor = clWindow
-      Style.IsFontAssigned = True
-      TabOrder = 18
-      Height = 48
-      Width = 298
-    end
     object memkeahlian: TcxMemo
       Tag = 1
       Left = 185
@@ -120,7 +77,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 5
+      TabOrder = 4
       Height = 47
       Width = 298
     end
@@ -183,7 +140,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 6
+      TabOrder = 5
       Width = 298
     end
     object cb_pantau: TcxLookupComboBox
@@ -206,7 +163,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 6
       Width = 298
     end
     object cxLabel4: TcxLabel
@@ -248,7 +205,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 9
+      TabOrder = 8
       Width = 298
     end
     object cxLabel5: TcxLabel
@@ -290,7 +247,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 8
+      TabOrder = 7
       Width = 298
     end
     object cxLabel6: TcxLabel
@@ -402,7 +359,7 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 9
       Width = 298
     end
     object cb_pihak: TcxLookupComboBox
@@ -425,12 +382,12 @@ inherited fr_EntryFormE0204: Tfr_EntryFormE0204
       Style.Font.Style = []
       Style.TextColor = clWindow
       Style.IsFontAssigned = True
-      TabOrder = 11
+      TabOrder = 10
       Width = 298
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 404
+    Top = 344
     ExplicitTop = 404
     ExplicitWidth = 498
     ExplicitHeight = 44

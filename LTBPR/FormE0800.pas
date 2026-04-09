@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormE0800, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0800 = class(Tfr_new_template)
@@ -69,6 +70,24 @@ type
     cxGridDBTableView1pegawai_tetap_tahun_laporan: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_sebelumnya: TcxGridDBColumn;
     cxGridDBTableView1pegawai_tidak_tetap_tahun_laporan: TcxGridDBColumn;
+    MyQE0800keterangan: TStringField;
+    cxGridDBTableView1keterangan: TcxGridDBColumn;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -84,6 +103,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -327,8 +348,7 @@ begin
       tetap_thn_laporan.value := MyQE0800pegawai_tetap_tahun_laporan.Value;
       tidak_tetap_thn_lalu.value := MyQE0800pegawai_tidak_tetap_tahun_sebelumnya.Value;
       tidak_tetap_thn_laporan.value := MyQE0800pegawai_tidak_tetap_tahun_laporan.Value;
-      mempenjelasan.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0800_penyimpangan_internal_footer where flag_detail='+QuotedStr('F01')+'  ');
-
+      
       cb_komponen.Enabled := False;
     end;
   fr_EntryFormE0800.Tag := 0;
@@ -348,13 +368,6 @@ begin
                         ', `pegawai_tidak_tetap_tahun_sebelumnya` = '+FloatToStr(tidak_tetap_thn_lalu.Value)+
                         ', `pegawai_tidak_tetap_tahun_laporan` = '+FloatToStr(tidak_tetap_thn_laporan.Value)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0800kode_komponen.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
         end;
       if MyQE0800.Active then
         MyQE0800.Refresh
@@ -364,6 +377,16 @@ begin
 
   fr_EntryFormE0800.Free;
   fr_EntryFormE0800 := nil;
+end;
+
+procedure Tfr_FormE0800.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0800_penyimpangan_internal_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0800.btlb_InsertClick(Sender: TObject);
@@ -428,14 +451,7 @@ begin
                         '`pegawai_tetap_tahun_laporan` = VALUES(`pegawai_tetap_tahun_laporan`),'+
                         '`pegawai_tidak_tetap_tahun_sebelumnya` = VALUES(`pegawai_tidak_tetap_tahun_sebelumnya`),'+
                         '`pegawai_tidak_tetap_tahun_laporan` = VALUES(`pegawai_tidak_tetap_tahun_laporan`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(mempenjelasan.Text)+')');
-          //
-
+           
         end;
       if MyQE0800.Active then
         MyQE0800.Refresh
@@ -454,6 +470,19 @@ begin
     MyQE0800.Refresh
   else
     MyQE0800.Open;
+end;
+
+procedure Tfr_FormE0800.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0800_penyimpangan_internal_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0800.cxGridDBTableView1CellDblClick(

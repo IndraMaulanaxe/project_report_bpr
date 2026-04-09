@@ -32,7 +32,8 @@ uses
   MyLib, EntryFormE0402, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxTextEdit, cxMemo, cxLabel;
 
 type
   Tfr_FormE0402 = class(Tfr_new_template)
@@ -62,6 +63,22 @@ type
     MyQE0402hubungan_keluarga_i_anggota_direksi: TStringField;
     MyQE0402hubungan_keluarga_ii_anggota_dewan_komisaris: TStringField;
     MyQE0402hubungan_keluarga_iii_pemegang_saham: TStringField;
+    cxGBFooter: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton4: TcxButton;
+    cxButton5: TcxButton;
+    cxButton7: TcxButton;
+    cxButton8: TcxButton;
+    cxButton9: TcxButton;
+    cxButton10: TcxButton;
+    cxButton11: TcxButton;
+    cxButton12: TcxButton;
+    cxLabel10: TcxLabel;
+    memtindak_lanjut_footer: TcxMemo;
+    btlb_Footer: TcxButton;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -77,6 +94,8 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_FooterClick(Sender: TObject);
+    procedure cxButton4Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -309,7 +328,6 @@ begin
       memdireksi.Text := MyQE0402hubungan_keluarga_i_anggota_direksi.Text;
       memkomisaris.Text := MyQE0402hubungan_keluarga_ii_anggota_dewan_komisaris.Text;
       memsaham.Text := MyQE0402hubungan_keluarga_iii_pemegang_saham.Text;
-      memtindak_lanjut.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0402_hubungan_keluarga_direksi_ps_footer where flag_detail='+QuotedStr('F01')+'  ');
 
       kode_komponen.Enabled := False;
     end;
@@ -328,13 +346,6 @@ begin
                         ', `hubungan_keluarga_iii_pemegang_saham` = '+QuotedStr(memsaham.Text)+
                         ' WHERE `kode_komponen` = '+QuotedStr(MyQE0402kode_komponen.Text)+
                         ' AND `nik` = '+QuotedStr(MyQE0402nik.Text));
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
         end;
       if MyQE0402.Active then
         MyQE0402.Refresh
@@ -344,6 +355,15 @@ begin
 
   fr_EntryFormE0402.Free;
   fr_EntryFormE0402 := nil;
+end;
+
+procedure Tfr_FormE0402.btlb_FooterClick(Sender: TObject);
+begin
+  inherited;
+  //footer
+  memtindak_lanjut_footer.Text := SelectRow('SELECT keterangan FROM '+cDb2+'.ltbprk_e0402_hubungan_keluarga_direksi_ps_footer where flag_detail='+QuotedStr('F01')+'  ');
+
+  cxGBFooter.Visible:=true;
 end;
 
 procedure Tfr_FormE0402.btlb_InsertClick(Sender: TObject);
@@ -391,13 +411,6 @@ begin
                       '`hubungan_keluarga_i_anggota_direksi` = VALUES(`hubungan_keluarga_i_anggota_direksi`),'+
                       '`hubungan_keluarga_ii_anggota_dewan_komisaris` = VALUES(`hubungan_keluarga_ii_anggota_dewan_komisaris`),'+
                       '`hubungan_keluarga_iii_pemegang_saham` = VALUES(`hubungan_keluarga_iii_pemegang_saham`)');
-           // footer
-           MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` ');
-
-           MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` '+
-                        ' (`flag_detail`,`keterangan`) '+
-                        ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut.Text)+')');
-          //
 
         end;
       if MyQE0402.Active then
@@ -417,6 +430,19 @@ begin
     MyQE0402.Refresh
   else
     MyQE0402.Open;
+end;
+
+procedure Tfr_FormE0402.cxButton4Click(Sender: TObject);
+begin
+  inherited;
+  // footer
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` ');
+
+  MyExecuteSQL(' INSERT INTO '+cDb2+'.`ltbprk_e0402_hubungan_keluarga_direksi_ps_footer` '+
+               ' (`flag_detail`,`keterangan`) '+
+               ' VALUES ('+QuotedStr('F01')+', '+QuotedStr(memtindak_lanjut_footer.Text)+')');
+  //
+  cxGBFooter.Visible:=false;
 end;
 
 procedure Tfr_FormE0402.cxGridDBTableView1CellDblClick(

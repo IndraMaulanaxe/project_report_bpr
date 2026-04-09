@@ -39,8 +39,6 @@ type
   Tfr_EntryFormE0800 = class(Tfr_new_template)
     MyDataSource1: TMyDataSource;
     Label3: TcxLabel;
-    cxLabel4: TcxLabel;
-    mempenjelasan: TcxMemo;
     cxLabel3: TcxLabel;
     direksi_thn_laporan: TcxCurrencyEdit;
     komisaris_thn_lalu: TcxCurrencyEdit;
@@ -69,6 +67,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure cb_komponenPropertiesChange(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -88,6 +87,38 @@ implementation
 uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR;
 
 {$R *.dfm}
+
+procedure Tfr_EntryFormE0800.cb_komponenPropertiesChange(Sender: TObject);
+var
+  Kode: string;
+begin
+  Kode := Copy(cb_komponen.Text, 1, 3);
+
+  if (Kode = '911') or (Kode = '920') then
+  begin
+    direksi_thn_lalu.Text := '';
+    komisaris_thn_lalu.Text := '';
+    tetap_thn_lalu.Text := '';
+    tidak_tetap_thn_lalu.Text := '';
+
+    direksi_thn_lalu.Enabled := False;
+    komisaris_thn_lalu.Enabled := False;
+    tetap_thn_lalu.Enabled := False;
+    tidak_tetap_thn_lalu.Enabled := False;
+  end
+  else
+  begin
+    direksi_thn_lalu.Enabled := True;
+    komisaris_thn_lalu.Enabled := True;
+    tetap_thn_lalu.Enabled := True;
+    tidak_tetap_thn_lalu.Enabled := True;
+
+    if Trim(direksi_thn_lalu.Text) = '' then direksi_thn_lalu.Text := '0';
+    if Trim(komisaris_thn_lalu.Text) = '' then komisaris_thn_lalu.Text := '0';
+    if Trim(tetap_thn_lalu.Text) = '' then tetap_thn_lalu.Text := '0';
+    if Trim(tidak_tetap_thn_lalu.Text) = '' then tidak_tetap_thn_lalu.Text := '0';
+  end;
+end;
 
 function Tfr_EntryFormE0800.Cek_Validasi(Sender: TObject): Boolean;
 var
