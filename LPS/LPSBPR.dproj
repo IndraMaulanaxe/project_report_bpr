@@ -169,6 +169,14 @@
             <Form>fr_FormRefLPS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="EntryFormDSN0002.pas">
+            <Form>fr_EntryFormDSN0002</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="FormDSN0002.pas">
+            <Form>fr_FormDSN0002</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -134,7 +134,7 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils, MyVAR, MyLib, FormA0301, FormDN0001;
+  dm_bpr, StrUtils, MyVAR, MyLib, FormA0301, FormDN0001, FormDSN0002;
 
   Var cKodeJenisPelaporan : String;
 
@@ -564,13 +564,12 @@ end;
 
 procedure Tfr_MainMenu.bt_form0002Click(Sender: TObject);
 begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'A0503');
-  end;
+  if Application.FindComponent('fr_FormDSN0002') = nil then
+    Application.CreateForm(Tfr_FormDSN0002, fr_FormDSN0002);
+  fr_FormDSN0002.Tag := 0;
+  fr_FormDSN0002.ShowModal;
+  fr_FormDSN0002.Free;
+  fr_FormDSN0002 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_form0001Click(Sender: TObject);

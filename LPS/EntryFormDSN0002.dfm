@@ -1,5 +1,5 @@
-inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
-  Caption = 'Form 0001 -  Entry Data Daftar Laporan Nasabah'
+inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
+  Caption = 'Form 0002 -  Entry Daftar Simpanan Nasabah'
   ClientHeight = 411
   ClientWidth = 814
   ExplicitWidth = 820
@@ -8,11 +8,11 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 814
-    ExplicitWidth = 1017
+    ExplicitWidth = 814
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 1017
-    ExplicitHeight = 376
+    ExplicitWidth = 814
+    ExplicitHeight = 367
     Height = 367
     Width = 814
     object cxPageControl1: TcxPageControl
@@ -24,8 +24,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       TabOrder = 0
       Properties.ActivePage = cxTabPage2
       Properties.CustomButtons.Buttons = <>
-      ExplicitWidth = 1013
-      ExplicitHeight = 372
       ClientRectBottom = 359
       ClientRectLeft = 4
       ClientRectRight = 806
@@ -33,8 +31,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       object cxTabPage1: TcxTabSheet
         Caption = 'Page 1'
         ImageIndex = 0
-        ExplicitWidth = 1005
-        ExplicitHeight = 341
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,16 +43,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = -168
-          ExplicitWidth = 791
-          ExplicitHeight = 301
+          ExplicitLeft = 2
           Height = 332
           Width = 802
           object Label3: TcxLabel
             Left = 17
             Top = 22
             AutoSize = False
-            Caption = 'Nasabah ID'
+            Caption = 'Jumlah Pemilik Rekening'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -68,7 +62,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Properties.Alignment.Vert = taVCenter
             Transparent = True
             Height = 24
-            Width = 135
+            Width = 152
             AnchorY = 34
           end
           object cxLabel2: TcxLabel
@@ -76,7 +70,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 55
             AutoSize = False
-            Caption = 'Nama Nasabah'
+            Caption = 'Nasabah ID'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -96,7 +90,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 82
             AutoSize = False
-            Caption = 'Jenis ID'
+            Caption = 'No Rekening'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -115,7 +109,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 115
             AutoSize = False
-            Caption = 'No ID'
+            Caption = 'Status Dana'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -135,7 +129,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 139
             AutoSize = False
-            Caption = 'Nama Ibu Kandung'
+            Caption = 'Tanggal Mulai Tanggal Aro'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -149,54 +143,12 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Properties.WordWrap = True
             Transparent = True
             Height = 30
-            Width = 135
+            Width = 162
             AnchorY = 154
           end
-          object cxLabel6: TcxLabel
-            AlignWithMargins = True
-            Left = 17
-            Top = 175
-            AutoSize = False
-            Caption = 'Tanggal Lahir'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 152
-            AnchorY = 185
-          end
-          object cxLabel7: TcxLabel
-            Left = 17
-            Top = 199
-            AutoSize = False
-            Caption = 'No Identitas Badan Hukum'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 30
-            Width = 176
-            AnchorY = 214
-          end
-          object tgl_lahir: TcxDateEdit
+          object tgl_mulai_atau_tgl_aro_terakhir: TcxDateEdit
             Left = 185
-            Top = 173
+            Top = 143
             Hint = 'Tanggal'
             ParentColor = True
             ParentFont = False
@@ -207,14 +159,60 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Style.Font.Style = []
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
-            TabOrder = 7
+            TabOrder = 5
             Width = 121
           end
           object nasabah_id: TcxTextEdit
             Tag = 1
             Left = 185
-            Top = 23
-            Hint = 'Nasabah ID'
+            Top = 53
+            Hint = 'Nama Nasabah'
+            TabStop = False
+            AutoSize = False
+            ParentColor = True
+            Properties.Alignment.Horz = taLeftJustify
+            Style.LookAndFeel.Kind = lfOffice11
+            Style.TextColor = clWindow
+            StyleDisabled.LookAndFeel.Kind = lfOffice11
+            StyleFocused.LookAndFeel.Kind = lfOffice11
+            StyleHot.LookAndFeel.Kind = lfOffice11
+            TabOrder = 6
+            Height = 24
+            Width = 298
+          end
+          object staus_dana: TcxButtonEdit
+            Left = 185
+            Top = 113
+            Hint = 'Kode Jenis ID'
+            AutoSize = False
+            ParentColor = True
+            ParentFont = False
+            Properties.Buttons = <
+              item
+                Default = True
+                ImageIndex = 83
+                Kind = bkGlyph
+              end>
+            Properties.CharCase = ecUpperCase
+            Properties.Images = dm_bpr1.ImageList1
+            Properties.OnButtonClick = staus_danaPropertiesButtonClick
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 7
+            OnExit = staus_danaExit
+            Height = 24
+            Width = 81
+          end
+          object nm_staus_dana: TcxTextEdit
+            Tag = 1
+            Left = 272
+            Top = 113
+            Hint = 'Jenis ID'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -226,12 +224,12 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             StyleHot.LookAndFeel.Kind = lfOffice11
             TabOrder = 8
             Height = 24
-            Width = 298
+            Width = 211
           end
-          object nama_nasabah: TcxTextEdit
+          object no_rekening: TcxTextEdit
             Tag = 1
             Left = 185
-            Top = 53
+            Top = 83
             Hint = 'Nama Nasabah'
             TabStop = False
             AutoSize = False
@@ -246,12 +244,29 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Height = 24
             Width = 298
           end
-          object cxLabel3: TcxLabel
-            AlignWithMargins = True
-            Left = 17
-            Top = 235
-            AutoSize = False
-            Caption = 'Nama Pengurus'
+          object jumlah_pemilik_rekening: TcxCurrencyEdit
+            Left = 185
+            Top = 23
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
+            ParentColor = True
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0'
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 10
+            Width = 121
+          end
+          object gb_suku_bunga: TcxGroupBox
+            Left = 41
+            Top = 173
+            Caption = 'Suku Bunga'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -260,205 +275,95 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Style.Font.Style = []
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 152
-            AnchorY = 245
-          end
-          object cxLabel8: TcxLabel
-            AlignWithMargins = True
-            Left = 17
-            Top = 266
-            AutoSize = False
-            Caption = 'Jenis Identitas Pengurus'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            Properties.Alignment.Vert = taVCenter
-            Properties.WordWrap = True
-            Transparent = True
-            Height = 19
-            Width = 152
-            AnchorY = 276
-          end
-          object nama_ibu_kandung: TcxTextEdit
-            Tag = 1
-            Left = 185
-            Top = 143
-            Hint = 'Nama Ibu Kandung'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 12
-            Height = 24
-            Width = 298
-          end
-          object no_id: TcxTextEdit
-            Tag = 1
-            Left = 185
-            Top = 113
-            Hint = 'Nomor ID'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 13
-            Height = 24
-            Width = 298
-          end
-          object nama_pengurus: TcxTextEdit
-            Tag = 1
-            Left = 185
-            Top = 233
-            Hint = 'Nama Pengurus'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 14
-            Height = 24
-            Width = 298
-          end
-          object no_iden_bdn_hukum: TcxTextEdit
-            Tag = 1
-            Left = 185
-            Top = 203
-            Hint = 'Nomor Identitas Badan Hukum/Usaha'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 15
-            Height = 24
-            Width = 298
-          end
-          object kode_jenis_id: TcxButtonEdit
-            Left = 185
-            Top = 83
-            Hint = 'Kode Jenis ID'
-            AutoSize = False
-            ParentColor = True
-            ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_jenis_idPropertiesButtonClick
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 16
-            OnExit = kode_jenis_idExit
-            Height = 24
-            Width = 81
-          end
-          object nama_jenis_id: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 83
-            Hint = 'Jenis ID'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 17
-            Height = 24
-            Width = 211
-          end
-          object kode_jenis_id_pengurus: TcxButtonEdit
-            Left = 185
-            Top = 263
-            Hint = 'Kode Identitas Pengurus'
-            AutoSize = False
-            ParentColor = True
-            ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_jenis_id_pengurusPropertiesButtonClick
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 18
-            OnExit = kode_jenis_id_pengurusExit
-            Height = 24
-            Width = 81
-          end
-          object nama_jenis_id_pengurus: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 263
-            Hint = ' Identitas Pengurus'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 19
-            Height = 24
-            Width = 211
+            TabOrder = 11
+            Height = 100
+            Width = 304
+            object cxLabel3: TcxLabel
+              AlignWithMargins = True
+              Left = 16
+              Top = 24
+              AutoSize = False
+              Caption = 'Suku Bunga'
+              ParentFont = False
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindow
+              Style.Font.Height = -13
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              Properties.Alignment.Vert = taVCenter
+              Properties.WordWrap = True
+              Transparent = True
+              Height = 19
+              Width = 152
+              AnchorY = 34
+            end
+            object cxLabel8: TcxLabel
+              AlignWithMargins = True
+              Left = 16
+              Top = 54
+              AutoSize = False
+              Caption = 'Suku Bunga Val'
+              ParentFont = False
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindow
+              Style.Font.Height = -13
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              Properties.Alignment.Vert = taVCenter
+              Properties.WordWrap = True
+              Transparent = True
+              Height = 19
+              Width = 152
+              AnchorY = 64
+            end
+            object suku_bunga: TcxCurrencyEdit
+              Left = 144
+              Top = 22
+              Hint = 'Pegawai Tetap Tahun Laporan'
+              EditValue = '0'
+              ParentColor = True
+              ParentFont = False
+              Properties.Alignment.Horz = taRightJustify
+              Properties.DisplayFormat = '#,#0.00'
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindow
+              Style.Font.Height = -13
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              TabOrder = 2
+              Width = 121
+            end
+            object suku_bunga_val: TcxCurrencyEdit
+              Left = 144
+              Top = 52
+              Hint = 'Pegawai Tetap Tahun Laporan'
+              EditValue = '0'
+              ParentColor = True
+              ParentFont = False
+              Properties.Alignment.Horz = taRightJustify
+              Properties.DisplayFormat = '#,#0.00'
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindow
+              Style.Font.Height = -13
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              TabOrder = 3
+              Width = 121
+            end
           end
         end
       end
       object cxTabPage2: TcxTabSheet
         Caption = 'Page 2'
         ImageIndex = 3
-        ExplicitWidth = 1005
-        ExplicitHeight = 341
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -471,9 +376,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
-          ExplicitWidth = 1005
-          ExplicitHeight = 500
+          ExplicitTop = 1
           Height = 332
           Width = 802
           object cxLabel31: TcxLabel
@@ -481,7 +384,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 14
             AutoSize = False
-            Caption = 'No. Identitas Pemegang Kuasa'
+            Caption = 'Biaya Cashback'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -501,7 +404,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Left = 17
             Top = 47
             AutoSize = False
-            Caption = 'Alamat'
+            Caption = 'Tingkat Bunga Penjaminan'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -518,9 +421,9 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
           object cxLabel33: TcxLabel
             AlignWithMargins = True
             Left = 17
-            Top = 106
+            Top = 78
             AutoSize = False
-            Caption = 'Kota / Kab'
+            Caption = 'Kategori Tingkat Bunga'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -534,13 +437,13 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 19
             Width = 169
-            AnchorY = 116
+            AnchorY = 88
           end
           object cxLabel34: TcxLabel
             Left = 17
-            Top = 133
+            Top = 105
             AutoSize = False
-            Caption = 'Kewarganegaraan'
+            Caption = 'Jumlah Deposit'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -552,14 +455,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 24
             Width = 162
-            AnchorY = 145
+            AnchorY = 117
           end
           object cxLabel35: TcxLabel
             AlignWithMargins = True
             Left = 17
-            Top = 165
+            Top = 137
             AutoSize = False
-            Caption = 'Telpon'
+            Caption = 'Nominal Blokir'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -573,13 +476,13 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 19
             Width = 169
-            AnchorY = 175
+            AnchorY = 147
           end
           object cxLabel36: TcxLabel
             Left = 17
-            Top = 250
+            Top = 222
             AutoSize = False
-            Caption = 'Hubungan dengan Pihak Terkait'
+            Caption = 'Tanggal  Akru Terakhir'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -593,14 +496,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Properties.WordWrap = True
             Transparent = True
             Height = 35
-            Width = 162
-            AnchorY = 268
+            Width = 152
+            AnchorY = 240
           end
           object cxLabel37: TcxLabel
             Left = 17
-            Top = 276
+            Top = 254
             AutoSize = False
-            Caption = 'Golongan Nasabah'
+            Caption = 'Tanggal Jt'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -615,13 +518,13 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 35
             Width = 162
-            AnchorY = 294
+            AnchorY = 272
           end
           object cxLabel38: TcxLabel
             Left = 17
-            Top = 194
+            Top = 166
             AutoSize = False
-            Caption = 'Flag Fraud'
+            Caption = 'Alasan Blokir'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -635,13 +538,13 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 19
             Width = 135
-            AnchorY = 204
+            AnchorY = 176
           end
           object cxLabel39: TcxLabel
             Left = 17
-            Top = 216
+            Top = 188
             AutoSize = False
-            Caption = 'Hub Dengan Bank'
+            Caption = 'Saldo Akhir Bunga '
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -656,13 +559,13 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Transparent = True
             Height = 35
             Width = 162
-            AnchorY = 234
+            AnchorY = 206
           end
-          object no_iden_pegang_kuasa: TcxTextEdit
+          object nm_kategori_tingkat_bunga_simpanan: TcxTextEdit
             Tag = 1
-            Left = 185
-            Top = 19
-            Hint = 'No. Identitas Pemegang Kuasa'
+            Left = 272
+            Top = 76
+            Hint = 'Nama Kota / Kabupaten'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -674,48 +577,11 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             StyleHot.LookAndFeel.Kind = lfOffice11
             TabOrder = 9
             Height = 24
-            Width = 298
-          end
-          object nama_kota_kab: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 104
-            Hint = 'Nama Kota / Kabupaten'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 10
-            Height = 24
             Width = 522
           end
-          object alamat: TcxMemo
-            Tag = 1
+          object kategori_tingkat_bunga_simpanan: TcxButtonEdit
             Left = 185
-            Top = 48
-            Hint = 'Alamat'
-            ParentColor = True
-            ParentFont = False
-            Properties.OnChange = MemKeteranganPropertiesChange
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 11
-            Height = 47
-            Width = 298
-          end
-          object kode_kota_kab: TcxButtonEdit
-            Left = 185
-            Top = 104
+            Top = 76
             Hint = 'Kode Kota / Kabupaten'
             AutoSize = False
             ParentColor = True
@@ -728,7 +594,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
               end>
             Properties.CharCase = ecUpperCase
             Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_kota_kabPropertiesButtonClick
+            Properties.OnButtonClick = kategori_tingkat_bunga_simpananPropertiesButtonClick
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
             Style.Font.Height = -13
@@ -736,78 +602,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Style.Font.Style = []
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
-            TabOrder = 12
-            OnExit = kode_kota_kabExit
+            TabOrder = 10
+            OnExit = kategori_tingkat_bunga_simpananExit
             Height = 24
             Width = 81
           end
-          object kode_kewarganegaraan: TcxButtonEdit
+          object alasan_blokir: TcxButtonEdit
             Left = 185
-            Top = 134
-            Hint = 'Kewarganegaraan'
-            AutoSize = False
-            ParentColor = True
-            ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_kewarganegaraanPropertiesButtonClick
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 13
-            OnExit = kode_kewarganegaraanExit
-            Height = 24
-            Width = 81
-          end
-          object nama_kewarganegaraan: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 134
-            Hint = 'Kewarganegaraan'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 14
-            Height = 24
-            Width = 211
-          end
-          object telpon: TcxTextEdit
-            Tag = 1
-            Left = 185
-            Top = 163
-            Hint = 'Telpon'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 15
-            Height = 24
-            Width = 298
-          end
-          object kode_flag: TcxButtonEdit
-            Left = 185
-            Top = 192
+            Top = 164
             Hint = 'Kode Fraud'
             AutoSize = False
             ParentColor = True
@@ -820,7 +622,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
               end>
             Properties.CharCase = ecUpperCase
             Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_flagPropertiesButtonClick
+            Properties.OnButtonClick = alasan_blokirPropertiesButtonClick
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
             Style.Font.Height = -13
@@ -828,15 +630,15 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Style.Font.Style = []
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
-            TabOrder = 16
-            OnExit = kode_flagExit
+            TabOrder = 11
+            OnExit = alasan_blokirExit
             Height = 24
             Width = 81
           end
-          object nama_flag: TcxTextEdit
+          object nm_alasan_blokir: TcxTextEdit
             Tag = 1
             Left = 272
-            Top = 192
+            Top = 164
             Hint = 'Nama Fraud'
             TabStop = False
             AutoSize = False
@@ -847,26 +649,108 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             StyleDisabled.LookAndFeel.Kind = lfOffice11
             StyleFocused.LookAndFeel.Kind = lfOffice11
             StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 17
+            TabOrder = 12
             Height = 24
             Width = 522
           end
-          object kode_hub_bank: TcxButtonEdit
+          object tgl_akru_terakhir: TcxDateEdit
             Left = 185
-            Top = 222
-            Hint = 'Kode Hubungan Bank'
-            AutoSize = False
+            Top = 228
+            Hint = 'Tanggal'
             ParentColor = True
             ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_hub_bankPropertiesButtonClick
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 13
+            Width = 121
+          end
+          object tanggal_jt: TcxDateEdit
+            Left = 185
+            Top = 260
+            Hint = 'Tanggal'
+            ParentColor = True
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 14
+            Width = 121
+          end
+          object saldo_akhir_bunga_bmhd: TcxCurrencyEdit
+            Left = 185
+            Top = 194
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
+            ParentColor = True
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0.00'
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 15
+            Width = 121
+          end
+          object nominal_blokir: TcxCurrencyEdit
+            Left = 185
+            Top = 135
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
+            ParentColor = True
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0.00'
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 16
+            Width = 121
+          end
+          object jml_deposito: TcxCurrencyEdit
+            Left = 185
+            Top = 106
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
+            ParentColor = True
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0.00'
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 17
+            Width = 121
+          end
+          object biaya_cashback: TcxCurrencyEdit
+            Left = 185
+            Top = 20
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
+            ParentColor = True
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0.00'
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
             Style.Font.Height = -13
@@ -875,119 +759,26 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
             Style.TextColor = clWindow
             Style.IsFontAssigned = True
             TabOrder = 18
-            OnExit = kode_hub_bankExit
-            Height = 24
-            Width = 81
+            Width = 121
           end
-          object nama_hub_bank: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 222
-            Hint = 'Hubungan Dengan Bank'
-            TabStop = False
-            AutoSize = False
+          object tingkat_bunga_penjaminan_lps: TcxCurrencyEdit
+            Left = 185
+            Top = 48
+            Hint = 'Pegawai Tetap Tahun Laporan'
+            EditValue = '0'
             ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
+            ParentFont = False
+            Properties.Alignment.Horz = taRightJustify
+            Properties.DisplayFormat = '#,#0.00'
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
             Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
+            Style.IsFontAssigned = True
             TabOrder = 19
-            Height = 24
-            Width = 211
-          end
-          object kode_hub_pihak_terkait: TcxButtonEdit
-            Left = 185
-            Top = 252
-            Hint = 'Kode Hubungan Dengan Pihak Terkait'
-            AutoSize = False
-            ParentColor = True
-            ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_hub_pihak_terkaitPropertiesButtonClick
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 20
-            OnExit = kode_hub_pihak_terkaitExit
-            Height = 24
-            Width = 81
-          end
-          object nama_hub_pihak_terkait: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 252
-            Hint = 'Hubungan Dengan Pihak Terkait'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 21
-            Height = 24
-            Width = 522
-          end
-          object kode_gol_nasabah: TcxButtonEdit
-            Left = 185
-            Top = 282
-            Hint = 'Kode Golongan'
-            AutoSize = False
-            ParentColor = True
-            ParentFont = False
-            Properties.Buttons = <
-              item
-                Default = True
-                ImageIndex = 83
-                Kind = bkGlyph
-              end>
-            Properties.CharCase = ecUpperCase
-            Properties.Images = dm_bpr1.ImageList1
-            Properties.OnButtonClick = kode_gol_nasabahPropertiesButtonClick
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindow
-            Style.Font.Height = -13
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TextColor = clWindow
-            Style.IsFontAssigned = True
-            TabOrder = 22
-            OnExit = kode_gol_nasabahExit
-            Height = 24
-            Width = 81
-          end
-          object nama_gol_nasabah: TcxTextEdit
-            Tag = 1
-            Left = 272
-            Top = 282
-            Hint = 'Golongan'
-            TabStop = False
-            AutoSize = False
-            ParentColor = True
-            Properties.Alignment.Horz = taLeftJustify
-            Style.LookAndFeel.Kind = lfOffice11
-            Style.TextColor = clWindow
-            StyleDisabled.LookAndFeel.Kind = lfOffice11
-            StyleFocused.LookAndFeel.Kind = lfOffice11
-            StyleHot.LookAndFeel.Kind = lfOffice11
-            TabOrder = 23
-            Height = 24
-            Width = 522
+            Width = 121
           end
         end
       end
@@ -995,9 +786,8 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
   end
   inherited PanelFooter: TcxGroupBox
     Top = 367
-    ExplicitLeft = 8
-    ExplicitTop = 334
-    ExplicitWidth = 846
+    ExplicitTop = 367
+    ExplicitWidth = 814
     ExplicitHeight = 44
     Height = 44
     Width = 814
@@ -1033,7 +823,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Left = 627
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 830
+      ExplicitLeft = 627
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -1042,14 +832,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 1012
+      ExplicitLeft = 809
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 718
       Height = 34
-      ExplicitLeft = 921
+      ExplicitLeft = 718
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -1058,7 +848,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 824
+      ExplicitLeft = 621
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1078,7 +868,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 818
+      ExplicitLeft = 615
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1088,7 +878,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 812
+      ExplicitLeft = 609
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1098,7 +888,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 806
+      ExplicitLeft = 603
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1108,21 +898,20 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 800
+      ExplicitLeft = 597
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 814
-    ExplicitWidth = 1017
+    ExplicitWidth = 814
     inherited IconClose: TLabel
       Left = 780
       ExplicitLeft = 771
     end
   end
   object dsMyQTemp: TMyDataSource
-    DataSet = MyQTemp
     Left = 472
     Top = 48
   end
@@ -1130,26 +919,24 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       'SELECT'
-      '  `flag_detail`,'
+      '  `jumlah_pemilik_rekening`,'
       '  `nasabah_id`,'
-      '  `nama_nasabah`,'
-      '  `jenis_id`,'
-      '  `no_id`,'
-      '  `nama_ibu_kandung`,'
-      '  `tgl_lahir`,'
-      '  `no_id2`,'
-      '  `nama_pengurus`,'
-      '  `jenis_identitas`,'
-      '  `nomor_identitas`,'
-      '  `alamat`,'
-      '  `kota_kab`,'
-      '  `wni`,'
-      '  `telpon`,'
-      '  `flag_fraud`,'
-      '  `hub_dgn_bank`,'
-      '  `slik_kode_hub_ljk`,'
-      '  `slik_kode_gol_debitur`'
-      'FROM `lps_dn_f0001`'
+      '  `kode_integrasi`,'
+      '  `no_rekening`,'
+      '  `status_dana`,'
+      '  `tgl_mulai_atau_tgl_aro_terakhir`,'
+      '  `suku_bunga`,'
+      '  `suku_bunga_val`,'
+      '  `biaya_cashback`,'
+      '  `tingkat_bunga_penjaminan_lps`,'
+      '  `kategori_tingkat_bunga_simpanan`,'
+      '  `saldo_akhir`,'
+      '  `nominal_blokir`,'
+      '  `alasan_blokir`,'
+      '  `saldo_akhir_bunga_bmhd`,'
+      '  `tgl_akru_terakhir`,'
+      '  `tanggal_jt`'
+      'FROM `lps_dsn_f0002`'
       '&WHERE')
     ReadOnly = True
     Left = 568
@@ -1158,79 +945,62 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       item
         Name = 'WHERE'
       end>
-    object MyQTempflag_detail: TStringField
-      FieldName = 'flag_detail'
-      Size = 1
+    object MyQTempjumlah_pemilik_rekening: TIntegerField
+      FieldName = 'jumlah_pemilik_rekening'
     end
     object MyQTempnasabah_id: TStringField
       FieldName = 'nasabah_id'
     end
-    object MyQTempnama_nasabah: TStringField
-      FieldName = 'nama_nasabah'
-      Size = 150
-    end
-    object MyQTempjenis_id: TStringField
-      FieldName = 'jenis_id'
-      Size = 3
-    end
-    object MyQTempno_id: TStringField
-      FieldName = 'no_id'
-      Size = 25
-    end
-    object MyQTempnama_ibu_kandung: TStringField
-      FieldName = 'nama_ibu_kandung'
-      Size = 150
-    end
-    object MyQTemptgl_lahir: TDateField
-      FieldName = 'tgl_lahir'
-    end
-    object MyQTempno_id2: TStringField
-      FieldName = 'no_id2'
-      Size = 35
-    end
-    object MyQTempnama_pengurus: TStringField
-      FieldName = 'nama_pengurus'
-      Size = 150
-    end
-    object MyQTempjenis_identitas: TStringField
-      FieldName = 'jenis_identitas'
-      Size = 3
-    end
-    object MyQTempnomor_identitas: TStringField
-      FieldName = 'nomor_identitas'
-      Size = 25
-    end
-    object MyQTempalamat: TStringField
-      FieldName = 'alamat'
-      Size = 300
-    end
-    object MyQTempkota_kab: TStringField
-      FieldName = 'kota_kab'
+    object MyQTempkode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
       Size = 4
     end
-    object MyQTempwni: TStringField
-      FieldName = 'wni'
+    object MyQTempno_rekening: TStringField
+      FieldName = 'no_rekening'
+      Size = 35
+    end
+    object MyQTempstatus_dana: TStringField
+      FieldName = 'status_dana'
+      Size = 1
+    end
+    object MyQTemptgl_mulai_atau_tgl_aro_terakhir: TDateField
+      FieldName = 'tgl_mulai_atau_tgl_aro_terakhir'
+    end
+    object MyQTempsuku_bunga: TStringField
+      FieldName = 'suku_bunga'
+      Size = 1
+    end
+    object MyQTempsuku_bunga_val: TFloatField
+      FieldName = 'suku_bunga_val'
+    end
+    object MyQTempbiaya_cashback: TFloatField
+      FieldName = 'biaya_cashback'
+    end
+    object MyQTemptingkat_bunga_penjaminan_lps: TFloatField
+      FieldName = 'tingkat_bunga_penjaminan_lps'
+    end
+    object MyQTempkategori_tingkat_bunga_simpanan: TStringField
+      FieldName = 'kategori_tingkat_bunga_simpanan'
       Size = 3
     end
-    object MyQTemptelpon: TStringField
-      FieldName = 'telpon'
-      Size = 15
+    object MyQTempsaldo_akhir: TFloatField
+      FieldName = 'saldo_akhir'
     end
-    object MyQTempflag_fraud: TStringField
-      FieldName = 'flag_fraud'
-      Size = 3
+    object MyQTempnominal_blokir: TFloatField
+      FieldName = 'nominal_blokir'
     end
-    object MyQTemphub_dgn_bank: TStringField
-      FieldName = 'hub_dgn_bank'
+    object MyQTempalasan_blokir: TStringField
+      FieldName = 'alasan_blokir'
       Size = 2
     end
-    object MyQTempslik_kode_hub_ljk: TStringField
-      FieldName = 'slik_kode_hub_ljk'
-      Size = 2
+    object MyQTempsaldo_akhir_bunga_bmhd: TFloatField
+      FieldName = 'saldo_akhir_bunga_bmhd'
     end
-    object MyQTempslik_kode_gol_debitur: TStringField
-      FieldName = 'slik_kode_gol_debitur'
-      Size = 11
+    object MyQTemptgl_akru_terakhir: TDateField
+      FieldName = 'tgl_akru_terakhir'
+    end
+    object MyQTemptanggal_jt: TDateField
+      FieldName = 'tanggal_jt'
     end
   end
 end

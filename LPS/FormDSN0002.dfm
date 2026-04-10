@@ -1,5 +1,5 @@
-inherited fr_FormDN0001: Tfr_FormDN0001
-  Caption = 'Form 0001 - Daftar Data Nasabah'
+inherited fr_FormDSN0002: Tfr_FormDSN0002
+  Caption = 'Form 0002 -  Entry Daftar Simpanan Nasabah'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -48,7 +48,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQDN0001
+        DataController.DataSource = dsMyQDSN0002
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -68,118 +68,107 @@ inherited fr_FormDN0001: Tfr_FormDN0001
         OptionsView.HeaderFilterButtonShowMode = fbmSmartTag
         OptionsView.Indicator = True
         OptionsView.ShowColumnFilterButtons = sfbWhenSelected
-        object cxGridDBTableView1flag_detail: TcxGridDBColumn
-          DataBinding.FieldName = 'flag_detail'
-          Visible = False
+        object cxGridDBTableView1jumlah_pemilik_rekening: TcxGridDBColumn
+          Caption = 'Jumlah Rekening'
+          DataBinding.FieldName = 'jumlah_pemilik_rekening'
           HeaderAlignmentHorz = taCenter
+          Width = 100
         end
         object cxGridDBTableView1nasabah_id: TcxGridDBColumn
           Caption = 'Nasabah ID'
           DataBinding.FieldName = 'nasabah_id'
           HeaderAlignmentHorz = taCenter
-          Width = 150
-        end
-        object cxGridDBTableView1nama_nasabah: TcxGridDBColumn
-          Caption = 'Nama Nasabah'
-          DataBinding.FieldName = 'nama_nasabah'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1jenis_id: TcxGridDBColumn
-          Caption = 'Jenis ID'
-          DataBinding.FieldName = 'jenis_id'
-          HeaderAlignmentHorz = taCenter
-          Width = 75
-        end
-        object cxGridDBTableView1no_id: TcxGridDBColumn
-          Caption = 'No ID'
-          DataBinding.FieldName = 'no_id'
-          HeaderAlignmentHorz = taCenter
-          Width = 75
-        end
-        object cxGridDBTableView1nama_ibu_kandung: TcxGridDBColumn
-          Caption = 'Nama Ibu Kandung'
-          DataBinding.FieldName = 'nama_ibu_kandung'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1tgl_lahir: TcxGridDBColumn
-          Caption = 'Tanggal Lahir'
-          DataBinding.FieldName = 'tgl_lahir'
-          HeaderAlignmentHorz = taCenter
-          Width = 102
-        end
-        object cxGridDBTableView1no_id2: TcxGridDBColumn
-          Caption = 'No ID 2'
-          DataBinding.FieldName = 'no_id2'
-          HeaderAlignmentHorz = taCenter
-          Width = 150
-        end
-        object cxGridDBTableView1nama_pengurus: TcxGridDBColumn
-          Caption = 'Nama Pengurus'
-          DataBinding.FieldName = 'nama_pengurus'
-          HeaderAlignmentHorz = taCenter
-          Width = 250
-        end
-        object cxGridDBTableView1jenis_identitas: TcxGridDBColumn
-          Caption = 'Jenis Identitas'
-          DataBinding.FieldName = 'jenis_identitas'
-          HeaderAlignmentHorz = taCenter
-          Width = 100
-        end
-        object cxGridDBTableView1nomor_identitas: TcxGridDBColumn
-          Caption = 'Nomor Identitas'
-          DataBinding.FieldName = 'nomor_identitas'
-          HeaderAlignmentHorz = taCenter
-          Width = 150
-        end
-        object cxGridDBTableView1alamat: TcxGridDBColumn
-          Caption = 'Alamat'
-          DataBinding.FieldName = 'alamat'
-          HeaderAlignmentHorz = taCenter
-          Width = 300
-        end
-        object cxGridDBTableView1kota_kab: TcxGridDBColumn
-          Caption = 'Kota / Kabupaten'
-          DataBinding.FieldName = 'kota_kab'
-          HeaderAlignmentHorz = taCenter
-          Width = 100
-        end
-        object cxGridDBTableView1wni: TcxGridDBColumn
-          Caption = 'WNI'
-          DataBinding.FieldName = 'wni'
-          HeaderAlignmentHorz = taCenter
-          Width = 75
-        end
-        object cxGridDBTableView1telpon: TcxGridDBColumn
-          Caption = 'Telpon'
-          DataBinding.FieldName = 'telpon'
-          HeaderAlignmentHorz = taCenter
-          Width = 100
-        end
-        object cxGridDBTableView1flag_fraud: TcxGridDBColumn
-          Caption = 'Flag Fraud'
-          DataBinding.FieldName = 'flag_fraud'
-          HeaderAlignmentHorz = taCenter
-          Width = 75
-        end
-        object cxGridDBTableView1hub_dgn_bank: TcxGridDBColumn
-          Caption = 'Hubungan Dengan Bank'
-          DataBinding.FieldName = 'hub_dgn_bank'
-          HeaderAlignmentHorz = taCenter
-          Width = 100
-        end
-        object cxGridDBTableView1slik_kode_hub_ljk: TcxGridDBColumn
-          Caption = 'Slik Kode Hub LJK'
-          DataBinding.FieldName = 'slik_kode_hub_ljk'
-          HeaderAlignmentHorz = taCenter
           Width = 125
         end
-        object cxGridDBTableView1slik_kode_gol_debitur: TcxGridDBColumn
-          Caption = 'Slik Kode Gol Dibetur'
-          DataBinding.FieldName = 'slik_kode_gol_debitur'
+        object cxGridDBTableView1kode_integrasi: TcxGridDBColumn
+          Caption = 'Kode Integrasi'
+          DataBinding.FieldName = 'kode_integrasi'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1no_rekening: TcxGridDBColumn
+          Caption = 'Nomor Rekening'
+          DataBinding.FieldName = 'no_rekening'
           HeaderAlignmentHorz = taCenter
           Width = 150
+        end
+        object cxGridDBTableView1status_dana: TcxGridDBColumn
+          Caption = 'Status Dana'
+          DataBinding.FieldName = 'status_dana'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1tgl_mulai_atau_tgl_aro_terakhir: TcxGridDBColumn
+          Caption = 'Tanggal Mulai'
+          DataBinding.FieldName = 'tgl_mulai_atau_tgl_aro_terakhir'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1suku_bunga: TcxGridDBColumn
+          Caption = 'Suku Bunga'
+          DataBinding.FieldName = 'suku_bunga'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1suku_bunga_val: TcxGridDBColumn
+          Caption = 'Suku Bunga Val'
+          DataBinding.FieldName = 'suku_bunga_val'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1biaya_cashback: TcxGridDBColumn
+          Caption = 'Cashback'
+          DataBinding.FieldName = 'biaya_cashback'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1tingkat_bunga_penjaminan_lps: TcxGridDBColumn
+          Caption = 'Bunga Penjamin LPS'
+          DataBinding.FieldName = 'tingkat_bunga_penjaminan_lps'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1kategori_tingkat_bunga_simpanan: TcxGridDBColumn
+          Caption = 'Kategori Tingkat Bunga'
+          DataBinding.FieldName = 'kategori_tingkat_bunga_simpanan'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1saldo_akhir: TcxGridDBColumn
+          Caption = 'Saldo Akhir'
+          DataBinding.FieldName = 'saldo_akhir'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1nominal_blokir: TcxGridDBColumn
+          Caption = 'Nominal Blokir'
+          DataBinding.FieldName = 'nominal_blokir'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1alasan_blokir: TcxGridDBColumn
+          Caption = 'Alasan'
+          DataBinding.FieldName = 'alasan_blokir'
+          HeaderAlignmentHorz = taCenter
+          Width = 200
+        end
+        object cxGridDBTableView1saldo_akhir_bunga_bmhd: TcxGridDBColumn
+          Caption = 'Saldo Akhir Bunga'
+          DataBinding.FieldName = 'saldo_akhir_bunga_bmhd'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1tgl_akru_terakhir: TcxGridDBColumn
+          Caption = 'Tanggal Akhir'
+          DataBinding.FieldName = 'tgl_akru_terakhir'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
+        end
+        object cxGridDBTableView1tanggal_jt: TcxGridDBColumn
+          Caption = 'Tanggal Jatuh Tempo'
+          DataBinding.FieldName = 'tanggal_jt'
+          HeaderAlignmentHorz = taCenter
+          Width = 75
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -325,112 +314,99 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       FieldName = 'pbdp'
     end
   end
-  object dsMyQDN0001: TMyDataSource
-    DataSet = MyQDN0001
-    Left = 376
-    Top = 280
+  object dsMyQDSN0002: TMyDataSource
+    DataSet = MyQDSN0002
+    Left = 384
+    Top = 272
   end
-  object MyQDN0001: TMyQuery
+  object MyQDSN0002: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       'SELECT'
-      '  `flag_detail`,'
+      '  `jumlah_pemilik_rekening`,'
       '  `nasabah_id`,'
-      '  `nama_nasabah`,'
-      '  `jenis_id`,'
-      '  `no_id`,'
-      '  `nama_ibu_kandung`,'
-      '  `tgl_lahir`,'
-      '  `no_id2`,'
-      '  `nama_pengurus`,'
-      '  `jenis_identitas`,'
-      '  `nomor_identitas`,'
-      '  `alamat`,'
-      '  `kota_kab`,'
-      '  `wni`,'
-      '  `telpon`,'
-      '  `flag_fraud`,'
-      '  `hub_dgn_bank`,'
-      '  `slik_kode_hub_ljk`,'
-      '  `slik_kode_gol_debitur`'
-      'FROM `lps_dn_f0001`')
+      '  `kode_integrasi`,'
+      '  `no_rekening`,'
+      '  `status_dana`,'
+      '  `tgl_mulai_atau_tgl_aro_terakhir`,'
+      '  `suku_bunga`,'
+      '  `suku_bunga_val`,'
+      '  `biaya_cashback`,'
+      '  `tingkat_bunga_penjaminan_lps`,'
+      '  `kategori_tingkat_bunga_simpanan`,'
+      '  `saldo_akhir`,'
+      '  `nominal_blokir`,'
+      '  `alasan_blokir`,'
+      '  `saldo_akhir_bunga_bmhd`,'
+      '  `tgl_akru_terakhir`,'
+      '  `tanggal_jt`'
+      'FROM `lps_dsn_f0002`'
+      '&WHERE'
+      'LIMIT 30')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
     Top = 280
-    object MyQDN0001flag_detail: TStringField
-      FieldName = 'flag_detail'
-      Size = 1
+    MacroData = <
+      item
+        Name = 'WHERE'
+      end>
+    object MyQDSN0002jumlah_pemilik_rekening: TIntegerField
+      FieldName = 'jumlah_pemilik_rekening'
     end
-    object MyQDN0001nasabah_id: TStringField
+    object MyQDSN0002nasabah_id: TStringField
       FieldName = 'nasabah_id'
     end
-    object MyQDN0001nama_nasabah: TStringField
-      FieldName = 'nama_nasabah'
-      Size = 150
-    end
-    object MyQDN0001jenis_id: TStringField
-      FieldName = 'jenis_id'
-      Size = 3
-    end
-    object MyQDN0001no_id: TStringField
-      FieldName = 'no_id'
-      Size = 25
-    end
-    object MyQDN0001nama_ibu_kandung: TStringField
-      FieldName = 'nama_ibu_kandung'
-      Size = 150
-    end
-    object MyQDN0001tgl_lahir: TDateField
-      FieldName = 'tgl_lahir'
-    end
-    object MyQDN0001no_id2: TStringField
-      FieldName = 'no_id2'
-      Size = 35
-    end
-    object MyQDN0001nama_pengurus: TStringField
-      FieldName = 'nama_pengurus'
-      Size = 150
-    end
-    object MyQDN0001jenis_identitas: TStringField
-      FieldName = 'jenis_identitas'
-      Size = 3
-    end
-    object MyQDN0001nomor_identitas: TStringField
-      FieldName = 'nomor_identitas'
-      Size = 25
-    end
-    object MyQDN0001alamat: TStringField
-      FieldName = 'alamat'
-      Size = 300
-    end
-    object MyQDN0001kota_kab: TStringField
-      FieldName = 'kota_kab'
+    object MyQDSN0002kode_integrasi: TStringField
+      FieldName = 'kode_integrasi'
       Size = 4
     end
-    object MyQDN0001wni: TStringField
-      FieldName = 'wni'
+    object MyQDSN0002no_rekening: TStringField
+      FieldName = 'no_rekening'
+      Size = 35
+    end
+    object MyQDSN0002status_dana: TStringField
+      FieldName = 'status_dana'
+      Size = 1
+    end
+    object MyQDSN0002tgl_mulai_atau_tgl_aro_terakhir: TDateField
+      FieldName = 'tgl_mulai_atau_tgl_aro_terakhir'
+    end
+    object MyQDSN0002suku_bunga: TStringField
+      FieldName = 'suku_bunga'
+      Size = 1
+    end
+    object MyQDSN0002suku_bunga_val: TFloatField
+      FieldName = 'suku_bunga_val'
+    end
+    object MyQDSN0002biaya_cashback: TFloatField
+      FieldName = 'biaya_cashback'
+    end
+    object MyQDSN0002tingkat_bunga_penjaminan_lps: TFloatField
+      FieldName = 'tingkat_bunga_penjaminan_lps'
+    end
+    object MyQDSN0002kategori_tingkat_bunga_simpanan: TStringField
+      FieldName = 'kategori_tingkat_bunga_simpanan'
       Size = 3
     end
-    object MyQDN0001telpon: TStringField
-      FieldName = 'telpon'
-      Size = 15
+    object MyQDSN0002saldo_akhir: TFloatField
+      FieldName = 'saldo_akhir'
     end
-    object MyQDN0001flag_fraud: TStringField
-      FieldName = 'flag_fraud'
-      Size = 3
+    object MyQDSN0002nominal_blokir: TFloatField
+      FieldName = 'nominal_blokir'
     end
-    object MyQDN0001hub_dgn_bank: TStringField
-      FieldName = 'hub_dgn_bank'
+    object MyQDSN0002alasan_blokir: TStringField
+      FieldName = 'alasan_blokir'
       Size = 2
     end
-    object MyQDN0001slik_kode_hub_ljk: TStringField
-      FieldName = 'slik_kode_hub_ljk'
-      Size = 2
+    object MyQDSN0002saldo_akhir_bunga_bmhd: TFloatField
+      FieldName = 'saldo_akhir_bunga_bmhd'
     end
-    object MyQDN0001slik_kode_gol_debitur: TStringField
-      FieldName = 'slik_kode_gol_debitur'
-      Size = 11
+    object MyQDSN0002tgl_akru_terakhir: TDateField
+      FieldName = 'tgl_akru_terakhir'
+    end
+    object MyQDSN0002tanggal_jt: TDateField
+      FieldName = 'tanggal_jt'
     end
   end
 end

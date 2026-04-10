@@ -1,4 +1,4 @@
-unit FormDN0001;
+unit FormDSN0002;
 
 interface
 
@@ -28,13 +28,13 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxGridCustomView, cxGrid, DBAccess, MyAccess, MemDS, MyVAR,
-  MyLib, EntryFormDN0001, dxDateRanges,
+  MyLib, EntryFormDSN0002, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
   DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
 
 type
-  Tfr_FormDN0001 = class(Tfr_new_template)
+  Tfr_FormDSN0002 = class(Tfr_new_template)
     MyQuery1: TMyQuery;
     MyQuery1jml: TLargeintField;
     MyQuery1bd: TFloatField;
@@ -44,49 +44,45 @@ type
     MyQuery1pyad: TFloatField;
     MyQuery1bd_netto: TFloatField;
     MyQuery1pbdp: TFloatField;
-    dsMyQDN0001: TMyDataSource;
-    MyQDN0001: TMyQuery;
+    dsMyQDSN0002: TMyDataSource;
+    MyQDSN0002: TMyQuery;
     cxgGrid: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
-    MyQDN0001flag_detail: TStringField;
-    MyQDN0001nasabah_id: TStringField;
-    MyQDN0001nama_nasabah: TStringField;
-    MyQDN0001jenis_id: TStringField;
-    MyQDN0001no_id: TStringField;
-    MyQDN0001nama_ibu_kandung: TStringField;
-    MyQDN0001tgl_lahir: TDateField;
-    MyQDN0001no_id2: TStringField;
-    MyQDN0001nama_pengurus: TStringField;
-    MyQDN0001jenis_identitas: TStringField;
-    MyQDN0001nomor_identitas: TStringField;
-    MyQDN0001alamat: TStringField;
-    MyQDN0001kota_kab: TStringField;
-    MyQDN0001wni: TStringField;
-    MyQDN0001telpon: TStringField;
-    MyQDN0001flag_fraud: TStringField;
-    MyQDN0001hub_dgn_bank: TStringField;
-    MyQDN0001slik_kode_hub_ljk: TStringField;
-    MyQDN0001slik_kode_gol_debitur: TStringField;
-    cxGridDBTableView1flag_detail: TcxGridDBColumn;
+    MyQDSN0002jumlah_pemilik_rekening: TIntegerField;
+    MyQDSN0002nasabah_id: TStringField;
+    MyQDSN0002kode_integrasi: TStringField;
+    MyQDSN0002no_rekening: TStringField;
+    MyQDSN0002status_dana: TStringField;
+    MyQDSN0002tgl_mulai_atau_tgl_aro_terakhir: TDateField;
+    MyQDSN0002suku_bunga: TStringField;
+    MyQDSN0002suku_bunga_val: TFloatField;
+    MyQDSN0002biaya_cashback: TFloatField;
+    MyQDSN0002tingkat_bunga_penjaminan_lps: TFloatField;
+    MyQDSN0002kategori_tingkat_bunga_simpanan: TStringField;
+    MyQDSN0002saldo_akhir: TFloatField;
+    MyQDSN0002nominal_blokir: TFloatField;
+    MyQDSN0002alasan_blokir: TStringField;
+    MyQDSN0002saldo_akhir_bunga_bmhd: TFloatField;
+    MyQDSN0002tgl_akru_terakhir: TDateField;
+    MyQDSN0002tanggal_jt: TDateField;
+    cxGridDBTableView1jumlah_pemilik_rekening: TcxGridDBColumn;
     cxGridDBTableView1nasabah_id: TcxGridDBColumn;
-    cxGridDBTableView1nama_nasabah: TcxGridDBColumn;
-    cxGridDBTableView1jenis_id: TcxGridDBColumn;
-    cxGridDBTableView1no_id: TcxGridDBColumn;
-    cxGridDBTableView1nama_ibu_kandung: TcxGridDBColumn;
-    cxGridDBTableView1tgl_lahir: TcxGridDBColumn;
-    cxGridDBTableView1no_id2: TcxGridDBColumn;
-    cxGridDBTableView1nama_pengurus: TcxGridDBColumn;
-    cxGridDBTableView1jenis_identitas: TcxGridDBColumn;
-    cxGridDBTableView1nomor_identitas: TcxGridDBColumn;
-    cxGridDBTableView1alamat: TcxGridDBColumn;
-    cxGridDBTableView1kota_kab: TcxGridDBColumn;
-    cxGridDBTableView1wni: TcxGridDBColumn;
-    cxGridDBTableView1telpon: TcxGridDBColumn;
-    cxGridDBTableView1flag_fraud: TcxGridDBColumn;
-    cxGridDBTableView1hub_dgn_bank: TcxGridDBColumn;
-    cxGridDBTableView1slik_kode_hub_ljk: TcxGridDBColumn;
-    cxGridDBTableView1slik_kode_gol_debitur: TcxGridDBColumn;
+    cxGridDBTableView1kode_integrasi: TcxGridDBColumn;
+    cxGridDBTableView1no_rekening: TcxGridDBColumn;
+    cxGridDBTableView1status_dana: TcxGridDBColumn;
+    cxGridDBTableView1tgl_mulai_atau_tgl_aro_terakhir: TcxGridDBColumn;
+    cxGridDBTableView1suku_bunga: TcxGridDBColumn;
+    cxGridDBTableView1suku_bunga_val: TcxGridDBColumn;
+    cxGridDBTableView1biaya_cashback: TcxGridDBColumn;
+    cxGridDBTableView1tingkat_bunga_penjaminan_lps: TcxGridDBColumn;
+    cxGridDBTableView1kategori_tingkat_bunga_simpanan: TcxGridDBColumn;
+    cxGridDBTableView1saldo_akhir: TcxGridDBColumn;
+    cxGridDBTableView1nominal_blokir: TcxGridDBColumn;
+    cxGridDBTableView1alasan_blokir: TcxGridDBColumn;
+    cxGridDBTableView1saldo_akhir_bunga_bmhd: TcxGridDBColumn;
+    cxGridDBTableView1tgl_akru_terakhir: TcxGridDBColumn;
+    cxGridDBTableView1tanggal_jt: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -115,15 +111,24 @@ type
   end;
 
 var
-  fr_FormDN0001: Tfr_FormDN0001;
-  dTglProses0001: TDate;
+  fr_FormDSN0002: Tfr_FormDSN0002;
+  dTglProses0002: TDate;
 
 implementation
 uses Types, TypInfo, dm_bpr, SHFolder, DateUtils;
 
 {$R *.dfm}
 
-procedure Tfr_FormDN0001.judulMouseDown(Sender: TObject; Button: TMouseButton;
+function SafeNum(const F: TField): string;
+begin
+  if (F = nil) or F.IsNull or (Trim(F.AsString) = '') then
+    Result := 'NULL'
+  else
+    Result := F.AsString; // numeric TANPA tanda petik
+end;
+
+
+procedure Tfr_FormDSN0002.judulMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 var
   cNewCaption: String;
@@ -268,7 +273,7 @@ if Button in [mbRight] then
   end;
 end;
 
-procedure Tfr_FormDN0001.GetOgieGlobalSetting;
+procedure Tfr_FormDSN0002.GetOgieGlobalSetting;
 begin
   Ogie_FileIni := ExtractFilePath(Application.ExeName)+ChangeFileExt(ExtractFileName((Application.ExeName)),'.ini');
   FormatSettings.DateSeparator := '/';
@@ -281,288 +286,266 @@ begin
 end;
 
 
-procedure Tfr_FormDN0001.btlb_CloseClick(Sender: TObject);
+procedure Tfr_FormDSN0002.btlb_CloseClick(Sender: TObject);
 begin
   inherited;
   Close;
 end;
 
-procedure Tfr_FormDN0001.btlb_DeleteClick(Sender: TObject);
+procedure Tfr_FormDSN0002.btlb_DeleteClick(Sender: TObject);
 begin
   inherited;
+  if (MyQDSN0002.RecordCount=0) or (not MyQDSN0002.Active) then
+    begin
+      Pesan(2,'Maaf, Tdak ada data...!');
+      Exit;
+    end;
 
-  if (not MyQDN0001.Active) or
-     (MyQDN0001.RecordCount = 0) then
+  if Pesan(3,'Anda sudah yakin menghapus data ini ?') then
+    begin
+
+      UpdateUserLog(Self.Name, True,'Hapus Rekening=' + MyQDSN0002no_rekening.Text +
+      ' Nasabah ID=' + MyQDSN0002nasabah_id.Text +' Kode Integrasi=' + MyQDSN0002kode_integrasi.Text);
+      try
+          MyExecuteSQL(
+            'DELETE FROM ' + cDb2 + '.lps_dsn_f0002 ' +
+            'WHERE no_rekening = ' + QuotedStr(MyQDSN0002no_rekening.Text));
+      except
+        on E: EDatabaseError do
+          begin
+            //Pesan(2,SubStr(E.Message,At());
+          end;
+      end;
+
+      if MyQDSN0002.Active then
+        MyQDSN0002.Refresh
+      else
+        MyQDSN0002.Open;
+    end;
+end;
+
+procedure Tfr_FormDSN0002.btlb_EditClick(Sender: TObject);
+begin
+  inherited;
+  if (MyQDSN0002.RecordCount=0) or (not MyQDSN0002.Active) then
+    begin
+      Pesan(2,'Maaf, Tdak ada data...!');
+      Exit;
+    end;
+
+    if Application.FindComponent('fr_EntryFormDSN0002') = nil then
+      Application.CreateForm(Tfr_EntryFormDSN0002, fr_EntryFormDSN0002);
+
+    fr_EntryFormDSN0002.MyQTemp.MacroByName('WHERE').Value :=
+      'WHERE no_rekening = ' + QuotedStr(MyQDSN0002no_rekening.Text) +
+      '  AND nasabah_id = ' + QuotedStr(MyQDSN0002nasabah_id.Text);
+
+    {
+    fr_EntryFormLps0002.MyQTemp.MacroByName('WHERE').Value :=
+      'WHERE a.no_rekening = ' + QuotedStr(MyQDaftarSimpananNasabahno_rekening.Text) +
+      '  AND a.nasabah_id = ' + QuotedStr(MyQDaftarSimpananNasabahnasabah_id.Text) +
+      '  AND a.flag_detail = ' + QuotedStr(MyQDaftarSimpananNasabahflag_detail.Text);
+    }
+
+    if fr_EntryFormDSN0002.MyQTemp.Active then
+      fr_EntryFormDSN0002.MyQTemp.Refresh
+    else
+      fr_EntryFormDSN0002.MyQTemp.Open;
+
+    with fr_EntryFormDSN0002 do
+    begin
+      JenisTrans0002 := '2';
+
+      jumlah_pemilik_rekening.Properties.MaxLength := MyQTempjumlah_pemilik_rekening.Size;
+      nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
+      no_rekening.Properties.MaxLength := MyQTempno_rekening.Size;
+      staus_dana.Properties.MaxLength := MyQTempstatus_dana.Size;
+      suku_bunga.Properties.MaxLength := MyQTempsuku_bunga.Size;
+      suku_bunga_val.Properties.MaxLength := MyQTempsuku_bunga_val.Size;
+      biaya_cashback.Properties.MaxLength := MyQTempbiaya_cashback.Size;
+      tingkat_bunga_penjaminan_lps.Properties.MaxLength := MyQTemptingkat_bunga_penjaminan_lps.Size;
+      kategori_tingkat_bunga_simpanan.Properties.MaxLength := MyQTempkategori_tingkat_bunga_simpanan.Size;
+      alasan_blokir.Properties.MaxLength := MyQTempalasan_blokir.Size;
+
+      jumlah_pemilik_rekening.Text := MyQTempjumlah_pemilik_rekening.AsString;
+      nasabah_id.Text := MyQTempnasabah_id.AsString;
+      no_rekening.Text := MyQTempno_rekening.AsString;
+      staus_dana.Text := MyQTempstatus_dana.AsString;
+      staus_danaExit(Sender);
+      tgl_mulai_atau_tgl_aro_terakhir.Date := MyQTemptgl_mulai_atau_tgl_aro_terakhir.AsDateTime;
+      suku_bunga.Text := MyQTempsuku_bunga.AsString;
+      suku_bunga_val.Value := MyQTempsuku_bunga_val.Value;
+      biaya_cashback.Value := MyQTempbiaya_cashback.Value;
+      tingkat_bunga_penjaminan_lps.Value := MyQTemptingkat_bunga_penjaminan_lps.Value;
+      kategori_tingkat_bunga_simpanan.Text := MyQTempkategori_tingkat_bunga_simpanan.AsString;
+      kategori_tingkat_bunga_simpananExit(Sender);
+      jml_deposito.Value := MyQTempsaldo_akhir.Value;
+      nominal_blokir.Value := MyQTempnominal_blokir.Value;
+      alasan_blokir.Text := MyQTempalasan_blokir.AsString;
+      alasan_blokirExit(Sender);
+      saldo_akhir_bunga_bmhd.Value := MyQTempsaldo_akhir_bunga_bmhd.Value;
+
+      tgl_akru_terakhir.Date := MyQTemptgl_akru_terakhir.AsDateTime;
+      tanggal_jt.Date := MyQTemptanggal_jt.AsDateTime;
+    end;
+
+  fr_EntryFormDSN0002.Tag := 0;
+  fr_EntryFormDSN0002.ShowModal;
+  if fr_EntryFormDSN0002.Tag=2 then
+    begin
+      with fr_EntryFormDSN0002 do
+        begin
+        MyExecuteSQL('UPDATE ' + cDb2 + '.lps_dsn_f0002 ' +
+          'SET ' +
+          '`jumlah_pemilik_rekening`=' + QuotedStr(jumlah_pemilik_rekening.Text) +
+          ', `nasabah_id`=' + QuotedStr(nasabah_id.Text) +
+          ', `no_rekening`=' + QuotedStr(no_rekening.Text) +
+          ', `status_dana`=' + QuotedStr(staus_dana.Text) +   // <== baris ini aman
+          ', `tgl_mulai_atau_tgl_aro_terakhir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date)) +
+          ', `suku_bunga`=' + FloatToStr(suku_bunga.Value) +
+          ', `suku_bunga_val`=' + FloatToStr(suku_bunga_val.Value) +
+          ', `biaya_cashback`=' + FloatToStr(biaya_cashback.Value) +
+          ', `tingkat_bunga_penjaminan_lps`=' + FloatToStr(tingkat_bunga_penjaminan_lps.Value) +
+          ', `kategori_tingkat_bunga_simpanan`=' + QuotedStr(kategori_tingkat_bunga_simpanan.Text) +
+          ', `saldo_akhir`=' + FloatToStr(jml_deposito.Value) +
+          ', `nominal_blokir`=' + FloatToStr(nominal_blokir.Value) +
+          ', `alasan_blokir`=' + QuotedStr(alasan_blokir.Text) +
+          ', `saldo_akhir_bunga_bmhd`=' + FloatToStr(saldo_akhir_bunga_bmhd.Value) +
+          ', `tgl_akru_terakhir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date)) +
+          ', `tanggal_jt`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date)) +
+          ' WHERE `no_rekening`=' + QuotedStr(MyQDSN0002no_rekening.Text) +
+          ' AND `nasabah_id`=' + QuotedStr(MyQDSN0002nasabah_id.Text));
+        end;
+      if MyQDSN0002.Active then
+        MyQDSN0002.Refresh
+      else
+        MyQDSN0002.Open;
+    end;
+
+  fr_EntryFormDSN0002.Free;
+  fr_EntryFormDSN0002 := nil;
+end;
+
+procedure Tfr_FormDSN0002.btlb_InsertClick(Sender: TObject);
+begin
+  inherited;
+  if Application.FindComponent('fr_EntryFormDSN0002') = nil then
+    Application.CreateForm(Tfr_EntryFormDSN0002, fr_EntryFormDSN0002);
+
+  fr_EntryFormDSN0002.MyQTemp.MacroByName('WHERE').Value :=
+    'WHERE no_rekening=' + QuotedStr(MyQDSN0002no_rekening.Text);
+
+  if fr_EntryFormDSN0002.MyQTemp.Active then
+    fr_EntryFormDSN0002.MyQTemp.Refresh
+  else
+    fr_EntryFormDSN0002.MyQTemp.Open;
+
+  with fr_EntryFormDSN0002 do
   begin
-    Pesan(2, 'Maaf, Tidak ada data...!');
-    Exit;
+    JenisTrans0002 := '1';
+
+    jumlah_pemilik_rekening.Properties.MaxLength := MyQTempjumlah_pemilik_rekening.Size;
+    nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
+    no_rekening.Properties.MaxLength := MyQTempno_rekening.Size;
+    staus_dana.Properties.MaxLength := MyQTempstatus_dana.Size;
+    suku_bunga.Properties.MaxLength := MyQTempsuku_bunga.Size;
+    suku_bunga_val.Properties.MaxLength := MyQTempsuku_bunga_val.Size;
+    biaya_cashback.Properties.MaxLength := MyQTempbiaya_cashback.Size;
+    tingkat_bunga_penjaminan_lps.Properties.MaxLength := MyQTemptingkat_bunga_penjaminan_lps.Size;
+    kategori_tingkat_bunga_simpanan.Properties.MaxLength := MyQTempkategori_tingkat_bunga_simpanan.Size;
+    jml_deposito.Properties.MaxLength := MyQTempsaldo_akhir.Size;
+    nominal_blokir.Properties.MaxLength := MyQTempnominal_blokir.Size;
+    alasan_blokir.Properties.MaxLength := MyQTempalasan_blokir.Size;
+    saldo_akhir_bunga_bmhd.Properties.MaxLength := MyQTempsaldo_akhir_bunga_bmhd.Size;
+
+    jumlah_pemilik_rekening.Value := 0;
+    nasabah_id.Text := '';
+    no_rekening.Text := '';
+    staus_dana.Text := '';
+    tgl_mulai_atau_tgl_aro_terakhir.Date := Date;
+    suku_bunga.Value := 0;
+    suku_bunga_val.Value := 0;
+    biaya_cashback.Value := 0;
+    tingkat_bunga_penjaminan_lps.Value := 0;
+    kategori_tingkat_bunga_simpanan.Text := '';
+    jml_deposito.Value := 0;
+    nominal_blokir.Value := 0;
+    alasan_blokir.Text := '';
+    saldo_akhir_bunga_bmhd.Value := 0;
+    tgl_akru_terakhir.Date := Date;
+    tanggal_jt.Date := Date;
   end;
 
-  if Pesan(3, 'Anda sudah yakin menghapus data ini ?') then
-  begin
-    UpdateUserLog(Self.Name, True,
-      'Hapus Data Nominatif: ' +
-      'NasabahID=' + MyQDN0001.FieldByName('nasabah_id').AsString + ', ' +
-      'Nama=' + MyQDN0001.FieldByName('nama_nasabah').AsString + ', ' +
-      'NoIdentitas=' + MyQDN0001.FieldByName('nomor_identitas').AsString + ', ' +
-      'NoID2=' + MyQDN0001.FieldByName('no_id2').AsString + ', ' +
-      'HubunganBank=' + MyQDN0001.FieldByName('hub_dgn_bank').AsString);
+  fr_EntryFormDSN0002.Tag := 0;
+  fr_EntryFormDSN0002.ShowModal;
 
+  if fr_EntryFormDSN0002.Tag = 2 then
+  begin
+    with fr_EntryFormDSN0002 do
     try
       MyExecuteSQL(
-        'DELETE FROM ' + cDb2 + '.lps_dn_f0001 ' +
-        'WHERE nasabah_id = ' + QuotedStr(MyQDN0001.FieldByName('nasabah_id').AsString));
+      'INSERT INTO '+cDb2+'.lps_dsn_f0002 ('+
+      '`jumlah_pemilik_rekening`, `nasabah_id`, `no_rekening`, '+
+      '`status_dana`, `tgl_mulai_atau_tgl_aro_terakhir`, `suku_bunga`, `suku_bunga_val`, `biaya_cashback`, '+
+      '`tingkat_bunga_penjaminan_lps`, `kategori_tingkat_bunga_simpanan`, `saldo_akhir`, `nominal_blokir`, `alasan_blokir`, '+
+      '`saldo_akhir_bunga_bmhd`, `tgl_akru_terakhir`, `tanggal_jt`) VALUES ('+
+      FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
+      QuotedStr(nasabah_id.Text)+','+
+      QuotedStr(no_rekening.Text)+','+
+      QuotedStr(staus_dana.Text)+','+
+      QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date))+','+
+      FormatFloat('0.######', suku_bunga.Value)+','+
+      FormatFloat('0.######', suku_bunga_val.Value)+','+
+      FormatFloat('0.######', biaya_cashback.Value)+','+
+      FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
+      QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
+      FormatFloat('0.######', jml_deposito.Value)+','+
+      FormatFloat('0.######', nominal_blokir.Value)+','+
+      QuotedStr(alasan_blokir.Text)+','+
+      FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
+      QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
+      QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+''+
+      ') ON DUPLICATE KEY UPDATE '+
+      'jumlah_pemilik_rekening='+FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
+      'nasabah_id='+QuotedStr(nasabah_id.Text)+','+
+      'status_dana='+QuotedStr(staus_dana.Text)+','+
+      'tgl_mulai_atau_tgl_aro_terakhir='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date))+','+
+      'suku_bunga='+FormatFloat('0.######', suku_bunga.Value)+','+
+      'suku_bunga_val='+FormatFloat('0.######', suku_bunga_val.Value)+','+
+      'biaya_cashback='+FormatFloat('0.######', biaya_cashback.Value)+','+
+      'tingkat_bunga_penjaminan_lps='+FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
+      'kategori_tingkat_bunga_simpanan='+QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
+      'saldo_akhir='+FormatFloat('0.######', jml_deposito.Value)+','+
+      'nominal_blokir='+FormatFloat('0.######', nominal_blokir.Value)+','+
+      'alasan_blokir='+QuotedStr(alasan_blokir.Text)+','+
+      'saldo_akhir_bunga_bmhd='+FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
+      'tgl_akru_terakhir='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
+      'tanggal_jt='+QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+' ');
     except
-      on E: EDatabaseError do
-      begin
-        Pesan(2, 'Terjadi kesalahan saat menghapus data: ' + E.Message);
-      end;
+      on E: Exception do
+        ShowMessage('SQL ERROR: ' + E.Message);
     end;
 
-    if MyQDN0001.Active then
-      MyQDN0001.Refresh
+    if MyQDSN0002.Active then
+      MyQDSN0002.Refresh
     else
-      MyQDN0001.Open;
+      MyQDSN0002.Open;
   end;
+
+  fr_EntryFormDSN0002.Free;
+  fr_EntryFormDSN0002 := nil;
 end;
 
-procedure Tfr_FormDN0001.btlb_EditClick(Sender: TObject);
+procedure Tfr_FormDSN0002.btlb_RefreshClick(Sender: TObject);
 begin
   inherited;
-
-  if (MyQDN0001.RecordCount = 0) or (not MyQDN0001.Active) then
-  begin
-    Pesan(2, 'Maaf, Tidak ada data...!');
-    Exit;
-  end;
-
-  if Application.FindComponent('fr_EntryFormNasabah') = nil then
-    Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
-
-  fr_EntryFormDN0001.MyQTemp.MacroByName('WHERE').Value :=
-    'WHERE nasabah_id=' + QuotedStr(MyQDN0001nasabah_id.Text);
-
-  if fr_EntryFormDN0001.MyQTemp.Active then
-    fr_EntryFormDN0001.MyQTemp.Refresh
+  if MyQDSN0002.Active then
+    MyQDSN0002.Refresh
   else
-    fr_EntryFormDN0001.MyQTemp.Open;
-
-  with fr_EntryFormDN0001 do
-  begin
-    JenisTrans0001 := 'EDIT';
-
-    nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
-    nama_nasabah.Properties.MaxLength := MyQTempnama_nasabah.Size;
-    kode_jenis_id.Properties.MaxLength := MyQTempjenis_id.Size;
-    no_id.Properties.MaxLength := MyQTempno_id.Size;
-    nama_ibu_kandung.Properties.MaxLength := MyQTempnama_ibu_kandung.Size;
-    no_iden_bdn_hukum.Properties.MaxLength := MyQTempno_id2.Size;
-    nama_pengurus.Properties.MaxLength := MyQTempnama_pengurus.Size;
-    kode_jenis_id_pengurus.Properties.MaxLength := MyQTempjenis_identitas.Size;
-    no_iden_pegang_kuasa.Properties.MaxLength := MyQTempnomor_identitas.Size;
-    alamat.Properties.MaxLength := MyQTempalamat.Size;
-    kode_kota_kab.Properties.MaxLength := MyQTempkota_kab.Size;
-    kode_kewarganegaraan.Properties.MaxLength := MyQTempwni.Size;
-    telpon.Properties.MaxLength := MyQTemptelpon.Size;
-    kode_flag.Properties.MaxLength := MyQTempflag_fraud.Size;
-    kode_hub_bank.Properties.MaxLength := MyQTemphub_dgn_bank.Size;
-    kode_hub_pihak_terkait.Properties.MaxLength := MyQTempslik_kode_hub_ljk.Size;
-    kode_gol_nasabah.Properties.MaxLength := MyQTempslik_kode_gol_debitur.Size;
-
-    nasabah_id.Text := MyQTempnasabah_id.AsString;
-    nama_nasabah.Text := MyQTempnama_nasabah.AsString;
-    kode_jenis_id.Text := MyQTempjenis_id.AsString;
-    kode_jenis_idExit(Sender);
-    no_id.Text := MyQTempno_id.AsString;
-    nama_ibu_kandung.Text := MyQTempnama_ibu_kandung.AsString;
-    tgl_lahir.Date := MyQTemptgl_lahir.AsDateTime;
-    no_iden_bdn_hukum.Text := MyQTempno_id2.AsString;
-    nama_pengurus.Text := MyQTempnama_pengurus.AsString;
-    kode_jenis_id_pengurus.Text := MyQTempjenis_identitas.AsString;
-    kode_jenis_id_pengurusExit(Sender);
-    no_iden_pegang_kuasa.Text := MyQTempnomor_identitas.AsString;
-    alamat.Text := MyQTempalamat.AsString;
-    kode_kota_kab.Text := MyQTempkota_kab.AsString;
-    kode_kota_kabExit(Sender);
-    kode_kewarganegaraan.Text := MyQTempwni.AsString;
-    kode_kewarganegaraanExit(Sender);
-    telpon.Text := MyQTemptelpon.AsString;
-    kode_flag.Text := MyQTempflag_fraud.AsString;
-    kode_flagExit(Sender);
-    kode_hub_bank.Text := MyQTemphub_dgn_bank.AsString;
-    kode_hub_bankExit(Sender);
-    kode_hub_pihak_terkait.Text := MyQTempslik_kode_hub_ljk.AsString;
-    kode_hub_pihak_terkaitExit(Sender);
-    kode_gol_nasabah.Text := MyQTempslik_kode_gol_debitur.AsString;
-    kode_gol_nasabahExit(Sender);
-  end;
-
-  fr_EntryFormDN0001.Tag := 0;
-  fr_EntryFormDN0001.ShowModal;
-
-  if fr_EntryFormDN0001.Tag = 2 then
-  begin
-    with fr_EntryFormDN0001 do
-    begin
-      MyExecuteSQL(
-        'UPDATE ' + cDb2 + '.lps_dn_f0001 SET ' +
-        '`nasabah_id`=' + QuotedStr(nasabah_id.Text) + ',' +
-        '`nama_nasabah`=' + QuotedStr(nama_nasabah.Text) + ',' +
-        '`jenis_id`=' + QuotedStr(kode_jenis_id.Text) + ',' +
-        '`no_id`=' + QuotedStr(no_id.Text) + ',' +
-        '`nama_ibu_kandung`=' + QuotedStr(nama_ibu_kandung.Text) + ',' +
-        '`tgl_lahir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_lahir.Date)) + ',' +
-        '`no_id2`=' + QuotedStr(no_iden_bdn_hukum.Text) + ',' +
-        '`nama_pengurus`=' + QuotedStr(nama_pengurus.Text) + ',' +
-        '`jenis_identitas`=' + QuotedStr(kode_jenis_id_pengurus.Text) + ',' +
-        '`nomor_identitas`=' + QuotedStr(no_iden_pegang_kuasa.Text) + ',' +
-        '`alamat`=' + QuotedStr(alamat.Text) + ',' +
-        '`kota_kab`=' + QuotedStr(kode_kota_kab.Text) + ',' +
-        '`wni`=' + QuotedStr(kode_kewarganegaraan.Text) + ',' +
-        '`telpon`=' + QuotedStr(telpon.Text) + ',' +
-        '`flag_fraud`=' + QuotedStr(kode_flag.Text) + ',' +
-        '`hub_dgn_bank`=' + QuotedStr(kode_hub_bank.Text) + ',' +
-        '`slik_kode_hub_ljk`=' + QuotedStr(kode_hub_pihak_terkait.Text) + ',' +
-        '`slik_kode_gol_debitur`=' + QuotedStr(kode_gol_nasabah.Text) + '' +
-        'WHERE nasabah_id=' + QuotedStr(MyQDN0001nasabah_id.Text));
-    end;
-
-    if MyQDN0001.Active then
-      MyQDN0001.Refresh
-    else
-      MyQDN0001.Open;
-  end;
-
-  fr_EntryFormDN0001.Free;
-  fr_EntryFormDN0001 := nil;
+    MyQDSN0002.Open;
 end;
 
-procedure Tfr_FormDN0001.btlb_InsertClick(Sender: TObject);
-begin
-  inherited;
-  if Application.FindComponent('fr_EntryFormDN0001') = nil then
-    Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
-  fr_EntryFormDN0001.MyQTemp.MacroByName('WHERE').Value :=
-    'WHERE nasabah_id=' + QuotedStr(MyQDN0001nasabah_id.Text);
-  if fr_EntryFormDN0001.MyQTemp.Active then
-    fr_EntryFormDN0001.MyQTemp.Refresh
-  else
-    fr_EntryFormDN0001.MyQTemp.Open;
-
-  with fr_EntryFormDN0001 do
-  begin
-    JenisTrans0001 := '1';
-
-    nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
-    nama_nasabah.Properties.MaxLength := MyQTempnama_nasabah.Size;
-    kode_jenis_id.Properties.MaxLength := MyQTempjenis_id.Size;
-    no_id.Properties.MaxLength := MyQTempno_id.Size;
-    nama_ibu_kandung.Properties.MaxLength := MyQTempnama_ibu_kandung.Size;
-    no_iden_bdn_hukum.Properties.MaxLength := MyQTempno_id2.Size;
-    nama_pengurus.Properties.MaxLength := MyQTempnama_pengurus.Size;
-    kode_jenis_id_pengurus.Properties.MaxLength := MyQTempjenis_identitas.Size;
-    no_iden_pegang_kuasa.Properties.MaxLength := MyQTempnomor_identitas.Size;
-    alamat.Properties.MaxLength := MyQTempalamat.Size;
-    kode_kota_kab.Properties.MaxLength := MyQTempkota_kab.Size;
-    kode_kewarganegaraan.Properties.MaxLength := MyQTempwni.Size;
-    telpon.Properties.MaxLength := MyQTemptelpon.Size;
-    kode_flag.Properties.MaxLength := MyQTempflag_fraud.Size;
-    kode_hub_bank.Properties.MaxLength := MyQTemphub_dgn_bank.Size;
-    kode_hub_pihak_terkait.Properties.MaxLength := MyQTempslik_kode_hub_ljk.Size;
-    kode_gol_nasabah.Properties.MaxLength := MyQTempslik_kode_gol_debitur.Size;
-
-    nasabah_id.Text := '';
-    nama_nasabah.Text := '';
-    kode_jenis_id.Text := '';
-    no_id.Text := '';
-    nama_ibu_kandung.Text := '';
-    tgl_lahir.Date := dTglSystem;
-    nama_pengurus.Text := '';
-    nama_pengurus.Text := '';
-    kode_jenis_id_pengurus.Text := '';
-    no_iden_pegang_kuasa.Text := '';
-    alamat.Text := '';
-    kode_kota_kab.Text := '';
-    kode_kewarganegaraan.Text := '';
-    telpon.Text := '';
-    kode_flag.Text := '';
-    kode_hub_bank.Text := '';
-    kode_hub_pihak_terkait.Text := '';
-    kode_gol_nasabah.Text := '';
-  end;
-
-  fr_EntryFormDN0001.Tag := 0;
-  fr_EntryFormDN0001.ShowModal;
-
-  if fr_EntryFormDN0001.Tag = 2 then
-  begin
-    with fr_EntryFormDN0001 do
-    begin
-      MyExecuteSQL(
-        'INSERT INTO ' + cDb2 + '.lps_dn_f0001 (' +
-        '`nasabah_id`, `nama_nasabah`, `jenis_id`, `no_id`, ' +
-        '`nama_ibu_kandung`, `tgl_lahir`, `no_id2`, `nama_pengurus`, ' +
-        '`jenis_identitas`, `nomor_identitas`, `alamat`, `kota_kab`, `wni`, ' +
-        '`telpon`, `flag_fraud`, `hub_dgn_bank`, `slik_kode_hub_ljk`, `slik_kode_gol_debitur`) VALUES (' +
-        QuotedStr(nasabah_id.Text) + ', ' +
-        QuotedStr(nama_nasabah.Text) + ', ' +
-        QuotedStr(kode_jenis_id.Text) + ', ' +
-        QuotedStr(no_id.Text) + ', ' +
-        QuotedStr(nama_ibu_kandung.Text) + ', ' +
-        DateToStrSQL(tgl_lahir.Date) + ', ' +
-        QuotedStr(no_iden_bdn_hukum.Text) + ', ' +
-        QuotedStr(nama_pengurus.Text) + ', ' +
-        QuotedStr(kode_jenis_id_pengurus.Text) + ', ' +
-        QuotedStr(no_iden_pegang_kuasa.Text) + ', ' +
-        QuotedStr(alamat.Text) + ', ' +
-        QuotedStr(kode_kota_kab.Text) + ', ' +
-        QuotedStr(kode_kewarganegaraan.Text) + ', ' +
-        QuotedStr(telpon.Text) + ', ' +
-        QuotedStr(kode_flag.Text) + ', ' +
-        QuotedStr(kode_hub_bank.Text) + ', ' +
-        QuotedStr(kode_hub_pihak_terkait.Text) + ', ' +
-        QuotedStr(kode_gol_nasabah.Text) + ' ' +
-        ') ' +
-        'ON DUPLICATE KEY UPDATE ' +
-        '`nama_nasabah`=' + QuotedStr(nama_nasabah.Text) + ',' +
-        '`jenis_id`=' + QuotedStr(kode_jenis_id.Text) + ',' +
-        '`no_id`=' + QuotedStr(no_id.Text) + ',' +
-        '`nama_ibu_kandung`=' + QuotedStr(nama_ibu_kandung.Text) + ',' +
-        '`tgl_lahir`=' + DateToStrSQL(tgl_lahir.Date) + ',' +
-        '`no_id2`=' + QuotedStr(no_iden_bdn_hukum.Text) + ',' +
-        '`nama_pengurus`=' + QuotedStr(nama_pengurus.Text) + ',' +
-        '`jenis_identitas`=' + QuotedStr(kode_jenis_id_pengurus.Text) + ',' +
-        '`nomor_identitas`=' + QuotedStr(no_iden_pegang_kuasa.Text) + ',' +
-        '`alamat`=' + QuotedStr(alamat.Text) + ',' +
-        '`kota_kab`=' + QuotedStr(kode_kota_kab.Text) + ',' +
-        '`wni`=' + QuotedStr(kode_kewarganegaraan.Text) + ',' +
-        '`telpon`=' + QuotedStr(telpon.Text) + ',' +
-        '`flag_fraud`=' + QuotedStr(kode_flag.Text) + ',' +
-        '`hub_dgn_bank`=' + QuotedStr(kode_hub_bank.Text) + ',' +
-        '`slik_kode_hub_ljk`=' + QuotedStr(kode_hub_pihak_terkait.Text) + ',' +
-        '`slik_kode_gol_debitur`=' + QuotedStr(kode_gol_nasabah.Text));
-    end;
-
-    if MyQDN0001.Active then
-      MyQDN0001.Refresh
-    else
-      MyQDN0001.Open;
-  end;
-
-  fr_EntryFormDN0001.Free;
-  fr_EntryFormDN0001 := nil;
-end;
-
-procedure Tfr_FormDN0001.btlb_RefreshClick(Sender: TObject);
-begin
-  inherited;
-  if MyQDN0001.Active then
-    MyQDN0001.Refresh
-  else
-    MyQDN0001.Open;
-end;
-
-procedure Tfr_FormDN0001.cxGridDBTableView1CellDblClick(
+procedure Tfr_FormDSN0002.cxGridDBTableView1CellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -571,13 +554,13 @@ begin
     btlb_EditClick(Sender);
 end;
 
-procedure Tfr_FormDN0001.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure Tfr_FormDSN0002.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Release;
   Action := caFree;
 end;
 
-procedure Tfr_FormDN0001.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure Tfr_FormDSN0002.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if (Tag=1) then
     begin
@@ -589,7 +572,7 @@ begin
     end
 end;
 
-procedure Tfr_FormDN0001.AssignJudulEvent;
+procedure Tfr_FormDSN0002.AssignJudulEvent;
 var
   i: Integer;
   PropInfo: PPropInfo;
@@ -616,7 +599,7 @@ begin
     end;
 end;
 
-procedure Tfr_FormDN0001.FormCreate(Sender: TObject);
+procedure Tfr_FormDSN0002.FormCreate(Sender: TObject);
 var
   jml, jml2: Integer;
   cCaption, cTag, cHint, cWidth: String;
@@ -825,7 +808,7 @@ begin
     DeleteFile(cNewLabelIni);
 end;
 
-procedure Tfr_FormDN0001.FormKeyPress(Sender: TObject; var Key: Char);
+procedure Tfr_FormDSN0002.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
@@ -836,7 +819,7 @@ begin
     Close;
 end;
 
-procedure Tfr_FormDN0001.FormShow(Sender: TObject);
+procedure Tfr_FormDSN0002.FormShow(Sender: TObject);
 begin
   inherited;
   btlb_RefreshClick(Sender);

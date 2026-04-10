@@ -534,7 +534,7 @@ object fr_MainMenu: Tfr_MainMenu
     UnicodeFilenames = False
     EncryptionMethod = caPkzipClassic
     Left = 448
-    Top = 251
+    Top = 235
   end
   object HTTP1: TipwHTTP
     SSLCertStore = 'MY'

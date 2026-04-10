@@ -24,7 +24,9 @@ uses
   GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
   FormDN0001 in 'FormDN0001.pas' {fr_FormDN0001},
   EntryFormDN0001 in 'EntryFormDN0001.pas' {fr_EntryFormDN0001},
-  FormRefLPS in 'FormRefLPS.pas' {fr_FormRefLPS};
+  FormRefLPS in 'FormRefLPS.pas' {fr_FormRefLPS},
+  EntryFormDSN0002 in 'EntryFormDSN0002.pas' {fr_EntryFormDSN0002},
+  FormDSN0002 in 'FormDSN0002.pas' {fr_FormDSN0002};
 
 {$R *.res}
 
@@ -37,5 +39,7 @@ begin
   Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
   Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
   Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
+  Application.CreateForm(Tfr_EntryFormDSN0002, fr_EntryFormDSN0002);
+  Application.CreateForm(Tfr_FormDSN0002, fr_FormDSN0002);
   Application.Run;
 end.
