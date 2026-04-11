@@ -48,7 +48,7 @@ type
     cxLabel1: TcxLabel;
     cxLabel5: TcxLabel;
     cxLabel4: TcxLabel;
-    tgl_mulai_atau_tgl_aro_terakhir: TcxDateEdit;
+    tgl_mulai: TcxDateEdit;
     cxLabel31: TcxLabel;
     cxLabel32: TcxLabel;
     cxLabel33: TcxLabel;
@@ -80,23 +80,30 @@ type
     suku_bunga: TcxCurrencyEdit;
     suku_bunga_val: TcxCurrencyEdit;
     MyQTemp: TMyQuery;
+    MyQTempklasifikasi_rekening: TStringField;
     MyQTempjumlah_pemilik_rekening: TIntegerField;
     MyQTempnasabah_id: TStringField;
-    MyQTempkode_integrasi: TStringField;
+    MyQTempjenis_simpanan: TStringField;
     MyQTempno_rekening: TStringField;
     MyQTempstatus_dana: TStringField;
-    MyQTemptgl_mulai_atau_tgl_aro_terakhir: TDateField;
-    MyQTempsuku_bunga: TStringField;
-    MyQTempsuku_bunga_val: TFloatField;
+    MyQTemptgl_mulai: TDateField;
+    MyQTempjenis_tingkat_bunga: TStringField;
+    MyQTemptingkat_bunga: TFloatField;
     MyQTempbiaya_cashback: TFloatField;
     MyQTemptingkat_bunga_penjaminan_lps: TFloatField;
     MyQTempkategori_tingkat_bunga_simpanan: TStringField;
-    MyQTempsaldo_akhir: TFloatField;
+    MyQTempsaldo_simpanan: TFloatField;
     MyQTempnominal_blokir: TFloatField;
     MyQTempalasan_blokir: TStringField;
-    MyQTempsaldo_akhir_bunga_bmhd: TFloatField;
+    MyQTempbunga_akrual: TFloatField;
     MyQTemptgl_akru_terakhir: TDateField;
     MyQTemptanggal_jt: TDateField;
+    cxLabel6: TcxLabel;
+    klasifikasi: TcxButtonEdit;
+    nm_klasifikasi: TcxTextEdit;
+    nm_jenis_simpanan: TcxTextEdit;
+    jenis_simpanan: TcxButtonEdit;
+    cxLabel7: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -112,6 +119,12 @@ type
     procedure kategori_tingkat_bunga_simpananPropertiesButtonClick(
       Sender: TObject; AButtonIndex: Integer);
     procedure alasan_blokirPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure klasifikasiExit(Sender: TObject);
+    procedure klasifikasiPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure jenis_simpananExit(Sender: TObject);
+    procedure jenis_simpananPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
   private
     { Private declarations }
@@ -589,6 +602,45 @@ begin
     Close;
 end;
 
+procedure Tfr_EntryFormDSN0002.jenis_simpananExit(Sender: TObject);
+begin
+  inherited;
+
+  if not Empty(jenis_simpanan.Text) and
+    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
+      cDb2+'.lps_ref_jenis_simpanan WHERE selectable=1 AND sandi='+QuotedStr(jenis_simpanan.Text))='0') then
+    begin
+      Pesan(2,'Kode sandi tersebut tidak ada');
+      if Self.Showing and staus_dana.CanFocus then
+        jenis_simpanan.SetFocus;
+      Exit;
+    end;
+
+  if not Empty(jenis_simpanan.Text) then
+    nm_jenis_simpanan.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_jenis_simpanan','sandi',jenis_simpanan.Text,'deskripsi_sandi');
+
+end;
+
+procedure Tfr_EntryFormDSN0002.jenis_simpananPropertiesButtonClick(
+  Sender: TObject; AButtonIndex: Integer);
+begin
+  inherited;
+   if Application.FindComponent('fr_FormRefLPS') = nil then
+    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_jenis_simpanan';
+  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
+  fr_FormRefLPS.FormCreate(Sender);
+  fr_FormRefLPS.ShowModal;
+  if fr_FormRefLPS.Tag=2 then
+    begin
+      jenis_simpanan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_jenis_simpanan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      Tag := 1;
+    end;
+  fr_FormRefLPS.Free;
+  fr_FormRefLPS := nil;
+end;
+
 procedure Tfr_EntryFormDSN0002.alasan_blokirExit(Sender: TObject);
 begin
   inherited;
@@ -679,6 +731,45 @@ begin
     begin
       kategori_tingkat_bunga_simpanan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
       nm_kategori_tingkat_bunga_simpanan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      Tag := 1;
+    end;
+  fr_FormRefLPS.Free;
+  fr_FormRefLPS := nil;
+end;
+
+procedure Tfr_EntryFormDSN0002.klasifikasiExit(Sender: TObject);
+begin
+  inherited;
+
+  if not Empty(klasifikasi.Text) and
+    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
+      cDb2+'.lps_ref_klasifikasi_rekening WHERE selectable=1 AND sandi='+QuotedStr(klasifikasi.Text))='0') then
+    begin
+      Pesan(2,'Kode sandi tersebut tidak ada');
+      if Self.Showing and staus_dana.CanFocus then
+        klasifikasi.SetFocus;
+      Exit;
+    end;
+
+  if not Empty(klasifikasi.Text) then
+    nm_klasifikasi.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_klasifikasi_rekening','sandi',klasifikasi.Text,'deskripsi_sandi');
+
+end;
+
+procedure Tfr_EntryFormDSN0002.klasifikasiPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  inherited;
+   if Application.FindComponent('fr_FormRefLPS') = nil then
+    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_klasifikasi_rekening';
+  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
+  fr_FormRefLPS.FormCreate(Sender);
+  fr_FormRefLPS.ShowModal;
+  if fr_FormRefLPS.Tag=2 then
+    begin
+      klasifikasi.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_klasifikasi.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
       Tag := 1;
     end;
   fr_FormRefLPS.Free;

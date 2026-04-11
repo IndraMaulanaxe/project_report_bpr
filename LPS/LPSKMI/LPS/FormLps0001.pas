@@ -397,8 +397,7 @@ begin
         QuotedStr(flag_fraud.Text) + ', ' +
         QuotedStr(hub_dgn_bank.Text) + ', ' +
         QuotedStr(slik_kode_hub_ljk.Text) + ', ' +
-        QuotedStr(slik_kode_gol_debitur.Text) + ', ' +
-        'NOW(), NOW()) ' +
+        QuotedStr(slik_kode_gol_debitur.Text) + ' ) ' +
         'ON DUPLICATE KEY UPDATE ' +
         '`nama_nasabah`=' + QuotedStr(nama_nasabah.Text) + ',' +
         '`jenis_id`=' + QuotedStr(jenis_id.Text) + ',' +

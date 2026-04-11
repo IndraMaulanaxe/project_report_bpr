@@ -49,38 +49,40 @@ type
     cxgGrid: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridLevel1: TcxGridLevel;
+    MyQDSN0002klasifikasi_rekening: TStringField;
     MyQDSN0002jumlah_pemilik_rekening: TIntegerField;
     MyQDSN0002nasabah_id: TStringField;
-    MyQDSN0002kode_integrasi: TStringField;
+    MyQDSN0002jenis_simpanan: TStringField;
     MyQDSN0002no_rekening: TStringField;
     MyQDSN0002status_dana: TStringField;
-    MyQDSN0002tgl_mulai_atau_tgl_aro_terakhir: TDateField;
-    MyQDSN0002suku_bunga: TStringField;
-    MyQDSN0002suku_bunga_val: TFloatField;
+    MyQDSN0002tgl_mulai: TDateField;
+    MyQDSN0002jenis_tingkat_bunga: TStringField;
+    MyQDSN0002tingkat_bunga: TFloatField;
     MyQDSN0002biaya_cashback: TFloatField;
     MyQDSN0002tingkat_bunga_penjaminan_lps: TFloatField;
     MyQDSN0002kategori_tingkat_bunga_simpanan: TStringField;
-    MyQDSN0002saldo_akhir: TFloatField;
+    MyQDSN0002saldo_simpanan: TFloatField;
     MyQDSN0002nominal_blokir: TFloatField;
     MyQDSN0002alasan_blokir: TStringField;
-    MyQDSN0002saldo_akhir_bunga_bmhd: TFloatField;
+    MyQDSN0002bunga_akrual: TFloatField;
     MyQDSN0002tgl_akru_terakhir: TDateField;
     MyQDSN0002tanggal_jt: TDateField;
+    cxGridDBTableView1klasifikasi_rekening: TcxGridDBColumn;
     cxGridDBTableView1jumlah_pemilik_rekening: TcxGridDBColumn;
     cxGridDBTableView1nasabah_id: TcxGridDBColumn;
-    cxGridDBTableView1kode_integrasi: TcxGridDBColumn;
+    cxGridDBTableView1jenis_simpanan: TcxGridDBColumn;
     cxGridDBTableView1no_rekening: TcxGridDBColumn;
     cxGridDBTableView1status_dana: TcxGridDBColumn;
-    cxGridDBTableView1tgl_mulai_atau_tgl_aro_terakhir: TcxGridDBColumn;
-    cxGridDBTableView1suku_bunga: TcxGridDBColumn;
-    cxGridDBTableView1suku_bunga_val: TcxGridDBColumn;
+    cxGridDBTableView1tgl_mulai: TcxGridDBColumn;
+    cxGridDBTableView1jenis_tingkat_bunga: TcxGridDBColumn;
+    cxGridDBTableView1tingkat_bunga: TcxGridDBColumn;
     cxGridDBTableView1biaya_cashback: TcxGridDBColumn;
     cxGridDBTableView1tingkat_bunga_penjaminan_lps: TcxGridDBColumn;
     cxGridDBTableView1kategori_tingkat_bunga_simpanan: TcxGridDBColumn;
-    cxGridDBTableView1saldo_akhir: TcxGridDBColumn;
+    cxGridDBTableView1saldo_simpanan: TcxGridDBColumn;
     cxGridDBTableView1nominal_blokir: TcxGridDBColumn;
     cxGridDBTableView1alasan_blokir: TcxGridDBColumn;
-    cxGridDBTableView1saldo_akhir_bunga_bmhd: TcxGridDBColumn;
+    cxGridDBTableView1bunga_akrual: TcxGridDBColumn;
     cxGridDBTableView1tgl_akru_terakhir: TcxGridDBColumn;
     cxGridDBTableView1tanggal_jt: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
@@ -305,7 +307,7 @@ begin
     begin
 
       UpdateUserLog(Self.Name, True,'Hapus Rekening=' + MyQDSN0002no_rekening.Text +
-      ' Nasabah ID=' + MyQDSN0002nasabah_id.Text +' Kode Integrasi=' + MyQDSN0002kode_integrasi.Text);
+      ' Nasabah ID=' + MyQDSN0002nasabah_id.Text +' Klasifikasi Rekening=' + MyQDSN0002klasifikasi_rekening.Text);
       try
           MyExecuteSQL(
             'DELETE FROM ' + cDb2 + '.lps_dsn_f0002 ' +
@@ -360,30 +362,34 @@ begin
       nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
       no_rekening.Properties.MaxLength := MyQTempno_rekening.Size;
       staus_dana.Properties.MaxLength := MyQTempstatus_dana.Size;
-      suku_bunga.Properties.MaxLength := MyQTempsuku_bunga.Size;
-      suku_bunga_val.Properties.MaxLength := MyQTempsuku_bunga_val.Size;
+      suku_bunga.Properties.MaxLength := MyQTempjenis_tingkat_bunga.Size;
+      suku_bunga_val.Properties.MaxLength := MyQTemptingkat_bunga.Size;
       biaya_cashback.Properties.MaxLength := MyQTempbiaya_cashback.Size;
       tingkat_bunga_penjaminan_lps.Properties.MaxLength := MyQTemptingkat_bunga_penjaminan_lps.Size;
       kategori_tingkat_bunga_simpanan.Properties.MaxLength := MyQTempkategori_tingkat_bunga_simpanan.Size;
       alasan_blokir.Properties.MaxLength := MyQTempalasan_blokir.Size;
 
+      klasifikasi.Text := MyQTempklasifikasi_rekening.AsString;
+      klasifikasiExit(Sender);
+      jenis_simpanan.Text := MyQTempjenis_simpanan.AsString;
+      jenis_simpananExit(Sender);
       jumlah_pemilik_rekening.Text := MyQTempjumlah_pemilik_rekening.AsString;
       nasabah_id.Text := MyQTempnasabah_id.AsString;
       no_rekening.Text := MyQTempno_rekening.AsString;
       staus_dana.Text := MyQTempstatus_dana.AsString;
       staus_danaExit(Sender);
-      tgl_mulai_atau_tgl_aro_terakhir.Date := MyQTemptgl_mulai_atau_tgl_aro_terakhir.AsDateTime;
-      suku_bunga.Text := MyQTempsuku_bunga.AsString;
-      suku_bunga_val.Value := MyQTempsuku_bunga_val.Value;
+      tgl_mulai.Date := MyQTemptgl_mulai.AsDateTime;
+      suku_bunga.Text := MyQTempjenis_tingkat_bunga.AsString;
+      suku_bunga_val.Value := MyQTemptingkat_bunga.Value;
       biaya_cashback.Value := MyQTempbiaya_cashback.Value;
       tingkat_bunga_penjaminan_lps.Value := MyQTemptingkat_bunga_penjaminan_lps.Value;
       kategori_tingkat_bunga_simpanan.Text := MyQTempkategori_tingkat_bunga_simpanan.AsString;
       kategori_tingkat_bunga_simpananExit(Sender);
-      jml_deposito.Value := MyQTempsaldo_akhir.Value;
+      jml_deposito.Value := MyQTempsaldo_simpanan.Value;
       nominal_blokir.Value := MyQTempnominal_blokir.Value;
       alasan_blokir.Text := MyQTempalasan_blokir.AsString;
       alasan_blokirExit(Sender);
-      saldo_akhir_bunga_bmhd.Value := MyQTempsaldo_akhir_bunga_bmhd.Value;
+      saldo_akhir_bunga_bmhd.Value := MyQTempbunga_akrual.Value;
 
       tgl_akru_terakhir.Date := MyQTemptgl_akru_terakhir.AsDateTime;
       tanggal_jt.Date := MyQTemptanggal_jt.AsDateTime;
@@ -396,25 +402,27 @@ begin
       with fr_EntryFormDSN0002 do
         begin
         MyExecuteSQL('UPDATE ' + cDb2 + '.lps_dsn_f0002 ' +
-          'SET ' +
-          '`jumlah_pemilik_rekening`=' + QuotedStr(jumlah_pemilik_rekening.Text) +
-          ', `nasabah_id`=' + QuotedStr(nasabah_id.Text) +
-          ', `no_rekening`=' + QuotedStr(no_rekening.Text) +
-          ', `status_dana`=' + QuotedStr(staus_dana.Text) +   // <== baris ini aman
-          ', `tgl_mulai_atau_tgl_aro_terakhir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date)) +
-          ', `suku_bunga`=' + FloatToStr(suku_bunga.Value) +
-          ', `suku_bunga_val`=' + FloatToStr(suku_bunga_val.Value) +
-          ', `biaya_cashback`=' + FloatToStr(biaya_cashback.Value) +
-          ', `tingkat_bunga_penjaminan_lps`=' + FloatToStr(tingkat_bunga_penjaminan_lps.Value) +
-          ', `kategori_tingkat_bunga_simpanan`=' + QuotedStr(kategori_tingkat_bunga_simpanan.Text) +
-          ', `saldo_akhir`=' + FloatToStr(jml_deposito.Value) +
-          ', `nominal_blokir`=' + FloatToStr(nominal_blokir.Value) +
-          ', `alasan_blokir`=' + QuotedStr(alasan_blokir.Text) +
-          ', `saldo_akhir_bunga_bmhd`=' + FloatToStr(saldo_akhir_bunga_bmhd.Value) +
-          ', `tgl_akru_terakhir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date)) +
-          ', `tanggal_jt`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date)) +
-          ' WHERE `no_rekening`=' + QuotedStr(MyQDSN0002no_rekening.Text) +
-          ' AND `nasabah_id`=' + QuotedStr(MyQDSN0002nasabah_id.Text));
+                      'SET ' +
+                      '`klasifikasi_rekening`=' + QuotedStr(klasifikasi.Text) +
+                      ', `jumlah_pemilik_rekening`=' + QuotedStr(jumlah_pemilik_rekening.Text) +
+                      ', `nasabah_id`=' + QuotedStr(nasabah_id.Text) +
+                      ', `jenis_simpanan`=' + QuotedStr(jenis_simpanan.Text) +
+                      ', `no_rekening`=' + QuotedStr(no_rekening.Text) +
+                      ', `status_dana`=' + QuotedStr(staus_dana.Text) +
+                      ', `tgl_mulai`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai.Date)) +
+                      ', `jenis_tingkat_bunga`=' + FloatToStr(suku_bunga.Value) +
+                      ', `tingkat_bunga`=' + FloatToStr(suku_bunga_val.Value) +
+                      ', `biaya_cashback`=' + FloatToStr(biaya_cashback.Value) +
+                      ', `tingkat_bunga_penjaminan_lps`=' + FloatToStr(tingkat_bunga_penjaminan_lps.Value) +
+                      ', `kategori_tingkat_bunga_simpanan`=' + QuotedStr(kategori_tingkat_bunga_simpanan.Text) +
+                      ', `saldo_simpanan`=' + FloatToStr(jml_deposito.Value) +
+                      ', `nominal_blokir`=' + FloatToStr(nominal_blokir.Value) +
+                      ', `alasan_blokir`=' + QuotedStr(alasan_blokir.Text) +
+                      ', `bunga_akrual`=' + FloatToStr(saldo_akhir_bunga_bmhd.Value) +
+                      ', `tgl_akru_terakhir`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date)) +
+                      ', `tanggal_jt`=' + QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date)) +
+                      ' WHERE `no_rekening`=' + QuotedStr(MyQDSN0002no_rekening.Text) +
+                      ' AND `klasifikasi_rekening`=' + QuotedStr(MyQDSN0002klasifikasi_rekening.Text));
         end;
       if MyQDSN0002.Active then
         MyQDSN0002.Refresh
@@ -448,21 +456,21 @@ begin
     nasabah_id.Properties.MaxLength := MyQTempnasabah_id.Size;
     no_rekening.Properties.MaxLength := MyQTempno_rekening.Size;
     staus_dana.Properties.MaxLength := MyQTempstatus_dana.Size;
-    suku_bunga.Properties.MaxLength := MyQTempsuku_bunga.Size;
-    suku_bunga_val.Properties.MaxLength := MyQTempsuku_bunga_val.Size;
+    suku_bunga.Properties.MaxLength := MyQTempjenis_tingkat_bunga.Size;
+    suku_bunga_val.Properties.MaxLength := MyQTemptingkat_bunga.Size;
     biaya_cashback.Properties.MaxLength := MyQTempbiaya_cashback.Size;
     tingkat_bunga_penjaminan_lps.Properties.MaxLength := MyQTemptingkat_bunga_penjaminan_lps.Size;
     kategori_tingkat_bunga_simpanan.Properties.MaxLength := MyQTempkategori_tingkat_bunga_simpanan.Size;
-    jml_deposito.Properties.MaxLength := MyQTempsaldo_akhir.Size;
+    jml_deposito.Properties.MaxLength := MyQTempsaldo_simpanan.Size;
     nominal_blokir.Properties.MaxLength := MyQTempnominal_blokir.Size;
     alasan_blokir.Properties.MaxLength := MyQTempalasan_blokir.Size;
-    saldo_akhir_bunga_bmhd.Properties.MaxLength := MyQTempsaldo_akhir_bunga_bmhd.Size;
+    saldo_akhir_bunga_bmhd.Properties.MaxLength := MyQTempbunga_akrual.Size;
 
     jumlah_pemilik_rekening.Value := 0;
     nasabah_id.Text := '';
     no_rekening.Text := '';
     staus_dana.Text := '';
-    tgl_mulai_atau_tgl_aro_terakhir.Date := Date;
+    tgl_mulai.Date := Date;
     suku_bunga.Value := 0;
     suku_bunga_val.Value := 0;
     biaya_cashback.Value := 0;
@@ -483,44 +491,48 @@ begin
   begin
     with fr_EntryFormDSN0002 do
     try
-      MyExecuteSQL(
-      'INSERT INTO '+cDb2+'.lps_dsn_f0002 ('+
-      '`jumlah_pemilik_rekening`, `nasabah_id`, `no_rekening`, '+
-      '`status_dana`, `tgl_mulai_atau_tgl_aro_terakhir`, `suku_bunga`, `suku_bunga_val`, `biaya_cashback`, '+
-      '`tingkat_bunga_penjaminan_lps`, `kategori_tingkat_bunga_simpanan`, `saldo_akhir`, `nominal_blokir`, `alasan_blokir`, '+
-      '`saldo_akhir_bunga_bmhd`, `tgl_akru_terakhir`, `tanggal_jt`) VALUES ('+
-      FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
-      QuotedStr(nasabah_id.Text)+','+
-      QuotedStr(no_rekening.Text)+','+
-      QuotedStr(staus_dana.Text)+','+
-      QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date))+','+
-      FormatFloat('0.######', suku_bunga.Value)+','+
-      FormatFloat('0.######', suku_bunga_val.Value)+','+
-      FormatFloat('0.######', biaya_cashback.Value)+','+
-      FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
-      QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
-      FormatFloat('0.######', jml_deposito.Value)+','+
-      FormatFloat('0.######', nominal_blokir.Value)+','+
-      QuotedStr(alasan_blokir.Text)+','+
-      FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
-      QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
-      QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+''+
-      ') ON DUPLICATE KEY UPDATE '+
-      'jumlah_pemilik_rekening='+FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
-      'nasabah_id='+QuotedStr(nasabah_id.Text)+','+
-      'status_dana='+QuotedStr(staus_dana.Text)+','+
-      'tgl_mulai_atau_tgl_aro_terakhir='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai_atau_tgl_aro_terakhir.Date))+','+
-      'suku_bunga='+FormatFloat('0.######', suku_bunga.Value)+','+
-      'suku_bunga_val='+FormatFloat('0.######', suku_bunga_val.Value)+','+
-      'biaya_cashback='+FormatFloat('0.######', biaya_cashback.Value)+','+
-      'tingkat_bunga_penjaminan_lps='+FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
-      'kategori_tingkat_bunga_simpanan='+QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
-      'saldo_akhir='+FormatFloat('0.######', jml_deposito.Value)+','+
-      'nominal_blokir='+FormatFloat('0.######', nominal_blokir.Value)+','+
-      'alasan_blokir='+QuotedStr(alasan_blokir.Text)+','+
-      'saldo_akhir_bunga_bmhd='+FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
-      'tgl_akru_terakhir='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
-      'tanggal_jt='+QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+' ');
+    MyExecuteSQL(
+                    'INSERT INTO '+cDb2+'.lps_dsn_f0002 ('+
+                    '`klasifikasi_rekening`, `jumlah_pemilik_rekening`, `nasabah_id`, `jenis_simpanan`, `no_rekening`, '+
+                    '`status_dana`, `tgl_mulai`, `jenis_tingkat_bunga`, `tingkat_bunga`, `biaya_cashback`, '+
+                    '`tingkat_bunga_penjaminan_lps`, `kategori_tingkat_bunga_simpanan`, `saldo_simpanan`, `nominal_blokir`, `alasan_blokir`, '+
+                    '`bunga_akrual`, `tgl_akru_terakhir`, `tanggal_jt`) VALUES ('+
+                    QuotedStr(klasifikasi.Text)+','+
+                    FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
+                    QuotedStr(nasabah_id.Text)+','+
+                    QuotedStr(jenis_simpanan.Text)+','+
+                    QuotedStr(no_rekening.Text)+','+
+                    QuotedStr(staus_dana.Text)+','+
+                    QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai.Date))+','+
+                    FormatFloat('0.######', suku_bunga.Value)+','+
+                    FormatFloat('0.######', suku_bunga_val.Value)+','+
+                    FormatFloat('0.######', biaya_cashback.Value)+','+
+                    FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
+                    QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
+                    FormatFloat('0.######', jml_deposito.Value)+','+
+                    FormatFloat('0.######', nominal_blokir.Value)+','+
+                    QuotedStr(alasan_blokir.Text)+','+
+                    FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
+                    QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
+                    QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+
+                    ') ON DUPLICATE KEY UPDATE '+
+                    '`klasifikasi_rekening`='+QuotedStr(klasifikasi.Text)+','+
+                    '`jumlah_pemilik_rekening`='+FormatFloat('0.######', jumlah_pemilik_rekening.Value)+','+
+                    '`nasabah_id`='+QuotedStr(nasabah_id.Text)+','+
+                    '`jenis_simpanan`='+QuotedStr(jenis_simpanan.Text)+','+
+                    '`status_dana`='+QuotedStr(staus_dana.Text)+','+
+                    '`tgl_mulai`='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_mulai.Date))+','+
+                    '`jenis_tingkat_bunga`='+FormatFloat('0.######', suku_bunga.Value)+','+
+                    '`tingkat_bunga`='+FormatFloat('0.######', suku_bunga_val.Value)+','+
+                    '`biaya_cashback`='+FormatFloat('0.######', biaya_cashback.Value)+','+
+                    '`tingkat_bunga_penjaminan_lps`='+FormatFloat('0.######', tingkat_bunga_penjaminan_lps.Value)+','+
+                    '`kategori_tingkat_bunga_simpanan`='+QuotedStr(kategori_tingkat_bunga_simpanan.Text)+','+
+                    '`saldo_simpanan`='+FormatFloat('0.######', jml_deposito.Value)+','+
+                    '`nominal_blokir`='+FormatFloat('0.######', nominal_blokir.Value)+','+
+                    '`alasan_blokir`='+QuotedStr(alasan_blokir.Text)+','+
+                    '`bunga_akrual`='+FormatFloat('0.######', saldo_akhir_bunga_bmhd.Value)+','+
+                    '`tgl_akru_terakhir`='+QuotedStr(FormatDateTime('yyyy-mm-dd', tgl_akru_terakhir.Date))+','+
+                    '`tanggal_jt`='+QuotedStr(FormatDateTime('yyyy-mm-dd', tanggal_jt.Date))+' ');
     except
       on E: Exception do
         ShowMessage('SQL ERROR: ' + E.Message);

@@ -1,4 +1,4 @@
-unit EntryFormDN0001;
+unit EntryFormDK0003;
 
 interface
 
@@ -36,77 +36,55 @@ uses
   cxCalendar, dxBarBuiltInMenu, cxPC;
 
 type
-  Tfr_EntryFormDN0001 = class(Tfr_new_template)
+  Tfr_EntryFormDK0003 = class(Tfr_new_template)
     dsMyQTemp: TMyDataSource;
     cxPageControl1: TcxPageControl;
     cxTabPage1: TcxTabSheet;
     PanelTab1: TcxGroupBox;
-    cxTabPage2: TcxTabSheet;
-    PanelTab4: TcxGroupBox;
-    Label3: TcxLabel;
     cxLabel2: TcxLabel;
     cxLabel1: TcxLabel;
     cxLabel5: TcxLabel;
     cxLabel4: TcxLabel;
-    cxLabel6: TcxLabel;
-    cxLabel7: TcxLabel;
-    tgl_lahir: TcxDateEdit;
-    cxLabel31: TcxLabel;
-    cxLabel32: TcxLabel;
-    cxLabel33: TcxLabel;
-    cxLabel34: TcxLabel;
-    cxLabel35: TcxLabel;
-    cxLabel36: TcxLabel;
-    cxLabel37: TcxLabel;
-    cxLabel38: TcxLabel;
-    cxLabel39: TcxLabel;
+    tgl_realisasi: TcxDateEdit;
     nasabah_id: TcxTextEdit;
-    nama_nasabah: TcxTextEdit;
+    jenis: TcxButtonEdit;
+    nm_jenis: TcxTextEdit;
+    no_rekening: TcxTextEdit;
+    gb_pinjaman: TcxGroupBox;
     cxLabel3: TcxLabel;
     cxLabel8: TcxLabel;
-    nama_ibu_kandung: TcxTextEdit;
-    no_id: TcxTextEdit;
-    nama_pengurus: TcxTextEdit;
-    no_iden_bdn_hukum: TcxTextEdit;
-    no_iden_pegang_kuasa: TcxTextEdit;
-    nama_kota_kab: TcxTextEdit;
-    alamat: TcxMemo;
-    kode_kota_kab: TcxButtonEdit;
-    kode_jenis_id: TcxButtonEdit;
-    nama_jenis_id: TcxTextEdit;
-    kode_jenis_id_pengurus: TcxButtonEdit;
-    nama_jenis_id_pengurus: TcxTextEdit;
-    kode_kewarganegaraan: TcxButtonEdit;
-    nama_kewarganegaraan: TcxTextEdit;
-    telpon: TcxTextEdit;
-    kode_flag: TcxButtonEdit;
-    nama_flag: TcxTextEdit;
-    kode_hub_bank: TcxButtonEdit;
-    nama_hub_bank: TcxTextEdit;
-    kode_hub_pihak_terkait: TcxButtonEdit;
-    nama_hub_pihak_terkait: TcxTextEdit;
-    kode_gol_nasabah: TcxButtonEdit;
-    nama_gol_nasabah: TcxTextEdit;
+    jml_pinjaman: TcxCurrencyEdit;
+    baki_debet: TcxCurrencyEdit;
     MyQTemp: TMyQuery;
     MyQTempflag_detail: TStringField;
     MyQTempnasabah_id: TStringField;
-    MyQTempnama_nasabah: TStringField;
-    MyQTempjenis_id: TStringField;
-    MyQTempno_id: TStringField;
-    MyQTempnama_ibu_kandung: TStringField;
-    MyQTemptgl_lahir: TDateField;
-    MyQTempno_id2: TStringField;
-    MyQTempnama_pengurus: TStringField;
-    MyQTempjenis_identitas: TStringField;
-    MyQTempnomor_identitas: TStringField;
-    MyQTempalamat: TStringField;
-    MyQTempkota_kab: TStringField;
-    MyQTempkewarganegaraan: TStringField;
-    MyQTemptelpon: TStringField;
-    MyQTempflag_fraud: TStringField;
-    MyQTemphub_dgn_bank: TStringField;
-    MyQTemphub_pihak_terkait: TStringField;
-    MyQTempgol_nasabah: TStringField;
+    MyQTempno_rekening: TStringField;
+    MyQTempjenis: TStringField;
+    MyQTempkolektibilitas: TStringField;
+    MyQTempplafon: TFloatField;
+    MyQTempbaki_debet: TFloatField;
+    MyQTemptunggakan_pokok: TFloatField;
+    MyQTemptunggakan_bunga: TFloatField;
+    MyQTempjenis_agunan: TStringField;
+    MyQTemptgl_mulai: TDateField;
+    MyQTemptgl_jatuh_tempo: TDateField;
+    MyQTempkategori_usaha: TStringField;
+    kolektibilitas: TcxButtonEdit;
+    nm_kolektibilitas: TcxTextEdit;
+    gp_tunggakan: TcxGroupBox;
+    cxLabel6: TcxLabel;
+    cxLabel7: TcxLabel;
+    jumlah_tunggakan_pokok: TcxCurrencyEdit;
+    jumlah_tunggakan_bunga: TcxCurrencyEdit;
+    cxLabel9: TcxLabel;
+    jenis_agunan: TcxButtonEdit;
+    nm_jenis_agunan: TcxTextEdit;
+    tgl_jatuh_tempo: TcxDateEdit;
+    kategori_usaha: TcxButtonEdit;
+    nm_kategori_usaha: TcxTextEdit;
+    cxLabel10: TcxLabel;
+    cxLabel11: TcxLabel;
+    cxLabel12: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -114,30 +92,18 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure kode_jenis_idPropertiesButtonClick(Sender: TObject;
+    procedure jenisExit(Sender: TObject);
+    procedure nm_jenisPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
-    procedure kode_jenis_id_pengurusPropertiesButtonClick(Sender: TObject;
+    procedure kolektibilitasPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
-    procedure kode_kota_kabPropertiesButtonClick(Sender: TObject;
+    procedure jenis_agunanPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
-    procedure kode_kewarganegaraanPropertiesButtonClick(Sender: TObject;
+    procedure kategori_usahaPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
-    procedure kode_flagPropertiesButtonClick(Sender: TObject;
-      AButtonIndex: Integer);
-    procedure kode_hub_bankPropertiesButtonClick(Sender: TObject;
-      AButtonIndex: Integer);
-    procedure kode_hub_pihak_terkaitPropertiesButtonClick(Sender: TObject;
-      AButtonIndex: Integer);
-    procedure kode_gol_nasabahPropertiesButtonClick(Sender: TObject;
-      AButtonIndex: Integer);
-    procedure kode_flagExit(Sender: TObject);
-    procedure kode_hub_bankExit(Sender: TObject);
-    procedure kode_jenis_id_pengurusExit(Sender: TObject);
-    procedure kode_jenis_idExit(Sender: TObject);
-    procedure kode_kota_kabExit(Sender: TObject);
-    procedure kode_gol_nasabahExit(Sender: TObject);
-    procedure kode_hub_pihak_terkaitExit(Sender: TObject);
-    procedure kode_kewarganegaraanExit(Sender: TObject);
+    procedure kolektibilitasExit(Sender: TObject);
+    procedure jenis_agunanExit(Sender: TObject);
+    procedure kategori_usahaExit(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -150,8 +116,8 @@ type
   end;
 
 var
-  fr_EntryFormDN0001: Tfr_EntryFormDN0001;
-  JenisTrans0001: String;
+  fr_EntryFormDK0003: Tfr_EntryFormDK0003;
+  JenisTrans0003: String;
   cLabelIni, cNewLabelIni: String;
 
 implementation
@@ -159,7 +125,7 @@ uses Types, TypInfo, SHFolder, DateUtils, MyLib, MyVAR, FormRefLPS;
 
 {$R *.dfm}
 
-function Tfr_EntryFormDN0001.Cek_Validasi(Sender: TObject): Boolean;
+function Tfr_EntryFormDK0003.Cek_Validasi(Sender: TObject): Boolean;
 var
   jml: Integer;
   cPesan, cHint: string;
@@ -411,7 +377,7 @@ begin
     Result := True;
 end;
 
-procedure Tfr_EntryFormDN0001.btlb_SaveClick(Sender: TObject);
+procedure Tfr_EntryFormDK0003.btlb_SaveClick(Sender: TObject);
 begin
   inherited;
   if not Cek_Validasi(Sender) then
@@ -421,7 +387,7 @@ begin
   Close;
 end;
 
-procedure Tfr_EntryFormDN0001.FormActivate(Sender: TObject);
+procedure Tfr_EntryFormDK0003.FormActivate(Sender: TObject);
 var
   jml: Integer;
 begin
@@ -514,14 +480,14 @@ if not lbl_view_only.Enabled then
   end;
 end;
 
-procedure Tfr_EntryFormDN0001.FormClose(Sender: TObject;
+procedure Tfr_EntryFormDK0003.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   Release;
   Action := caFree;
 end;
 
-procedure Tfr_EntryFormDN0001.FormCloseQuery(Sender: TObject;
+procedure Tfr_EntryFormDK0003.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
   if (Tag=1) then
@@ -534,7 +500,7 @@ begin
     end;
 end;
 
-procedure Tfr_EntryFormDN0001.FormCreate(Sender: TObject);
+procedure Tfr_EntryFormDK0003.FormCreate(Sender: TObject);
 var
   jml, jml2: Integer;
   cCaption, cTag, cHint, cWidth, cScale: String;
@@ -583,7 +549,7 @@ begin
   SetCurrentDir(cLocation);
 end;
 
-procedure Tfr_EntryFormDN0001.FormKeyPress(Sender: TObject; var Key: Char);
+procedure Tfr_EntryFormDK0003.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     begin
@@ -594,313 +560,159 @@ begin
     Close;
 end;
 
-procedure Tfr_EntryFormDN0001.kode_flagExit(Sender: TObject);
+procedure Tfr_EntryFormDK0003.jenis_agunanExit(Sender: TObject);
 begin
   inherited;
-    if not Empty(kode_flag.Text) and
+  if not Empty(jenis_agunan.Text) and
     (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_flag_fraud WHERE selectable=1 AND sandi='+QuotedStr(kode_flag.Text))='0') then
+      cDb2+'.lps_ref_jenis_agunan WHERE selectable=1 AND sandi='+QuotedStr(jenis_agunan.Text))='0') then
     begin
       Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_flag.CanFocus then
-        kode_flag.SetFocus;
+      if Self.Showing and jenis_agunan.CanFocus then
+        jenis_agunan.SetFocus;
       Exit;
     end;
 
-  if not Empty(kode_flag.Text) then
-    nama_flag.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_flag_fraud','sandi',kode_flag.Text,'deskripsi_sandi');
+  if not Empty(jenis_agunan.Text) then
+    nm_jenis_agunan.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_jenis_agunan','sandi',jenis_agunan.Text,'deskripsi_sandi');
 
 end;
 
-procedure Tfr_EntryFormDN0001.kode_flagPropertiesButtonClick(Sender: TObject;
+procedure Tfr_EntryFormDK0003.jenis_agunanPropertiesButtonClick(Sender: TObject;
   AButtonIndex: Integer);
-begin
-  inherited;
-       if Application.FindComponent('fr_FormRefLPS') = nil then
-    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_flag_fraud';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := 'IFNULL(SUBSTRING(`deskripsi_sandi`, 1, 255), '''')';
-  fr_FormRefLPS.FormCreate(Sender);
-  fr_FormRefLPS.ShowModal;
-  if fr_FormRefLPS.Tag=2 then
-    begin
-      kode_flag.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_flag.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
-      Tag := 1;
-    end;
-  fr_FormRefLPS.Free;
-  fr_FormRefLPS := nil;
-end;
-
-procedure Tfr_EntryFormDN0001.kode_gol_nasabahExit(Sender: TObject);
-begin
-  inherited;
-
-  if not Empty(kode_gol_nasabah.Text) and
-    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_gol_nasabah WHERE selectable=1 AND sandi='+QuotedStr(kode_gol_nasabah.Text))='0') then
-    begin
-      Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_gol_nasabah.CanFocus then
-        kode_gol_nasabah.SetFocus;
-      Exit;
-    end;
-
-  if not Empty(kode_gol_nasabah.Text) then
-    nama_gol_nasabah.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_gol_nasabah','sandi',kode_gol_nasabah.Text,'deskripsi_sandi');
-
-end;
-
-procedure Tfr_EntryFormDN0001.kode_gol_nasabahPropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
-begin
-  inherited;
-      if Application.FindComponent('fr_FormRefLPS') = nil then
-    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_gol_nasabah';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
-  fr_FormRefLPS.FormCreate(Sender);
-  fr_FormRefLPS.ShowModal;
-  if fr_FormRefLPS.Tag=2 then
-    begin
-      kode_gol_nasabah.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_gol_nasabah.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
-      Tag := 1;
-    end;
-  fr_FormRefLPS.Free;
-  fr_FormRefLPS := nil;
-end;
-
-procedure Tfr_EntryFormDN0001.kode_hub_bankExit(Sender: TObject);
-begin
-  inherited;
-    if not Empty(kode_hub_bank.Text) and
-    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_hub_bank WHERE selectable=1 AND sandi='+QuotedStr(kode_hub_bank.Text))='0') then
-    begin
-      Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_hub_bank.CanFocus then
-        kode_hub_bank.SetFocus;
-      Exit;
-    end;
-
-  if not Empty(kode_hub_bank.Text) then
-    nama_hub_bank.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_hub_bank','sandi',kode_hub_bank.Text,'deskripsi_sandi');
-
-end;
-
-procedure Tfr_EntryFormDN0001.kode_hub_bankPropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
-begin
-  inherited;
-     if Application.FindComponent('fr_FormRefLPS') = nil then
-    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_hub_bank';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
-  fr_FormRefLPS.FormCreate(Sender);
-  fr_FormRefLPS.ShowModal;
-  if fr_FormRefLPS.Tag=2 then
-    begin
-      kode_hub_bank.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_hub_bank.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
-      Tag := 1;
-    end;
-  fr_FormRefLPS.Free;
-  fr_FormRefLPS := nil;
-end;
-
-procedure Tfr_EntryFormDN0001.kode_hub_pihak_terkaitExit(Sender: TObject);
-begin
-  inherited;
-  if not Empty(kode_hub_pihak_terkait.Text) and
-    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_hub_pihak_terkait WHERE selectable=1 AND sandi='+QuotedStr(kode_hub_pihak_terkait.Text))='0') then
-    begin
-      Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_hub_pihak_terkait.CanFocus then
-        kode_hub_pihak_terkait.SetFocus;
-      Exit;
-    end;
-
-  if not Empty(kode_hub_pihak_terkait.Text) then
-    nama_hub_pihak_terkait.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_hub_pihak_terkait','sandi',kode_hub_pihak_terkait.Text,'deskripsi_sandi');
-
-end;
-
-procedure Tfr_EntryFormDN0001.kode_hub_pihak_terkaitPropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
-begin
-  inherited;
-      if Application.FindComponent('fr_FormRefLPS') = nil then
-    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_hub_pihak_terkait';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := 'IFNULL(SUBSTRING(`deskripsi_sandi`, 1, 255), '''')';
-  fr_FormRefLPS.FormCreate(Sender);
-  fr_FormRefLPS.ShowModal;
-  if fr_FormRefLPS.Tag=2 then
-    begin
-      kode_hub_pihak_terkait.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_hub_pihak_terkait.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
-      Tag := 1;
-    end;
-  fr_FormRefLPS.Free;
-  fr_FormRefLPS := nil;
-end;
-
-procedure Tfr_EntryFormDN0001.kode_jenis_idExit(Sender: TObject);
-begin
-  inherited;
-
-    if not Empty(kode_jenis_id.Text) and
-    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_jenis_identitas WHERE selectable=1 AND sandi='+QuotedStr(kode_jenis_id.Text))='0') then
-    begin
-      Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_jenis_id.CanFocus then
-        kode_jenis_id.SetFocus;
-      Exit;
-    end;
-
-  if not Empty(kode_jenis_id.Text) then
-    nama_jenis_id.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_jenis_identitas','sandi',kode_jenis_id.Text,'jenis_identitas');
-
-end;
-
-procedure Tfr_EntryFormDN0001.kode_jenis_idPropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
 begin
   inherited;
    if Application.FindComponent('fr_FormRefLPS') = nil then
     Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_jenis_identitas';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`jenis_identitas`';
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_jenis_agunan';
+  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := 'IFNULL(SUBSTRING(`deskripsi_sandi`, 1, 255), '''')';
   fr_FormRefLPS.FormCreate(Sender);
   fr_FormRefLPS.ShowModal;
   if fr_FormRefLPS.Tag=2 then
     begin
-      kode_jenis_id.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_jenis_id.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      jenis_agunan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_jenis_agunan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
       Tag := 1;
     end;
   fr_FormRefLPS.Free;
   fr_FormRefLPS := nil;
 end;
 
-procedure Tfr_EntryFormDN0001.kode_jenis_id_pengurusExit(Sender: TObject);
+procedure Tfr_EntryFormDK0003.jenisExit(Sender: TObject);
 begin
   inherited;
-  if not Empty(kode_jenis_id_pengurus.Text) and
+ if not Empty(jenis.Text) and
     (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_jenis_identitas WHERE selectable=1 AND sandi='+QuotedStr(kode_jenis_id_pengurus.Text))='0') then
+      cDb2+'.lps_ref_jenis_kewajiban WHERE selectable=1 AND sandi='+QuotedStr(jenis.Text))='0') then
     begin
       Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_jenis_id_pengurus.CanFocus then
-        kode_jenis_id_pengurus.SetFocus;
+      if Self.Showing and jenis.CanFocus then
+        jenis.SetFocus;
       Exit;
     end;
 
-  if not Empty(kode_jenis_id_pengurus.Text) then
-    nama_jenis_id_pengurus.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_jenis_identitas','sandi',kode_jenis_id_pengurus.Text,'jenis_identitas');
+  if not Empty(jenis.Text) then
+    nm_jenis.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_jenis_kewajiban','sandi',jenis.Text,'deskripsi_sandi');
 
 end;
 
-procedure Tfr_EntryFormDN0001.kode_jenis_id_pengurusPropertiesButtonClick(
+procedure Tfr_EntryFormDK0003.nm_jenisPropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  inherited;
+     if Application.FindComponent('fr_FormRefLPS') = nil then
+    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_jenis_kewajiban';
+  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
+  fr_FormRefLPS.FormCreate(Sender);
+  fr_FormRefLPS.ShowModal;
+  if fr_FormRefLPS.Tag=2 then
+    begin
+      jenis.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_jenis.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      Tag := 1;
+    end;
+  fr_FormRefLPS.Free;
+  fr_FormRefLPS := nil;
+end;
+
+procedure Tfr_EntryFormDK0003.kategori_usahaExit(Sender: TObject);
+begin
+  inherited;
+   if not Empty(kategori_usaha.Text) and
+    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
+      cDb2+'.lps_ref_kategori_usaha WHERE selectable=1 AND sandi='+QuotedStr(kategori_usaha.Text))='0') then
+    begin
+      Pesan(2,'Kode sandi tersebut tidak ada');
+      if Self.Showing and kategori_usaha.CanFocus then
+        kategori_usaha.SetFocus;
+      Exit;
+    end;
+
+  if not Empty(kategori_usaha.Text) then
+    nm_kategori_usaha.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_kategori_usaha','sandi',kategori_usaha.Text,'deskripsi_sandi');
+
+end;
+
+procedure Tfr_EntryFormDK0003.kategori_usahaPropertiesButtonClick(
   Sender: TObject; AButtonIndex: Integer);
 begin
   inherited;
   if Application.FindComponent('fr_FormRefLPS') = nil then
     Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_jenis_identitas';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`jenis_identitas`';
-  fr_FormRefLPS.FormCreate(Sender);
-  fr_FormRefLPS.ShowModal;
-  if fr_FormRefLPS.Tag=2 then
-    begin
-      kode_jenis_id_pengurus.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_jenis_id_pengurus.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
-      Tag := 1;
-    end;
-  fr_FormRefLPS.Free;
-  fr_FormRefLPS := nil;
-end;
-
-procedure Tfr_EntryFormDN0001.kode_kewarganegaraanExit(Sender: TObject);
-begin
-  inherited;
-        if not Empty(kode_kewarganegaraan.Text) and
-    (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_kewarganegaraan WHERE selectable=1 AND sandi='+QuotedStr(kode_kewarganegaraan.Text))='0') then
-    begin
-      Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_kewarganegaraan.CanFocus then
-        kode_kewarganegaraan.SetFocus;
-      Exit;
-    end;
-
-  if not Empty(kode_kewarganegaraan.Text) then
-    nama_kewarganegaraan.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_kewarganegaraan','sandi',kode_kewarganegaraan.Text,'deskripsi_sandi');
-
-end;
-
-procedure Tfr_EntryFormDN0001.kode_kewarganegaraanPropertiesButtonClick(
-  Sender: TObject; AButtonIndex: Integer);
-begin
-  inherited;
-    if Application.FindComponent('fr_FormRefLPS') = nil then
-    Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_kewarganegaraan';
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_kategori_usaha';
   fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
   fr_FormRefLPS.FormCreate(Sender);
   fr_FormRefLPS.ShowModal;
   if fr_FormRefLPS.Tag=2 then
     begin
-      kode_kewarganegaraan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_kewarganegaraan.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      kategori_usaha.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_kategori_usaha.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
       Tag := 1;
     end;
   fr_FormRefLPS.Free;
   fr_FormRefLPS := nil;
 end;
 
-procedure Tfr_EntryFormDN0001.kode_kota_kabExit(Sender: TObject);
+procedure Tfr_EntryFormDK0003.kolektibilitasExit(Sender: TObject);
 begin
   inherited;
-      if not Empty(kode_kota_kab.Text) and
+   if not Empty(kolektibilitas.Text) and
     (SelectRow('SELECT COUNT(*) AS hasil FROM '+
-      cDb2+'.lps_ref_kab_kota WHERE selectable=1 AND sandi='+QuotedStr(kode_kota_kab.Text))='0') then
+      cDb2+'.lps_ref_kolektibilitas WHERE selectable=1 AND sandi='+QuotedStr(kolektibilitas.Text))='0') then
     begin
       Pesan(2,'Kode sandi tersebut tidak ada');
-      if Self.Showing and kode_kota_kab.CanFocus then
-        kode_kota_kab.SetFocus;
+      if Self.Showing and kategori_usaha.CanFocus then
+        kolektibilitas.SetFocus;
       Exit;
     end;
 
-  if not Empty(kode_kota_kab.Text) then
-    nama_kota_kab.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_kab_kota','sandi',kode_kota_kab.Text,'nama_kotakab');
+  if not Empty(kategori_usaha.Text) then
+    nm_kolektibilitas.Text := GetFValueByFKeyValue(cDb2+'.lps_ref_kolektibilitas','sandi',kolektibilitas.Text,'deskripsi_sandi');
 
 end;
 
-procedure Tfr_EntryFormDN0001.kode_kota_kabPropertiesButtonClick(
+procedure Tfr_EntryFormDK0003.kolektibilitasPropertiesButtonClick(
   Sender: TObject; AButtonIndex: Integer);
 begin
   inherited;
-      if Application.FindComponent('fr_FormRefLPS') = nil then
+    if Application.FindComponent('fr_FormRefLPS') = nil then
     Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_kab_kota';
-  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`nama_kotakab`';
+  fr_FormRefLPS.nm_table.Text := cDb2+'.lps_ref_kolektibilitas';
+  fr_FormRefLPS.MyQMasterReferensi.MacroByName('FIELD2').Value := '`deskripsi_sandi`';
   fr_FormRefLPS.FormCreate(Sender);
   fr_FormRefLPS.ShowModal;
   if fr_FormRefLPS.Tag=2 then
     begin
-      kode_kota_kab.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
-      nama_kota_kab.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
+      kolektibilitas.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('sandi').AsString;
+      nm_kolektibilitas.Text := fr_FormRefLPS.MyQMasterReferensi.FieldByName('keterangan').AsString;
       Tag := 1;
     end;
   fr_FormRefLPS.Free;
   fr_FormRefLPS := nil;
 end;
 
-procedure Tfr_EntryFormDN0001.MemKeteranganPropertiesChange(
+procedure Tfr_EntryFormDK0003.MemKeteranganPropertiesChange(
   Sender: TObject);
 begin
   inherited;

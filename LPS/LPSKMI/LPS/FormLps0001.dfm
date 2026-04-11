@@ -3,8 +3,10 @@ inherited fr_FormLPS0001: Tfr_FormLPS0001
   Caption = 'Form 0001 - Daftar Data Nasabah'
   ClientHeight = 395
   ClientWidth = 947
+  ExplicitWidth = 963
+  ExplicitHeight = 434
   PixelsPerInch = 96
-  TextHeight = 15
+  TextHeight = 13
   object sGauge1: TsGauge [1]
     Left = 0
     Top = 334
@@ -216,7 +218,7 @@ inherited fr_FormLPS0001: Tfr_FormLPS0001
       Left = 641
       Top = 6
       Width = 300
-      Height = 23
+      Height = 21
       Align = alRight
       DropDownWidth = 300
       KeyField = 'kode_kantor'
@@ -237,8 +239,8 @@ inherited fr_FormLPS0001: Tfr_FormLPS0001
     TabOrder = 2
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -13
-    TitleFont.Name = 'Times New Roman'
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     OnDrawColumnCell = DBGrid1DrawColumnCell
     OnDblClick = DBGrid1DblClick

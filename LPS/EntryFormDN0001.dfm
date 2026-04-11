@@ -8,11 +8,11 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 814
-    ExplicitWidth = 1017
+    ExplicitWidth = 814
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 1017
-    ExplicitHeight = 376
+    ExplicitWidth = 814
+    ExplicitHeight = 367
     Height = 367
     Width = 814
     object cxPageControl1: TcxPageControl
@@ -24,8 +24,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       TabOrder = 0
       Properties.ActivePage = cxTabPage2
       Properties.CustomButtons.Buttons = <>
-      ExplicitWidth = 1013
-      ExplicitHeight = 372
       ClientRectBottom = 359
       ClientRectLeft = 4
       ClientRectRight = 806
@@ -33,8 +31,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       object cxTabPage1: TcxTabSheet
         Caption = 'Page 1'
         ImageIndex = 0
-        ExplicitWidth = 1005
-        ExplicitHeight = 341
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,9 +43,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = -168
-          ExplicitWidth = 791
-          ExplicitHeight = 301
           Height = 332
           Width = 802
           object Label3: TcxLabel
@@ -457,8 +450,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       object cxTabPage2: TcxTabSheet
         Caption = 'Page 2'
         ImageIndex = 3
-        ExplicitWidth = 1005
-        ExplicitHeight = 341
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -471,9 +462,6 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
-          ExplicitWidth = 1005
-          ExplicitHeight = 500
           Height = 332
           Width = 802
           object cxLabel31: TcxLabel
@@ -995,9 +983,8 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
   end
   inherited PanelFooter: TcxGroupBox
     Top = 367
-    ExplicitLeft = 8
-    ExplicitTop = 334
-    ExplicitWidth = 846
+    ExplicitTop = 367
+    ExplicitWidth = 814
     ExplicitHeight = 44
     Height = 44
     Width = 814
@@ -1033,7 +1020,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Left = 627
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 830
+      ExplicitLeft = 627
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -1042,14 +1029,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 1012
+      ExplicitLeft = 809
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 718
       Height = 34
-      ExplicitLeft = 921
+      ExplicitLeft = 718
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -1058,7 +1045,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 824
+      ExplicitLeft = 621
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1078,7 +1065,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 818
+      ExplicitLeft = 615
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1088,7 +1075,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 812
+      ExplicitLeft = 609
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1098,7 +1085,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 806
+      ExplicitLeft = 603
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -1108,14 +1095,14 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 800
+      ExplicitLeft = 597
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 814
-    ExplicitWidth = 1017
+    ExplicitWidth = 814
     inherited IconClose: TLabel
       Left = 780
       ExplicitLeft = 771
@@ -1129,7 +1116,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
   object MyQTemp: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      'SELECT'
+      '  SELECT'
       '  `flag_detail`,'
       '  `nasabah_id`,'
       '  `nama_nasabah`,'
@@ -1143,12 +1130,12 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       '  `nomor_identitas`,'
       '  `alamat`,'
       '  `kota_kab`,'
-      '  `wni`,'
+      '  `kewarganegaraan`,'
       '  `telpon`,'
       '  `flag_fraud`,'
       '  `hub_dgn_bank`,'
-      '  `slik_kode_hub_ljk`,'
-      '  `slik_kode_gol_debitur`'
+      '  `hub_pihak_terkait`,'
+      '  `gol_nasabah`'
       'FROM `lps_dn_f0001`'
       '&WHERE')
     ReadOnly = True
@@ -1208,8 +1195,8 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       FieldName = 'kota_kab'
       Size = 4
     end
-    object MyQTempwni: TStringField
-      FieldName = 'wni'
+    object MyQTempkewarganegaraan: TStringField
+      FieldName = 'kewarganegaraan'
       Size = 3
     end
     object MyQTemptelpon: TStringField
@@ -1224,12 +1211,12 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       FieldName = 'hub_dgn_bank'
       Size = 2
     end
-    object MyQTempslik_kode_hub_ljk: TStringField
-      FieldName = 'slik_kode_hub_ljk'
+    object MyQTemphub_pihak_terkait: TStringField
+      FieldName = 'hub_pihak_terkait'
       Size = 2
     end
-    object MyQTempslik_kode_gol_debitur: TStringField
-      FieldName = 'slik_kode_gol_debitur'
+    object MyQTempgol_nasabah: TStringField
+      FieldName = 'gol_nasabah'
       Size = 11
     end
   end

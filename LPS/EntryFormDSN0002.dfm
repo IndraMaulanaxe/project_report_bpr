@@ -22,7 +22,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       Height = 363
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabPage2
+      Properties.ActivePage = cxTabPage1
       Properties.CustomButtons.Buttons = <>
       ClientRectBottom = 359
       ClientRectLeft = 4
@@ -48,7 +48,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           Width = 802
           object Label3: TcxLabel
             Left = 17
-            Top = 22
+            Top = 46
             AutoSize = False
             Caption = 'Jumlah Pemilik Rekening'
             ParentFont = False
@@ -63,12 +63,12 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Transparent = True
             Height = 24
             Width = 152
-            AnchorY = 34
+            AnchorY = 58
           end
           object cxLabel2: TcxLabel
             AlignWithMargins = True
             Left = 17
-            Top = 55
+            Top = 79
             AutoSize = False
             Caption = 'Nasabah ID'
             ParentFont = False
@@ -84,11 +84,11 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Transparent = True
             Height = 19
             Width = 152
-            AnchorY = 65
+            AnchorY = 89
           end
           object cxLabel1: TcxLabel
             Left = 17
-            Top = 82
+            Top = 106
             AutoSize = False
             Caption = 'No Rekening'
             ParentFont = False
@@ -102,12 +102,12 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Transparent = True
             Height = 24
             Width = 135
-            AnchorY = 94
+            AnchorY = 118
           end
           object cxLabel5: TcxLabel
             AlignWithMargins = True
             Left = 17
-            Top = 115
+            Top = 139
             AutoSize = False
             Caption = 'Status Dana'
             ParentFont = False
@@ -123,13 +123,13 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Transparent = True
             Height = 19
             Width = 152
-            AnchorY = 125
+            AnchorY = 149
           end
           object cxLabel4: TcxLabel
             Left = 17
-            Top = 139
+            Top = 163
             AutoSize = False
-            Caption = 'Tanggal Mulai Tanggal Aro'
+            Caption = 'Tanggal Mulai Tanggal Akrual'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindow
@@ -144,11 +144,11 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Transparent = True
             Height = 30
             Width = 162
-            AnchorY = 154
+            AnchorY = 178
           end
-          object tgl_mulai_atau_tgl_aro_terakhir: TcxDateEdit
+          object tgl_mulai: TcxDateEdit
             Left = 185
-            Top = 143
+            Top = 167
             Hint = 'Tanggal'
             ParentColor = True
             ParentFont = False
@@ -165,7 +165,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           object nasabah_id: TcxTextEdit
             Tag = 1
             Left = 185
-            Top = 53
+            Top = 77
             Hint = 'Nama Nasabah'
             TabStop = False
             AutoSize = False
@@ -182,7 +182,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           end
           object staus_dana: TcxButtonEdit
             Left = 185
-            Top = 113
+            Top = 137
             Hint = 'Kode Jenis ID'
             AutoSize = False
             ParentColor = True
@@ -211,7 +211,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           object nm_staus_dana: TcxTextEdit
             Tag = 1
             Left = 272
-            Top = 113
+            Top = 137
             Hint = 'Jenis ID'
             TabStop = False
             AutoSize = False
@@ -229,7 +229,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           object no_rekening: TcxTextEdit
             Tag = 1
             Left = 185
-            Top = 83
+            Top = 107
             Hint = 'Nama Nasabah'
             TabStop = False
             AutoSize = False
@@ -246,7 +246,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           end
           object jumlah_pemilik_rekening: TcxCurrencyEdit
             Left = 185
-            Top = 23
+            Top = 47
             Hint = 'Pegawai Tetap Tahun Laporan'
             EditValue = '0'
             ParentColor = True
@@ -264,8 +264,8 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
             Width = 121
           end
           object gb_suku_bunga: TcxGroupBox
-            Left = 41
-            Top = 173
+            Left = 49
+            Top = 224
             Caption = 'Suku Bunga'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -358,6 +358,140 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
               TabOrder = 3
               Width = 121
             end
+          end
+          object cxLabel6: TcxLabel
+            AlignWithMargins = True
+            Left = 17
+            Top = 19
+            AutoSize = False
+            Caption = 'Klasifikasi Rekening'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            Properties.Alignment.Vert = taVCenter
+            Properties.WordWrap = True
+            Transparent = True
+            Height = 19
+            Width = 152
+            AnchorY = 29
+          end
+          object klasifikasi: TcxButtonEdit
+            Left = 185
+            Top = 17
+            Hint = 'Kode Klasifikasi'
+            AutoSize = False
+            ParentColor = True
+            ParentFont = False
+            Properties.Buttons = <
+              item
+                Default = True
+                ImageIndex = 83
+                Kind = bkGlyph
+              end>
+            Properties.CharCase = ecUpperCase
+            Properties.Images = dm_bpr1.ImageList1
+            Properties.OnButtonClick = klasifikasiPropertiesButtonClick
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 13
+            OnExit = klasifikasiExit
+            Height = 24
+            Width = 81
+          end
+          object nm_klasifikasi: TcxTextEdit
+            Tag = 1
+            Left = 272
+            Top = 17
+            Hint = 'Klafisikasi Rekening'
+            TabStop = False
+            AutoSize = False
+            ParentColor = True
+            Properties.Alignment.Horz = taLeftJustify
+            Style.LookAndFeel.Kind = lfOffice11
+            Style.TextColor = clWindow
+            StyleDisabled.LookAndFeel.Kind = lfOffice11
+            StyleFocused.LookAndFeel.Kind = lfOffice11
+            StyleHot.LookAndFeel.Kind = lfOffice11
+            TabOrder = 14
+            Height = 24
+            Width = 211
+          end
+          object nm_jenis_simpanan: TcxTextEdit
+            Tag = 1
+            Left = 272
+            Top = 197
+            Hint = 'Jenis Simpanan'
+            TabStop = False
+            AutoSize = False
+            ParentColor = True
+            Properties.Alignment.Horz = taLeftJustify
+            Style.LookAndFeel.Kind = lfOffice11
+            Style.TextColor = clWindow
+            StyleDisabled.LookAndFeel.Kind = lfOffice11
+            StyleFocused.LookAndFeel.Kind = lfOffice11
+            StyleHot.LookAndFeel.Kind = lfOffice11
+            TabOrder = 15
+            Height = 24
+            Width = 211
+          end
+          object jenis_simpanan: TcxButtonEdit
+            Left = 185
+            Top = 197
+            Hint = 'Kode Jenis Simpanan'
+            AutoSize = False
+            ParentColor = True
+            ParentFont = False
+            Properties.Buttons = <
+              item
+                Default = True
+                ImageIndex = 83
+                Kind = bkGlyph
+              end>
+            Properties.CharCase = ecUpperCase
+            Properties.Images = dm_bpr1.ImageList1
+            Properties.OnButtonClick = jenis_simpananPropertiesButtonClick
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            TabOrder = 16
+            OnExit = jenis_simpananExit
+            Height = 24
+            Width = 81
+          end
+          object cxLabel7: TcxLabel
+            AlignWithMargins = True
+            Left = 17
+            Top = 199
+            AutoSize = False
+            Caption = 'Jenis Simpanan'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindow
+            Style.Font.Height = -13
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.TextColor = clWindow
+            Style.IsFontAssigned = True
+            Properties.Alignment.Vert = taVCenter
+            Properties.WordWrap = True
+            Transparent = True
+            Height = 19
+            Width = 152
+            AnchorY = 209
           end
         end
       end
@@ -919,21 +1053,22 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       'SELECT'
+      '  `klasifikasi_rekening`,'
       '  `jumlah_pemilik_rekening`,'
       '  `nasabah_id`,'
-      '  `kode_integrasi`,'
+      '  `jenis_simpanan`,'
       '  `no_rekening`,'
       '  `status_dana`,'
-      '  `tgl_mulai_atau_tgl_aro_terakhir`,'
-      '  `suku_bunga`,'
-      '  `suku_bunga_val`,'
+      '  `tgl_mulai`,'
+      '  `jenis_tingkat_bunga`,'
+      '  `tingkat_bunga`,'
       '  `biaya_cashback`,'
       '  `tingkat_bunga_penjaminan_lps`,'
       '  `kategori_tingkat_bunga_simpanan`,'
-      '  `saldo_akhir`,'
+      '  `saldo_simpanan`,'
       '  `nominal_blokir`,'
       '  `alasan_blokir`,'
-      '  `saldo_akhir_bunga_bmhd`,'
+      '  `bunga_akrual`,'
       '  `tgl_akru_terakhir`,'
       '  `tanggal_jt`'
       'FROM `lps_dsn_f0002`'
@@ -945,14 +1080,18 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       item
         Name = 'WHERE'
       end>
+    object MyQTempklasifikasi_rekening: TStringField
+      FieldName = 'klasifikasi_rekening'
+      Size = 1
+    end
     object MyQTempjumlah_pemilik_rekening: TIntegerField
       FieldName = 'jumlah_pemilik_rekening'
     end
     object MyQTempnasabah_id: TStringField
       FieldName = 'nasabah_id'
     end
-    object MyQTempkode_integrasi: TStringField
-      FieldName = 'kode_integrasi'
+    object MyQTempjenis_simpanan: TStringField
+      FieldName = 'jenis_simpanan'
       Size = 4
     end
     object MyQTempno_rekening: TStringField
@@ -963,15 +1102,15 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       FieldName = 'status_dana'
       Size = 1
     end
-    object MyQTemptgl_mulai_atau_tgl_aro_terakhir: TDateField
-      FieldName = 'tgl_mulai_atau_tgl_aro_terakhir'
+    object MyQTemptgl_mulai: TDateField
+      FieldName = 'tgl_mulai'
     end
-    object MyQTempsuku_bunga: TStringField
-      FieldName = 'suku_bunga'
+    object MyQTempjenis_tingkat_bunga: TStringField
+      FieldName = 'jenis_tingkat_bunga'
       Size = 1
     end
-    object MyQTempsuku_bunga_val: TFloatField
-      FieldName = 'suku_bunga_val'
+    object MyQTemptingkat_bunga: TFloatField
+      FieldName = 'tingkat_bunga'
     end
     object MyQTempbiaya_cashback: TFloatField
       FieldName = 'biaya_cashback'
@@ -983,8 +1122,8 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       FieldName = 'kategori_tingkat_bunga_simpanan'
       Size = 3
     end
-    object MyQTempsaldo_akhir: TFloatField
-      FieldName = 'saldo_akhir'
+    object MyQTempsaldo_simpanan: TFloatField
+      FieldName = 'saldo_simpanan'
     end
     object MyQTempnominal_blokir: TFloatField
       FieldName = 'nominal_blokir'
@@ -993,8 +1132,8 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       FieldName = 'alasan_blokir'
       Size = 2
     end
-    object MyQTempsaldo_akhir_bunga_bmhd: TFloatField
-      FieldName = 'saldo_akhir_bunga_bmhd'
+    object MyQTempbunga_akrual: TFloatField
+      FieldName = 'bunga_akrual'
     end
     object MyQTemptgl_akru_terakhir: TDateField
       FieldName = 'tgl_akru_terakhir'
