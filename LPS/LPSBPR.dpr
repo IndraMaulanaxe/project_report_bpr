@@ -35,11 +35,5 @@ begin
   Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'LPS :: Aplikasi Pelaporan Online LPS';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
-  Application.CreateForm(Tfr_FormDN0001, fr_FormDN0001);
-  Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
-  Application.CreateForm(Tfr_EntryFormDN0001, fr_EntryFormDN0001);
-  Application.CreateForm(Tfr_FormRefLPS, fr_FormRefLPS);
-  Application.CreateForm(Tfr_EntryFormDSN0002, fr_EntryFormDSN0002);
-  Application.CreateForm(Tfr_FormDSN0002, fr_FormDSN0002);
   Application.Run;
 end.

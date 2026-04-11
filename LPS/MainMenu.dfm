@@ -13,6 +13,7 @@ object fr_MainMenu: Tfr_MainMenu
   OldCreateOrder = False
   Position = poMainFormCenter
   WindowState = wsMaximized
+  OnActivate = FormActivate
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -251,7 +252,7 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 1
       Width = 198
     end
-    object cxLabel4: TcxLabel
+    object LabelSurat: TcxLabel
       Left = 559
       Top = 23
       Caption = 'No Surat'
@@ -278,6 +279,7 @@ object fr_MainMenu: Tfr_MainMenu
         'Laporan BPR Penyesuaian Kantor Akuntan Publik')
       TabOrder = 3
       Text = 'Laporan BPR Rutin'
+      OnEditing = cb_jenis_laporanEditing
       Width = 198
     end
     object koreksi_ke: TcxSpinEdit
@@ -559,12 +561,10 @@ object fr_MainMenu: Tfr_MainMenu
   object MyQFormLapBul: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
-      
-        'SELECT `id`, `kode_form`, `nama_form`, `nama_table`, is_footer, ' +
-        'is_file'
-      'FROM `ref_kode_form` '
-      '#where kode_form in ('#39'A0301'#39')'
-      'ORDER BY kode_form')
+      'SELECT id, kode_form, nama_form, nama_table, kode_laporan'
+      'FROM lps_ref_kode_form'
+      '#WHERE nama_table IN ('#39'lps_dn_f0001'#39')'
+      'ORDER BY kode_form;')
     Left = 856
     Top = 72
     object MyQFormLapBulid: TIntegerField
@@ -583,11 +583,9 @@ object fr_MainMenu: Tfr_MainMenu
       FieldName = 'nama_table'
       Size = 250
     end
-    object MyQFormLapBulis_footer: TSmallintField
-      FieldName = 'is_footer'
-    end
-    object MyQFormLapBulis_file: TSmallintField
-      FieldName = 'is_file'
+    object MyQFormLapBulkode_laporan: TStringField
+      FieldName = 'kode_laporan'
+      Size = 10
     end
   end
   object MyQField: TMyQuery

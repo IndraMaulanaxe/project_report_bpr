@@ -72,7 +72,7 @@ type
     cxGroupBox3: TcxGroupBox;
     cxLabel3: TcxLabel;
     no_surat: TcxTextEdit;
-    cxLabel4: TcxLabel;
+    LabelSurat: TcxLabel;
     cxGroupBox4: TcxGroupBox;
     cxLabel5: TcxLabel;
     kode_kepesertaan: TcxTextEdit;
@@ -83,10 +83,6 @@ type
     per_tgl: TDateTimePicker;
     MyQuery1: TMyQuery;
     MyQFormLapBul: TMyQuery;
-    MyQFormLapBulid: TIntegerField;
-    MyQFormLapBulkode_form: TStringField;
-    MyQFormLapBulnama_form: TStringField;
-    MyQFormLapBulnama_table: TStringField;
     MyQField: TMyQuery;
     CategoryPanelGroup1: TCategoryPanelGroup;
     cp_lap_akuntan_publik: TCategoryPanel;
@@ -95,10 +91,13 @@ type
     bt_form0002: TcxButton;
     bt_form0001: TcxButton;
     bt_formC0100: TcxButton;
-    MyQFormLapBulis_footer: TSmallintField;
-    MyQFormLapBulis_file: TSmallintField;
     sGaugeStatus: TcxProgressBar;
     sGaugeJenisLaporan: TcxProgressBar;
+    MyQFormLapBulid: TIntegerField;
+    MyQFormLapBulkode_form: TStringField;
+    MyQFormLapBulnama_form: TStringField;
+    MyQFormLapBulnama_table: TStringField;
+    MyQFormLapBulkode_laporan: TStringField;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -122,6 +121,8 @@ type
     procedure bt_formD0000Click(Sender: TObject);
     procedure bt_formF0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure cb_jenis_laporanEditing(Sender: TObject; var CanEdit: Boolean);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -134,9 +135,10 @@ var
 implementation
 
 uses
-  dm_bpr, StrUtils, MyVAR, MyLib, FormA0301, FormDN0001, FormDSN0002;
+  dm_bpr, StrUtils, MyVAR, MyLib, FormA0301, FormDN0001, FormDSN0002, Progress,
+  DaftarBackupAPOLO;
 
-  Var cKodeJenisPelaporan : String;
+  Var cKodeJenisPelaporan, cKodePeriode : String;
 
 {$R *.dfm}
 
@@ -145,6 +147,30 @@ uses
 procedure Tfr_MainMenu.CategoryPanel1Click(Sender: TObject);
 begin
 //  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
+end;
+
+procedure Tfr_MainMenu.cb_jenis_laporanEditing(Sender: TObject;
+  var CanEdit: Boolean);
+begin
+  if cb_jenis_laporan.ItemIndex=0 then
+    cKodePeriode := 'M'
+  else if cb_jenis_laporan.ItemIndex=1 then
+    cKodePeriode := 'S'
+  else if cb_jenis_laporan.ItemIndex=2 then
+    cKodePeriode := 'D'
+  else
+  if cb_jenis_laporan.ItemIndex=4 then
+    begin
+      LabelSurat.Visible := True;
+      no_surat.Visible := True;
+      cKodePeriode := 'K'
+    end
+  else
+    begin
+      LabelSurat.Visible := False;
+      no_surat.Visible := False;
+      cKodePeriode := 'K'
+    end;
 end;
 
 procedure Tfr_MainMenu.bt_formA0400Click(Sender: TObject);
@@ -156,6 +182,34 @@ begin
   begin
     ProsesUpload(OpenDialog1.FileName,'A0400');
   end;
+end;
+
+procedure Tfr_MainMenu.FormActivate(Sender: TObject);
+begin
+ if (MonthOf(per_tgl.Date)=6) or (MonthOf(per_tgl.Date)=12)  then
+    cb_jenis_laporan.ItemIndex := 1
+   else
+    cb_jenis_laporan.ItemIndex := 0;
+
+  if cb_jenis_laporan.ItemIndex=0 then
+    cKodePeriode := 'M'
+  else if cb_jenis_laporan.ItemIndex=1 then
+    cKodePeriode := 'S'
+  else if cb_jenis_laporan.ItemIndex=2 then
+    cKodePeriode := 'D'
+  else
+  if cb_jenis_laporan.ItemIndex=4 then
+    begin
+      LabelSurat.Visible := True;
+      no_surat.Visible := True;
+      cKodePeriode := 'K'
+    end
+  else
+    begin
+      LabelSurat.Visible := False;
+      no_surat.Visible := False;
+      cKodePeriode := 'K'
+    end;
 end;
 
 procedure Tfr_MainMenu.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -174,38 +228,43 @@ var cNamaTabelCek, cKodeArsipCek, cKodeFormArsipCek : string;
  nCountCek : Integer;
 begin
   inherited;
-  {cp_lap_lanjutan.Collapsed := True;
-  cp_transparasi.Collapsed := True;
-  cp_sp_kebenaran_lpran.Collapsed := True;
-  cp_opini_akuntan.Collapsed := True;
-  cp_lap_akuntan_publik.Collapsed := True;
-  cp_lap_keuangan.Collapsed := True;
-  cp_sdm.Collapsed := True;
-  cp_laporan_manajemen.Collapsed := True;
-  cp_strategi.Collapsed := True;
-  cp_perkembanganbpr.Collapsed := True;
-  cp_kepemilikan.Collapsed := True;
-  cp_kepengurusan.Collapsed := True;
-
-  kode_sektor_ljk.Text := GetMyParameter('LTBPR_KODE_SEKTOR_LJK','010201');
-  kode_ljk.Text := GetMyParameter('LTBPR_KODE_LJK','600432');
-  per_tgl.Date := GetDateFValueByFKeyValue('sistem','jenis','TGL_LTBPR','tanggal');
+  kode_kepesertaan.Text := GetMyParameter('LPS_KODE_KEPERSETAAN','31300083');
+  per_tgl.Date        := GetDateFValueByFKeyValue('sistem','jenis','TGL_LPS','tanggal');
 
   if (YearOf(per_tgl.Date) < 2018) then
-    begin
-      per_tgl.Date := StrToDate('12/31/2018');
-      MyExecuteSQL('INSERT INTO '+cDb2+'.`sistem` (`jenis`, `tanggal`) '+
-        ' VALUES ("TGL_LTBPR", '+DateToStrSQL(per_tgl.Date)+') '+
-        ' ON DUPLICATE KEY UPDATE tanggal='+DateToStrSQL(per_tgl.Date));
-    end;
+  begin
+    per_tgl.Date := StrToDate('12/31/2018');
+    MyExecuteSQL('INSERT INTO '+cDb2+'.`sistem` (`jenis`, `tanggal`) '+
+      ' VALUES ("TGL_LPS", '+DateToStrSQL(per_tgl.Date)+') '+
+      ' ON DUPLICATE KEY UPDATE tanggal='+DateToStrSQL(per_tgl.Date));
+  end;
+
   per_tgl.Format := 'MMMM yyyy';
-  cKodeArsipCek := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
-  cKodeFormArsipCek := cDb2+'.'+'ltbprk_header_arsip';
-  nCountCek := StrToIntDef(SelectRow('SELECT count(*) FROM '+cKodeFormArsipCek+
-              ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)),0);
+
+  cKodeArsipCek := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+
+                   IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+
+                   FormatDateTime('MMyyyy',per_tgl.Date);
+
+  cKodeFormArsipCek := cDb2+'.lps_header_arsip';
+
+  nCountCek := StrToIntDef(SelectRow(
+                    'SELECT COUNT(*) FROM '+cKodeFormArsipCek+
+                    ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)+
+                    '   AND kode_kepesertaan='+QuotedStr(kode_kepesertaan.Text)+
+                    '   AND periode_data='+DateToStrSQL(per_tgl.Date)
+                  ),0);
+
+
+  if (nCountCek = 0) then
+  begin
+    nCountCek := StrToIntDef(SelectRow(
+                  'SELECT COUNT(*) FROM '+cKodeFormArsipCek+
+                  ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)
+                ),0);
+  end;
 
   if (nCountCek > 0) then
-      bt_ganti_bulan.Enabled:=True;  }
+    bt_ganti_bulan.Enabled := True;
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -283,7 +342,7 @@ begin
 
   if lLanjutUpdate then
   begin
-    cnew := GetMyParameter('LAST_VERSION_LTBPR', '1.0.0.1');
+    cnew := GetMyParameter('LAST_VERSION_LPSBPR', '1.0.0.1');
     cLastnew := IniGetStringValue(Ogie_FileIni, 'Configuration', 'LastVersionDownload', '1.0.0.0');
 //    if not FileExists(cFileName) then
 //      cLastnew := '1.0.0.0';
@@ -357,7 +416,7 @@ begin
           if FileExists(bakName) then
             DeleteFile(bakName);
 
-          cFileName:= GetMyParameter('FILE_APLIKASI_LTBPR','LTBPRSetup')+ReplaceStr(cnew,'.','')+'.zip';
+          cFileName:= GetMyParameter('FILE_APLIKASI_LPSBPR','LPSBPRSetup')+ReplaceStr(cnew,'.','')+'.zip';
 
           if (GetMyParameter('SETTING_UPDATE', '') = 'DPMKM') then
           begin
@@ -416,7 +475,7 @@ begin
         ZipForge1.CloseArchive;
         TrayIcon1.BalloonHint := 'Proses Extract file ' + cFileName + ' selesai...';
         TrayIcon1.ShowBalloonHint;
-        cNamaFileTemp := apath + 'update\' + GetMyParameter('FILE_APLIKASI_LTBPR','LTBPRSetup')+'.zip' ;
+        cNamaFileTemp := apath + 'update\' + GetMyParameter('FILE_APLIKASI_LPSBPR','LPSBPRSetup')+'.zip' ;
         cNamaFileTemp := ChangeFileExt(cNamaFileTemp, '.exe');
 //        Pesan(2,'4-'+cNamaFileTemp);
         if FileExists(cNamaFileTemp) then
@@ -424,7 +483,7 @@ begin
           if Pesan(3, 'System akan menutup semua Aplikasi ' + ExtractFileName(Application.ExeName) + ' yang masih aktif' + #13 + #10 + 'dan menjalankan Setup Aplikasi ' + ExtractFileName(Application.ExeName) + ' Versi ' + cnew + #13 + #10 + 'dan pastikan pekerjaan anda telah tersimpan..., Lanjutkan ?') then
             if Pesan(3, 'Program akan menutup semua aplikasi yang terkait' + #13 + #10 + 'dan menjalankan Setup Program dengan Versi yang baru' + #13 + #10 + 'dan pastikan pekerjaan anda telah tersimpan..., Lanjutkan ?') then
             begin
-              ReleaseLimitUser('LOGIN_LTBPR' + '_' + Trim(UpperCase(cNamaUser)));
+              ReleaseLimitUser('LOGIN_LPSBPR' + '_' + Trim(UpperCase(cNamaUser)));
               if ShellExecute(Application.Handle, PChar('open'), Pchar(cNamaFileTemp), PChar(''), nil, SW_NORMAL) > 32 then
                 Application.Terminate;
             end;
@@ -454,7 +513,7 @@ end;
 procedure Tfr_MainMenu.bt_export_excelClick(Sender: TObject);
  var
   Fn: Integer;
-  cTemp, cTempSQL, cKodeBankLJK, cPeriodeLaporan, cKodeForm, cNamaTargetTxt,
+  cTemp, cTempSQL, cKodeJenisLPS, cKodeKepesertaan, cPeriodeLaporan, cKodeLaporan, cKodeForm, cNamaTargetTxt,
   cContentPerLine, cKodeArsip: string;
   nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
   i: Integer;
@@ -463,17 +522,16 @@ procedure Tfr_MainMenu.bt_export_excelClick(Sender: TObject);
 begin
   inherited;
 
- { if not Pesan(3, 'Pastikan Anda sudah memilih Kode Jenis Laporan dengan benar, Lanjutkan ?') then
+  if not Pesan(3, 'Pastikan Anda sudah memilih Kode Jenis Laporan dengan benar, Lanjutkan ?') then
     Exit;
 
   if not sPathDialog1.Execute then
     Exit;
 
 
-  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN_','PRBPRKS');
-  cKodeBankLJK := kode_ljk.Text;
+  cKodeKepesertaan := kode_kepesertaan.Text;
   cPeriodeLaporan := FormatDateTime('yyyyMMdd', per_tgl.DateTime);
-  cTemp := GetMyParameter('LTBPR_JUMLAH_REC_PERFILE','1000');
+  cTemp := GetMyParameter('LPS_JUMLAH_REC_PERFILE','1000');
   if Empty(cTemp) then
     cTemp := '1000';
   Tag := 1;
@@ -489,55 +547,49 @@ begin
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
-     if  (MyQFormLapBulis_footer.AsInteger=0) and  (MyQFormLapBulis_file.AsInteger=0) then
-      begin
-        sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
-        cKodeForm := MyQFormLapBulkode_form.AsString;
+      sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
+      cKodeForm := MyQFormLapBulkode_form.AsString;
+      cKodeLaporan := MyQFormLapBulkode_laporan.AsString;
 
-        if cb_jenis_laporan.ItemIndex=0 then
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls'
-        else
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls';
+      cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeLaporan+'_'+cKodeKepesertaan+'_'+cPeriodeLaporan+
+        '_'+cKodePeriode+'_'+IfThen(flg_koreksi.Checked,'K'+koreksi_ke.Text,'R')+'.txt';
 
-        if FileExists(cNamaTargetTxt) then
-          DeleteFile(cNamaTargetTxt);
+      if FileExists(cNamaTargetTxt) then
+        DeleteFile(cNamaTargetTxt);
 
-        if FileExists(sPathDialog1.Path+'\iphist.dat') then
-          DeleteFile(sPathDialog1.Path+'\iphist.dat');
+      if FileExists(sPathDialog1.Path+'\iphist.dat') then
+        DeleteFile(sPathDialog1.Path+'\iphist.dat');
 
-        if cKodeForm='E0100' then
-          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+' '
-        else
-          MyQuery1.SQL.Text := 'SELECT * FROM view_'+MyQFormLapBulnama_table.AsString+' ';
+      MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+' ';
 
 
-        if MyQuery1.Active then
-          MyQuery1.Refresh
-        else
-          MyQuery1.Open;
+      if MyQuery1.Active then
+        MyQuery1.Refresh
+      else
+        MyQuery1.Open;
 
-            dm_bpr1.QExport4Xlsx1.DataSet := MyQuery1;
-            dm_bpr1.QExport4Xlsx1.ExportedFields.Clear;
-            dm_bpr1.QExport4Xlsx1.Captions.Clear;
-            dm_bpr1.QExport4Xlsx1.ShowFile := True;
+          dm_bpr1.QExport4Xlsx1.DataSet := MyQuery1;
+          dm_bpr1.QExport4Xlsx1.ExportedFields.Clear;
+          dm_bpr1.QExport4Xlsx1.Captions.Clear;
+          dm_bpr1.QExport4Xlsx1.ShowFile := True;
 
-            dm_bpr1.QExport4Xlsx1.Header.Text := cNamaPT+#13+#10+
-              SubStr(Caption,At('-',Caption)+2,Length(Caption))+#13+#10+
-              'Konsolidasi - '+MyQFormLapBulnama_table.AsString;
+          dm_bpr1.QExport4Xlsx1.Header.Text := cNamaPT+#13+#10+
+            SubStr(Caption,At('-',Caption)+2,Length(Caption))+#13+#10+
+            'Konsolidasi';
 
-            dm_bpr1.QExport4Xlsx1.FileName := cNamaTargetTxt;
-            dm_bpr1.QExport4Xlsx1.Execute;
-            dm_bpr1.QExport4Xlsx1.ExportedFields.Clear;
-            dm_bpr1.QExport4Xlsx1.Captions.Clear;
-      end;
+          dm_bpr1.QExport4Xlsx1.FileName := cNamaTargetTxt;
+          dm_bpr1.QExport4Xlsx1.Execute;
+          dm_bpr1.QExport4Xlsx1.ExportedFields.Clear;
+          dm_bpr1.QExport4Xlsx1.Captions.Clear;
 
       MyQFormLapBul.Next;
-      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
+      sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
       Application.ProcessMessages;
     end;
 
   Pesan(1,'Proses telah selesai...!');
-  sGaugeJenisLaporan.Visible := False;  }
+  sGaugeJenisLaporan.Visible := False;
+
 
 end;
 
@@ -616,49 +668,58 @@ begin
 end;
 
 procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
-var cKodeArsip : string;
+var
+  cKodeArsip : string;
 begin
   inherited;
-    cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  // Bentuk kode arsip
+  cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex + 1) + '_' +
+    IfThen(flg_koreksi.Checked, 'K_' + koreksi_ke.Text, '') +
+    FormatDateTime('MMyyyy', per_tgl.Date);
 
-  //cek update status bulan lalu
-  if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`ltbprk_backup_log` '+
-        ' WHERE kode_arsip='+QuotedStr(cKodeArsip)+' AND '+
-        ' tgl_laporan='+DateToStrSQL(per_tgl.Date)) = '0') then
-    begin
-      Pesan(2, 'Maaf, Anda belum melakukan Update Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
-      ' Tahun='+IntToStr(YearOf(per_tgl.Date))+'...!'#13#10 +
-      ' Step-Step untuk Update Status Kirim Data'#13#10 +
+  // cek update status bulan lalu di tabel lps_backup_log
+  if (SelectRow('SELECT COUNT(*) FROM ' + cDb2 + '.`lps_backup_log` ' +
+      'WHERE kode_arsip = ' + QuotedStr(cKodeArsip) + ' AND ' +
+      'tgl_laporan = ' + DateToStrSQL(per_tgl.Date)) = '0') then
+  begin
+    Pesan(2, 'Maaf, Anda belum melakukan Update Status Kirim Data Pelaporan Bulan=' +
+      MonthIndo(per_tgl.Date) + ' Tahun=' + IntToStr(YearOf(per_tgl.Date)) + '...!'#13#10 +
+      ' Step-Step untuk Update Status'#13#10 +
       ' 1. Klik Button Export ALL '#13#10 +
       ' 2. Klik Button Save Point '#13#10 +
       ' 3. Klik Button Update Status');
-      Exit;
-    end;
+    Exit;
+  end;
 
-  if not Pesan(3, 'Jalankan Proses Ganti Bulan Data manjadi '+
-    MonthIndo(IncMonth(per_tgl.Date,1))+'-'+IntToStr(YearOf(IncMonth(per_tgl.Date,1)))+' ?') then
+  // konfirmasi proses ganti bulan
+  if not Pesan(3, 'Jalankan Proses Ganti Bulan Data menjadi ' +
+    MonthIndo(IncMonth(per_tgl.Date, 1)) + '-' +
+    IntToStr(YearOf(IncMonth(per_tgl.Date, 1))) + ' ?') then
     Exit;
 
-  if MyExecuteSQL('UPDATE '+cDb2+'.sistem SET tanggal='+DateToStrSQL(EndOfTheMonth(IncMonth(per_tgl.Date,1)))+
-      'WHERE jenis="TGL_LTBPR"') then
-        begin
-          FormCreate(Sender);
-          Pesan(1, 'Proses Ganti Bulan sudah dijalankan...');
-        end;
-
+  // update tanggal sistem ke akhir bulan berikutnya
+  if MyExecuteSQL('UPDATE ' + cDb2 + '.sistem SET tanggal = ' +
+      DateToStrSQL(EndOfTheMonth(IncMonth(per_tgl.Date, 1))) +
+      ' WHERE jenis = "TGL_LPS"') then
+  begin
+    FormCreate(Sender);
+    // per_tgl.Date := GetDateFValueByFKeyValue('sistem','jenis','TGL_LPS','tanggal');
+    // per_tgl.Format := 'MMMM yyyy';
+    Pesan(1, 'Proses Ganti Bulan sudah dijalankan...');
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_import_text_allClick(Sender: TObject);
 var
   //Fn: Integer;
-  cTemp, cKodeBankLJK, cPeriodeLaporan, cKodeForm, cNamaTargetTxt,
+  cTemp, cKodeKepesertaan, cPeriodeLaporan, cKodeForm, cKodeLaporan, cNamaTargetTxt,
   cKodeArsip, cTableTarget: string;    //cTempSQL, cContentPerLine,
   //nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
-  {cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
 
-  if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`ltbprk_backup_log` '+
+  if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`lps_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
     begin
       Pesan(2, 'Maaf, Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
@@ -677,10 +738,10 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN','LTBPRK');
-  cKodeBankLJK := kode_ljk.Text;
+
+  cKodeKepesertaan := kode_kepesertaan.Text;
   cPeriodeLaporan := FormatDateTime('yyyyMMdd', per_tgl.DateTime);
-  cTemp := GetMyParameter('LTBPR_JUMLAH_REC_PERFILE','1000');
+  cTemp := GetMyParameter('LPS_JUMLAH_REC_PERFILE','1000');
   if Empty(cTemp) then
     cTemp := '1000';
   Tag := 1;
@@ -690,43 +751,36 @@ begin
   else
     MyQFormLapBul.Open;
 
-  sGaugeJenisLaporan.Properties.Max  := MyQFormLapBul.RecordCount;
+  sGaugeJenisLaporan.Properties.Max := MyQFormLapBul.RecordCount;
   sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
-      if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=0) then
-      begin
+      sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
+      cKodeForm := MyQFormLapBulkode_form.AsString;
+      cKodeLaporan := MyQFormLapBulkode_laporan.AsString;
 
-        sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
-        cKodeForm := MyQFormLapBulkode_form.AsString;
+       cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeLaporan+'_'+cKodeKepesertaan+'_'+cPeriodeLaporan+
+        '_'+cKodePeriode+'_'+IfThen(flg_koreksi.Checked,'K'+koreksi_ke.Text,'R')+'.txt';
 
-
-        if cb_jenis_laporan.ItemIndex=0 then
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt'
-        else
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt';
-
-        // Pesan(2,cNamaTargetTxt);
-        if FileExists(cNamaTargetTxt) then
-          begin
-            //proses disini
-            cTableTarget := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-            ImportTXT2SQL(cNamaTargetTxt, cTableTarget)
-          end;
-      end;
+      if FileExists(cNamaTargetTxt) then
+        begin
+          //proses disini
+          cTableTarget := cDb2+'.'+MyQFormLapBulnama_table.AsString;
+          ImportTXT2SQL(cNamaTargetTxt, cTableTarget)
+        end;
 
       MyQFormLapBul.Next;
       sGaugeStatus.Visible := False;
-      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
+      sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
       Application.ProcessMessages;
     end;
 
   Pesan(1,'Proses telah selesai...!, Jangan lupa klik tombol Save Point untuk menyimpan arsip laporan');
   sGaugeJenisLaporan.Visible := False;
   bt_proses.Enabled := True;
-  bt_save.Enabled := True; }
+  bt_save.Enabled := True;
 
 end;
 
@@ -829,15 +883,15 @@ end;
 procedure Tfr_MainMenu.bt_prosesClick(Sender: TObject);
 var
   Fn, nFlgSaham: Integer;
-  cTemp, cTempSQL, cKodeBankLJK, cPeriodeLaporan, cKodeForm, cNamaTargetTxt,
-  cContentPerLine, cKodeArsip: string;
+  cTemp, cTempSQL,  cKodeKepesertaan, cPeriodeLaporan, cKodeForm, cKodeLaporan, cNamaTargetTxt,
+  cContentPerLine, cKodeArsip  :string;
   nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
 
- { cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
+  cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
 
-  if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`ltbprk_backup_log` '+
+  if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`lps_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
     begin
       if not Pesan(3, 'Maaf, Status Kirim Data Pelaporan Bulan='+MonthIndo(per_tgl.Date)+
@@ -856,12 +910,9 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodeJenisPelaporan := GetMyParameter('LTBPR_KODE_JENIS_LAPORAN','LTBPRK');
-  cKodeBankLJK := kode_ljk.Text;
+  cKodeKepesertaan := kode_kepesertaan.Text;
   cPeriodeLaporan := FormatDateTime('yyyyMMdd', per_tgl.DateTime);
-  
-
-  cTemp := GetMyParameter('LTBPR_JUMLAH_REC_PERFILE','1000');
+  cTemp := GetMyParameter('LPS_JUMLAH_REC_PERFILE','1000');
   if Empty(cTemp) then
     cTemp := '1000';
   Tag := 1;
@@ -877,187 +928,179 @@ begin
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
-     sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+'% '+MyQFormLapBulnama_table.AsString;
+      sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+'% '+MyQFormLapBulnama_table.AsString;
+      cKodeForm := MyQFormLapBulkode_form.AsString;
+      cKodeLaporan := MyQFormLapBulkode_laporan.AsString;
 
-     if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=1)  then
+
+       cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeLaporan+'_'+cKodeKepesertaan+'_'+cPeriodeLaporan+
+        '_'+cKodePeriode+'_'+IfThen(flg_koreksi.Checked,'K'+koreksi_ke.Text,'R')+'.txt';
+
+      if FileExists(cNamaTargetTxt) then
+        DeleteFile(cNamaTargetTxt);
+
+      if FileExists(sPathDialog1.Path+'\iphist.dat') then
+        DeleteFile(sPathDialog1.Path+'\iphist.dat');
+
+      //header
+      if not MyExecuteSQL('INSERT INTO '+cDb2+'.`lps_header` '+
+        '(`flag_header`, `kode_kepesertaan`, `periode_data`, '+
+        ' kode_jenis_pelaporan, `kode_form_laporan`, `kode_status_koreksi`, `nomor_surat`, '+
+        ' periode_pengiriman, kode_status_pengiriman) VALUES ('+
+        QuotedStr('H')+', '+
+        QuotedStr(kode_kepesertaan.Text)+', '+
+        QuotedStr(FormatDateTime('yyyy-MM-dd', per_tgl.Date))+', '+
+        QuotedStr(cKodeLaporan)+', '+
+        QuotedStr(cKodeForm)+', '+
+        QuotedStr(IntToStr(cb_jenis_laporan.ItemIndex))+', '+
+        QuotedStr(IfThen(cb_jenis_laporan.ItemIndex=2,no_surat.Text,''))+', '+
+        QuotedStr(cKodePeriode)+', '+
+        QuotedStr(IfThen(flg_koreksi.Checked,'K'+koreksi_ke.Text,'R'))+') '+
+        'ON DUPLICATE KEY UPDATE '+
+        '`nomor_surat`='+QuotedStr(IfThen(cb_jenis_laporan.ItemIndex=2,no_surat.Text,''))       ) then
       begin
-        cKodeForm := MyQFormLapBulkode_form.AsString;
-        if cb_jenis_laporan.ItemIndex=0 then
-          cNamaTargetTxt := cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.pdf'
-        else
-          cNamaTargetTxt := cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.pdf';
-
-        if FileExists(sPathDialog1.Path+'\'+cNamaTargetTxt) then
-            DeleteFile(sPathDialog1.Path+'\'+cNamaTargetTxt);
-
-        if FileExists(sPathDialog1.Path+'\iphist.dat') then
-            DeleteFile(sPathDialog1.Path+'\iphist.dat');
-
-        if not CopyFileUpload(cKodeForm+'.pdf', cNamaTargetTxt , sPathDialog1.Path) then
-          Pesan(2, 'File '+cNamaTargetTxt+' Gagal dibuat...!');
+        Pesan(2, 'Proses Header Form '+cKodeForm+' GAGAL...!');
+        Exit;
       end;
 
-      if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=0)  then
-      begin
 
-        cKodeForm := MyQFormLapBulkode_form.AsString;
-        if cb_jenis_laporan.ItemIndex=0 then
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt'
-        else
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt';
+      if (MyQFormLapBulnama_table.AsString='lps_dn_f0001') then
+          cTempSQL := SelectRow('SELECT count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id) ')
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dsn_f0002') then
+          cTempSQL := SelectRow('SELECT count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE saldo_akhir > 0 ' )
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dk_f0003') then
+         cTempSQL := SelectRow('SELECT  count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE baki_debet > 0 ' )
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dk_f0004') then
+          cTempSQL := SelectRow('SELECT  count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
+          ' WHERE  no_rekening IN (SELECT no_rekening FROM lps_dsn_f0002 '+
+          ' WHERE saldo_akhir > 0) '+
+          ' AND nasabah_id IN (SELECT nasabah_id FROM lps_dn_f0001 '+
+          ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id))')
+      else
+          cTempSQL := SelectRow('SELECT count(*) AS total '+
+                'FROM '+MyQFormLapBulnama_table.AsString+' ');
 
-        if FileExists(cNamaTargetTxt) then
-          DeleteFile(cNamaTargetTxt);
+      if Empty(cTempSQL) then
+         cTempSQL := '0';
 
-        if FileExists(sPathDialog1.Path+'\iphist.dat') then
-          DeleteFile(sPathDialog1.Path+'\iphist.dat');
+      cContentPerLine := 'H|'+cKodeKepesertaan+
+        '|'+FormatDateTime('yyyyMMdd', per_tgl.Date)+
+        '|'+cKodePeriode+
+        '|'+IfThen(flg_koreksi.Checked,'K'+koreksi_ke.Text,'R')+
+        '|'+cTempSQL;
+      AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
 
-        //header
-        if not MyExecuteSQL('INSERT INTO '+cDb2+'.`ltbprk_header` '+
-          '(`flag_header`, `kode_sektor`, `sandi_bpr`, `periode_data`, '+
-          ' `kode_jenis_pelaporan`, `kode_form_laporan`, `kode_status_koreksi`, `nomor_surat`) VALUES ('+
-          QuotedStr('H01')+', '+
-          QuotedStr(kode_sektor_ljk.Text)+', '+
-          QuotedStr(kode_ljk.Text)+', '+
-          QuotedStr(FormatDateTime('yyyy-MM-dd', per_tgl.Date))+', '+
-          QuotedStr(cKodeJenisPelaporan)+', '+
-          QuotedStr(cKodeForm)+', '+
-          QuotedStr(koreksi_ke.Text)+','+
-          QuotedStr(IfThen(cb_jenis_laporan.ItemIndex=2,no_surat.Text,''))+') '+
-          'ON DUPLICATE KEY UPDATE '+
-          '`nomor_surat`='+QuotedStr(IfThen(cb_jenis_laporan.ItemIndex=2,no_surat.Text,''))) then
+
+
+      if (MyQFormLapBulnama_table.AsString='lps_dn_f0001') then
+          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id) '
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dsn_f0002') then
+          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE saldo_akhir > 0 '
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dk_f0003') then
+          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
+            ' WHERE baki_debet > 0 '
+      else
+      if (MyQFormLapBulnama_table.AsString='lps_dk_f0004') then
+          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
+          ' WHERE  no_rekening IN (SELECT no_rekening FROM lps_dsn_f0002 '+
+          ' WHERE saldo_akhir > 0) '+
+          ' AND nasabah_id IN (SELECT nasabah_id FROM lps_dn_f0001 '+
+          ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id))'
+      else
+          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString;
+
+
+      if MyQuery1.Active then
+        MyQuery1.Refresh
+      else
+        MyQuery1.Open;
+
+      sGaugeStatus.Properties.Max := MyQuery1.RecordCount;
+      sGaugeStatus.Position := 0;
+      sGaugeStatus.Visible := True;
+      MyQuery1.First;
+      while not MyQuery1.Eof do
         begin
-          Pesan(2, 'Proses Header Form '+cKodeForm+' GAGAL...!');
-          Exit;
+          //detail
+          cContentPerLine := ''; //'D';
+          for Fn := 0 to MyQuery1.FieldCount - 1 do
+            begin
+              if (MyQFormLapBulnama_table.AsString='lps_dn_f0001') then   //prubahan ojk sep 21=done
+                begin
+                  if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['tgl_lahir']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString<>'9700','',FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
+                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['wni']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString<>'9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['nama_pengurus']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['nomor_identitas']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                  else if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
+                  else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat)
+                  else
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
+                end
+               else
+               if (MyQFormLapBulnama_table.AsString='lps_dsn_f0002') then   //prubahan ojk sep 21=done
+                begin
+                  if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['tanggal_jt']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('kode_integrasi').AsString<>'DEP',cPeriodeLaporan,FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
+                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['jumlah_pemilik_rekening']) then
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
+                      IfThen(MyQuery1.FieldByName('type_join').AsString<>'J','',FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat))
+                  else if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
+                  else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat)
+                  else
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
+                end
+               else
+              //selain table diatas
+                begin
+                  if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
+                  else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat)
+                  else
+                    cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
+                end;
+            end;
+          //record
+          AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
+
+          MyQuery1.Next;
+          sGaugeStatus.Position := sGaugeStatus.Position + 1;
+          Application.ProcessMessages;
         end;
-        cContentPerLine := 'H01|'+kode_sektor_ljk.Text+'|'+cKodeBankLJK+
-          '|'+FormatDateTime('yyyy-MM-dd', per_tgl.Date)+
-          '|'+cKodeJenisPelaporan+
-          '|'+cKodeForm+
-          '|'+koreksi_ke.Text+
-          '|'+IfThen(cb_jenis_laporan.ItemIndex=2,no_surat.Text,'');
-        AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
-
-
-
-        if cKodeForm='E0100' then
-          MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+' '
-        else
-          MyQuery1.SQL.Text := 'SELECT * FROM view_'+MyQFormLapBulnama_table.AsString+' ';
-
-        if MyQuery1.Active then
-          MyQuery1.Refresh
-        else
-          MyQuery1.Open;
-
-        sGaugeStatus.Properties.Max := MyQuery1.RecordCount;
-        sGaugeStatus.Position := 0;
-        sGaugeStatus.Visible := True;
-        MyQuery1.First;
-        while not MyQuery1.Eof do
-          begin
-            //detail
-
-            cContentPerLine := ''; //'D';
-            for Fn := 0 to MyQuery1.FieldCount - 1 do
-              begin
-                  if (MyQFormLapBulkode_form.AsString='E0500') then
-                  begin
-                    if (Fn > 1) and ((MyQuery1.Fields.Fields[0].AsString='F01') or (MyQuery1.Fields.Fields[0].AsString='F02') ) then
-                      cContentPerLine := cContentPerLine + ''
-                    else
-                    if (MyQuery1.Fields.Fields[Fn].DataType in [ftInteger]) and (MyQuery1.Fields.Fields[Fn].AsInteger=0) then
-                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|')
-                    else
-                    if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
-                    else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('0',MyQuery1.Fields.Fields[Fn].AsFloat)
-                    else
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end
-                  else
-                  if (MyQFormLapBulkode_form.AsString='E0800') then
-                  begin
-                    if (Fn > 1) and ((MyQuery1.Fields.Fields[0].AsString='F01') or (MyQuery1.Fields.Fields[0].AsString='F02') ) then
-                      cContentPerLine := cContentPerLine + ''
-                    else
-                    if (MyQuery1.Fields.Fields[Fn].DataType in [ftInteger]) and (MyQuery1.Fields.Fields[Fn].AsInteger=0) then
-                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|')
-                    else
-                    if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
-                    else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('0',MyQuery1.Fields.Fields[Fn].AsFloat)
-                    else
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end
-                  else
-                  if (MyQFormLapBulkode_form.AsString='E1000') then
-                  begin
-                    if (Fn > 1) and ((MyQuery1.Fields.Fields[0].AsString='F01') or (MyQuery1.Fields.Fields[0].AsString='F02') ) then
-                      cContentPerLine := cContentPerLine + ''
-                    else
-                    if (MyQuery1.Fields.Fields[Fn].DataType in [ftInteger]) and (MyQuery1.Fields.Fields[Fn].AsInteger=0) then
-                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|')
-                    else
-                    if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
-                    else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('0',MyQuery1.Fields.Fields[Fn].AsFloat)
-                    else
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end
-                  else
-                   if (MyQFormLapBulkode_form.AsString='E1100') then
-                  begin
-                    if (Fn > 1) and ((MyQuery1.Fields.Fields[0].AsString='F01') or (MyQuery1.Fields.Fields[0].AsString='F02') ) then
-                      cContentPerLine := cContentPerLine + ''
-                    else
-                    if (MyQuery1.Fields.Fields[Fn].DataType in [ftInteger]) and (MyQuery1.Fields.Fields[Fn].AsInteger=0) then
-                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|')
-                    else
-                    if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
-                    else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('0',MyQuery1.Fields.Fields[Fn].AsFloat)
-                    else
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end
-                  else
-                //selain table diatas
-                  begin
-                    if (Fn > 1) and ((MyQuery1.Fields.Fields[0].AsString='F01') or (MyQuery1.Fields.Fields[0].AsString='F02') ) then
-                      cContentPerLine := cContentPerLine + ''
-                    else
-                    if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
-                    else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatFloat('#,#0.00',MyQuery1.Fields.Fields[Fn].AsFloat)
-                    else
-                      cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end;
-              end;
-            //record
-            AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
-
-            MyQuery1.Next;
-            sGaugeStatus.Position := sGaugeStatus.Position+1;
-            Application.ProcessMessages;
-          end;
-      end;
 
       MyQFormLapBul.Next;
       sGaugeStatus.Visible := False;
-      sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
+      sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
       Application.ProcessMessages;
     end;
 
   Pesan(1,'Proses telah selesai...!, Jangan lupa klik tombol Save Point untuk menyimpan arsip laporan');
   sGaugeJenisLaporan.Visible := False;
   bt_proses.Enabled := True;
-  bt_save.Enabled := True; }
-
+  bt_save.Enabled := True;
 end;
 
 procedure Tfr_MainMenu.bt_restore_dataClick(Sender: TObject);
@@ -1068,7 +1111,7 @@ var
 begin
   inherited;
 
-  {if not Pesan(3, 'Restore Data Hasil Pengiriman, lanjutkan ?') then
+  if not Pesan(3, 'Restore Data Hasil Pengiriman, lanjutkan ?') then
     Exit;
 
   bt_restore_data.Enabled := False;
@@ -1101,44 +1144,42 @@ begin
       MyQFormLapBul.First;
       while not MyQFormLapBul.Eof do
         begin
-          if (MyQFormLapBulis_file.AsInteger=0) then
-          begin
-            cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-            cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+          cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
+          cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
+          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
-            MyQField.SQL.Text := 'SELECT * FROM '+cKodeForm;
-            if MyQField.Active then
-              MyQField.Refresh
-            else
-              MyQField.Open;
+          MyQField.SQL.Text := 'SELECT * FROM '+cKodeForm;
+          if MyQField.Active then
+            MyQField.Refresh
+          else
+            MyQField.Open;
 
-            cAllField := '';
-            for Fn := 0 to MyQField.FieldCount - 1 do
-              begin
-                cAllField := cAllField + IfThen(Empty(cAllField),'',', ') + MyQField.Fields.Fields[Fn].FieldName;
-              end;
-
-            try
-              //indra 09/11/2021 update Tambah koding ini karena ingin hapus formnya atau restore formnya juga
-              MyExecuteSQLNoTrans('TRUNCATE TABLE '+cKodeForm);
-              MyExecuteSQLNoTrans('INSERT INTO '+cKodeForm+
-                ' SELECT '+cAllField+' FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
-              //selesai
-              MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
-              MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' LIKE '+cKodeForm);
-              MyExecuteSQLNoTrans('INSERT INTO '+cKodeFormBAK+
-                ' SELECT '+cAllField+' FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
-              sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
-            except
-              on E: Exception do     //    on E: EIdException do
-                begin
-                  if not Pesan(3, 'Proses Error, Coba Lagi ?') then
-                    Break;
-                end;
+          cAllField := '';
+          for Fn := 0 to MyQField.FieldCount - 1 do
+            begin
+              cAllField := cAllField + IfThen(Empty(cAllField),'',', ') + MyQField.Fields.Fields[Fn].FieldName;
             end;
+
+          try
+            //indra 09/11/2021 update Tambah koding ini karena ingin hapus formnya atau restore formnya juga
+            MyExecuteSQLNoTrans('TRUNCATE TABLE '+cKodeForm);
+            MyExecuteSQLNoTrans('INSERT INTO '+cKodeForm+
+              ' SELECT '+cAllField+' FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
+            //selesai
+            MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
+            MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' LIKE '+cKodeForm);
+            MyExecuteSQLNoTrans('INSERT INTO '+cKodeFormBAK+
+              ' SELECT '+cAllField+' FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
+            MyQFormLapBul.Next;
+            sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
+          except
+            on E: Exception do     //    on E: EIdException do
+              begin
+                if not Pesan(3, 'Proses Error, Coba Lagi ?') then
+                  Break;
+              end;
           end;
-          MyQFormLapBul.Next;
+
           Application.ProcessMessages;
         end;
 
@@ -1146,12 +1187,12 @@ begin
       bt_restore_point.Enabled := True;
       sGaugeJenisLaporan.Visible := False;
       if MyExecuteSQL('UPDATE '+cDb2+'.sistem SET tanggal='+DateToStrSQL(EndOfTheMonth(dTglRestore))+
-          'WHERE jenis="TGL_LTBPR"') then
+          'WHERE jenis="TGL_LPS"') then
         begin
           FormCreate(Sender);
           Pesan(1, 'Restore Data Hasil Pengiriman berhasil...');
         end;
-    end; }
+    end;
 
 end;
 
@@ -1162,7 +1203,7 @@ procedure Tfr_MainMenu.bt_restore_pointClick(Sender: TObject);
 begin
   inherited;
 
-  {if not Pesan(3, 'Restore Data dari Restore Point, lanjutkan ?') then
+  if not Pesan(3, 'Restore Data dari Restore Point, lanjutkan ?') then
     Exit;
 
   bt_restore_point.Enabled := False;
@@ -1194,10 +1235,7 @@ begin
       sGaugeJenisLaporan.Visible := True;
       MyQFormLapBul.First;
 
-
-      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
-     // MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(MyQFormLapBulnama_table.AsString);
-     MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(cKodeFormBAK);
+      MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(MyQFormLapBulnama_table.AsString);
       if MyQField.Active then
         MyQField.Refresh
       else
@@ -1211,37 +1249,35 @@ begin
 
       while not MyQFormLapBul.Eof do
         begin
-          if (MyQFormLapBulis_file.AsInteger=0) then
-          begin
-            cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-            cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+          cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
+          cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
+          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
-            try
-              MyExecuteSQLNoTrans('DELETE FROM '+cKodeForm);
-              MyExecuteSQLNoTrans('INSERT INTO '+cKodeForm+' SELECT * FROM '+cKodeFormBAK);
-              sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
-            except
-              on E: Exception do     //    on E: EIdException do
-                begin
-                  if not Pesan(3, 'Proses Error, Coba Lagi ?') then
-                    Break;
-                end;
-            end;
+          try
+            MyExecuteSQLNoTrans('DELETE FROM '+cKodeForm);
+            MyExecuteSQLNoTrans('INSERT INTO '+cKodeForm+' SELECT * FROM '+cKodeFormBAK);
+            MyQFormLapBul.Next;
+            sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
+          except
+            on E: Exception do     //    on E: EIdException do
+              begin
+                if not Pesan(3, 'Proses Error, Coba Lagi ?') then
+                  Break;
+              end;
           end;
-          MyQFormLapBul.Next;
+
           Application.ProcessMessages;
         end;
 
       bt_restore_point.Enabled := True;
       sGaugeJenisLaporan.Visible := False;
       if MyExecuteSQL('UPDATE '+cDb2+'.sistem SET tanggal='+DateToStrSQL(EndOfTheMonth(dTglRestore))+
-          'WHERE jenis="TGL_LTBPR"') then
+          'WHERE jenis="TGL_LPS"') then
         begin
           FormCreate(Sender);
           Pesan(1, 'Restore Data Hasil Pengiriman berhasil...');
         end;
-    end; }
+    end;
 end;
 
 procedure Tfr_MainMenu.bt_saveClick(Sender: TObject);
@@ -1266,25 +1302,22 @@ begin
   MyQFormLapBul.First;
   while not MyQFormLapBul.Eof do
     begin
-      if (MyQFormLapBulis_file.AsInteger=0) then
-      begin
-        cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
+      cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
+      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
 
-        try
-          MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
-          MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' SELECT * FROM '+cKodeForm);
-
-          sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
-        except
-          on E: Exception do     //    on E: EIdException do
-            begin
-              if not Pesan(3, 'Proses Error, Coba Lagi ?') then
-                Break;
-            end;
-        end;
+      try
+        MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
+        MyExecuteSQLNoTrans('CREATE TABLE '+cKodeFormBAK+' SELECT * FROM '+cKodeForm);
+        MyQFormLapBul.Next;
+        sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
+      except
+        on E: Exception do     //    on E: EIdException do
+          begin
+            if not Pesan(3, 'Proses Error, Coba Lagi ?') then
+              Break;
+          end;
       end;
-      MyQFormLapBul.Next;
+
       Application.ProcessMessages;
     end;
 
@@ -1298,7 +1331,7 @@ var
   cKodeForm, cKodeFormArsip, cKodeFormBAK, cKodeArsip: string;
 begin
   inherited;
- { if not Pesan(3, 'Data Hasil Pengiriman akan dibackup, lanjutkan ?') then
+  if not Pesan(3, 'Data Hasil Pengiriman akan dibackup, lanjutkan ?') then
     Exit;
 
   bt_update_status.Enabled := False;
@@ -1315,37 +1348,34 @@ begin
   cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('MMyyyy',per_tgl.Date);
   while not MyQFormLapBul.Eof do
     begin
-       if (MyQFormLapBulis_file.AsInteger=0) then
-        begin
-          cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-          cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
+      cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
+      cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
+      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',per_tgl.Date);
 
-          try
-            MyExecuteSQLNoTrans('DELETE FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
-             MyExecuteSQLNoTrans('INSERT INTO '+cKodeFormArsip+' SELECT *,'+QuotedStr(cKodeArsip)+' AS kode_arsip FROM '+cKodeFormBAK);
-              //drop after done
-            MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
+      try
+        MyExecuteSQLNoTrans('DELETE FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
+        MyExecuteSQLNoTrans('INSERT INTO '+cKodeFormArsip+' SELECT *,'+QuotedStr(cKodeArsip)+' AS kode_arsip FROM '+cKodeFormBAK);
 
+        //drop after done
+        MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
 
-           sGaugeJenisLaporan.Position :=  sGaugeJenisLaporan.Position+1;
-          except
-            on E: Exception do     //    on E: EIdException do
-              begin
-                if not Pesan(3, 'Proses Error, Coba Lagi ?') then
-                  Break;
-              end;
+        MyQFormLapBul.Next;
+        sGaugeJenisLaporan.Position := sGaugeJenisLaporan.Position + 1;
+      except
+        on E: Exception do     //    on E: EIdException do
+          begin
+            if not Pesan(3, 'Proses Error, Coba Lagi ?') then
+              Break;
           end;
-        end;
-      MyQFormLapBul.Next;
+      end;
       Application.ProcessMessages;
     end;
 
   try
-    MyExecuteSQLNoTrans('DELETE FROM '+cDb2+'.ltbprk_header_arsip WHERE kode_arsip='+QuotedStr(cKodeArsip));
-    MyExecuteSQLNoTrans('INSERT INTO '+cDb2+'.ltbprk_header_arsip '+
-      'SELECT *,'+QuotedStr(cKodeArsip)+' AS kode_arsip FROM '+cDb2+'.ltbprk_header '+
-      'WHERE sandi_bpr='+QuotedStr(kode_ljk.Text)+
+    MyExecuteSQLNoTrans('DELETE FROM '+cDb2+'.lps_header_arsip WHERE kode_arsip='+QuotedStr(cKodeArsip));
+    MyExecuteSQLNoTrans('INSERT INTO '+cDb2+'.lps_header_arsip '+
+      'SELECT *,'+QuotedStr(cKodeArsip)+' AS kode_arsip FROM '+cDb2+'.lps_header '+
+      'WHERE kode_kepesertaan='+QuotedStr(kode_kepesertaan.Text)+
       '   AND periode_data='+QuotedStr(FormatDateTime('yyyy-MM-dd', per_tgl.Date))+
       '   AND kode_status_koreksi='+QuotedStr(IntToStr(cb_jenis_laporan.ItemIndex)));
   except
@@ -1357,16 +1387,16 @@ begin
       end;
   end;
 
-  if MyExecuteSQL('INSERT INTO '+cDb2+'.ltbprk_backup_log '+
+  if MyExecuteSQL('INSERT INTO '+cDb2+'.lps_backup_log '+
     'SET `kode_arsip`='+QuotedStr(cKodeArsip)+
     ', `tgl_laporan`='+DateToStrSQL(per_tgl.Date)+
     ', `created_by`='+cUserID+', `last_created`=NOW()  on duplicate key update '+
-    ' `created_by`='+cUserID+', `last_created`=NOW()') then
+    ' `tgl_laporan`='+DateToStrSQL(per_tgl.Date)+', `created_by`='+cUserID+', `last_created`=NOW()') then
     begin
       Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
       sGaugeJenisLaporan.Visible := False;
       bt_ganti_bulan.Enabled := True;
-    end;  }
+    end;
 
 end;
 
