@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, NewTemplate, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus,
   Vcl.StdCtrls, cxButtons, cxGroupBox, Vcl.ExtCtrls, cxImage, cxLabel,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.OleCtrls, SHDocVw, DB;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.OleCtrls, SHDocVw, DB,
+  sSkinManager, sSkinProvider;
 
 type
   Tfr_LoginBPR = class(Tfr_new_template)
@@ -29,6 +30,8 @@ type
     cb_db: TcxComboBox;
     WebBrowser1: TWebBrowser;
     Edit1: TcxTextEdit;
+    sSkinProvider1: TsSkinProvider;
+    sSkinManager1: TsSkinManager;
     procedure btlb_CloseClick(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

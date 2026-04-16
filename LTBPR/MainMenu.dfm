@@ -148,7 +148,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_export_excelClick
     end
     object bt_update_status: TcxButton
-      Left = 302
+      Left = 402
       Top = 2
       Width = 100
       Height = 66
@@ -163,7 +163,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_update_statusClick
     end
     object bt_restore_point: TcxButton
-      Left = 202
+      Left = 302
       Top = 2
       Width = 100
       Height = 66
@@ -177,7 +177,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_pointClick
     end
     object bt_restore_data: TcxButton
-      Left = 102
+      Left = 202
       Top = 2
       Width = 100
       Height = 66
@@ -191,7 +191,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_dataClick
     end
     object bt_ganti_bulan: TcxButton
-      Left = 2
+      Left = 102
       Top = 2
       Width = 100
       Height = 66
@@ -218,6 +218,20 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 8
       WordWrap = True
       OnClick = bt_closeClick
+    end
+    object bt_setting: TcxButton
+      Left = 2
+      Top = 2
+      Width = 100
+      Height = 66
+      Align = alLeft
+      Caption = 'Setting'
+      OptionsImage.ImageIndex = 17
+      OptionsImage.Images = dm_bpr1.ImageList2
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 9
+      WordWrap = True
+      OnClick = bt_settingClick
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -386,7 +400,6 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 183
     Width = 361
     Height = 382
-    VertScrollBar.Position = 138
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -397,16 +410,14 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
-    ExplicitLeft = 0
-    ExplicitTop = 180
+    OnClick = CategoryPanelGroup1Click
     ExplicitHeight = 388
     object cp_lap_lanjutan: TCategoryPanel
-      Top = 1186
+      Top = 1324
       Height = 76
       Caption = 'Laporan Keberlanjutan'
       Color = clGray
       TabOrder = 0
-      ExplicitTop = 1029
       object bt_formF0000: TcxButton
         Left = 0
         Top = 0
@@ -420,12 +431,11 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_transparasi: TCategoryPanel
-      Top = 463
+      Top = 601
       Height = 723
       Caption = 'Transparansi Tata Kelola'
       Color = clGray
       TabOrder = 1
-      ExplicitTop = 306
       object bt_formE0100: TcxButton
         Left = 0
         Top = 0
@@ -469,7 +479,7 @@ object fr_MainMenu: Tfr_MainMenu
         Align = alTop
         Caption = 
           'FormE0203 - Tugas, Tanggung Jawab, Program Kerja, dan Realisasi ' +
-          'Program Kerja Komite'
+          'Program Kerja'
         TabOrder = 3
         WordWrap = True
         OnClick = bt_formE0203Click
@@ -504,14 +514,16 @@ object fr_MainMenu: Tfr_MainMenu
         Width = 338
         Height = 40
         Align = alTop
-        Caption = 
-          'Form E0500 - Paket/Kebijakan Remunerasi dan Fasilitas Lain bagi ' +
-          'Direksi dan Dewan Komisaris yang ditetapkan berdasarkan RUPS'
+        Caption = 'Form E0500 - Paket/Kebijakan Remunerasi dan Fasilitas Lain'
         TabOrder = 6
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         WordWrap = True
         OnClick = bt_formE0500Click
-        ExplicitLeft = -1
-        ExplicitTop = 366
       end
       object bt_formE0402: TcxButton
         Left = 0
@@ -627,12 +639,11 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_sp_kebenaran_lpran: TCategoryPanel
-      Top = 387
+      Top = 525
       Height = 76
       Caption = 'Surat Pernyataan Kebenaran Laporan Keuangan Tahunan'
       Color = clGray
       TabOrder = 2
-      ExplicitTop = 230
       object bt_formD0000: TcxButton
         Left = 0
         Top = 0
@@ -646,22 +657,20 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_opini_akuntan: TCategoryPanel
-      Top = 357
+      Top = 495
       Height = 30
       Caption = 'Opini dari Akuntan'
       Color = clGray
       Collapsed = True
       TabOrder = 3
-      ExplicitTop = 200
       ExpandedHeight = 31
     end
     object cp_lap_akuntan_publik: TCategoryPanel
-      Top = 284
+      Top = 422
       Height = 73
       Caption = 'Laporan Akuntan Publik'
       Color = clGray
       TabOrder = 4
-      ExplicitTop = 127
       object bt_formC0100: TcxButton
         Left = 0
         Top = 0
@@ -675,23 +684,21 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_lap_keuangan: TCategoryPanel
-      Top = 254
+      Top = 392
       Height = 30
       Caption = 'Laporan Keuangan Tahunan'
       Color = clGray
       Collapsed = True
       TabOrder = 5
-      ExplicitTop = 97
       ExpandedHeight = 185
     end
     object cp_sdm: TCategoryPanel
-      Top = 224
+      Top = 362
       Height = 30
       Caption = 'Pengembangan Sumber Daya Manusia'
       Color = clGray
       Collapsed = True
       TabOrder = 6
-      ExplicitTop = 67
       ExpandedHeight = 73
       object bt_formA05072: TcxButton
         Left = 0
@@ -706,7 +713,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_laporan_manajemen: TCategoryPanel
-      Top = 37
+      Top = 175
       Height = 187
       Caption = 'Laporan Manajemen'
       Color = clGray
@@ -757,7 +764,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_strategi: TCategoryPanel
-      Top = 7
+      Top = 145
       Height = 30
       Caption = 'Strategi Dan Kebijakan Manejemen'
       Color = clGray
@@ -777,7 +784,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_perkembanganbpr: TCategoryPanel
-      Top = -23
+      Top = 115
       Height = 30
       Caption = 'Perkembangan Usaha BPR'
       Color = clGray
@@ -819,7 +826,7 @@ object fr_MainMenu: Tfr_MainMenu
       end
     end
     object cp_kepemilikan: TCategoryPanel
-      Top = -53
+      Top = 85
       Height = 30
       Caption = 'Kepemilikan'
       Color = clGray
@@ -828,7 +835,7 @@ object fr_MainMenu: Tfr_MainMenu
       ExpandedHeight = 85
     end
     object cp_kepengurusan: TCategoryPanel
-      Top = -138
+      Top = 0
       Height = 85
       Caption = 'Kepengurusan'
       Color = clGray
@@ -868,6 +875,7 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 14
     object M1: TMenuItem
       Caption = 'Manual Book'
+      OnClick = M1Click
     end
     object N3: TMenuItem
       Caption = '-'
@@ -876,42 +884,53 @@ object fr_MainMenu: Tfr_MainMenu
       Caption = 'Setting Max. Record Per File'
       Hint = 'Setting Max. Record Per File'
       ImageIndex = 5
+      OnClick = S1Click
     end
     object N2: TMenuItem
       Caption = '-'
     end
     object SkinOn: TMenuItem
       Caption = 'Skin On'
+      OnClick = SkinOnClick
     end
     object SkinOff: TMenuItem
       Caption = 'Skin Off'
+      OnClick = SkinOffClick
     end
     object N1: TMenuItem
       Caption = '-'
     end
     object AndroidOSinternal1: TMenuItem
       Caption = 'Android OS (internal)'
+      OnClick = AndroidOSinternal1Click
     end
     object BlackBoxinternal1: TMenuItem
       Caption = 'Black Box (internal)'
+      OnClick = BlackBoxinternal1Click
     end
     object BluePlasticinternal1: TMenuItem
       Caption = 'BluePlastic (internal)'
+      OnClick = BluePlasticinternal1Click
     end
     object DarkGlassinternal1: TMenuItem
       Caption = 'DarkGlass (internal)'
+      OnClick = DarkGlassinternal1Click
     end
     object Steam2internal1: TMenuItem
       Caption = 'Steam2 (internal)'
+      OnClick = Steam2internal1Click
     end
     object UnderWaterinternal1: TMenuItem
       Caption = 'UnderWater (internal)'
+      OnClick = UnderWaterinternal1Click
     end
     object WLMinternal1: TMenuItem
       Caption = 'WLM (internal)'
+      OnClick = WLMinternal1Click
     end
     object Woodinternal1: TMenuItem
       Caption = 'Wood (internal)'
+      OnClick = Woodinternal1Click
     end
   end
   object TrayIcon1: TTrayIcon
@@ -1014,5 +1033,17 @@ object fr_MainMenu: Tfr_MainMenu
   object OpenDialog1: TOpenDialog
     Left = 560
     Top = 352
+  end
+  object sSkinProvider1: TsSkinProvider
+    MakeSkinMenu = True
+    AddedTitle.Font.Charset = DEFAULT_CHARSET
+    AddedTitle.Font.Color = clNone
+    AddedTitle.Font.Height = -11
+    AddedTitle.Font.Name = 'Tahoma'
+    AddedTitle.Font.Style = []
+    SkinData.SkinSection = 'FORM'
+    TitleButtons = <>
+    Left = 688
+    Top = 48
   end
 end

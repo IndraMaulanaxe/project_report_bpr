@@ -30,7 +30,8 @@ cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
   ipwtypes, ipwhttp, ZipForge, ShellAPI, Vcl.ComCtrls, dxCore, cxDateUtils,
   cxMaskEdit, cxDropDownEdit, cxCalendar, cxCheckBox, cxSpinEdit, MemDS,
   DBAccess, MyAccess, dxGaugeCustomScale, dxGaugeDigitalScale, dxGaugeControl, QExport4, QExport4XLS,
-   System.IOUtils, dxGaugeQuantitativeScale, dxGaugeLinearScale, cxProgressBar;
+   System.IOUtils, dxGaugeQuantitativeScale, dxGaugeLinearScale, cxProgressBar,
+  sSkinProvider;
 
 type
   Tfr_MainMenu = class(TForm)
@@ -137,6 +138,8 @@ type
     MyQFormLapBulis_file: TSmallintField;
     sGaugeStatus: TcxProgressBar;
     sGaugeJenisLaporan: TcxProgressBar;
+    bt_setting: TcxButton;
+    sSkinProvider1: TsSkinProvider;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -183,6 +186,20 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure CategoryPanelGroup1Click(Sender: TObject);
+    procedure M1Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
+    procedure bt_settingClick(Sender: TObject);
+    procedure SkinOnClick(Sender: TObject);
+    procedure SkinOffClick(Sender: TObject);
+    procedure AndroidOSinternal1Click(Sender: TObject);
+    procedure BlackBoxinternal1Click(Sender: TObject);
+    procedure BluePlasticinternal1Click(Sender: TObject);
+    procedure DarkGlassinternal1Click(Sender: TObject);
+    procedure Steam2internal1Click(Sender: TObject);
+    procedure UnderWaterinternal1Click(Sender: TObject);
+    procedure WLMinternal1Click(Sender: TObject);
+    procedure Woodinternal1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -199,7 +216,7 @@ uses
   FormA0506, FormA05072, FormE0100, FormE0201, DaftarBackupAPOLO,
   FormE0202, FormE0203, FormE0302,
   FormE0303, FormE0401, FormE0402, FormE0600, FormE0701, FormE0702, FormE0800,
-  FormE0900, FormE1000, FormE1100, FormE0204, FormE0500;
+  FormE0900, FormE1000, FormE1100, FormE0204, FormE0500, LoginBPR;
 
   Var cKodeJenisPelaporan : String;
 
@@ -210,6 +227,27 @@ uses
 procedure Tfr_MainMenu.CategoryPanel1Click(Sender: TObject);
 begin
 //  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
+end;
+
+procedure Tfr_MainMenu.CategoryPanelGroup1Click(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to CategoryPanelGroup1.ControlCount - 1 do
+  begin
+    if CategoryPanelGroup1.Controls[i] is TCategoryPanel then
+    begin
+      if CategoryPanelGroup1.Controls[i] <> Sender then
+        TCategoryPanel(CategoryPanelGroup1.Controls[i]).Collapsed := True;
+    end;
+  end;
+end;
+
+procedure Tfr_MainMenu.DarkGlassinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'DarkGlass (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'DarkGlass (internal)');
 end;
 
 procedure Tfr_MainMenu.bt_formA0400Click(Sender: TObject);
@@ -237,6 +275,10 @@ end;
 procedure Tfr_MainMenu.FormCreate(Sender: TObject);
 var cNamaTabelCek, cKodeArsipCek, cKodeFormArsipCek : string;
  nCountCek : Integer;
+
+   i, j : Integer;
+  cp : TCategoryPanel;
+  btn : TcxButton;
 begin
   inherited;
   cp_lap_lanjutan.Collapsed := True;
@@ -251,6 +293,37 @@ begin
   cp_perkembanganbpr.Collapsed := True;
   cp_kepemilikan.Collapsed := True;
   cp_kepengurusan.Collapsed := True;
+
+
+  //responsive
+
+  for i := 0 to CategoryPanelGroup1.ControlCount - 1 do
+  begin
+    if CategoryPanelGroup1.Controls[i] is TCategoryPanel then
+    begin
+      cp := TCategoryPanel(CategoryPanelGroup1.Controls[i]);
+
+      for j := 0 to cp.ControlCount - 1 do
+      begin
+        if cp.Controls[j] is TcxButton then
+        begin
+          btn := TcxButton(cp.Controls[j]);
+
+          btn.WordWrap := True;
+          btn.Height := 55;
+          btn.Align := alTop;
+
+          btn.LookAndFeel.NativeStyle := False;
+
+          btn.OptionsImage.Spacing := 4;
+
+          btn.Font.Size := 9; // penting untuk DPI berbeda
+
+        end;
+      end;
+    end;
+  end;
+  //
 
   kode_sektor_ljk.Text := GetMyParameter('LTBPR_KODE_SEKTOR_LJK','010201');
   kode_ljk.Text := GetMyParameter('LTBPR_KODE_LJK','600432');
@@ -274,19 +347,84 @@ begin
 end;
 
 procedure Tfr_MainMenu.FormResize(Sender: TObject);
+var
+  i, j : Integer;
+  cp : TCategoryPanel;
+  btn : TcxButton;
+  btnHeight : Integer;
 begin
   CategoryPanelGroup1.Width := Round(Self.ClientWidth * 0.25);
-
   if CategoryPanelGroup1.Width < 220 then
     CategoryPanelGroup1.Width := 220;
-
   if CategoryPanelGroup1.Width > 350 then
     CategoryPanelGroup1.Width := 350;
+
+  // Tentukan tinggi button berdasarkan lebar menu
+  if CategoryPanelGroup1.Width <= 240 then
+    btnHeight := 60
+  else if CategoryPanelGroup1.Width <= 280 then
+    btnHeight := 50
+  else
+    btnHeight := 42;
+
+  for i := 0 to CategoryPanelGroup1.ControlCount - 1 do
+  begin
+    if CategoryPanelGroup1.Controls[i] is TCategoryPanel then
+    begin
+      cp := TCategoryPanel(CategoryPanelGroup1.Controls[i]);
+      for j := 0 to cp.ControlCount - 1 do
+      begin
+        if cp.Controls[j] is TcxButton then
+        begin
+          btn := TcxButton(cp.Controls[j]);
+          btn.WordWrap := True;
+          btn.Height := btnHeight;
+        end;
+      end;
+    end;
+  end;
 end;
 
 procedure Tfr_MainMenu.FormShow(Sender: TObject);
 begin
   FormResize(Sender);
+end;
+
+procedure Tfr_MainMenu.M1Click(Sender: TObject);
+var FileName : String;
+begin
+   FileName := ExtractFilePath(Application.ExeName)+GetMyParameter('PROFIL_RISIKO_MANUAL_BOOK','ManualBook.pdf');
+   ShellExecute(0, 'open', PChar(FileName), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure Tfr_MainMenu.S1Click(Sender: TObject);
+var
+  cTemp, cTempMax: string;
+begin
+  inherited;
+  cTempMax := GetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE','1000');
+  cTemp := InputBox('Max Record Per File', 'Jumlah Max', cTempMax);
+  if not Empty(cTemp) and (cTemp <> cTempMax) then
+    SetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE', cTemp);
+end;
+
+procedure Tfr_MainMenu.SkinOffClick(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.Active := False;
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'SkinAktif', '0');
+end;
+
+procedure Tfr_MainMenu.SkinOnClick(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.Active := True;
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'SkinAktif', '1');
+end;
+
+procedure Tfr_MainMenu.Steam2internal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'Steam2 (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Steam2 (internal)');
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -525,6 +663,48 @@ begin
     TrayIcon1.ShowBalloonHint;
   end;
 
+end;
+
+procedure Tfr_MainMenu.UnderWaterinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'UnderWater (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'UnderWater (internal)');
+end;
+
+procedure Tfr_MainMenu.WLMinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'WLM (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'WLM (internal)');
+end;
+
+procedure Tfr_MainMenu.Woodinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'Wood (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Wood (internal)');
+end;
+
+procedure Tfr_MainMenu.AndroidOSinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'Android OS (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Android OS (internal)');
+end;
+
+procedure Tfr_MainMenu.BlackBoxinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'Black Box (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Black Box (internal)');
+end;
+
+procedure Tfr_MainMenu.BluePlasticinternal1Click(Sender: TObject);
+begin
+  fr_LoginBPR.sSkinManager1.SkinName := 'BluePlastic (internal)';
+  SkinOnClick(Sender);
+  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'BluePlastic (internal)');
 end;
 
 procedure Tfr_MainMenu.bt_closeClick(Sender: TObject);
@@ -1584,6 +1764,12 @@ begin
   bt_update_status.Enabled := True;
   Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
   sGaugeJenisLaporan.Visible := False;
+end;
+
+procedure Tfr_MainMenu.bt_settingClick(Sender: TObject);
+begin
+  inherited;
+  PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 procedure Tfr_MainMenu.bt_update_statusClick(Sender: TObject);
