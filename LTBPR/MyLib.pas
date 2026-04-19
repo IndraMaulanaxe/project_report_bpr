@@ -3,7 +3,7 @@
 interface
 
 uses SysUtils,Variants,Forms,Windows,Controls,
-    Messages,Classes,Dialogs,Graphics,DB;
+    Messages,Classes,Dialogs,Graphics,DB, cxButtons;
 
 Function MyExecuteSQL(cSQL: String): Boolean;
 Function MyExecuteSQLNoTrans(cSQL: String): Boolean;
@@ -104,6 +104,7 @@ function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+function CalcButtonHeight(ABtn: TcxButton; ACanvas: TCanvas): Integer;
 
 var
   buat_pajak, lFlag_FSA: Boolean;
@@ -114,6 +115,36 @@ implementation
 uses DateUtils, MyVAR, Math, StrUtils, CekPassword, dm_bpr, MyAccess,
   IdException, CekMyPassword,
   System.IOUtils;
+
+
+
+function CalcButtonHeight(ABtn: TcxButton; ACanvas: TCanvas): Integer;
+var
+  R: TRect;
+  TextWidth: Integer;
+begin
+  ACanvas.Font.Assign(ABtn.Font);
+
+  // 🔥 ini kunci: kurangi padding + border + kemungkinan icon
+  TextWidth := ABtn.Width - 40;
+
+  // kalau ada icon
+  if ABtn.OptionsImage.Glyph <> nil then
+    Inc(TextWidth, -24);
+
+  if TextWidth < 50 then
+    TextWidth := 50;
+
+  R := Rect(0, 0, TextWidth, 0);
+
+  DrawText(ACanvas.Handle,
+    PChar(ABtn.Caption),
+    Length(ABtn.Caption),
+    R,
+    DT_WORDBREAK or DT_CALCRECT);
+
+  Result := R.Height + 20; // padding atas bawah
+end;
 
 
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;

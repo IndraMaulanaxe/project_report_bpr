@@ -1,4 +1,4 @@
-unit MainMenu;
+﻿unit MainMenu;
 
 interface
 
@@ -40,17 +40,6 @@ type
     N3: TMenuItem;
     S1: TMenuItem;
     N2: TMenuItem;
-    SkinOn: TMenuItem;
-    SkinOff: TMenuItem;
-    N1: TMenuItem;
-    AndroidOSinternal1: TMenuItem;
-    BlackBoxinternal1: TMenuItem;
-    BluePlasticinternal1: TMenuItem;
-    DarkGlassinternal1: TMenuItem;
-    Steam2internal1: TMenuItem;
-    UnderWaterinternal1: TMenuItem;
-    WLMinternal1: TMenuItem;
-    Woodinternal1: TMenuItem;
     TrayIcon1: TTrayIcon;
     TimerUpdater: TTimer;
     ZipForge1: TZipForge;
@@ -139,8 +128,6 @@ type
     sGaugeStatus: TcxProgressBar;
     sGaugeJenisLaporan: TcxProgressBar;
     bt_setting: TcxButton;
-    sSkinProvider1: TsSkinProvider;
-    procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure bt_formA0301Click(Sender: TObject);
@@ -184,22 +171,12 @@ type
     procedure bt_formD0000Click(Sender: TObject);
     procedure bt_formF0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormResize(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure CategoryPanelGroup1Click(Sender: TObject);
     procedure M1Click(Sender: TObject);
     procedure S1Click(Sender: TObject);
     procedure bt_settingClick(Sender: TObject);
-    procedure SkinOnClick(Sender: TObject);
-    procedure SkinOffClick(Sender: TObject);
-    procedure AndroidOSinternal1Click(Sender: TObject);
-    procedure BlackBoxinternal1Click(Sender: TObject);
-    procedure BluePlasticinternal1Click(Sender: TObject);
-    procedure DarkGlassinternal1Click(Sender: TObject);
-    procedure Steam2internal1Click(Sender: TObject);
-    procedure UnderWaterinternal1Click(Sender: TObject);
-    procedure WLMinternal1Click(Sender: TObject);
-    procedure Woodinternal1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -224,11 +201,6 @@ uses
 
 
 
-procedure Tfr_MainMenu.CategoryPanel1Click(Sender: TObject);
-begin
-//  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
-end;
-
 procedure Tfr_MainMenu.CategoryPanelGroup1Click(Sender: TObject);
 var
   i: Integer;
@@ -241,13 +213,6 @@ begin
         TCategoryPanel(CategoryPanelGroup1.Controls[i]).Collapsed := True;
     end;
   end;
-end;
-
-procedure Tfr_MainMenu.DarkGlassinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'DarkGlass (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'DarkGlass (internal)');
 end;
 
 procedure Tfr_MainMenu.bt_formA0400Click(Sender: TObject);
@@ -276,9 +241,6 @@ procedure Tfr_MainMenu.FormCreate(Sender: TObject);
 var cNamaTabelCek, cKodeArsipCek, cKodeFormArsipCek : string;
  nCountCek : Integer;
 
-   i, j : Integer;
-  cp : TCategoryPanel;
-  btn : TcxButton;
 begin
   inherited;
   cp_lap_lanjutan.Collapsed := True;
@@ -294,36 +256,6 @@ begin
   cp_kepemilikan.Collapsed := True;
   cp_kepengurusan.Collapsed := True;
 
-
-  //responsive
-
-  for i := 0 to CategoryPanelGroup1.ControlCount - 1 do
-  begin
-    if CategoryPanelGroup1.Controls[i] is TCategoryPanel then
-    begin
-      cp := TCategoryPanel(CategoryPanelGroup1.Controls[i]);
-
-      for j := 0 to cp.ControlCount - 1 do
-      begin
-        if cp.Controls[j] is TcxButton then
-        begin
-          btn := TcxButton(cp.Controls[j]);
-
-          btn.WordWrap := True;
-          btn.Height := 55;
-          btn.Align := alTop;
-
-          btn.LookAndFeel.NativeStyle := False;
-
-          btn.OptionsImage.Spacing := 4;
-
-          btn.Font.Size := 9; // penting untuk DPI berbeda
-
-        end;
-      end;
-    end;
-  end;
-  //
 
   kode_sektor_ljk.Text := GetMyParameter('LTBPR_KODE_SEKTOR_LJK','010201');
   kode_ljk.Text := GetMyParameter('LTBPR_KODE_LJK','600432');
@@ -347,39 +279,59 @@ begin
 end;
 
 procedure Tfr_MainMenu.FormResize(Sender: TObject);
-var
+  var
   i, j : Integer;
   cp : TCategoryPanel;
   btn : TcxButton;
-  btnHeight : Integer;
+  btnHeight,w, MaxBottom : Integer;
 begin
-  CategoryPanelGroup1.Width := Round(Self.ClientWidth * 0.25);
-  if CategoryPanelGroup1.Width < 220 then
-    CategoryPanelGroup1.Width := 220;
-  if CategoryPanelGroup1.Width > 350 then
-    CategoryPanelGroup1.Width := 350;
+ // ===== WIDTH SIDEBAR =====
+  w := Round(Self.ClientWidth * 0.25);
 
-  // Tentukan tinggi button berdasarkan lebar menu
-  if CategoryPanelGroup1.Width <= 240 then
-    btnHeight := 60
-  else if CategoryPanelGroup1.Width <= 280 then
-    btnHeight := 50
-  else
-    btnHeight := 42;
+  if w < 400 then w := 400;
+  if w > 450 then w := 450;
 
+  CategoryPanelGroup1.Width := w;
+
+  // ===== LOOP PANEL =====
   for i := 0 to CategoryPanelGroup1.ControlCount - 1 do
   begin
     if CategoryPanelGroup1.Controls[i] is TCategoryPanel then
     begin
       cp := TCategoryPanel(CategoryPanelGroup1.Controls[i]);
-      for j := 0 to cp.ControlCount - 1 do
-      begin
-        if cp.Controls[j] is TcxButton then
+
+      cp.DisableAlign;
+      try
+        MaxBottom := 0;
+
+        // ===== LOOP BUTTON =====
+        for j := 0 to cp.ControlCount - 1 do
         begin
-          btn := TcxButton(cp.Controls[j]);
-          btn.WordWrap := True;
-          btn.Height := btnHeight;
+          if cp.Controls[j] is TcxButton then
+          begin
+            btn := TcxButton(cp.Controls[j]);
+
+            btn.WordWrap := True;
+            btn.Hint := btn.Caption;
+            btn.Align := alTop;
+            btn.AlignWithMargins := True;
+            btn.Margins.SetBounds(6,4,6,4);
+
+            btn.Height := CalcButtonHeight(btn, Self.Canvas);
+
+            // 🔥 FIX UTAMA DI SINI
+            if btn.Top + btn.Height + btn.Margins.Bottom > MaxBottom then
+              MaxBottom := btn.Top + btn.Height + btn.Margins.Bottom;
+          end;
         end;
+
+        // ===== AUTO HEIGHT PANEL 🔥 =====
+        if not cp.Collapsed then
+          cp.Height := MaxBottom + 10;
+
+
+      finally
+        cp.EnableAlign;
       end;
     end;
   end;
@@ -397,6 +349,9 @@ begin
    ShellExecute(0, 'open', PChar(FileName), nil, nil, SW_SHOWNORMAL);
 end;
 
+
+
+
 procedure Tfr_MainMenu.S1Click(Sender: TObject);
 var
   cTemp, cTempMax: string;
@@ -408,24 +363,8 @@ begin
     SetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE', cTemp);
 end;
 
-procedure Tfr_MainMenu.SkinOffClick(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.Active := False;
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'SkinAktif', '0');
-end;
 
-procedure Tfr_MainMenu.SkinOnClick(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.Active := True;
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'SkinAktif', '1');
-end;
 
-procedure Tfr_MainMenu.Steam2internal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'Steam2 (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Steam2 (internal)');
-end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
  var
@@ -663,48 +602,6 @@ begin
     TrayIcon1.ShowBalloonHint;
   end;
 
-end;
-
-procedure Tfr_MainMenu.UnderWaterinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'UnderWater (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'UnderWater (internal)');
-end;
-
-procedure Tfr_MainMenu.WLMinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'WLM (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'WLM (internal)');
-end;
-
-procedure Tfr_MainMenu.Woodinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'Wood (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Wood (internal)');
-end;
-
-procedure Tfr_MainMenu.AndroidOSinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'Android OS (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Android OS (internal)');
-end;
-
-procedure Tfr_MainMenu.BlackBoxinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'Black Box (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'Black Box (internal)');
-end;
-
-procedure Tfr_MainMenu.BluePlasticinternal1Click(Sender: TObject);
-begin
-  fr_LoginBPR.sSkinManager1.SkinName := 'BluePlastic (internal)';
-  SkinOnClick(Sender);
-  IniSetStringValue(Ogie_FileIni, 'Configuration', 'Skin', 'BluePlastic (internal)');
 end;
 
 procedure Tfr_MainMenu.bt_closeClick(Sender: TObject);

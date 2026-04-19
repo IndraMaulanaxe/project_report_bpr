@@ -3,7 +3,7 @@
 	<Transactions>
     <Transaction>2026/03/12 09:48:36.000.846,D:\IT\software\TOP\project_report_bpr\LTBPR\GetSystemDate.pas=</Transaction>
     <Transaction>2026/03/12 09:49:15.000.534,=D:\IT\software\TOP\project_report_bpr\LTBPR\Unit2.pas</Transaction>
-    <Transaction>2026/03/12 09:49:42.000.821,D:\IT\software\TOP\project_report_bpr\LTBPR\GetSystemDate.dfm=D:\IT\software\TOP\project_report_bpr\LTBPR\Unit2.dfm</Transaction>
-    <Transaction>2026/03/12 09:49:42.000.821,D:\IT\software\TOP\project_report_bpr\LTBPR\GetSystemDate.pas=D:\IT\software\TOP\project_report_bpr\LTBPR\Unit2.pas</Transaction>
+    <Transaction>2026/03/12 09:49:42.000.821,D:\IT\software\TOP\project_report_bpr\LTBPR\Unit2.pas=D:\IT\software\TOP\project_report_bpr\LTBPR\GetSystemDate.pas</Transaction>
+    <Transaction>2026/03/12 09:49:42.000.821,D:\IT\software\TOP\project_report_bpr\LTBPR\Unit2.dfm=D:\IT\software\TOP\project_report_bpr\LTBPR\GetSystemDate.dfm</Transaction>
   </Transactions>
 </BorlandProject>

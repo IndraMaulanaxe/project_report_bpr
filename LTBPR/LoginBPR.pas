@@ -30,8 +30,6 @@ type
     cb_db: TcxComboBox;
     WebBrowser1: TWebBrowser;
     Edit1: TcxTextEdit;
-    sSkinProvider1: TsSkinProvider;
-    sSkinManager1: TsSkinManager;
     procedure btlb_CloseClick(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
