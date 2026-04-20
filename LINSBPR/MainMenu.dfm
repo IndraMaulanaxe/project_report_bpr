@@ -145,7 +145,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_export_excelClick
     end
     object bt_update_status: TcxButton
-      Left = 302
+      Left = 402
       Top = 2
       Width = 100
       Height = 66
@@ -158,9 +158,10 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 4
       WordWrap = True
       OnClick = bt_update_statusClick
+      ExplicitLeft = 302
     end
     object bt_restore_point: TcxButton
-      Left = 202
+      Left = 302
       Top = 2
       Width = 100
       Height = 66
@@ -172,9 +173,10 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 5
       WordWrap = True
       OnClick = bt_restore_pointClick
+      ExplicitLeft = 202
     end
     object bt_restore_data: TcxButton
-      Left = 102
+      Left = 202
       Top = 2
       Width = 100
       Height = 66
@@ -186,9 +188,10 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 6
       WordWrap = True
       OnClick = bt_restore_dataClick
+      ExplicitLeft = 102
     end
     object bt_ganti_bulan: TcxButton
-      Left = 2
+      Left = 102
       Top = 2
       Width = 100
       Height = 66
@@ -201,6 +204,7 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 7
       WordWrap = True
       OnClick = bt_ganti_bulanClick
+      ExplicitLeft = 2
     end
     object bt_close: TcxButton
       Left = 1033
@@ -215,6 +219,22 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 8
       WordWrap = True
       OnClick = bt_closeClick
+    end
+    object bt_setting: TcxButton
+      Left = 2
+      Top = 2
+      Width = 100
+      Height = 66
+      Align = alLeft
+      Caption = 'Setting'
+      OptionsImage.ImageIndex = 17
+      OptionsImage.Images = dm_bpr1.ImageList2
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 9
+      WordWrap = True
+      OnClick = bt_settingClick
+      ExplicitLeft = -4
+      ExplicitTop = 3
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -399,17 +419,6 @@ object fr_MainMenu: Tfr_MainMenu
       Caption = 'Laporan Insidental'
       Color = clGray
       TabOrder = 0
-      object bt_form0200: TcxButton
-        Left = 0
-        Top = 40
-        Width = 355
-        Height = 40
-        Align = alTop
-        Caption = 'Form 02.00 - Dokumen Pendukung'
-        TabOrder = 0
-        WordWrap = True
-        OnClick = bt_form0200Click
-      end
       object bt_form0100: TcxButton
         Left = 0
         Top = 0
@@ -417,7 +426,7 @@ object fr_MainMenu: Tfr_MainMenu
         Height = 40
         Align = alTop
         Caption = 'Form 01.00 - Informasi Utama'
-        TabOrder = 1
+        TabOrder = 0
         WordWrap = True
         OnClick = bt_form0100Click
       end
@@ -449,58 +458,6 @@ object fr_MainMenu: Tfr_MainMenu
     Visible = False
     ExplicitTop = 571
     Width = 1135
-  end
-  object PopupMenu1: TPopupMenu
-    Images = dm_bpr1.ImageList1
-    Left = 312
-    Top = 6
-    object M1: TMenuItem
-      Caption = 'Manual Book'
-    end
-    object N3: TMenuItem
-      Caption = '-'
-    end
-    object S1: TMenuItem
-      Caption = 'Setting Max. Record Per File'
-      Hint = 'Setting Max. Record Per File'
-      ImageIndex = 5
-    end
-    object N2: TMenuItem
-      Caption = '-'
-    end
-    object SkinOn: TMenuItem
-      Caption = 'Skin On'
-    end
-    object SkinOff: TMenuItem
-      Caption = 'Skin Off'
-    end
-    object N1: TMenuItem
-      Caption = '-'
-    end
-    object AndroidOSinternal1: TMenuItem
-      Caption = 'Android OS (internal)'
-    end
-    object BlackBoxinternal1: TMenuItem
-      Caption = 'Black Box (internal)'
-    end
-    object BluePlasticinternal1: TMenuItem
-      Caption = 'BluePlastic (internal)'
-    end
-    object DarkGlassinternal1: TMenuItem
-      Caption = 'DarkGlass (internal)'
-    end
-    object Steam2internal1: TMenuItem
-      Caption = 'Steam2 (internal)'
-    end
-    object UnderWaterinternal1: TMenuItem
-      Caption = 'UnderWater (internal)'
-    end
-    object WLMinternal1: TMenuItem
-      Caption = 'WLM (internal)'
-    end
-    object Woodinternal1: TMenuItem
-      Caption = 'Wood (internal)'
-    end
   end
   object TrayIcon1: TTrayIcon
     Animate = True
@@ -602,5 +559,26 @@ object fr_MainMenu: Tfr_MainMenu
   object OpenDialog1: TOpenDialog
     Left = 560
     Top = 352
+  end
+  object PopupMenu1: TPopupMenu
+    Images = dm_bpr1.ImageList1
+    Left = 312
+    Top = 14
+    object M1: TMenuItem
+      Caption = 'Manual Book'
+      OnClick = M1Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object S1: TMenuItem
+      Caption = 'Setting Max. Record Per File'
+      Hint = 'Setting Max. Record Per File'
+      ImageIndex = 5
+      OnClick = S1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
   end
 end

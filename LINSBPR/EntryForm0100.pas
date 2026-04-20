@@ -43,9 +43,9 @@ type
     MyQRefJabatansandi: TStringField;
     MyQRefJabatannama: TStringField;
     cxPageControl1: TcxPageControl;
-    cxTabDataFraud: TcxTabSheet;
+    cxTabDataUtama: TcxTabSheet;
     PanelTab1: TcxGroupBox;
-    cxTabDataPelaku: TcxTabSheet;
+    cxTabDataDetail: TcxTabSheet;
     PanelTab4: TcxGroupBox;
     Label3: TcxLabel;
     no_sk_ojk: TcxTextEdit;
@@ -122,6 +122,7 @@ type
     sandi_laporan: TcxTextEdit;
     nm_laporan: TcxTextEdit;
     bt_sandi: TsBitBtn;
+    cxLabel23: TcxLabel;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);

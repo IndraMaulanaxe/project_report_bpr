@@ -277,7 +277,7 @@ inherited fr_Form0100: Tfr_Form0100
       'select * from linsbpr_0100')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 312
+    Left = 328
     Top = 280
     object MyQ0100flag_detail: TStringField
       FieldName = 'flag_detail'

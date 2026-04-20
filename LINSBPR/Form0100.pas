@@ -420,7 +420,6 @@ begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`linsbpr_0100` '+
                         'SET '+
-
                         // TAB: LAPORAN UTAMA
                         '`nomor_sk_ojk` = '+QuotedStr(no_sk_ojk.Text)+
                         ', `nama_pihak` = '+QuotedStr(memnama_pihak.Text)+
@@ -433,7 +432,6 @@ begin
                         ', `nomor_persetujuan` = '+QuotedStr(nomor_persetujuan.Text)+
                         ', `tanggal_akta` = '+DateToStrSQL(tanggal_akta.Date)+
                         ', `nik_npwp` = '+QuotedStr(nik_npwp.Text)+
-
                         // TAB: DETAIL LAPORAN
                         ', `jenis_produk` = '+QuotedStr(jenis_produk.EditValue)+
                         ', `nama_produk` = '+QuotedStr(memnama_produk.Text)+
@@ -450,7 +448,6 @@ begin
                         ', `status` = '+QuotedStr(status.EditValue)+
                         ', `status_dokumen` = '+QuotedStr(status_dokumen.EditValue)+
                         ', `target_waktu` = '+DateToStrSQL(target_waktu.Date)+
-
                         ' WHERE `flag_detail` = ''D01'' '+
                         ' AND `sandi_laporan` = '+QuotedStr(MyQ0100sandi_laporan.AsString)+
                         ' AND `tanggal_kejadian` = '+DateToStrSQL(MyQ0100tanggal_kejadian.AsDateTime)+
@@ -563,13 +560,10 @@ begin
                       '`flag_detail`, `sandi_laporan`, `tanggal_kejadian`, `nomor_sk_ojk`, '+
                       '`tanggal_sk_ojk`, `nomor_akta`, `tanggal_akta`, `nomor_persetujuan`, `tanggal_persetujuan`, `tanggal_efektif`, '+
                       '`nama_pihak`, `nik_npwp`, `jabatan`, '+
-
                       // TAB: DETAIL LAPORAN
                       '`jenis_produk`, `nama_produk`, `jenis_kantor`, `alamat`, `alamat_baru`, `tanggal_selesai`, '+
                       '`pelanggaran`, `alasan`, `nama_pjti`, `register_ref`, `langkah_perbaikan`, `target_waktu`, `realisasi`, `status`, `status_dokumen`'+
-
                       ') VALUES ('+
-
                       // TAB: LAPORAN UTAMA
                       QuotedStr('D01')+
                       ', '+QuotedStr(sandi_laporan.Text)+
@@ -584,7 +578,6 @@ begin
                       ', '+QuotedStr(memnama_pihak.Text)+
                       ', '+QuotedStr(nik_npwp.Text)+
                       ', '+QuotedStr(jabatan.EditValue)+
-
                       // TAB: DETAIL LAPORAN
                       ', '+QuotedStr(jenis_produk.EditValue)+
                       ', '+QuotedStr(memnama_produk.Text)+
@@ -601,7 +594,6 @@ begin
                       ', '+QuotedStr(memrealiasasi.Text)+
                       ', '+QuotedStr(status.EditValue)+
                       ', '+QuotedStr(status_dokumen.EditValue)+
-
                       ')');
         end;
       if MyQ0100.Active then
