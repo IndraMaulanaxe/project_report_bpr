@@ -197,7 +197,6 @@ inherited fr_Form01B: Tfr_Form01B
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
-      ExplicitTop = 4
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -275,7 +274,7 @@ inherited fr_Form01B: Tfr_Form01B
       'select * from saftbpr_01b')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 312
+    Left = 328
     Top = 280
     object MyQ01Bflag_detail: TStringField
       FieldName = 'flag_detail'

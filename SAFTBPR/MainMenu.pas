@@ -34,22 +34,6 @@ cxControls, cxContainer, cxEdit, cxTextEdit, cxLabel,
 
 type
   Tfr_MainMenu = class(TForm)
-    PopupMenu1: TPopupMenu;
-    M1: TMenuItem;
-    N3: TMenuItem;
-    S1: TMenuItem;
-    N2: TMenuItem;
-    SkinOn: TMenuItem;
-    SkinOff: TMenuItem;
-    N1: TMenuItem;
-    AndroidOSinternal1: TMenuItem;
-    BlackBoxinternal1: TMenuItem;
-    BluePlasticinternal1: TMenuItem;
-    DarkGlassinternal1: TMenuItem;
-    Steam2internal1: TMenuItem;
-    UnderWaterinternal1: TMenuItem;
-    WLMinternal1: TMenuItem;
-    Woodinternal1: TMenuItem;
     TrayIcon1: TTrayIcon;
     TimerUpdater: TTimer;
     ZipForge1: TZipForge;
@@ -92,8 +76,6 @@ type
     cp_lap_fraud_berdampak_signifikan: TCategoryPanel;
     cp_lap_penerapan_strategi_anti_fraud: TCategoryPanel;
     OpenDialog1: TOpenDialog;
-    bt_form00A: TcxButton;
-    bt_form02B: TcxButton;
     MyQFormLapBulis_footer: TSmallintField;
     MyQFormLapBulis_file: TSmallintField;
     sGaugeStatus: TcxProgressBar;
@@ -101,8 +83,13 @@ type
     cb_kode_laporan: TcxComboBox;
     cxLabel2: TcxLabel;
     bt_form01A: TcxButton;
-    bt_form02A: TcxButton;
     bt_form01B: TcxButton;
+    bt_setting: TcxButton;
+    PopupMenu1: TPopupMenu;
+    M1: TMenuItem;
+    N3: TMenuItem;
+    S1: TMenuItem;
+    N2: TMenuItem;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -124,11 +111,12 @@ type
     procedure bt_formA0504Click(Sender: TObject);
     procedure bt_form00AClick(Sender: TObject);
     procedure bt_formD0000Click(Sender: TObject);
-    procedure bt_form02BClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure bt_form02AClick(Sender: TObject);
     procedure bt_form01AClick(Sender: TObject);
     procedure bt_form01BClick(Sender: TObject);
+    procedure bt_settingClick(Sender: TObject);
+    procedure M1Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -204,6 +192,24 @@ begin
 
   if (nCountCek > 0) then
       bt_ganti_bulan.Enabled:=True;
+end;
+
+procedure Tfr_MainMenu.M1Click(Sender: TObject);
+var FileName : String;
+begin
+   FileName := ExtractFilePath(Application.ExeName)+GetMyParameter('PROFIL_RISIKO_MANUAL_BOOK','ManualBook.pdf');
+   ShellExecute(0, 'open', PChar(FileName), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure Tfr_MainMenu.S1Click(Sender: TObject);
+var
+  cTemp, cTempMax: string;
+begin
+  inherited;
+  cTempMax := GetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE','1000');
+  cTemp := InputBox('Max Record Per File', 'Jumlah Max', cTempMax);
+  if not Empty(cTemp) and (cTemp <> cTempMax) then
+    SetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE', cTemp);
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -584,13 +590,13 @@ end;
 
 procedure Tfr_MainMenu.bt_form00AClick(Sender: TObject);
 begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  {OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
   OpenDialog1.DefaultExt := 'pdf';
 
   if OpenDialog1.Execute then
   begin
     ProsesUpload(OpenDialog1.FileName,'00A');
-  end;
+  end;}
 end;
 
 procedure Tfr_MainMenu.bt_form01AClick(Sender: TObject);
@@ -621,28 +627,6 @@ begin
   if OpenDialog1.Execute then
   begin
     ProsesUpload(OpenDialog1.FileName,'D0000');
-  end;
-end;
-
-procedure Tfr_MainMenu.bt_form02AClick(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'02A');
-  end;
-end;
-
-procedure Tfr_MainMenu.bt_form02BClick(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'02B');
   end;
 end;
 
@@ -1278,6 +1262,12 @@ begin
   bt_update_status.Enabled := True;
   Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
   sGaugeJenisLaporan.Visible := False;
+end;
+
+procedure Tfr_MainMenu.bt_settingClick(Sender: TObject);
+begin
+  inherited;
+  PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 procedure Tfr_MainMenu.bt_update_statusClick(Sender: TObject);

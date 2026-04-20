@@ -273,7 +273,7 @@ inherited fr_Form01A: Tfr_Form01A
       'select * from saftbpr_01a')
     ReadOnly = True
     Options.FieldOrigins = foNone
-    Left = 312
+    Left = 320
     Top = 280
     object MyQ01Aflag_detail: TStringField
       FieldName = 'flag_detail'

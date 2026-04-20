@@ -343,82 +343,66 @@ begin
         MyQRefkejadian_menurut_pelaku.Refresh
       else
         MyQRefkejadian_menurut_pelaku.Open;
-
       if MyQRefJenisFraud.Active then
         MyQRefJenisFraud.Refresh
       else
         MyQRefJenisFraud.Open;
-
       if MyQRefAktivitasFraud.Active then
         MyQRefAktivitasFraud.Refresh
       else
         MyQRefAktivitasFraud.Open;
-
       if MyQRefLokasiFraud.Active then
         MyQRefLokasiFraud.Refresh
       else
         MyQRefLokasiFraud.Open;
-
       if MyQRefKetLokasiFraud.Active then
         MyQRefKetLokasiFraud.Refresh
       else
         MyQRefKetLokasiFraud.Open;
-
       if MyQRefPihakRugi.Active then
         MyQRefPihakRugi.Refresh
       else
         MyQRefPihakRugi.Open;
-
       if MyQRefSebabFraud.Active then
         MyQRefSebabFraud.Refresh
       else
         MyQRefSebabFraud.Open;
-
       if MyQRefPenangananFraud.Active then
         MyQRefPenangananFraud.Refresh
       else
         MyQRefPenangananFraud.Open;
-
       if MyQRefPerbaikanFraud.Active then
         MyQRefPerbaikanFraud.Refresh
       else
         MyQRefPerbaikanFraud.Open;
-
       if MyQRefInternalEkstern.Active then
         MyQRefInternalEkstern.Refresh
       else
         MyQRefInternalEkstern.Open;
-
       if MyQRefJenisIdentitas.Active then
         MyQRefJenisIdentitas.Refresh
       else
         MyQRefJenisIdentitas.Open;
-
       if MyQRefJenisKelamin.Active then
         MyQRefJenisKelamin.Refresh
       else
         MyQRefJenisKelamin.Open;
-
       if MyQRefStatusPelaku.Active then
         MyQRefStatusPelaku.Refresh
       else
         MyQRefStatusPelaku.Open;
-
       if MyQRefJabatanSaatTerjadi.Active then
         MyQRefJabatanSaatTerjadi.Refresh
       else
         MyQRefJabatanSaatTerjadi.Open;
-
       if MyQRefJabatanSaatDiketahui.Active then
         MyQRefJabatanSaatDiketahui.Refresh
       else
         MyQRefJabatanSaatDiketahui.Open;
-
       if MyQRefKetPelaku.Active then
         MyQRefKetPelaku.Refresh
       else
         MyQRefKetPelaku.Open;
-
       if MyQRefStatusPenanganan.Active then
         MyQRefStatusPenanganan.Refresh
       else
@@ -499,33 +483,25 @@ begin
       dtAkhirKejadian.Date := MyQ01Awaktu_terjadi_akhir.AsDateTime;
       dtDiketahui.Date := MyQ01Afraud_diketahui.AsDateTime;
 
-
       // DATA KERUGIAN
       ljk_rill.Value := MyQ01Aljk_riil.AsFloat;
       ljk_potensial.Value := MyQ01Aljk_potensial.AsFloat;
       ljk_recovery.Value := MyQ01Aljk_recovery.AsFloat;
-
       Konsumen_rill.Value := MyQ01Akonsumen_riil.AsFloat;
       konsumen_potensial.Value := MyQ01Akonsumen_potensial.AsFloat;
       konsumen_recovery.Value := MyQ01Akonsumen_recovery.AsFloat;
-
       lain_rill.Value := MyQ01Apihak_lain_riil.AsFloat;
       lain_potensial.Value := MyQ01Apihak_lain_potensial.AsFloat;
       lain_recovery.Value := MyQ01Apihak_lain_recovery.AsFloat;
-
       // DATA PENYEBAB & TINDAKAN
       memkelemahan_sebab_fraud.Text := MyQ01Aket_kelemahan_fraud.AsString;
       kelemahan_sebab_fraud.EditValue := MyQ01Akelemahan_penyebab_fraud.AsString;
-
       mempenanganan_fraud.Text := MyQ01Aket_tindakan_penanganan.AsString;
       penanganan_fraud.EditValue := MyQ01Atindakan_penanganan_fraud.AsString;
-
       memperbaikan_fraud.Text := MyQ01Aket_tindakan_pencegahan.AsString;
       perbaikan_fraud.EditValue := MyQ01Atindakan_pencegahan_fraud.AsString;
-
       waktu_pelaksanaan.Text := MyQ01Atarget_waktu_pelaksanaan.AsString;
       realiasasi_pelaksanaan.Text := MyQ01Arealisasi_pelaksanaan.AsString;
-
 
       // DATA PELAKU
       intern_ekstern.EditValue := MyQ01Aintern_ekstern.AsString;
@@ -533,24 +509,17 @@ begin
       nomor_identitas.Text := MyQ01Anomor_identitas.AsString;
       jenis_identitas.EditValue := MyQ01Ajenis_identitas.AsString;
       jenis_kelamin.EditValue := MyQ01Ajenis_kelamin.AsString;
-
       memalamat_identitas.Text := MyQ01Aalamat_identitas.AsString;
       memalamat_domisili.Text := MyQ01Aalamat_domisili.AsString;
-
       dttanggal_lahir.Date := MyQ01Atanggal_lahir.AsDateTime;
       memtempat_lahir.Text := MyQ01Atempat_lahir.AsString;
-
       status_pelaku.EditValue := MyQ01Astatus_pelaku.AsString;
-
       memjabatan_saat_terjadi.Text := MyQ01Aket_jabatan_saat_fraud.AsString;
       jabatan_saat_terjadi.EditValue := MyQ01Ajabatan_saat_fraud.AsString;
-
       memjabatan_saat_diketahui.Text := MyQ01Aket_jabatan_saat_diketahui.AsString;
       jabatan_saat_diketahui.EditValue := MyQ01Ajabatan_saat_diketahui.AsString;
-
       memsanksi.Text := MyQ01Apengenaan_sanksi.AsString;
       keterangan_pelaku.EditValue := MyQ01Aketerangan_pelaku.AsString;
-
       status_penanganan.EditValue := MyQ01Astatus_penanganan.AsString;
 
       kode_komponen.Enabled := False;
@@ -564,7 +533,6 @@ begin
           // Update
           MyExecuteSQL('UPDATE '+cDb2+'.`saftbpr_01a` '+
                       'SET '+
-
                       // TAB DATA FRAUD
                       '`kode_komponen` = '+QuotedStr(kode_komponen.Text)+
                       ', `kejadian_fraud_menurut_pelaku` = '+QuotedStr(kejadian_menurut_pelaku.EditValue)+
@@ -580,7 +548,6 @@ begin
                       ', `waktu_terjadi_awal` = '+DateToStrSQL(dtAwalKejadian.Date)+
                       ', `waktu_terjadi_akhir` = '+DateToStrSQL(dtAkhirKejadian.Date)+
                       ', `fraud_diketahui` = '+DateToStrSQL(dtDiketahui.Date)+
-
                       // TAB DATA KERUGIAN
                       ', `ljk_riil` = '+FloatToStr(ljk_rill.Value)+
                       ', `ljk_potensial` = '+FloatToStr(ljk_potensial.Value)+
@@ -591,7 +558,6 @@ begin
                       ', `pihak_lain_riil` = '+FloatToStr(lain_rill.Value)+
                       ', `pihak_lain_potensial` = '+FloatToStr(lain_potensial.Value)+
                       ', `pihak_lain_recovery` = '+FloatToStr(lain_recovery.Value)+
-
                       // TAB PENYEBAB & TINDAKAN
                       ', `kelemahan_penyebab_fraud` = '+QuotedStr(kelemahan_sebab_fraud.EditValue)+
                       ', `ket_kelemahan_fraud` = '+QuotedStr(memkelemahan_sebab_fraud.Text)+
@@ -601,7 +567,6 @@ begin
                       ', `ket_tindakan_pencegahan` = '+QuotedStr(memperbaikan_fraud.Text)+
                       ', `target_waktu_pelaksanaan` = '+QuotedStr(waktu_pelaksanaan.Text)+
                       ', `realisasi_pelaksanaan` = '+QuotedStr(realiasasi_pelaksanaan.Text)+
-
                       // TAB DATA PELAKU
                       ', `intern_ekstern` = '+QuotedStr(intern_ekstern.EditValue)+
                       ', `nama_pelaku` = '+QuotedStr(nama.Text)+
@@ -620,7 +585,6 @@ begin
                       ', `keterangan_pelaku` = '+QuotedStr(keterangan_pelaku.EditValue)+
                       ', `pengenaan_sanksi` = '+QuotedStr(memsanksi.Text)+
                       ', `status_penanganan` = '+QuotedStr(status_penanganan.EditValue)+
-
                       ' WHERE `id_kejadian_fraud` = '+QuotedStr(MyQ01Aid_kejadian_fraud.Text)+
                       ' AND `nomor_identitas` = '+QuotedStr(MyQ01Anomor_identitas.Text)+
                       ' AND `jenis_fraud` = '+QuotedStr(MyQ01Ajenis_fraud.Text)+
@@ -655,82 +619,66 @@ begin
         MyQRefkejadian_menurut_pelaku.Refresh
       else
         MyQRefkejadian_menurut_pelaku.Open;
-
       if MyQRefJenisFraud.Active then
         MyQRefJenisFraud.Refresh
       else
         MyQRefJenisFraud.Open;
-
       if MyQRefAktivitasFraud.Active then
         MyQRefAktivitasFraud.Refresh
       else
         MyQRefAktivitasFraud.Open;
-
       if MyQRefLokasiFraud.Active then
         MyQRefLokasiFraud.Refresh
       else
         MyQRefLokasiFraud.Open;
-
       if MyQRefKetLokasiFraud.Active then
         MyQRefKetLokasiFraud.Refresh
       else
         MyQRefKetLokasiFraud.Open;
-
       if MyQRefPihakRugi.Active then
         MyQRefPihakRugi.Refresh
       else
         MyQRefPihakRugi.Open;
-
       if MyQRefSebabFraud.Active then
         MyQRefSebabFraud.Refresh
       else
         MyQRefSebabFraud.Open;
-
       if MyQRefPenangananFraud.Active then
         MyQRefPenangananFraud.Refresh
       else
         MyQRefPenangananFraud.Open;
-
       if MyQRefPerbaikanFraud.Active then
         MyQRefPerbaikanFraud.Refresh
       else
         MyQRefPerbaikanFraud.Open;
-
       if MyQRefInternalEkstern.Active then
         MyQRefInternalEkstern.Refresh
       else
         MyQRefInternalEkstern.Open;
-
       if MyQRefJenisIdentitas.Active then
         MyQRefJenisIdentitas.Refresh
       else
         MyQRefJenisIdentitas.Open;
-
       if MyQRefJenisKelamin.Active then
         MyQRefJenisKelamin.Refresh
       else
         MyQRefJenisKelamin.Open;
-
       if MyQRefStatusPelaku.Active then
         MyQRefStatusPelaku.Refresh
       else
         MyQRefStatusPelaku.Open;
-
       if MyQRefJabatanSaatTerjadi.Active then
         MyQRefJabatanSaatTerjadi.Refresh
       else
         MyQRefJabatanSaatTerjadi.Open;
-
       if MyQRefJabatanSaatDiketahui.Active then
         MyQRefJabatanSaatDiketahui.Refresh
       else
         MyQRefJabatanSaatDiketahui.Open;
-
       if MyQRefKetPelaku.Active then
         MyQRefKetPelaku.Refresh
       else
         MyQRefKetPelaku.Open;
-
       if MyQRefStatusPenanganan.Active then
         MyQRefStatusPenanganan.Refresh
       else
@@ -815,23 +763,18 @@ begin
                         '`flag_detail`, `kode_komponen`, `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, `ket_jenis_fraud`, '+
                         '`aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, `ket_lokasi_fraud`, `divisi_unit_kerja`, `pihak_yang_dirugikan`, '+
                         '`waktu_terjadi_awal`, `waktu_terjadi_akhir`, `fraud_diketahui`, '+
-
                         // TAB DATA KERUGIAN
                         '`ljk_riil`, `ljk_potensial`, `ljk_recovery`, `konsumen_riil`, `konsumen_potensial`, `konsumen_recovery`, '+
                         '`pihak_lain_riil`, `pihak_lain_potensial`, `pihak_lain_recovery`, '+
-
                         // TAB PENYEBAB & TINDAKAN
                         '`kelemahan_penyebab_fraud`, `ket_kelemahan_fraud`, `tindakan_penanganan_fraud`, `ket_tindakan_penanganan`, '+
                         '`tindakan_pencegahan_fraud`, `ket_tindakan_pencegahan`, `target_waktu_pelaksanaan`, `realisasi_pelaksanaan`, '+
-
                         // TAB DATA PELAKU
                         '`intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
                         '`alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
                         '`jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
                         '`keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan`'+
-
                         ') VALUES ('+
-
                         // TAB DATA FRAUD
                         QuotedStr('D01')+
                         ', '+QuotedStr(kode_komponen.Text)+
@@ -848,7 +791,6 @@ begin
                         ', '+DateToStrSQL(dtAwalKejadian.Date)+
                         ', '+DateToStrSQL(dtAkhirKejadian.Date)+
                         ', '+DateToStrSQL(dtDiketahui.Date)+
-
                         // TAB DATA KERUGIAN
                         ', '+FloatToStr(ljk_rill.Value)+
                         ', '+FloatToStr(ljk_potensial.Value)+
@@ -859,7 +801,6 @@ begin
                         ', '+FloatToStr(lain_rill.Value)+
                         ', '+FloatToStr(lain_potensial.Value)+
                         ', '+FloatToStr(lain_recovery.Value)+
-
                         // TAB PENYEBAB & TINDAKAN
                         ', '+QuotedStr(kelemahan_sebab_fraud.EditValue)+
                         ', '+QuotedStr(memkelemahan_sebab_fraud.Text)+
@@ -869,7 +810,6 @@ begin
                         ', '+QuotedStr(memperbaikan_fraud.Text)+
                         ', '+QuotedStr(waktu_pelaksanaan.Text)+
                         ', '+QuotedStr(realiasasi_pelaksanaan.Text)+
-
                         // TAB DATA PELAKU
                         ', '+QuotedStr(intern_ekstern.EditValue)+
                         ', '+QuotedStr(nama.Text)+
@@ -888,7 +828,6 @@ begin
                         ', '+QuotedStr(keterangan_pelaku.EditValue)+
                         ', '+QuotedStr(memsanksi.Text)+
                         ', '+QuotedStr(status_penanganan.EditValue)+
-
                         ')');
         end;
       if MyQ01A.Active then

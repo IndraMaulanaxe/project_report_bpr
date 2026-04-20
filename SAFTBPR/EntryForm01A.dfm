@@ -2,45 +2,39 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   Caption = 
     'Entry Form 01A - Laporan Penerapan SAF yang mencakup informasi k' +
     'ejadian fraud dan informasi pelaku fraud '
-  ClientHeight = 361
+  ClientHeight = 442
   ClientWidth = 1017
   ExplicitWidth = 1023
-  ExplicitHeight = 390
+  ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 1017
-    ExplicitWidth = 569
+    ExplicitWidth = 1017
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitLeft = -8
     ExplicitWidth = 1017
-    ExplicitHeight = 507
-    Height = 317
+    ExplicitHeight = 317
+    Height = 398
     Width = 1017
     object cxPageControl1: TcxPageControl
       Left = 2
       Top = 2
       Width = 1013
-      Height = 313
+      Height = 394
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = cxTabDataFraud
       Properties.CustomButtons.Buttons = <>
-      ExplicitLeft = 4
-      ExplicitTop = 3
-      ExplicitHeight = 490
-      ClientRectBottom = 309
+      ExplicitHeight = 313
+      ClientRectBottom = 390
       ClientRectLeft = 4
       ClientRectRight = 1009
       ClientRectTop = 27
       object cxTabDataFraud: TcxTabSheet
         Caption = 'Data Fraud'
         ImageIndex = 0
-        ExplicitLeft = 5
-        ExplicitTop = 28
-        ExplicitWidth = 281
-        ExplicitHeight = 162
+        ExplicitHeight = 282
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -53,11 +47,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
-          ExplicitTop = 2
-          ExplicitWidth = 808
-          ExplicitHeight = 459
-          Height = 282
+          ExplicitHeight = 282
+          Height = 363
           Width = 1005
           object Label3: TcxLabel
             Left = 17
@@ -129,7 +120,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 53
-            Hint = 'Peserta'
+            Hint = 'Kejadian Menurut Pelaku'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -152,7 +143,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 83
-            Hint = 'Nomor Akta Pendirian'
+            Hint = 'ID Kejadian Fraud'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -209,7 +200,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 113
-            Hint = 'Peserta'
+            Hint = 'Jenis Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -232,7 +223,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 143
-            Hint = 'Keterangan'
+            Hint = 'Penjelasan Jenis Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -293,7 +284,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 196
-            Hint = 'Peserta'
+            Hint = 'Aktivitas Terkait Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -337,7 +328,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 226
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -377,7 +368,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 675
             Top = 23
-            Hint = 'Peserta'
+            Hint = 'Lokasi Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -421,7 +412,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 675
             Top = 53
-            Hint = 'Peserta'
+            Hint = 'Keterangan Lokasi Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -465,7 +456,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 675
             Top = 83
-            Hint = 'Keterangan'
+            Hint = 'Divisi Atau Unit Kerja Terjadinya Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -505,7 +496,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 675
             Top = 136
-            Hint = 'Peserta'
+            Hint = 'Pihak Yang Dirugikan'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -547,7 +538,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           object dtAwalKejadian: TcxDateEdit
             Left = 675
             Top = 166
-            Hint = 'Tanggal'
+            Hint = 'Tanggal Awal Kejadian'
             ParentColor = True
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -583,7 +574,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           object dtAkhirKejadian: TcxDateEdit
             Left = 675
             Top = 196
-            Hint = 'Tanggal'
+            Hint = 'Tanggal Akhir Kejadian'
             ParentColor = True
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -619,7 +610,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           object dtDiketahui: TcxDateEdit
             Left = 675
             Top = 226
-            Hint = 'Tanggal'
+            Hint = 'Tanggal Diketahui Fraud'
             ParentColor = True
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -637,8 +628,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataKerugian: TcxTabSheet
         Caption = 'Data Kerugian'
         ImageIndex = 1
-        ExplicitWidth = 634
-        ExplicitHeight = 379
+        ExplicitHeight = 282
         object PanelTab2: TcxGroupBox
           Left = 0
           Top = 0
@@ -651,9 +641,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = -1
-          ExplicitHeight = 459
-          Height = 282
+          ExplicitHeight = 282
+          Height = 363
           Width = 1005
           object gb_ljk: TcxGroupBox
             Left = 17
@@ -694,7 +683,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object ljk_rill: TcxCurrencyEdit
               Left = 241
               Top = 21
-              Hint = 'Jumlah Peserta'
+              Hint = 'LJK - Riil (Incurred)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -713,7 +702,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object ljk_potensial: TcxCurrencyEdit
               Left = 241
               Top = 51
-              Hint = 'Jumlah Peserta'
+              Hint = 'LJK - Potensial (Potential)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -753,7 +742,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object ljk_recovery: TcxCurrencyEdit
               Left = 241
               Top = 81
-              Hint = 'Jumlah Peserta'
+              Hint = 'LJK - Setelah Pengembalian (Recovery)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -830,7 +819,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object Konsumen_rill: TcxCurrencyEdit
               Left = 241
               Top = 21
-              Hint = 'Jumlah Peserta'
+              Hint = 'Konsumen - Riil (Incurred)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -849,7 +838,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object konsumen_potensial: TcxCurrencyEdit
               Left = 241
               Top = 51
-              Hint = 'Jumlah Peserta'
+              Hint = 'Konsumen - Potensial (Potential)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -889,7 +878,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object konsumen_recovery: TcxCurrencyEdit
               Left = 241
               Top = 81
-              Hint = 'Jumlah Peserta'
+              Hint = 'LJK - Setelah Pengembalian (Recovery)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -966,7 +955,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object lain_rill: TcxCurrencyEdit
               Left = 241
               Top = 21
-              Hint = 'Jumlah Peserta'
+              Hint = 'Pihak Lain - Riil (Incurred)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -985,7 +974,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object lain_potensial: TcxCurrencyEdit
               Left = 241
               Top = 51
-              Hint = 'Jumlah Peserta'
+              Hint = 'Pihak Lain - Potensial (Potential)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -1025,7 +1014,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             object lain_recovery: TcxCurrencyEdit
               Left = 241
               Top = 81
-              Hint = 'Jumlah Peserta'
+              Hint = 'Pihak Lain - Setelah Pengembalian (Recovery)'
               EditValue = '0'
               ParentColor = True
               ParentFont = False
@@ -1068,8 +1057,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabSebabDanTindakan: TcxTabSheet
         Caption = 'Data Penyebab Dan Tindakan'
         ImageIndex = 2
-        ExplicitWidth = 634
-        ExplicitHeight = 379
+        ExplicitHeight = 282
         object PanelTab3: TcxGroupBox
           Left = 0
           Top = 0
@@ -1082,9 +1070,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = -1
-          ExplicitHeight = 358
-          Height = 282
+          ExplicitHeight = 282
+          Height = 363
           Width = 1005
           object cxLabel9: TcxLabel
             AlignWithMargins = True
@@ -1132,7 +1119,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 50
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Kelemahan Penyebab Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1151,7 +1138,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 20
-            Hint = 'Peserta'
+            Hint = 'Kelemahan Penyebab Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1216,7 +1203,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 132
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Tindakan Penanganan Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1235,7 +1222,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 102
-            Hint = 'Peserta'
+            Hint = 'Tindakan Penanganan Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1300,7 +1287,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 50
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Tindakan Perbaikan Fraud'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1319,7 +1306,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 20
-            Hint = 'Peserta'
+            Hint = 'Tindakan Perbaikan Fraud'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1360,7 +1347,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 103
-            Hint = 'Nomor Akta Pendirian'
+            Hint = 'Target Waktu Pelaksanaan'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -1396,7 +1383,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 133
-            Hint = 'Nomor Akta Pendirian'
+            Hint = 'Realisasi Pelaksanaan'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -1415,10 +1402,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataPelaku: TcxTabSheet
         Caption = 'Data Pelaku'
         ImageIndex = 3
-        ExplicitLeft = 5
-        ExplicitTop = 28
-        ExplicitWidth = 634
-        ExplicitHeight = 379
+        ExplicitHeight = 282
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -1431,9 +1415,8 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitTop = 1
-          ExplicitHeight = 472
-          Height = 282
+          ExplicitHeight = 282
+          Height = 363
           Width = 1005
           object cxLabel31: TcxLabel
             AlignWithMargins = True
@@ -1460,7 +1443,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 20
-            Hint = 'Peserta'
+            Hint = 'Intern/Ekstern'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1501,7 +1484,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 48
-            Hint = 'Nomor Akta Pendirian'
+            Hint = 'Nama Pelaku'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -1558,7 +1541,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 104
-            Hint = 'Nomor Akta Pendirian'
+            Hint = 'Nomor Identitas'
             TabStop = False
             AutoSize = False
             ParentColor = True
@@ -1576,7 +1559,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 77
-            Hint = 'Peserta'
+            Hint = 'Jenis Identitas'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1620,7 +1603,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 133
-            Hint = 'Peserta'
+            Hint = 'Jenis Kelamin'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1664,7 +1647,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 243
-            Hint = 'Keterangan'
+            Hint = 'Alamat Identitas'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1683,7 +1666,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 296
-            Hint = 'Keterangan'
+            Hint = 'Alamat Domisili'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1742,7 +1725,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           object dttanggal_lahir: TcxDateEdit
             Left = 185
             Top = 160
-            Hint = 'Tanggal'
+            Hint = 'Tanggal Lahir'
             ParentColor = True
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -1780,7 +1763,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 185
             Top = 190
-            Hint = 'Keterangan'
+            Hint = 'Tempat Lahir'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1820,7 +1803,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 20
-            Hint = 'Peserta'
+            Hint = 'Status Pelaku'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1885,7 +1868,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 80
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Jabatan Saat Terjadi'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1904,7 +1887,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 50
-            Hint = 'Peserta'
+            Hint = 'Jabatan Saat Terjadi'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -1969,7 +1952,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 160
-            Hint = 'Keterangan'
+            Hint = 'Keterangan Jabatan Saat Diketahui'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -1988,7 +1971,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 130
-            Hint = 'Peserta'
+            Hint = 'Jabatan Saat Diketahui'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -2053,7 +2036,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 242
-            Hint = 'Keterangan'
+            Hint = 'Pengenaan Sanksi'
             ParentColor = True
             ParentFont = False
             Properties.OnChange = MemKeteranganPropertiesChange
@@ -2072,7 +2055,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 212
-            Hint = 'Peserta'
+            Hint = 'Keterangan Pelaku'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -2116,7 +2099,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
             Tag = 1
             Left = 665
             Top = 293
-            Hint = 'Peserta'
+            Hint = 'Status Penanganan'
             ParentColor = True
             ParentFont = False
             Properties.KeyFieldNames = 'sandi'
@@ -2140,9 +2123,9 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
     end
   end
   inherited PanelFooter: TcxGroupBox
-    Top = 317
-    ExplicitTop = 340
-    ExplicitWidth = 569
+    Top = 398
+    ExplicitTop = 317
+    ExplicitWidth = 1017
     ExplicitHeight = 44
     Height = 44
     Width = 1017
@@ -2178,7 +2161,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Left = 830
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 382
+      ExplicitLeft = 830
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -2187,14 +2170,14 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 564
+      ExplicitLeft = 1012
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 921
       Height = 34
-      ExplicitLeft = 473
+      ExplicitLeft = 921
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -2203,7 +2186,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 376
+      ExplicitLeft = 824
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2223,7 +2206,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 370
+      ExplicitLeft = 818
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2233,7 +2216,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 364
+      ExplicitLeft = 812
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2243,7 +2226,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 358
+      ExplicitLeft = 806
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -2253,14 +2236,14 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 352
+      ExplicitLeft = 800
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 1017
-    ExplicitWidth = 569
+    ExplicitWidth = 1017
     inherited IconClose: TLabel
       Left = 983
       ExplicitLeft = 771

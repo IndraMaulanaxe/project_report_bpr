@@ -485,7 +485,6 @@ begin
                         ', `pihak_dirugikan` = '+QuotedStr(pihak_dirugikan.EditValue)+
                         ', `jumlah_kerugian_potensial` = '+FloatToStr(jumlah_kerugian.Value)+
                         ', `tindak_lanjut_ljk` = '+QuotedStr(memtindak_lanjut_ljk.Text)+
-
                         ', `intern_ekstern` = '+QuotedStr(intern_ekstern.EditValue)+
                         ', `nama_pelaku` = '+QuotedStr(nama.Text)+
                         ', `jenis_identitas` = '+QuotedStr(jenis_identitas.EditValue)+
@@ -503,7 +502,6 @@ begin
                         ', `keterangan_pelaku` = '+QuotedStr(keterangan_pelaku.EditValue)+
                         ', `pengenaan_sanksi` = '+QuotedStr(memsanksi.Text)+
                         ', `status_penanganan` = '+QuotedStr(status_penanganan.EditValue)+
-
                         ' WHERE `id_kejadian_fraud` = '+QuotedStr(MyQ01Bid_kejadian_fraud.AsString)+
                         ' AND `nomor_identitas` = '+QuotedStr(MyQ01Bnomor_identitas.AsString)+
                         ' AND `jenis_fraud` = '+QuotedStr(MyQ01Bjenis_fraud.AsString)+
@@ -651,13 +649,11 @@ begin
                         '`keterangan_jenis_fraud`, `aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, `keterangan_lokasi_fraud`, '+
                         '`divisi_unit_kerja`, `waktu_terjadi_awal`, `waktu_terjadi_akhir`, `fraud_diketahui`, `pihak_dirugikan`, '+
                         '`jumlah_kerugian_potensial`, `tindak_lanjut_ljk`, '+
-
                         '`intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
                         '`alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
                         '`jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
                         '`keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan`'+
                         ') VALUES ('+
-
                         // DATA FRAUD
                         QuotedStr('D01')+
                         ', '+QuotedStr(kode_komponen.Text)+
@@ -676,7 +672,6 @@ begin
                         ', '+QuotedStr(pihak_dirugikan.EditValue)+
                         ', '+FloatToStr(jumlah_kerugian.Value)+
                         ', '+QuotedStr(memtindak_lanjut_ljk.Text)+
-
                         // DATA PELAKU
                         ', '+QuotedStr(intern_ekstern.EditValue)+
                         ', '+QuotedStr(nama.Text)+

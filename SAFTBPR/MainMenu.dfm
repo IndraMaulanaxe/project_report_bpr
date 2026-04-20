@@ -56,8 +56,8 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      ExplicitLeft = 198
-      ExplicitWidth = 935
+      ExplicitLeft = 263
+      ExplicitTop = 1
       Width = 876
       AnchorX = 695
       AnchorY = 30
@@ -147,7 +147,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_export_excelClick
     end
     object bt_update_status: TcxButton
-      Left = 302
+      Left = 402
       Top = 2
       Width = 100
       Height = 66
@@ -162,7 +162,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_update_statusClick
     end
     object bt_restore_point: TcxButton
-      Left = 202
+      Left = 302
       Top = 2
       Width = 100
       Height = 66
@@ -176,7 +176,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_pointClick
     end
     object bt_restore_data: TcxButton
-      Left = 102
+      Left = 202
       Top = 2
       Width = 100
       Height = 66
@@ -190,7 +190,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_dataClick
     end
     object bt_ganti_bulan: TcxButton
-      Left = 2
+      Left = 102
       Top = 2
       Width = 100
       Height = 66
@@ -217,6 +217,20 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 8
       WordWrap = True
       OnClick = bt_closeClick
+    end
+    object bt_setting: TcxButton
+      Left = 2
+      Top = 2
+      Width = 100
+      Height = 66
+      Align = alLeft
+      Caption = 'Setting'
+      OptionsImage.ImageIndex = 17
+      OptionsImage.Images = dm_bpr1.ImageList2
+      OptionsImage.Layout = blGlyphTop
+      TabOrder = 9
+      WordWrap = True
+      OnClick = bt_settingClick
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -388,7 +402,7 @@ object fr_MainMenu: Tfr_MainMenu
     Left = 0
     Top = 180
     Width = 361
-    Height = 394
+    Height = 388
     VertScrollBar.Tracking = True
     DoubleBuffered = True
     Color = clGray
@@ -399,23 +413,13 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
+    ExplicitHeight = 394
     object cp_lap_fraud_berdampak_signifikan: TCategoryPanel
       Top = 180
       Height = 150
       Caption = 'Laporan Fraud Berdampak Signifikan (Insidental)'
       Color = clGray
       TabOrder = 0
-      object bt_form02B: TcxButton
-        Left = 0
-        Top = 65
-        Width = 355
-        Height = 40
-        Align = alTop
-        Caption = 'Form02B - Deskripsi Fraud / Modus Operandi'
-        TabOrder = 0
-        WordWrap = True
-        OnClick = bt_form02BClick
-      end
       object bt_form01B: TcxButton
         Left = 0
         Top = 0
@@ -426,7 +430,7 @@ object fr_MainMenu: Tfr_MainMenu
           'Form01B - Laporan Penerapan SAF berdampak signifikan yang mencak' +
           'up informasi kejadian fraud dan informasi pelaku fraud berdampak' +
           ' signifikan'
-        TabOrder = 1
+        TabOrder = 0
         WordWrap = True
         OnClick = bt_form01BClick
       end
@@ -437,46 +441,24 @@ object fr_MainMenu: Tfr_MainMenu
       Caption = 'Laporan Penerapan Strategi Anti Fraud'
       Color = clGray
       TabOrder = 1
-      object bt_form00A: TcxButton
-        Left = 0
-        Top = 0
-        Width = 355
-        Height = 40
-        Align = alTop
-        Caption = 'Form00A - Perkembangan Pelaksanaan Penerapan Strategi Anti Fraud'
-        TabOrder = 0
-        WordWrap = True
-        OnClick = bt_form00AClick
-      end
       object bt_form01A: TcxButton
         Left = 0
-        Top = 40
+        Top = 0
         Width = 355
         Height = 40
         Align = alTop
         Caption = 
           'Form01A - Laporan Penerapan SAF yang mencakup informasi kejadian' +
           ' fraud dan informasi pelaku fraud'
-        TabOrder = 1
+        TabOrder = 0
         WordWrap = True
         OnClick = bt_form01AClick
-      end
-      object bt_form02A: TcxButton
-        Left = 0
-        Top = 80
-        Width = 355
-        Height = 40
-        Align = alTop
-        Caption = 'Form02A - Deskripsi Fraud / Modus Operandi'
-        TabOrder = 2
-        WordWrap = True
-        OnClick = bt_form02AClick
       end
     end
   end
   object sGaugeStatus: TcxProgressBar
     Left = 0
-    Top = 595
+    Top = 592
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
@@ -484,11 +466,12 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
+    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
     Left = 0
-    Top = 574
+    Top = 568
     Align = alBottom
     Properties.AnimationPath = cxapPingPong
     Properties.BarStyle = cxbsAnimation
@@ -499,58 +482,6 @@ object fr_MainMenu: Tfr_MainMenu
     Visible = False
     ExplicitTop = 571
     Width = 1135
-  end
-  object PopupMenu1: TPopupMenu
-    Images = dm_bpr1.ImageList1
-    Left = 312
-    Top = 14
-    object M1: TMenuItem
-      Caption = 'Manual Book'
-    end
-    object N3: TMenuItem
-      Caption = '-'
-    end
-    object S1: TMenuItem
-      Caption = 'Setting Max. Record Per File'
-      Hint = 'Setting Max. Record Per File'
-      ImageIndex = 5
-    end
-    object N2: TMenuItem
-      Caption = '-'
-    end
-    object SkinOn: TMenuItem
-      Caption = 'Skin On'
-    end
-    object SkinOff: TMenuItem
-      Caption = 'Skin Off'
-    end
-    object N1: TMenuItem
-      Caption = '-'
-    end
-    object AndroidOSinternal1: TMenuItem
-      Caption = 'Android OS (internal)'
-    end
-    object BlackBoxinternal1: TMenuItem
-      Caption = 'Black Box (internal)'
-    end
-    object BluePlasticinternal1: TMenuItem
-      Caption = 'BluePlastic (internal)'
-    end
-    object DarkGlassinternal1: TMenuItem
-      Caption = 'DarkGlass (internal)'
-    end
-    object Steam2internal1: TMenuItem
-      Caption = 'Steam2 (internal)'
-    end
-    object UnderWaterinternal1: TMenuItem
-      Caption = 'UnderWater (internal)'
-    end
-    object WLMinternal1: TMenuItem
-      Caption = 'WLM (internal)'
-    end
-    object Woodinternal1: TMenuItem
-      Caption = 'Wood (internal)'
-    end
   end
   object TrayIcon1: TTrayIcon
     Animate = True
@@ -657,5 +588,26 @@ object fr_MainMenu: Tfr_MainMenu
   object OpenDialog1: TOpenDialog
     Left = 560
     Top = 352
+  end
+  object PopupMenu1: TPopupMenu
+    Images = dm_bpr1.ImageList1
+    Left = 312
+    Top = 14
+    object M1: TMenuItem
+      Caption = 'Manual Book'
+      OnClick = M1Click
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object S1: TMenuItem
+      Caption = 'Setting Max. Record Per File'
+      Hint = 'Setting Max. Record Per File'
+      ImageIndex = 5
+      OnClick = S1Click
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
   end
 end
