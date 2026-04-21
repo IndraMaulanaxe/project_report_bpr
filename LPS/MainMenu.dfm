@@ -433,7 +433,8 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
-    ExplicitTop = 595
+    ExplicitLeft = 2
+    ExplicitTop = 588
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar

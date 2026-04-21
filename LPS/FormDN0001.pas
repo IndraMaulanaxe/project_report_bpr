@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormDN0001, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxProgressBar;
 
 type
   Tfr_FormDN0001 = class(Tfr_new_template)
@@ -81,12 +82,29 @@ type
     cxGridDBTableView1telpon: TcxGridDBColumn;
     cxGridDBTableView1flag_fraud: TcxGridDBColumn;
     cxGridDBTableView1hub_dgn_bank: TcxGridDBColumn;
+    MyQImport: TMyQuery;
+    MyQImportnasabah_id: TStringField;
+    MyQImportnama_nasabah: TStringField;
+    MyQImportjenis_identitas: TStringField;
+    MyQImportnomor_identitas: TStringField;
+    MyQImportnama_ibu_kandung: TStringField;
+    MyQImporttanggal_lahir: TStringField;
+    MyQImportnomor_identitas_badan_hukum: TStringField;
+    MyQImportnama_lengkap_pemegang_kuasa: TStringField;
+    MyQImportjenis_identitas_pemegang_kuasa: TStringField;
+    MyQImportnomor_identitas_pemegang_kuasa: TStringField;
+    MyQImportalamat: TStringField;
+    MyQImportkota_kab: TStringField;
+    MyQImportkewarganegaraan: TStringField;
+    MyQImportnomor_telepon: TStringField;
+    MyQImportflag_fraud: TStringField;
+    MyQImporthubungan_dengan_bank: TStringField;
+    MyQImporthubungan_dengan_pihak_terkait: TStringField;
+    MyQImportgolongan_nasabah: TStringField;
+    sGauge1: TcxProgressBar;
     MyQDN0001kewarganegaraan: TStringField;
     MyQDN0001hub_pihak_terkait: TStringField;
     MyQDN0001gol_nasabah: TStringField;
-    cxGridDBTableView1kewarganegaraan: TcxGridDBColumn;
-    cxGridDBTableView1hub_pihak_terkait: TcxGridDBColumn;
-    cxGridDBTableView1gol_nasabah: TcxGridDBColumn;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -103,6 +121,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure btlb_CloseClick(Sender: TObject);
+    procedure btlb_tools1Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -558,6 +577,133 @@ begin
     MyQDN0001.Refresh
   else
     MyQDN0001.Open;
+end;
+
+procedure Tfr_FormDN0001.btlb_tools1Click(Sender: TObject);
+var
+  cCount    : string;
+  cTglLahir : string;
+  dtLahir   : TDateTime;
+begin
+  inherited;
+
+  if not Pesan(3, 'Proses Import Data Nasabah dari Database Core ?') then
+    Exit;
+
+  MyQImport.MacroByName('TGL').Value:=DateToStrSQL(dTglProses0001);
+//  MyQImport.MacroByName('WHERE').Value:= 'WHERE n.nasabah_id IN ("0006068","0012065","0014950","0018457","0025490", '+
+//  ' "0025947","0025955","0030383","0075625")';
+//
+//  MyQImport.MacroByName('WHERE1').Value:= 'AND n.nasabah_id IN ("0006068","0012065","0014950","0018457","0025490", '+
+//  ' "0025947","0025955","0030383","0075625")';
+
+  if MyQImport.Active then
+    MyQImport.Refresh
+  else
+    MyQImport.Open;
+
+  if MyQImport.RecordCount = 0 then
+  begin
+    Pesan(2, 'Maaf tidak ada data...!');
+    Exit;
+  end;
+
+  sGauge1.Visible  := True;
+  sGauge1.Properties.Max := MyQImport.RecordCount;
+  sGauge1.Position := 0;
+
+  while not MyQImport.Eof do
+  begin
+    { ==== TANGGAL LAHIR (AMAN) ==== }
+    if MyQImporttanggal_lahir.IsNull then
+      cTglLahir := 'NULL'
+    else if TryStrToDate(MyQImporttanggal_lahir.AsString, dtLahir) then
+    begin
+      if dtLahir <= EncodeDate(1900,1,1) then
+        cTglLahir := 'NULL'
+      else
+        cTglLahir := QuotedStr(FormatDateTime('yyyy-mm-dd', dtLahir));
+    end
+    else
+      cTglLahir := 'NULL';
+
+    { ==== CEK DATA ==== }
+    cCount := SelectRow(
+      'SELECT COUNT(*) FROM ' + cDb2 + '.lps_dn_f0001 ' +
+      'WHERE nasabah_id=' + QuotedStr(MyQImportnasabah_id.AsString)
+    );
+
+    { ==== INSERT ==== }
+    if StrToIntDef(cCount, 0) = 0 then
+    begin
+      MyExecuteSQL(
+        'INSERT INTO ' + cDb2 + '.lps_dn_f0001 (' +
+        'nasabah_id, nama_nasabah, jenis_id, no_id, ' +
+        'nama_ibu_kandung, tgl_lahir, no_id2, ' +
+        'nama_pengurus, jenis_identitas, ' +
+        'nomor_identitas, alamat, kota_kab, kewarganegaraan, ' +
+        'telpon, flag_fraud, hub_dgn_bank, ' +
+        'hub_pihak_terkait, gol_nasabah) VALUES (' +
+
+        QuotedStr(MyQImportnasabah_id.AsString) + ',' +
+        QuotedStr(MyQImportnama_nasabah.AsString) + ',' +
+        QuotedStr(MyQImportjenis_identitas.AsString) + ',' +
+        QuotedStr(MyQImportnomor_identitas.AsString) + ',' +
+        QuotedStr(MyQImportnama_ibu_kandung.AsString) + ',' +
+        cTglLahir + ',' +
+        QuotedStr(MyQImportnomor_identitas_badan_hukum.AsString) + ',' +
+        QuotedStr(MyQImportnama_lengkap_pemegang_kuasa.AsString) + ',' +
+        QuotedStr(MyQImportjenis_identitas_pemegang_kuasa.AsString) + ',' +
+        QuotedStr(MyQImportnomor_identitas_pemegang_kuasa.AsString) + ',' +
+        QuotedStr(MyQImportalamat.AsString) + ',' +
+        QuotedStr(MyQImportkota_kab.AsString) + ',' +
+        QuotedStr(MyQImportkewarganegaraan.AsString) + ',' +
+        QuotedStr(MyQImportnomor_telepon.AsString) + ',' +
+        QuotedStr(MyQImportflag_fraud.AsString) + ',' +
+        QuotedStr(MyQImporthubungan_dengan_bank.AsString) + ',' +
+        QuotedStr(MyQImporthubungan_dengan_pihak_terkait.AsString) + ',' +
+        QuotedStr(MyQImportgolongan_nasabah.AsString) +
+        ')'
+      );
+    end
+    else
+    begin
+      MyExecuteSQL(
+        'UPDATE ' + cDb2 + '.lps_dn_f0001 SET ' +
+        //'nama_nasabah=' + QuotedStr(MyQImportnama_nasabah.AsString) +
+       // ', jenis_id=' + QuotedStr(MyQImportjenis_identitas.AsString) +
+       // ', no_id=' + QuotedStr(MyQImportnomor_identitas.AsString) +
+       // ', nama_ibu_kandung=' + QuotedStr(MyQImportnama_ibu_kandung.AsString) +
+       // ', tgl_lahir=' + cTglLahir +
+        ' no_id2=' + QuotedStr(MyQImportnomor_identitas_badan_hukum.AsString) +
+        ', nama_pengurus=' + QuotedStr(MyQImportnama_lengkap_pemegang_kuasa.AsString) +
+        ', jenis_identitas=' + QuotedStr(MyQImportjenis_identitas_pemegang_kuasa.AsString) +
+        ', nomor_identitas=' + QuotedStr(MyQImportnomor_identitas_pemegang_kuasa.AsString) +
+        ', alamat=' + QuotedStr(MyQImportalamat.AsString) +
+        ', kota_kab=' + QuotedStr(MyQImportkota_kab.AsString) +
+       // ', kewarganegaraan=' + QuotedStr(MyQImportkewarganegaraan.AsString) +
+        ', telpon=' + QuotedStr(MyQImportnomor_telepon.AsString) +
+        ', flag_fraud=' + QuotedStr(MyQImportflag_fraud.AsString) +
+       // ', hub_dgn_bank=' + QuotedStr(MyQImporthubungan_dengan_bank.AsString) +
+       // ', hub_pihak_terkait=' + QuotedStr(MyQImporthubungan_dengan_pihak_terkait.AsString) +
+       // ', gol_nasabah=' + QuotedStr(MyQImportgolongan_nasabah.AsString) +
+        ' WHERE nasabah_id=' + QuotedStr(MyQImportnasabah_id.AsString)
+      );
+    end;
+
+    MyQImport.Next;
+    sGauge1.Position := sGauge1.Position + 1;
+    Application.ProcessMessages;
+  end;
+
+  sGauge1.Visible := False;
+  Pesan(1, 'Proses Import Data Nasabah Selesai...');
+
+  if MyQDN0001.Active then
+    MyQDN0001.Refresh
+  else
+    MyQDN0001.Open;
+
 end;
 
 procedure Tfr_FormDN0001.cxGridDBTableView1CellDblClick(

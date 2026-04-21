@@ -14,18 +14,19 @@ inherited fr_FormDN0001: Tfr_FormDN0001
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 861
     ExplicitHeight = 398
-    Height = 398
+    Height = 374
     Width = 861
     object cxgGrid: TcxGrid
       Left = 2
       Top = 2
       Width = 857
-      Height = 394
+      Height = 370
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitHeight = 394
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -146,8 +147,8 @@ inherited fr_FormDN0001: Tfr_FormDN0001
           Width = 100
         end
         object cxGridDBTableView1wni: TcxGridDBColumn
-          Caption = 'WNI'
-          DataBinding.FieldName = 'wni'
+          Caption = 'Kewarganegaraan'
+          DataBinding.FieldName = 'kewarganegaraan'
           HeaderAlignmentHorz = taCenter
           Width = 75
         end
@@ -170,14 +171,14 @@ inherited fr_FormDN0001: Tfr_FormDN0001
           Width = 100
         end
         object cxGridDBTableView1slik_kode_hub_ljk: TcxGridDBColumn
-          Caption = 'Slik Kode Hub LJK'
-          DataBinding.FieldName = 'slik_kode_hub_ljk'
+          Caption = 'Hub Pihak Terkait'
+          DataBinding.FieldName = 'hub_pihak_terkait'
           HeaderAlignmentHorz = taCenter
           Width = 125
         end
         object cxGridDBTableView1slik_kode_gol_debitur: TcxGridDBColumn
-          Caption = 'Slik Kode Gol Dibetur'
-          DataBinding.FieldName = 'slik_kode_gol_debitur'
+          Caption = 'Golongan Nasabah'
+          DataBinding.FieldName = 'gol_nasabah'
           HeaderAlignmentHorz = taCenter
           Width = 150
         end
@@ -196,13 +197,14 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       OnClick = btlb_RefreshClick
     end
     inherited btlb_tools1: TcxButton
-      Width = 0
-      Enabled = False
-      Visible = False
-      ExplicitWidth = 0
+      Width = 85
+      Caption = 'Import'
+      WordWrap = True
+      OnClick = btlb_tools1Click
+      ExplicitWidth = 85
     end
     inherited btlb_tools2: TcxButton
-      Left = 102
+      Left = 187
       Width = 0
       Enabled = False
       Visible = False
@@ -238,7 +240,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       ExplicitWidth = 0
     end
     inherited btlb_tools3: TcxButton
-      Left = 108
+      Left = 193
       Width = 0
       Enabled = False
       Visible = False
@@ -276,6 +278,20 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       Left = 827
       ExplicitLeft = 724
     end
+  end
+  object sGauge1: TcxProgressBar
+    Left = 0
+    Top = 374
+    Align = alBottom
+    Properties.AnimationPath = cxapPingPong
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = clWindowText
+    Properties.ShowTextStyle = cxtsText
+    TabOrder = 4
+    Visible = False
+    ExplicitLeft = 8
+    ExplicitTop = 368
+    Width = 861
   end
   object MyQuery1: TMyQuery
     SQL.Strings = (
@@ -347,12 +363,12 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       '  `nomor_identitas`,'
       '  `alamat`,'
       '  `kota_kab`,'
-      '  `wni`,'
+      '  `kewarganegaraan`,'
       '  `telpon`,'
       '  `flag_fraud`,'
       '  `hub_dgn_bank`,'
-      '  `slik_kode_hub_ljk`,'
-      '  `slik_kode_gol_debitur`'
+      '  `hub_pihak_terkait`,'
+      '  `gol_nasabah`'
       'FROM `lps_dn_f0001`')
     ReadOnly = True
     Options.FieldOrigins = foNone
@@ -408,10 +424,6 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       FieldName = 'kota_kab'
       Size = 4
     end
-    object MyQDN0001wni: TStringField
-      FieldName = 'wni'
-      Size = 3
-    end
     object MyQDN0001telpon: TStringField
       FieldName = 'telpon'
       Size = 15
@@ -424,13 +436,292 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       FieldName = 'hub_dgn_bank'
       Size = 2
     end
-    object MyQDN0001slik_kode_hub_ljk: TStringField
-      FieldName = 'slik_kode_hub_ljk'
+    object MyQDN0001kewarganegaraan: TStringField
+      FieldName = 'kewarganegaraan'
+      Size = 3
+    end
+    object MyQDN0001hub_pihak_terkait: TStringField
+      FieldName = 'hub_pihak_terkait'
       Size = 2
     end
-    object MyQDN0001slik_kode_gol_debitur: TStringField
-      FieldName = 'slik_kode_gol_debitur'
+    object MyQDN0001gol_nasabah: TStringField
+      FieldName = 'gol_nasabah'
       Size = 11
+    end
+  end
+  object MyQImport: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SET @pv_per_tgl = &TGL;'
+      ''
+      '-- Step 1: DN dari kre_nominatif'
+      'SELECT '
+      '  '#39'D'#39' AS D,'
+      '  tn.nasabah_id,'
+      '  tn.nama_nasabah,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.no_id, '#39#39') AS nomor_identitas,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.NAMA_IBU_KANDUNG, '#39#39') AS nama_ibu_' +
+        'kandung,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', DATE_FORMAT(n.TGLLAHIR, '#39'%Y%m%d'#39'), '#39 +
+        #39') AS tanggal_lahir,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', n.no_id, '#39#39') AS nomor_identitas_bada' +
+        'n_hukum,'
+      '  npp.nama_pengurus AS nama_lengkap_pemegang_kuasa,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas_pemega' +
+        'ng_kuasa,'
+      '  npp.nomor_identitas AS nomor_identitas_pemegang_kuasa,'
+      
+        '  IF(na.nasabah_id IS NULL, CONCAT(n.alamat, " ", n.desa, " ", n' +
+        '.kecamatan, " ", n.kodepos),'
+      
+        '    IF(n.alamat_legal = '#39'KTP'#39', CONCAT(na.ktp_alamat, " RT.", na.' +
+        'ktp_rt, " RW.", na.ktp_rw),'
+      
+        '    IF(n.alamat_legal = '#39'SURAT'#39', CONCAT(na.surat_alamat, " RT.",' +
+        ' na.surat_rt, " RW.", na.surat_rw),'
+      
+        '    IF(n.alamat_legal = '#39'KANTOR'#39', CONCAT(na.kerja_alamat, " RT."' +
+        ', na.kerja_rt, " RW.", na.kerja_rw),'
+      
+        '    CONCAT(na.lain_alamat, " ", na.lain_desa, " ", na.lain_kecam' +
+        'atan, " ", na.lain_kode_pos))))) AS alamat,'
+      '  n.kota_kab,'
+      '  '#39'WNI'#39' AS kewarganegaraan,'
+      '  n.TELPON AS nomor_telepon,'
+      '  '#39'1'#39' AS flag_fraud,'
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39',n.`slik_kode_hub_ljk`,'#39'T6'#39') AS hu' +
+        'bungan_dengan_bank,'
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39','#39'20'#39','#39'01'#39') AS hubungan_dengan_pih' +
+        'ak_terkait,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'9700'#39', '#39'8900'#39') AS golongan_nasabah'
+      'FROM kre_nominatif tn'
+      'LEFT JOIN nasabah n ON tn.nasabah_id = n.NASABAH_ID'
+      'LEFT JOIN nasabah_alamat na ON na.nasabah_id = tn.nasabah_id'
+      
+        'LEFT JOIN nasabah_pengurus_pemilik npp ON npp.nasabah_id = tn.na' +
+        'sabah_id'
+      '&WHERE'
+      'GROUP BY tn.nasabah_id'
+      ''
+      'UNION ALL'
+      ''
+      
+        '-- Step 1: DN dari tab_nominatif (jika belum ada di dua sebelumn' +
+        'ya)'
+      'SELECT '
+      '  '#39'D'#39' AS D,'
+      '  tn.nasabah_id,'
+      '  tn.nama_nasabah,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.no_id, '#39#39') AS nomor_identitas,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.NAMA_IBU_KANDUNG, '#39#39') AS nama_ibu_' +
+        'kandung,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', DATE_FORMAT(n.TGLLAHIR, '#39'%Y%m%d'#39'), '#39 +
+        #39') AS tanggal_lahir,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', n.no_id, '#39#39') AS nomor_identitas_bada' +
+        'n_hukum,'
+      '  npp.nama_pengurus AS nama_lengkap_pemegang_kuasa,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas_pemega' +
+        'ng_kuasa,'
+      '  npp.nomor_identitas AS nomor_identitas_pemegang_kuasa,'
+      
+        '  IF(na.nasabah_id IS NULL, CONCAT(n.alamat, " ", n.desa, " ", n' +
+        '.kecamatan, " ", n.kodepos),'
+      
+        '    IF(n.alamat_legal = '#39'KTP'#39', CONCAT(na.ktp_alamat, " RT.", na.' +
+        'ktp_rt, " RW.", na.ktp_rw),'
+      
+        '    IF(n.alamat_legal = '#39'SURAT'#39', CONCAT(na.surat_alamat, " RT.",' +
+        ' na.surat_rt, " RW.", na.surat_rw),'
+      
+        '    IF(n.alamat_legal = '#39'KANTOR'#39', CONCAT(na.kerja_alamat, " RT."' +
+        ', na.kerja_rt, " RW.", na.kerja_rw),'
+      
+        '    CONCAT(na.lain_alamat, " ", na.lain_desa, " ", na.lain_kecam' +
+        'atan, " ", na.lain_kode_pos))))) AS alamat,'
+      '  n.kota_kab,'
+      '  '#39'WNI'#39' AS kewarganegaraan,'
+      '  n.TELPON AS nomor_telepon,'
+      '  '#39'1'#39' AS flag_fraud, '
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39',n.`slik_kode_hub_ljk`,'#39'T6'#39') AS hu' +
+        'bungan_dengan_bank,'
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39','#39'20'#39','#39'01'#39') AS hubungan_dengan_pih' +
+        'ak_terkait,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'9700'#39', '#39'8900'#39') AS golongan_nasabah'
+      'FROM tab_nominatif tn'
+      'LEFT JOIN nasabah n ON tn.nasabah_id = n.NASABAH_ID'
+      'LEFT JOIN nasabah_alamat na ON na.nasabah_id = tn.nasabah_id'
+      
+        'LEFT JOIN nasabah_pengurus_pemilik npp ON npp.nasabah_id = tn.na' +
+        'sabah_id'
+      'WHERE tn.tgl_laporan = @pv_per_tgl '
+      '&WHERE1'
+      'AND tn.saldo_akhir > 0'
+      'GROUP BY tn.nasabah_id '
+      ''
+      'UNION ALL'
+      ''
+      
+        '-- Step 2: DN dari dep_nominatif (jika belum ada di dua sebelumn' +
+        'ya)'
+      'SELECT '
+      '  '#39'D'#39' AS D,'
+      '  tn.nasabah_id,'
+      '  tn.nama_nasabah,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.no_id, '#39#39') AS nomor_identitas,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', n.NAMA_IBU_KANDUNG, '#39#39') AS nama_ibu_' +
+        'kandung,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'0'#39', DATE_FORMAT(n.TGLLAHIR, '#39'%Y%m%d'#39'), '#39 +
+        #39') AS tanggal_lahir,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', n.no_id, '#39#39') AS nomor_identitas_bada' +
+        'n_hukum,'
+      '  npp.nama_pengurus AS nama_lengkap_pemegang_kuasa,'
+      
+        '  IF(n.JENIS_DEBITUR = '#39'1'#39', '#39'KTP'#39', '#39#39') AS jenis_identitas_pemega' +
+        'ng_kuasa,'
+      '  npp.nomor_identitas AS nomor_identitas_pemegang_kuasa,'
+      
+        '  IF(na.nasabah_id IS NULL, CONCAT(n.alamat, " ", n.desa, " ", n' +
+        '.kecamatan, " ", n.kodepos),'
+      
+        '    IF(n.alamat_legal = '#39'KTP'#39', CONCAT(na.ktp_alamat, " RT.", na.' +
+        'ktp_rt, " RW.", na.ktp_rw),'
+      
+        '    IF(n.alamat_legal = '#39'SURAT'#39', CONCAT(na.surat_alamat, " RT.",' +
+        ' na.surat_rt, " RW.", na.surat_rw),'
+      
+        '    IF(n.alamat_legal = '#39'KANTOR'#39', CONCAT(na.kerja_alamat, " RT."' +
+        ', na.kerja_rt, " RW.", na.kerja_rw),'
+      
+        '    CONCAT(na.lain_alamat, " ", na.lain_desa, " ", na.lain_kecam' +
+        'atan, " ", na.lain_kode_pos))))) AS alamat,'
+      '  n.kota_kab,'
+      '  '#39'WNI'#39' AS kewarganegaraan,'
+      '  n.TELPON AS nomor_telepon,'
+      '  '#39'1'#39' AS flag_fraud,'
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39',n.`slik_kode_hub_ljk`,'#39'T6'#39') AS hu' +
+        'bungan_dengan_bank,'
+      
+        '  IF(n.`slik_kode_hub_ljk`='#39'N'#39','#39'20'#39','#39'01'#39') AS hubungan_dengan_pih' +
+        'ak_terkait,'
+      '  IF(n.JENIS_DEBITUR = '#39'0'#39', '#39'9700'#39', '#39'8900'#39') AS golongan_nasabah'
+      'FROM dep_nominatif tn'
+      'LEFT JOIN nasabah n ON tn.nasabah_id = n.NASABAH_ID'
+      'LEFT JOIN nasabah_alamat na ON na.nasabah_id = tn.nasabah_id'
+      
+        'LEFT JOIN nasabah_pengurus_pemilik npp ON npp.nasabah_id = tn.na' +
+        'sabah_id'
+      'WHERE tn.tgl_laporan = @pv_per_tgl'
+      '  AND tn.nasabah_id NOT IN ('
+      
+        '    SELECT nasabah_id FROM tab_nominatif WHERE tgl_laporan = @pv' +
+        '_per_tgl AND saldo_akhir > 0'
+      '  )'
+      '  AND tn.saldo_akhir > 0'
+      '&WHERE1'
+      'GROUP BY tn.nasabah_id;')
+    ReadOnly = True
+    Left = 56
+    Top = 88
+    MacroData = <
+      item
+        Name = 'TGL'
+      end
+      item
+        Name = 'WHERE'
+      end
+      item
+        Name = 'WHERE1'
+      end>
+    object MyQImportnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      FixedChar = True
+    end
+    object MyQImportnama_nasabah: TStringField
+      FieldName = 'nama_nasabah'
+      Size = 100
+    end
+    object MyQImportjenis_identitas: TStringField
+      FieldName = 'jenis_identitas'
+      Size = 3
+    end
+    object MyQImportnomor_identitas: TStringField
+      FieldName = 'nomor_identitas'
+      Size = 30
+    end
+    object MyQImportnama_ibu_kandung: TStringField
+      FieldName = 'nama_ibu_kandung'
+      Size = 35
+    end
+    object MyQImporttanggal_lahir: TStringField
+      FieldName = 'tanggal_lahir'
+      Size = 8
+    end
+    object MyQImportnomor_identitas_badan_hukum: TStringField
+      FieldName = 'nomor_identitas_badan_hukum'
+      Size = 30
+    end
+    object MyQImportnama_lengkap_pemegang_kuasa: TStringField
+      FieldName = 'nama_lengkap_pemegang_kuasa'
+      Size = 150
+    end
+    object MyQImportjenis_identitas_pemegang_kuasa: TStringField
+      FieldName = 'jenis_identitas_pemegang_kuasa'
+      Size = 3
+    end
+    object MyQImportnomor_identitas_pemegang_kuasa: TStringField
+      FieldName = 'nomor_identitas_pemegang_kuasa'
+      Size = 16
+    end
+    object MyQImportalamat: TStringField
+      FieldName = 'alamat'
+      Size = 308
+    end
+    object MyQImportkota_kab: TStringField
+      FieldName = 'kota_kab'
+    end
+    object MyQImportkewarganegaraan: TStringField
+      FieldName = 'kewarganegaraan'
+      Size = 3
+    end
+    object MyQImportnomor_telepon: TStringField
+      FieldName = 'nomor_telepon'
+      FixedChar = True
+      Size = 50
+    end
+    object MyQImportflag_fraud: TStringField
+      FieldName = 'flag_fraud'
+      Size = 1
+    end
+    object MyQImporthubungan_dengan_bank: TStringField
+      FieldName = 'hubungan_dengan_bank'
+      Size = 1
+    end
+    object MyQImporthubungan_dengan_pihak_terkait: TStringField
+      FieldName = 'hubungan_dengan_pihak_terkait'
+      Size = 2
+    end
+    object MyQImportgolongan_nasabah: TStringField
+      FieldName = 'golongan_nasabah'
+      Size = 4
     end
   end
 end

@@ -619,6 +619,7 @@ begin
   if Application.FindComponent('fr_FormDSN0002') = nil then
     Application.CreateForm(Tfr_FormDSN0002, fr_FormDSN0002);
   fr_FormDSN0002.Tag := 0;
+  dTglProses0002 := per_tgl.Date;
   fr_FormDSN0002.ShowModal;
   fr_FormDSN0002.Free;
   fr_FormDSN0002 := nil;
@@ -629,6 +630,7 @@ begin
   if Application.FindComponent('fr_FormDN0001') = nil then
     Application.CreateForm(Tfr_FormDN0001, fr_FormDN0001);
   fr_FormDN0001.Tag := 0;
+  dTglProses0001 := per_tgl.Date;
   fr_FormDN0001.ShowModal;
   fr_FormDN0001.Free;
   fr_FormDN0001 := nil;
