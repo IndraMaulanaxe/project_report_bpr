@@ -2,6 +2,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
   Caption = 'Entry Form 0100 - Laporan Informasi Utama '
   ClientHeight = 490
   ClientWidth = 1017
+  ExplicitTop = -42
   ExplicitWidth = 1023
   ExplicitHeight = 519
   PixelsPerInch = 96
@@ -12,7 +13,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 1017
-    ExplicitHeight = 553
+    ExplicitHeight = 446
     Height = 446
     Width = 1017
     object cxPageControl1: TcxPageControl
@@ -24,8 +25,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
       TabOrder = 0
       Properties.ActivePage = cxTabDataUtama
       Properties.CustomButtons.Buttons = <>
-      ExplicitLeft = 1
-      ExplicitTop = 1
       ClientRectBottom = 438
       ClientRectLeft = 4
       ClientRectRight = 1009
@@ -33,7 +32,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
       object cxTabDataUtama: TcxTabSheet
         Caption = 'Laporan Utama'
         ImageIndex = 0
-        ExplicitHeight = 518
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,7 +45,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
           ExplicitLeft = -1
-          ExplicitTop = 1
           Height = 411
           Width = 1005
           object Label3: TcxLabel
@@ -495,7 +492,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 424
           end
           object bt_sandi: TsBitBtn
-            Left = 282
+            Left = 283
             Top = 25
             Width = 21
             Height = 21
@@ -529,7 +526,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
       object cxTabDataDetail: TcxTabSheet
         Caption = 'Detail Laporan'
         ImageIndex = 3
-        ExplicitHeight = 518
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -542,7 +538,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 518
           Height = 411
           Width = 1005
           object cxLabel31: TcxLabel
@@ -1157,7 +1152,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
   end
   inherited PanelFooter: TcxGroupBox
     Top = 446
-    ExplicitTop = 553
+    ExplicitTop = 446
     ExplicitWidth = 1017
     ExplicitHeight = 44
     Height = 44
@@ -1423,5 +1418,9 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
     DataSet = MyQRefStatusDokumen
     Left = 456
     Top = 504
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 32
+    Top = 80
   end
 end

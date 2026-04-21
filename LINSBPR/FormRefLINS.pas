@@ -88,7 +88,7 @@ begin
   if not Empty(Edit1.Text) and (Tag=0) then
     begin
       MyQMasterReferensi.MacroByName('WHERE').Value := 'WHERE '+
-        'sandi LIKE '+QuotedStr('%'+Trim(Edit1.Text)+'%')+' or '+
+        'code LIKE '+QuotedStr('%'+Trim(Edit1.Text)+'%')+' or '+
         ' '+MyQMasterReferensi.MacroByName('FIELD2').Value+' like '+QuotedStr('%'+Trim(Edit1.Text)+'%');
     end
   else
@@ -101,7 +101,7 @@ begin
 
   if not Empty(Edit1.Text) and (Tag=1)then
     begin
-      if not MyQMasterReferensi.Locate('sandi',Trim(Edit1.Text),[loCaseInsensitive]) then
+      if not MyQMasterReferensi.Locate('code',Trim(Edit1.Text),[loCaseInsensitive]) then
         MyQMasterReferensi.Locate(MyQMasterReferensi.MacroByName('FIELD2').Value,Trim(Edit1.Text),[loCaseInsensitive]);
     end;
 

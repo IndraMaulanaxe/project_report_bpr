@@ -158,7 +158,6 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 4
       WordWrap = True
       OnClick = bt_update_statusClick
-      ExplicitLeft = 302
     end
     object bt_restore_point: TcxButton
       Left = 302
@@ -173,7 +172,6 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 5
       WordWrap = True
       OnClick = bt_restore_pointClick
-      ExplicitLeft = 202
     end
     object bt_restore_data: TcxButton
       Left = 202
@@ -188,7 +186,6 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 6
       WordWrap = True
       OnClick = bt_restore_dataClick
-      ExplicitLeft = 102
     end
     object bt_ganti_bulan: TcxButton
       Left = 102
@@ -204,7 +201,6 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 7
       WordWrap = True
       OnClick = bt_ganti_bulanClick
-      ExplicitLeft = 2
     end
     object bt_close: TcxButton
       Left = 1033
@@ -233,8 +229,6 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 9
       WordWrap = True
       OnClick = bt_settingClick
-      ExplicitLeft = -4
-      ExplicitTop = 3
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -415,7 +409,7 @@ object fr_MainMenu: Tfr_MainMenu
     ExplicitHeight = 394
     object cp_lap_insidental: TCategoryPanel
       Top = 0
-      Height = 150
+      Height = 73
       Caption = 'Laporan Insidental'
       Color = clGray
       TabOrder = 0

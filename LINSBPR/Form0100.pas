@@ -101,6 +101,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_CloseClick(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -278,6 +279,11 @@ begin
 end;
 
 
+procedure Tfr_Form0100.btlb_CloseClick(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure Tfr_Form0100.btlb_DeleteClick(Sender: TObject);
 begin
   inherited;
@@ -448,6 +454,7 @@ begin
                         ', `status` = '+QuotedStr(status.EditValue)+
                         ', `status_dokumen` = '+QuotedStr(status_dokumen.EditValue)+
                         ', `target_waktu` = '+DateToStrSQL(target_waktu.Date)+
+                        ', `lampiran_file` = '+QuotedStr(NamaFileHasil)+
                         ' WHERE `flag_detail` = ''D01'' '+
                         ' AND `sandi_laporan` = '+QuotedStr(MyQ0100sandi_laporan.AsString)+
                         ' AND `tanggal_kejadian` = '+DateToStrSQL(MyQ0100tanggal_kejadian.AsDateTime)+
@@ -562,7 +569,7 @@ begin
                       '`nama_pihak`, `nik_npwp`, `jabatan`, '+
                       // TAB: DETAIL LAPORAN
                       '`jenis_produk`, `nama_produk`, `jenis_kantor`, `alamat`, `alamat_baru`, `tanggal_selesai`, '+
-                      '`pelanggaran`, `alasan`, `nama_pjti`, `register_ref`, `langkah_perbaikan`, `target_waktu`, `realisasi`, `status`, `status_dokumen`'+
+                      '`pelanggaran`, `alasan`, `nama_pjti`, `register_ref`, `langkah_perbaikan`, `target_waktu`, `realisasi`, `status`, `status_dokumen`, `lampiran_file`'+
                       ') VALUES ('+
                       // TAB: LAPORAN UTAMA
                       QuotedStr('D01')+
@@ -594,6 +601,7 @@ begin
                       ', '+QuotedStr(memrealiasasi.Text)+
                       ', '+QuotedStr(status.EditValue)+
                       ', '+QuotedStr(status_dokumen.EditValue)+
+                      ', '+QuotedStr(NamaFileHasil)+
                       ')');
         end;
       if MyQ0100.Active then

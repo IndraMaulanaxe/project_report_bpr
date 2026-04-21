@@ -123,6 +123,7 @@ type
     nm_laporan: TcxTextEdit;
     bt_sandi: TsBitBtn;
     cxLabel23: TcxLabel;
+    OpenDialog1: TOpenDialog;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -138,6 +139,7 @@ type
     FAllowDrag: Boolean;
   public
     { Public declarations }
+    NamaFileHasil :string;
     property AllowDrag: Boolean read FAllowDrag write FAllowDrag;
     function Cek_Validasi(Sender: TObject): Boolean;
   end;
@@ -426,10 +428,44 @@ begin
 end;
 
 procedure Tfr_EntryForm0100.btlb_SaveClick(Sender: TObject);
+var
+  NamaFile, Folder, Ext: string;
 begin
   inherited;
   if not Cek_Validasi(Sender) then
     Exit;
+
+    //Upload File
+    Folder:='';
+    NamaFile:='';
+    NamaFileHasil:='';
+    if OpenDialog1.Execute then
+    begin
+      Ext := LowerCase(ExtractFileExt(OpenDialog1.FileName));
+      Folder := FormatDateTime('yyyymmdd', tanggal_kejadian.Date);
+
+      // Jika File PDF
+      //if (OpenDialog1.FilterIndex = 2) then
+      if (Ext = '.pdf') then
+      begin
+        NamaFile := FormatDateTime('yyyymmdd', tanggal_kejadian.Date)+''+sandi_laporan.Text;
+        NamaFileHasil := NamaFile+'.pdf';
+        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
+      end
+
+      // Jika File TXT
+      else
+      begin
+        NamaFile := FormatDateTime('yyyymmdd', tanggal_kejadian.Date)+''+sandi_laporan.Text;
+        NamaFileHasil := NamaFile+'.txt';
+        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
+      end;
+    end
+    else
+    begin
+      ShowMessage('Upload dibatalkan.');
+    end;
+    //
 
   Tag := 2;
   Close;
