@@ -86,11 +86,11 @@ type
     MyQField: TMyQuery;
     CategoryPanelGroup1: TCategoryPanelGroup;
     cp_lap_akuntan_publik: TCategoryPanel;
-    bt_formA0502: TcxButton;
+    bt_FormDK0003: TcxButton;
     OpenDialog1: TOpenDialog;
     bt_form0002: TcxButton;
     bt_form0001: TcxButton;
-    bt_formC0100: TcxButton;
+    bt_form0004: TcxButton;
     sGaugeStatus: TcxProgressBar;
     sGaugeJenisLaporan: TcxProgressBar;
     MyQFormLapBulid: TIntegerField;
@@ -117,12 +117,13 @@ type
     procedure bt_formA0305Click(Sender: TObject);
     procedure bt_form0002Click(Sender: TObject);
     procedure bt_form0001Click(Sender: TObject);
-    procedure bt_formC0100Click(Sender: TObject);
+    procedure bt_form0004Click(Sender: TObject);
     procedure bt_formD0000Click(Sender: TObject);
     procedure bt_formF0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cb_jenis_laporanEditing(Sender: TObject; var CanEdit: Boolean);
     procedure FormActivate(Sender: TObject);
+    procedure bt_FormDK0003Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -136,7 +137,7 @@ implementation
 
 uses
   dm_bpr, StrUtils, MyVAR, MyLib, FormA0301, FormDN0001, FormDSN0002, Progress,
-  DaftarBackupAPOLO;
+  DaftarBackupAPOLO, FormDK0003, FormDSJ0004;
 
   Var cKodeJenisPelaporan, cKodePeriode : String;
 
@@ -619,7 +620,6 @@ begin
   if Application.FindComponent('fr_FormDSN0002') = nil then
     Application.CreateForm(Tfr_FormDSN0002, fr_FormDSN0002);
   fr_FormDSN0002.Tag := 0;
-  dTglProses0002 := per_tgl.Date;
   fr_FormDSN0002.ShowModal;
   fr_FormDSN0002.Free;
   fr_FormDSN0002 := nil;
@@ -630,21 +630,19 @@ begin
   if Application.FindComponent('fr_FormDN0001') = nil then
     Application.CreateForm(Tfr_FormDN0001, fr_FormDN0001);
   fr_FormDN0001.Tag := 0;
-  dTglProses0001 := per_tgl.Date;
   fr_FormDN0001.ShowModal;
   fr_FormDN0001.Free;
   fr_FormDN0001 := nil;
 end;
 
-procedure Tfr_MainMenu.bt_formC0100Click(Sender: TObject);
+procedure Tfr_MainMenu.bt_form0004Click(Sender: TObject);
 begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'C0100');
-  end;
+  if Application.FindComponent('fr_FormDSJ0004') = nil then
+    Application.CreateForm(Tfr_FormDSJ0004, fr_FormDSJ0004);
+  fr_FormDSJ0004.Tag := 0;
+  fr_FormDSJ0004.ShowModal;
+  fr_FormDSJ0004.Free;
+  fr_FormDSJ0004 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formD0000Click(Sender: TObject);
@@ -656,6 +654,16 @@ begin
   begin
     ProsesUpload(OpenDialog1.FileName,'D0000');
   end;
+end;
+
+procedure Tfr_MainMenu.bt_FormDK0003Click(Sender: TObject);
+begin
+  if Application.FindComponent('fr_FormDK0003') = nil then
+    Application.CreateForm(Tfr_FormDK0003, fr_FormDK0003);
+  fr_FormDK0003.Tag := 0;
+  fr_FormDK0003.ShowModal;
+  fr_FormDK0003.Free;
+  fr_FormDK0003 := nil;
 end;
 
 procedure Tfr_MainMenu.bt_formF0000Click(Sender: TObject);

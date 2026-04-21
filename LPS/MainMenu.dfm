@@ -378,26 +378,28 @@ object fr_MainMenu: Tfr_MainMenu
       Caption = 'Form Laporan Bulanan 0001'
       Color = clGray
       TabOrder = 0
-      object bt_formC0100: TcxButton
+      object bt_form0004: TcxButton
         Left = 0
         Top = 120
         Width = 355
         Height = 40
         Align = alTop
-        Caption = 'FormC0100 - Laporan Akuntan Publik'
+        Caption = 'Form 0004 - Data Simpanan Join'
         TabOrder = 0
         WordWrap = True
-        OnClick = bt_formC0100Click
+        OnClick = bt_form0004Click
       end
-      object bt_formA0502: TcxButton
+      object bt_FormDK0003: TcxButton
         Left = 0
         Top = 80
         Width = 355
         Height = 40
         Align = alTop
-        Caption = 'FormA0502 - Bidang Usaha'
+        Caption = 'Form 0003 - Kewajiban Nasabah'
         TabOrder = 1
         WordWrap = True
+        OnClick = bt_FormDK0003Click
+        ExplicitTop = 86
       end
       object bt_form0002: TcxButton
         Left = 0
@@ -433,8 +435,7 @@ object fr_MainMenu: Tfr_MainMenu
     Properties.ShowTextStyle = cxtsText
     TabOrder = 5
     Visible = False
-    ExplicitLeft = 2
-    ExplicitTop = 588
+    ExplicitTop = 595
     Width = 1135
   end
   object sGaugeJenisLaporan: TcxProgressBar
