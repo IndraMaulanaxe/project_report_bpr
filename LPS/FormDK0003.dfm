@@ -1,5 +1,5 @@
-inherited fr_FormDSJ0004: Tfr_FormDSJ0004
-  Caption = 'Form 0004 -  Entry Daftar Data Simpanan Join'
+inherited fr_FormDK0003: Tfr_FormDK0003
+  Caption = 'Form 0003 -  Entry Laporan Dana Kewajiban'
   ClientHeight = 440
   ClientWidth = 861
   OnShow = FormShow
@@ -48,7 +48,7 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
         OnCellDblClick = cxGridDBTableView1CellDblClick
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.SmartRefresh = True
-        DataController.DataSource = dsMyQDSJ0004
+        DataController.DataSource = dsMyQDK0003
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
           item
@@ -83,11 +83,65 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
           DataBinding.FieldName = 'no_rekening'
           HeaderAlignmentHorz = taCenter
         end
-        object cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn
-          Caption = 'Persentase Kepemilikan'
-          DataBinding.FieldName = 'persentase_kepemilikan'
+        object cxGridDBTableView1jenis: TcxGridDBColumn
+          Caption = 'Jenis'
+          DataBinding.FieldName = 'jenis'
           HeaderAlignmentHorz = taCenter
-          Width = 150
+          Width = 100
+        end
+        object cxGridDBTableView1kolektibilitas: TcxGridDBColumn
+          Caption = 'Kolektibilitas'
+          DataBinding.FieldName = 'kolektibilitas'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1plafon: TcxGridDBColumn
+          Caption = 'Plafon'
+          DataBinding.FieldName = 'plafon'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1baki_debet: TcxGridDBColumn
+          Caption = 'Baki Debet'
+          DataBinding.FieldName = 'baki_debet'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1tunggakan_pokok: TcxGridDBColumn
+          Caption = 'Tunggakan Pokok'
+          DataBinding.FieldName = 'tunggakan_pokok'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1tunggakan_bunga: TcxGridDBColumn
+          Caption = 'Tunggakan Pokok'
+          DataBinding.FieldName = 'tunggakan_bunga'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1jenis_agunan: TcxGridDBColumn
+          Caption = 'Jenis Agunan'
+          DataBinding.FieldName = 'jenis_agunan'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1tgl_mulai: TcxGridDBColumn
+          Caption = 'Tanggal Mulai'
+          DataBinding.FieldName = 'tgl_mulai'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1tgl_jatuh_tempo: TcxGridDBColumn
+          Caption = 'Tanggal Jatuh Tempo'
+          DataBinding.FieldName = 'tgl_jatuh_tempo'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
+        end
+        object cxGridDBTableView1kategori_usaha: TcxGridDBColumn
+          Caption = 'Kategori Usaha'
+          DataBinding.FieldName = 'kategori_usaha'
+          HeaderAlignmentHorz = taCenter
+          Width = 100
         end
       end
       object cxGridLevel1: TcxGridLevel
@@ -233,21 +287,31 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
       FieldName = 'pbdp'
     end
   end
-  object dsMyQDSJ0004: TMyDataSource
-    DataSet = MyQDSJ0004
-    Left = 392
+  object dsMyQDK0003: TMyDataSource
+    DataSet = MyQDK0003
+    Left = 400
     Top = 272
   end
-  object MyQDSJ0004: TMyQuery
+  object MyQDK0003: TMyQuery
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       'SELECT'
       '  `flag_detail`,'
       '  `nasabah_id`,'
       '  `no_rekening`,'
-      '  `persentase_kepemilikan`'
-      'FROM `lps_dk_f0004`'
-      '&WHERE')
+      '  `jenis`,'
+      '  `kolektibilitas`,'
+      '  `plafon`,'
+      '  `baki_debet`,'
+      '  `tunggakan_pokok`,'
+      '  `tunggakan_bunga`,'
+      '  `jenis_agunan`,'
+      '  `tgl_mulai`,'
+      '  `tgl_jatuh_tempo`,'
+      '  `kategori_usaha`'
+      'FROM `lps_dk_f0003`'
+      '&WHERE'
+      'LIMIT 30')
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
@@ -256,19 +320,50 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
       item
         Name = 'WHERE'
       end>
-    object MyQDSJ0004flag_detail: TStringField
+    object MyQDK0003flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 1
     end
-    object MyQDSJ0004nasabah_id: TStringField
+    object MyQDK0003nasabah_id: TStringField
       FieldName = 'nasabah_id'
     end
-    object MyQDSJ0004no_rekening: TStringField
+    object MyQDK0003no_rekening: TStringField
       FieldName = 'no_rekening'
       Size = 35
     end
-    object MyQDSJ0004persentase_kepemilikan: TFloatField
-      FieldName = 'persentase_kepemilikan'
+    object MyQDK0003jenis: TStringField
+      FieldName = 'jenis'
+      Size = 3
+    end
+    object MyQDK0003kolektibilitas: TStringField
+      FieldName = 'kolektibilitas'
+      Size = 1
+    end
+    object MyQDK0003plafon: TFloatField
+      FieldName = 'plafon'
+    end
+    object MyQDK0003baki_debet: TFloatField
+      FieldName = 'baki_debet'
+    end
+    object MyQDK0003tunggakan_pokok: TFloatField
+      FieldName = 'tunggakan_pokok'
+    end
+    object MyQDK0003tunggakan_bunga: TFloatField
+      FieldName = 'tunggakan_bunga'
+    end
+    object MyQDK0003jenis_agunan: TStringField
+      FieldName = 'jenis_agunan'
+      Size = 10
+    end
+    object MyQDK0003tgl_mulai: TDateField
+      FieldName = 'tgl_mulai'
+    end
+    object MyQDK0003tgl_jatuh_tempo: TDateField
+      FieldName = 'tgl_jatuh_tempo'
+    end
+    object MyQDK0003kategori_usaha: TStringField
+      FieldName = 'kategori_usaha'
+      Size = 2
     end
   end
 end

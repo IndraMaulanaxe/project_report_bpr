@@ -12,7 +12,7 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 814
-    ExplicitHeight = 367
+    ExplicitHeight = 427
     Height = 427
     Width = 814
     object cxPageControl1: TcxPageControl
@@ -24,9 +24,6 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
       TabOrder = 0
       Properties.ActivePage = cxTabPage1
       Properties.CustomButtons.Buttons = <>
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 363
       ClientRectBottom = 419
       ClientRectLeft = 4
       ClientRectRight = 806
@@ -34,7 +31,6 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
       object cxTabPage1: TcxTabSheet
         Caption = 'Page 1'
         ImageIndex = 0
-        ExplicitHeight = 332
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,7 +43,6 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
           Height = 392
           Width = 802
           object cxLabel2: TcxLabel
@@ -665,7 +660,7 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
   end
   inherited PanelFooter: TcxGroupBox
     Top = 427
-    ExplicitTop = 367
+    ExplicitTop = 427
     ExplicitWidth = 814
     ExplicitHeight = 44
     Height = 44
@@ -814,7 +809,7 @@ inherited fr_EntryFormDK0003: Tfr_EntryFormDK0003
       'FROM `lps_dk_f0003`'
       '&WHERE')
     ReadOnly = True
-    Left = 568
+    Left = 584
     Top = 48
     MacroData = <
       item

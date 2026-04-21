@@ -322,8 +322,8 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
   end
   object dsMyQDSN0002: TMyDataSource
     DataSet = MyQDSN0002
-    Left = 384
-    Top = 272
+    Left = 392
+    Top = 280
   end
   object MyQDSN0002: TMyQuery
     Connection = dm_bpr1.MyCon2

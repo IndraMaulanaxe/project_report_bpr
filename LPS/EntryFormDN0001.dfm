@@ -1139,7 +1139,7 @@ inherited fr_EntryFormDN0001: Tfr_EntryFormDN0001
       'FROM `lps_dn_f0001`'
       '&WHERE')
     ReadOnly = True
-    Left = 568
+    Left = 544
     Top = 48
     MacroData = <
       item

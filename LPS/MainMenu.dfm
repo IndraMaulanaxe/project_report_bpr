@@ -399,7 +399,6 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 1
         WordWrap = True
         OnClick = bt_FormDK0003Click
-        ExplicitTop = 86
       end
       object bt_form0002: TcxButton
         Left = 0
@@ -594,8 +593,8 @@ object fr_MainMenu: Tfr_MainMenu
     Connection = dm_bpr1.MyCon2
     SQL.Strings = (
       '')
-    Left = 448
-    Top = 328
+    Left = 472
+    Top = 336
   end
   object OpenDialog1: TOpenDialog
     Left = 560

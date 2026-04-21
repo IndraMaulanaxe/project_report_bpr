@@ -13,7 +13,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 861
-    ExplicitHeight = 398
+    ExplicitHeight = 377
     Height = 374
     Width = 861
     object cxgGrid: TcxGrid
@@ -26,7 +26,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitHeight = 394
+      ExplicitHeight = 373
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -208,7 +208,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 102
+      ExplicitLeft = 187
       ExplicitWidth = 0
     end
     inherited btlb_Save: TcxButton
@@ -244,7 +244,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 108
+      ExplicitLeft = 193
       ExplicitWidth = 0
     end
     inherited btlb_Delete: TcxButton
@@ -261,6 +261,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
       Left = 498
       OnClick = btlb_InsertClick
       ExplicitLeft = 498
+      ExplicitTop = 6
     end
     inherited btlb_Pilih: TcxButton
       Left = 474
@@ -289,8 +290,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
     Properties.ShowTextStyle = cxtsText
     TabOrder = 4
     Visible = False
-    ExplicitLeft = 8
-    ExplicitTop = 368
+    ExplicitTop = 377
     Width = 861
   end
   object MyQuery1: TMyQuery
@@ -343,7 +343,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
   end
   object dsMyQDN0001: TMyDataSource
     DataSet = MyQDN0001
-    Left = 376
+    Left = 400
     Top = 280
   end
   object MyQDN0001: TMyQuery
@@ -373,7 +373,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
     ReadOnly = True
     Options.FieldOrigins = foNone
     Left = 312
-    Top = 280
+    Top = 272
     object MyQDN0001flag_detail: TStringField
       FieldName = 'flag_detail'
       Size = 1

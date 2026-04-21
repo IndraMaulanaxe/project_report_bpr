@@ -26,7 +26,11 @@ uses
   EntryFormDN0001 in 'EntryFormDN0001.pas' {fr_EntryFormDN0001},
   FormRefLPS in 'FormRefLPS.pas' {fr_FormRefLPS},
   EntryFormDSN0002 in 'EntryFormDSN0002.pas' {fr_EntryFormDSN0002},
-  FormDSN0002 in 'FormDSN0002.pas' {fr_FormDSN0002};
+  FormDSN0002 in 'FormDSN0002.pas' {fr_FormDSN0002},
+  EntryFormDK0003 in 'EntryFormDK0003.pas' {fr_EntryFormDK0003},
+  FormDK0003 in 'FormDK0003.pas' {fr_FormDK0003},
+  EntryFormDSJ0004 in 'EntryFormDSJ0004.pas' {fr_EntryFormDSJ0004},
+  FormDSJ0004 in 'FormDSJ0004.pas' {fr_FormDSJ0004};
 
 {$R *.res}
 
@@ -35,5 +39,9 @@ begin
   Application.Icon.LoadFromFile(ExtractFilePath(Application.ExeName)+'Logo_BPR.ico');
   Application.Title := 'LPS :: Aplikasi Pelaporan Online LPS';
   Application.CreateForm(Tfr_LoginBPR, fr_LoginBPR);
+  Application.CreateForm(Tfr_EntryFormDK0003, fr_EntryFormDK0003);
+  Application.CreateForm(Tfr_FormDK0003, fr_FormDK0003);
+  Application.CreateForm(Tfr_EntryFormDSJ0004, fr_EntryFormDSJ0004);
+  Application.CreateForm(Tfr_FormDSJ0004, fr_FormDSJ0004);
   Application.Run;
 end.

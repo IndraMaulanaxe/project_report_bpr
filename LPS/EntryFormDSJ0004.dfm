@@ -8,11 +8,11 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
   TextHeight = 16
   inherited PanelHeader: TPanel
     Width = 542
-    ExplicitWidth = 814
+    ExplicitWidth = 542
   end
   inherited PanelContent: TcxGroupBox
-    ExplicitWidth = 814
-    ExplicitHeight = 427
+    ExplicitWidth = 542
+    ExplicitHeight = 164
     Height = 164
     Width = 542
     object cxPageControl1: TcxPageControl
@@ -24,8 +24,6 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       TabOrder = 0
       Properties.ActivePage = cxTabPage1
       Properties.CustomButtons.Buttons = <>
-      ExplicitWidth = 810
-      ExplicitHeight = 423
       ClientRectBottom = 156
       ClientRectLeft = 4
       ClientRectRight = 534
@@ -33,8 +31,6 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       object cxTabPage1: TcxTabSheet
         Caption = 'Page 1'
         ImageIndex = 0
-        ExplicitWidth = 802
-        ExplicitHeight = 392
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,10 +43,6 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
-          ExplicitTop = 1
-          ExplicitWidth = 802
-          ExplicitHeight = 392
           Height = 129
           Width = 530
           object cxLabel2: TcxLabel
@@ -174,8 +166,8 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
   end
   inherited PanelFooter: TcxGroupBox
     Top = 164
-    ExplicitTop = 427
-    ExplicitWidth = 814
+    ExplicitTop = 164
+    ExplicitWidth = 542
     ExplicitHeight = 44
     Height = 44
     Width = 542
@@ -211,7 +203,7 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Left = 355
       Height = 34
       OnClick = btlb_SaveClick
-      ExplicitLeft = 627
+      ExplicitLeft = 355
       ExplicitHeight = 34
     end
     inherited btlb_Close: TcxButton
@@ -220,14 +212,14 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 809
+      ExplicitLeft = 537
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
     inherited btlb_Cancel: TcxButton
       Left = 446
       Height = 34
-      ExplicitLeft = 718
+      ExplicitLeft = 446
       ExplicitHeight = 34
     end
     inherited btlb_Print: TcxButton
@@ -236,7 +228,7 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 621
+      ExplicitLeft = 349
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -256,7 +248,7 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 615
+      ExplicitLeft = 343
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -266,7 +258,7 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 609
+      ExplicitLeft = 337
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -276,7 +268,7 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 603
+      ExplicitLeft = 331
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
@@ -286,22 +278,22 @@ inherited fr_EntryFormDSJ0004: Tfr_EntryFormDSJ0004
       Height = 34
       Enabled = False
       Visible = False
-      ExplicitLeft = 597
+      ExplicitLeft = 325
       ExplicitWidth = 0
       ExplicitHeight = 34
     end
   end
   inherited PanelTopSystem: TPanel
     Width = 542
-    ExplicitWidth = 814
+    ExplicitWidth = 542
     inherited IconClose: TLabel
       Left = 508
       ExplicitLeft = 771
     end
   end
   object dsMyQTemp: TMyDataSource
-    Left = 472
-    Top = 48
+    Left = 480
+    Top = 56
   end
   object MyQTemp: TMyQuery
     Connection = dm_bpr1.MyCon2

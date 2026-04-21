@@ -43,7 +43,6 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = 2
           Height = 332
           Width = 802
           object Label3: TcxLabel
@@ -510,7 +509,6 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitTop = 1
           Height = 332
           Width = 802
           object cxLabel31: TcxLabel
@@ -1074,7 +1072,7 @@ inherited fr_EntryFormDSN0002: Tfr_EntryFormDSN0002
       'FROM `lps_dsn_f0002`'
       '&WHERE')
     ReadOnly = True
-    Left = 568
+    Left = 576
     Top = 48
     MacroData = <
       item
