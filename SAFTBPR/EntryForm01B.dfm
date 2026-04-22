@@ -15,7 +15,7 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 1017
-    ExplicitHeight = 376
+    ExplicitHeight = 396
     Height = 396
     Width = 1017
     object cxPageControl1: TcxPageControl
@@ -27,7 +27,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
       TabOrder = 0
       Properties.ActivePage = cxTabDataFraud
       Properties.CustomButtons.Buttons = <>
-      ExplicitHeight = 372
       ClientRectBottom = 388
       ClientRectLeft = 4
       ClientRectRight = 1009
@@ -35,7 +34,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
       object cxTabDataFraud: TcxTabSheet
         Caption = 'Data Fraud'
         ImageIndex = 0
-        ExplicitHeight = 341
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -48,7 +46,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 341
           Height = 361
           Width = 1005
           object Label3: TcxLabel
@@ -709,7 +706,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
       object cxTabDataPelaku: TcxTabSheet
         Caption = 'Data Pelaku'
         ImageIndex = 3
-        ExplicitHeight = 341
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -722,7 +718,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 341
           Height = 361
           Width = 1005
           object cxLabel31: TcxLabel
@@ -1431,7 +1426,7 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
   end
   inherited PanelFooter: TcxGroupBox
     Top = 396
-    ExplicitTop = 376
+    ExplicitTop = 396
     ExplicitWidth = 1017
     ExplicitHeight = 44
     Height = 44
@@ -1881,5 +1876,9 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
       FieldName = 'nama'
       Size = 261
     end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 48
+    Top = 280
   end
 end

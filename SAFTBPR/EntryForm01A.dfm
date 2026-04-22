@@ -14,7 +14,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 1017
-    ExplicitHeight = 317
+    ExplicitHeight = 398
     Height = 398
     Width = 1017
     object cxPageControl1: TcxPageControl
@@ -26,7 +26,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       TabOrder = 0
       Properties.ActivePage = cxTabDataFraud
       Properties.CustomButtons.Buttons = <>
-      ExplicitHeight = 313
       ClientRectBottom = 390
       ClientRectLeft = 4
       ClientRectRight = 1009
@@ -34,7 +33,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataFraud: TcxTabSheet
         Caption = 'Data Fraud'
         ImageIndex = 0
-        ExplicitHeight = 282
         object PanelTab1: TcxGroupBox
           Left = 0
           Top = 0
@@ -47,7 +45,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 282
           Height = 363
           Width = 1005
           object Label3: TcxLabel
@@ -628,7 +625,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataKerugian: TcxTabSheet
         Caption = 'Data Kerugian'
         ImageIndex = 1
-        ExplicitHeight = 282
         object PanelTab2: TcxGroupBox
           Left = 0
           Top = 0
@@ -641,7 +637,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 282
           Height = 363
           Width = 1005
           object gb_ljk: TcxGroupBox
@@ -1057,7 +1052,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabSebabDanTindakan: TcxTabSheet
         Caption = 'Data Penyebab Dan Tindakan'
         ImageIndex = 2
-        ExplicitHeight = 282
         object PanelTab3: TcxGroupBox
           Left = 0
           Top = 0
@@ -1070,7 +1064,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 282
           Height = 363
           Width = 1005
           object cxLabel9: TcxLabel
@@ -1402,7 +1395,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       object cxTabDataPelaku: TcxTabSheet
         Caption = 'Data Pelaku'
         ImageIndex = 3
-        ExplicitHeight = 282
         object PanelTab4: TcxGroupBox
           Left = 0
           Top = 0
@@ -1415,7 +1407,6 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitHeight = 282
           Height = 363
           Width = 1005
           object cxLabel31: TcxLabel
@@ -2124,7 +2115,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
   end
   inherited PanelFooter: TcxGroupBox
     Top = 398
-    ExplicitTop = 317
+    ExplicitTop = 398
     ExplicitWidth = 1017
     ExplicitHeight = 44
     Height = 44
@@ -2250,7 +2241,7 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
     end
   end
   object MyDataSource1: TMyDataSource
-    Left = 400
+    Left = 424
     Top = 48
   end
   object dsMyQRefkejadian_menurut_pelaku: TMyDataSource
@@ -2643,5 +2634,9 @@ inherited fr_EntryForm01A: Tfr_EntryForm01A
       FieldName = 'nama'
       Size = 261
     end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 16
+    Top = 280
   end
 end

@@ -165,6 +165,7 @@ type
     MyQRefStatusPenanganan: TMyQuery;
     StringField31: TStringField;
     StringField32: TStringField;
+    OpenDialog1: TOpenDialog;
     procedure MemKeteranganPropertiesChange(Sender: TObject);
     procedure btlb_SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -178,6 +179,7 @@ type
     FDragging: Boolean;
     FAllowDrag: Boolean;
   public
+    NamaFileHasil: string;
     { Public declarations }
     property AllowDrag: Boolean read FAllowDrag write FAllowDrag;
     function Cek_Validasi(Sender: TObject): Boolean;
@@ -445,10 +447,43 @@ begin
 end;
 
 procedure Tfr_EntryForm01B.btlb_SaveClick(Sender: TObject);
+var
+  NamaFile, Folder, Ext: string;
 begin
   inherited;
   if not Cek_Validasi(Sender) then
     Exit;
+    //Upload File
+    Folder:='';
+    NamaFile:='';
+    NamaFileHasil:='';
+    if OpenDialog1.Execute then
+    begin
+      Ext := LowerCase(ExtractFileExt(OpenDialog1.FileName));
+      Folder := FormatDateTime('yyyymmdd', dtAwalKejadian.Date);
+
+      // Jika File PDF
+      //if (OpenDialog1.FilterIndex = 2) then
+      if (Ext = '.pdf') then
+      begin
+        NamaFile := FormatDateTime('yyyymmdd', dtAwalKejadian.Date)+''+kode_komponen.Text;
+        NamaFileHasil := NamaFile+'.pdf';
+        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
+      end
+
+      // Jika File TXT
+      else
+      begin
+        NamaFile := FormatDateTime('yyyymmdd', dtAwalKejadian.Date)+''+kode_komponen.Text;
+        NamaFileHasil := NamaFile+'.txt';
+        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
+      end;
+    end
+    else
+    begin
+      ShowMessage('Upload dibatalkan.');
+    end;
+    //
 
   Tag := 2;
   Close;
