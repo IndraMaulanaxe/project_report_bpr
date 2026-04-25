@@ -106,6 +106,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
+    procedure btlb_CloseClick(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -282,6 +283,12 @@ begin
   Application.UpdateFormatSettings := False;
 end;
 
+
+procedure Tfr_Form01B.btlb_CloseClick(Sender: TObject);
+begin
+  inherited;
+  Close;
+end;
 
 procedure Tfr_Form01B.btlb_DeleteClick(Sender: TObject);
 begin
@@ -502,6 +509,7 @@ begin
                         ', `keterangan_pelaku` = '+QuotedStr(keterangan_pelaku.EditValue)+
                         ', `pengenaan_sanksi` = '+QuotedStr(memsanksi.Text)+
                         ', `status_penanganan` = '+QuotedStr(status_penanganan.EditValue)+
+                        ', `lampiran_file` = '+QuotedStr(NamaFileHasil)+
                         ' WHERE `id_kejadian_fraud` = '+QuotedStr(MyQ01Bid_kejadian_fraud.AsString)+
                         ' AND `nomor_identitas` = '+QuotedStr(MyQ01Bnomor_identitas.AsString)+
                         ' AND `jenis_fraud` = '+QuotedStr(MyQ01Bjenis_fraud.AsString)+
@@ -652,7 +660,7 @@ begin
                         '`intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
                         '`alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
                         '`jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
-                        '`keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan`'+
+                        '`keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan`, `lampiran_file`'+
                         ') VALUES ('+
                         // DATA FRAUD
                         QuotedStr('D01')+
@@ -690,6 +698,7 @@ begin
                         ', '+QuotedStr(keterangan_pelaku.EditValue)+
                         ', '+QuotedStr(memsanksi.Text)+
                         ', '+QuotedStr(status_penanganan.EditValue)+
+                        ', '+QuotedStr(NamaFileHasil)+
                         ')');
         end;
       if MyQ01B.Active then

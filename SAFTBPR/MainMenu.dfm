@@ -56,8 +56,6 @@ object fr_MainMenu: Tfr_MainMenu
       Properties.Alignment.Vert = taVCenter
       Properties.WordWrap = True
       Transparent = True
-      ExplicitLeft = 263
-      ExplicitTop = 1
       Width = 876
       AnchorX = 695
       AnchorY = 30
@@ -415,8 +413,8 @@ object fr_MainMenu: Tfr_MainMenu
     TabOrder = 4
     ExplicitHeight = 394
     object cp_lap_fraud_berdampak_signifikan: TCategoryPanel
-      Top = 180
-      Height = 150
+      Top = 73
+      Height = 96
       Caption = 'Laporan Fraud Berdampak Signifikan (Insidental)'
       Color = clGray
       TabOrder = 0
@@ -437,7 +435,7 @@ object fr_MainMenu: Tfr_MainMenu
     end
     object cp_lap_penerapan_strategi_anti_fraud: TCategoryPanel
       Top = 0
-      Height = 180
+      Height = 73
       Caption = 'Laporan Penerapan Strategi Anti Fraud'
       Color = clGray
       TabOrder = 1

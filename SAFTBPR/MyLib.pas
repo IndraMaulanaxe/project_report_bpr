@@ -104,6 +104,7 @@ function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+function ProsesUploadDB(SourceFile, DestFolder, NamaFile: string): Boolean;
 
 var
   buat_pajak, lFlag_FSA: Boolean;
@@ -115,6 +116,47 @@ uses DateUtils, MyVAR, Math, StrUtils, CekPassword, dm_bpr, MyAccess,
   IdException, CekMyPassword,
   System.IOUtils;
 
+function ProsesUploadDB(SourceFile, DestFolder, NamaFile: string): Boolean;
+var
+  UploadPath, FullPath, DestFile, FinalFileName, Ext: string;
+begin
+  Result := False;
+  Ext := LowerCase(ExtractFileExt(SourceFile));
+
+  try
+    // 1. Tentukan Path Folder berdasarkan tanggal (Sub-folder)
+    UploadPath := TPath.Combine(ExtractFilePath(Application.ExeName), 'upload');
+    FullPath := TPath.Combine(UploadPath, DestFolder);
+
+    if not TDirectory.Exists(FullPath) then
+      TDirectory.CreateDirectory(FullPath);
+
+    // 2. Logika Penamaan Beda Format
+    if Ext = '.pdf' then
+      // Format PDF: NamaDasar + '-' + TanggalKejadian + SandiLaporan
+      FinalFileName := NamaFile + '.pdf'
+    else
+      // Format TXT: NamaDasar saja
+      FinalFileName := NamaFile + '.txt';
+
+    // 3. Tentukan destinasi akhir
+    DestFile := TPath.Combine(FullPath, FinalFileName);
+
+    // 4. Proses Copy
+    if TFile.Exists(DestFile) then
+      TFile.Delete(DestFile);
+
+    TFile.Copy(SourceFile, DestFile);
+
+    Result := TFile.Exists(DestFile);
+    if Result then
+      Pesan(1, 'Berhasil upload: ' + FinalFileName);
+
+  except
+    on E: Exception do
+      Pesan(2, 'Gagal upload: ' + E.Message);
+  end;
+end;
 
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
 var
