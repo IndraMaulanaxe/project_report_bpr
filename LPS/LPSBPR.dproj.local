@@ -191,5 +191,13 @@
     <File Path="SettingKoneksi.pas"/>
     <File Path="SettingKoneksi.dfm"/>
     <File Path="Wcrypt2.pas"/>
+    <File Path="EntryFormDK0003.pas"/>
+    <File Path="EntryFormDK0003.dfm"/>
+    <File Path="EntryFormDSJ0004.pas"/>
+    <File Path="EntryFormDSJ0004.dfm"/>
+    <File Path="FormDK0003.pas"/>
+    <File Path="FormDK0003.dfm"/>
+    <File Path="FormDSJ0004.pas"/>
+    <File Path="FormDSJ0004.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

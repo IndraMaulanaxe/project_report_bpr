@@ -3,8 +3,10 @@ inherited fr_FormLps0002: Tfr_FormLps0002
   Caption = 'Form 0002 - Daftar Simpanan Nasabah'
   ClientHeight = 395
   ClientWidth = 947
+  ExplicitWidth = 963
+  ExplicitHeight = 434
   PixelsPerInch = 96
-  TextHeight = 15
+  TextHeight = 13
   object sGauge1: TsGauge [1]
     Left = 0
     Top = 300
@@ -150,7 +152,7 @@ inherited fr_FormLps0002: Tfr_FormLps0002
       Align = alClient
       ReadOnly = True
       TabOrder = 0
-      ExplicitHeight = 23
+      ExplicitHeight = 21
     end
     object bt_open: TsBitBtn
       Left = 916
@@ -214,7 +216,7 @@ inherited fr_FormLps0002: Tfr_FormLps0002
       Left = 641
       Top = 6
       Width = 300
-      Height = 23
+      Height = 21
       Align = alRight
       DropDownWidth = 300
       KeyField = 'kode_kantor'
@@ -270,8 +272,8 @@ inherited fr_FormLps0002: Tfr_FormLps0002
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -13
-    TitleFont.Name = 'Times New Roman'
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
     TitleFont.Style = []
     OnDrawColumnCell = DBGrid1DrawColumnCell
     OnDblClick = DBGrid1DblClick

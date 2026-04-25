@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormDSN0002, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxProgressBar;
 
 type
   Tfr_FormDSN0002 = class(Tfr_new_template)
@@ -85,6 +86,27 @@ type
     cxGridDBTableView1bunga_akrual: TcxGridDBColumn;
     cxGridDBTableView1tgl_akru_terakhir: TcxGridDBColumn;
     cxGridDBTableView1tanggal_jt: TcxGridDBColumn;
+    MyQImport: TMyQuery;
+    MyQImportD: TStringField;
+    MyQImportklasifikasi_rekening: TStringField;
+    MyQImportjumlah_pemilik_rekening: TStringField;
+    MyQImportnasabah_id: TStringField;
+    MyQImportjenis_simpanan: TStringField;
+    MyQImportno_rekening: TStringField;
+    MyQImportstatus_dana: TStringField;
+    MyQImportjenis_tingkat_bunga: TStringField;
+    MyQImporttingkat_bunga: TFloatField;
+    MyQImporttingkat_bunga_penjaminan_lps: TStringField;
+    MyQImportkategori_tingkat_bunga_simpanan: TStringField;
+    MyQImportsaldo_simpanan: TFloatField;
+    MyQImportnominal_blokir: TFloatField;
+    MyQImportalasan_blokir: TStringField;
+    MyQImportbunga_akrual: TFloatField;
+    MyQImportcashback: TFloatField;
+    sGauge1: TcxProgressBar;
+    MyQImporttanggal_mulai_atau_tanggal_aro_terakhir: TStringField;
+    MyQImporttanggal_akrual_terakhir: TStringField;
+    MyQImporttanggal_jatuh_tempo: TStringField;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -101,6 +123,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure btlb_CloseClick(Sender: TObject);
+    procedure btlb_tools1Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -555,6 +578,159 @@ begin
     MyQDSN0002.Refresh
   else
     MyQDSN0002.Open;
+end;
+
+procedure Tfr_FormDSN0002.btlb_tools1Click(Sender: TObject);
+var
+  cCount      : string;
+  cTglMulai   : string;
+  cTglAkrual  : string;
+  cTglJT     : string;
+  dtTmp       : TDateTime;
+begin
+  inherited;
+
+  if not Pesan(3, 'Proses Import Data Simpanan dari Database Core ?') then
+    Exit;
+
+  MyQImport.MacroByName('TGL').Value:=DateToStrSQL(dTglProses0002);
+
+  if MyQImport.Active then
+    MyQImport.Refresh
+  else
+    MyQImport.Open;
+
+  if MyQImport.RecordCount = 0 then
+  begin
+    Pesan(2, 'Maaf tidak ada data...!');
+    Exit;
+  end;
+
+  MyExecuteSQL( 'UPDATE ' + cDb2 + '.`lps_dsn_f0002` SET saldo_simpanan=0 ');
+
+  sGauge1.Visible  := True;
+  sGauge1.Properties.Max  := MyQImport.RecordCount;
+  sGauge1.Position := 0;
+
+  while not MyQImport.Eof do
+  begin
+    { ==== TANGGAL MULAI / ARO TERAKHIR ==== }
+    dtTmp := Now();
+    if MyQImporttanggal_mulai_atau_tanggal_aro_terakhir.IsNull then
+      cTglMulai := 'NULL'
+    else if TryStrToDate(MyQImporttanggal_mulai_atau_tanggal_aro_terakhir.AsString, dtTmp) then
+    begin
+      if dtTmp <= EncodeDate(1900,1,1) then
+        cTglMulai := 'NULL'
+      else
+        cTglMulai := QuotedStr(FormatDateTime('yyyy-mm-dd', dtTmp));
+    end
+    else
+      cTglMulai := MyQImporttanggal_mulai_atau_tanggal_aro_terakhir.AsString;
+
+    { ==== TANGGAL AKRUAL TERAKHIR ==== }
+    if MyQImporttanggal_akrual_terakhir.IsNull then
+      cTglAkrual := 'NULL'
+    else if TryStrToDate(MyQImporttanggal_akrual_terakhir.AsString, dtTmp) then
+    begin
+      if dtTmp <= EncodeDate(1900,1,1) then
+        cTglAkrual := 'NULL'
+      else
+        cTglAkrual := QuotedStr(FormatDateTime('yyyy-mm-dd', dtTmp));
+    end
+    else
+      cTglAkrual :=MyQImporttanggal_akrual_terakhir.AsString;
+
+    { ==== TANGGAL JATUH TEMPO ==== }
+    if MyQImporttanggal_jatuh_tempo.IsNull then
+      cTglJT := 'NULL'
+    else if TryStrToDate(MyQImporttanggal_jatuh_tempo.AsString, dtTmp) then
+    begin
+      if dtTmp <= EncodeDate(1900,1,1) then
+        cTglJT := 'NULL'
+      else
+        cTglJT := QuotedStr(FormatDateTime('yyyy-mm-dd', dtTmp));
+    end
+    else
+      cTglJT := MyQImporttanggal_jatuh_tempo.AsString;
+
+    { ==== CEK DATA ==== }
+    cCount := SelectRow(
+      'SELECT COUNT(*) FROM ' + cDb2 + '.`lps_dsn_f0002` ' +
+      'WHERE no_rekening=' + QuotedStr(MyQImportno_rekening.AsString)+
+      ' AND jenis_simpanan='+ QuotedStr(MyQImportjenis_simpanan.AsString)
+    );
+
+    { ==== INSERT / UPDATE ==== }
+    if StrToIntDef(cCount, 0) = 0 then
+    begin
+      MyExecuteSQL(
+        'INSERT INTO ' + cDb2 + '.`lps_dsn_f0002` (' +
+        'klasifikasi_rekening, jumlah_pemilik_rekening, nasabah_id, jenis_simpanan, no_rekening, ' +
+        'status_dana, tgl_mulai, jenis_tingkat_bunga, tingkat_bunga, biaya_cashback, ' +
+        'tingkat_bunga_penjaminan_lps, kategori_tingkat_bunga_simpanan, saldo_simpanan, nominal_blokir, alasan_blokir, ' +
+        'bunga_akrual, tgl_akru_terakhir, tanggal_jt) VALUES (' +
+
+        QuotedStr(MyQImportklasifikasi_rekening.AsString) + ',' +
+        QuotedStr(MyQImportjumlah_pemilik_rekening.AsString) + ',' +
+        QuotedStr(MyQImportnasabah_id.AsString) + ',' +
+        QuotedStr(MyQImportjenis_simpanan.AsString) + ',' +
+        QuotedStr(MyQImportno_rekening.AsString) + ',' +
+        QuotedStr(MyQImportstatus_dana.AsString) + ',' +
+        QuotedStr(cTglMulai) + ',' +
+        QuotedStr(MyQImportjenis_tingkat_bunga.AsString) + ',' +
+        MyQImporttingkat_bunga.AsString + ',' +
+        FloatToStr(MyQImportcashback.AsFloat)+ ',' +
+        QuotedStr(MyQImporttingkat_bunga_penjaminan_lps.AsString) + ',' +
+        QuotedStr(MyQImportkategori_tingkat_bunga_simpanan.AsString) + ',' +
+        MyQImportsaldo_simpanan.AsString + ',' +
+        MyQImportnominal_blokir.AsString + ',' +
+        QuotedStr(MyQImportalasan_blokir.AsString) + ',' +
+        MyQImportbunga_akrual.AsString + ',' +
+        QuotedStr(cTglAkrual) + ',' +
+        QuotedStr(cTglJT) +
+        ')'
+      );
+    end
+    else
+    begin
+      MyExecuteSQL(
+        'UPDATE ' + cDb2 + '.`lps_dsn_f0002` SET ' +
+        'klasifikasi_rekening=' + QuotedStr(MyQImportklasifikasi_rekening.AsString) +
+        ', jumlah_pemilik_rekening=' + QuotedStr(MyQImportjumlah_pemilik_rekening.AsString) +
+        //', nasabah_id=' + QuotedStr(MyQImportnasabah_id.AsString) +
+        // ', jenis_simpanan=' + QuotedStr(MyQImportjenis_simpanan.AsString) +
+        ', status_dana=' + QuotedStr(MyQImportstatus_dana.AsString) +
+        ', tgl_mulai=' + QuotedStr(cTglMulai) +
+        ', jenis_tingkat_bunga=' + QuotedStr(MyQImportjenis_tingkat_bunga.AsString) +
+        ', tingkat_bunga=' + MyQImporttingkat_bunga.AsString +
+        ', biaya_cashback=' + FloatToStr(MyQImportcashback.AsFloat) +
+        ', tingkat_bunga_penjaminan_lps=' + QuotedStr(MyQImporttingkat_bunga_penjaminan_lps.AsString) +
+        ', kategori_tingkat_bunga_simpanan=' + QuotedStr(MyQImportkategori_tingkat_bunga_simpanan.AsString) +
+        ', saldo_simpanan=' + MyQImportsaldo_simpanan.AsString +
+        ', nominal_blokir=' + MyQImportnominal_blokir.AsString +
+        ', alasan_blokir=' + QuotedStr(MyQImportalasan_blokir.AsString) +
+        ', bunga_akrual=' + MyQImportbunga_akrual.AsString +
+        ', tgl_akru_terakhir=' + QuotedStr(cTglAkrual) +
+        ', tanggal_jt=' + QuotedStr(cTglJT) +
+        ' WHERE no_rekening=' + QuotedStr(MyQImportno_rekening.AsString)+
+        ' AND jenis_simpanan='+ QuotedStr(MyQImportjenis_simpanan.AsString)
+      );
+    end;
+
+    MyQImport.Next;
+    sGauge1.Position := sGauge1.Position + 1;
+    Application.ProcessMessages;
+  end;
+
+  sGauge1.Visible := False;
+  Pesan(1, 'Proses Import Data Simpanan Selesai...');
+
+  if MyQDSN0002.Active then
+    MyQDSN0002.Refresh
+  else
+    MyQDSN0002.Open;
+
 end;
 
 procedure Tfr_FormDSN0002.cxGridDBTableView1CellDblClick(
