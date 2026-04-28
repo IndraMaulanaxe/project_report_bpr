@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormDSJ0004, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxProgressBar;
 
 type
   Tfr_FormDSJ0004 = class(Tfr_new_template)
@@ -57,6 +58,11 @@ type
     cxGridDBTableView1nasabah_id: TcxGridDBColumn;
     cxGridDBTableView1no_rekening: TcxGridDBColumn;
     cxGridDBTableView1persentase_kepemilikan: TcxGridDBColumn;
+    sGauge1: TcxProgressBar;
+    MyQImport: TMyQuery;
+    MyQImportnasabah_id: TStringField;
+    MyQImportno_rekening: TStringField;
+    MyQImportpersentase_kepemilikan: TStringField;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -73,6 +79,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure btlb_CloseClick(Sender: TObject);
+    procedure btlb_tools1Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -428,6 +435,82 @@ begin
     MyQDSJ0004.Refresh
   else
     MyQDSJ0004.Open;
+end;
+
+procedure Tfr_FormDSJ0004.btlb_tools1Click(Sender: TObject);
+var
+  nSaldoAyda, nNilaiBersih: Double;
+  nJmlRek : Integer;
+begin
+  inherited;
+
+  if Pesan(3, 'Proses Import Data dari Database Core ?') then
+  begin
+//    MyQImport.MacroByName('DB').Value := cDb1;
+   MyQImport.MacroByName('TGL').Value := DateToStrSQL(dTglProses0004);
+
+
+    if MyQImport.Active then
+      MyQImport.Refresh
+    else
+      MyQImport.Open;
+
+    if MyQImport.RecordCount = 0 then
+    begin
+      Pesan(2, 'Maaf tidak ada data...!');
+      Exit;
+    end;
+
+    MyExecuteSQL('TRUNCATE TABLE ' + cDb2 + '.lps_dk_f0004');
+
+    sGauge1.Visible := True;
+    sGauge1.Properties.Max := MyQImport.RecordCount;
+    sGauge1.Position := 0;
+
+    while not MyQImport.Eof do
+    begin
+        MyExecuteSQL(
+          'INSERT INTO ' + cDb2 + '.lps_dk_f0004 ' +
+          '(nasabah_id, no_rekening, persentase_kepemilikan) VALUES (' +
+          QuotedStr(MyQImportnasabah_id.Text) + ',' +
+          QuotedStr(MyQImportno_rekening.Text) + ',' +
+          FloatToStr(MyQImportpersentase_kepemilikan.AsFloat) +
+          ')'
+        );
+
+      MyQImport.Next;
+      sGauge1.Position := sGauge1.Position + 1;
+      Application.ProcessMessages;
+    end;
+
+
+    dm_bpr1.MyQuery1.SQL.Text:='SELECT no_rekening FROM ' + cDb2 + '.lps_dsn_f0002 '+
+    ' WHERE saldo_akhir > 0 and no_rekening IN (SELECT no_rekening FROM ' + cDb2 + '.`lps_dk_f0004` )';
+    dm_bpr1.MyQuery1.Open;
+
+    dm_bpr1.MyQuery1.First;
+    while not dm_bpr1.MyQuery1.Eof do
+    begin
+      nJmlRek := StrToInt(SelectRow(
+        ' SELECT COUNT(*) FROM ' + cDb2 + '.`lps_dk_f0004` ' +
+        ' WHERE no_rekening=' + QuotedStr(dm_bpr1.MyQuery1.FieldByName('no_rekening').AsString)));
+      MyExecuteSQL( 'UPDATE ' + cDb2 + '.`lps_dsn_f0002` SET '+
+        ' jumlah_pemilik_rekening='+IntToStr(nJmlRek)+
+        ' WHERE no_rekening='+QuotedStr(dm_bpr1.MyQuery1.FieldByName('no_rekening').AsString));
+      dm_bpr1.MyQuery1.Next;
+    end;
+
+
+
+    sGauge1.Visible := False;
+    Pesan(1, 'Proses Import Selesai...');
+  end;
+
+  if MyQDSJ0004.Active then
+    MyQDSJ0004.Refresh
+  else
+    MyQDSJ0004.Open;
+
 end;
 
 procedure Tfr_FormDSJ0004.cxGridDBTableView1CellDblClick(

@@ -123,7 +123,7 @@ uses
   dm_bpr, StrUtils, MyVAR, MyLib, FormA0304, DaftarBackupAPOLO, GetSystemDate,
   Form0100;
 
-  Var cKodeJenisPelaporan : String;
+  Var cKodeJenisPelaporan, cNamaFile : String;
 
 {$R *.dfm}
 
@@ -536,6 +536,7 @@ begin
   if Application.FindComponent('fr_Form0100') = nil then
     Application.CreateForm(Tfr_Form0100, fr_Form0100);
   fr_Form0100.Tag := 0;
+    dTglProses0001 := per_tgl.Date;
   fr_Form0100.ShowModal;
   fr_Form0100.Free;
   fr_Form0100 := nil;
@@ -766,6 +767,12 @@ var
 begin
   inherited;
 
+  if (flg_koreksi.Checked) and (cb_jenis_laporan.ItemIndex=0) then
+  begin
+     Pesan(2,'Maaf, Silahkan Pilih Kode Jenis Laporan Khusus Koreksi...!');
+     Exit;
+  end;
+
   cKodeArsip := IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`linsbpr_backup_log` '+
@@ -811,7 +818,7 @@ begin
 
      if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=1)  then
       begin
-        cKodeForm := MyQFormLapBulkode_form.AsString;
+        cKodeForm := '0100';//MyQFormLapBulkode_form.AsString;
         if cb_jenis_laporan.ItemIndex=0 then
           cNamaTargetTxt := cKodeJenisPelaporan+'-'+cKodeForm+'-R-I-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'
         else
@@ -823,8 +830,27 @@ begin
         if FileExists(sPathDialog1.Path+'\iphist.dat') then
             DeleteFile(sPathDialog1.Path+'\iphist.dat');
 
-        if not CopyBaseUpload(cKodeForm, cNamaTargetTxt , sPathDialog1.Path) then
-          Pesan(2, 'File '+cNamaTargetTxt+' Gagal dibuat...!');
+         MyQuery1.SQL.Text := 'SELECT * FROM linsbpr_0100 ';
+
+        if MyQuery1.Active then
+          MyQuery1.Refresh
+        else
+          MyQuery1.Open;
+
+        if (flg_koreksi.Checked) and (MyQuery1.RecordCount > 1) then
+        begin
+           Pesan(2,'Maaf, Khusus koreksi baris data hanya boleh satu...!');
+           Exit;
+        end;
+
+        MyQuery1.First;
+        while not MyQuery1.Eof do
+          begin
+            cNamaFile := FormatDateTime('yyyymmdd', MyQuery1.FieldByName('tanggal_kejadian').AsDateTime)+''+MyQuery1.FieldByName('sandi_laporan').AsString;
+            if not CopyBaseUpload(cNamaFile, cNamaTargetTxt+'-'+cNamaFile, sPathDialog1.Path, MyQuery1.FieldByName('tanggal_kejadian').AsDateTime) then
+              Pesan(2, 'File '+cNamaTargetTxt+' Gagal dibuat...!');
+            MyQuery1.Next;
+          end;
       end;
 
       if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=0)  then
@@ -874,6 +900,12 @@ begin
         else
           MyQuery1.Open;
 
+        if (flg_koreksi.Checked) and (MyQuery1.RecordCount > 1) then
+        begin
+           Pesan(2,'Maaf, Khusus koreksi baris data hanya boleh satu...!');
+           Exit;
+        end;
+
         sGaugeStatus.Properties.Max := MyQuery1.RecordCount;
         sGaugeStatus.Position := 0;
         sGaugeStatus.Visible := True;
@@ -888,6 +920,9 @@ begin
 
                 //selain table diatas
                   begin
+                    if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['lampiran_file']) then
+                      cContentPerLine := cContentPerLine + ''
+                    else
                     if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
                       IfThen(MyQuery1.Fields.Fields[Fn].IsNull,'',

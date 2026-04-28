@@ -398,6 +398,7 @@ inherited fr_FormDN0001: Tfr_FormDN0001
     end
     object MyQDN0001tgl_lahir: TDateField
       FieldName = 'tgl_lahir'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object MyQDN0001no_id2: TStringField
       FieldName = 'no_id2'

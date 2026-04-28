@@ -296,7 +296,7 @@ begin
   if not Pesan(3, 'yakin mau hapus data?') then
     Exit;
 
-  MyExecuteSQL(' DELETE FROM '+cDb2+'.`saftbpr_01a` '+
+  MyExecuteSQL(' DELETE FROM '+cDb2+'.`linsbpr_0100` '+
                ' WHERE `flag_detail` = '+QuotedStr(MyQ0100flag_detail.Text)+
                ' AND `sandi_laporan` = '+QuotedStr(MyQ0100sandi_laporan.Text)+
                ' AND `tanggal_kejadian` = '+DateToStrSQL(MyQ0100tanggal_kejadian.AsDateTime)+

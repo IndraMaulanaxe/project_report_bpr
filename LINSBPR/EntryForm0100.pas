@@ -301,7 +301,7 @@ begin
         if (TcxDateEdit(Components[jml]).Tag=0) then
             TcxDateEdit(Components[jml]).Style.BorderColor := clWindowFrame;
 
-        if (DateOf(TcxDateEdit(Components[jml]).Date) <= DateOf(dTglSystem)) and (TcxDateEdit(Components[jml]).Tag=1) then
+        if (DateOf(TcxDateEdit(Components[jml]).Date) < DateOf(dTglProses0001)) and (TcxDateEdit(Components[jml]).Tag=1) then
           begin
             cHint  := TcxDateEdit(Components[jml]).Hint;
             if Empty(cHint) then

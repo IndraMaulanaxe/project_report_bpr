@@ -31,7 +31,8 @@ uses
   MyLib, EntryFormDK0003, dxDateRanges,
   //RN
   sCurrencyEdit, Buttons, ComCtrls, sSkinManager, sCheckBox, sSkinProvider,
-  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox;
+  DBCtrls, DBGrids, sMemo, sEdit, sLabel, sGroupBox, sButton, sBitBtn, sSpeedButton, sComboBox,
+  cxProgressBar;
 
 type
   Tfr_FormDK0003 = class(Tfr_new_template)
@@ -75,6 +76,20 @@ type
     cxGridDBTableView1tgl_mulai: TcxGridDBColumn;
     cxGridDBTableView1tgl_jatuh_tempo: TcxGridDBColumn;
     cxGridDBTableView1kategori_usaha: TcxGridDBColumn;
+    MyQImport: TMyQuery;
+    MyQImportnasabah_id: TStringField;
+    MyQImportno_rekening: TStringField;
+    MyQImportjenis_kewajiban: TStringField;
+    MyQImportkolek_bi: TSmallintField;
+    MyQImportjml_pinjaman: TFloatField;
+    MyQImportbaki_debet: TLargeintField;
+    MyQImportjumlah_tunggakan_pokok: TLargeintField;
+    MyQImportjumlah_tunggakan_bunga: TLargeintField;
+    MyQImportjangka_waktu_mulai: TDateField;
+    MyQImportjangka_waktu_jatuh_tempo: TDateField;
+    MyQImportkategori_usaha: TStringField;
+    sGauge1: TcxProgressBar;
+    MyQImportjenis_agunan: TIntegerField;
     procedure btlb_RefreshClick(Sender: TObject);
     procedure btlb_EditClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -91,6 +106,7 @@ type
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormCreate(Sender: TObject);
     procedure btlb_CloseClick(Sender: TObject);
+    procedure btlb_tools1Click(Sender: TObject);
   private
     { Private declarations }
     FDownPoint: TPoint;
@@ -493,6 +509,98 @@ begin
     MyQDK0003.Refresh
   else
     MyQDK0003.Open;
+end;
+
+procedure Tfr_FormDK0003.btlb_tools1Click(Sender: TObject);
+var
+  cCount            : string;
+  cMulai, cJatuh    : string;
+  dtMulai, dtJatuh  : TDateTime;
+begin
+  inherited;
+
+  if not Pesan(3, 'Proses Import Data Kredit dari Database Core ?') then
+    Exit;
+
+    MyQImport.MacroByName('TGL').Value:=DateToStrSQL(dTglProses0003);
+
+  if MyQImport.Active then
+    MyQImport.Refresh
+  else
+    MyQImport.Open;
+
+  if MyQImport.RecordCount = 0 then
+  begin
+    Pesan(2, 'Maaf tidak ada data...!');
+    Exit;
+  end;
+
+  sGauge1.Visible  := True;
+  sGauge1.Properties.Max := MyQImport.RecordCount;
+  sGauge1.Position := 0;
+
+  while not MyQImport.Eof do
+  begin
+
+    { ==== CEK DATA ==== }
+    cCount := SelectRow(
+      'SELECT COUNT(*) FROM ' + cDb2 + '.lps_dk_f0003 ' +
+      'WHERE no_rekening=' + QuotedStr(MyQImportno_rekening.AsString)
+    );
+
+    { ==== INSERT ==== }
+    if StrToIntDef(cCount, 0) = 0 then
+    begin
+      MyExecuteSQL(
+        'INSERT INTO ' + cDb2 + '.lps_dk_f0003 (' +
+        'nasabah_id, no_rekening, jenis, kolektibilitas, ' +
+        'plafon, baki_debet, tunggakan_pokok, ' +
+        'tunggakan_bunga, jenis_agunan, ' +
+        'tgl_mulai, tgl_jatuh_tempo, kategori_usaha) VALUES (' +
+        QuotedStr(MyQImportnasabah_id.AsString) + ',' +
+        QuotedStr(MyQImportno_rekening.AsString) + ',' +
+        QuotedStr(MyQImportjenis_kewajiban.AsString) + ',' +
+        QuotedStr(MyQImportkolek_bi.AsString) + ',' +
+        MyQImportjml_pinjaman.AsString + ',' +
+        MyQImportbaki_debet.AsString + ',' +
+        MyQImportjumlah_tunggakan_pokok.AsString + ',' +
+        MyQImportjumlah_tunggakan_bunga.AsString + ',' +
+        QuotedStr(MyQImportjenis_agunan.AsString) + ',' +
+        DateToStrSQL(MyQImportjangka_waktu_mulai.AsDateTime)  + ',' +
+        DateToStrSQL(MyQImportjangka_waktu_jatuh_tempo.AsDateTime) + ',' +
+        QuotedStr(MyQImportkategori_usaha.AsString) +
+        ')'
+      );
+    end
+    else
+    begin
+      { ==== UPDATE ==== }
+      MyExecuteSQL(
+        'UPDATE ' + cDb2 + '.lps_dk_f0003 SET ' +
+        'nasabah_id=' + QuotedStr(MyQImportnasabah_id.AsString) +
+        ', jenis=' + QuotedStr(MyQImportjenis_kewajiban.AsString) +
+        ', kolektibilitas=' + QuotedStr(MyQImportkolek_bi.AsString) +
+        ', plafon=' + MyQImportjml_pinjaman.AsString +
+        ', baki_debet=' + MyQImportbaki_debet.AsString +
+        ', tunggakan_pokok=' + MyQImportjumlah_tunggakan_pokok.AsString +
+        ', tunggakan_bunga=' + MyQImportjumlah_tunggakan_bunga.AsString +
+        ', jenis_agunan=' + QuotedStr(MyQImportjenis_agunan.AsString) +
+        ', tgl_mulai=' + DateToStrSQL(MyQImportjangka_waktu_mulai.AsDateTime) +
+        ', tgl_jatuh_tempo=' +  DateToStrSQL(MyQImportjangka_waktu_jatuh_tempo.AsDateTime) +
+        ', kategori_usaha=' + QuotedStr(MyQImportkategori_usaha.AsString) +
+        ' WHERE no_rekening=' + QuotedStr(MyQImportno_rekening.AsString)
+      );
+    end;
+
+    MyQImport.Next;
+    sGauge1.Position := sGauge1.Position + 1;
+    Application.ProcessMessages;
+  end;
+
+  sGauge1.Visible := False;
+  Pesan(1, 'Proses Import Data Kredit Selesai...');
+  btlb_RefreshClick(Sender);
+
 end;
 
 procedure Tfr_FormDK0003.cxGridDBTableView1CellDblClick(

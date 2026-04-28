@@ -14,18 +14,19 @@ inherited fr_FormDK0003: Tfr_FormDK0003
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 861
     ExplicitHeight = 398
-    Height = 398
+    Height = 374
     Width = 861
     object cxgGrid: TcxGrid
       Left = 2
       Top = 2
       Width = 857
-      Height = 394
+      Height = 370
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitHeight = 394
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -158,13 +159,13 @@ inherited fr_FormDK0003: Tfr_FormDK0003
       OnClick = btlb_RefreshClick
     end
     inherited btlb_tools1: TcxButton
-      Width = 0
-      Enabled = False
-      Visible = False
-      ExplicitWidth = 0
+      Width = 85
+      Caption = 'Import'
+      OnClick = btlb_tools1Click
+      ExplicitWidth = 85
     end
     inherited btlb_tools2: TcxButton
-      Left = 102
+      Left = 187
       Width = 0
       Enabled = False
       Visible = False
@@ -200,7 +201,7 @@ inherited fr_FormDK0003: Tfr_FormDK0003
       ExplicitWidth = 0
     end
     inherited btlb_tools3: TcxButton
-      Left = 108
+      Left = 193
       Width = 0
       Enabled = False
       Visible = False
@@ -238,6 +239,19 @@ inherited fr_FormDK0003: Tfr_FormDK0003
       Left = 827
       ExplicitLeft = 724
     end
+  end
+  object sGauge1: TcxProgressBar
+    Left = 0
+    Top = 374
+    Align = alBottom
+    Properties.AnimationPath = cxapPingPong
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = clWindowText
+    Properties.ShowTextStyle = cxtsText
+    TabOrder = 4
+    Visible = False
+    ExplicitTop = 377
+    Width = 861
   end
   object MyQuery1: TMyQuery
     SQL.Strings = (
@@ -357,13 +371,99 @@ inherited fr_FormDK0003: Tfr_FormDK0003
     end
     object MyQDK0003tgl_mulai: TDateField
       FieldName = 'tgl_mulai'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object MyQDK0003tgl_jatuh_tempo: TDateField
       FieldName = 'tgl_jatuh_tempo'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object MyQDK0003kategori_usaha: TStringField
       FieldName = 'kategori_usaha'
       Size = 2
+    end
+  end
+  object MyQImport: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      '#DK'
+      'SET @pv_per_tgl = &TGL; #'#39'2025-12-31'#39'; '
+      ''
+      'SELECT'
+      #39'D'#39' AS D,'
+      'kr.nasabah_id,'
+      'kr.no_rekening,'
+      'IF(k.jenis = '#39'05'#39', '#39'30'#39', k.jenis) AS jenis_kewajiban, '
+      'kr.kolek_bi,'
+      'kr.jml_pinjaman,'
+      'CEIL(kr.baki_debet) AS baki_debet,'
+      'CEIL(kr.jumlah_tunggakan_pokok) AS jumlah_tunggakan_pokok,'
+      'CEIL(kr.jumlah_tunggakan_bunga) AS jumlah_tunggakan_bunga,'
+      '(CASE'
+      #9'WHEN kr.jenis_agunan IN ('#39'1'#39','#39'2'#39','#39'3'#39') THEN 100'
+      #9'WHEN kr.jenis_agunan IN ('#39'4'#39','#39'5'#39','#39'6'#39','#39'7'#39','#39'9'#39') THEN 200'
+      #9'ELSE 300'
+      'END) AS jenis_agunan,'
+      'kr.tgl_realisasi AS jangka_waktu_mulai,'
+      'kr.tgl_jatuh_tempo AS jangka_waktu_jatuh_tempo,'
+      
+        'IF(k.kategori_usaha IS NULL, '#39'99'#39', k.kategori_usaha) AS kategori' +
+        '_usaha'
+      'FROM kre_nominatif kr'
+      'LEFT JOIN `slik_kredit` sk ON kr.no_rekening = sk.`no_rekening`'
+      
+        'LEFT JOIN `apolo_f0600_kredit` k ON kr.no_rekening = k.`NO_REKEN' +
+        'ING`'
+      
+        'LEFT JOIN `kre_kode_jenis_agunan` ja ON ja.kode_jenis_agunan = k' +
+        'r.jenis_agunan')
+    ReadOnly = True
+    Left = 56
+    Top = 88
+    MacroData = <
+      item
+        Name = 'TGL'
+        Value = #39'2025-12-31'#39
+      end>
+    object MyQImportnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      FixedChar = True
+    end
+    object MyQImportno_rekening: TStringField
+      FieldName = 'no_rekening'
+      FixedChar = True
+      Size = 25
+    end
+    object MyQImportjenis_kewajiban: TStringField
+      FieldName = 'jenis_kewajiban'
+      Size = 2
+    end
+    object MyQImportkolek_bi: TSmallintField
+      FieldName = 'kolek_bi'
+    end
+    object MyQImportjml_pinjaman: TFloatField
+      FieldName = 'jml_pinjaman'
+    end
+    object MyQImportbaki_debet: TLargeintField
+      FieldName = 'baki_debet'
+    end
+    object MyQImportjumlah_tunggakan_pokok: TLargeintField
+      FieldName = 'jumlah_tunggakan_pokok'
+    end
+    object MyQImportjumlah_tunggakan_bunga: TLargeintField
+      FieldName = 'jumlah_tunggakan_bunga'
+    end
+    object MyQImportjangka_waktu_mulai: TDateField
+      FieldName = 'jangka_waktu_mulai'
+    end
+    object MyQImportjangka_waktu_jatuh_tempo: TDateField
+      FieldName = 'jangka_waktu_jatuh_tempo'
+    end
+    object MyQImportkategori_usaha: TStringField
+      FieldName = 'kategori_usaha'
+      Size = 2
+    end
+    object MyQImportjenis_agunan: TIntegerField
+      FieldName = 'jenis_agunan'
     end
   end
 end

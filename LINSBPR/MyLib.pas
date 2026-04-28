@@ -104,7 +104,7 @@ function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
 function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
-function CopyBaseUpload(BaseName, NewFileName, DestPath: string): Boolean;
+function CopyBaseUpload(BaseName, NewFileName, DestPath: string; dTgl : TDate): Boolean;
 function ProsesUploadDB(SourceFile, DestFolder, NamaFile: string): Boolean;
 
 var
@@ -160,7 +160,7 @@ begin
 end;
 
 
-function CopyBaseUpload(BaseName, NewFileName, DestPath: string): Boolean;
+function CopyBaseUpload(BaseName, NewFileName, DestPath: string; dTgl : TDate): Boolean;
 var
   SourcePath : string;
   Files      : TStringDynArray;
@@ -172,7 +172,8 @@ begin
   Result := True;
 
   try
-    SourcePath := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'upload\';
+    SourcePath := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'upload\'+
+    FormatDateTime('yyyymmdd', dTgl)+'\';
 
     // Ambil semua file: 0200*.pdf
     Files := TDirectory.GetFiles(SourcePath, BaseName + '*.pdf');
@@ -196,15 +197,15 @@ begin
                     NewFileName + '-' + IntToStr(Counter) + Ext;
 
       // Kalau masih ada, naikkan counter lagi
-      while TFile.Exists(DestFile) do
-      begin
-        Inc(Counter);
-        DestFile := IncludeTrailingPathDelimiter(DestPath) +
-                    NewFileName + '-' + IntToStr(Counter) + Ext;
-      end;
+//      while TFile.Exists(DestFile) do
+//      begin
+//        Inc(Counter);
+//        DestFile := IncludeTrailingPathDelimiter(DestPath) +
+//                    NewFileName + '-' + IntToStr(Counter) + Ext;
+//      end;
 
-      TFile.Copy(FileName, DestFile, False); // False = jangan overwrite
-      Inc(Counter);
+      TFile.Copy(FileName, DestFile, True); // False = jangan overwrite
+      //Inc(Counter);
     end;
 
   except

@@ -225,7 +225,7 @@ inherited fr_DaftarBackupAPOLO: Tfr_DaftarBackupAPOLO
       
         'SELECT `kode_arsip`, `tgl_laporan`, `created_by`, `last_created`' +
         ', `last_updated`'
-      'FROM `ltbprk_backup_log`'
+      'FROM lps_backup_log'
       '&WHERE'
       'ORDER BY `kode_arsip`')
     Left = 32

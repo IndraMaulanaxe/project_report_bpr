@@ -273,12 +273,14 @@ object fr_MainMenu: Tfr_MainMenu
       Left = 147
       Top = 22
       Properties.Items.Strings = (
-        'Laporan BPR Rutin'
-        'Laporan BPR Perubahan Inisiatif BPR'
-        'Laporan BPR Penyesuaian Pengawas OJK'
-        'Laporan BPR Penyesuaian Kantor Akuntan Publik')
+        'Laporan Bulanan BPR Rutin'
+        'Laporan Semesteran BPR'
+        'Laporan Sewaktu-waktu BPR'
+        'Laporan Bulanan BPR Perubahan Inisiatif BPR'
+        'Laporan Bulanan BPR Penyesuaian Pengawas OJK'
+        'Laporan Bulanan BPR Penyesuaian Kantor Akuntan Publik')
       TabOrder = 3
-      Text = 'Laporan BPR Rutin'
+      Text = 'Laporan Bulanan BPR Rutin'
       OnEditing = cb_jenis_laporanEditing
       Width = 198
     end

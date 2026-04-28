@@ -13,7 +13,7 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
   end
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 861
-    ExplicitHeight = 398
+    ExplicitHeight = 377
     Height = 374
     Width = 861
     object cxgGrid: TcxGrid
@@ -26,7 +26,7 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
-      ExplicitHeight = 394
+      ExplicitHeight = 373
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -203,7 +203,7 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 102
+      ExplicitLeft = 187
       ExplicitWidth = 0
     end
     inherited btlb_Save: TcxButton
@@ -239,7 +239,7 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
       Width = 0
       Enabled = False
       Visible = False
-      ExplicitLeft = 108
+      ExplicitLeft = 193
       ExplicitWidth = 0
     end
     inherited btlb_Delete: TcxButton
@@ -397,6 +397,7 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
     end
     object MyQDSN0002tgl_mulai: TDateField
       FieldName = 'tgl_mulai'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object MyQDSN0002jenis_tingkat_bunga: TStringField
       FieldName = 'jenis_tingkat_bunga'
@@ -430,9 +431,11 @@ inherited fr_FormDSN0002: Tfr_FormDSN0002
     end
     object MyQDSN0002tgl_akru_terakhir: TDateField
       FieldName = 'tgl_akru_terakhir'
+      DisplayFormat = 'dd/mm/yyyy'
     end
     object MyQDSN0002tanggal_jt: TDateField
       FieldName = 'tanggal_jt'
+      DisplayFormat = 'dd/mm/yyyy'
     end
   end
   object MyQImport: TMyQuery

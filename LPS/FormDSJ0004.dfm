@@ -14,18 +14,19 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
   inherited PanelContent: TcxGroupBox
     ExplicitWidth = 861
     ExplicitHeight = 398
-    Height = 398
+    Height = 374
     Width = 861
     object cxgGrid: TcxGrid
       Left = 2
       Top = 2
       Width = 857
-      Height = 394
+      Height = 370
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
       BorderStyle = cxcbsNone
       TabOrder = 0
+      ExplicitHeight = 394
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -104,13 +105,13 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
       OnClick = btlb_RefreshClick
     end
     inherited btlb_tools1: TcxButton
-      Width = 0
-      Enabled = False
-      Visible = False
-      ExplicitWidth = 0
+      Width = 85
+      Caption = 'Import'
+      OnClick = btlb_tools1Click
+      ExplicitWidth = 85
     end
     inherited btlb_tools2: TcxButton
-      Left = 102
+      Left = 187
       Width = 0
       Enabled = False
       Visible = False
@@ -146,7 +147,7 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
       ExplicitWidth = 0
     end
     inherited btlb_tools3: TcxButton
-      Left = 108
+      Left = 193
       Width = 0
       Enabled = False
       Visible = False
@@ -184,6 +185,19 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
       Left = 827
       ExplicitLeft = 724
     end
+  end
+  object sGauge1: TcxProgressBar
+    Left = 0
+    Top = 374
+    Align = alBottom
+    Properties.AnimationPath = cxapPingPong
+    Properties.BarStyle = cxbsAnimation
+    Properties.BeginColor = clWindowText
+    Properties.ShowTextStyle = cxtsText
+    TabOrder = 4
+    Visible = False
+    ExplicitTop = 377
+    Width = 861
   end
   object MyQuery1: TMyQuery
     SQL.Strings = (
@@ -269,6 +283,50 @@ inherited fr_FormDSJ0004: Tfr_FormDSJ0004
     end
     object MyQDSJ0004persentase_kepemilikan: TFloatField
       FieldName = 'persentase_kepemilikan'
+    end
+  end
+  object MyQImport: TMyQuery
+    Connection = dm_bpr1.MyCon2
+    SQL.Strings = (
+      'SET @pv_per_tgl = &TGL;'
+      ''
+      
+        'SELECT nasabah_id, no_rekening, '#39'50'#39' AS persentase_kepemilikan F' +
+        'ROM tab_nominatif '
+      'WHERE tgl_laporan = @pv_per_tgl AND type_join IN ('#39'OR'#39','#39'AND'#39')'
+      'UNION ALL '
+      
+        'SELECT nasabah_id_join, no_rekening, '#39'50'#39' AS persentase_kepemili' +
+        'kan FROM tab_nominatif '
+      'WHERE tgl_laporan = @pv_per_tgl AND type_join IN ('#39'OR'#39','#39'AND'#39')'
+      'UNION ALL'
+      
+        'SELECT nasabah_id, no_rekening, '#39'50'#39' AS persentase_kepemilikan F' +
+        'ROM dep_nominatif '
+      'WHERE tgl_laporan = @pv_per_tgl AND type_join IN ('#39'OR'#39','#39'AND'#39')'
+      'UNION ALL'
+      
+        'SELECT nasabah_id_join, no_rekening, '#39'50'#39' AS persentase_kepemili' +
+        'kan FROM dep_nominatif '
+      'WHERE tgl_laporan = @pv_per_tgl AND type_join IN ('#39'OR'#39','#39'AND'#39');')
+    ReadOnly = True
+    Left = 56
+    Top = 88
+    MacroData = <
+      item
+        Name = 'TGL'
+      end>
+    object MyQImportnasabah_id: TStringField
+      FieldName = 'nasabah_id'
+      FixedChar = True
+    end
+    object MyQImportno_rekening: TStringField
+      FieldName = 'no_rekening'
+      FixedChar = True
+    end
+    object MyQImportpersentase_kepemilikan: TStringField
+      FieldName = 'persentase_kepemilikan'
+      Size = 2
     end
   end
 end

@@ -2,7 +2,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
   Caption = 'Entry Form 0100 - Laporan Informasi Utama '
   ClientHeight = 490
   ClientWidth = 1017
-  ExplicitTop = -42
   ExplicitWidth = 1023
   ExplicitHeight = 519
   PixelsPerInch = 96
@@ -44,7 +43,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
           OnMouseDown = bgMouseDown
           OnMouseMove = bgMouseMove
           OnMouseUp = bgMouseUp
-          ExplicitLeft = -1
           Height = 411
           Width = 1005
           object Label3: TcxLabel
@@ -67,7 +65,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 34
           end
           object no_sk_ojk: TcxTextEdit
-            Tag = 1
             Left = 185
             Top = 83
             Hint = 'Nomor SK OJK'
@@ -124,7 +121,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 318
           end
           object memnama_pihak: TcxMemo
-            Tag = 1
             Left = 185
             Top = 297
             Hint = 'Nama Pihak Utama/Pemegang Saham'
@@ -164,7 +160,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 391
           end
           object jabatan: TcxLookupComboBox
-            Tag = 1
             Left = 185
             Top = 380
             Hint = 'Jabatan'
@@ -259,6 +254,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 64
           end
           object tanggal_kejadian: TcxDateEdit
+            Tag = 1
             Left = 185
             Top = 52
             Hint = 'Tanggal Kejadian'
@@ -313,7 +309,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 158
           end
           object nomor_akta: TcxTextEdit
-            Tag = 1
             Left = 185
             Top = 144
             Hint = 'Nomor Akta Notaris/Pemda'
@@ -386,7 +381,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 219
           end
           object nomor_persetujuan: TcxTextEdit
-            Tag = 1
             Left = 185
             Top = 204
             Hint = 'Nomor Persetujuan Instansi Berwenang'
@@ -438,7 +432,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 361
           end
           object nik_npwp: TcxTextEdit
-            Tag = 1
             Left = 185
             Top = 350
             Hint = 'NIK/ NPWP'
@@ -562,7 +555,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 32
           end
           object jenis_produk: TcxLookupComboBox
-            Tag = 1
             Left = 185
             Top = 20
             Hint = 'Jenis Produk'
@@ -585,7 +577,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 298
           end
           object memnama_produk: TcxMemo
-            Tag = 1
             Left = 185
             Top = 50
             Hint = 'Nama Produk / aktivitas'
@@ -646,7 +637,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 66
           end
           object memperbaikan: TcxMemo
-            Tag = 1
             Left = 665
             Top = 50
             Hint = 'Langkah Perbaikan'
@@ -707,7 +697,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 146
           end
           object memalamat: TcxMemo
-            Tag = 1
             Left = 185
             Top = 130
             Hint = 'Alamat'
@@ -726,7 +715,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 298
           end
           object jenis_kantor: TcxLookupComboBox
-            Tag = 1
             Left = 185
             Top = 100
             Hint = 'Jenis Kantor'
@@ -770,7 +758,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 199
           end
           object memalamat_baru: TcxMemo
-            Tag = 1
             Left = 185
             Top = 183
             Hint = 'Alamat Baru/ Sementara'
@@ -888,7 +875,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 369
           end
           object nama_sinergi: TcxMemo
-            Tag = 1
             Left = 185
             Top = 351
             Hint = 'Nama PJTI/ Pihak yang Bersinergi'
@@ -907,7 +893,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 298
           end
           object memalasan: TcxMemo
-            Tag = 1
             Left = 185
             Top = 298
             Hint = 'Alasan'
@@ -926,7 +911,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 298
           end
           object pelanggaran: TcxLookupComboBox
-            Tag = 1
             Left = 185
             Top = 268
             Hint = 'Pelanggaran'
@@ -967,7 +951,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 31
           end
           object Register: TcxTextEdit
-            Tag = 1
             Left = 665
             Top = 20
             Hint = 'Register/ Referensi'
@@ -1024,7 +1007,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             AnchorY = 146
           end
           object memrealiasasi: TcxMemo
-            Tag = 1
             Left = 665
             Top = 130
             Hint = 'Realisasi'
@@ -1043,7 +1025,6 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
             Width = 298
           end
           object status: TcxLookupComboBox
-            Tag = 1
             Left = 665
             Top = 183
             Hint = 'Status'
@@ -1420,7 +1401,7 @@ inherited fr_EntryForm0100: Tfr_EntryForm0100
     Top = 504
   end
   object OpenDialog1: TOpenDialog
-    Left = 32
-    Top = 80
+    Left = 720
+    Top = 64
   end
 end

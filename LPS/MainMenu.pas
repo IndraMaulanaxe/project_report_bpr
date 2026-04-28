@@ -118,8 +118,6 @@ type
     procedure bt_form0002Click(Sender: TObject);
     procedure bt_form0001Click(Sender: TObject);
     procedure bt_form0004Click(Sender: TObject);
-    procedure bt_formD0000Click(Sender: TObject);
-    procedure bt_formF0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cb_jenis_laporanEditing(Sender: TObject; var CanEdit: Boolean);
     procedure FormActivate(Sender: TObject);
@@ -648,17 +646,6 @@ begin
   fr_FormDSJ0004 := nil;
 end;
 
-procedure Tfr_MainMenu.bt_formD0000Click(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'D0000');
-  end;
-end;
-
 procedure Tfr_MainMenu.bt_FormDK0003Click(Sender: TObject);
 begin
   if Application.FindComponent('fr_FormDK0003') = nil then
@@ -668,17 +655,6 @@ begin
   fr_FormDK0003.ShowModal;
   fr_FormDK0003.Free;
   fr_FormDK0003 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formF0000Click(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'F0000');
-  end;
 end;
 
 procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
@@ -984,7 +960,7 @@ begin
       else
       if (MyQFormLapBulnama_table.AsString='lps_dsn_f0002') then
           cTempSQL := SelectRow('SELECT count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
-            ' WHERE saldo_akhir > 0 ' )
+            ' WHERE saldo_simpanan > 0 ' )
       else
       if (MyQFormLapBulnama_table.AsString='lps_dk_f0003') then
          cTempSQL := SelectRow('SELECT  count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
@@ -993,7 +969,7 @@ begin
       if (MyQFormLapBulnama_table.AsString='lps_dk_f0004') then
           cTempSQL := SelectRow('SELECT  count(*) AS total FROM '+MyQFormLapBulnama_table.AsString+
           ' WHERE  no_rekening IN (SELECT no_rekening FROM lps_dsn_f0002 '+
-          ' WHERE saldo_akhir > 0) '+
+          ' WHERE saldo_simpanan > 0) '+
           ' AND nasabah_id IN (SELECT nasabah_id FROM lps_dn_f0001 '+
           ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id))')
       else
@@ -1018,7 +994,7 @@ begin
       else
       if (MyQFormLapBulnama_table.AsString='lps_dsn_f0002') then
           MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
-            ' WHERE saldo_akhir > 0 '
+            ' WHERE saldo_simpanan > 0 '
       else
       if (MyQFormLapBulnama_table.AsString='lps_dk_f0003') then
           MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
@@ -1027,7 +1003,7 @@ begin
       if (MyQFormLapBulnama_table.AsString='lps_dk_f0004') then
           MyQuery1.SQL.Text := 'SELECT * FROM '+MyQFormLapBulnama_table.AsString+
           ' WHERE  no_rekening IN (SELECT no_rekening FROM lps_dsn_f0002 '+
-          ' WHERE saldo_akhir > 0) '+
+          ' WHERE saldo_simpanan > 0) '+
           ' AND nasabah_id IN (SELECT nasabah_id FROM lps_dn_f0001 '+
           ' WHERE nasabah_id IN (SELECT nasabah_id from view_nasabah_id))'
       else
@@ -1053,16 +1029,16 @@ begin
                 begin
                   if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['tgl_lahir']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString<>'9700','',FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
-                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['wni']) then
+                      IfThen(MyQuery1.FieldByName('gol_nasabah').AsString<>'9700','',FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
+                  else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['kewarganegaraan']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString<>'9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                      IfThen(MyQuery1.FieldByName('gol_nasabah').AsString<>'9700','',MyQuery1.Fields.Fields[Fn].AsString)
                   else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['nama_pengurus']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                      IfThen(MyQuery1.FieldByName('gol_nasabah').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
                   else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['nomor_identitas']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('slik_kode_gol_debitur').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
+                      IfThen(MyQuery1.FieldByName('gol_nasabah').AsString='9700','',MyQuery1.Fields.Fields[Fn].AsString)
                   else if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
                   else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
@@ -1075,10 +1051,10 @@ begin
                 begin
                   if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['tanggal_jt']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('kode_integrasi').AsString<>'DEP',cPeriodeLaporan,FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
+                      IfThen(MyQuery1.FieldByName('jenis_simpanan').AsString<>'DEP',cPeriodeLaporan,FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime))
                   else if MatchStr(MyQuery1.Fields.Fields[Fn].FieldName,['jumlah_pemilik_rekening']) then
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') +
-                      IfThen(MyQuery1.FieldByName('type_join').AsString<>'J','',FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat))
+                      IfThen(MyQuery1.FieldByName('klasifikasi_rekening').AsString<>'J','',FormatFloat('#0',MyQuery1.Fields.Fields[Fn].AsFloat))
                   else if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
                     cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
                   else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float

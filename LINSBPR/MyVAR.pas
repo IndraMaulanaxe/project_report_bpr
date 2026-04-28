@@ -149,7 +149,7 @@ var
   cNamaLengkapUser, cNamaCabangPT, cKodeBankPT, cWebMailNotif, cIPAddress : String;
   lGridColor,lHabis,lRegistered,lBackDate,lSaldoAwalNeraca, lIsUserAdmin,
   lLogDebug: Boolean;
-  dTglExpiredPassword, dTglSystem, dTgllSaldoAwalNeraca: TDate;
+  dTglExpiredPassword, dTglSystem, dTgllSaldoAwalNeraca, dTglProses0001 : TDate;
   cScriptSQL: TStrings;
   lLooping, lChange, lUpdate: Boolean;
   nRetry: Byte;

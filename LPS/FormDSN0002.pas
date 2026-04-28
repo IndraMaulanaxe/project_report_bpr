@@ -615,7 +615,7 @@ begin
   while not MyQImport.Eof do
   begin
     { ==== TANGGAL MULAI / ARO TERAKHIR ==== }
-    dtTmp := Now();
+    dtTmp := dTglProses0002;
     if MyQImporttanggal_mulai_atau_tanggal_aro_terakhir.IsNull then
       cTglMulai := 'NULL'
     else if TryStrToDate(MyQImporttanggal_mulai_atau_tanggal_aro_terakhir.AsString, dtTmp) then
