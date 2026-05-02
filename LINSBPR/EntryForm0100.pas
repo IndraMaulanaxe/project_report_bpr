@@ -443,29 +443,23 @@ begin
     begin
       Ext := LowerCase(ExtractFileExt(OpenDialog1.FileName));
       Folder := FormatDateTime('yyyymmdd', tanggal_kejadian.Date);
-
-      // Jika File PDF
-      //if (OpenDialog1.FilterIndex = 2) then
       if (Ext = '.pdf') then
       begin
         NamaFile := FormatDateTime('yyyymmdd', tanggal_kejadian.Date)+''+sandi_laporan.Text;
         NamaFileHasil := NamaFile+'.pdf';
-        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
+        if not ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile) then
+        begin
+          pesan(2,'Upload Gagal...!');
+          Exit;
+        end;
       end
-
-      // Jika File TXT
-      else
-      begin
-        NamaFile := FormatDateTime('yyyymmdd', tanggal_kejadian.Date)+''+sandi_laporan.Text;
-        NamaFileHasil := NamaFile+'.txt';
-        ProsesUploadDB(OpenDialog1.FileName, Folder, NamaFile);
-      end;
     end
     else
     begin
-      ShowMessage('Upload dibatalkan.');
+      pesan(2,'Upload dibatalkan, silahkan upload ulang...!');
+      Exit;
     end;
-    //
+
 
   Tag := 2;
   Close;

@@ -175,6 +175,12 @@ begin
     SourcePath := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) + 'upload\'+
     FormatDateTime('yyyymmdd', dTgl)+'\';
 
+    if not TDirectory.Exists(SourcePath) then
+    begin
+      Result := False;
+      Exit;
+    end;
+
     // Ambil semua file: 0200*.pdf
     Files := TDirectory.GetFiles(SourcePath, BaseName + '*.pdf');
 

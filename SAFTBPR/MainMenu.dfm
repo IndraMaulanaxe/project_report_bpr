@@ -285,10 +285,10 @@ object fr_MainMenu: Tfr_MainMenu
       Left = 147
       Top = 22
       Properties.Items.Strings = (
-        'SAFTS'
-        'SAFTA'
-        'SAFTI3'
-        'SAFTI6')
+        'SAFTS - Berkala Semesteran (Perbankan)'
+        #10'SAFTA - Berkala Tahunan (Non Perbankan)'
+        #10'SAFTI3 - Insidental 3 Hari Kerja'#10
+        'SAFTI6 - Insidental 6 Hari Kerja')
       TabOrder = 4
       Text = 'SAFTS'
       Width = 198

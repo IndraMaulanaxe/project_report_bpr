@@ -185,7 +185,7 @@ begin
         ' ON DUPLICATE KEY UPDATE tanggal='+DateToStrSQL(per_tgl.Date));
     end;
   per_tgl.Format := 'dd/MM/yyyy';
-  cKodeArsipCek := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsipCek := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   cKodeFormArsipCek := cDb2+'.'+'saftbpr_header_arsip';
   nCountCek := StrToIntDef(SelectRow('SELECT count(*) FROM '+cKodeFormArsipCek+
               ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)),0);
@@ -634,7 +634,7 @@ procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
 var cKodeArsip : string;
 begin
   inherited;
-    cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+    cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   //cek update status bulan lalu
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
@@ -677,7 +677,7 @@ var
   //nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -697,7 +697,7 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodePelaporan := cb_kode_laporan.Text;
+  cKodePelaporan := LeftStr(cb_kode_laporan.Text,5);
   if cb_kode_laporan.ItemIndex=0 then
      cKodeJenisPelaporan := 'S'
   else  if cb_kode_laporan.ItemIndex=1 then
@@ -863,7 +863,7 @@ var
 begin
   inherited;
 
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -883,7 +883,7 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodePelaporan := cb_kode_laporan.Text;
+  cKodePelaporan := LeftStr(cb_kode_laporan.Text,5);
   if cb_kode_laporan.ItemIndex=0 then
      cKodeJenisPelaporan := 'S'
   else  if cb_kode_laporan.ItemIndex=1 then
@@ -1070,7 +1070,7 @@ begin
           begin
             cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
             cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
             MyQField.SQL.Text := 'SELECT * FROM '+cKodeForm;
             if MyQField.Active then
@@ -1160,7 +1160,7 @@ begin
       MyQFormLapBul.First;
 
 
-      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
      // MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(MyQFormLapBulnama_table.AsString);
      MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(cKodeFormBAK);
       if MyQField.Active then
@@ -1180,7 +1180,7 @@ begin
           begin
             cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
             cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
             try
               MyExecuteSQLNoTrans('DELETE FROM '+cKodeForm);
@@ -1240,7 +1240,7 @@ begin
       if (MyQFormLapBulis_file.AsInteger=0) then
       begin
         cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
         try
           MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
@@ -1296,14 +1296,14 @@ begin
   sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
-  cKodeArsip := cb_kode_laporan.Text+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   while not MyQFormLapBul.Eof do
     begin
        if (MyQFormLapBulis_file.AsInteger=0) then
         begin
           cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
           cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+cb_kode_laporan.Text+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
           try
             MyExecuteSQLNoTrans('DELETE FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
@@ -1332,7 +1332,7 @@ begin
       'WHERE sandi_bpr='+QuotedStr(kode_ljk.Text)+
       '   AND periode_data='+QuotedStr(FormatDateTime('yyyy-MM-dd', per_tgl.Date))+
       '   AND kode_status_koreksi='+QuotedStr(IntToStr(cb_jenis_laporan.ItemIndex))+
-      '   AND kode_jenis_pelaporan='+QuotedStr(cb_kode_laporan.Text));
+      '   AND kode_jenis_pelaporan='+QuotedStr(LeftStr(cb_kode_laporan.Text,5)));
   except
     on E: Exception do     //    on E: EIdException do
       begin
