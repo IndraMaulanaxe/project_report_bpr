@@ -100,6 +100,8 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 0
       WordWrap = True
       OnClick = bt_prosesClick
+      ExplicitLeft = 927
+      ExplicitTop = 1
     end
     object bt_save: TcxButton
       Left = 833
@@ -289,8 +291,9 @@ object fr_MainMenu: Tfr_MainMenu
         #10'SAFTA - Berkala Tahunan (Non Perbankan)'
         #10'SAFTI3 - Insidental 3 Hari Kerja'#10
         'SAFTI6 - Insidental 6 Hari Kerja')
+      Properties.OnChange = cb_kode_laporanPropertiesChange
       TabOrder = 4
-      Text = 'SAFTS'
+      Text = #10'SAFTI3 - Insidental 3 Hari Kerja'#10
       Width = 198
     end
     object cxLabel2: TcxLabel
@@ -411,17 +414,17 @@ object fr_MainMenu: Tfr_MainMenu
     HeaderFont.Style = []
     ParentDoubleBuffered = False
     TabOrder = 4
-    ExplicitHeight = 394
     object cp_lap_fraud_berdampak_signifikan: TCategoryPanel
-      Top = 73
-      Height = 96
+      Top = 200
       Caption = 'Laporan Fraud Berdampak Signifikan (Insidental)'
       Color = clGray
       TabOrder = 0
+      ExplicitTop = 73
+      ExplicitWidth = 357
       object bt_form01B: TcxButton
         Left = 0
         Top = 0
-        Width = 355
+        Width = 338
         Height = 65
         Align = alTop
         Caption = 
@@ -431,18 +434,31 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_form01BClick
+        ExplicitWidth = 355
+      end
+      object bt_form02B: TcxButton
+        Left = 0
+        Top = 65
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'Form02B - Deskripsi Fraud / Modus Operandi'
+        TabOrder = 1
+        WordWrap = True
+        OnClick = bt_form02BClick
+        ExplicitWidth = 355
       end
     end
     object cp_lap_penerapan_strategi_anti_fraud: TCategoryPanel
       Top = 0
-      Height = 73
       Caption = 'Laporan Penerapan Strategi Anti Fraud'
       Color = clGray
       TabOrder = 1
-      object bt_form01A: TcxButton
+      ExplicitWidth = 357
+      object cxButton1: TcxButton
         Left = 0
-        Top = 0
-        Width = 355
+        Top = 40
+        Width = 338
         Height = 40
         Align = alTop
         Caption = 
@@ -451,6 +467,31 @@ object fr_MainMenu: Tfr_MainMenu
         TabOrder = 0
         WordWrap = True
         OnClick = bt_form01AClick
+        ExplicitWidth = 355
+      end
+      object bt_form02A: TcxButton
+        Left = 0
+        Top = 80
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'Form02A - Deskripsi Fraud / Modus Operandi'
+        TabOrder = 1
+        WordWrap = True
+        OnClick = bt_form02AClick
+        ExplicitWidth = 355
+      end
+      object bt_form00A: TcxButton
+        Left = 0
+        Top = 0
+        Width = 338
+        Height = 40
+        Align = alTop
+        Caption = 'Form00A - Perkembangan Pelaksanaan Penerapan Strategi Anti Fraud'
+        TabOrder = 2
+        WordWrap = True
+        OnClick = bt_form00AClick
+        ExplicitTop = 8
       end
     end
   end

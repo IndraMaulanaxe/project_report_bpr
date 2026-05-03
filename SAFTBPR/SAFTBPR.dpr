@@ -20,8 +20,6 @@ uses
   SettingKoneksi in 'SettingKoneksi.pas' {fr_SettingKoneksi},
   Wcrypt2 in 'Wcrypt2.pas',
   LoginBPR in 'LoginBPR.pas' {fr_LoginBPR},
-  FormA0301 in 'FormA0301.pas' {fr_FormA0301},
-  EntryFormA0301 in 'EntryFormA0301.pas' {fr_EntryFormA0301},
   GetSystemDate in 'GetSystemDate.pas' {fr_GetSystemDate},
   Form01A in 'Form01A.pas' {fr_Form01A},
   EntryForm01A in 'EntryForm01A.pas' {fr_EntryForm01A},

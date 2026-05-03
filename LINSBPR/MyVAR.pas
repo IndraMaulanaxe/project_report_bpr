@@ -1,4 +1,4 @@
-unit MyVAR;
+﻿unit MyVAR;
 
 interface
 
@@ -2186,27 +2186,38 @@ begin
   end;
 end;
 
-function AppendOrWriteTextToFile(filename:TFilename; WriteText: String): Boolean;
+function AppendOrWriteTextToFile(filename: TFileName; WriteText: String): Boolean;
 var
- f: Textfile;
+  f: TextFile;
 begin
- try
-  AssignFile(f,filename);
-   If FileExists(filename) = false then
+  Result := False;
+  try
+    // 🔥 FIX UTAMA: bersihkan ENTER di filename
+    filename := StringReplace(filename, #13, '', [rfReplaceAll]);
+    filename := StringReplace(filename, #10, '', [rfReplaceAll]);
+
+    // bersihkan ENTER di isi
+    WriteText := StringReplace(WriteText, #13, '', [rfReplaceAll]);
+    WriteText := StringReplace(WriteText, #10, '', [rfReplaceAll]);
+
+    AssignFile(f, filename);
+
+    if not FileExists(filename) then
+      Rewrite(f)
+    else
+      Append(f);
+
+    Writeln(f, WriteText);
+    CloseFile(f);
+
+    Result := True;
+  except
+    on E: Exception do
     begin
-     Rewrite(f);
-    end
-     else
-      begin
-        Reset(f);
-        Append(f);
-      end;
-  Writeln(f,WriteText);
-  CloseFile(f);
-  result := true;
- except
-  result := false;
- end;
+      Pesan(2,'Error tulis file: ' + E.Message + sLineBreak + filename);
+      Result := False;
+    end;
+  end;
 end;
 
 function GetLocalIP : string;

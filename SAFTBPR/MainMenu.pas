@@ -82,7 +82,6 @@ type
     sGaugeJenisLaporan: TcxProgressBar;
     cb_kode_laporan: TcxComboBox;
     cxLabel2: TcxLabel;
-    bt_form01A: TcxButton;
     bt_form01B: TcxButton;
     bt_setting: TcxButton;
     PopupMenu1: TPopupMenu;
@@ -90,10 +89,13 @@ type
     N3: TMenuItem;
     S1: TMenuItem;
     N2: TMenuItem;
+    cxButton1: TcxButton;
+    bt_form02A: TcxButton;
+    bt_form02B: TcxButton;
+    bt_form00A: TcxButton;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure bt_formA0301Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure TimerUpdaterTimer(Sender: TObject);
     procedure bt_ganti_bulanClick(Sender: TObject);
@@ -105,10 +107,6 @@ type
     procedure bt_update_statusClick(Sender: TObject);
     procedure bt_restore_pointClick(Sender: TObject);
     procedure bt_restore_dataClick(Sender: TObject);
-    procedure bt_formA0400Click(Sender: TObject);
-    procedure bt_formA0305Click(Sender: TObject);
-    procedure bt_formA0503Click(Sender: TObject);
-    procedure bt_formA0504Click(Sender: TObject);
     procedure bt_form00AClick(Sender: TObject);
     procedure bt_formD0000Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -117,6 +115,9 @@ type
     procedure bt_settingClick(Sender: TObject);
     procedure M1Click(Sender: TObject);
     procedure S1Click(Sender: TObject);
+    procedure bt_form02AClick(Sender: TObject);
+    procedure bt_form02BClick(Sender: TObject);
+    procedure cb_kode_laporanPropertiesChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -143,14 +144,65 @@ begin
 //  (Sender as TCategoryPanel).Collapsed := not (Sender as TCategoryPanel).Collapsed;
 end;
 
-procedure Tfr_MainMenu.bt_formA0400Click(Sender: TObject);
+procedure Tfr_MainMenu.cb_kode_laporanPropertiesChange(Sender: TObject);
 begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
+  if cb_kode_laporan.ItemIndex=0 then
   begin
-    ProsesUpload(OpenDialog1.FileName,'A0400');
+    if not Pesan(3,'Laporan '+cb_kode_laporan.Text+' akan mengimport data dari laporan insidental 3 hari dan 6 hari selama 1 semester, Lanjutkan ?') then
+    begin
+      cb_kode_laporan.ItemIndex:=2;
+      Exit;
+    end;
+    MyExecuteSQL('INSERT INTO '+cDb2+'.`saftbpr_01a` (`flag_detail`,`kode_komponen`, '+
+    ' `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, `ket_jenis_fraud`, '+
+    ' `aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, `ket_lokasi_fraud`, '+
+    ' `divisi_unit_kerja`, `waktu_terjadi_awal`, `waktu_terjadi_akhir`, `fraud_diketahui`, '+
+    ' `intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
+    ' `alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
+    ' `jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
+    ' `keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan` ) SELECT  `flag_detail`, '+
+    ' `kode_komponen`, `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, '+
+    ' `keterangan_jenis_fraud`, `aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, '+
+    ' `keterangan_lokasi_fraud`, `divisi_unit_kerja`, `waktu_terjadi_awal`, `waktu_terjadi_akhir`, '+
+    ' `fraud_diketahui`, `intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, '+
+    ' `jenis_kelamin`, `alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, '+
+    ' `status_pelaku`, `jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, '+
+    ' `ket_jabatan_saat_diketahui`, `keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan` '+
+    ' FROM '+cDb2+'.`saftbpr_01b` '+
+    ' WHERE waktu_terjadi_awal BETWEEN '+
+    ' IF(MONTH('+DateToStrSQL(per_tgl.Date)+') <= 6, CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-01-01"), '+
+    ' CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-07-01")) '+
+    ' AND IF(MONTH('+DateToStrSQL(per_tgl.Date)+') <= 6, '+
+    ' CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-06-30"), CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-12-31")) '+
+    ' ON DUPLICATE KEY UPDATE id_kejadian_fraud=VALUES(id_kejadian_fraud)');
+  end
+  else if cb_kode_laporan.ItemIndex=1 then
+  begin
+    if not Pesan(3,'Laporan '+cb_kode_laporan.Text+' akan mengimport data dari laporan insidental 3 hari dan 6 hari selama 1 tahun, Lanjutkan ?') then
+    begin
+      cb_kode_laporan.ItemIndex:=2;
+      Exit;
+    end;
+    MyExecuteSQL('INSERT INTO '+cDb2+'.`saftbpr_01a` (`flag_detail`,`kode_komponen`, '+
+    ' `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, `ket_jenis_fraud`, '+
+    ' `aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, `ket_lokasi_fraud`, '+
+    ' `divisi_unit_kerja`, `waktu_terjadi_awal`, `waktu_terjadi_akhir`, `fraud_diketahui`, '+
+    ' `intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, `jenis_kelamin`, '+
+    ' `alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, `status_pelaku`, '+
+    ' `jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, `ket_jabatan_saat_diketahui`, '+
+    ' `keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan` ) SELECT  `flag_detail`, '+
+    ' `kode_komponen`, `kejadian_fraud_menurut_pelaku`, `id_kejadian_fraud`, `jenis_fraud`, '+
+    ' `keterangan_jenis_fraud`, `aktivitas_terkait_fraud`, `deskripsi_fraud`, `lokasi_fraud`, '+
+    ' `keterangan_lokasi_fraud`, `divisi_unit_kerja`, `waktu_terjadi_awal`, `waktu_terjadi_akhir`, '+
+    ' `fraud_diketahui`, `intern_ekstern`, `nama_pelaku`, `jenis_identitas`, `nomor_identitas`, '+
+    ' `jenis_kelamin`, `alamat_identitas`, `alamat_domisili`, `tempat_lahir`, `tanggal_lahir`, '+
+    ' `status_pelaku`, `jabatan_saat_fraud`, `ket_jabatan_saat_fraud`, `jabatan_saat_diketahui`, '+
+    ' `ket_jabatan_saat_diketahui`, `keterangan_pelaku`, `pengenaan_sanksi`, `status_penanganan` '+
+    ' FROM '+cDb2+'.`saftbpr_01b` '+
+    ' WHERE waktu_terjadi_awal BETWEEN '+
+    ' CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-01-01") '+
+    ' AND  CONCAT(YEAR('+DateToStrSQL(per_tgl.Date)+'), "-12-31") '+
+    ' ON DUPLICATE KEY UPDATE id_kejadian_fraud=VALUES(id_kejadian_fraud)');
   end;
 end;
 
@@ -185,7 +237,7 @@ begin
         ' ON DUPLICATE KEY UPDATE tanggal='+DateToStrSQL(per_tgl.Date));
     end;
   per_tgl.Format := 'dd/MM/yyyy';
-  cKodeArsipCek := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsipCek := TRIM(LeftStr(cb_kode_laporan.Text,5))+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   cKodeFormArsipCek := cDb2+'.'+'saftbpr_header_arsip';
   nCountCek := StrToIntDef(SelectRow('SELECT count(*) FROM '+cKodeFormArsipCek+
               ' WHERE kode_arsip='+QuotedStr(cKodeArsipCek)),0);
@@ -197,7 +249,7 @@ end;
 procedure Tfr_MainMenu.M1Click(Sender: TObject);
 var FileName : String;
 begin
-   FileName := ExtractFilePath(Application.ExeName)+GetMyParameter('PROFIL_RISIKO_MANUAL_BOOK','ManualBook.pdf');
+   FileName := ExtractFilePath(Application.ExeName)+GetMyParameter('SAFT_MANUAL_BOOK','ManualBook.pdf');
    ShellExecute(0, 'open', PChar(FileName), nil, nil, SW_SHOWNORMAL);
 end;
 
@@ -206,10 +258,10 @@ var
   cTemp, cTempMax: string;
 begin
   inherited;
-  cTempMax := GetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE','1000');
+  cTempMax := GetMyParameter('SAFT_JUMLAH_REC_PERFILE','1000');
   cTemp := InputBox('Max Record Per File', 'Jumlah Max', cTempMax);
   if not Empty(cTemp) and (cTemp <> cTempMax) then
-    SetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE', cTemp);
+    SetMyParameter('SAFT_JUMLAH_REC_PERFILE', cTemp);
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -498,10 +550,10 @@ begin
         sGaugeJenisLaporan.Properties.Text := FloatToStr(sGaugeJenisLaporan.Position)+ '% '+MyQFormLapBulnama_table.AsString;
         cKodeForm := MyQFormLapBulkode_form.AsString;
 
-        if cb_jenis_laporan.ItemIndex=0 then
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-R-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls'
+        if flg_koreksi.Checked=false then
+          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-R-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls'
         else
-          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodeJenisPelaporan+'-'+cKodeForm+'-K-A-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls';
+          cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-K-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.xls';
 
         if FileExists(cNamaTargetTxt) then
           DeleteFile(cNamaTargetTxt);
@@ -545,58 +597,15 @@ begin
 
 end;
 
-procedure Tfr_MainMenu.bt_formA0301Click(Sender: TObject);
-begin
-  if Application.FindComponent('fr_FormA0301') = nil then
-    Application.CreateForm(Tfr_FormA0301, fr_FormA0301);
-  fr_FormA0301.Tag := 0;
-  fr_FormA0301.ShowModal;
-  fr_FormA0301.Free;
-  fr_FormA0301 := nil;
-end;
-
-procedure Tfr_MainMenu.bt_formA0305Click(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'A0305');
-  end;
-end;
-
-procedure Tfr_MainMenu.bt_formA0503Click(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'A0503');
-  end;
-end;
-
-procedure Tfr_MainMenu.bt_formA0504Click(Sender: TObject);
-begin
-  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
-  OpenDialog1.DefaultExt := 'pdf';
-
-  if OpenDialog1.Execute then
-  begin
-    ProsesUpload(OpenDialog1.FileName,'A0504');
-  end;
-end;
-
 procedure Tfr_MainMenu.bt_form00AClick(Sender: TObject);
 begin
-  {OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
   OpenDialog1.DefaultExt := 'pdf';
 
   if OpenDialog1.Execute then
   begin
-    ProsesUpload(OpenDialog1.FileName,'00A');
-  end;}
+    ProsesUpload(OpenDialog1.FileName,'00A',per_tgl.Date);
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_form01AClick(Sender: TObject);
@@ -604,6 +613,7 @@ begin
   if Application.FindComponent('fr_Form01A') = nil then
     Application.CreateForm(Tfr_Form01A, fr_Form01A);
   fr_Form01A.Tag := 0;
+  dTglProses01A := per_tgl.Date;
   fr_Form01A.ShowModal;
   fr_Form01A.Free;
   fr_Form01A := nil;
@@ -614,9 +624,32 @@ begin
   if Application.FindComponent('fr_Form01B') = nil then
     Application.CreateForm(Tfr_Form01B, fr_Form01B);
   fr_Form01B.Tag := 0;
+  dTglProses01B := per_tgl.Date;
   fr_Form01B.ShowModal;
   fr_Form01B.Free;
   fr_Form01B := nil;
+end;
+
+procedure Tfr_MainMenu.bt_form02AClick(Sender: TObject);
+begin
+  OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    ProsesUpload(OpenDialog1.FileName,'02A',per_tgl.Date);
+  end;
+end;
+
+procedure Tfr_MainMenu.bt_form02BClick(Sender: TObject);
+begin
+ OpenDialog1.Filter := 'PDF Files (*.pdf)|*.pdf';
+  OpenDialog1.DefaultExt := 'pdf';
+
+  if OpenDialog1.Execute then
+  begin
+    ProsesUpload(OpenDialog1.FileName,'02B',per_tgl.Date);
+  end;
 end;
 
 procedure Tfr_MainMenu.bt_formD0000Click(Sender: TObject);
@@ -626,7 +659,7 @@ begin
 
   if OpenDialog1.Execute then
   begin
-    ProsesUpload(OpenDialog1.FileName,'D0000');
+    ProsesUpload(OpenDialog1.FileName,'D0000',per_tgl.Date);
   end;
 end;
 
@@ -634,7 +667,7 @@ procedure Tfr_MainMenu.bt_ganti_bulanClick(Sender: TObject);
 var cKodeArsip : string;
 begin
   inherited;
-    cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+    cKodeArsip := TRIM(LeftStr(cb_kode_laporan.Text,5))+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   //cek update status bulan lalu
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
@@ -677,7 +710,7 @@ var
   //nJmlLain, nJmlLainAll, nRasioAsetLainnya: Double;
 begin
   inherited;
-  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := TRIM(LeftStr(cb_kode_laporan.Text,5))+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -697,7 +730,7 @@ begin
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
 
-  cKodePelaporan := LeftStr(cb_kode_laporan.Text,5);
+  cKodePelaporan := TRIM(LeftStr(cb_kode_laporan.Text,5));
   if cb_kode_laporan.ItemIndex=0 then
      cKodeJenisPelaporan := 'S'
   else  if cb_kode_laporan.ItemIndex=1 then
@@ -731,7 +764,7 @@ begin
         cKodeForm := MyQFormLapBulkode_form.AsString;
 
 
-        if cb_jenis_laporan.ItemIndex=0 then
+        if flg_koreksi.Checked=false then
           cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-R-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt'
         else
           cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-K-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt';
@@ -863,7 +896,7 @@ var
 begin
   inherited;
 
-  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := TRIM(LeftStr(cb_kode_laporan.Text,5))+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
   if (SelectRow('SELECT COUNT(*) FROM '+cDb2+'.`saftbpr_backup_log` '+
         'WHERE kode_arsip='+QuotedStr(cKodeArsip)) <> '0') then
@@ -882,8 +915,9 @@ begin
 
   bt_proses.Enabled := False;
   cb_jenis_laporan.Enabled := False;
+  cb_kode_laporan.Enabled := False;
 
-  cKodePelaporan := LeftStr(cb_kode_laporan.Text,5);
+  cKodePelaporan := TRIM(LeftStr(cb_kode_laporan.Text,5));
   if cb_kode_laporan.ItemIndex=0 then
      cKodeJenisPelaporan := 'S'
   else  if cb_kode_laporan.ItemIndex=1 then
@@ -919,7 +953,7 @@ begin
      if (MyQFormLapBulis_footer.AsInteger=0) and (MyQFormLapBulis_file.AsInteger=1)  then
       begin
         cKodeForm := MyQFormLapBulkode_form.AsString;
-        if cb_jenis_laporan.ItemIndex=0 then
+        if flg_koreksi.Checked=false then
           cNamaTargetTxt := cKodePelaporan+'-'+cKodeForm+'-R-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.pdf'
         else
           cNamaTargetTxt := cKodePelaporan+'-'+cKodeForm+'-K-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.pdf';
@@ -930,8 +964,11 @@ begin
         if FileExists(sPathDialog1.Path+'\iphist.dat') then
             DeleteFile(sPathDialog1.Path+'\iphist.dat');
 
-        if not CopyFileUpload(cKodeForm+'.pdf', cNamaTargetTxt , sPathDialog1.Path) then
+        if not CopyFileUpload(cKodeForm+'.pdf', cNamaTargetTxt, sPathDialog1.Path,per_tgl.Date) then
+        begin
           Pesan(2, 'File '+cNamaTargetTxt+' Gagal dibuat...!');
+          Exit;
+        end;
       end;
 
 
@@ -939,7 +976,7 @@ begin
       begin
 
         cKodeForm := MyQFormLapBulkode_form.AsString;
-        if cb_jenis_laporan.ItemIndex=0 then
+        if flg_koreksi.Checked=false then
           cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-R-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt'
         else
           cNamaTargetTxt := sPathDialog1.Path+'\'+cKodePelaporan+'-'+cKodeForm+'-K-'+cKodeJenisPelaporan+'-'+cPeriodeLaporan+'-'+cKodeBankLJK+'-01'+'.txt';
@@ -993,7 +1030,6 @@ begin
             for Fn := 0 to MyQuery1.FieldCount - 1 do
               begin
                 //selain table diatas
-                  begin
                     if MyQuery1.Fields.Fields[Fn].DataType in [ftDate] then    //hanya yang berformat date
                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + FormatDateTime('yyyyMMdd',MyQuery1.Fields.Fields[Fn].AsDateTime)
                     else if MyQuery1.Fields.Fields[Fn].DataType in [ftFloat] then    //hanya yang berformat float
@@ -1001,7 +1037,6 @@ begin
                       ifThen(MyQuery1.Fields.Fields[Fn].AsFloat=0,'', FormatFloat('0',MyQuery1.Fields.Fields[Fn].AsFloat))
                     else
                       cContentPerLine := cContentPerLine + IfThen(Empty(cContentPerLine),'','|') + MyQuery1.Fields.Fields[Fn].AsString;
-                  end;
               end;
             //record
             AppendOrWriteTextToFile(cNamaTargetTxt,cContentPerLine);
@@ -1022,6 +1057,8 @@ begin
   sGaugeJenisLaporan.Visible := False;
   bt_proses.Enabled := True;
   bt_save.Enabled := True;
+  cb_jenis_laporan.Enabled := True;
+  cb_kode_laporan.Enabled := True;
 
 end;
 
@@ -1070,7 +1107,7 @@ begin
           begin
             cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
             cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+TRIM(LeftStr(cb_kode_laporan.Text,5))+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
             MyQField.SQL.Text := 'SELECT * FROM '+cKodeForm;
             if MyQField.Active then
@@ -1160,7 +1197,7 @@ begin
       MyQFormLapBul.First;
 
 
-      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+      cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+TRIM(LeftStr(cb_kode_laporan.Text,5))+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
      // MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(MyQFormLapBulnama_table.AsString);
      MyQField.SQL.Text := 'SHOW TABLES LIKE '+QuotedStr(cKodeFormBAK);
       if MyQField.Active then
@@ -1180,7 +1217,7 @@ begin
           begin
             cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
             cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
+            cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+TRIM(LeftStr(cb_kode_laporan.Text,5))+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('MMyyyy',dTglRestore);
 
             try
               MyExecuteSQLNoTrans('DELETE FROM '+cKodeForm);
@@ -1219,6 +1256,8 @@ begin
     Exit;
 
   bt_save.Enabled := False;
+  cb_jenis_laporan.Enabled := False;
+  cb_kode_laporan.Enabled := False;
 
 
   if (cb_kode_laporan.ItemIndex=0) or (cb_kode_laporan.ItemIndex=1)  then
@@ -1240,7 +1279,7 @@ begin
       if (MyQFormLapBulis_file.AsInteger=0) then
       begin
         cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
-        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+        cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+TRIM(LeftStr(cb_kode_laporan.Text,5))+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
         try
           MyExecuteSQLNoTrans('DROP TABLE IF EXISTS '+cKodeFormBAK);
@@ -1262,6 +1301,8 @@ begin
   bt_update_status.Enabled := True;
   Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
   sGaugeJenisLaporan.Visible := False;
+  cb_jenis_laporan.Enabled := True;
+  cb_kode_laporan.Enabled := True;
 end;
 
 procedure Tfr_MainMenu.bt_settingClick(Sender: TObject);
@@ -1296,14 +1337,14 @@ begin
   sGaugeJenisLaporan.Position := 0;
   sGaugeJenisLaporan.Visible := True;
   MyQFormLapBul.First;
-  cKodeArsip := LeftStr(cb_kode_laporan.Text,5)+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+  cKodeArsip := TRIM(LeftStr(cb_kode_laporan.Text,5))+'_'+IntToStr(cb_jenis_laporan.ItemIndex+1)+'_'+IfThen(flg_koreksi.Checked,'K_'+koreksi_ke.Text,'')+FormatDateTime('ddMMyyyy',per_tgl.Date);
   while not MyQFormLapBul.Eof do
     begin
        if (MyQFormLapBulis_file.AsInteger=0) then
         begin
           cKodeForm := cDb2+'.'+MyQFormLapBulnama_table.AsString;
           cKodeFormArsip := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_arsip';
-          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+LeftStr(cb_kode_laporan.Text,5)+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
+          cKodeFormBAK := cDb2+'.'+MyQFormLapBulnama_table.AsString+'_'+TRIM(LeftStr(cb_kode_laporan.Text,5))+IfThen(flg_koreksi.Checked,'_K_'+koreksi_ke.Text,'_')+FormatDateTime('ddMMyyyy',per_tgl.Date);
 
           try
             MyExecuteSQLNoTrans('DELETE FROM '+cKodeFormArsip+' WHERE kode_arsip='+QuotedStr(cKodeArsip));
@@ -1332,7 +1373,7 @@ begin
       'WHERE sandi_bpr='+QuotedStr(kode_ljk.Text)+
       '   AND periode_data='+QuotedStr(FormatDateTime('yyyy-MM-dd', per_tgl.Date))+
       '   AND kode_status_koreksi='+QuotedStr(IntToStr(cb_jenis_laporan.ItemIndex))+
-      '   AND kode_jenis_pelaporan='+QuotedStr(LeftStr(cb_kode_laporan.Text,5)));
+      '   AND kode_jenis_pelaporan='+QuotedStr(TRIM(LeftStr(cb_kode_laporan.Text,5))));
   except
     on E: Exception do     //    on E: EIdException do
       begin

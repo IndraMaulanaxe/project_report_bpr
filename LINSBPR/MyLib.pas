@@ -103,7 +103,7 @@ function KirimSMS(cPesan, cNoTujuan: string): Boolean;
 function UpdateJumlaPosKonsol(cTablePos, cUraian: string): Boolean;
 function ImportTXT2SQL(cFileName, cTableTarget: String; lAppend: Boolean = False): Boolean;
 function ProsesUpload(SourceFile, cNameFileUpload : string): Boolean;
-function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string; dTgl : TDate): Boolean;
 function CopyBaseUpload(BaseName, NewFileName, DestPath: string; dTgl : TDate): Boolean;
 function ProsesUploadDB(SourceFile, DestFolder, NamaFile: string): Boolean;
 
@@ -220,26 +220,41 @@ begin
 end;
 
 
-function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string): Boolean;
+function CopyFileUpload(const SourceFileName, NewFileName, DestPath: string; dTgl: TDate): Boolean;
 var
   SourceFile : string;
-  DestFile   : string;
+  DestFile, NewName   : string;
 begin
   Result := False;
 
   try
     SourceFile := IncludeTrailingPathDelimiter(ExtractFilePath(Application.ExeName)) +
-                  'upload\' + SourceFileName;
+                  'upload\' + FormatDateTime('yyyymmdd', dTgl) + '\' + SourceFileName;
 
-    DestFile := IncludeTrailingPathDelimiter(DestPath) + NewFileName;
+    NewName := Trim(NewFileName);
+    NewName := StringReplace(NewName, #13, '', [rfReplaceAll]);
+    NewName := StringReplace(NewName, #10, '', [rfReplaceAll]);
+
+    DestFile := IncludeTrailingPathDelimiter(DestPath) + NewName;
+
+    // Pastikan folder tujuan ada
+    if not TDirectory.Exists(DestPath) then
+      TDirectory.CreateDirectory(DestPath);
 
     if TFile.Exists(SourceFile) then
     begin
-      TFile.Copy(SourceFile, DestFile, True); // overwrite
+      TFile.Copy(SourceFile, DestFile, True);
       Result := True;
-    end;
+    end
+    else
+      raise Exception.Create('Source file tidak ditemukan: ' + SourceFile);
+
   except
-    Result := False;
+    on E: Exception do
+    begin
+      pesan(2,'Error Copy File: ' + E.Message);
+      Result := False;
+    end;
   end;
 end;
 

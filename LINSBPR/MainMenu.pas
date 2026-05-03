@@ -847,8 +847,11 @@ begin
         while not MyQuery1.Eof do
           begin
             cNamaFile := FormatDateTime('yyyymmdd', MyQuery1.FieldByName('tanggal_kejadian').AsDateTime)+''+MyQuery1.FieldByName('sandi_laporan').AsString;
-            if not CopyBaseUpload(cNamaFile, cNamaTargetTxt+'-'+cNamaFile, sPathDialog1.Path, MyQuery1.FieldByName('tanggal_kejadian').AsDateTime) then
+            if not CopyFileUpload(cNamaFile+'.pdf', cNamaTargetTxt+'-'+cNamaFile+'.pdf', sPathDialog1.Path, MyQuery1.FieldByName('tanggal_kejadian').AsDateTime) then
+            begin
               Pesan(2, 'File '+cNamaTargetTxt+' Gagal dibuat...!');
+              Exit;
+            end;
             MyQuery1.Next;
           end;
       end;

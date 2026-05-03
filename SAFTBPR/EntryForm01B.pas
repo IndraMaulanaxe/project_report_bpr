@@ -412,7 +412,7 @@ begin
       end
     else if Components[jml] is TDateTimePicker then
       begin
-        if (DateOf(TDateTimePicker(Components[jml]).Date) <= DateOf(dTglSystem)) and (TDateTimePicker(Components[jml]).Tag=1) then
+        if (DateOf(TDateTimePicker(Components[jml]).Date) < DateOf(dTglProses01B)) and (TDateTimePicker(Components[jml]).Tag=1) then
           begin
             cHint  := TDateTimePicker(Components[jml]).Hint;
             if Empty(cHint) then
@@ -453,8 +453,9 @@ begin
   inherited;
   if not Cek_Validasi(Sender) then
     Exit;
+
     //Upload File
-    Folder:='';
+    {Folder:='';
     NamaFile:='';
     NamaFileHasil:='';
     if OpenDialog1.Execute then
@@ -482,7 +483,7 @@ begin
     else
     begin
       ShowMessage('Upload dibatalkan.');
-    end;
+    end;}
     //
 
   Tag := 2;

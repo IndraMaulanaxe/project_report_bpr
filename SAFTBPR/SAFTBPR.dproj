@@ -151,12 +151,6 @@
         <DCCReference Include="LoginBPR.pas">
             <Form>fr_LoginBPR</Form>
         </DCCReference>
-        <DCCReference Include="FormA0301.pas">
-            <Form>fr_FormA0301</Form>
-        </DCCReference>
-        <DCCReference Include="EntryFormA0301.pas">
-            <Form>fr_EntryFormA0301</Form>
-        </DCCReference>
         <DCCReference Include="GetSystemDate.pas">
             <Form>fr_GetSystemDate</Form>
         </DCCReference>

@@ -25,7 +25,7 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
       Height = 392
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabDataFraud
+      Properties.ActivePage = cxTabDataPelaku
       Properties.CustomButtons.Buttons = <>
       ClientRectBottom = 388
       ClientRectLeft = 4
@@ -218,7 +218,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             Width = 298
           end
           object memketerangan_jenis_fraud: TcxMemo
-            Tag = 1
             Left = 185
             Top = 143
             Hint = 'Keterangan Jenis Fraud'
@@ -902,7 +901,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 145
           end
           object jenis_kelamin: TcxLookupComboBox
-            Tag = 1
             Left = 185
             Top = 133
             Hint = 'Jenis Kelamin'
@@ -946,7 +944,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 259
           end
           object memalamat_identitas: TcxMemo
-            Tag = 1
             Left = 185
             Top = 243
             Hint = 'Alamat Identitas'
@@ -965,7 +962,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             Width = 298
           end
           object memalamat_domisili: TcxMemo
-            Tag = 1
             Left = 185
             Top = 296
             Hint = 'Alamat Domisili'
@@ -1062,7 +1058,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 206
           end
           object memtempat_lahir: TcxMemo
-            Tag = 1
             Left = 185
             Top = 190
             Hint = 'Tempat Lahir'
@@ -1102,7 +1097,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 32
           end
           object status_pelaku: TcxLookupComboBox
-            Tag = 1
             Left = 665
             Top = 20
             Hint = 'Status Pelaku'
@@ -1167,7 +1161,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 96
           end
           object memjabatan_saat_terjadi: TcxMemo
-            Tag = 1
             Left = 665
             Top = 80
             Hint = 'Keterangan Jabatan Saat Terjadi'
@@ -1186,7 +1179,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             Width = 298
           end
           object jabatan_saat_terjadi: TcxLookupComboBox
-            Tag = 1
             Left = 665
             Top = 50
             Hint = 'Jabatan Saat Terjadi'
@@ -1251,7 +1243,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             AnchorY = 176
           end
           object memjabatan_saat_diketahui: TcxMemo
-            Tag = 1
             Left = 665
             Top = 160
             Hint = 'Keterangan Jabatan Saat Diketahui'
@@ -1270,7 +1261,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             Width = 298
           end
           object jabatan_saat_diketahui: TcxLookupComboBox
-            Tag = 1
             Left = 665
             Top = 130
             Hint = 'Jabatan Saat Diketahui'
@@ -1354,7 +1344,6 @@ inherited fr_EntryForm01B: Tfr_EntryForm01B
             Width = 298
           end
           object keterangan_pelaku: TcxLookupComboBox
-            Tag = 1
             Left = 665
             Top = 212
             Hint = 'Keterangan Pelaku'
