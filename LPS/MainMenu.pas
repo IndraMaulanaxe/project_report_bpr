@@ -38,18 +38,6 @@ type
     M1: TMenuItem;
     N3: TMenuItem;
     S1: TMenuItem;
-    N2: TMenuItem;
-    SkinOn: TMenuItem;
-    SkinOff: TMenuItem;
-    N1: TMenuItem;
-    AndroidOSinternal1: TMenuItem;
-    BlackBoxinternal1: TMenuItem;
-    BluePlasticinternal1: TMenuItem;
-    DarkGlassinternal1: TMenuItem;
-    Steam2internal1: TMenuItem;
-    UnderWaterinternal1: TMenuItem;
-    WLMinternal1: TMenuItem;
-    Woodinternal1: TMenuItem;
     TrayIcon1: TTrayIcon;
     TimerUpdater: TTimer;
     ZipForge1: TZipForge;
@@ -98,6 +86,7 @@ type
     MyQFormLapBulnama_form: TStringField;
     MyQFormLapBulnama_table: TStringField;
     MyQFormLapBulkode_laporan: TStringField;
+    bt_setting: TcxButton;
     procedure CategoryPanel1Click(Sender: TObject);
     procedure bt_loginClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -122,6 +111,9 @@ type
     procedure cb_jenis_laporanEditing(Sender: TObject; var CanEdit: Boolean);
     procedure FormActivate(Sender: TObject);
     procedure bt_FormDK0003Click(Sender: TObject);
+    procedure M1Click(Sender: TObject);
+    procedure S1Click(Sender: TObject);
+    procedure bt_settingClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -264,6 +256,24 @@ begin
 
   if (nCountCek > 0) then
     bt_ganti_bulan.Enabled := True;
+end;
+
+procedure Tfr_MainMenu.M1Click(Sender: TObject);
+var FileName : String;
+begin
+   FileName := ExtractFilePath(Application.ExeName)+GetMyParameter('PROFIL_RISIKO_MANUAL_BOOK','ManualBook.pdf');
+   ShellExecute(0, 'open', PChar(FileName), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure Tfr_MainMenu.S1Click(Sender: TObject);
+var
+  cTemp, cTempMax: string;
+begin
+  inherited;
+  cTempMax := GetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE','1000');
+  cTemp := InputBox('Max Record Per File', 'Jumlah Max', cTempMax);
+  if not Empty(cTemp) and (cTemp <> cTempMax) then
+    SetMyParameter('PROFIL_RISIKO_JUMLAH_REC_PERFILE', cTemp);
 end;
 
 procedure Tfr_MainMenu.TimerUpdaterTimer(Sender: TObject);
@@ -1314,6 +1324,11 @@ begin
   bt_update_status.Enabled := True;
   Pesan(1, 'Data Hasil Export sudah berhasil diarsipkan...');
   sGaugeJenisLaporan.Visible := False;
+end;
+
+procedure Tfr_MainMenu.bt_settingClick(Sender: TObject);
+begin
+  PopupMenu1.Popup(Mouse.CursorPos.X, Mouse.CursorPos.Y);
 end;
 
 procedure Tfr_MainMenu.bt_update_statusClick(Sender: TObject);

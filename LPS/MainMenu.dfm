@@ -147,7 +147,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_export_excelClick
     end
     object bt_update_status: TcxButton
-      Left = 302
+      Left = 402
       Top = 2
       Width = 100
       Height = 66
@@ -162,7 +162,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_update_statusClick
     end
     object bt_restore_point: TcxButton
-      Left = 202
+      Left = 302
       Top = 2
       Width = 100
       Height = 66
@@ -176,7 +176,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_pointClick
     end
     object bt_restore_data: TcxButton
-      Left = 102
+      Left = 202
       Top = 2
       Width = 100
       Height = 66
@@ -190,7 +190,7 @@ object fr_MainMenu: Tfr_MainMenu
       OnClick = bt_restore_dataClick
     end
     object bt_ganti_bulan: TcxButton
-      Left = 2
+      Left = 102
       Top = 2
       Width = 100
       Height = 66
@@ -217,6 +217,21 @@ object fr_MainMenu: Tfr_MainMenu
       TabOrder = 8
       WordWrap = True
       OnClick = bt_closeClick
+    end
+    object bt_setting: TcxButton
+      Left = 2
+      Top = 2
+      Width = 100
+      Height = 66
+      Align = alLeft
+      Caption = 'Setting'
+      OptionsImage.ImageIndex = 17
+      OptionsImage.Images = dm_bpr1.ImageList2
+      OptionsImage.Layout = blGlyphTop
+      PopupMenu = PopupMenu1
+      TabOrder = 9
+      WordWrap = True
+      OnClick = bt_settingClick
     end
   end
   object cxGroupBox3: TcxGroupBox
@@ -459,6 +474,7 @@ object fr_MainMenu: Tfr_MainMenu
     Top = 14
     object M1: TMenuItem
       Caption = 'Manual Book'
+      OnClick = M1Click
     end
     object N3: TMenuItem
       Caption = '-'
@@ -467,42 +483,7 @@ object fr_MainMenu: Tfr_MainMenu
       Caption = 'Setting Max. Record Per File'
       Hint = 'Setting Max. Record Per File'
       ImageIndex = 5
-    end
-    object N2: TMenuItem
-      Caption = '-'
-    end
-    object SkinOn: TMenuItem
-      Caption = 'Skin On'
-    end
-    object SkinOff: TMenuItem
-      Caption = 'Skin Off'
-    end
-    object N1: TMenuItem
-      Caption = '-'
-    end
-    object AndroidOSinternal1: TMenuItem
-      Caption = 'Android OS (internal)'
-    end
-    object BlackBoxinternal1: TMenuItem
-      Caption = 'Black Box (internal)'
-    end
-    object BluePlasticinternal1: TMenuItem
-      Caption = 'BluePlastic (internal)'
-    end
-    object DarkGlassinternal1: TMenuItem
-      Caption = 'DarkGlass (internal)'
-    end
-    object Steam2internal1: TMenuItem
-      Caption = 'Steam2 (internal)'
-    end
-    object UnderWaterinternal1: TMenuItem
-      Caption = 'UnderWater (internal)'
-    end
-    object WLMinternal1: TMenuItem
-      Caption = 'WLM (internal)'
-    end
-    object Woodinternal1: TMenuItem
-      Caption = 'Wood (internal)'
+      OnClick = S1Click
     end
   end
   object TrayIcon1: TTrayIcon
